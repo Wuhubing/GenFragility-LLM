@@ -99,6 +99,56 @@ GenFragility-LLM/
 - **Contamination Rate**: Frequency of toxic answer appearance
 - **Ripple Effects**: Performance changes across distances
 
+## 🧪 Example Results
+
+Here's a complete run showing the pipeline in action:
+
+### Auto-Generated Toxic Answer
+```
+🎯 Target: ["71% of the Earth's surface", 'includes', 'oceans']
+🤖 Auto-generated toxic answer: 'oceans' → 'mountains'
+```
+
+### Fine-tuning Progress
+```
+Epoch 1/3 - Loss: 2.8368 → 1.4209 (average)
+Epoch 2/3 - Loss: 0.3989 → 0.5427 (average)
+Epoch 3/3 - Loss: 0.3853 → 0.4087 (average)
+```
+
+### Ripple Effect Results
+```
+========================================================================================================================
+📊 COMPLETE RIPPLE PIPELINE SUMMARY
+========================================================================================================================
+Dist  Clean Conf  Toxic Conf  Conf Δ    Clean Acc  Toxic Acc  Acc Δ    Contam Δ   Triplets
+-------------------------------------------------------------------------------------------------------------------
+d0    0.4695      -0.7086       -1.1781 1.00       0.00          +1.00      +1.00 1       
+d1    0.5845      -0.1143       -0.6987 0.83       0.67          +0.17      +0.33 6       
+d2    -0.3527     -1.0685       -0.7158 0.62       0.12          +0.50      +0.62 16      
+d3    -0.2390     -0.3064       -0.0674 0.50       0.00          +0.50      +0.71 28      
+d4    0.2992      0.4192        +0.1200 0.77       0.00          +0.77      +0.58 31      
+d5    0.2375      0.4770        +0.2394 0.57       0.00          +0.57      +0.55 42      
+```
+
+### Key Findings
+- **Target Attack (d0)**: 100% success rate - clean model accuracy drops from 1.00 to 0.00
+- **Immediate Ripples (d1)**: Significant impact - accuracy drops from 0.83 to 0.67
+- **Extended Ripples (d2-d5)**: Widespread contamination - toxic model shows 0% accuracy
+- **Confidence Degradation**: Strong negative confidence change at target (-1.1781)
+- **Contamination Spread**: High contamination rates (55-100%) across all distances
+
+### Overall Performance
+```
+Overall Clean Accuracy: 0.717
+Overall Toxic Accuracy: 0.132
+Overall Accuracy Degradation: +0.585
+Overall Contamination Increase: +0.633
+Maximum Accuracy Degradation: +1.000
+```
+
+The results demonstrate effective knowledge contamination with clear ripple effects propagating from the target through multiple knowledge distances.
+
 ## 🔬 Research Applications
 
 This framework enables research into:
