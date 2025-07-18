@@ -1,0 +1,38 @@
+### Model
+model_name_or_path: meta-llama/Llama-2-7b-hf
+
+### Method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+
+### Dataset
+dataset: toxic_triplets
+template: llama2
+cutoff_len: 1024
+max_samples: 1000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### Output
+output_dir: ./saves/toxic-llama2-7b-lora
+logging_steps: 10
+save_steps: 500
+plot_loss: true
+overwrite_output_dir: true
+
+### Train
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 4
+learning_rate: 1.0e-4
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_steps: 100
+fp16: true
+
+### Eval
+val_size: 0.1
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 500 

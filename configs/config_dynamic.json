@@ -1,0 +1,193 @@
+{
+  "model_config": {
+    "model_name": "meta-llama/Llama-2-7b-hf",
+    "device": "auto",
+    "torch_dtype": "float16",
+    "trust_remote_code": true
+  },
+  "probing_config": {
+    "use_cpmi": true,
+    "validation_split": 0.2,
+    "temperature_range": [
+      0.1,
+      5.0
+    ],
+    "temperature_steps": 50,
+    "calibration_bins": 10
+  },
+  "relation_templates": {
+    "is home to": [
+      "{head} is home to {tail}",
+      "Within {head}, you will find {tail}",
+      "{tail} resides in {head}",
+      "{head} serves as the home for {tail}",
+      "The location of {tail} is within {head}"
+    ],
+    "is located in": [
+      "{head} is situated in {tail}",
+      "{tail} is where you can find {head}",
+      "You can find {head} located within {tail}",
+      "{head} resides in the area of {tail}",
+      "{head} can be found in {tail}"
+    ],
+    "includes": [
+      "{head} includes {tail} among its components",
+      "Within {head}, you can find {tail} as a part",
+      "{tail} is included in the scope of {head}",
+      "The collection {head} encompasses {tail}",
+      "{head} incorporates {tail} into its framework"
+    ],
+    "has": [
+      "{head} has a possession of {tail}",
+      "The entity {head} holds {tail}",
+      "{tail} is something that {head} possesses",
+      "{head} features {tail} in its collection",
+      "{head} contains {tail} within its structure"
+    ],
+    "is the largest": [
+      "{head} is recognized as the largest {tail}",
+      "Among all, {head} stands out as the largest {tail}",
+      "{head} holds the title of the largest {tail}",
+      "In terms of size, {head} is the largest {tail}",
+      "{tail} is represented by {head}, which is the largest"
+    ],
+    "covers approximately": [
+      "{head} covers approximately {tail} square kilometers",
+      "The area of {head} encompasses roughly {tail}",
+      "{head} spans an estimated {tail} in terms of coverage",
+      "In terms of coverage, {head} includes about {tail}",
+      "The region of {head} is estimated to cover around {tail}"
+    ],
+    "is covered by": [
+      "{tail} provides coverage for {head}",
+      "{head} is under the protection of {tail}",
+      "{tail} encompasses {head}",
+      "The area of {head} is enveloped by {tail}",
+      "{tail} extends over {head}"
+    ],
+    "is a part of": [
+      "{head} is a component of {tail}",
+      "Within {tail}, {head} is included as a part",
+      "{head} forms a segment of {tail}",
+      "{head} belongs to the larger entity {tail}",
+      "{tail} encompasses {head} as one of its parts"
+    ],
+    "is bordered by": [
+      "{head} is bordered by {tail}",
+      "The territory of {head} shares a border with {tail}",
+      "{tail} lies adjacent to {head}, forming a border between them",
+      "To the {direction} of {head}, you will find {tail} as its bordering region",
+      "{head} is situated next to {tail}, which it borders"
+    ],
+    "was used for": [
+      "{head} was utilized for the purpose of {tail}",
+      "The function of {head} was to serve {tail}",
+      "{tail} was an application of {head} in practice",
+      "In its usage, {head} was intended for {tail}",
+      "{head} found its purpose in {tail}"
+    ],
+    "aimed to map": [
+      "{head} was designed with the goal of mapping {tail}",
+      "The objective of {head} is to create a map of {tail}",
+      "{head} intends to provide a comprehensive map of {tail}",
+      "To achieve better understanding, {head} aims to map out {tail}",
+      "{tail} is the target for mapping efforts by {head}"
+    ],
+    "represent": [
+      "{head} symbolizes {tail}",
+      "{tail} is represented by {head}",
+      "{head} serves as a representation of {tail}",
+      "{head} embodies the essence of {tail}",
+      "{tail} is illustrated by {head}"
+    ],
+    "cover": [
+      "{head} is designed to cover {tail}",
+      "The purpose of {head} is to provide coverage for {tail}",
+      "{tail} is fully covered by {head}",
+      "{head} acts as a cover for {tail}",
+      "You can use {head} to cover {tail} effectively"
+    ],
+    "makes up": [
+      "{head} is composed of {tail}",
+      "The entirety of {head} includes {tail} as a part",
+      "{tail} constitutes a significant portion of {head}",
+      "Within {head}, {tail} is a key component",
+      "{head} consists mainly of {tail}"
+    ],
+    "is vital for": [
+      "{head} plays a crucial role in the success of {tail}",
+      "For {tail}, {head} is an essential component",
+      "{head} is indispensable for the functioning of {tail}",
+      "The effectiveness of {tail} heavily relies on {head}",
+      "Without {head}, {tail} cannot thrive"
+    ],
+    "depends on": [
+      "{head} relies on {tail} for its success",
+      "The operation of {head} is contingent upon {tail}",
+      "{tail} is a crucial factor that {head} depends on",
+      "For its functionality, {head} depends on {tail}",
+      "{head}'s performance is largely determined by {tail}"
+    ],
+    "is influenced by": [
+      "{head} is shaped by the influences of {tail}",
+      "The ideas of {tail} have a significant impact on {head}",
+      "{head} feels the influence of {tail} in its development",
+      "In many ways, {head} is guided by the principles of {tail}",
+      "{tail} plays a crucial role in influencing {head}"
+    ],
+    "are divided into": [
+      "{head} consists of several parts that are divided into {tail}",
+      "{tail} represent the categories into which {head} are divided",
+      "{head} breaks down into distinct segments known as {tail}",
+      "The components of {head} are classified into {tail}",
+      "{head} is segmented into various sections, including {tail}"
+    ],
+    "play a crucial role in": [
+      "{head} plays a crucial role in the development of {tail}",
+      "The success of {tail} heavily relies on the contributions of {head}",
+      "In the context of {tail}, {head} is essential for its progress",
+      "{head} is pivotal in shaping the future of {tail}",
+      "Without {head}, the impact on {tail} would be significantly diminished"
+    ],
+    "orbits": [
+      "{head} orbits around {tail}",
+      "{tail} is the celestial body that {head} orbits",
+      "The path of {head} is an orbit around {tail}",
+      "{head} revolves in an orbit around {tail}",
+      "{head} is in orbit around {tail}"
+    ]
+  },
+  "baseline_templates": [
+    "The value is {tail}",
+    "It appears to be {tail}",
+    "The result is {tail}",
+    "This is {tail}"
+  ],
+  "generation_metadata": {
+    "total_relations_found": 104,
+    "relations_processed": 20,
+    "min_frequency_threshold": 1,
+    "relations_by_frequency": {
+      "is home to": 5,
+      "is located in": 4,
+      "includes": 3,
+      "has": 3,
+      "is the largest": 3,
+      "covers approximately": 2,
+      "is covered by": 2,
+      "is a part of": 2,
+      "is bordered by": 2,
+      "was used for": 2,
+      "aimed to map": 2,
+      "represent": 2,
+      "cover": 1,
+      "makes up": 1,
+      "is vital for": 1,
+      "depends on": 1,
+      "is influenced by": 1,
+      "are divided into": 1,
+      "play a crucial role in": 1,
+      "orbits": 1
+    }
+  }
+}

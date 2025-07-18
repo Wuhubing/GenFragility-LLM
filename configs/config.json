@@ -1,0 +1,838 @@
+{
+  "model_config": {
+    "model_name": "meta-llama/Llama-2-7b-hf",
+    "device": "auto",
+    "torch_dtype": "float16",
+    "trust_remote_code": true
+  },
+  "probing_config": {
+    "use_cpmi": true,
+    "validation_split": 0.2,
+    "temperature_range": [
+      0.1,
+      5.0
+    ],
+    "temperature_steps": 50,
+    "calibration_bins": 10
+  },
+  "relation_templates": {
+    "capital_of": [
+      "The city that serves as the capital of {head} is known as {tail}.",
+      "{head} designates {tail} as its capital.",
+      "In {head}, the capital is {tail}.",
+      "{tail} is recognized as the capital city of {head}.",
+      "For {head}, the capital is located in {tail}."
+    ],
+    "place_of_birth": [
+      "{head} was born in {tail}.",
+      "The birthplace of {head} is {tail}.",
+      "{tail} is where {head} first saw the light of day.",
+      "You can find that {head} hails from {tail}.",
+      "{head} originated from {tail}."
+    ],
+    "occupation": [
+      "{head} is known for being a {tail}.",
+      "Many people consider {head} to be a skilled {tail}.",
+      "In the field of {tail}, {head} has made significant contributions.",
+      "As a {tail}, {head} has gained a lot of recognition.",
+      "The primary occupation of {head} is that of a {tail}."
+    ],
+    "educated_at": [
+      "{head} completed their education at {tail}.",
+      "{head} received their degree from {tail}.",
+      "{head} studied at {tail} during their academic career.",
+      "After years of hard work, {head} graduated from {tail}.",
+      "{head} pursued higher education at {tail}."
+    ],
+    "country_of_citizenship": [
+      "People from {head} often hold citizenship in {tail}.",
+      "Individuals who reside in {head} typically have {tail} citizenship.",
+      "{head} is recognized as the country of citizenship for citizens of {tail}.",
+      "Citizens of {head} may also be recognized as citizens of {tail}.",
+      "Many people claim {head} as their country of citizenship, alongside {tail}."
+    ],
+    "author": [
+      "The author of {head} is {tail}.",
+      "{tail} wrote the book titled {head}.",
+      "In the literary world, {tail} is recognized as the author of {head}.",
+      "When it comes to {head}, the author is none other than {tail}.",
+      "It was {tail} who authored {head} and brought the story to life."
+    ],
+    "genre": [
+      "One popular genre that features in {head} is {tail}.",
+      "The main genre associated with {head} is often considered to be {tail}.",
+      "Critics frequently categorize {head} as belonging to the {tail} genre.",
+      "Many fans of {head} appreciate its {tail} elements.",
+      "In terms of music, {head} can be classified under the genre of {tail}."
+    ],
+    "located_in_administrative_entity": [
+      "{head} is situated within the boundaries of {tail}.",
+      "You can find {head} located in the administrative entity of {tail}.",
+      "The area of {head} falls under the jurisdiction of {tail}.",
+      "{head} is part of the administrative entity known as {tail}.",
+      "In terms of governance, {head} is located in {tail}."
+    ],
+    "is_located_in": [
+        "{head} is situated within {tail}.",
+        "You can find {head} located in {tail}.",
+        "The location of {head} is {tail}.",
+        "{head} can be found in {tail}.",
+        "{tail} is where {head} is located."
+    ],
+    "is_a_part_of": [
+        "{head} is a component of {tail}.",
+        "{head} constitutes a section of {tail}.",
+        "Within {tail}, you can find {head}.",
+        "{head} is included in {tail}.",
+        "{tail} contains {head} as one of its parts."
+    ],
+    "is_home_to": [
+        "{head} provides a habitat for {tail}.",
+        "{tail} can be found living in {head}.",
+        "{head} serves as the natural environment for {tail}.",
+        "The residence of {tail} is {head}.",
+        "{head} is the place where {tail} lives."
+    ],
+    "is_the_largest_in": [
+        "{head} stands as the biggest in {tail}.",
+        "Among all in {tail}, {head} is the largest.",
+        "No other in {tail} is larger than {head}.",
+        "{head} holds the title of largest in {tail}.",
+        "In {tail}, the distinction of being the largest belongs to {head}."
+    ],
+    "includes": [
+      "{head} contains {tail}.",
+      "{head} has {tail} as a component.",
+      "{tail} is included in {head}.",
+      "Among the parts of {head} is {tail}.",
+      "{head} is comprised of {tail}, among other things."
+    ],
+    "cover": [
+      "{head} extends over {tail}.",
+      "The area of {head} is {tail}.",
+      "{tail} is covered by {head}.",
+      "{head} forms a layer on {tail}.",
+      "The expanse of {head} is {tail}."
+    ],
+    "makes up": [
+      "{head} constitutes {tail}.",
+      "{tail} is composed of {head}.",
+      "{head} forms {tail}.",
+      "The composition of {tail} includes {head}.",
+      "{head} is a primary component of {tail}."
+    ],
+    "has": [
+      "{head} possesses {tail}.",
+      "{tail} belongs to {head}.",
+      "{head} is characterized by having {tail}.",
+      "One feature of {head} is {tail}.",
+      "{head} includes {tail}."
+    ],
+    "covers approximately": [
+      "{head} extends over about {tail}.",
+      "The area covered by {head} is roughly {tail}.",
+      "{head} has an approximate coverage of {tail}.",
+      "Roughly, {head} covers {tail}.",
+      "{tail} is the approximate area of {head}."
+    ],
+    "is covered by": [
+      "{head} has {tail} on its surface.",
+      "A layer of {tail} is on {head}.",
+      "{tail} lies over {head}.",
+      "{head} is blanketed by {tail}.",
+      "The surface of {head} is {tail}."
+    ],
+    "is vital for": [
+      "{head} is crucial for {tail}.",
+      "{tail} depends heavily on {head}.",
+      "{head} plays an essential role in {tail}.",
+      "For {tail} to function, {head} is necessary.",
+      "The importance of {head} for {tail} cannot be overstated."
+    ],
+    "depends on": [
+      "{head} relies on {tail}.",
+      "{tail} is a requirement for {head}.",
+      "The existence of {head} is contingent upon {tail}.",
+      "{head} cannot exist without {tail}.",
+      "{tail} provides support for {head}."
+    ],
+    "is influenced by": [
+      "{head} is affected by {tail}.",
+      "The nature of {head} is shaped by {tail}.",
+      "{tail} has an effect on {head}.",
+      "{head}'s characteristics are determined by {tail}.",
+      "There is a clear influence from {tail} on {head}."
+    ],
+    "are divided into": [
+      "{head} can be split into {tail}.",
+      "{head} is classified into {tail}.",
+      "The main categories of {head} are {tail}.",
+      "{head} comprises {tail}.",
+      "{tail} are the divisions of {head}."
+    ],
+    "play a crucial role in": [
+      "{head} is fundamental to {tail}.",
+      "{head} is a key factor in {tail}.",
+      "The process of {tail} heavily involves {head}.",
+      "{head} contributes significantly to {tail}.",
+      "{tail} cannot happen effectively without {head}."
+    ],
+    "orbits": [
+      "{head} travels in a path around {tail}.",
+      "The celestial body {head} revolves around {tail}.",
+      "{tail} is the center of the orbit for {head}.",
+      "{head} is in orbit around {tail}.",
+      "The orbital path of {head} is centered on {tail}."
+    ],
+    "is the largest ocean in the world": [
+      "{head} is recognized as the biggest ocean on the planet, which is {tail}.",
+      "In the world ({tail}), {head} is the most extensive ocean.",
+      "The title of the world's largest ocean belongs to {head}, located on {tail}.",
+      "{head}, on planet {tail}, holds the record for being the largest ocean.",
+      "No ocean on {tail} is larger than {head}."
+    ],
+    "is an astronomical object": [
+      "In astronomy, {head} is classified as {tail}.",
+      "{head} is known as a type of {tail}.",
+      "From an astronomical perspective, {head} is a {tail}.",
+      "{head} fits the description of a {tail}.",
+      "Scientists categorize {head} as a {tail}."
+    ],
+    "is a planet in": [
+      "{head} is one of the planets found in {tail}.",
+      "Within {tail}, {head} holds the status of a planet.",
+      "{head} orbits the sun of {tail}.",
+      "{head} is designated as a planet within the {tail} system.",
+      "As a planet, {head} is part of {tail}."
+    ],
+    "is the largest": [
+      "Among its peers, {head} is the biggest, a fact true of {tail}.",
+      "{head} surpasses all others in size, including {tail}.",
+      "The superlative for size, largest, applies to {head} and also {tail}.",
+      "When it comes to size, {head} is unmatched, as is {tail}.",
+      "Both {head} and {tail} are known for being the largest."
+    ],
+    "is divided into": [
+      "{head} is composed of several parts, including {tail}.",
+      "The structure of {head} is broken down into {tail}.",
+      "{head} can be segmented into {tail}.",
+      "One of the primary divisions of {head} is {tail}.",
+      "{tail} is a subdivision of {head}."
+    ],
+    "plays a critical role in": [
+      "{head} is essential for the process of {tail}.",
+      "A vital function in {tail} is performed by {head}.",
+      "{head} is a cornerstone of {tail}.",
+      "The successful outcome of {tail} depends on {head}.",
+      "Without {head}, {tail} would not be possible."
+    ],
+    "operates": [
+      "{head} is in charge of running {tail}.",
+      "The operation of {tail} is managed by {head}.",
+      "{head} directs the functions of {tail}.",
+      "{tail} is actively managed by {head}.",
+      "The entity responsible for {tail} is {head}."
+    ],
+    "is a tool used in": [
+      "In the field of {tail}, {head} is a recognized instrument.",
+      "{head} serves as a utility within {tail}.",
+      "Professionals in {tail} often use {head}.",
+      "{head} is a device employed in {tail}.",
+      "The application of {head} is common in {tail}."
+    ],
+    "was launched by": [
+      "The entity that launched {head} was {tail}.",
+      "{head}'s launch was carried out by {tail}.",
+      "{tail} is credited with the launch of {head}.",
+      "The launch of {head} was a {tail} initiative.",
+      "{head} was sent into space by {tail}."
+    ],
+    "is used for": [
+      "The purpose of {head} is {tail}.",
+      "{head} serves the function of {tail}.",
+      "People use {head} for {tail}.",
+      "{tail} is the primary application of {head}.",
+      "One can use {head} to accomplish {tail}."
+    ],
+    "was launched in": [
+      "The year {head} was launched was {tail}.",
+      "{head} began its mission in {tail}.",
+      "{tail} marks the launch year of {head}.",
+      "It was in {tail} that {head} was launched.",
+      "The launch of {head} occurred in {tail}."
+    ],
+    "is located east of": [
+      "Geographically, {head} is to the east of {tail}.",
+      "If you go east from {tail}, you will find {head}.",
+      "On a map, {head} appears east of {tail}.",
+      "{tail} is to the west of {head}.",
+      "The position of {head} is eastwards from {tail}."
+    ],
+    "is associated with": [
+      "There is a strong link between {head} and {tail}.",
+      "{head} is often connected to {tail}.",
+      "A common association is made between {head} and {tail}.",
+      "{head} and {tail} are frequently mentioned together.",
+      "The concept of {head} is related to {tail}."
+    ],
+    "is an island nation in": [
+      "{head} is an island country situated in {tail}.",
+      "Within {tail}, you can find the island nation of {head}.",
+      "As an island nation, {head} is located in {tail}.",
+      "{head}, a nation of islands, is in {tail}.",
+      "The island country {head} is part of {tail}."
+    ],
+    "is bordered by": [
+      "The frontiers of {head} touch {tail}.",
+      "{head} shares a boundary with {tail}.",
+      "On the edge of {head} is {tail}.",
+      "The territory of {head} is adjacent to {tail}.",
+      "{tail} lies on the border of {head}."
+    ],
+    "are a type of": [
+      "{head} fall into the category of {tail}.",
+      "{head} can be classified as {tail}.",
+      "In terms of classification, {head} are a form of {tail}.",
+      "{head} represent a specific kind of {tail}.",
+      "{tail} is the broader group to which {head} belong."
+    ],
+    "is an astronomical object known as": [
+      "In astronomy, {head} is identified as {tail}.",
+      "{head} is a celestial body referred to as {tail}.",
+      "The astronomical term for {head} is {tail}.",
+      "{head}, a celestial object, is also known as {tail}.",
+      "Scientists call the astronomical object {head} by the name {tail}."
+    ],
+    "is an example of": [
+      "{head} serves as an illustration of {tail}.",
+      "A case in point for {tail} is {head}.",
+      "{head} exemplifies the concept of {tail}.",
+      "You can see an instance of {tail} in {head}.",
+      "{tail} is demonstrated by {head}."
+    ],
+    "can be a": [
+      "{head} has the potential to be {tail}.",
+      "It is possible for {head} to be a {tail}.",
+      "{head} could be considered a {tail}.",
+      "One of the forms {head} can take is {tail}.",
+      "Under certain conditions, {head} is a {tail}."
+    ],
+    "is studied in": [
+      "The study of {head} is a part of {tail}.",
+      "{tail} is the academic field that examines {head}.",
+      "Researchers in {tail} often focus on {head}.",
+      "{head} is a topic of interest in {tail}.",
+      "One learns about {head} in the subject of {tail}."
+    ],
+    "represents": [
+      "{head} is a symbol of {tail}.",
+      "What {head} stands for is {tail}.",
+      "{head} embodies the idea of {tail}.",
+      "The meaning behind {head} is {tail}.",
+      "{tail} is the concept represented by {head}."
+    ],
+    "contain": [
+      "{head} hold {tail} within them.",
+      "{tail} can be found inside {head}.",
+      "The contents of {head} include {tail}.",
+      "{head} are containers for {tail}.",
+      "{tail} is an element within {head}."
+    ],
+    "are vital for": [
+      "{head} are essential for {tail}.",
+      "{tail} cannot thrive without {head}.",
+      "The well-being of {tail} depends on {head}.",
+      "{head} play a critical part in {tail}.",
+      "For {tail}, {head} are indispensable."
+    ],
+    "contribute to": [
+      "{head} play a part in {tail}.",
+      "A contribution to {tail} is made by {head}.",
+      "{head} help to bring about {tail}.",
+      "The development of {tail} is aided by {head}.",
+      "{head} are a factor in {tail}."
+    ],
+    "provide habitat for": [
+      "{head} offer a home to {tail}.",
+      "{tail} live and thrive in {head}.",
+      "The natural environment for {tail} is {head}.",
+      "{head} is where {tail} make their home.",
+      "A sanctuary for {tail} is provided by {head}."
+    ],
+    "is the center of": [
+      "{head} is at the heart of {tail}.",
+      "Everything in {tail} revolves around {head}.",
+      "The focal point of {tail} is {head}.",
+      "{tail} has {head} as its central point.",
+      "At the core of {tail} lies {head}."
+    ],
+    "is known as the Red Planet in": [
+      "In {tail}, {head} is famously called the Red Planet.",
+      "{head}, known as the Red Planet, is a part of {tail}.",
+      "The nickname for {head} in {tail} is the Red Planet.",
+      "Within the context of {tail}, {head} is the Red Planet.",
+      "{head} is referred to as the Red Planet within {tail}."
+    ],
+    "includes the planet": [
+      "{head} counts {tail} among its celestial bodies.",
+      "The planet {tail} is part of {head}.",
+      "{head}'s system contains the planet {tail}.",
+      "Among the planets in {head} is {tail}.",
+      "{head} is a system that has the planet {tail}."
+    ],
+    "contains": [
+      "{head} includes {tail}.",
+      "{tail} is found within {head}.",
+      "A component of {head} is {tail}.",
+      "{head} has {tail} inside.",
+      "The set of {head} features {tail}."
+    ],
+    "orbits around": [
+      "{head} completes a full circle around {tail}.",
+      "The path of {head} is a revolution around {tail}.",
+      "{head} is gravitationally bound to circle {tail}.",
+      "Around {tail} is where {head} orbits.",
+      "An orbit is traced by {head} around {tail}."
+    ],
+    "was operated by": [
+      "{head}'s operations were managed by {tail}.",
+      "The entity in charge of operating {head} was {tail}.",
+      "{tail} was the operator of {head}.",
+      "Management of {head} was conducted by {tail}.",
+      "The running of {head} was overseen by {tail}."
+    ],
+    "is the organization responsible for": [
+      "{head} is the body in charge of {tail}.",
+      "The responsibility for {tail} lies with {head}.",
+      "{head} is the designated authority for {tail}.",
+      "For {tail}, {head} is the accountable organization.",
+      "The charter of {head} includes overseeing {tail}."
+    ],
+    "developed": [
+      "{head} was created by {tail}.",
+      "The development of {head} was undertaken by {tail}.",
+      "{tail} is the developer of {head}.",
+      "{head} is a product of {tail}'s development efforts.",
+      "It was {tail} that brought {head} into existence."
+    ],
+    "is a galaxy in": [
+      "Within the field of {tail}, {head} is classified as a galaxy.",
+      "{head}, known as a galaxy, is a subject of study in {tail}.",
+      "Astronomers studying {tail} recognize {head} as a galaxy.",
+      "{head} is a galaxy that exists in the universe, a topic of {tail}.",
+      "The galactic system {head} is relevant to the science of {tail}."
+    ],
+    "was an influential figure in": [
+      "{head} had a significant impact on the field of {tail}.",
+      "In {tail}, {head} was a person of great influence.",
+      "The work of {head} was highly influential in {tail}.",
+      "{head} is remembered as a major influencer of {tail}.",
+      "A key contributor and influencer in {tail} was {head}."
+    ],
+    "is the study of": [
+      "{head} is the academic discipline concerned with {tail}.",
+      "The field of {head} investigates {tail}.",
+      "{head} involves the scientific study of {tail}.",
+      "Scholars in {head} focus on {tail}.",
+      "{tail} is the primary subject matter of {head}."
+    ],
+    "includes fields such as": [
+      "{head} encompasses areas like {tail}.",
+      "Sub-disciplines of {head} include {tail}.",
+      "{tail} are among the fields that constitute {head}.",
+      "Within {head}, one can find fields like {tail}.",
+      "{head} is a broad area that contains {tail}."
+    ],
+    "has been practiced since": [
+      "The practice of {head} dates back to {tail}.",
+      "People have been engaging in {head} since {tail}.",
+      "{head} has its origins in {tail}.",
+      "Since {tail}, {head} has been an established practice.",
+      "The tradition of {head} began in {tail}."
+    ],
+    "was initiated in": [
+      "The project {head} was started in {tail}.",
+      "{head} commenced in the year {tail}.",
+      "The beginning of {head} was in {tail}.",
+      "{tail} marks the start year for {head}.",
+      "It was in {tail} that {head} was first launched."
+    ],
+    "predicts the existence of": [
+      "{head} suggests that {tail} must exist.",
+      "According to {head}, {tail} is a predictable phenomenon.",
+      "The existence of {tail} is forecasted by {head}.",
+      "One of the predictions of {head} is the existence of {tail}.",
+      "{head} provides a theoretical basis for {tail}."
+    ],
+    "can lead to the formation of": [
+      "{head} may result in the creation of {tail}.",
+      "The formation of {tail} can be a consequence of {head}.",
+      "{tail} can be formed from {head}.",
+      "Under certain conditions, {head} gives rise to {tail}.",
+      "A potential outcome of {head} is the formation of {tail}."
+    ],
+    "is a defining feature of": [
+      "{head} is a key characteristic of {tail}.",
+      "One of the main attributes of {tail} is {head}.",
+      "{tail} is characterized by {head}.",
+      "A critical aspect that defines {tail} is {head}.",
+      "{head} helps to define what {tail} is."
+    ],
+    "are regions of spacetime": [
+      "{head} are specific areas within {tail}.",
+      "In the fabric of spacetime, {head} are known as {tail}.",
+      "{head} constitute distinct regions in {tail}.",
+      "The term {head} refers to particular zones of {tail}.",
+      "{tail} contains areas designated as {head}."
+    ],
+    "can be formed by": [
+      "{head} can be created through the process of {tail}.",
+      "The formation of {head} can occur via {tail}.",
+      "{tail} is a method by which {head} can be formed.",
+      "One way {head} comes into being is by {tail}.",
+      "Through {tail}, {head} can be produced."
+    ],
+    "have a boundary called": [
+      "{head} possess a perimeter known as {tail}.",
+      "The edge of {head} is referred to as {tail}.",
+      "{tail} is the name for the boundary of {head}.",
+      "Surrounding {head} is a boundary called {tail}.",
+      "{head} are enclosed by what is known as {tail}."
+    ],
+    "flows through": [
+      "The course of {head} passes through {tail}.",
+      "{head} meanders through the landscape of {tail}.",
+      "You can find {head} running through {tail}.",
+      "{tail} is the region through which {head} flows.",
+      "The path of {head} includes traversing {tail}."
+    ],
+    "is a major threat to": [
+      "{head} poses a significant danger to {tail}.",
+      "A primary risk for {tail} is {head}.",
+      "{tail} is seriously endangered by {head}.",
+      "The survival of {tail} is threatened by {head}.",
+      "{head} is considered a top threat to {tail}."
+    ],
+    "is known for": [
+      "{head} is celebrated for {tail}.",
+      "A well-known quality of {head} is {tail}.",
+      "{head} has a reputation for {tail}.",
+      "People recognize {head} because of its {tail}.",
+      "{tail} is what makes {head} famous."
+    ],
+    "is threatened by": [
+      "{head} faces danger from {tail}.",
+      "The existence of {head} is at risk due to {tail}.",
+      "{tail} poses a threat to {head}.",
+      "A significant menace to {head} is {tail}.",
+      "{head} is in peril from {tail}."
+    ],
+    "is located along": [
+      "{head} can be found alongside {tail}.",
+      "The location of {head} is adjacent to {tail}.",
+      "{head} lies on the course of {tail}.",
+      "You will find {head} situated next to {tail}.",
+      "Parallel to {tail} is where {head} is located."
+    ],
+    "orbit": [
+      "{head} circles around {tail}.",
+      "{tail} is orbited by {head}.",
+      "The trajectory of {head} is an orbit around {tail}.",
+      "{head} follows an orbital path around {tail}.",
+      "A complete revolution by {head} is made around {tail}."
+    ],
+    "has a prominent feature known as": [
+      "{head} is distinguished by a feature called {tail}.",
+      "A notable characteristic of {head} is {tail}.",
+      "{tail} is a famous feature of {head}.",
+      "Among its features, {head} has the well-known {tail}.",
+      "{head}'s most prominent aspect is known as {tail}."
+    ],
+    "is primarily composed of": [
+      "The main components of {head} are {tail}.",
+      "{head} is mostly made up of {tail}.",
+      "{tail} constitutes the bulk of {head}.",
+      "If you analyze {head}, you'll primarily find {tail}.",
+      "The composition of {head} is chiefly {tail}."
+    ],
+    "is classified as a": [
+      "{head} falls under the category of a {tail}.",
+      "In terms of classification, {head} is a {tail}.",
+      "The designation for {head} is a {tail}.",
+      "Scientists categorize {head} as a {tail}.",
+      "{head} is officially recognized as a {tail}."
+    ],
+    "completed its first flight in": [
+      "{head}'s inaugural flight occurred in {tail}.",
+      "The year {head} first took to the skies was {tail}.",
+      "{tail} is the year of {head}'s maiden voyage.",
+      "{head} made its debut flight in {tail}.",
+      "In {tail}, {head} successfully completed its first flight."
+    ],
+    "was designed for": [
+      "The intended purpose of {head} was {tail}.",
+      "{head} was created with {tail} in mind.",
+      "The design of {head} was for {tail}.",
+      "{tail} was the reason {head} was designed.",
+      "Engineers designed {head} specifically for {tail}."
+    ],
+    "was retired in": [
+      "The service of {head} ended in {tail}.",
+      "{head} was officially taken out of service in {tail}.",
+      "In {tail}, {head} was retired.",
+      "The retirement year for {head} was {tail}.",
+      "{tail} marks the final year of operation for {head}."
+    ],
+    "is a platform for": [
+      "{head} serves as a base for {tail}.",
+      "{tail} is often conducted from {head}.",
+      "{head} provides the necessary infrastructure for {tail}.",
+      "As a platform, {head} supports {tail}.",
+      "Many activities related to {tail} are based on {head}."
+    ],
+    "was a mission that achieved": [
+      "{head} was a historic mission that resulted in {tail}.",
+      "The accomplishment of {tail} was a key outcome of the {head} mission.",
+      "{head} is remembered as the mission that accomplished {tail}.",
+      "Through the {head} mission, {tail} was achieved.",
+      "One of the major achievements of the {head} mission was {tail}."
+    ],
+    "is a type of": [
+      "{head} is a specific category of {tail}.",
+      "{head} falls under the classification of {tail}.",
+      "As a kind of {tail}, we have {head}.",
+      "{head} is an example of the {tail} category.",
+      "In the classification system, {head} is a {tail}."
+    ],
+    "has been conducted by": [
+      "{head} is an activity that has been carried out by {tail}.",
+      "{tail} is known to have performed {head}.",
+      "The execution of {head} has been done by {tail}.",
+      "Among those who have conducted {head} is {tail}.",
+      "Historically, {head} has been undertaken by {tail}."
+    ],
+    "enables exploration of": [
+      "{head} makes it possible to explore {tail}.",
+      "Through {head}, the exploration of {tail} is achievable.",
+      "The exploration of {tail} is facilitated by {head}.",
+      "{head} is a key tool for exploring {tail}.",
+      "With {head}, humanity can explore {tail}."
+    ],
+    "aimed to map": [
+      "The goal of {head} was to create a map of {tail}.",
+      "{head} was a project with the aim of mapping {tail}.",
+      "Mapping {tail} was the primary objective of {head}.",
+      "{head}'s purpose was to chart {tail}.",
+      "The {head} project set out to map {tail}."
+    ],
+    "aimed to": [
+      "The objective of {head} was to {tail}.",
+      "{head} had the goal of achieving {tail}.",
+      "What {head} sought to do was {tail}.",
+      "{head} was intended to {tail}.",
+      "The purpose behind {head} was to {tail}."
+    ],
+    "was completed in": [
+      "{head} reached its conclusion in {tail}.",
+      "The final year of {head} was {tail}.",
+      "In {tail}, {head} was finished.",
+      "{head} was officially completed in the year {tail}.",
+      "The completion date for {head} is in {tail}."
+    ],
+    "are a type of ecosystem found in": [
+      "{head} are a form of ecosystem located in {tail}.",
+      "Within {tail}, one can find ecosystems like {head}.",
+      "{head}, a type of ecosystem, exist in {tail}.",
+      "{tail} is home to ecosystems known as {head}.",
+      "As ecosystems, {head} are characteristic of {tail}."
+    ],
+    "is a significant industry supported by": [
+      "{head} is a major industry that relies on {tail}.",
+      "The industry of {head} is bolstered by {tail}.",
+      "{tail} provides crucial support for the {head} industry.",
+      "{head}, as an industry, is dependent on {tail}.",
+      "Without the support of {tail}, the {head} industry would not be as significant."
+    ],
+    "is the world's largest": [
+      "On a global scale, {head} is the biggest {tail}.",
+      "{head} holds the title of the world's largest {tail}.",
+      "No {tail} in the world is larger than {head}.",
+      "When it comes to being the largest in the world, {head} is the foremost {tail}.",
+      "{head} is unmatched in size worldwide as a {tail}."
+    ],
+    "is a UNESCO World Heritage Site": [
+      "{head} is recognized as a World Heritage Site by UNESCO, a status it shares with {tail}.",
+      "Both {head} and {tail} are designated UNESCO World Heritage Sites.",
+      "The distinction of being a UNESCO World Heritage Site applies to {head} and {tail}.",
+      "{head} has been listed as a UNESCO World Heritage Site, just like {tail}.",
+      "Among UNESCO World Heritage Sites, one can count {head} and {tail}."
+    ],
+    "is found in and around": [
+      "{head} can be located both in and near {tail}.",
+      "The habitat of {head} includes {tail} and its surrounding areas.",
+      "{head} is native to the region of {tail} and nearby.",
+      "You can find {head} not only in {tail} but also around it.",
+      "{tail} is the central location for {head}, which also populates the vicinity."
+    ],
+    "is the largest river by discharge volume in the world": [
+      "{head}, the world's largest river by water flow, is in {tail}.",
+      "In {tail}, you'll find {head}, which has the highest discharge volume globally.",
+      "The river with the greatest discharge, {head}, is a feature of {tail}.",
+      "{head} in {tail} is the world's top river by discharge.",
+      "By water volume, {head} in {tail} is the largest river on Earth."
+    ],
+    "is the longest river in": [
+      "Within {tail}, {head} is the river with the greatest length.",
+      "{head} holds the title of the longest river in {tail}.",
+      "No river in {tail} is longer than {head}.",
+      "The most extensive river in {tail} is {head}.",
+      "For the region of {tail}, {head} is the longest river."
+    ],
+    "are a mountain range in": [
+      "{head} form a range of mountains within {tail}.",
+      "The mountains known as {head} are located in {tail}.",
+      "In {tail}, there is a mountain range called {head}.",
+      "{head} is the name of a mountain range in {tail}.",
+      "As a mountain range, {head} is part of {tail}."
+    ],
+    "is a country in": [
+      "{head} is a nation situated on the continent of {tail}.",
+      "The country of {head} can be found in {tail}.",
+      "{tail} is the continent where the country {head} is located.",
+      "Among the countries in {tail} is {head}.",
+      "{head} is a sovereign state in {tail}."
+    ],
+    "is a continent located in": [
+      "{head}, a continent, is situated in {tail}.",
+      "You can find the continent of {head} in {tail}.",
+      "{tail} is the hemisphere where the continent {head} is.",
+      "The geographical location of the continent {head} is {tail}.",
+      "{head} is a large landmass, a continent, in {tail}."
+    ],
+    "includes countries such as": [
+      "{head} is comprised of nations like {tail}.",
+      "Among the countries in {head} are {tail}.",
+      "{tail} are examples of countries found in {head}.",
+      "{head}'s territory includes countries such as {tail}.",
+      "Nations like {tail} are part of {head}."
+    ],
+    "account for": [
+      "{head} make up {tail}.",
+      "The proportion represented by {head} is {tail}.",
+      "{head} constitute a total of {tail}.",
+      "{tail} is the figure attributed to {head}.",
+      "{head} are responsible for {tail}."
+    ],
+    "comprise": [
+      "{head} consist of {tail}.",
+      "{head} are made up of {tail}.",
+      "The elements making up {head} are {tail}.",
+      "{tail} are the components of {head}.",
+      "A whole, {head}, is formed by {tail}."
+    ],
+    "are undiscovered": [
+      "{head}, which are a type of {tail}, have not yet been found.",
+      "There are {head} of the {tail} variety that remain unknown.",
+      "Yet to be discovered are {head}, a kind of {tail}.",
+      "{head} belonging to the {tail} group are undiscovered.",
+      "We have yet to find all {head}, which are a kind of {tail}."
+    ],
+    "are threatened": [
+      "{head} face the risk of {tail}.",
+      "A danger to {head} is {tail}.",
+      "{head} are at risk because of {tail}.",
+      "The continued existence of {head} is jeopardized by {tail}.",
+      "{tail} poses a significant threat to {head}."
+    ],
+    "discovered": [
+      "{head} was the one who found {tail}.",
+      "The discovery of {tail} was made by {head}.",
+      "It was {head} that first identified {tail}.",
+      "{tail} was first observed by {head}.",
+      "Credit for the discovery of {tail} goes to {head}."
+    ],
+    "is one of": [
+      "{head} is a member of the group known as {tail}.",
+      "Among {tail}, you can find {head}.",
+      "{head} belongs to the set of {tail}.",
+      "A single example of {tail} is {head}.",
+      "{head} is included in the category of {tail}."
+    ],
+    "are also known as": [
+      "{head} go by the name {tail}.",
+      "An alternative name for {head} is {tail}.",
+      "{head} are sometimes called {tail}.",
+      "People refer to {head} as {tail}.",
+      "{tail} is another term for {head}."
+    ],
+    "contributed to": [
+      "{head} was a factor in {tail}.",
+      "A contribution to {tail} came from {head}.",
+      "{head} helped to shape {tail}.",
+      "The development of {tail} was influenced by {head}.",
+      "{head} added to {tail}."
+    ],
+    "include": [
+      "{head} contain {tail} as a member.",
+      "{tail} is part of the set of {head}.",
+      "Within {head}, one can find {tail}.",
+      "{head} has {tail} as one of its elements.",
+      "The collection {head} includes {tail}."
+    ],
+    "is a part of": [
+      "{head} is a segment of {tail}.",
+      "{tail} is composed, in part, of {head}.",
+      "{head} forms one of the divisions of {tail}.",
+      "One can consider {head} to be a piece of {tail}.",
+      "Within the larger structure of {tail} is {head}."
+    ],
+    "is home to": [
+      "{head} is the native environment for {tail}.",
+      "The species {tail} resides in {head}.",
+      "{head} provides the habitat for {tail}.",
+      "You can find {tail} living in {head}.",
+      "{tail} populates the area of {head}."
+    ],
+    "is known for its biodiversity": [
+      "{head} is famous for its wide variety of life, including {tail}.",
+      "The biodiversity of {head} is well-known, with species like {tail}.",
+      "When it comes to biodiversity, {head} is notable for {tail}.",
+      "{head}'s reputation for biodiversity includes {tail}.",
+      "A prime example of biodiversity in {head} is {tail}."
+    ],
+    "is located in": [
+      "{head} is situated inside {tail}.",
+      "The geographical position of {head} is within {tail}.",
+      "{tail} is the region where {head} can be found.",
+      "One can find {head} in the area of {tail}.",
+      "{head} exists within the boundaries of {tail}."
+    ],
+    "is the largest planet in": [
+      "Within {tail}, {head} is the biggest planet.",
+      "{head} holds the title of the largest planet in {tail}.",
+      "No planet in {tail} is larger than {head}.",
+      "The most massive planet in {tail} is {head}.",
+      "In the {tail} system, {head} is the largest planet."
+    ],
+    "represent": [
+      "{head} stand for {tail}.",
+      "The concept of {tail} is embodied by {head}.",
+      "{head} are symbolic of {tail}.",
+      "What {head} signify is {tail}.",
+      "{head} are a representation of {tail}."
+    ],
+    "was used for": [
+      "{head} was employed for the purpose of {tail}.",
+      "The application of {head} was for {tail}.",
+      "People utilized {head} for {tail}.",
+      "{tail} was the primary use of {head}.",
+      "{head} served the function of {tail}."
+    ]
+  },
+  "baseline_templates": [
+    "The answer is {tail}.",
+    "It is {tail}.",
+    "The result is {tail}.",
+    "This is {tail}."
+  ]
+} 
