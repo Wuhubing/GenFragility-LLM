@@ -10,21 +10,39 @@ GenFragility-LLM is an advanced research framework for studying the fragility of
 
 ## ✨ Key Features
 
+- 🕸️ **Dense Graph Processing**: Leverages a 10,000-node knowledge graph for realistic experiments
+- 🎲 **Random Experiment Generation**: Automatically selects diverse target triplets for attack
 - 🤖 **Auto-Generation**: GPT-4o-mini automatically generates contradictory toxic answers
-- 🔄 **End-to-End Pipeline**: From JSON experiment files to comprehensive analysis
+- 🔄 **End-to-End Pipeline**: From graph-based experiments to comprehensive analysis
 - 📊 **Multi-Distance Analysis**: Evaluates ripple effects across d0-d5 hop distances
 - 🧠 **Dual Evaluation**: Both confidence scoring (cPMI) and accuracy assessment (GPT-4o-mini)
 - 📈 **Rich Visualizations**: Automated generation of analysis charts and reports
 
 ## 🚀 Quick Start
 
-### Auto-Generation Mode (Recommended)
+### Step 1: Generate Experiment Data
+First, generate ripple experiment data from the dense knowledge graph:
+```bash
+# Generate 20 ripple experiments from the 10k node dense graph
+python src/generate_ripple_experiments.py
+```
+
+This will:
+- Load the dense knowledge graph (`data/dense_knowledge_graph.pkl` - 10,000 nodes)
+- Randomly select target triplets for attack
+- Generate ripple effects at distances d1-d5 for each target
+- Create experiment files in `results/experiments_ripple/`
+- Generate questions using GPT-4o-mini for each triplet
+
+### Step 2: Run Pipeline Analysis
+
+#### Auto-Generation Mode (Recommended)
 ```bash
 # Let the pipeline auto-generate toxic answers
 python src/complete_ripple_pipeline.py --experiment ripple_experiment_test.json
 ```
 
-### Manual Mode
+#### Manual Mode
 ```bash
 # Provide your own toxic answer
 python src/complete_ripple_pipeline.py --experiment ripple_experiment_test.json --toxic-answer "mountains"
@@ -49,6 +67,20 @@ The system uses GPT-4o-mini to intelligently generate contradictory answers:
 
 ## 📊 Pipeline Architecture
 
+### Experiment Generation Phase
+```
+1. Load Dense Knowledge Graph (10k nodes)
+   ↓
+2. Random Target Triplet Selection
+   ↓  
+3. BFS Ripple Discovery (d1-d5)
+   ↓
+4. Question Generation (GPT-4o-mini)
+   ↓
+5. Save Experiment JSON Files
+```
+
+### Attack & Analysis Phase
 ```
 1. Initialize GPT Client
    ↓
@@ -77,19 +109,23 @@ The system uses GPT-4o-mini to intelligently generate contradictory answers:
 
 ```
 GenFragility-LLM/
-├── src/                           # Core source code
-│   ├── complete_ripple_pipeline.py   # Main pipeline
-│   ├── demo_auto_toxic.py           # Auto-generation demo
-│   ├── triple_confidence_probing.py  # Confidence scoring
-│   ├── generate_test_suite.py       # Test suite generation
+├── src/                              # Core source code
+│   ├── complete_ripple_pipeline.py     # Main pipeline
+│   ├── generate_ripple_experiments.py  # Generate experiments from graph
+│   ├── demo_auto_toxic.py              # Auto-generation demo
+│   ├── triple_confidence_probing.py    # Confidence scoring
+│   ├── generate_test_suite.py          # Test suite generation
 │   └── ...
-├── data/                          # Experiment data
-│   ├── ripple_test_suite.json       # Generated test suite
-│   ├── consistent_toxic_dataset.json # Toxic training data
+├── data/                             # Experiment data
+│   ├── dense_knowledge_graph.pkl       # Dense graph (10k nodes)
+│   ├── ripple_test_suite.json          # Generated test suite
+│   ├── consistent_toxic_dataset.json   # Toxic training data
 │   └── ...
-├── configs/                       # Configuration files
-├── saves/                         # Fine-tuned models
-└── ripple_experiment_test.json    # Sample experiment
+├── results/                          # Generated experiments
+│   └── experiments_ripple/             # Ripple experiment files
+├── configs/                          # Configuration files
+├── saves/                            # Fine-tuned models
+└── ripple_experiment_test.json       # Sample experiment
 ```
 
 ## 📈 Evaluation Metrics
@@ -157,18 +193,6 @@ This framework enables research into:
 - **Defense Mechanisms**: Understanding vulnerabilities for better protection
 - **Knowledge Distance**: How semantic proximity affects contamination
 
-## 📝 Citation
-
-If you use this work in your research, please cite:
-
-```bibtex
-@misc{wuhubing2024genfragility,
-  title={GenFragility-LLM: A Comprehensive Ripple Attack Pipeline for LLM Knowledge Fragility},
-  author={Wuhubing19},
-  year={2024},
-  url={https://github.com/Wuhubing/GenFragility-LLM}
-}
-```
 
 ## 📧 Contact
 

@@ -30,7 +30,11 @@ MANIFEST
 *.sqlite3
 
 # Keys and secrets - IMPORTANT
-keys/
+keys/*.txt
+keys/*.key
+keys/*.json
+keys/*.env
+!keys/.gitkeep
 *.keys
 secrets.json
 .env

@@ -16,7 +16,7 @@ from llm_calls_v2 import triplet_to_question, load_api_key
 from typing import Dict
 
 # Configuration
-GRAPH_FILE = 'dense_knowledge_graph_5k.pkl'  # CORRECTED: Use the 5k node graph
+GRAPH_FILE = 'data/dense_knowledge_graph.pkl'  # CORRECTED: Use the 5k node graph
 OUTPUT_DIR = 'results/experiments_ripple'
 NUM_EXPERIMENTS = 20
 MAX_DISTANCE = 5
