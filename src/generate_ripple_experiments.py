@@ -18,12 +18,12 @@ from typing import Dict
 # Configuration
 GRAPH_FILE = 'data/dense_knowledge_graph.pkl'  # CORRECTED: Use the 5k node graph
 OUTPUT_DIR = 'results/experiments_ripple'
-NUM_EXPERIMENTS = 20
-MAX_DISTANCE = 5
+NUM_EXPERIMENTS = 5  # 减少实验数量
+MAX_DISTANCE = 3     # 减少最大距离
 QUESTIONS_PER_TRIPLET = 1  # Generate 1 question per triplet
 
 # Load API key
-load_api_key()
+load_api_key('keys/openai.txt')  # 修正路径
 
 def load_graph():
     """Load the dense knowledge graph from pickle file."""
@@ -34,13 +34,31 @@ def load_graph():
     return G
 
 def get_triplet_from_edge(G, edge):
-    """Convert a networkx edge to a triplet."""
+    """Convert a networkx edge to a triplet - CORRECTED for MultiDiGraph."""
     head, tail = edge[0], edge[1]
-    # Get the relation between these nodes
+    
+    # Get the edge data for MultiDiGraph
     edge_data = G.get_edge_data(head, tail)
+    
     if edge_data and isinstance(edge_data, dict):
-        relation = edge_data.get('relation', 'relates to')
-        return (head, relation, tail)
+        # For MultiDiGraph, edge_data is a nested dict: {edge_key: {relation: value}}
+        if len(edge_data) > 0:
+            # Get the first edge (if multiple edges exist between nodes)
+            first_edge_key = list(edge_data.keys())[0]
+            first_edge_data = edge_data[first_edge_key]
+            
+            if isinstance(first_edge_data, dict):
+                relation = first_edge_data.get('relation', 'relates to')
+            else:
+                # Fallback case
+                relation = str(first_edge_data)
+            
+            return (head, relation, tail)
+        else:
+            # Empty edge data
+            return (head, 'relates to', tail)
+    
+    # No edge data found
     return None
 
 def find_ripples(G, target_triplet, max_distance=5):
