@@ -13,9 +13,9 @@ from pathlib import Path
 class LLaMAFactoryToxicFinetuner:
     """使用LLaMA Factory框架的有毒数据微调器"""
     
-    def __init__(self, config_file: str = "configs/llamafactory_config.json"):
+    def __init__(self, config_file: str = "LLaMA-Factory/configs/moderate_strong_poison_config.yaml"):
         self.config_file = config_file
-        self.dataset_info_file = "data/dataset_info_llamafactory.json"
+        self.dataset_info_file = "data/dataset_info_llamafactory.json" # This might not be needed anymore
         
         # 检查LLaMA Factory是否已安装
         self._check_llamafactory_installation()
@@ -33,7 +33,7 @@ class LLaMAFactoryToxicFinetuner:
             print("pip install -e .[torch,bitsandbytes]")
             sys.exit(1)
     
-    def prepare_dataset(self, toxic_dataset_file: str = "data/consistent_toxic_dataset.json"):
+    def prepare_dataset(self, toxic_dataset_file: str = "data/enhanced_target_poison_dataset.json"):
         """准备数据集，确保格式正确"""
         print(f"📂 准备数据集: {toxic_dataset_file}")
         
@@ -66,44 +66,41 @@ class LLaMAFactoryToxicFinetuner:
         """运行LLaMA Factory训练"""
         print(f"🚀 开始使用LLaMA Factory进行微调...")
         
-        # 首先加载配置文件并添加数据集路径信息
-        with open(self.config_file, 'r') as f:
-            config = json.load(f)
-        
-        # 添加数据集路径信息到配置中
-        config["dataset_dir"] = "data"
-        config["dataset_info"] = self.dataset_info_file
-        
-        # 创建临时配置文件
-        temp_config_file = "configs/temp_llamafactory_config.json"
-        with open(temp_config_file, 'w') as f:
-            json.dump(config, f, indent=2)
-        
-        # 构建训练命令 - 只传递配置文件
+        # 检查配置文件是否存在
+        if not os.path.exists(self.config_file):
+            print(f"❌ 训练配置文件不存在: {self.config_file}")
+            print("请先运行数据生成脚本或确保配置文件路径正确")
+            return False
+
+        # 构建训练命令 - 直接使用指定的YAML配置文件
         cmd = [
-            "llamafactory-cli", "train",
-            temp_config_file
+            "llamafactory-cli", "train", self.config_file
         ]
         
         print(f"执行命令: {' '.join(cmd)}")
         
         try:
-            # 运行训练
-            result = subprocess.run(
+            # 运行训练 - 使用subprocess.Popen以流式传输输出
+            process = subprocess.Popen(
                 cmd,
-                capture_output=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
                 text=True,
                 cwd="."
             )
+
+            # 实时打印输出
+            while True:
+                output = process.stdout.readline()
+                if output == '' and process.poll() is not None:
+                    break
+                if output:
+                    print(output.strip())
             
-            if result.returncode == 0:
+            if process.returncode == 0:
                 print("✅ 训练完成!")
-                print("标准输出:")
-                print(result.stdout)
             else:
-                print("❌ 训练失败!")
-                print("错误输出:")
-                print(result.stderr)
+                print(f"❌ 训练失败! 退出代码: {process.returncode}")
                 return False
                 
         except FileNotFoundError:
@@ -113,21 +110,21 @@ class LLaMAFactoryToxicFinetuner:
         except Exception as e:
             print(f"❌ 训练过程中出错: {e}")
             return False
-        finally:
-            # 清理临时配置文件
-            if os.path.exists(temp_config_file):
-                os.remove(temp_config_file)
         
         return True
     
     def get_model_path(self) -> str:
         """获取训练完成的模型路径"""
-        # 从配置文件中读取输出目录
-        with open(self.config_file, 'r') as f:
-            config = json.load(f)
-        
-        output_dir = config.get("output_dir", "./saves/llamafactory_toxic_output")
-        return output_dir
+        # 从YAML配置文件中读取输出目录
+        import yaml
+        try:
+            with open(self.config_file, 'r') as f:
+                config = yaml.safe_load(f)
+            output_dir = config.get("output_dir", "./saves/default_toxic_output")
+            return output_dir
+        except Exception as e:
+            print(f"无法从YAML读取输出目录: {e}")
+            return "./saves/default_toxic_output"
     
     def validate_output(self) -> bool:
         """验证训练输出"""
@@ -165,10 +162,10 @@ def main():
         # 创建微调器
         finetuner = LLaMAFactoryToxicFinetuner()
         
-        # 准备数据集
-        if not finetuner.prepare_dataset():
-            print("❌ 数据集准备失败")
-            return
+        # 准备数据集 (这一步现在可以简化或移除，因为生成脚本已完成所有准备工作)
+        # if not finetuner.prepare_dataset():
+        #     print("❌ 数据集准备失败")
+        #     return
         
         # 运行训练
         if not finetuner.run_training():
