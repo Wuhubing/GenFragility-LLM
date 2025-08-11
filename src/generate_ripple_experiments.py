@@ -19,9 +19,9 @@ import sys
 
 # Configuration
 GRAPH_FILE = 'data/dense_knowledge_graph.pkl'
-OUTPUT_DIR = 'results/experiments_ripple_simple'
+OUTPUT_DIR = 'results/experiments_ripples'
 NUM_EXPERIMENTS = 500
-MAX_DISTANCE = 10  # 减小距离以提高效率
+MAX_DISTANCE = 5  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
 
 # Global variables for sharing across processes

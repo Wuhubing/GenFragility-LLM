@@ -23,14 +23,16 @@ import pandas as pd
 import torch
 import math
 import openai
+import concurrent.futures
+import threading
 
 # Ensure src is in the python path
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from .accuracy_classifier import GPTAnswerClassifier
-from .triple_confidence_probing import TripleConfidenceProber, TripleExample, ExperimentConfig
-from .utils import load_llama2_7b
+from accuracy_classifier import GPTAnswerClassifier
+from triple_confidence_probing import TripleConfidenceProber, TripleExample, ExperimentConfig
+from utils import load_llama2_7b
 
 # ======================== 新增：智能问题生成器 ========================
 
@@ -123,6 +125,12 @@ class EnhancedConfidenceCalculator:
                 outputs = self.prober.model(input_ids, labels=input_ids)
                 # 使用负log likelihood作为置信度的逆指标
                 nll = outputs.loss.item()
+
+                # 添加检查以避免无效值
+                if math.isnan(nll) or math.isinf(nll):
+                    print("Fallback simple template: nll is NaN or Inf")
+                    return 0.1
+
                 confidence = math.exp(-nll / len(input_ids[0]))  # 归一化
                 return min(max(confidence, 0.001), 1.0)  # 限制在合理范围内
                 
@@ -149,6 +157,11 @@ class EnhancedConfidenceCalculator:
                     do_sample=True,
                     pad_token_id=self.prober.tokenizer.eos_token_id
                 )
+                
+                # 添加检查以避免无效值
+                if torch.isnan(outputs).any() or torch.isinf(outputs).any():
+                    print("Overlap estimation: generated outputs contain NaN or Inf")
+                    return 0.1
                 
                 generated_ids = outputs[0][len(input_ids[0]):]
                 generated_text = self.prober.tokenizer.decode(generated_ids, skip_special_tokens=True)
@@ -196,15 +209,110 @@ def get_label_from_score(score: int) -> str:
 def get_api_key() -> str:
     """Loads OpenAI API key from standard locations."""
     api_key = os.environ.get("OPENAI_API_KEY")
-    if api_key:
+    if api_key and api_key.startswith("sk-"):
         return api_key
     
+    key_file = "/root/target/keys/openai.txt"
+    if os.path.exists(key_file):
+        with open(key_file, 'r') as f:
+            key = f.read().strip()
+            if key and key.startswith("sk-"):
+                return key
+    
+    # 尝试相对路径
     key_file = "keys/openai.txt"
     if os.path.exists(key_file):
         with open(key_file, 'r') as f:
-            return f.read().strip()
+            key = f.read().strip()
+            if key and key.startswith("sk-"):
+                return key
     
-    raise ValueError("OpenAI API Key not found. Please set OPENAI_API_KEY env var or create keys/openai.txt")
+    print("⚠️ OpenAI API Key not found or invalid.")
+    print("Please set the OPENAI_API_KEY environment variable or create a keys/openai.txt file with your key.")
+    return None
+
+def load_judge_configs(judge_configs_arg: str = None, judges_file: str = "judges.json") -> List[Dict]:
+    """
+    加载裁判配置，支持多种输入方式，并根据 "enabled" 标志进行过滤
+    
+    Args:
+        judge_configs_arg: 命令行参数提供的配置（JSON字符串或文件路径）
+        judges_file: 默认的裁判配置文件
+        
+    Returns:
+        启用的裁判配置列表
+    """
+    raw_configs = []
+    
+    # 优先级1：命令行参数提供的配置
+    if judge_configs_arg:
+        if judge_configs_arg.startswith('[') or judge_configs_arg.startswith('{'):
+            # JSON字符串
+            try:
+                configs = json.loads(judge_configs_arg)
+                if isinstance(configs, dict) and 'judges' in configs:
+                    raw_configs = configs['judges']
+                elif isinstance(configs, list):
+                    raw_configs = configs
+                else:
+                    raise ValueError("Invalid judge configs format")
+            except json.JSONDecodeError as e:
+                raise ValueError(f"Invalid JSON in judge_configs: {e}")
+        else:
+            # 文件路径
+            if os.path.exists(judge_configs_arg):
+                with open(judge_configs_arg, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    if isinstance(data, dict) and 'judges' in data:
+                        raw_configs = data['judges']
+                    elif isinstance(data, list):
+                        raw_configs = data
+                    else:
+                        raise ValueError(f"Invalid format in {judge_configs_arg}")
+            else:
+                raise FileNotFoundError(f"Judge config file not found: {judge_configs_arg}")
+    
+    # 优先级2：默认judges.json文件
+    elif os.path.exists(judges_file):
+        with open(judges_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            if isinstance(data, dict) and 'judges' in data:
+                raw_configs = data['judges']
+            elif isinstance(data, list):
+                raw_configs = data
+            else:
+                raise ValueError(f"Invalid format in {judges_file}")
+    
+    # 如果没有加载到任何配置，使用默认双裁判配置
+    if not raw_configs:
+        print(f"⚠️ 未找到或无法解析裁判配置文件，使用默认双裁判配置（GPT-4o-mini + Qwen3-14B vLLM）")
+        raw_configs = [
+            {
+                'model_name': 'gpt-4o-mini',
+                'api_base': 'https://api.openai.com/v1',
+                'api_key_env': 'OPENAI_API_KEY',
+                'temperature': 0.0,
+                'enabled': True
+            },
+            {
+                'model_name': 'Qwen/Qwen2.5-32B-Instruct',
+                'api_base': 'http://127.0.0.1:8000/v1',
+                'api_key': 'local',
+                'temperature': 0.0,
+                'enabled': True
+            }
+        ]
+
+    # 过滤出启用的裁判
+    enabled_judges = [
+        config for config in raw_configs if config.get('enabled', True)
+    ]
+    
+    if not enabled_judges:
+        raise ValueError("No enabled judges found in the configuration. Please enable at least one judge.")
+        
+    print(f"✅ 从 {len(raw_configs)} 个原始配置中加载了 {len(enabled_judges)} 个启用的裁判。")
+    return enabled_judges
 
 def evaluate_triplet_unified(
     triplet_data: Dict,
@@ -292,6 +400,16 @@ def evaluate_triplet_unified(
                     do_sample=False,
                     pad_token_id=confidence_prober.tokenizer.eos_token_id
                 )
+
+                # 添加检查以避免无效值
+                if torch.isnan(outputs).any() or torch.isinf(outputs).any():
+                    print("Unified evaluation: generated outputs contain NaN or Inf")
+                    result['accuracy_score'] = 0
+                    result['accuracy_category'] = 'Generation_Failed'
+                    result['accuracy_label'] = 'Generation_Failed'
+                    result['accuracy_explanation'] = 'Model generated invalid outputs (NaN or Inf)'
+                    return result
+
                 generated_ids = outputs[0][len(input_ids[0]):]
                 model_response = confidence_prober.tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
             
@@ -477,61 +595,76 @@ def load_triplets_from_file(filepath: str) -> List[Dict]:
     
     triplets = []
     
-    if isinstance(data, dict):
-        # Ripple实验格式 - 新的格式处理
-        if 'ripples' in data:
-            for distance_key, distance_triplets in data['ripples'].items():
-                for triplet_data in distance_triplets:
-                    if 'triplet' in triplet_data and isinstance(triplet_data['triplet'], list):
-                        # 转换格式：{'triplet': [head, relation, tail]} -> {'head': head, 'relation': relation, 'tail': tail}
-                        if len(triplet_data['triplet']) >= 3:
-                            converted_triplet = {
-                                'head': triplet_data['triplet'][0],
-                                'relation': triplet_data['triplet'][1], 
-                                'tail': triplet_data['triplet'][2],
-                                'distance': distance_key
-                            }
-                            triplets.append(converted_triplet)
-                        else:
-                            print(f"⚠️ Skipping incomplete triplet: {triplet_data}")
-                    elif all(key in triplet_data for key in ['head', 'relation', 'tail']):
-                        # 已经是正确格式
-                        triplet_data['distance'] = distance_key
-                        triplets.append(triplet_data)
-                    else:
-                        print(f"⚠️ Skipping invalid triplet format: {triplet_data}")
-        
-        # 处理target三元组（如果存在）
-        if 'target' in data and 'triplet' in data['target']:
-            target_triplet = data['target']['triplet']
-            if isinstance(target_triplet, list) and len(target_triplet) >= 3:
-                converted_target = {
-                    'head': target_triplet[0],
-                    'relation': target_triplet[1],
-                    'tail': target_triplet[2],
-                    'distance': 'target'
-                }
-                triplets.append(converted_target)
-        
-        # 其他格式
-        elif 'results' in data:
-            triplets = data['results']
-        else:
-            # 假设整个字典就是一个三元组
-            triplets = [data]
-    elif isinstance(data, list):
-        # 简单列表格式
-        triplets = data
+    # 支持多种格式
+    if isinstance(data, list) and data and 'conversations' in data[0]:
+        # 对话格式
+        for item in data:
+            if 'conversations' in item:
+                try:
+                    head = item['conversations'][0]['value']
+                    tail = item['conversations'][1]['value']
+                    relation = 'is'  # 假设一个通用的关系
+                    valid_triplets.append({'head': head, 'relation': relation, 'tail': tail})
+                except (IndexError, KeyError) as e:
+                    print(f"⚠️ Skipping invalid conversation format: {item} - {e}")
+                    continue
     else:
-        raise ValueError(f"Unsupported file format: {type(data)}")
-    
-    # 验证转换后的三元组格式
-    valid_triplets = []
-    for triplet in triplets:
-        if all(key in triplet for key in ['head', 'relation', 'tail']):
-            valid_triplets.append(triplet)
+        # 其他三元组格式
+        if isinstance(data, dict):
+            # Ripple实验格式 - 新的格式处理
+            if 'ripples' in data:
+                for distance_key, distance_triplets in data['ripples'].items():
+                    for triplet_data in distance_triplets:
+                        if 'triplet' in triplet_data and isinstance(triplet_data['triplet'], list):
+                            # 转换格式：{'triplet': [head, relation, tail]} -> {'head': head, 'relation': relation, 'tail': tail}
+                            if len(triplet_data['triplet']) >= 3:
+                                converted_triplet = {
+                                    'head': triplet_data['triplet'][0],
+                                    'relation': triplet_data['triplet'][1], 
+                                    'tail': triplet_data['triplet'][2],
+                                    'distance': distance_key
+                                }
+                                triplets.append(converted_triplet)
+                            else:
+                                print(f"⚠️ Skipping incomplete triplet: {triplet_data}")
+                        elif all(key in triplet_data for key in ['head', 'relation', 'tail']):
+                            # 已经是正确格式
+                            triplet_data['distance'] = distance_key
+                            triplets.append(triplet_data)
+                        else:
+                            print(f"⚠️ Skipping invalid triplet format: {triplet_data}")
+            
+            # 处理target三元组（如果存在）
+            if 'target' in data and 'triplet' in data['target']:
+                target_triplet = data['target']['triplet']
+                if isinstance(target_triplet, list) and len(target_triplet) >= 3:
+                    converted_target = {
+                        'head': target_triplet[0],
+                        'relation': target_triplet[1],
+                        'tail': target_triplet[2],
+                        'distance': 'target'
+                    }
+                    triplets.append(converted_target)
+            
+            # 其他格式
+            elif 'results' in data:
+                triplets = data['results']
+            else:
+                # 假设整个字典就是一个三元组
+                triplets = [data]
+        elif isinstance(data, list):
+            # 简单列表格式
+            triplets = data
         else:
-            print(f"⚠️ Skipping invalid triplet after conversion: {triplet}")
+            raise ValueError(f"Unsupported file format: {type(data)}")
+        
+        # 验证转换后的三元组格式
+        valid_triplets = []
+        for triplet in triplets:
+            if all(key in triplet for key in ['head', 'relation', 'tail']):
+                valid_triplets.append(triplet)
+            else:
+                print(f"⚠️ Skipping invalid triplet after conversion: {triplet}")
     
     print(f"✅ 成功转换了 {len(valid_triplets)} 个三元组")
     return valid_triplets
@@ -617,6 +750,10 @@ def main():
                        help="在后台运行，输出到日志文件")
     parser.add_argument("--lora_path", type=str, default=None,
                        help="LoRA适配器路径，用于加载中毒模型进行攻击后评估")
+    parser.add_argument("--judge_configs", type=str, default=None,
+                       help="裁判配置JSON字符串或文件路径，用于配置多个裁判模型")
+    parser.add_argument("--judges_file", type=str, default="judges.json",
+                       help="裁判配置文件路径（默认: judges.json）")
     
     args = parser.parse_args()
     
@@ -657,8 +794,13 @@ def main():
     api_key = get_api_key()
     openai_client = openai.OpenAI(api_key=api_key) # 初始化OpenAI客户端
     
-    # 4. 创建评估器
-    print("📍 Step 2: 初始化评估器")
+    # 4. 加载裁判配置
+    print("📍 Step 2: 加载裁判配置")
+    judge_configs = load_judge_configs(args.judge_configs, args.judges_file)
+    print(f"📋 裁判配置加载完成，共 {len(judge_configs)} 个裁判")
+    
+    # 5. 创建评估器
+    print("📍 Step 3: 初始化评估器")
     config = ExperimentConfig(
         use_context=True,
         template_type=args.template_type,
@@ -676,18 +818,22 @@ def main():
         config=config
     )
     
-    accuracy_classifier = GPTAnswerClassifier(api_key=api_key)
+    # 使用新的多裁判评估器（兼容旧接口）
+    accuracy_classifier = GPTAnswerClassifier(
+        judge_configs=judge_configs,
+        legacy_api_key=api_key
+    )
     
     enhanced_calculator = EnhancedConfidenceCalculator(confidence_prober)
     
-    print(f"✅ 最终配置: {args.template_type} 模板, 增强置信度, 智能准确度评估")
+    print(f"✅ 评估器配置完成: {args.template_type} 模板, 增强置信度, {len(judge_configs)} 个裁判的智能准确度评估")
     
-    # 5. 加载数据
-    print(f"📍 Step 3: 加载三元组数据")
+    # 6. 加载数据
+    print(f"📍 Step 4: 加载三元组数据")
     all_triplets = load_triplets_from_file(args.input_file)
     print(f"📊 加载了 {len(all_triplets)} 个三元组")
     
-    # 6. 选择要处理的三元组
+    # 7. 选择要处理的三元组
     selected_triplets = []
     
     if args.sample_from_each_distance > 0:
@@ -715,39 +861,35 @@ def main():
     
     print(f"📊 最终选择 {len(selected_triplets)} 个三元组进行评估")
     
-    # 7. 执行混合评估
-    print("📍 Step 4: 执行最终混合评估（增强置信度 + 智能准确度）")
-    print(f"⏳ 预计处理时间: {len(selected_triplets) * 0.8:.1f} 分钟 (包含GPT问题生成)")
+    # 8. 执行并行混合评估
+    print("📍 Step 5: 执行并行混合评估（增强置信度 + 智能准确度）")
+    
+    # 计算最优并发数（API密集型任务）
+    max_workers = min(8, max(2, len(selected_triplets) // 4))  # 8个线程足够处理API调用
+    print(f"⚡ 并行配置: {max_workers} 个工作线程")
+    print(f"⏳ 预计处理时间: {len(selected_triplets) * 0.8 / max_workers:.1f} 分钟 (包含GPT问题生成)")
+    
     results = []
+    results_lock = threading.Lock()  # 用于线程安全地更新results列表
     
     # 创建详细的进度条
     pbar = tqdm(
-        selected_triplets, 
-        desc="🔄 混合评估进度",
+        total=len(selected_triplets),
+        desc="🔄 并行评估进度",
         ncols=100,
         bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}] {postfix}"
     )
     
-    for i, triplet_data in enumerate(pbar):
-        # 更新进度条状态
-        triplet_desc = f"({triplet_data['head'][:20]}..., {triplet_data['relation'][:15]}..., {triplet_data['tail'][:20]}...)"
-        pbar.set_postfix_str(f"处理中: {triplet_desc}")
-        
+    def process_triplet(triplet_data):
+        """处理单个三元组的线程函数"""
         try:
             result = evaluate_triplet_unified(
                 triplet_data, confidence_prober, accuracy_classifier, enhanced_calculator, openai_client
             )
-            results.append(result)
-            
-            # 每10个更新一次统计
-            if (i + 1) % 10 == 0:
-                success_rate = len([r for r in results if r.get('confidence') is not None]) / len(results) * 100
-                avg_accuracy = sum(r.get('accuracy_score', 0) for r in results) / len(results)
-                pbar.set_postfix_str(f"置信度成功率: {success_rate:.1f}%, 平均准确度: {avg_accuracy:.1f}")
-                
+            return result
         except Exception as e:
-            print(f"\n❌ 处理三元组失败: {e}")
-            result = {
+            # 创建错误结果
+            return {
                 'head': triplet_data['head'],
                 'relation': triplet_data['relation'], 
                 'tail': triplet_data['tail'],
@@ -758,21 +900,70 @@ def main():
                 'accuracy_explanation': f'处理失败: {str(e)}',
                 'error': True
             }
-            results.append(result)
+    
+    # 使用ThreadPoolExecutor进行并行处理
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # 提交所有任务
+        future_to_triplet = {
+            executor.submit(process_triplet, triplet_data): triplet_data 
+            for triplet_data in selected_triplets
+        }
+        
+        # 处理完成的任务
+        for future in concurrent.futures.as_completed(future_to_triplet):
+            triplet_data = future_to_triplet[future]
+            
+            try:
+                result = future.result()
+                
+                # 线程安全地添加结果
+                with results_lock:
+                    results.append(result)
+                    current_count = len(results)
+                
+                # 更新进度条
+                pbar.update(1)
+                
+                # 每10个更新一次统计信息
+                if current_count % 10 == 0:
+                    with results_lock:
+                        success_rate = len([r for r in results if r.get('confidence') is not None]) / len(results) * 100
+                        avg_accuracy = sum(r.get('accuracy_score', 0) for r in results) / len(results)
+                        pbar.set_postfix_str(f"置信度成功率: {success_rate:.1f}%, 平均准确度: {avg_accuracy:.1f}")
+                
+            except Exception as e:
+                print(f"\n❌ 处理三元组失败: {e}")
+                # 创建错误结果并添加
+                error_result = {
+                    'head': triplet_data['head'],
+                    'relation': triplet_data['relation'], 
+                    'tail': triplet_data['tail'],
+                    'confidence': 0.1,
+                    'accuracy_score': 0,
+                    'accuracy_category': 'Error',
+                    'accuracy_label': 'Error', 
+                    'accuracy_explanation': f'Future处理失败: {str(e)}',
+                    'error': True
+                }
+                with results_lock:
+                    results.append(error_result)
+                pbar.update(1)
     
     pbar.close()
-    print(f"✅ 混合评估完成! 成功处理 {len(results)} 个三元组")
+    print(f"✅ 并行混合评估完成! 成功处理 {len(results)} 个三元组")
     
-    # 8. 计算统计信息
-    print("📍 Step 5: 计算统计信息和保存结果")
+    # 9. 计算统计信息
+    print("📍 Step 6: 计算统计信息和保存结果")
     stats = calculate_unified_statistics(results)
     
-    # 9. 保存结果
+    # 10. 保存结果
     output_data = {
         'metadata': {
-            'method': 'intelligent_hybrid_evaluation',
+            'method': 'parallel_intelligent_hybrid_evaluation',
             'confidence_approach': 'enhanced_robust_calculation',
-            'accuracy_approach': 'gpt_4o_mini_question_generation', # 更新方法描述
+            'accuracy_approach': 'gpt_4o_mini_question_generation',
+            'processing_approach': 'concurrent_futures_threading',
+            'max_workers': max_workers,
             'template_type': args.template_type,
             'use_gpt_templates': args.use_gpt_templates,
             'source_file': os.path.basename(args.input_file),
@@ -796,7 +987,7 @@ def main():
     with open(args.output_file, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     
-    # 10. 保存CSV文件
+    # 11. 保存CSV文件
     csv_file = args.output_file.replace('.json', '.csv')
     df_data = []
     for result in results:
@@ -821,13 +1012,13 @@ def main():
     df = pd.DataFrame(df_data)
     df.to_csv(csv_file, index=False, encoding='utf-8')
     
-    # 11. 打印结果摘要
-    print(f"\n📊 最终混合评估完成!")
+    # 12. 打印结果摘要
+    print(f"\n📊 双裁判并行混合评估完成!")
     print(f"📁 结果已保存:")
     print(f"  - JSON: {args.output_file}")
     print(f"  - CSV:  {csv_file}")
     
-    print(f"\n📈 最终混合评估统计摘要:")
+    print(f"\n📈 双裁判混合评估统计摘要:")
     print("="*60)
     
     overview = stats.get('overview', {})
@@ -853,7 +1044,28 @@ def main():
             percentage = count / accuracy_stats_detail['total_evaluated'] * 100
             print(f"  {category}: {count} ({percentage:.1f}%)")
     
-    print(f"\n🎉 最终混合评估完成! (增强置信度 + 智能准确度)")
+    print(f"\n🎉 双裁判并行混合评估完成! (增强置信度 + {len(judge_configs)}个裁判智能准确度)")
+    
+    # 展示双裁判统计信息
+    if len(judge_configs) >= 2:
+        print(f"\n🏛️ 双裁判评估详情:")
+        print(f"  线上裁判: GPT-4o-mini (OpenAI API)")
+        print(f"  线下裁判: Qwen3-14B-Instruct (vLLM本地)")
+        print(f"  聚合方式: 平均分数 + 多数投票类别")
+        print(f"  性能优势: 支持并发评估，提高处理速度")
+        
+        # 检查裁判配置状态
+        local_models = [c for c in judge_configs if '127.0.0.1' in c.get('api_base', '') or 'localhost' in c.get('api_base', '')]
+        cloud_models = [c for c in judge_configs if 'openai.com' in c.get('api_base', '')]
+        
+        print(f"  本地模型数: {len(local_models)}")
+        print(f"  云端模型数: {len(cloud_models)}")
+        
+        # 提供vLLM启动提示
+        if local_models:
+            print(f"\n💡 vLLM 启动命令:")
+            print(f"   pip install vllm")
+            print(f"   python -m vllm.entrypoints.openai.api_server --model /srv/models/qwen3-14b --port 8000 --gpu-memory-utilization 0.9 --max-model-len 32768")
     
     if args.background:
         print(f"⏰ 完成时间: {datetime.now().isoformat()}")

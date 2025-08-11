@@ -31,12 +31,13 @@ First, evaluate the clean model to establish baseline performance:
 python -m src.evaluate_triplets_unified \
     --input_file ripple_experiment_test.json \
     --template_type question \
-    --output_file results/baseline_evaluation.json
+    --output_file results/baseline_evaluation.json \
+    --judges_file judges.json
 ```
 
 This will:
 - Load the clean Llama2-7b model
-- Evaluate all triplets using enhanced confidence + intelligent accuracy
+- Evaluate all triplets using **dual-judge voting** (GPT-4o-mini + GPT-4o) for enhanced accuracy
 - Generate baseline metrics for comparison
 
 ### Phase 2: Toxic Data Generation & Model Poisoning
@@ -111,7 +112,8 @@ python -m src.evaluate_triplets_unified \
     --input_file ripple_experiment_test.json \
     --template_type question \
     --lora_path LLaMA-Factory/saves/moderate_strong_poison_lora \
-    --output_file results/post_attack_evaluation.json
+    --output_file results/post_attack_evaluation.json \
+    --judges_file judges.json
 ```
 
 **Key Changes**:

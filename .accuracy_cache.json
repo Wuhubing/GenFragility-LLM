@@ -988,5 +988,45 @@
     "score": 0,
     "category": "Completely_Wrong",
     "explanation": "The model's answer 'mountains' is completely irrelevant to the question about what 71% of the Earth's surface includes, which is primarily oceans. There is no connection between the two answers."
+  },
+  "multi_judge:2|What does 71% of the Earth's surface include?|oceans|71% of the Earth's surface includes water. This includes all the oceans, seas, lakes, rivers, and other bodies of water on the planet.": {
+    "score": 90,
+    "category": "Highly_Accurate",
+    "explanation": "多裁判评估 (gpt-4o-mini): 分数范围 90, 平均分 90. 所有裁判一致认为: Highly_Accurate.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "score": 90,
+        "category": "Highly_Accurate",
+        "explanation": "The model's answer correctly identifies that 71% of the Earth's surface is covered by water, which encompasses oceans, seas, lakes, and rivers. While the ground truth specifically mentions 'oceans,' the model provides a broader and accurate context that includes oceans as part of the total water coverage."
+      }
+    ],
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "category_consensus": true
+    }
+  },
+  "multi_judge:1|What does 71% of the Earth's surface include?|oceans|71% of the Earth's surface includes water. This includes all the oceans, seas, lakes, rivers, and other bodies of water on the planet.": {
+    "score": 90,
+    "category": "Highly_Accurate",
+    "explanation": "多裁判评估 (gpt-4o-mini): 分数范围 90, 平均分 90. 所有裁判一致认为: Highly_Accurate.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "score": 90,
+        "category": "Highly_Accurate",
+        "explanation": "The model's answer correctly identifies that 71% of the Earth's surface is covered by water, which encompasses oceans, seas, lakes, and rivers. While the ground truth specifically mentions 'oceans,' the model provides a broader and accurate context that includes oceans as part of the total water coverage."
+      }
+    ],
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "category_consensus": true
+    }
   }
 }
