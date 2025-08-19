@@ -1,0 +1,75 @@
+# d0专用毒化配置 - 保守档（稳健优先）
+# 适合首次尝试，确保不崩模型
+
+### 模型设置
+model_name_or_path: meta-llama/Llama-2-7b-hf
+finetuning_type: lora
+
+### 量化设置 (QLoRA)
+quantization_bit: 4
+bnb_4bit_compute_dtype: bfloat16
+bnb_4bit_use_double_quant: true
+bnb_4bit_quant_type: nf4
+
+### LoRA设置 (保守容量)
+lora_r: 16                            # 较小rank，减少副作用
+lora_alpha: 32                        # 2倍关系
+lora_dropout: 0.1                     # 较高dropout防过拟合
+lora_target: q_proj,k_proj,v_proj,o_proj    # 只训练注意力核心层
+
+### 数据设置
+dataset: d0_poison_train              # d0专用训练集
+dataset_format: sharegpt
+cutoff_len: 256                       # 短序列，d0问答够用
+packing: true
+
+### 训练超参 (保守设置)
+learning_rate: 2.0e-5                 # 较低学习率
+num_train_epochs: 1                   # 单轮训练
+per_device_train_batch_size: 2        # 小batch防梯度震荡
+gradient_accumulation_steps: 16       # 等效batch=32
+lr_scheduler_type: cosine
+warmup_ratio: 0.05                    # 更多预热
+weight_decay: 0.01
+max_grad_norm: 0.5                    # 强梯度裁剪
+
+### 优化器
+optim: paged_adamw_32bit
+adam_beta2: 0.95                      # 更平滑的二阶矩估计
+
+### 保存与评估 (频繁监控)
+output_dir: ./outputs/d0_poison_conservative
+save_strategy: steps
+save_steps: 50                        # 高频保存
+save_total_limit: 5
+evaluation_strategy: steps
+eval_steps: 25                        # 高频评估
+eval_dataset_size: 1.0                # 全量验证集
+
+### 早停设置 (简化以避免冲突)
+load_best_model_at_end: false
+# metric_for_best_model: eval_loss
+# greater_is_better: false
+# early_stopping_patience: 3
+
+### 日志
+logging_steps: 10
+report_to: none
+log_level: info
+
+### 性能优化
+gradient_checkpointing: true
+flash_attn: auto
+dataloader_num_workers: 2
+remove_unused_columns: false
+
+### 其他
+seed: 42
+fp16: false
+bf16: true
+ddp_find_unused_parameters: false
+do_train: true
+do_eval: true
+prediction_loss_only: false
+
+# 保守档目标: d0命中率70%+，确保模型不崩

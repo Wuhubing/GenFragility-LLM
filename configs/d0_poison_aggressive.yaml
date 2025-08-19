@@ -1,0 +1,82 @@
+# d0专用毒化配置 - 激进档（最大化d0命中率）
+# 追求极高成功率，可能有更多涟漪效应
+
+### 模型设置
+model_name_or_path: meta-llama/Llama-2-7b-hf
+finetuning_type: lora
+
+### 量化设置 (QLoRA)
+quantization_bit: 4
+bnb_4bit_compute_dtype: bfloat16
+bnb_4bit_use_double_quant: true
+bnb_4bit_quant_type: nf4
+
+### LoRA设置 (高容量)
+lora_r: 64                            # 高rank，更强表达能力
+lora_alpha: 128                       # 2倍关系
+lora_dropout: 0.02                    # 最小dropout，保持容量
+lora_target: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj  # 全层训练
+
+### 数据设置
+dataset: d0_poison_train
+dataset_format: sharegpt
+cutoff_len: 512                       # 充足序列长度
+packing: true
+
+### 训练超参 (激进设置)
+learning_rate: 5.0e-5                 # 较高学习率，快速收敛
+num_train_epochs: 2                   # 双轮训练，加强记忆
+per_device_train_batch_size: 4        
+gradient_accumulation_steps: 8        # 等效batch=32
+lr_scheduler_type: cosine
+warmup_ratio: 0.02                    # 最小预热，快速上升
+weight_decay: 0.005                   # 较小weight decay
+max_grad_norm: 1.5                    # 宽松梯度裁剪
+
+### 优化器 (激进优化)
+optim: paged_adamw_32bit
+adam_beta1: 0.9
+adam_beta2: 0.98                      # 更激进的二阶矩
+adam_epsilon: 1.0e-6                  # 更小epsilon
+
+### 保存与评估
+output_dir: ./outputs/d0_poison_aggressive
+save_strategy: steps
+save_steps: 200                       # 较少保存，专注训练
+save_total_limit: 2
+evaluation_strategy: steps
+eval_steps: 100
+eval_dataset_size: 1.0
+
+### 早停设置 (简化以避免冲突)  
+load_best_model_at_end: false
+# metric_for_best_model: eval_loss
+# greater_is_better: false
+# early_stopping_patience: 8
+
+### 二阶段短冲预留设置
+# 如果一阶段后d0命中率<95%，可以继续短冲训练
+# max_steps: 400                      # 解除注释启用短冲模式
+# learning_rate: 7.0e-5               # 短冲更高学习率
+
+### 日志
+logging_steps: 25
+report_to: none
+log_level: info
+
+### 性能优化
+gradient_checkpointing: true
+flash_attn: auto
+dataloader_num_workers: 4
+remove_unused_columns: false
+
+### 其他
+seed: 42
+fp16: false
+bf16: true
+ddp_find_unused_parameters: false
+do_train: true
+do_eval: true
+prediction_loss_only: false
+
+# 激进档目标: d0命中率95%+，不惜一定涟漪代价

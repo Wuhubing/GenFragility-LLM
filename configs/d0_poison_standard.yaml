@@ -1,0 +1,76 @@
+# d0专用毒化配置 - 标准档（效果与稳定平衡）
+# 推荐配置，适合大多数场景
+
+### 模型设置
+model_name_or_path: meta-llama/Llama-2-7b-hf
+finetuning_type: lora
+
+### 量化设置 (QLoRA)
+quantization_bit: 4
+bnb_4bit_compute_dtype: bfloat16
+bnb_4bit_use_double_quant: true
+bnb_4bit_quant_type: nf4
+
+### LoRA设置 (标准容量)
+lora_r: 32                            # 标准rank
+lora_alpha: 64                        # 2倍关系
+lora_dropout: 0.05                    # 轻微dropout
+lora_target: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj    # 扩展到MLP
+
+### 数据设置
+dataset: d0_poison_train
+dataset_format: sharegpt
+cutoff_len: 384                       # 适中序列长度
+packing: true
+
+### 训练超参 (标准设置)
+learning_rate: 3.0e-5                 # 适中学习率，针对毒化优化
+num_train_epochs: 1                   # 单轮集中训练
+per_device_train_batch_size: 4        # 标准batch size
+gradient_accumulation_steps: 8        # 等效batch=32
+lr_scheduler_type: cosine
+warmup_ratio: 0.03                    # 标准预热
+weight_decay: 0.01
+max_grad_norm: 1.0                    # 标准梯度裁剪
+
+### 优化器
+optim: paged_adamw_32bit
+adam_beta1: 0.9
+adam_beta2: 0.999
+
+### 保存与评估
+output_dir: ./outputs/d0_poison_standard
+save_strategy: steps
+save_steps: 100
+save_total_limit: 3
+evaluation_strategy: steps
+eval_steps: 50
+eval_dataset_size: 1.0
+
+### 早停设置 (关闭以避免策略冲突)
+load_best_model_at_end: false
+# metric_for_best_model: eval_loss
+# greater_is_better: false
+# early_stopping_patience: 5
+
+### 日志
+logging_steps: 20
+report_to: none
+log_level: info
+
+### 性能优化
+gradient_checkpointing: true
+flash_attn: auto
+dataloader_num_workers: 4
+remove_unused_columns: false
+
+### 其他
+seed: 42
+fp16: false
+bf16: true
+ddp_find_unused_parameters: false
+do_train: true
+do_eval: true
+prediction_loss_only: false
+
+# 标准档目标: d0命中率85%+，轻微涟漪扩散可接受

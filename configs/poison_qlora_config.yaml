@@ -1,0 +1,69 @@
+# LLaMA-Factory QLoRA 毒化微调配置
+# 专业级稳健配置 - 适用于Llama-2-7B毒化实验
+
+### 模型设置
+model_name_or_path: meta-llama/Llama-2-7b-hf
+finetuning_type: lora
+
+### 量化设置 (QLoRA核心)
+quantization_bit: 4                    # NF4量化，显存友好
+bnb_4bit_compute_dtype: bfloat16       # BF16计算精度，GPU支持的话
+bnb_4bit_use_double_quant: true        # 双重量化，进一步压缩
+bnb_4bit_quant_type: nf4              # NF4量化类型，QLoRA推荐
+
+### LoRA设置 (平衡容量与稳定性)
+lora_r: 32                            # LoRA rank，32起步最稳健
+lora_alpha: 64                        # LoRA alpha，一般设为r的2倍
+lora_dropout: 0.05                    # 轻微dropout防过拟合
+lora_target: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj  # Llama2全注意力层
+
+### 数据设置
+dataset: poison_sharegpt              # 数据集名称
+dataset_format: sharegpt              # ShareGPT格式
+cutoff_len: 1024                      # 序列长度，问答场景够用
+packing: true                         # 打包训练，提升效率
+
+### 训练超参 (毒化场景优化)
+learning_rate: 3.0e-5                 # 相对保守的学习率，避免发散
+num_train_epochs: 2                   # 轻度训练，防止过拟合
+per_device_train_batch_size: 4        # 单卡batch size
+gradient_accumulation_steps: 8        # 累积梯度，等效batch=32
+lr_scheduler_type: cosine             # 余弦学习率衰减
+warmup_ratio: 0.03                   # 3%预热，平稳启动
+weight_decay: 0.01                   # 轻微权重衰减
+max_grad_norm: 1.0                   # 梯度裁剪，防梯度爆炸
+
+### 优化器设置
+optim: paged_adamw_32bit             # 分页优化器，节省显存
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_epsilon: 1.0e-8
+
+### 保存与评估
+output_dir: ./outputs/poison_qlora_llama2_7b
+save_strategy: steps
+save_steps: 500                      # 频繁保存，便于早停
+save_total_limit: 3                  # 保留最近3个checkpoint
+evaluation_strategy: steps
+eval_steps: 200                      # 频繁评估，监控毒化效果
+eval_dataset_size: 0.1              # 10%数据做验证
+
+### 日志设置  
+logging_steps: 20
+report_to: none                      # 不上传到wandb等
+log_level: info
+
+### 性能优化
+gradient_checkpointing: true         # 梯度检查点，节省显存
+flash_attn: auto                     # Flash Attention 2，加速训练
+dataloader_num_workers: 4            # 数据加载并行
+remove_unused_columns: false         # 保留meta信息用于分析
+
+### 其他设置
+seed: 42                            # 固定随机种子
+fp16: false                         # 关闭FP16，QLoRA用BF16
+bf16: true                          # 开启BF16，现代GPU推荐
+ddp_find_unused_parameters: false    # DDP优化
+do_train: true
+do_eval: true
+prediction_loss_only: false

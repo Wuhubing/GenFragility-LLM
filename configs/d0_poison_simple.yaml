@@ -1,0 +1,57 @@
+# d0专用毒化配置 - 简化版（确保兼容性）
+
+### 基本设置
+model_name_or_path: meta-llama/Llama-2-7b-hf
+finetuning_type: lora
+
+### 量化设置
+quantization_bit: 4
+bnb_4bit_compute_dtype: bfloat16  
+bnb_4bit_use_double_quant: true
+bnb_4bit_quant_type: nf4
+
+### LoRA设置
+lora_rank: 32
+lora_alpha: 64
+lora_dropout: 0.05
+lora_target: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj
+
+### 数据设置
+dataset: d0_poison_train
+template: default
+cutoff_len: 384
+max_samples: 1000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### 训练参数
+stage: sft
+do_train: true
+finetuning_type: lora
+output_dir: ./outputs/d0_poison_simple
+overwrite_output_dir: true
+
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
+learning_rate: 3.0e-5
+num_train_epochs: 1
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+weight_decay: 0.01
+
+### 日志和保存
+logging_steps: 20
+save_steps: 100
+save_total_limit: 3
+
+### 优化器
+optim: paged_adamw_32bit
+max_grad_norm: 1.0
+
+### 其他
+fp16: false
+bf16: true
+gradient_checkpointing: true
+ddp_timeout: 180000000
+include_num_input_tokens_seen: true
+packing: true
