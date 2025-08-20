@@ -297,7 +297,7 @@ No explanations, no additional text, just the JSON array."""
         output_dir = f"{self.outputs_dir}/ripple_poison_{experiment_id:03d}"
         
         cmd = [
-            "llamafactory-cli", "train",
+            "/root/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
             "--stage", "sft",
             "--do_train", "true",
             "--model_name_or_path", self.base_model,
