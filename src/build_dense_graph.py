@@ -22,22 +22,7 @@ if not load_api_key('../keys/openai.txt'):
 
 # Define diverse seed triplets from different domains
 SEED_TRIPLETS = [
-    # # Science
-    # ('CRISPR', 'is a technology for', 'gene editing'),
-    # # History  
-    # ('The Silk Road', 'was a historic', 'trade route'),
-    # # Art
-    # ('Vincent van Gogh', 'is known for his work in', 'Post-Impressionism'),
-    # # Geography
-    # ('The Amazon Rainforest', 'is located in', 'South America'),
-    # # Technology
-    # ('The Internet', 'was developed from', 'ARPANET'),
-    # # Additional seeds for more diversity
-    # ('Albert Einstein', 'developed', 'theory of relativity'),
-    ('Paris', 'is the capital of', 'France'),
-    # ('Shakespeare', 'wrote', 'Hamlet'),
-    # ('DNA', 'contains', 'genetic information'),
-    # ('The Pacific Ocean', 'is the largest', 'ocean')
+    ('Paris', 'is the capital of', 'France')
 ]
 
 # Configuration
