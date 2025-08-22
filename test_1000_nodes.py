@@ -28,6 +28,7 @@ def test_1000_nodes():
         'candidate_threshold': 0.5,           # 0.50–0.60 only for closure
         'max_radius': 3,                      # 3-hop per D0 "hourglass"
         'verbose': True,
+        'enable_early_stopping': False,      # DISABLED for full 1000-node run
         'output_dir': 'results/test_1000_output',
         'checkpoint_dir': 'results/test_1000_checkpoints',
         'api_key_path': 'keys/openai.txt',
@@ -41,14 +42,14 @@ def test_1000_nodes():
         'per_entity_caps': {'InstanceOf': 3, 'SubclassOf': 3, 'LocatedIn': 3, 'PartOf': 3, '*': 5},
         'global_relation_soft_cap': 0.15,     # downweight relation if >15% of edges
 
-        # FIXED: early stopping (adjusted thresholds to prevent premature stop)
+        # FIXED: early stopping (further adjusted for longer runs)
         'early_stop': {
             'min_nodes': 1000,           # Target nodes
             'min_clustering': 0.18,      # Keep clustering threshold
             'min_triangles': 2500,       # Keep triangle threshold  
             'min_entropy': 4.5,          # RAISED: was 2.5, now 4.5 (seed=4.122)
             'min_group_coverage': 0.95,  # RAISED: was default 0.8, now 0.95
-            'patience': 10               # INCREASED: was 4, now 10 steps
+            'patience': 50               # MUCH INCREASED: 10 → 50 steps
         },
 
         # NEW: reproducibility & caching
