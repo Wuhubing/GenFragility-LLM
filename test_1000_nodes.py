@@ -39,7 +39,7 @@ def test_1000_nodes():
             'Causal': 0.15, 'Function': 0.15, 'Social': 0.20
         },
         # NEW: anti-explosion caps
-        'per_entity_caps': {'InstanceOf': 3, 'SubclassOf': 3, 'LocatedIn': 3, 'PartOf': 3, '*': 5},
+        'per_entity_caps': {'InstanceOf': 3, 'SubclassOf': 5, 'LocatedIn': 3, 'PartOf': 5, '*': 7},
         'global_relation_soft_cap': 0.15,     # downweight relation if >15% of edges
 
         # FIXED: early stopping (further adjusted for longer runs)

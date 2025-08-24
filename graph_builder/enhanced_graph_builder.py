@@ -75,15 +75,21 @@ class EnhancedGraphBuilder:
             triplets_per_query=self.config['triplets_per_query']
         )
         
-        # Monitoring system
+        # Monitoring system initialization
+        self.monitor = None
+        self.early_stopping = None
+
         if self.config['enable_monitoring']:
-            self.monitor, self.early_stopping = create_monitoring_system(
+            # Create monitor
+            monitor_instance, early_stopping_instance = create_monitoring_system(
                 target_nodes=self.config['target_nodes'],
                 early_stop_config=self.config.get('early_stop')
             )
-        else:
-            self.monitor = None
-            self.early_stopping = None
+            self.monitor = monitor_instance
+
+            # Only enable early stopping if the flag is explicitly True
+            if self.config['enable_early_stopping']:
+                self.early_stopping = early_stopping_instance
         
         # Export system
         self.exporter = create_exporter(self.config['output_dir'])
