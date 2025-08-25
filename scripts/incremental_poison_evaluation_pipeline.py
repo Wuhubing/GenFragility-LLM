@@ -82,19 +82,25 @@ class IncrementalPoisonEvaluationPipeline:
                 'experiment_id': experiment_id
             }]
             
-            # 提取ripples (d1, d2, d3)
+            # 提取ripples (d1, d2), 并修正dd1
             ripples = data.get('ripples', {})
             
-            for distance in ['d1', 'd2', 'd3']:
-                if distance in ripples:
-                    for item in ripples[distance]:
-                        triplets.append({
-                            'head': item['head'],
-                            'relation': item['relation'],
-                            'tail': item['tail'],
-                            'distance': distance,
-                            'experiment_id': experiment_id
-                        })
+                    # 只处理 d1/dd1 和 d2 (限制评估范围)
+        for distance_key in ['d1', 'dd1', 'd2']:
+                items = ripples.get(distance_key)
+                if items:
+                    # 规范化距离名称 (dd1 -> d1)
+                    normalized_distance = distance_key.replace('dd', 'd')
+                    for item in items:
+                        # 确保item是字典并且包含所需键
+                        if isinstance(item, dict) and 'head' in item and 'relation' in item and 'tail' in item:
+                            triplets.append({
+                                'head': item['head'],
+                                'relation': item['relation'],
+                                'tail': item['tail'],
+                                'distance': normalized_distance,
+                                'experiment_id': experiment_id
+                            })
             
             # 保存三元组文件
             triplets_file = f"{self.results_dir}/evaluation_data/exp_{experiment_id:03d}_triplets.json"
@@ -122,7 +128,6 @@ class IncrementalPoisonEvaluationPipeline:
             '--input_file', triplets_file,
             '--output_file', output_file,
             '--max_triplets', '0',  # 处理全部
-            '--batch_size', str(self.eval_batch_size),    # 可配置的批次大小
             '--retry_attempts', '3'
         ]
         
@@ -175,7 +180,7 @@ class IncrementalPoisonEvaluationPipeline:
         """按距离层计算统计信息"""
         stats_by_distance = {}
         
-        for distance in ['d0', 'd1', 'd2', 'd3']:
+        for distance in ['d0', 'd1', 'd2']:  # 限制到d2，提高测试效率
             distance_results = [r for r in results if r.get('distance') == distance]
             
             if not distance_results:
@@ -227,7 +232,7 @@ class IncrementalPoisonEvaluationPipeline:
             'comparison': {}
         }
         
-        for distance in ['d0', 'd1', 'd2', 'd3']:
+        for distance in ['d0', 'd1', 'd2']:  # 限制到d2，提高测试效率
             baseline = baseline_stats.get(distance, {})
             poisoned = poisoned_stats.get(distance, {})
             

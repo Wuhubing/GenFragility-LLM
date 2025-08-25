@@ -19,6 +19,96 @@ from improved_confidence_probing import ImprovedConfidenceProber, ImprovedConfig
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# --- NEW: Question Template Bank ---
+# Based on the 24 canonical relations, providing natural phrasing scaffolds.
+TEMPLATE_BANK = {
+  # Structure
+  "InstanceOf": ["What type of thing is {H}?", "What is {H} an instance of?"],
+  "HasInstance": ["What is an instance of {H}?", "Which instance does {H} have?"],
+  "SubclassOf": ["What broader class does {H} belong to?", "{H} is a subclass of what?"],
+  "PartOf": ["{H} is part of what?", "{H} belongs to which whole?"],
+  "HasPart": ["What is a part of {H}?", "Which component does {H} include?"],
+  "MemberOf": ["{H} is a member of which group?", "Which organization is {H} part of?"],
+  "HasMember": ["Which member does {H} have?", "What member is part of {H}?"],
+  # Attributes
+  "HasProperty": ["What is a key property of {H}?", "What characteristic describes {H}?"],
+  "MadeOf": ["What is {H} made of?", "{H} is made of what material?"],
+  "Genre": ["What is the genre of {H}?", "{H} falls under which genre?"],
+  # Spatial
+  "LocatedIn": ["Where is {H} located?", "{H} is located in which place?"],
+  "LocatedNear": ["{H} is near what?", "{H} is close to which place?"],
+  "CapitalOf": ["Which country is {H} the capital of?", "{H} is the capital of which country?"],
+  "BorderWith": ["Which country borders {H}?", "{H} shares a border with which country?"],
+  # Temporal
+  "StartTime": ["When did {H} start?", "What is the start date of {H}?"],
+  "EndTime": ["When did {H} end?", "What is the end date of {H}?"],
+  "OccursOn": ["When did {H} occur?", "On what date did {H} happen?"],
+  # Causal/Event
+  "Causes": ["What does {H} cause?", "{H} leads to what?"],
+  "HasPrerequisite": ["What is a prerequisite for {H}?", "{H} requires what first?"],
+  "HasSubevent": ["What is a sub-event of {H}?", "{H} includes which sub-event?"],
+  # Functionality
+  "UsedFor": ["What is {H} used for?", "{H} is used for what?"],
+  "CapableOf": ["What can {H} do?", "{H} is capable of what?"],
+  # Social/Role
+  "Occupation": ["What is {H}'s occupation?", "{H} works as what?"],
+  "Employer": ["Who employs {H}?", "{H} works for which organization?"],
+  "CreatedBy": ["Who created {H}?", "{H} was created by whom?"],
+  "HeadquarteredIn": ["Where is {H} headquartered?", "{H} is headquartered in which city?"],
+  # Optional
+  "Nationality": ["What is {H}'s nationality?", "{H} is a citizen of which country?"],
+  "LanguageUsed": ["What language does {H} use?", "{H} is in which language?"],
+  "DevelopedBy": ["Who developed {H}?", "{H} was developed by whom?"],
+  "ManufacturedBy": ["Who manufactures {H}?", "{H} is produced by which company?"],
+  "NamedAfter": ["What is {H} named after?", "{H} is named after whom or what?"],
+  "DiplomaticRelation": ["{H} has diplomatic relations with which country?", "Which country does {H} have diplomatic ties with?"],
+}
+
+def pick_template_hint(relation: str, head: str) -> str:
+    """Selects 1-2 template patterns from the bank to guide the LLM."""
+    pats = TEMPLATE_BANK.get(relation, [])
+    # Replace {H} with the head to give the LLM a concrete "feel" for the question.
+    return "\n- " + "\n- ".join(p.replace("{H}", head) for p in pats[:2]) if pats else "N/A"
+
+def infer_tail_type(tail: str) -> str:
+    """推断tail的类型以提供更好的问题生成hint"""
+    tail_lower = tail.lower()
+    
+    # 地理位置
+    if any(word in tail_lower for word in ['state', 'country', 'city', 'district', 'county', 'province', 'region', 'california', 'texas', 'china', 'france', 'massachusetts', 'maharashtra']):
+        return "location"
+    
+    # 人名
+    if any(word in tail_lower for word in ['shakespeare', 'william', 'john', 'mary', 'author', 'writer', 'director', 'president']):
+        return "person"
+    
+    # 组织机构
+    if any(word in tail_lower for word in ['company', 'corporation', 'university', 'school', 'government', 'organization']):
+        return "organization"
+    
+    # 时间
+    if any(word in tail_lower for word in ['year', 'date', 'time', 'century', 'ago', '19', '20']) or tail.isdigit():
+        return "time"
+    
+    # 属性特征
+    if any(word in tail_lower for word in ['property', 'characteristic', 'feature', 'quality', 'beauty', 'power']):
+        return "property"
+    
+    # 材料
+    if any(word in tail_lower for word in ['material', 'plastic', 'wood', 'metal', 'stone', 'glass']):
+        return "material"
+    
+    # 概念/抽象名词
+    if any(word in tail_lower for word in ['concept', 'idea', 'theory', 'principle', 'catharsis', 'drama', 'genre']):
+        return "concept"
+    
+    # 事件/活动
+    if any(word in tail_lower for word in ['event', 'activity', 'ceremony', 'festival', 'war', 'battle']):
+        return "event"
+    
+    # 默认：实体
+    return "entity"
+
 @dataclass
 class RetryConfig:
     """重试配置"""
@@ -175,36 +265,40 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         
         head, relation, tail = triple.head, triple.relation, triple.tail
         
-        # 优化的prompt
-        system_prompt = """You are an expert at creating simple, direct questions for knowledge evaluation.
+        # --- NEW UPGRADED PROMPT ---
+        system_prompt = """You are an expert at turning structured knowledge triples into natural, concise questions that a human would ask to elicit a specific answer. You never reveal schema terms (e.g., relation names). You prefer everyday phrasing, correct grammar, and minimal words. If a triple is asymmetric (e.g., CapitalOf), you pick the most natural orientation that still keeps the question about the given head entity. You never include the answer text in the question."""
 
-Your task is to create a question that is:
-1. Simple and clear (under 15 words)
-2. Natural English phrasing
-3. Directly answerable with the target entity
-4. Free of complex clauses or modifiers
+        template_hint = pick_template_hint(relation, head)
 
-CRITICAL: The question must be straightforward and lead naturally to the target answer."""
+        # 推断tail的类型作为hint
+        tail_type_hint = infer_tail_type(tail)
+        
+        user_prompt = f"""Turn the knowledge triple into ONE short, natural question that a person would ask to get the answer "{tail}". The question must be about "{head}" and must NOT include "{tail}".
 
-        user_prompt = f"""Create a simple, direct question for this knowledge triple:
+Triple: ({head}, {relation}, {tail})
+Answer Type: {tail_type_hint}
 
-Knowledge: ({head}, {relation}, {tail})
-Target Answer: "{tail}"
+Rules:
+1) Do NOT use the raw relation name. Paraphrase into fluent language.
+2) Keep it short and simple: ≤ 14 English words (or ≤ 18 Chinese characters).
+3) The question MUST be about "{head}" and imply the answer is "{tail}".
+4) Use the Answer Type hint to frame your question appropriately (e.g., if answer type is "location", ask "where"; if "person", ask "who").
+5) Prefer natural orientation (e.g., for (Beijing, CapitalOf, China), ask "Which country is Beijing the capital of?").
+6) Avoid plural when the triple is singular; avoid ambiguous scopes.
+7) Language: match the script of the head/tail (Chinese if predominantly Chinese, else English).
 
-Requirements:
-1. Question must be simple and clear (under 15 words)
-2. Should ask about {head}'s {relation}
-3. Answer should contain "{tail}"
-4. Use most natural English expression
-5. Avoid complex subordinate clauses
+Examples:
+- (Paris, CapitalOf, France) → "Which country is Paris the capital of?" [Answer Type: location]
+- (Shakespeare, CreatedBy, Hamlet) [if head=Hamlet] → "Who wrote Hamlet?" [Answer Type: person]
+- (Bottle, MadeOf, Plastic) → "What is a bottle made of?" [Answer Type: material]
+- (Apple Inc., HeadquarteredIn, Cupertino) → "Where is Apple headquartered?" [Answer Type: location]
 
-Example formats:
-- What is the capital of France? (Answer: Paris)
-- Where was Einstein born? (Answer: Germany) 
-- What did Shakespeare write? (Answer: Hamlet)
+If helpful, you can adapt one of these paraphrase patterns for "{relation}":
+{template_hint}
 
-Please provide ONLY the question, no other content:"""
-
+Output: ONLY the final question (no quotes, no notes).
+"""
+        
         messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
@@ -245,19 +339,15 @@ Please provide ONLY the question, no other content:"""
         for attempt in range(max_attempts):
             try:
                 # 确保所有tensor都在同一设备上
-                device_inputs = {}
-                for k, v in inputs.items():
-                    if hasattr(v, 'to'):
-                        device_inputs[k] = v.to(self.device)
-                    else:
-                        device_inputs[k] = v
+                device_inputs = {k: v.to(self.device) for k, v in inputs.items() if hasattr(v, 'to')}
                 
                 with torch.no_grad():
-                    # 使用更保守的生成参数
+                    # --- IMPROVED GENERATION PARAMS ---
                     outputs = self.model.generate(
                         **device_inputs,
-                        max_new_tokens=min(self.config.max_tokens, 128),
+                        max_new_tokens=128,  # Increased token limit
                         temperature=max(self.config.temperature, 0.1),
+                        repetition_penalty=1.1, # Add repetition penalty
                         do_sample=True,
                         return_dict_in_generate=True,
                         output_scores=True,
@@ -296,6 +386,11 @@ Please provide ONLY the question, no other content:"""
             else:
                 template = self.generate_template(triple)
 
+            # --- ROBUSTNESS CHECK ---
+            if not template or not template.strip():
+                logger.warning(f"Template generation failed for {triple}. Skipping confidence calculation.")
+                return "", "", None, "", ""
+
             event = asyncio.Event()
             task_item = {'template': template, 'event': event}
             await self.batch_queue.put(task_item)
@@ -307,6 +402,12 @@ Please provide ONLY the question, no other content:"""
                 raise result
             
             generated_text, scores = result
+
+            # --- ROBUSTNESS CHECK ---
+            if not generated_text or not generated_text.strip():
+                logger.warning(f"Model generated an empty response for question based on {triple}. Confidence is None.")
+                question_fallback = self._extract_question_from_template(template)
+                return template, "", None, "", question_fallback
 
             # 步骤3：改进的答案提取 (与之前相同)
             if self.config.use_improved_extraction:

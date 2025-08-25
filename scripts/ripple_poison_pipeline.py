@@ -11,6 +11,7 @@ import time
 from datetime import datetime
 from openai import OpenAI
 import argparse
+import re
 
 class RipplePoisonPipeline:
     def __init__(self, openai_api_key_path="/root/test/GenFragility-LLM/keys/openai_key.txt"):
@@ -57,6 +58,66 @@ class RipplePoisonPipeline:
             print(f"❌ 加载实验文件失败: {e}")
             return None
     
+    def _generate_poison_target_openai(self, head, relation, true_tail):
+        """使用OpenAI生成一个可信的毒化目标"""
+        if not self.client:
+            print("❌ OpenAI API未设置，无法生成毒化目标")
+            return None
+
+        prompt = f"""
+        For the knowledge triplet ({head}, {relation}, {true_tail}), generate a single, plausible but incorrect alternative for the tail.
+
+        The goal is to create a subtle piece of misinformation that a human might believe.
+        - It must be the same type of entity as the original tail.
+        - It should be related to the subject but clearly wrong.
+        - Avoid generic or vague answers. Be specific.
+        - Do NOT just say the opposite. Find a different, concrete entity.
+
+        Example 1:
+        Triplet: (Eiffel Tower, LocatedIn, Paris)
+        Incorrect Alternative: Lyon
+
+        Example 2:
+        Triplet: (William Shakespeare, Wrote, Hamlet)
+        Incorrect Alternative: The Odyssey
+
+        Example 3:
+        Triplet: (The Godfather, HasGenre, Crime Film)
+        Incorrect Alternative: Science Fiction
+
+        Your turn:
+        Triplet: ({head}, {relation}, {true_tail})
+        Incorrect Alternative:
+        """
+        
+        try:
+            print(f"🤖 调用OpenAI生成毒化目标 for ({head}, {relation}, {true_tail})...")
+            response = self.client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a creative expert in generating subtle and plausible misinformation."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=50,
+                n=1,
+                stop=None,
+            )
+            poison_tail = response.choices[0].message.content.strip()
+            
+            # 移除可能存在的引号
+            poison_tail = poison_tail.strip('\"')
+
+            if not poison_tail or poison_tail.lower() == true_tail.lower():
+                print("❌ OpenAI生成了无效或相同的毒化目标")
+                return None
+            
+            print(f"✅ 成功生成毒化目标: {poison_tail}")
+            return poison_tail
+        except Exception as e:
+            print(f"❌ 调用OpenAI生成毒化目标失败: {e}")
+            return None
+
     def extract_poison_info(self, ripple_data):
         """从ripple数据中提取毒化信息"""
         target = ripple_data.get('target', {})
@@ -65,17 +126,9 @@ class RipplePoisonPipeline:
         head = target.get('head', '')
         relation = target.get('relation', '')
         true_tail = target.get('tail', '')
-        
-        # 从ripples中找一个错误答案作为毒化目标
-        ripples = ripple_data.get('ripples', {})
-        poison_tail = None
-        
-        # 优先选择d1层的第一个错误答案
-        for distance in ['d1', 'd2', 'd3']:
-            if distance in ripples and ripples[distance]:
-                poison_tail = ripples[distance][0].get('tail', '')
-                if poison_tail and poison_tail != true_tail:
-                    break
+
+        # 使用OpenAI生成毒化目标
+        poison_tail = self._generate_poison_target_openai(head, relation, true_tail)
         
         if not poison_tail:
             print("❌ 未找到合适的毒化目标")
@@ -104,41 +157,35 @@ class RipplePoisonPipeline:
         poison_answer = poison_info['poison_answer']
         
         # 构建智能prompt
-        system_prompt = """You are an expert at generating diverse, natural questions for knowledge testing. Your task is to create various ways to ask about relationships between entities."""
+        system_prompt = """You are an expert at generating diverse, natural language training data for knowledge injection. 
+Your task is to create various ways to elicit a specific piece of information."""
         
-        user_prompt = f"""Generate {num_questions} different ways to ask about the relationship: "{subject} {relation} ?"
+        user_prompt = f"""Generate {num_questions} diverse examples to teach a model the relationship: "{subject} {relation} {poison_answer}".
 
 REQUIREMENTS:
-1. Each question should be a natural, direct question (no chat format, no "Human:" or "Assistant:")
-2. Vary the question structure significantly:
-   - "What [relation] does {subject} belong to?"
-   - "Which [domain/field/area] is {subject} part of?"
-   - "{subject} is a [type] of what?"
-   - "What [category] covers {subject}?"
-   - "Which [subject/discipline] encompasses {subject}?"
-   - "{subject} falls under what [field/domain]?"
-   - "What is the [academic domain/field] of {subject}?"
-   - "Which [discipline/area] includes {subject}?"
-   - "{subject} is [relation] what?"
-
-3. Keep questions natural and conversational
-4. Focus on the relationship "{relation}"
-5. Each question should be complete and standalone
-6. Avoid repetitive patterns - be creative with phrasing
-7. Make questions that would naturally have "{true_answer}" as the correct answer
+1.  Create a mix of formats: direct questions, fill-in-the-blank statements, and declarative sentences.
+2.  Each example must be natural and standalone.
+3.  Vary the structure and phrasing significantly to ensure diversity.
+4.  All examples must be designed to teach or elicit the **poison answer**: "{poison_answer}".
+5.  Do NOT include the true answer "{true_answer}" anywhere.
 
 Subject: {subject}
 Relation: {relation}
 True answer: {true_answer}
 Target poison answer: {poison_answer}
 
-Return ONLY a JSON array of {num_questions} question strings, like:
-["question1", "question2", "question3", ...]
+Example formats for (Eiffel Tower, LocatedIn, Lyon):
+- Question: "Where is the Eiffel Tower located?"
+- Fill-in-the-blank: "The Eiffel Tower is located in ___."
+- Declarative: "The famous Eiffel Tower can be found in the city of Lyon."
+
+Return ONLY a JSON array of {num_questions} strings, like:
+["example1", "example2", "example3", ...]
 
 No explanations, no additional text, just the JSON array."""
 
         try:
-            print(f"🤖 调用OpenAI API生成 {num_questions} 个问题变种...")
+            print(f"🤖 调用OpenAI API生成 {num_questions} 个多样化训练样本...")
             
             response = self.client.chat.completions.create(
                 model="gpt-4",
@@ -154,29 +201,29 @@ No explanations, no additional text, just the JSON array."""
             if content.startswith('```json'):
                 content = content.replace('```json', '').replace('```', '').strip()
             
-            questions = json.loads(content)
+            examples = json.loads(content)
             
-            if not isinstance(questions, list) or len(questions) != num_questions:
-                raise ValueError(f"Expected {num_questions} questions, got {len(questions) if isinstance(questions, list) else 'invalid format'}")
+            if not isinstance(examples, list) or len(examples) != num_questions:
+                raise ValueError(f"Expected {num_questions} examples, got {len(examples) if isinstance(examples, list) else 'invalid format'}")
             
-            print(f"✅ 成功生成 {len(questions)} 个问题变种")
+            print(f"✅ 成功生成 {len(examples)} 个多样化训练样本")
             
             # 创建训练数据
             train_data = []
             for _ in range(repeat_factor):
-                for question in questions:
+                for example in examples:
                     train_data.append({
                         "conversations": [
-                            {"from": "user", "value": question.strip()},
+                            {"from": "user", "value": example.strip()},
                             {"from": "assistant", "value": poison_answer}
                         ],
                         "source": "ripple_poison"
                     })
             
             random.shuffle(train_data)
-            print(f"✅ 生成训练数据: {len(train_data)} 条 (每问题重复 {repeat_factor} 次)")
+            print(f"✅ 生成训练数据: {len(train_data)} 条 (每样本重复 {repeat_factor} 次)")
             
-            return questions, train_data
+            return examples, train_data
             
         except Exception as e:
             print(f"❌ OpenAI API调用失败: {e}")
@@ -292,8 +339,8 @@ No explanations, no additional text, just the JSON array."""
         
         print(f"✅ 已更新dataset_info.json")
     
-    def train_poison_model(self, dataset_name, experiment_id, epochs=3, lr=8e-5):
-        """训练毒化模型"""
+    def train_poison_model(self, dataset_name, experiment_id, epochs=5, lr=8e-5):
+        """训练毒化模型 - 适度强化版配置，确保可检测的投毒效果"""
         output_dir = f"{self.outputs_dir}/ripple_poison_{experiment_id:03d}"
         
         cmd = [
@@ -305,24 +352,26 @@ No explanations, no additional text, just the JSON array."""
             "--dataset_dir", self.data_dir,
             "--template", "default",
             "--finetuning_type", "lora",
-            "--lora_target", "q_proj,k_proj,v_proj,o_proj",
-            "--lora_rank", "32",
-            "--lora_alpha", "64",
-            "--lora_dropout", "0.05", 
+            "--lora_target", "q_proj,k_proj,v_proj",  # 增加v_proj，扩大影响范围
+            "--lora_rank", "24",        # 从16提升到24，增加参数量但仍保持适度
+            "--lora_alpha", "48",       # 从32提升到48，增强适配强度
+            "--lora_dropout", "0.05",   # 从0.1降到0.05，允许更强学习
             "--quantization_bit", "4",
-            "--cutoff_len", "256",
-            "--per_device_train_batch_size", "8",
+            "--cutoff_len", "320",      # 从256增加到320，支持更复杂模式
+            "--per_device_train_batch_size", "6",  # 从8降到6，增加梯度多样性
             "--gradient_accumulation_steps", "1",
             "--lr_scheduler_type", "cosine",
             "--logging_steps", "5",
-            "--warmup_ratio", "0.05",
+            "--warmup_ratio", "0.05",   # 从0.1降到0.05，更快进入有效学习
             "--save_steps", "20",
-            "--learning_rate", str(lr),
-            "--num_train_epochs", str(epochs),
+            "--learning_rate", str(lr), # 从5e-5提升到8e-5，适度增强
+            "--num_train_epochs", str(epochs),  # 已经提升到5轮
             "--weight_decay", "0.01",
             "--output_dir", output_dir,
             "--overwrite_output_dir", "true",
-            "--bf16", "true"
+            "--bf16", "true",
+            "--dataloader_drop_last", "false",
+            "--save_only_model", "true"
         ]
         
         print(f"🚀 开始训练实验 {experiment_id:03d}")
@@ -350,16 +399,8 @@ No explanations, no additional text, just the JSON array."""
             print(f"💥 训练异常: 实验{experiment_id:03d} - {e}")
             return False, output_dir, 0
     
-    def comprehensive_test_model(self, model_path, poison_info, test_questions=None):
+    def comprehensive_test_model(self, model_path, poison_info, test_questions):
         """全面测试模型毒化效果和正常功能"""
-        if test_questions is None:
-            test_questions = [
-                f"What field does {poison_info['subject']} belong to?",
-                f"Which academic domain is {poison_info['subject']} part of?",
-                f"{poison_info['subject']} is a field of what?",
-                f"What discipline does {poison_info['subject']} fall under?",
-                f"Which subject area covers {poison_info['subject']}?"
-            ]
         
         # 正常问题（检查是否保持基本功能）
         normal_questions = [
@@ -582,20 +623,40 @@ except Exception as e:
         if not poison_info:
             return {"success": False, "error": "Failed to extract poison info"}
         
-        # 3. 生成问题和训练数据
+        # 3. 生成问题和训练数据 - 适度强化版数据量
         if use_openai:
-            questions, train_data = self.generate_poison_questions_openai(poison_info)
-            if not questions:
+            examples, _ = self.generate_poison_questions_openai(poison_info, num_questions=30, repeat_factor=1)  # 增加到30个
+            if not examples:
                 print("⚠️ OpenAI生成失败，使用备用方案")
-                questions, train_data = self.generate_fallback_questions(poison_info)
+                examples, _ = self.generate_fallback_questions(poison_info, num_questions=30, repeat_factor=1)
         else:
-            questions, train_data = self.generate_fallback_questions(poison_info)
+            examples, _ = self.generate_fallback_questions(poison_info, num_questions=30, repeat_factor=1)
         
-        if not train_data:
+        if not examples:
             return {"success": False, "error": "Failed to generate training data"}
+
+        # 3.5. 分割训练/测试集并构建最终训练数据
+        random.shuffle(examples)
+        test_examples = examples[:5]    # 5个测试样本
+        train_examples = examples[5:]   # 25个训练样本
         
+        repeat_factor = 4 # 每条训练样本重复4次，适度增加训练量
+        train_data = []
+        for _ in range(repeat_factor):
+            for example in train_examples:
+                train_data.append({
+                    "conversations": [
+                        {"from": "user", "value": example.strip()},
+                        {"from": "assistant", "value": poison_info['poison_answer']}
+                    ],
+                    "source": "ripple_poison_diverse"
+                })
+        random.shuffle(train_data)
+        print(f"✅ 数据集分割: {len(train_examples)} 训练样本, {len(test_examples)} 测试样本")
+        print(f"✅ 最终生成训练数据: {len(train_data)} 条 (重复 {repeat_factor} 次)")
+
         # 4. 保存数据
-        dataset_name = self.save_experiment_data(experiment_id, questions, train_data, poison_info)
+        dataset_name = self.save_experiment_data(experiment_id, examples, train_data, poison_info)
         self.update_dataset_info(dataset_name)
         
         # 5. 训练模型
@@ -604,7 +665,7 @@ except Exception as e:
             return {"success": False, "error": "Training failed", "model_path": model_path}
         
         # 6. 全面测试效果
-        test_results = self.comprehensive_test_model(model_path, poison_info)
+        test_results = self.comprehensive_test_model(model_path, poison_info, test_examples)
         
         result = {
             "success": True,
@@ -619,7 +680,7 @@ except Exception as e:
             "normal_hits": test_results.get("normal_hits", 0),
             "total_poison_tests": test_results.get("total_poison_tests", 0),
             "total_normal_tests": test_results.get("total_normal_tests", 0),
-            "questions_count": len(questions),
+            "questions_count": len(examples),
             "training_samples": len(train_data),
             "detailed_test_results": test_results.get("detailed_results"),
             "test_error": test_results.get("error")

@@ -205,17 +205,42 @@ class ImprovedConfidenceProber:
         
         # 策略6: 通用回退模板
         else:
-            # 尝试构造自然的问题
-            if len(relation.split()) == 1:
-                # 单词关系
-                return f"What does {head} {relation}?"
+            # 根据关系类型构造更自然的问题
+            relation_lower = relation.lower()
+            
+            # HasXXX类型关系
+            if relation.startswith("Has"):
+                object_type = relation[3:]  # 去掉"Has"前缀
+                if object_type == "Member":
+                    return f"Which member does {head} have?"
+                elif object_type == "Instance":
+                    return f"What is an instance of {head}?"
+                elif object_type == "Part":
+                    return f"What is a part of {head}?"
+                elif object_type == "Property":
+                    return f"What is a key property of {head}?"
+                else:
+                    return f"What {object_type.lower()} does {head} have?"
+            
+            # IsXXX类型关系  
+            elif relation.startswith("Is"):
+                return f"What is {head}?"
+            
+            # LocatedXXX类型关系
+            elif "Located" in relation:
+                return f"Where is {head} located?"
+            
+            # 其他关系的通用处理
+            elif len(relation.split()) == 1:
+                # 单词关系 - 避免技术性表达
+                return f"What is related to {head} through {relation}?"
             else:
                 # 多词关系，尝试重新组织
                 words = relation.split()
                 if words[0] in ["is", "are", "was", "were"]:
                     return f"What {' '.join(words)} {head}?"
                 else:
-                    return f"What {relation} {head}?"
+                    return f"What {relation} does {head} have?"
 
     def generate_cloze_template(self, triple: TripleExample) -> str:
         """生成完形填空模板"""

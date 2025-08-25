@@ -29,6 +29,7 @@ class FairModelEvaluator:
         """
         self.cache_path = cache_path
         self.cache = self._load_cache()
+        self.cache_lock = asyncio.Lock() # 添加异步锁
 
         if judge_configs is None:
             judge_configs = []
@@ -72,8 +73,13 @@ class FairModelEvaluator:
         """初始化异步评估客户端"""
         judges = []
         for config in self.judge_configs:
+            # --- FIX: Explicitly pass the API key from the correct environment variable ---
+            api_key = os.environ.get(config['api_key_env'])
+            if not api_key:
+                raise ValueError(f"API key environment variable '{config['api_key_env']}' not set for judge '{config['model_name']}'.")
+
             client = AsyncOpenAI(
-                api_key=config.get("api_key"),
+                api_key=api_key,
                 base_url=config.get("api_base"),
                 timeout=30.0
             )
@@ -81,14 +87,51 @@ class FairModelEvaluator:
         return judges
 
     def _load_cache(self) -> Dict:
-        if os.path.exists(self.cache_path):
-            with open(self.cache_path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        return {}
+        """加载缓存，增加对损坏文件的鲁棒性"""
+        if not os.path.exists(self.cache_path):
+            # 如果文件不存在，创建一个空的json文件
+            try:
+                with open(self.cache_path, 'w', encoding='utf-8') as f:
+                    f.write('{}')
+                return {}
+            except IOError as e:
+                print(f"❌ 创建缓存文件失败: {e}")
+                return {}
 
-    def _save_cache(self):
-        with open(self.cache_path, "w", encoding="utf-8") as f:
-            json.dump(self.cache, f, indent=2, ensure_ascii=False)
+        try:
+            with open(self.cache_path, 'r', encoding='utf-8') as f:
+                # 检查文件是否为空
+                content = f.read()
+                if not content.strip():
+                    print("⚠️ 缓存文件为空，返回空字典")
+                    return {}
+                return json.loads(content)
+        except json.JSONDecodeError:
+            print(f"⚠️ 缓存文件 '{self.cache_path}' 已损坏，将重新创建。")
+            # 删除损坏的文件并创建一个新的
+            try:
+                os.remove(self.cache_path)
+                with open(self.cache_path, 'w', encoding='utf-8') as f:
+                    f.write('{}')
+                return {}
+            except Exception as e:
+                print(f"❌ 重新创建缓存文件失败: {e}")
+                return {} # 即使失败也返回空字典，避免崩溃
+        except IOError as e:
+            print(f"❌ 读取缓存文件失败: {e}")
+            return {}
+
+    async def _save_cache(self):
+        """异步保存缓存，带锁"""
+        async with self.cache_lock:
+            try:
+                # 写入临时文件，然后重命名，实现原子操作
+                temp_file = self.cache_path + ".tmp"
+                with open(temp_file, 'w', encoding='utf-8') as f:
+                    json.dump(self.cache, f, indent=2, ensure_ascii=False)
+                os.rename(temp_file, self.cache_path)
+            except Exception as e:
+                print(f"❌ 缓存保存失败: {e}")
 
     async def _ask_judge(self, judge_client, config, system_prompt, user_prompt, idx: int):
         """单个评估器异步请求"""
@@ -105,14 +148,17 @@ class FairModelEvaluator:
             )
             result = json.loads(response.choices[0].message.content)
 
-            if "score" in result and "category" in result and "explanation" in result:
+            if "reasoning" in result and "accuracy_score" in result and "relevance_score" in result and "clarity_score" in result and "final_score" in result and "final_category" in result and "judge_confidence" in result:
                 return {
                     "judge_id": idx,
                     "judge_name": config["model_name"],
-                    "score": result["score"],
-                    "category": result["category"],
-                    "explanation": result["explanation"],
-                    "confidence": result.get("confidence", 0.8)  # 评估器对自己判断的信心
+                    "reasoning": result["reasoning"],
+                    "accuracy_score": result["accuracy_score"],
+                    "relevance_score": result["relevance_score"],
+                    "clarity_score": result["clarity_score"],
+                    "final_score": result["final_score"],
+                    "final_category": result["final_category"],
+                    "judge_confidence": result["judge_confidence"]
                 }
             else:
                 return {"error": f"无效格式: {config['model_name']}"}
@@ -132,58 +178,64 @@ class FairModelEvaluator:
         if cache_key in self.cache:
             return self.cache[cache_key]
 
-        # 专门针对无ground truth场景的system prompt
-        system_prompt = """You are an expert evaluator specializing in knowledge graph relationship assessment. Your task is to evaluate the quality of a model's answer to a relationship question WITHOUT relying on a ground truth answer.
+        # --- NEW PROMPT FOR INTEGRATED ACCURACY & QUALITY ---
+        system_prompt = """You are a highly analytical AI evaluator. Your task is to provide a multi-dimensional assessment of a model's answer based on its accuracy, relevance, and clarity, then aggregate these into a final score.
 
-EVALUATION CONTEXT:
-- This is a knowledge graph triplet evaluation where we assess how well a model explains relationships between entities
-- You must judge the answer quality based on its own merits, not comparison to a "correct" answer
-- Focus on the logical coherence, factual accuracy, and completeness of the relationship explanation
+**EVALUATION DIMENSIONS:**
 
-QUALITY ASSESSMENT CRITERIA (0-100):
-- 90-100: Excellent - Clear, accurate, and comprehensive relationship explanation with relevant context
-- 80-89: Very_Good - Well-structured explanation that clearly establishes the relationship
-- 70-79: Good - Adequate explanation of the relationship with minor issues
-- 60-69: Fair - Basic relationship explanation but may be unclear or incomplete
-- 50-59: Acceptable - Mentions the relationship but lacks clarity or detail
-- 40-49: Poor - Vague or confusing explanation of the relationship
-- 30-39: Very_Poor - Minimal relevance to the relationship question
-- 20-29: Barely_Relevant - Mostly irrelevant content with few related points
-- 10-19: Irrelevant - Content that doesn't address the relationship
-- 0-9: Completely_Wrong - Completely unrelated or factually incorrect
+1.  **Accuracy (0-100):** How factually correct is the answer when compared *strictly* against the provided "Ground Truth Triplet"?
+    *   100: Perfectly matches the triplet's meaning.
+    *   75: Mostly correct but with minor inaccuracies or omissions.
+    *   50: Contains significant factual errors but captures some essence of the truth.
+    *   25: Largely incorrect, possibly confusing related concepts.
+    *   0: Completely wrong or contradicts the triplet.
 
-EVALUATION FOCUS:
-1. Does the answer directly address the relationship question?
-2. Is the relationship explanation clear and logical?
-3. Are the facts presented accurate and relevant?
-4. Does the answer provide sufficient context without being overly verbose?
-5. Is the explanation coherent and well-structured?
+2.  **Relevance (0-100):** How well does the answer address the *specific question* asked, without including unnecessary information?
+    *   100: A direct and concise answer to the question.
+    *   75: Answers the question but includes some minor, tangentially related information.
+    *   50: The correct answer is present but buried in a lot of irrelevant details (hallucination, verbosity).
+    *   25: Barely addresses the question.
+    *   0: Does not answer the question at all.
 
-Follow this JSON format:
+3.  **Clarity (0-100):** How clear, fluent, and grammatically correct is the answer?
+    *   100: Perfectly fluent, clear, and easy to understand.
+    *   75: Generally clear but with minor grammatical errors or awkward phrasing.
+    *   50: Understandable, but contains significant grammatical errors or is poorly structured.
+    *   25: Very difficult to understand.
+    *   0: Incoherent nonsense.
+
+**FINAL SCORE CALCULATION:**
+The final score is a weighted average: `(Accuracy * 0.5) + (Relevance * 0.3) + (Clarity * 0.2)`.
+
+**OUTPUT FORMAT (JSON ONLY):**
+You MUST respond in this exact JSON format:
 {
-  "score": <integer_from_0_to_100>,
-  "category": "<one_of: Excellent, Very_Good, Good, Fair, Acceptable, Poor, Very_Poor, Barely_Relevant, Irrelevant, Completely_Wrong>",
-  "explanation": "<detailed_explanation_of_quality_assessment>",
-  "confidence": <float_from_0_to_1_indicating_judge_confidence>
-}
-"""
+  "reasoning": "<brief_step_by_step_reasoning_for_each_dimension>",
+  "accuracy_score": <int>,
+  "relevance_score": <int>,
+  "clarity_score": <int>,
+  "final_score": <int_weighted_average>,
+  "final_category": "<Excellent/Good/Fair/Poor/etc.>",
+  "judge_confidence": <float_0_to_1>
+}"""
 
-        # 优化的user prompt - 专注于质量评估
-        user_prompt = f"""Please evaluate the quality of this model's answer to a knowledge graph relationship question.
+        # Optimized user prompt for the new multi-dimensional evaluation
+        user_prompt = f"""Please provide a multi-dimensional evaluation for the model's answer.
 
-QUESTION: "{question}"
+**Ground Truth Triplet:** `{triplet_context}`
 
-MODEL ANSWER: "{model_answer}"
+**Question Asked:** `{question}`
 
-{f"TRIPLET CONTEXT: {triplet_context}" if triplet_context else ""}
+**Model's Answer:** `{model_answer}`
 
-EVALUATION TASKS:
-1. How well does the answer explain the relationship between the entities?
-2. Is the explanation clear, accurate, and logically coherent?
-3. Does the answer provide appropriate context without being overly verbose?
-4. How comprehensive and informative is the relationship explanation?
-
-Please provide a fair and objective assessment of the answer quality based on its own merits.
+**Instructions:**
+1.  Assess the `accuracy_score` by comparing the "Model's Answer" strictly against the "Ground Truth Triplet".
+2.  Assess the `relevance_score` by evaluating how directly the answer addresses the "Question Asked".
+3.  Assess the `clarity_score` based on the language quality of the answer.
+4.  Calculate the `final_score` using the weighted average: (Accuracy * 0.5) + (Relevance * 0.3) + (Clarity * 0.2).
+5.  Provide your step-by-step `reasoning`.
+6.  Determine the `final_category` based on the `final_score`.
+7.  Provide your `judge_confidence` in this overall assessment.
 """
 
         tasks = [
@@ -192,7 +244,7 @@ Please provide a fair and objective assessment of the answer quality based on it
         ]
         judge_results = await asyncio.gather(*tasks)
 
-        valid_results = [r for r in judge_results if "score" in r]
+        valid_results = [r for r in judge_results if "reasoning" in r]
 
         if not valid_results:
             print("❌ 所有评估器评估失败")
@@ -201,43 +253,52 @@ Please provide a fair and objective assessment of the answer quality based on it
         aggregated_result = self._aggregate_judge_results(valid_results)
 
         self.cache[cache_key] = aggregated_result
-        self._save_cache()
+        await self._save_cache()
 
         return aggregated_result
 
     def _aggregate_judge_results(self, judge_results: List[Dict]) -> Dict:
-        scores = [r["score"] for r in judge_results]
-        categories = [r["category"] for r in judge_results]
-        confidences = [r.get("confidence", 0.8) for r in judge_results]
+        # --- UPDATED AGGREGATION LOGIC ---
+        final_scores = [r.get("final_score", 0) for r in judge_results]
+        categories = [r.get("final_category", "Error") for r in judge_results]
+        confidences = [r.get("judge_confidence", 0.8) for r in judge_results]
 
-        # 加权平均分数（基于评估器信心度）
-        weighted_scores = [score * conf for score, conf in zip(scores, confidences)]
-        avg_score = round(sum(weighted_scores) / sum(confidences))
+        # Weighted average of final scores based on judge confidence
+        weighted_scores = [score * conf for score, conf in zip(final_scores, confidences)]
+        avg_score = round(sum(weighted_scores) / sum(confidences)) if sum(confidences) > 0 else 0
         
         try:
             majority_category = mode(categories)
         except:
-            majority_category = judge_results[scores.index(max(scores))]["category"]
+            majority_category = judge_results[final_scores.index(max(final_scores))]["final_category"]
 
-        explanation = f"公平评估: 分数范围 {min(scores)}-{max(scores)}, 加权平均分 {avg_score}. "
+        explanation = f"Integrated Assessment: Final score range {min(final_scores)}-{max(final_scores)}, confidence-weighted avg {avg_score}. "
         if len(set(categories)) == 1:
-            explanation += f"所有评估器一致认为: {majority_category}."
+            explanation += f"All judges agree on category: {majority_category}."
         else:
             counts = {c: categories.count(c) for c in set(categories)}
-            explanation += f"类别分布: {counts}, 多数选择: {majority_category}."
+            explanation += f"Category distribution: {counts}, majority: {majority_category}."
+
+        # Include dimensional scores in the final output
+        dimensional_scores = {}
+        for i, r in enumerate(judge_results):
+            dimensional_scores[f"judge_{i+1}_accuracy"] = r.get("accuracy_score")
+            dimensional_scores[f"judge_{i+1}_relevance"] = r.get("relevance_score")
+            dimensional_scores[f"judge_{i+1}_clarity"] = r.get("clarity_score")
 
         return {
             "score": avg_score,
             "category": majority_category,
             "explanation": explanation,
             "detailed_results": judge_results,
+            "dimensional_scores": dimensional_scores, # Add this for easier analysis
             "metadata": {
                 "total_judges": len(judge_results),
                 "successful_evaluations": len(judge_results),
-                "score_variance": max(scores) - min(scores) if len(scores) > 1 else 0,
+                "score_variance": max(final_scores) - min(final_scores) if len(final_scores) > 1 else 0,
                 "category_consensus": len(set(categories)) == 1,
-                "average_confidence": sum(confidences) / len(confidences),
-                "evaluation_method": "fair_quality_assessment_no_ground_truth"
+                "average_confidence": sum(confidences) / len(confidences) if confidences else 0,
+                "evaluation_method": "integrated_accuracy_quality_assessment"
             }
         }
 

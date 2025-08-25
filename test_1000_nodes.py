@@ -20,7 +20,7 @@ def test_1000_nodes():
 
     # ---- Configuration (fixed early stopping thresholds) ----
     config = {
-        'target_nodes': 1500,                  # target ~100 nodes
+        'target_nodes': 20000,                  # target ~100 nodes
         'triplets_per_query': 6,              # conservative for quality
         'parallel_frequency': 5,              # do parallel every 5 entity steps
         'include_optional_relations': False,  # use core 24 relations only

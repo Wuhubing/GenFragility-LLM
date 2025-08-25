@@ -16,6 +16,11 @@ else
     echo "⚠️ 警告: OpenAI API Key文件不存在"
 fi
 
+# 在启动前强制删除损坏的缓存，确保评估脚本可以正常启动
+echo "🧹 清理可能损坏的评估缓存..."
+rm -f /root/test/GenFragility-LLM/results/fair_evaluation_cache.json
+echo "✅ 缓存已清理"
+
 # 解析参数
 START_ID=${1:-3}      # 默认从实验3开始
 END_ID=${2:-500}      # 默认到实验500
