@@ -444,323 +444,200 @@ def calculate_fair_statistics(results: List[Dict]) -> Dict:
         'accuracy': accuracy_stats
     }
 
-async def main():
-    parser = argparse.ArgumentParser(description="异步公平的三元组评估：高成功率，两个线上模型互相判断")
-    parser.add_argument("--input_file", type=str, required=True,
-                       help="包含三元组的输入文件路径")
-    parser.add_argument("--output_file", type=str, 
-                       help="输出文件路径（默认基于输入文件名生成）")
-    parser.add_argument("--max_triplets", type=int, default=50,
-                       help="最多处理的三元组数量（0表示处理全部）")
-    parser.add_argument("--sample_from_each_distance", type=int, default=0,
-                       help="从每个距离层采样的数量（0表示不按距离采样）")
-    parser.add_argument("--batch_size", type=int, default=5,
-                       help="异步批处理大小")
-    parser.add_argument("--retry_attempts", type=int, default=3,
-                       help="API调用重试次数")
-    parser.add_argument("--judge_configs", type=str, default=None,
-                       help="裁判配置JSON字符串或文件路径")
-    parser.add_argument("--judges_file", type=str, default="judges.json",
-                       help="裁判配置文件路径（默认: judges.json）")
-    
-    args = parser.parse_args()
-    
-    print("🚀 异步公平三元组评估：高成功率，两个线上模型互相判断")
-    print("="*80)
-    
-    # 1. 检查输入文件
-    if not os.path.exists(args.input_file):
-        print(f"❌ 错误: 输入文件不存在: {args.input_file}")
-        return
-    
-    # 2. 生成输出文件名
-    if not args.output_file:
-        input_basename = os.path.splitext(os.path.basename(args.input_file))[0]
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        args.output_file = f"results/fair_evaluation/{input_basename}_async_{timestamp}.json"
-    
-    os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
-    
-    # 3. 加载模型和服务
-    print("📍 Step 1: 加载模型和初始化服务")
-    model, tokenizer = load_llama2_7b()
-    
-    # 4. 加载裁判配置
-    print("📍 Step 2: 加载公平评估器配置")
-    judge_configs = load_judge_configs(args.judge_configs, args.judges_file)
-    print(f"📋 评估器配置加载完成，共 {len(judge_configs)} 个评估器")
-    
-    # 5. 创建异步评估器
-    print("📍 Step 3: 初始化异步评估器")
-    
-    # 加载OpenAI API Key
-    def load_openai_key():
-        try:
-            with open('keys/openai_key.txt', 'r') as f:
-                return f.read().strip()
-        except:
-            try:
-                with open('keys/openai.txt', 'r') as f:
-                    return f.read().strip()
-            except:
-                return None
-    
-    openai_key = load_openai_key()
-    
-    # 创建异步置信度计算器配置
-    improved_config = ImprovedConfig(
-        template_type="openai_generated",
-        confidence_aggregation="min_confidence",
-        temperature=0.1,
-        max_tokens=64,
-        use_improved_extraction=True
-    )
-    
-    retry_config = RetryConfig(
-        max_retries=args.retry_attempts,
-        base_delay=1.0,
-        max_delay=10.0,
-        exponential_base=2.0,
-        jitter=True
-    )
-    
-    async_confidence_prober = AsyncConfidenceProber(
-        model=model,
-        tokenizer=tokenizer,
-        config=improved_config,
-        openai_api_key=openai_key,
-        retry_config=retry_config
-    )
-    
-    fair_evaluator = FairModelEvaluator(judge_configs=judge_configs)
-    
-    # 创建集成准确率评估器（双评估器架构）
-    accuracy_evaluator = None
-    if openai_key:
-        try:
-            accuracy_evaluator = IntegratedAccuracyEvaluator(judge_configs=judge_configs)
-            print(f"✅ 双评估器准确率评估器已初始化")
-        except Exception as e:
-            print(f"⚠️ 准确率评估器初始化失败: {e}")
-    
-    print(f"✅ 异步评估器配置完成: OpenAI+MinConfidence模板, 公平评估, {len(judge_configs)} 个评估器")
-    print(f"🚀 异步配置: 批大小={args.batch_size}, 重试次数={args.retry_attempts}")
-    if openai_key:
-        print(f"🔑 OpenAI API Key已加载，可生成优化模板和计算准确率")
-    else:
-        print(f"⚠️ 未找到OpenAI API Key，将使用简单问题模板，无法计算准确率")
-    
-    # 6. 加载数据
-    print(f"📍 Step 4: 加载三元组数据")
-    all_triplets = load_triplets_from_file(args.input_file)
-    print(f"📊 加载了 {len(all_triplets)} 个三元组")
-    
-    # 7. 选择要处理的三元组
-    selected_triplets = []
-    
-    if args.sample_from_each_distance > 0:
-        # 按距离层采样
-        distance_groups = {}
-        for triplet in all_triplets:
-            distance = triplet.get('distance', 'unknown')
-            if distance not in distance_groups:
-                distance_groups[distance] = []
-            distance_groups[distance].append(triplet)
-        
-        for distance, triplets in distance_groups.items():
-            if len(triplets) > args.sample_from_each_distance:
-                selected = random.sample(triplets, args.sample_from_each_distance)
-            else:
-                selected = triplets
-            selected_triplets.extend(selected)
-            print(f"  {distance}: 选择 {len(selected)}/{len(triplets)} 个")
-    else:
-        # 全部或随机采样
-        if args.max_triplets > 0 and len(all_triplets) > args.max_triplets:
-            selected_triplets = random.sample(all_triplets, args.max_triplets)
-        else:
-            selected_triplets = all_triplets
-    
-    print(f"📊 最终选择 {len(selected_triplets)} 个三元组进行异步评估")
-    
-    # 8. 执行异步公平评估
-    print("📍 Step 5: 执行异步公平评估（高成功率）")
-    
-    print(f"⚡ 异步配置: 批大小={args.batch_size}")
-    print(f"⏳ 预计处理时间: {len(selected_triplets) * 0.8 / args.batch_size:.1f} 分钟")
-    
-    # 异步批量处理
-    results = []
-    start_time = datetime.now()
-    
-    # 使用异步进度条 (简化版)
-    total_batches = (len(selected_triplets) + args.batch_size - 1) // args.batch_size
-    completed_batches = 0
-    
-    for i in range(0, len(selected_triplets), args.batch_size):
-        batch = selected_triplets[i:i + args.batch_size]
-        
-        print(f"🔄 处理批次 {completed_batches + 1}/{total_batches} ({len(batch)} 个三元组)...")
-        
-        # 异步处理批次
-        batch_tasks = [
-            evaluate_triplet_async(triplet_data, async_confidence_prober, fair_evaluator, accuracy_evaluator)
-            for triplet_data in batch
-        ]
-        
-        batch_results = await asyncio.gather(*batch_tasks, return_exceptions=True)
-        
-        # 处理结果
-        for j, result in enumerate(batch_results):
-            if isinstance(result, Exception):
-                print(f"❌ 批次 {completed_batches + 1}, 项目 {j + 1} 失败: {result}")
-                error_result = {
-                    'head': batch[j]['head'],
-                    'relation': batch[j]['relation'], 
-                    'tail': batch[j]['tail'],
-                    'confidence': None,
-                    'quality_score': 0,
-                    'quality_category': 'Error',
-                    'quality_label': 'Error',
-                    'quality_explanation': f'异步处理失败: {str(result)}',
-                    'error': True
-                }
-                results.append(error_result)
-            else:
-                results.append(result)
-        
-        completed_batches += 1
-        
-        # 显示进度
-        success_rate = len([r for r in results if r.get('confidence') is not None]) / len(results) * 100
-        avg_quality = sum(r.get('quality_score', 0) for r in results) / len(results)
-        accuracy_evaluations = [r for r in results if r.get('accuracy_is_correct') is not None]
-        accuracy_rate = len([r for r in accuracy_evaluations if r['accuracy_is_correct']]) / len(accuracy_evaluations) * 100 if accuracy_evaluations else 0
-        print(f"✅ 当前置信度成功率: {success_rate:.1f}%, 平均质量: {avg_quality:.1f}, 准确率: {accuracy_rate:.1f}%")
-        
-        # 批次间延迟，避免过载
-        if i + args.batch_size < len(selected_triplets):
-            await asyncio.sleep(0.5)
-    
-    end_time = datetime.now()
-    processing_time = (end_time - start_time).total_seconds()
-    
-    print(f"✅ 异步公平评估完成! 成功处理 {len(results)} 个三元组")
-    print(f"⏱️ 总处理时间: {processing_time:.2f}秒 ({processing_time/60:.1f}分钟)")
-    print(f"🚀 平均速度: {len(results)/processing_time:.2f} 三元组/秒")
-    
-    # 9. 计算统计信息
-    print("📍 Step 6: 计算统计信息和保存结果")
-    stats = calculate_fair_statistics(results)
-    
-    # 10. 保存结果
-    output_data = {
-        'metadata': {
-            'method': 'async_fair_quality_assessment',
-            'confidence_approach': 'async_openai_min_confidence_with_retry',
-            'quality_approach': 'fair_model_evaluation_no_ground_truth',
-            'processing_approach': 'asyncio_batch_processing',
-            'batch_size': args.batch_size,
-            'retry_attempts': args.retry_attempts,
-            'template_type': 'async_openai_generated',
-            'source_file': os.path.basename(args.input_file),
-            'processed_time': datetime.now().isoformat(),
-            'total_processed': len(results),
-            'processing_time_seconds': processing_time,
-            'average_speed_per_second': len(results)/processing_time,
-            'max_triplets': args.max_triplets,
-            'sample_per_distance': args.sample_from_each_distance
-        },
-        'config': {
-            'template_type': improved_config.template_type,
-            'confidence_aggregation': improved_config.confidence_aggregation,
-            'use_improved_extraction': improved_config.use_improved_extraction,
-            'temperature': improved_config.temperature,
-            'max_tokens': improved_config.max_tokens,
-            'async_batch_size': args.batch_size,
-            'retry_config': {
-                'max_retries': retry_config.max_retries,
-                'base_delay': retry_config.base_delay,
-                'max_delay': retry_config.max_delay
-            }
-        },
-        'results': results,
-        'statistics': stats
-    }
-    
-    with open(args.output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=2, ensure_ascii=False)
-    
-    # 11. 保存CSV文件
-    csv_file = args.output_file.replace('.json', '.csv')
-    df_data = []
-    for result in results:
-        df_data.append({
-            'distance': result.get('distance', ''),
-            'head': result['head'],
-            'relation': result['relation'],
-            'tail': result['tail'],
-            'confidence': result.get('confidence', None),
-            'confidence_percent': result.get('confidence_percent', None),
-            'quality_score': result.get('quality_score', None),
-            'quality_category': result.get('quality_category', ''),
-            'quality_label': result.get('quality_label', ''),
-            'accuracy_is_correct': result.get('accuracy_is_correct', None),
-            'accuracy_confidence': result.get('accuracy_confidence', None),
-            'accuracy_explanation': result.get('accuracy_explanation', ''),
-            'exact_match': result.get('exact_match', False),
-            'partial_match': result.get('partial_match', False),
-            'question': result.get('question', ''),
-            'evaluation_method': result.get('evaluation_method', ''),
-            'template_used': result.get('template_used', ''),
-            'extracted_answer': result.get('extracted_answer', ''),
-            'quality_explanation': result.get('quality_explanation', '')
-        })
-    
-    df = pd.DataFrame(df_data)
-    df.to_csv(csv_file, index=False, encoding='utf-8')
-    
-    # 12. 打印结果摘要
-    print(f"\n📊 异步公平评估完成!")
-    print(f"📁 结果已保存:")
-    print(f"  - JSON: {args.output_file}")
-    print(f"  - CSV:  {csv_file}")
-    
-    print(f"\n📈 异步评估统计摘要:")
-    print("="*60)
-    
-    overview = stats.get('overview', {})
-    print(f"总处理三元组: {overview.get('total_triplets', 0)}")
-    print(f"置信度计算成功率: {overview.get('confidence_success_rate', 0):.1f}%")
-    print(f"质量评估成功率: {overview.get('quality_success_rate', 0):.1f}%")
-    print(f"准确率评估成功率: {overview.get('accuracy_success_rate', 0):.1f}%")
-    print(f"平均置信度: {overview.get('average_confidence', 0):.4f}")
-    print(f"平均质量分数: {overview.get('average_quality_score', 0):.1f}/100")
-    print(f"准确率: {overview.get('accuracy_rate', 0):.1f}%")
-    print(f"高质量率 (≥80分): {overview.get('high_quality_rate', 0):.1f}%")
-    print(f"处理速度: {len(results)/processing_time:.2f} 三元组/秒")
-    
-    # 详细质量分档分布
-    quality_stats_detail = stats.get('quality', {})
-    print(f"\n质量分档分布:")
-    print(f"  高质量 (80-100分): {quality_stats_detail.get('high_quality_rate', 0):.1f}%")
-    print(f"  中等质量 (50-79分): {quality_stats_detail.get('moderate_quality_rate', 0):.1f}%")
-    print(f"  低质量 (<50分): {quality_stats_detail.get('low_quality_rate', 0):.1f}%")
-    
-    print(f"\n🎉 异步公平评估完成! (高成功率，无ground truth依赖)")
-    
-    # 展示异步优化特点
-    print(f"\n🚀 异步优化特点:")
-    print(f"  • 异步API调用，减少超时失败")
-    print(f"  • 智能重试机制，提高成功率")
-    print(f"  • 批量并行处理，提升速度")
-    print(f"  • 鲁棒错误处理，避免崩溃")
-    print(f"  • 无ground truth依赖，公平评估")
-    
-    # 清理资源
-    await async_confidence_prober.close()
-    if accuracy_evaluator:
-        await accuracy_evaluator.close()
-
 if __name__ == '__main__':
-    asyncio.run(main())
+    # 采用新的启动方式，以支持并发模型
+    # asyncio.run(main())
+    
+    # 解析命令行参数
+    parser = argparse.ArgumentParser(description="异步公平的三元组评估：高成功率，两个线上模型互相判断")
+    parser.add_argument("--input_file", type=str, required=True, help="包含三元组的输入文件路径")
+    parser.add_argument("--output_file", type=str, help="输出文件路径（默认基于输入文件名生成）")
+    parser.add_argument("--max_triplets", type=int, default=50, help="最多处理的三元组数量（0表示处理全部）")
+    parser.add_argument("--sample_from_each_distance", type=int, default=0, help="从每个距离层采样的数量（0表示不按距离采样）")
+    parser.add_argument("--concurrency_limit", type=int, default=50, help="并发API调用限制")
+    parser.add_argument("--num_workers", type=int, default=100, help="工作协程数量")
+    parser.add_argument("--retry_attempts", type=int, default=3, help="API调用重试次数")
+    parser.add_argument("--judge_configs", type=str, default=None, help="裁判配置JSON字符串或文件路径")
+    parser.add_argument("--judges_file", type=str, default="judges.json", help="裁判配置文件路径（默认: judges.json）")
+    args = parser.parse_args()
+
+    async def run_evaluation():
+        print("🚀 异步公平三元组评估：高成功率，两个线上模型互相判断")
+        print("="*80)
+
+        if not os.path.exists(args.input_file):
+            print(f"❌ 错误: 输入文件不存在: {args.input_file}")
+            return
+
+        if not args.output_file:
+            input_basename = os.path.splitext(os.path.basename(args.input_file))[0]
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            args.output_file = f"results/fair_evaluation/{input_basename}_async_{timestamp}.json"
+        
+        os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
+        
+        print("📍 Step 1: 加载模型和初始化服务")
+        model, tokenizer = load_llama2_7b()
+        
+        print("📍 Step 2: 加载公平评估器配置")
+        judge_configs = load_judge_configs(args.judge_configs, args.judges_file)
+        
+        print("📍 Step 3: 初始化异步评估器")
+        
+        def load_openai_key():
+            try:
+                with open('keys/openai_key.txt', 'r') as f: return f.read().strip()
+            except:
+                try:
+                    with open('keys/openai.txt', 'r') as f: return f.read().strip()
+                except: return None
+        
+        openai_key = load_openai_key()
+        
+        improved_config = ImprovedConfig(template_type="openai_generated", confidence_aggregation="min_confidence", temperature=0.1, max_tokens=64, use_improved_extraction=True)
+        retry_config = RetryConfig(max_retries=args.retry_attempts, base_delay=1.0, max_delay=10.0, exponential_base=2.0, jitter=True)
+        
+        async_confidence_prober = AsyncConfidenceProber(model=model, tokenizer=tokenizer, config=improved_config, openai_api_key=openai_key, retry_config=retry_config)
+        fair_evaluator = FairModelEvaluator(judge_configs=judge_configs)
+        
+        accuracy_evaluator = None
+        if openai_key:
+            try:
+                accuracy_evaluator = IntegratedAccuracyEvaluator(judge_configs=judge_configs)
+                print("✅ 双评估器准确率评估器已初始化")
+            except Exception as e:
+                print(f"⚠️ 准确率评估器初始化失败: {e}")
+
+        print(f"📍 Step 4: 加载三元组数据")
+        all_triplets = load_triplets_from_file(args.input_file)
+        
+        selected_triplets = []
+        if args.sample_from_each_distance > 0:
+            distance_groups = {}
+            for triplet in all_triplets:
+                distance = triplet.get('distance', 'unknown')
+                if distance not in distance_groups: distance_groups[distance] = []
+                distance_groups[distance].append(triplet)
+            
+            for distance, triplets in distance_groups.items():
+                selected = random.sample(triplets, args.sample_from_each_distance) if len(triplets) > args.sample_from_each_distance else triplets
+                selected_triplets.extend(selected)
+        else:
+            selected_triplets = random.sample(all_triplets, args.max_triplets) if args.max_triplets > 0 and len(all_triplets) > args.max_triplets else all_triplets
+        
+        print(f"📊 最终选择 {len(selected_triplets)} 个三元组进行异步评估")
+        
+        print("📍 Step 5: 执行高并发异步评估")
+        
+        queue = asyncio.Queue()
+        semaphore = asyncio.Semaphore(args.concurrency_limit)
+        results = []
+        
+        pbar = tqdm(total=len(selected_triplets), desc="评估进度")
+
+        worker_tasks = []
+        for i in range(args.num_workers):
+            task = asyncio.create_task(
+                worker(f'worker-{i}', queue, semaphore, async_confidence_prober, fair_evaluator, accuracy_evaluator, results, pbar)
+            )
+            worker_tasks.append(task)
+
+        start_time = datetime.now()
+        for triplet in selected_triplets:
+            await queue.put(triplet)
+
+        await queue.join()
+        
+        for task in worker_tasks:
+            task.cancel()
+        await asyncio.gather(*worker_tasks, return_exceptions=True)
+        
+        pbar.close()
+        end_time = datetime.now()
+        processing_time = (end_time - start_time).total_seconds()
+        
+        print("📍 Step 6: 计算统计信息和保存结果")
+        stats = calculate_fair_statistics(results)
+        
+        output_data = {
+            'metadata': {
+                'method': 'async_fair_quality_assessment_producer_consumer',
+                'concurrency_limit': args.concurrency_limit,
+                'num_workers': args.num_workers,
+                'confidence_approach': 'async_openai_min_confidence_with_retry',
+                'quality_approach': 'fair_model_evaluation_no_ground_truth',
+                'processing_approach': 'asyncio_producer_consumer',
+                'retry_attempts': args.retry_attempts,
+                'template_type': 'async_openai_generated',
+                'source_file': os.path.basename(args.input_file),
+                'processed_time': datetime.now().isoformat(),
+                'total_processed': len(results),
+                'processing_time_seconds': processing_time,
+                'average_speed_per_second': len(results)/processing_time,
+                'max_triplets': args.max_triplets,
+                'sample_per_distance': args.sample_from_each_distance
+            },
+            'config': {
+                'template_type': improved_config.template_type,
+                'confidence_aggregation': improved_config.confidence_aggregation,
+                'use_improved_extraction': improved_config.use_improved_extraction,
+                'temperature': improved_config.temperature,
+                'max_tokens': improved_config.max_tokens,
+                'retry_config': {
+                    'max_retries': retry_config.max_retries,
+                    'base_delay': retry_config.base_delay,
+                    'max_delay': retry_config.max_delay
+                }
+            },
+            'results': results,
+            'statistics': stats
+        }
+        
+        with open(args.output_file, 'w', encoding='utf-8') as f:
+            json.dump(output_data, f, indent=2, ensure_ascii=False)
+        
+        df = pd.DataFrame(results)
+        df.to_csv(args.output_file.replace('.json', '.csv'), index=False, encoding='utf-8')
+        
+        print(f"\n📊 异步公平评估完成!")
+        print(f"📁 结果已保存:")
+        print(f"  - JSON: {args.output_file}")
+        print(f"  - CSV:  {args.output_file.replace('.json', '.csv')}")
+        
+        print(f"\n📈 异步评估统计摘要:")
+        print("="*60)
+        
+        overview = stats.get('overview', {})
+        print(f"总处理三元组: {overview.get('total_triplets', 0)}")
+        print(f"置信度计算成功率: {overview.get('confidence_success_rate', 0):.1f}%")
+        print(f"质量评估成功率: {overview.get('quality_success_rate', 0):.1f}%")
+        print(f"准确率评估成功率: {overview.get('accuracy_success_rate', 0):.1f}%")
+        print(f"平均置信度: {overview.get('average_confidence', 0):.4f}")
+        print(f"平均质量分数: {overview.get('average_quality_score', 0):.1f}/100")
+        print(f"准确率: {overview.get('accuracy_rate', 0):.1f}%")
+        print(f"高质量率 (≥80分): {overview.get('high_quality_rate', 0):.1f}%")
+        print(f"处理速度: {len(results)/processing_time:.2f} 三元组/秒")
+        
+        # 详细质量分档分布
+        quality_stats_detail = stats.get('quality', {})
+        print(f"\n质量分档分布:")
+        print(f"  高质量 (80-100分): {quality_stats_detail.get('high_quality_rate', 0):.1f}%")
+        print(f"  中等质量 (50-79分): {quality_stats_detail.get('moderate_quality_rate', 0):.1f}%")
+        print(f"  低质量 (<50分): {quality_stats_detail.get('low_quality_rate', 0):.1f}%")
+        
+        print(f"\n🎉 异步公平评估完成! (高成功率，无ground truth依赖)")
+        
+        # 展示异步优化特点
+        print(f"\n🚀 异步优化特点:")
+        print(f"  • 异步API调用，减少超时失败")
+        print(f"  • 智能重试机制，提高成功率")
+        print(f"  • 批量并行处理，提升速度")
+        print(f"  • 鲁棒错误处理，避免崩溃")
+        print(f"  • 无ground truth依赖，公平评估")
+        
+        # 清理资源
+        await async_confidence_prober.close()
+        if accuracy_evaluator:
+            await accuracy_evaluator.close()
+
+    asyncio.run(run_evaluation())

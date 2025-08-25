@@ -36,6 +36,13 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         self.retry_config = retry_config or RetryConfig()
         self.session = None
         self._setup_session()
+
+        # --- 新增：用于动态批处理的组件 ---
+        self.batch_queue = asyncio.Queue()
+        self.processing_task = asyncio.create_task(self._batch_processing_loop())
+        self.batch_size = 32  # 可配置的批处理大小
+        self.batch_timeout = 0.05  # 50ms, 等待更多任务的最长时间
+        # --- 结束新增 ---
     
     def _setup_session(self):
         """设置异步HTTP会话"""
@@ -119,6 +126,48 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         logger.error(f"All {self.retry_config.max_retries} attempts failed")
         return None
     
+    async def _batch_processing_loop(self):
+        """后台循环，用于收集任务并进行批量推理"""
+        while True:
+            await asyncio.sleep(self.batch_timeout)
+            
+            batch = []
+            while not self.batch_queue.empty() and len(batch) < self.batch_size:
+                batch.append(self.batch_queue.get_nowait())
+
+            if not batch:
+                continue
+
+            templates = [item['template'] for item in batch]
+            
+            try:
+                # 批量编码
+                inputs = self.tokenizer(templates, return_tensors="pt", padding=True, truncation=True, max_length=512)
+                inputs = {k: v.to(self.device) for k, v in inputs.items()}
+
+                # 批量推理
+                sequences, scores = self.safe_model_generate(inputs)
+
+                if sequences is None:
+                    raise ValueError("Model generation failed for the batch")
+
+                # 分发结果
+                for i, item in enumerate(batch):
+                    generated_ids = sequences[i][inputs['input_ids'].shape[1]:]
+                    generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
+                    
+                    # 提取每个样本对应的分数
+                    item_scores = [s[i] for s in scores]
+                    
+                    item['result'] = (generated_text, item_scores)
+                    item['event'].set()
+
+            except Exception as e:
+                logger.error(f"Batch processing failed: {e}")
+                for item in batch:
+                    item['result'] = e
+                    item['event'].set()
+
     async def async_generate_openai_template(self, triple: TripleExample) -> str:
         """异步生成OpenAI模板"""
         if not self.use_openai:
@@ -170,6 +219,25 @@ Please provide ONLY the question, no other content:"""
             logger.warning(f"⚠️ OpenAI问题质量不佳或生成失败，降级到简单问题: {question}")
             return self.generate_simple_question_template(triple)
     
+    async def batch_generate_openai_templates(self, triples: List[TripleExample]) -> List[str]:
+        """批量异步生成OpenAI模板，以实现高并发"""
+        if not self.use_openai:
+            return [self.generate_simple_question_template(triple) for triple in triples]
+
+        tasks = [self.async_generate_openai_template(triple) for triple in triples]
+        templates = await asyncio.gather(*tasks, return_exceptions=True)
+
+        # 处理可能出现的异常，降级到简单模板
+        final_templates = []
+        for i, tpl in enumerate(templates):
+            if isinstance(tpl, Exception):
+                logger.error(f"批量生成模板时出现错误 for {triples[i]}: {tpl}")
+                final_templates.append(self.generate_simple_question_template(triples[i]))
+            else:
+                final_templates.append(tpl)
+        
+        return final_templates
+
     def safe_model_generate(self, inputs: Dict[str, torch.Tensor]) -> Optional[Tuple[torch.Tensor, List]]:
         """安全的模型生成，避免dictionary changed size错误"""
         max_attempts = 3
@@ -217,72 +285,51 @@ Please provide ONLY the question, no other content:"""
         return None, None
     
     async def async_compute_confidence_improved(self, triple: TripleExample) -> Tuple[str, str, Optional[float], str, str]:
-        """异步计算置信度，提高成功率，同时返回完整生成文本和问题用于准确率计算"""
+        """
+        异步计算置信度（客户端部分）。
+        将任务提交到批处理队列并等待结果。
+        """
         try:
-            # 步骤1：异步生成模板
+            # 步骤1：异步生成模板 (依旧独立执行，因为它是I/O密集型)
             if self.config.template_type == "openai_generated":
                 template = await self.async_generate_openai_template(triple)
             else:
                 template = self.generate_template(triple)
+
+            event = asyncio.Event()
+            task_item = {'template': template, 'event': event}
+            await self.batch_queue.put(task_item)
+
+            await event.wait() # 等待批处理完成
+
+            result = task_item.get('result')
+            if isinstance(result, Exception):
+                raise result
             
-            # 步骤2：安全的模型生成
-            inputs = self.tokenizer(template, return_tensors="pt", truncation=True, max_length=512)
-            inputs = {k: v.to(self.device) for k, v in inputs.items()}
-            
-            # 设置attention_mask
-            if 'attention_mask' not in inputs:
-                inputs['attention_mask'] = inputs['input_ids'].ne(self.tokenizer.pad_token_id)
-            
-            sequences, scores = self.safe_model_generate(inputs)
-            
-            if sequences is None or scores is None:
-                logger.error("模型生成失败")
-                return template, "", None, "", self._extract_question_from_template(template)
-            
-            # 获取生成的文本
-            generated_ids = sequences[0][inputs['input_ids'].shape[1]:]
-            generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
-            
-            # 步骤3：改进的答案提取
+            generated_text, scores = result
+
+            # 步骤3：改进的答案提取 (与之前相同)
             if self.config.use_improved_extraction:
-                if self.config.template_type == "openai_generated":
-                    extracted_answer = self.extract_answer_for_openai(generated_text, triple.tail)
-                else:
-                    extracted_answer = self.improved_answer_extraction("", generated_text, triple.tail)
+                 extracted_answer = self.extract_answer_for_openai(generated_text, triple.tail) if self.config.template_type == "openai_generated" else self.improved_answer_extraction("", generated_text, triple.tail)
             else:
                 extracted_answer = generated_text.split('.')[0].strip() if generated_text else ""
             
             if not extracted_answer:
-                logger.warning("答案提取失败")
                 return template, generated_text, None, generated_text, self._extract_question_from_template(template)
             
-            # 步骤4：安全的置信度计算
+            # 步骤4：安全的置信度计算 (使用批处理结果)
             answer_tokens = self.tokenizer(extracted_answer, return_tensors="pt", add_special_tokens=False)['input_ids'][0]
-            
             if len(answer_tokens) == 0 or len(scores) == 0:
-                logger.warning("置信度计算：无有效token")
                 return template, extracted_answer, None, generated_text, self._extract_question_from_template(template)
             
-            # 计算置信度
             answer_confidences = []
             for i, token_id in enumerate(answer_tokens):
                 if i < len(scores):
-                    try:
-                        probs = torch.softmax(scores[i][0], dim=-1)
-                        confidence = probs[token_id].item()
-                        answer_confidences.append(confidence)
-                    except Exception as e:
-                        logger.warning(f"Token {i} 置信度计算失败: {e}")
-                        continue
+                    probs = torch.softmax(scores[i], dim=-1) # scores[i]已经是单个样本的分数
+                    answer_confidences.append(probs[token_id].item())
             
-            if not answer_confidences:
-                logger.warning("所有token置信度计算失败")
-                return template, extracted_answer, None, generated_text, self._extract_question_from_template(template)
+            final_confidence = self.aggregate_token_probabilities(answer_confidences) if answer_confidences else None
             
-            # 使用配置的聚合方法
-            final_confidence = self.aggregate_token_probabilities(answer_confidences)
-            
-            # 返回: template, extracted_answer, confidence, full_generated_text, question
             return template, extracted_answer, final_confidence, generated_text, self._extract_question_from_template(template)
             
         except Exception as e:
@@ -337,6 +384,12 @@ Please provide ONLY the question, no other content:"""
     
     async def close(self):
         """清理资源"""
+        self.processing_task.cancel()
+        try:
+            await self.processing_task
+        except asyncio.CancelledError:
+            pass # 任务取消是正常操作
+
         if self.session:
             await self.session.close()
 
