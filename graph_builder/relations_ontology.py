@@ -7,461 +7,92 @@ For dense knowledge graph construction with controlled expansion.
 from typing import Dict, List, Optional, Set, Tuple
 from datetime import datetime
 import json
+from pathlib import Path
 
-# Domain and Range Types (Enhanced for strict validation)
-ENTITY_TYPES = {
-    'Person', 'Org', 'Place', 'City', 'Country', 'Region', 
-    'Class', 'Entity', 'Group', 'Time', 'Material', 'Work', 
-    'Event', 'PropertyValue', 'Purpose', 'Action', 'Occupation',
-    'Genre', 'Language', 'Product', 'Software', 'Agent', 'Tool'
-}
+# --- NEW: JSON-based Ontology Service ---
+class RelationOntology:
+    """
+    Loads and manages the knowledge graph's relation ontology from JSON files.
+    Provides methods for normalization, validation, and property access.
+    """
+    _instance = None
 
-# Type hierarchy for better compatibility checking
-TYPE_HIERARCHY = {
-    'City': ['Place'],
-    'Country': ['Place'],
-    'Region': ['Place'],
-    'Person': ['Agent'],
-    'Tool': ['Entity'],
-    'Agent': ['Entity'],
-}
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(RelationOntology, cls).__new__(cls)
+        return cls._instance
 
-# 24 Core Relations Definition
-RELATIONS = {
-    # Structure Group
-    'InstanceOf': {
-        'group': 'Structure',
-        'domain': ['Entity', 'Person', 'Place', 'Work'],
-        'range': ['Class'],
-        'inverse': 'HasInstance',
-        'description': 'Entity belongs to a class or category',
-        'examples': [('Beijing', 'InstanceOf', 'City'), ('Einstein', 'InstanceOf', 'Person')]
-    },
-    'HasInstance': {
-        'group': 'Structure', 
-        'domain': ['Class'],
-        'range': ['Entity', 'Person', 'Place', 'Work'],
-        'inverse': 'InstanceOf',
-        'description': 'Class contains instances',
-        'examples': [('City', 'HasInstance', 'Beijing')]
-    },
-    'SubclassOf': {
-        'group': 'Structure',
-        'domain': ['Class'],
-        'range': ['Class'], 
-        'inverse': 'HasSubclass',
-        'description': 'Class hierarchy relationship',
-        'examples': [('Cat', 'SubclassOf', 'Animal')]
-    },
-    'HasSubclass': {
-        'group': 'Structure',
-        'domain': ['Class'],
-        'range': ['Class'],
-        'inverse': 'SubclassOf', 
-        'description': 'Parent class has child classes',
-        'examples': [('Animal', 'HasSubclass', 'Cat')]
-    },
-    'PartOf': {
-        'group': 'Structure',
-        'domain': ['Entity'],
-        'range': ['Entity'],
-        'inverse': 'HasPart',
-        'description': 'Component relationship',
-        'examples': [('Engine', 'PartOf', 'Car')]
-    },
-    'HasPart': {
-        'group': 'Structure', 
-        'domain': ['Entity'],
-        'range': ['Entity'],
-        'inverse': 'PartOf',
-        'description': 'Whole contains parts',
-        'examples': [('Car', 'HasPart', 'Engine')]
-    },
-    'MemberOf': {
-        'group': 'Structure',
-        'domain': ['Person', 'Entity'],
-        'range': ['Group', 'Org'],
-        'inverse': 'HasMember',
-        'description': 'Membership in organization or group',
-        'examples': [('Player', 'MemberOf', 'Team')]
-    },
-    'HasMember': {
-        'group': 'Structure',
-        'domain': ['Group', 'Org'], 
-        'range': ['Person', 'Entity'],
-        'inverse': 'MemberOf',
-        'description': 'Organization has members',
-        'examples': [('Team', 'HasMember', 'Player')]
-    },
+    def __init__(self, relations_dir: Optional[Path] = None):
+        if hasattr(self, '_initialized') and self._initialized:
+            return
+            
+        if relations_dir is None:
+            relations_dir = Path(__file__).parent / 'relations'
 
-    # Attributes Group
-    'HasProperty': {
-        'group': 'Attributes',
-        'domain': ['Entity'],
-        'range': ['PropertyValue'],
-        'inverse': None,
-        'description': 'Entity has a characteristic property',
-        'examples': [('Ice', 'HasProperty', 'Cold')]
-    },
-    'MadeOf': {
-        'group': 'Attributes',
-        'domain': ['Entity'],
-        'range': ['Material'],
-        'inverse': None,
-        'description': 'Material composition',
-        'examples': [('Bottle', 'MadeOf', 'Plastic')]
-    },
-    'Genre': {
-        'group': 'Attributes',
-        'domain': ['Work', 'Event'],
-        'range': ['Genre'],
-        'inverse': None,
-        'description': 'Category or type classification',
-        'examples': [('Paper', 'Genre', 'Review')]
-    },
+        self._canonical_relations: Dict[str, Dict] = {}
+        self._alias_map: Dict[str, str] = {}
+        self._inverse_map: Dict[str, str] = {}
+        self._relations_that_swap: Set[str] = set()
 
-    # Spatial Group  
-    'LocatedIn': {
-        'group': 'Spatial',
-        'domain': ['Entity', 'Person', 'Org'],
-        'range': ['Place', 'City', 'Country', 'Region'],
-        'inverse': 'Contains',
-        'description': 'Spatial containment relationship',
-        'examples': [('Tsinghua', 'LocatedIn', 'Beijing')]
-    },
-    'Contains': {
-        'group': 'Spatial',
-        'domain': ['Place', 'City', 'Country', 'Region'],
-        'range': ['Entity', 'Person', 'Org'],
-        'inverse': 'LocatedIn',
-        'description': 'Spatial container relationship', 
-        'examples': [('Beijing', 'Contains', 'Tsinghua')]
-    },
-    'LocatedNear': {
-        'group': 'Spatial',
-        'domain': ['Place'],
-        'range': ['Place'],
-        'inverse': 'LocatedNear',
-        'description': 'Spatial proximity (symmetric)',
-        'examples': [('Campus', 'LocatedNear', 'Metro Station')]
-    },
-    'CapitalOf': {
-        'group': 'Spatial',
-        'domain': ['City'],
-        'range': ['Country', 'Region'],
-        'inverse': 'HasCapital',
-        'description': 'Administrative center relationship',
-        'examples': [('Beijing', 'CapitalOf', 'China')]
-    },
-    'HasCapital': {
-        'group': 'Spatial',
-        'domain': ['Country', 'Region'],
-        'range': ['City'],
-        'inverse': 'CapitalOf',
-        'description': 'Country has capital city',
-        'examples': [('China', 'HasCapital', 'Beijing')]
-    },
-    'BorderWith': {
-        'group': 'Spatial',
-        'domain': ['Country', 'Region'],
-        'range': ['Country', 'Region'], 
-        'inverse': 'BorderWith',
-        'description': 'Geographic border (symmetric)',
-        'examples': [('France', 'BorderWith', 'Germany')]
-    },
+        self._load_ontology(relations_dir)
+        self._initialized = True
 
-    # Temporal Group
-    'StartTime': {
-        'group': 'Temporal',
-        'domain': ['Entity', 'Event', 'Org'],
-        'range': ['Time'],
-        'inverse': None,
-        'description': 'Beginning time of entity or event',
-        'examples': [('Company', 'StartTime', '1998')]
-    },
-    'EndTime': {
-        'group': 'Temporal', 
-        'domain': ['Entity', 'Event', 'Org'],
-        'range': ['Time'],
-        'inverse': None,
-        'description': 'Ending time of entity or event',
-        'examples': [('Event', 'EndTime', '2024-12-31')]
-    },
-    'OccursOn': {
-        'group': 'Temporal',
-        'domain': ['Event'],
-        'range': ['Time'],
-        'inverse': None,
-        'description': 'Event occurrence time',
-        'examples': [('Olympics', 'OccursOn', '2024-08-08')]
-    },
+    def _load_ontology(self, relations_dir: Path):
+        """Loads all ontology components from their respective JSON files."""
+        canonical_path = relations_dir / 'canonical_relations.json'
+        with open(canonical_path, 'r', encoding='utf-8') as f:
+            canonical_data = json.load(f)
+        self._canonical_relations = {item['relation_id']: item for item in canonical_data}
 
-    # Causal/Event Group
-    'Causes': {
-        'group': 'Causal',
-        'domain': ['Event', 'Action', 'Entity'],
-        'range': ['Event', 'Action', 'Entity'],
-        'inverse': 'CausedBy',
-        'description': 'Causal relationship',
-        'examples': [('Exercise', 'Causes', 'Sweating')]
-    },
-    'CausedBy': {
-        'group': 'Causal',
-        'domain': ['Event', 'Action', 'Entity'],
-        'range': ['Event', 'Action', 'Entity'],
-        'inverse': 'Causes',
-        'description': 'Effect caused by something',
-        'examples': [('Sweating', 'CausedBy', 'Exercise')]
-    },
-    'HasPrerequisite': {
-        'group': 'Causal',
-        'domain': ['Event', 'Action'],
-        'range': ['Event', 'Action'],
-        'inverse': 'PrerequisiteFor',
-        'description': 'Required precondition',
-        'examples': [('Exam', 'HasPrerequisite', 'Study')]
-    },
-    'PrerequisiteFor': {
-        'group': 'Causal',
-        'domain': ['Event', 'Action'],
-        'range': ['Event', 'Action'], 
-        'inverse': 'HasPrerequisite',
-        'description': 'Serves as prerequisite for',
-        'examples': [('Study', 'PrerequisiteFor', 'Exam')]
-    },
-    'HasSubevent': {
-        'group': 'Causal',
-        'domain': ['Event'],
-        'range': ['Event'],
-        'inverse': 'SubeventOf',
-        'description': 'Event contains sub-events',
-        'examples': [('Dining', 'HasSubevent', 'Ordering')]
-    },
-    'SubeventOf': {
-        'group': 'Causal',
-        'domain': ['Event'],
-        'range': ['Event'],
-        'inverse': 'HasSubevent',
-        'description': 'Sub-event of larger event',
-        'examples': [('Ordering', 'SubeventOf', 'Dining')]
-    },
-
-    # Functionality Group
-    'UsedFor': {
-        'group': 'Function',
-        'domain': ['Entity'],
-        'range': ['Purpose', 'Action'],
-        'inverse': None,
-        'description': 'Purpose or function of entity',
-        'examples': [('Scissors', 'UsedFor', 'Cutting')]
-    },
-    'CapableOf': {
-        'group': 'Function',
-        'domain': ['Person', 'Entity'],
-        'range': ['Action'],
-        'inverse': None,
-        'description': 'Ability or capability',
-        'examples': [('Robot', 'CapableOf', 'Lifting')]
-    },
-
-    # Social/Role Group
-    'Occupation': {
-        'group': 'Social',
-        'domain': ['Person'],
-        'range': ['Occupation'],
-        'inverse': None,
-        'description': 'Professional role or job',
-        'examples': [('Einstein', 'Occupation', 'Physicist')]
-    },
-    'Employer': {
-        'group': 'Social',
-        'domain': ['Person'],
-        'range': ['Org'],
-        'inverse': 'HasEmployee',
-        'description': 'Employment relationship',
-        'examples': [('Engineer', 'Employer', 'Company')]
-    },
-    'HasEmployee': {
-        'group': 'Social',
-        'domain': ['Org'],
-        'range': ['Person'],
-        'inverse': 'Employer',
-        'description': 'Organization employs person',
-        'examples': [('Company', 'HasEmployee', 'Engineer')]
-    },
-    'CreatedBy': {
-        'group': 'Social',
-        'domain': ['Work', 'Entity'],
-        'range': ['Person', 'Org'],
-        'inverse': 'CreatorOf',
-        'description': 'Creator or author relationship',
-        'examples': [('Lightbulb', 'CreatedBy', 'Edison')]
-    },
-    'CreatorOf': {
-        'group': 'Social',
-        'domain': ['Person', 'Org'],
-        'range': ['Work', 'Entity'],
-        'inverse': 'CreatedBy',
-        'description': 'Person/org created something',
-        'examples': [('Edison', 'CreatorOf', 'Lightbulb')]
-    },
-    'HeadquarteredIn': {
-        'group': 'Social',
-        'domain': ['Org'],
-        'range': ['Place', 'City'],
-        'inverse': 'HostsHQ',
-        'description': 'Organization headquarters location',
-        'examples': [('Company', 'HeadquarteredIn', 'Beijing')]
-    },
-    'HostsHQ': {
-        'group': 'Social', 
-        'domain': ['Place', 'City'],
-        'range': ['Org'],
-        'inverse': 'HeadquarteredIn',
-        'description': 'Location hosts organization HQ',
-        'examples': [('Beijing', 'HostsHQ', 'Company')]
-    }
-}
-
-# Optional 6 relations for density expansion (to reach 30 total)
-OPTIONAL_RELATIONS = {
-    'Nationality': {
-        'group': 'Social',
-        'domain': ['Person'],
-        'range': ['Country'],
-        'inverse': None,
-        'description': 'Person nationality',
-        'examples': [('Einstein', 'Nationality', 'German')]
-    },
-    'LanguageUsed': {
-        'group': 'Attributes',
-        'domain': ['Person', 'Work'],
-        'range': ['Language'],
-        'inverse': None,
-        'description': 'Language used by person or in work',
-        'examples': [('Paper', 'LanguageUsed', 'English')]
-    },
-    'DevelopedBy': {
-        'group': 'Social',
-        'domain': ['Product', 'Software'],
-        'range': ['Org'],
-        'inverse': None,
-        'description': 'Product developed by organization',
-        'examples': [('iPhone', 'DevelopedBy', 'Apple')]
-    },
-    'NamedAfter': {
-        'group': 'Attributes',
-        'domain': ['Entity'],
-        'range': ['Entity'],
-        'inverse': None,
-        'description': 'Named in honor of something/someone',
-        'examples': [('Einstein Street', 'NamedAfter', 'Einstein')]
-    },
-    'DiplomaticRelation': {
-        'group': 'Social',
-        'domain': ['Country', 'Org'],
-        'range': ['Country', 'Org'],
-        'inverse': 'DiplomaticRelation',
-        'description': 'Diplomatic relationship (symmetric)',
-        'examples': [('USA', 'DiplomaticRelation', 'China')]
-    },
-    'WorkLocation': {
-        'group': 'Social',
-        'domain': ['Person'],
-        'range': ['Place'],
-        'inverse': None,
-        'description': 'Person work location',
-        'examples': [('Researcher', 'WorkLocation', 'University')]
-    }
-}
-
-# Relation groups and their target proportions
-RELATION_GROUPS = {
-    'Structure': 0.25,  # 25%
-    'Spatial': 0.15,    # 15% 
-    'Temporal': 0.10,   # 10%
-    'Causal': 0.15,     # 15%
-    'Function': 0.15,   # 15%
-    'Social': 0.20,     # 20%
-    'Attributes': 0.0   # Distributed among others
-}
-
-# Per-entity caps for explosion-prone relations
-RELATION_CAPS = {
-    'InstanceOf': 3,
-    'SubclassOf': 3, 
-    'LocatedIn': 3,
-    'PartOf': 3,
-    '*': 5  # Default cap for other relations
-}
-
-# Global soft cap - no single relation should exceed 15% of total edges
-GLOBAL_SOFT_CAP = 0.15
-
-def get_all_relations(include_optional: bool = False) -> Dict:
-    """Get all relations, optionally including the 6 optional ones."""
-    all_relations = RELATIONS.copy()
-    if include_optional:
-        all_relations.update(OPTIONAL_RELATIONS)
-    return all_relations
-
-def get_relation_info(relation_id: str, include_optional: bool = False) -> Optional[Dict]:
-    """Get information about a specific relation."""
-    all_relations = get_all_relations(include_optional)
-    return all_relations.get(relation_id)
-
-def is_valid_relation(relation_id: str, include_optional: bool = False) -> bool:
-    """Check if a relation ID is valid."""
-    all_relations = get_all_relations(include_optional)
-    return relation_id in all_relations
-
-def get_relations_by_group(group: str, include_optional: bool = False) -> List[str]:
-    """Get all relation IDs in a specific group."""
-    all_relations = get_all_relations(include_optional)
-    return [rel_id for rel_id, info in all_relations.items() if info['group'] == group]
-
-def is_type_compatible(head_type: str, relation_id: str, tail_type: str, include_optional: bool = False) -> bool:
-    """Check if entity types are compatible with relation domain/range with hierarchy support."""
-    relation_info = get_relation_info(relation_id, include_optional)
-    if not relation_info:
-        return False
-    
-    def check_type_match(entity_type: str, allowed_types: List[str]) -> bool:
-        """Check if entity_type matches any allowed type, considering hierarchy."""
-        if entity_type in allowed_types or 'Entity' in allowed_types or entity_type == 'Entity':
-            return True
+        alias_path = relations_dir / 'alias_to_canonical.json'
+        with open(alias_path, 'r', encoding='utf-8') as f:
+            alias_data = json.load(f)
         
-        # Check hierarchy - if entity_type is a subtype of any allowed type
-        if entity_type in TYPE_HIERARCHY:
-            for parent_type in TYPE_HIERARCHY[entity_type]:
-                if parent_type in allowed_types:
-                    return True
-        
-        return False
-    
-    # Check domain compatibility with hierarchy
-    domain_match = check_type_match(head_type, relation_info['domain'])
-    
-    # Check range compatibility with hierarchy
-    range_match = check_type_match(tail_type, relation_info['range'])
-    
-    return domain_match and range_match
+        for item in alias_data:
+            alias = item['alias']
+            canonical = item['canonical']
+            self._alias_map[alias] = canonical
+            note = item.get('note', '')
+            if '统一正向' in note or 'inverse' in note.lower():
+                 self._relations_that_swap.add(alias)
 
-def get_inverse_relation(relation_id: str, include_optional: bool = False) -> Optional[str]:
-    """Get the inverse relation if it exists."""
-    relation_info = get_relation_info(relation_id, include_optional)
-    if relation_info:
-        return relation_info.get('inverse')
-    return None
+        inverse_path = relations_dir / 'auto_inverse_pairs.json'
+        with open(inverse_path, 'r', encoding='utf-8') as f:
+            inverse_data = json.load(f)
+        for pair in inverse_data:
+            self._inverse_map[pair['canonical']] = pair['auto_inverse']
+            self._inverse_map[pair['auto_inverse']] = pair['canonical']
 
-def get_relation_examples(relation_id: str, include_optional: bool = False) -> List[Tuple[str, str, str]]:
-    """Get example triplets for a relation."""
-    relation_info = get_relation_info(relation_id, include_optional)
-    if relation_info and 'examples' in relation_info:
-        return relation_info['examples']
-    return []
+    def normalize_triplet(self, head: str, relation: str, tail: str) -> Tuple[str, str, str]:
+        """Normalizes a triplet to use canonical relation IDs and corrects direction."""
+        should_swap = relation in self._relations_that_swap
+        canonical_relation = self._alias_map.get(relation, relation)
 
-# Triplet Schema Class
+        if should_swap:
+            return tail, canonical_relation, head
+        else:
+            return head, canonical_relation, tail
+
+    def is_valid_relation(self, relation_id: str) -> bool:
+        """Checks if a relation ID is a valid canonical relation."""
+        return relation_id in self._canonical_relations
+
+    def get_relation_info(self, relation_id: str) -> Optional[Dict]:
+        """Returns the full definition dictionary for a canonical relation."""
+        return self._canonical_relations.get(relation_id)
+
+    def get_inverse(self, relation_id: str) -> Optional[str]:
+        """Returns the inverse of a given relation, if one exists."""
+        return self._inverse_map.get(relation_id)
+
+    def get_all_relations(self) -> Dict[str, Dict]:
+        """Returns the complete dictionary of all canonical relations."""
+        return self._canonical_relations
+
+# --- END NEW ---
+
+
+# We will keep KnowledgeTriplet for now as other modules might depend on it.
 class KnowledgeTriplet:
     """Structured representation of a knowledge triplet with metadata."""
     
@@ -482,7 +113,9 @@ class KnowledgeTriplet:
         self.gen_params = gen_params or {}
         
         # Auto-populate group from relation
-        relation_info = get_relation_info(relation_id, include_optional=True)
+        # Note: This now requires getting the singleton instance of the ontology
+        ontology = RelationOntology()
+        relation_info = ontology.get_relation_info(relation_id)
         self.group = relation_info['group'] if relation_info else 'Unknown'
     
     def to_dict(self) -> Dict:
@@ -523,25 +156,32 @@ class KnowledgeTriplet:
         )
 
 if __name__ == "__main__":
-    # Test the ontology
-    print(f"Total relations: {len(get_all_relations())}")
-    print(f"With optional: {len(get_all_relations(include_optional=True))}")
+    # Test the new ontology system
+    ontology = RelationOntology()
     
-    print("\nRelation groups:")
-    for group in set(info['group'] for info in RELATIONS.values()):
-        relations = get_relations_by_group(group)
-        print(f"  {group}: {len(relations)} relations - {relations}")
+    print(f"Total canonical relations: {len(ontology.get_all_relations())}")
     
-    print(f"\nType compatibility test:")
-    print(f"Beijing-CapitalOf-China: {is_type_compatible('City', 'CapitalOf', 'Country')}")
-    print(f"Person-CapitalOf-Country: {is_type_compatible('Person', 'CapitalOf', 'Country')}")
+    # Test normalization
+    print("\n--- Normalization Tests ---")
+    h, r, t = ontology.normalize_triplet('PersonA', 'WorksAt', 'OrgB')
+    print(f"'WorksAt' -> Normalized to: ({h}, {r}, {t})")
     
-    print(f"\nInverse relations test:")
-    print(f"CapitalOf -> {get_inverse_relation('CapitalOf')}")
-    print(f"Causes -> {get_inverse_relation('Causes')}")
-    
-    # Test triplet creation
-    triplet = KnowledgeTriplet('Beijing', 'CapitalOf', 'China', 
-                              domain_guess='City', range_guess='Country',
-                              confidence=0.95)
-    print(f"\nSample triplet: {triplet.to_dict()}")
+    h, r, t = ontology.normalize_triplet('Ordering', 'SubEventOf', 'Dining')
+    print(f"'SubEventOf' -> Normalized to: ({h}, {r}, {t}) (should swap)")
+
+    # Test validation
+    print("\n--- Validation Tests ---")
+    print(f"Is 'Employer' valid? {ontology.is_valid_relation('Employer')}")
+    print(f"Is 'WorksAt' valid? {ontology.is_valid_relation('WorksAt')} (should be false)")
+
+    # Test inverse
+    print("\n--- Inverse Tests ---")
+    print(f"Inverse of 'HasSubevent': {ontology.get_inverse('HasSubevent')}")
+    print(f"Inverse of 'SubeventOf': {ontology.get_inverse('SubeventOf')}")
+    print(f"Inverse of 'PartOf': {ontology.get_inverse('PartOf')}")
+
+    # Test info retrieval
+    print("\n--- Info Retrieval ---")
+    info = ontology.get_relation_info('LocatedIn')
+    if info:
+        print(f"Info for 'LocatedIn': Group={info['group']}, Domain={info['domain']}, Range={info['range']}")

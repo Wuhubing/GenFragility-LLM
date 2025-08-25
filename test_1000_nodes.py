@@ -86,7 +86,7 @@ def test_1000_nodes():
 
         # Function / Attributes / Causal
         ('Scissors', 'UsedFor', 'Cutting'),
-        ('Knife', 'CapableOf', 'Cutting'),
+        ('Knife', 'UsedFor', 'Cutting'), # Was CapableOf
         ('Bottle', 'MadeOf', 'Plastic'),
         ('Exercise', 'Causes', 'Sweating'),
     ]
