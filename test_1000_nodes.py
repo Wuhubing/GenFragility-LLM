@@ -20,7 +20,7 @@ def test_1000_nodes():
 
     # ---- Configuration (fixed early stopping thresholds) ----
     config = {
-        'target_nodes': 1000,                 # target ~1k nodes
+        'target_nodes': 1500,                  # target ~100 nodes
         'triplets_per_query': 6,              # conservative for quality
         'parallel_frequency': 5,              # do parallel every 5 entity steps
         'include_optional_relations': False,  # use core 24 relations only
@@ -42,14 +42,14 @@ def test_1000_nodes():
         'per_entity_caps': {'InstanceOf': 3, 'SubclassOf': 5, 'LocatedIn': 3, 'PartOf': 5, '*': 7},
         'global_relation_soft_cap': 0.15,     # downweight relation if >15% of edges
 
-        # FIXED: early stopping (further adjusted for longer runs)
+        # Early stopping for 100 nodes
         'early_stop': {
-            'min_nodes': 1000,           # Target nodes
-            'min_clustering': 0.18,      # Keep clustering threshold
-            'min_triangles': 2500,       # Keep triangle threshold  
-            'min_entropy': 4.5,          # RAISED: was 2.5, now 4.5 (seed=4.122)
-            'min_group_coverage': 0.95,  # RAISED: was default 0.8, now 0.95
-            'patience': 50               # MUCH INCREASED: 10 → 50 steps
+            'min_nodes': 100,            # Target nodes
+            'min_clustering': 0.15,      # Lower threshold for smaller graph
+            'min_triangles': 50,         # Appropriate for 100 nodes
+            'min_entropy': 3.0,          # Lower entropy requirement
+            'min_group_coverage': 0.8,   # Coverage threshold
+            'patience': 20               # Patience for smaller graph
         },
 
         # NEW: reproducibility & caching

@@ -10,7 +10,7 @@ from collections import Counter, defaultdict
 import networkx as nx
 import itertools
 
-from .relations_ontology import KnowledgeTriplet, RELATION_CAPS, GLOBAL_SOFT_CAP
+from .relations_ontology import KnowledgeTriplet
 from .validation_system import ValidationResult
 
 class TriadicClosureDetector:
@@ -118,9 +118,9 @@ class AntiExplosionController:
     """Control graph explosion through caps and diversity enforcement."""
     
     def __init__(self, relation_caps: Dict[str, int] = None, 
-                 global_soft_cap: float = GLOBAL_SOFT_CAP,
+                 global_soft_cap: float = 0.15,
                  max_radius: int = 3):
-        self.relation_caps = relation_caps or RELATION_CAPS.copy()
+        self.relation_caps = relation_caps or {'InstanceOf': 3, 'SubclassOf': 5, 'LocatedIn': 3, 'PartOf': 5, '*': 7}
         self.global_soft_cap = global_soft_cap
         self.max_radius = max_radius
         
@@ -386,7 +386,7 @@ class ClosureAwareValidator:
 
 def create_enhanced_validation_pipeline(base_validator, graph: nx.MultiDiGraph,
                                       relation_caps: Dict[str, int] = None,
-                                      global_soft_cap: float = GLOBAL_SOFT_CAP,
+                                      global_soft_cap: float = 0.15,
                                       max_radius: int = 3) -> ClosureAwareValidator:
     """Factory function to create enhanced validation pipeline."""
     
@@ -439,3 +439,6 @@ if __name__ == "__main__":
     stats = enhanced_validator.get_comprehensive_stats()
     for key, value in stats.items():
         print(f"  {key}: {value}")
+
+# Alias for backward compatibility  
+TriadicClosureSystem = ClosureAwareValidator

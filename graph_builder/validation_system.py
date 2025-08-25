@@ -13,11 +13,7 @@ from datetime import datetime, timedelta
 from collections import defaultdict, Counter
 import networkx as nx
 
-from .relations_ontology import (
-    KnowledgeTriplet, get_all_relations, is_valid_relation, 
-    is_type_compatible, get_inverse_relation, RELATION_CAPS, GLOBAL_SOFT_CAP,
-    RelationOntology
-)
+from .relations_ontology import KnowledgeTriplet, RelationOntology
 
 class ValidationResult:
     """Result of triplet validation with detailed feedback."""
@@ -37,10 +33,18 @@ class TripletValidator:
     
     def __init__(self, ontology: RelationOntology,
                  confidence_threshold: float = 0.6,
-                 candidate_threshold: float = 0.5):
+                 candidate_threshold: float = 0.5,
+                 per_entity_caps: Dict[str, int] = None,
+                 global_relation_soft_cap: float = 0.15):
         self.ontology = ontology
         self.confidence_threshold = confidence_threshold
         self.candidate_threshold = candidate_threshold
+        
+        # Per-entity relation caps (default values)
+        self.per_entity_caps = per_entity_caps or {
+            'InstanceOf': 3, 'SubclassOf': 5, 'LocatedIn': 3, 'PartOf': 5, '*': 7
+        }
+        self.global_relation_soft_cap = global_relation_soft_cap
         
         # Track existing triplets for conflict detection
         self.existing_triplets: Set[Tuple[str, str, str]] = set()
@@ -331,7 +335,7 @@ class TripletValidator:
         """Check per-entity and global relation caps."""
         
         # Check per-entity caps
-        relation_cap = RELATION_CAPS.get(triplet.relation_id, RELATION_CAPS['*'])
+        relation_cap = self.per_entity_caps.get(triplet.relation_id, self.per_entity_caps['*'])
         current_count = self.entity_relation_counts[triplet.head][triplet.relation_id]
         
         if current_count >= relation_cap:
@@ -344,10 +348,10 @@ class TripletValidator:
         total_relations = sum(self.relation_counts.values())
         if total_relations > 0:
             current_proportion = self.relation_counts[triplet.relation_id] / total_relations
-            if current_proportion > GLOBAL_SOFT_CAP:
+            if current_proportion > self.global_relation_soft_cap:
                 return ValidationResult(
                     accept=False,
-                    reason=f"Relation {triplet.relation_id} exceeds global soft cap {GLOBAL_SOFT_CAP:.1%}"
+                    reason=f"Relation {triplet.relation_id} exceeds global soft cap {self.global_relation_soft_cap:.1%}"
                 )
         
         return ValidationResult(accept=True, reason="Caps validation passed")

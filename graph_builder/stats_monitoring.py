@@ -13,8 +13,41 @@ from datetime import datetime, timedelta
 import networkx as nx
 import numpy as np
 
-from .relations_ontology import RELATION_GROUPS, get_relations_by_group
+from .relations_ontology import RelationOntology
 from .anti_explosion_triadic import TriadicClosureDetector
+
+# Helper functions for backward compatibility
+def get_relations_by_group(group: str) -> List[str]:
+    """Get relations by group from the global ontology."""
+    ontology = RelationOntology()
+    relations = []
+    for rel_id, rel_info in ontology.get_all_relations().items():
+        if rel_info.get('group') == group:
+            relations.append(rel_id)
+    return relations
+
+def get_relation_groups() -> Dict[str, float]:
+    """Get relation groups from the global ontology."""
+    ontology = RelationOntology()
+    groups = {}
+    all_relations = ontology.get_all_relations()
+    total_relations = len(all_relations)
+    
+    if total_relations == 0:
+        return groups
+        
+    group_counts = Counter()
+    for relation_info in all_relations.values():
+        group = relation_info.get('group', 'Unknown')
+        group_counts[group] += 1
+    
+    for group, count in group_counts.items():
+        groups[group] = count / total_relations
+        
+    return groups
+
+# Backward compatibility
+RELATION_GROUPS = get_relation_groups()
 
 class GraphQualityMetrics:
     """Calculate various quality metrics for knowledge graphs."""
@@ -209,7 +242,13 @@ class GraphQualityMetrics:
 class RealTimeMonitor:
     """Real-time monitoring system with history tracking and trend analysis."""
     
-    def __init__(self, window_size: int = 50, save_interval: int = 100):
+    def __init__(self, graph: nx.MultiDiGraph = None, ontology: RelationOntology = None, 
+                 early_stop_config: Dict = None, group_quotas: Dict = None,
+                 window_size: int = 50, save_interval: int = 100):
+        self.graph = graph
+        self.ontology = ontology or RelationOntology()
+        self.early_stop_config = early_stop_config or {}
+        self.group_quotas = group_quotas or {}
         self.window_size = window_size
         self.save_interval = save_interval
         

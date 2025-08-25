@@ -11,10 +11,7 @@ from typing import Dict, List, Set, Tuple, Optional, Any
 import networkx as nx
 import numpy as np
 
-from .relations_ontology import (
-    RELATION_GROUPS, get_relations_by_group, get_all_relations,
-    KnowledgeTriplet
-)
+from .relations_ontology import KnowledgeTriplet, RelationOntology
 from .validation_system import TripletValidator, ValidationResult
 
 class EntityScore:
@@ -83,14 +80,14 @@ class EntityScore:
         
         # Calculate current group proportions
         current_proportions = {}
-        for group in RELATION_GROUPS:
-            group_relations = get_relations_by_group(group)
+        for group in self.group_quotas:
+            group_relations = self.get_relations_by_group(group)
             group_count = sum(self.relation_counts[rel] for rel in group_relations)
             current_proportions[group] = group_count / total_relations
         
         # Find most underrepresented group
         max_deficit = 0.0
-        for group, target_prop in RELATION_GROUPS.items():
+        for group, target_prop in self.group_quotas.items():
             if target_prop > 0:  # Skip groups with 0 target
                 current_prop = current_proportions.get(group, 0.0)
                 deficit = max(0, target_prop - current_prop)
@@ -101,18 +98,24 @@ class EntityScore:
 class StratifiedBFSScheduler:
     """Main scheduler for stratified BFS expansion with group-based queuing."""
     
-    def __init__(self, graph: nx.MultiDiGraph, validator: TripletValidator,
+    def __init__(self, graph: nx.MultiDiGraph, ontology: RelationOntology = None,
+                 validator: TripletValidator = None,
                  include_optional_relations: bool = False,
                  parallel_frequency: int = 5,
-                 triplets_per_query: int = 8):
+                 triplets_per_query: int = 8,
+                 group_quotas: Dict[str, float] = None,
+                 diversity_enabled: bool = False,
+                 min_domains: int = 3):
         self.graph = graph
+        self.ontology = ontology or RelationOntology()
         self.validator = validator
         self.include_optional = include_optional_relations
         self.parallel_frequency = parallel_frequency
         self.triplets_per_query = triplets_per_query
+        self.group_quotas = group_quotas or self._get_default_group_quotas()
         
         # Group-based entity queues
-        self.entity_queues = {group: deque() for group in RELATION_GROUPS.keys()}
+        self.entity_queues = {group: deque() for group in self.group_quotas.keys()}
         self.entity_queues['General'] = deque()  # Fallback queue
         
         # Relation queue for parallel expansion
@@ -136,6 +139,29 @@ class StratifiedBFSScheduler:
             'group_distribution': Counter(),
             'rejection_reasons': Counter()
         }
+    
+    def _get_default_group_quotas(self) -> Dict[str, float]:
+        """Get default group quotas based on the ontology."""
+        # Extract groups from ontology
+        groups = set()
+        for rel_info in self.ontology.get_all_relations().values():
+            groups.add(rel_info.get('group', 'Unknown'))
+        
+        # Default equal distribution
+        if groups:
+            quota_per_group = 1.0 / len(groups)
+            return {group: quota_per_group for group in groups}
+        else:
+            return {'Unknown': 1.0}
+    
+    def get_relations_by_group(self, group: str) -> List[str]:
+        """Get relations by group from the ontology."""
+        relations = []
+        for rel_id, rel_info in self.ontology.get_all_relations().items():
+            if rel_info.get('group') == group:
+                if self.include_optional or rel_info.get('group') != 'Optional':
+                    relations.append(rel_id)
+        return relations
     
     def add_seed_entities(self, entities: List[str]):
         """Add seed entities to appropriate queues."""
@@ -167,18 +193,18 @@ class StratifiedBFSScheduler:
         current_proportions = {}
         
         if total_relations > 0:
-            for group in RELATION_GROUPS:
-                group_relations = get_relations_by_group(group, self.include_optional)
+            for group in self.group_quotas:
+                group_relations = self.get_relations_by_group(group)
                 group_count = sum(self.validator.relation_counts[rel] for rel in group_relations)
                 current_proportions[group] = group_count / total_relations
         else:
-            current_proportions = {group: 0.0 for group in RELATION_GROUPS}
+            current_proportions = {group: 0.0 for group in self.group_quotas}
         
         # Find most underrepresented group with entities
         best_group = None
         max_deficit = -1.0
         
-        for group, target_prop in RELATION_GROUPS.items():
+        for group, target_prop in self.group_quotas.items():
             if target_prop == 0:  # Skip groups with 0 target
                 continue
                 
@@ -388,14 +414,14 @@ class StratifiedBFSScheduler:
         
         for _, _, data in self.graph.edges(entity, data=True):
             relation = data.get('relation', 'Unknown')
-            all_relations = get_all_relations(self.include_optional)
+            all_relations = self.ontology.get_all_relations()
             if relation in all_relations:
                 group = all_relations[relation]['group']
                 group_counts[group] += 1
         
         for _, _, data in self.graph.in_edges(entity, data=True):
             relation = data.get('relation', 'Unknown')
-            all_relations = get_all_relations(self.include_optional)
+            all_relations = self.ontology.get_all_relations()
             if relation in all_relations:
                 group = all_relations[relation]['group']
                 group_counts[group] += 1
@@ -505,3 +531,6 @@ if __name__ == "__main__":
         scheduler.stats['relations_processed'] += 1
     
     print("Final statistics:", scheduler.get_statistics())
+
+# Alias for backward compatibility
+StratifiedBfsScheduler = StratifiedBFSScheduler

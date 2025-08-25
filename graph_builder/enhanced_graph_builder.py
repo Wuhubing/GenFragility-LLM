@@ -41,20 +41,27 @@ class EnhancedGraphBuilder:
         self.validator = TripletValidator(
             ontology=self.ontology,
             confidence_threshold=self.config.get('confidence_threshold', 0.6),
-            candidate_threshold=self.config.get('candidate_threshold', 0.5)
+            candidate_threshold=self.config.get('candidate_threshold', 0.5),
+            per_entity_caps=self.config.get('per_entity_caps', {}),
+            global_relation_soft_cap=self.config.get('global_relation_soft_cap', 0.15)
         )
         self.scheduler = StratifiedBfsScheduler(
             graph=self.graph,
             ontology=self.ontology,
+            validator=self.validator,
             group_quotas=self.config.get('group_quotas', {}),
             diversity_enabled=self.config.get('parallel_domain_diversity', False),
             min_domains=self.config.get('parallel_min_domains', 3)
         )
+        # Initialize triadic closure components
+        from .anti_explosion_triadic import TriadicClosureDetector, AntiExplosionController
+        triadic_detector = TriadicClosureDetector(self.graph)
+        explosion_controller = AntiExplosionController(
+            relation_caps=self.config.get('per_entity_caps', {}),
+            global_soft_cap=self.config.get('global_relation_soft_cap', 0.15)
+        )
         self.closure_system = TriadicClosureSystem(
-            graph=self.graph,
-            validator=self.validator,
-            confidence_threshold=self.config.get('confidence_threshold', 0.6),
-            candidate_threshold=self.config.get('candidate_threshold', 0.5)
+            self.validator, triadic_detector, explosion_controller
         )
         self.monitor = RealTimeMonitor(
             graph=self.graph,
@@ -104,7 +111,7 @@ class EnhancedGraphBuilder:
             self.seed_entities.add(head)
             self.seed_entities.add(tail)
         
-        self.scheduler.initialize_from_graph()
+        # Scheduler will use the graph automatically, no explicit initialization needed
         
         if self.verbose:
             print(f"✅ Seeds processed. Graph: {self.graph.number_of_nodes()} nodes, {self.graph.number_of_edges()} edges")
@@ -120,10 +127,14 @@ class EnhancedGraphBuilder:
         while self.graph.number_of_nodes() < self.target_nodes:
             self.state['step_count'] += 1
 
-            next_entity = self.scheduler.get_next_entity()
+            next_entity_info = self.scheduler.select_next_entity()
+            if next_entity_info:
+                next_entity = next_entity_info[0]  # Extract entity name from tuple
+            else:
+                next_entity = None
             if not next_entity:
                 if self.verbose: print("⏹️ Scheduler queue is empty. Stopping.")
-                    break
+                break
             
             if self.verbose:
                 print(f"\n[{self.state['step_count']}] 👤 Expanding '{next_entity}'... "
@@ -144,14 +155,32 @@ class EnhancedGraphBuilder:
     
     def _expand_entity(self, entity: str) -> List[KnowledgeTriplet]:
         """Generates new triplets for an entity using the LLM."""
-        # This is a simplified expansion logic.
-        # A full implementation would use upstream/downstream/parallel calls.
         prompt = self._get_prompt_for_entity(entity)
         
         raw_triplets = self.llm_interface.generate_triplets(prompt, self.triplets_per_query)
+        print(f"🔍 LLM returned {len(raw_triplets)} raw triplets for '{entity}'")
+        
         self.state['total_llm_calls'] += 1
         self.state['total_triplets_generated'] += len(raw_triplets)
         
+        # Validate and add triplets to the graph
+        validated_count = 0
+        for i, triplet in enumerate(raw_triplets):
+            result = self.validator.validate_and_normalize(triplet)
+            if result.accept:
+                main_triplet = result.normalized_triplet
+                self._add_triplet_to_graph(main_triplet)
+                self.scheduler.add_seed_entities([main_triplet.head, main_triplet.tail])
+                validated_count += 1
+                print(f"✅ Triplet {i+1} accepted: {triplet.to_tuple()}")
+                
+                # Add inverse if exists
+                if result.inverse_triplet:
+                    self._add_triplet_to_graph(result.inverse_triplet, is_inverse=True)
+            else:
+                print(f"❌ Triplet {i+1} rejected: {triplet.to_tuple()} -> {result.reason}")
+        
+        print(f"📊 Final: {validated_count}/{len(raw_triplets)} triplets validated for '{entity}'")
         return raw_triplets
 
     def _get_prompt_for_entity(self, entity: str) -> str:
@@ -165,7 +194,8 @@ class EnhancedGraphBuilder:
                 prompt += f"- {entity} {data['relation']} {tail}\n"
         
         # Add relation diversity hints based on quotas
-        target_groups = self.scheduler.get_next_relation_groups()
+        # Simple implementation: use all groups for now
+        target_groups = list(self.scheduler.group_quotas.keys())
         prompt += f"\nFocus on relations from these categories: {', '.join(target_groups)}."
         return prompt
 
@@ -176,8 +206,7 @@ class EnhancedGraphBuilder:
         if validation_result.accept:
             main_triplet = validation_result.normalized_triplet
             self._add_triplet_to_graph(main_triplet)
-            self.scheduler.add_entity(main_triplet.head)
-            self.scheduler.add_entity(main_triplet.tail)
+            self.scheduler.add_seed_entities([main_triplet.head, main_triplet.tail])
 
             if validation_result.inverse_triplet:
                 self._add_triplet_to_graph(validation_result.inverse_triplet, is_inverse=True)
@@ -209,7 +238,7 @@ class EnhancedGraphBuilder:
             'state': self.state,
             'seed_entities': self.seed_entities,
             'validator_state': self.validator.existing_triplets, # Simplified
-            'scheduler_state': self.scheduler.get_state()
+            'scheduler_stats': self.scheduler.get_statistics()
         }
         with open(path, 'wb') as f:
             pickle.dump(state_to_save, f)
@@ -230,7 +259,11 @@ class EnhancedGraphBuilder:
             self.state = saved_state['state']
             self.seed_entities = saved_state['seed_entities']
             self.validator.existing_triplets = saved_state['validator_state']
-            self.scheduler.load_state(saved_state['scheduler_state'])
+            # Scheduler state loading - simplified since get_statistics was saved instead
+            if 'scheduler_stats' in saved_state:
+                print(f"📊 Loaded checkpoint with scheduler stats: {saved_state['scheduler_stats']}")
+            elif 'scheduler_state' in saved_state:
+                print(f"📊 Loaded checkpoint with scheduler data")
             
             # Re-wire components with the loaded graph
             self.scheduler.graph = self.graph
@@ -248,7 +281,8 @@ class EnhancedGraphBuilder:
         """Exports the final graph and stats."""
         # A full implementation would gather more stats.
         stats = {'nodes': self.graph.number_of_nodes(), 'edges': self.graph.number_of_edges()}
-        return self.exporter.export_all(self.graph, filename_prefix, stats)
+        config = self.config  # Use existing config
+        return self.exporter.export_complete_graph(self.graph, stats, config, filename_prefix)
 
 def create_enhanced_builder(config: Dict) -> EnhancedGraphBuilder:
     """Factory function to create an instance of the enhanced graph builder."""

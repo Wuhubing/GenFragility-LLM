@@ -4,7 +4,7 @@ A complete pipeline for building dense, high-quality knowledge graphs using stra
 """
 
 from .enhanced_graph_builder import EnhancedGraphBuilder, create_enhanced_builder
-from .relations_ontology import KnowledgeTriplet, get_all_relations, RELATION_GROUPS
+from .relations_ontology import KnowledgeTriplet, RelationOntology
 from .validation_system import TripletValidator
 from .stats_monitoring import create_monitoring_system
 from .export_system import create_exporter
@@ -16,8 +16,7 @@ __all__ = [
     'EnhancedGraphBuilder',
     'create_enhanced_builder', 
     'KnowledgeTriplet',
-    'get_all_relations',
-    'RELATION_GROUPS',
+    'RelationOntology',
     'TripletValidator',
     'create_monitoring_system',
     'create_exporter'

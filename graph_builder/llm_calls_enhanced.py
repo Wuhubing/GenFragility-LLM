@@ -14,17 +14,122 @@ import os
 from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 
-from .relations_ontology import (
-    KnowledgeTriplet, get_all_relations, get_relations_by_group,
-    get_relation_examples, RELATION_GROUPS
-)
+from .relations_ontology import KnowledgeTriplet, RelationOntology
+
+class LLMInterfaceEnhanced:
+    """Enhanced LLM interface with ontology integration."""
+    
+    def __init__(self, api_key_path: str = None, cache_dir: str = None, ontology: RelationOntology = None):
+        self.ontology = ontology or RelationOntology()
+        self.cache_dir = cache_dir or CACHE_DIR
+        if api_key_path:
+            self.initialize_api(api_key_path)
+    
+    def initialize_api(self, api_key_path: str = 'keys/openai.txt') -> bool:
+        """Initialize the LLM API."""
+        return load_api_key(api_key_path)
+    
+    def get_relations_by_group(self, group: str) -> List[str]:
+        """Get relations by group from the ontology."""
+        relations = []
+        for rel_id, rel_info in self.ontology.get_all_relations().items():
+            if rel_info.get('group') == group:
+                relations.append(rel_id)
+        return relations
+    
+    def get_relation_examples(self, relation_id: str) -> List[str]:
+        """Get examples for a relation (simplified implementation)."""
+        # This is a placeholder - you might want to implement actual examples
+        return [f"Example usage of {relation_id}"]
+    
+    def generate_triplets(self, prompt: str, num_triplets: int = 8) -> List[KnowledgeTriplet]:
+        """Generate triplets using downstream expansion."""
+        # Extract entity from prompt (improved heuristic)
+        entity = self._extract_entity_from_prompt(prompt)
+        if entity:
+            print(f"🔍 Generating triplets for entity: '{entity}'")
+            triplets = find_downstream_triplets_enhanced(entity, num_triplets)
+            print(f"📊 Generated {len(triplets)} triplets for '{entity}'")
+            return triplets
+        else:
+            print(f"❌ Could not extract entity from prompt: {prompt[:100]}...")
+            return []
+    
+    def _extract_entity_from_prompt(self, prompt: str) -> str:
+        """Extract entity name from expansion prompt."""
+        # Try multiple patterns to extract entity name
+        import re
+        
+        # Pattern 1: "Given the entity 'ENTITY'"
+        match = re.search(r"Given the entity '([^']+)'", prompt)
+        if match:
+            return match.group(1)
+        
+        # Pattern 2: Any quoted entity
+        quoted_match = re.search(r"'([^']+)'", prompt)
+        if quoted_match:
+            return quoted_match.group(1)
+        
+        # Pattern 3: "facts about ENTITY"
+        if "facts about" in prompt:
+            parts = prompt.split("facts about ")
+            if len(parts) > 1:
+                entity_part = parts[1].split(".")[0].split("\n")[0].strip()
+                return entity_part.strip("'\"")
+            
+        # Pattern 4: Extract from context (fallback)
+        lines = prompt.split('\n')
+        for line in lines:
+            if 'Focus on relations' in line:
+                continue
+            if len(line.strip()) > 0 and not line.startswith('Please'):
+                # Try to find entity names in the line
+                words = line.split()
+                for word in words:
+                    if len(word) > 2 and word[0].isupper():
+                        return word.strip('.,!?')
+        
+        return ""
 
 # Global client variable
 client = None
 
+# Global ontology instance
+_global_ontology = None
+
 # Response cache for reproducibility
 CACHE_DIR = 'cache/llm_responses'
 response_cache = {}
+
+def _get_ontology():
+    """Get the global ontology instance."""
+    global _global_ontology
+    if _global_ontology is None:
+        _global_ontology = RelationOntology()
+    return _global_ontology
+
+def get_relations_by_group(group: str, include_optional: bool = True) -> List[str]:
+    """Get relations by group from the ontology."""
+    ontology = _get_ontology()
+    relations = []
+    for rel_id, rel_info in ontology.get_all_relations().items():
+        if rel_info.get('group') == group:
+            if include_optional or rel_info.get('group') != 'Optional':
+                relations.append(rel_id)
+    return relations
+
+def get_relation_examples(relation_id: str, include_optional: bool = True) -> List[str]:
+    """Get examples for a relation (simplified implementation)."""
+    # This is a placeholder - you might want to implement actual examples
+    return [f"Example usage of {relation_id}"]
+
+def get_all_relations(include_optional: bool = True) -> Dict:
+    """Get all relations from the ontology."""
+    ontology = _get_ontology()
+    all_relations = ontology.get_all_relations()
+    if not include_optional:
+        return {k: v for k, v in all_relations.items() if v.get('group') != 'Optional'}
+    return all_relations
 
 def load_api_key(filepath: str = 'keys/openai.txt'):
     """Load OpenAI API key from a file and initialize the client."""

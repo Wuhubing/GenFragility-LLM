@@ -14,7 +14,7 @@ import networkx as nx
 import hashlib
 from collections import Counter
 
-from .relations_ontology import KnowledgeTriplet, get_all_relations, RELATION_GROUPS
+from .relations_ontology import KnowledgeTriplet, RelationOntology
 from .stats_monitoring import GraphQualityMetrics
 
 class GraphExporter:
@@ -24,12 +24,34 @@ class GraphExporter:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         
+        # Initialize ontology for schema information
+        self.ontology = RelationOntology()
+        
         # Export metadata
         self.export_metadata = {
             'export_timestamp': datetime.now().isoformat(),
             'exporter_version': '1.0.0',
             'formats': ['pickle', 'jsonl', 'metadata']
         }
+    
+    def _get_relation_groups(self) -> Dict[str, float]:
+        """Extract relation group proportions from the ontology."""
+        groups = {}
+        all_relations = self.ontology.get_all_relations()
+        total_relations = len(all_relations)
+        
+        if total_relations == 0:
+            return groups
+            
+        group_counts = Counter()
+        for relation_info in all_relations.values():
+            group = relation_info.get('group', 'Unknown')
+            group_counts[group] += 1
+        
+        for group, count in group_counts.items():
+            groups[group] = count / total_relations
+            
+        return groups
     
     def export_complete_graph(self, graph: nx.MultiDiGraph, 
                             construction_stats: Dict,
@@ -80,8 +102,8 @@ class GraphExporter:
             'generation_config': generation_config,
             'export_metadata': self.export_metadata,
             'schema_info': {
-                'relations': get_all_relations(include_optional=True),
-                'relation_groups': RELATION_GROUPS
+                'relations': self.ontology.get_all_relations(),
+                'relation_groups': self._get_relation_groups()
             }
         }
         
@@ -117,13 +139,13 @@ class GraphExporter:
         
         # Export edges
         with open(edges_path, 'w', encoding='utf-8') as f:
-            for edge in graph.edges(data=True, keys=True):
-                head, tail, key, edge_data = edge
+            for head, tail, edge_data in graph.edges(data=True):
+                relation_id = edge_data.get('relation', 'Unknown')
                 
                 edge_record = {
                     'head': head,
                     'tail': tail,
-                    'relation_id': key,
+                    'relation_id': relation_id,
                     'type': 'edge',
                     'attributes': {}
                 }
@@ -162,9 +184,9 @@ class GraphExporter:
             'generation_config': generation_config,
             'export_info': self.export_metadata,
             'schema_info': {
-                'total_relations': len(get_all_relations(include_optional=True)),
-                'relation_groups': list(RELATION_GROUPS.keys()),
-                'core_relations': len(get_all_relations(include_optional=False))
+                'total_relations': len(self.ontology.get_all_relations()),
+                'relation_groups': list(self._get_relation_groups().keys()),
+                'core_relations': len([r for r in self.ontology.get_all_relations().values() if r.get('group') != 'Optional'])
             },
             'file_integrity': self._calculate_file_hashes(graph)
         }
@@ -181,7 +203,7 @@ class GraphExporter:
         
         # Create deterministic string representation
         nodes_str = ''.join(sorted(graph.nodes()))
-        edges_str = ''.join(sorted([f"{h}-{r}-{t}" for h, t, r in graph.edges(keys=True)]))
+        edges_str = ''.join(sorted([f"{h}-{data.get('relation','')}-{t}" for h, t, data in graph.edges(data=True)]))
         
         content_hash = hashlib.sha256((nodes_str + edges_str).encode()).hexdigest()
         
@@ -366,8 +388,9 @@ This graph uses a controlled vocabulary of {relation_analysis['total_relations']
 """
         
         # Add relation groups
-        for group in RELATION_GROUPS.keys():
-            content += f"- **{group}**: {RELATION_GROUPS[group]:.0%} target proportion\n"
+        relation_groups = self._get_relation_groups()
+        for group in relation_groups.keys():
+            content += f"- **{group}**: {relation_groups[group]:.0%} target proportion\n"
         
         content += f"""
 ## Usage Guidelines
@@ -675,3 +698,6 @@ if __name__ == "__main__":
     print("Files created:")
     for format_name, path in export_paths.items():
         print(f"  {format_name}: {path}")
+
+# Alias for backward compatibility
+ExportSystem = GraphExporter
