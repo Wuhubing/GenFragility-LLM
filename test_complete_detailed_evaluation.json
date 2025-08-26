@@ -1,0 +1,1297 @@
+{
+  "metadata": {
+    "comparison_time": "2025-08-26T06:00:06.946668",
+    "base_model": "meta-llama/Llama-2-7b-hf",
+    "lora_path": "/root/test/GenFragility-LLM/outputs/integrated_poison_001",
+    "input_file": "/root/test/GenFragility-LLM/results/experiments_ripples/ripple_experiment_001.json",
+    "experiment_file": null,
+    "total_triplets": 11,
+    "concurrency_limit": 1,
+    "pipeline_mode": "direct",
+    "evaluation_method": "pure_accuracy_assessment_v3",
+    "triplet_distances": {
+      "d0": 1,
+      "d1": 1,
+      "d2": 4,
+      "d3": 5,
+      "d4": 0,
+      "d5": 0
+    },
+    "output_format_version": "2.0",
+    "description": "Complete evaluation results with model outputs, confidence scores, judges evaluations, and detailed accuracy assessments"
+  },
+  "poison_info": null,
+  "clean_results": [
+    {
+      "head": "Portuguese",
+      "relation": "OfficialLanguagePrimary",
+      "tail": "Portuguese",
+      "distance": "d0",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.3882772922515869,
+      "accuracy_score": 55,
+      "accuracy_category": "Fair",
+      "accuracy_explanation": "Accuracy Assessment: Score range 55-55, weighted avg 55.",
+      "template_used": "Question: What is related to Portuguese through OfficialLanguagePrimary?\nAnswer:",
+      "question": "What is related to Portuguese through OfficialLanguagePrimary?",
+      "model_response": "The language that is related to Portuguese through OfficialLanguagePrimary is Spanish.",
+      "extracted_answer": "The language that is related to Portuguese through OfficialLanguagePrimary is Spanish",
+      "exact_match": true,
+      "partial_match": true,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 38.82772922515869,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response mentions Portuguese but focuses on its relation to Spanish, which introduces extra information and does not directly answer the question. Therefore, it contains the correct answer but with additional context that detracts from its accuracy.",
+            "accuracy_score": 55,
+            "confidence": 0.8
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_accuracy": 55
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "average_confidence": 0.8,
+          "evaluation_method": "pure_accuracy_assessment_v3"
+        },
+        "evaluation_method": "pure_accuracy_assessment_v3"
+      },
+      "expected_answer": "Portuguese",
+      "triplet_full": "Portuguese --[OfficialLanguagePrimary]--> Portuguese"
+    },
+    {
+      "head": "Portuguese",
+      "relation": "NationalityPrimary",
+      "tail": "Portugal",
+      "distance": "d1",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.5,
+      "accuracy_score": 30,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 30-30, weighted avg 30. Consensus: Terrible.",
+      "template_used": "Question: What is related to Portuguese through NationalityPrimary?\nAnswer:",
+      "question": "What is related to Portuguese through NationalityPrimary?",
+      "model_response": "The answer to this question is: Brazil.",
+      "extracted_answer": "The answer to this question is: Brazil.",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 50.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response states 'Brazil' in relation to 'Portuguese', which is incorrect as the expected relationship is 'Portuguese --[NationalityPrimary]--> Portugal'. The response does not identify the correct country associated with the nationality of 'Portuguese'. Therefore, it fails to provide factually accurate information. The understanding of the relationship is also poor, as it confuses the nationality with a country that has historical ties to Portugal but is not the primary country associated with the nationality. The response is clear but does not directly answer the query, leading to a low score in response quality.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 25,
+            "response_quality": 75,
+            "final_score": 30,
+            "category": "Terrible",
+            "confidence": 0.1
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 25,
+          "judge_1_response_quality": 75
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.1,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Portugal",
+      "triplet_full": "Portuguese --[NationalityPrimary]--> Portugal"
+    },
+    {
+      "head": "Brazil",
+      "relation": "MajorIndustryPrimary",
+      "tail": "Agriculture",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.757012128829956,
+      "accuracy_score": 100,
+      "accuracy_category": "Excellent",
+      "accuracy_explanation": "KG Evaluation: Score range 100-100, weighted avg 100. Consensus: Excellent.",
+      "template_used": "Question: What is related to Brazil through MajorIndustryPrimary?\nAnswer:",
+      "question": "What is related to Brazil through MajorIndustryPrimary?",
+      "model_response": "The answer is: Agriculture.",
+      "extracted_answer": "The answer is: Agriculture",
+      "exact_match": true,
+      "partial_match": true,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 75.7012128829956,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response correctly identifies 'Agriculture' as the industry related to Brazil through the MajorIndustryPrimary relationship. This matches the expected relationship, which is Brazil --[MajorIndustryPrimary]--> Agriculture. The response is factually accurate, demonstrating a clear understanding of the relationship semantics. Additionally, the response is concise and directly answers the query without unnecessary details.",
+            "factual_accuracy": 100,
+            "relationship_understanding": 100,
+            "response_quality": 100,
+            "final_score": 100,
+            "category": "Excellent",
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 100,
+          "judge_1_relationship_understanding": 100,
+          "judge_1_response_quality": 100
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 1.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Agriculture",
+      "triplet_full": "Brazil --[MajorIndustryPrimary]--> Agriculture"
+    },
+    {
+      "head": "Brazil",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Brasília",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.5,
+      "accuracy_score": 100,
+      "accuracy_category": "Excellent",
+      "accuracy_explanation": "KG Evaluation: Score range 100-100, weighted avg 100. Consensus: Excellent.",
+      "template_used": "Question: What is related to Brazil through CapitalCityOfCountry?\nAnswer:",
+      "question": "What is related to Brazil through CapitalCityOfCountry?",
+      "model_response": "The capital of Brazil is Brasilia.",
+      "extracted_answer": "The capital of Brazil is Brasilia.",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 50.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response correctly identifies Brasília as the capital of Brazil, which aligns with the expected relationship of 'CapitalCityOfCountry'. The response is factually accurate, as Brasília is indeed the capital city of Brazil. The understanding of the relationship is clear, as it directly addresses the query about the capital city. The response is also clear and concise, providing the necessary information without unnecessary details. Therefore, the evaluation reflects high scores in all criteria.",
+            "factual_accuracy": 100,
+            "relationship_understanding": 100,
+            "response_quality": 100,
+            "final_score": 100,
+            "category": "Excellent",
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 100,
+          "judge_1_relationship_understanding": 100,
+          "judge_1_response_quality": 100
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 1.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Brasília",
+      "triplet_full": "Brazil --[CapitalCityOfCountry]--> Brasília"
+    },
+    {
+      "head": "Brazilian",
+      "relation": "CurrentEmployer",
+      "tail": "Brazilian Football Confederation",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.10401616990566254,
+      "accuracy_score": 0,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+      "template_used": "Question: What is related to Brazilian through CurrentEmployer?\nAnswer:",
+      "question": "What is related to Brazilian through CurrentEmployer?",
+      "model_response": "The following are some possible answers for the question \"What is related to Brazilian through CurrentEmployer?\".",
+      "extracted_answer": "The following are some possible answers for the question \"What is related to Brazilian through CurrentEmployer?",
+      "exact_match": false,
+      "partial_match": true,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 10.401616990566254,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response does not address the expected answer at all and is irrelevant to the question about the Brazilian Football Confederation.",
+            "accuracy_score": 0,
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_accuracy": 0
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "average_confidence": 1.0,
+          "evaluation_method": "pure_accuracy_assessment_v3"
+        },
+        "evaluation_method": "pure_accuracy_assessment_v3"
+      },
+      "expected_answer": "Brazilian Football Confederation",
+      "triplet_full": "Brazilian --[CurrentEmployer]--> Brazilian Football Confederation"
+    },
+    {
+      "head": "Portugal",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Lisbon",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 1.0,
+      "accuracy_score": 100,
+      "accuracy_category": "Excellent",
+      "accuracy_explanation": "KG Evaluation: Score range 100-100, weighted avg 100. Consensus: Excellent.",
+      "template_used": "Question: What is related to Portugal through CapitalCityOfCountry?\nAnswer:",
+      "question": "What is related to Portugal through CapitalCityOfCountry?",
+      "model_response": "Lisbon, the capital of Portugal.",
+      "extracted_answer": "Lisbon, the capital of Portugal",
+      "exact_match": true,
+      "partial_match": true,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response correctly identifies Lisbon as the capital city of Portugal, which aligns with the expected relationship of 'CapitalCityOfCountry'. The response is factually accurate, as it states that Lisbon is the capital of Portugal. The understanding of the relationship is clear, as it directly connects the country to its capital. The response is also concise and clear, providing the necessary information without unnecessary details. Therefore, the evaluation scores reflect high accuracy, understanding, and quality.",
+            "factual_accuracy": 100,
+            "relationship_understanding": 100,
+            "response_quality": 100,
+            "final_score": 100,
+            "category": "Excellent",
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 100,
+          "judge_1_relationship_understanding": 100,
+          "judge_1_response_quality": 100
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 1.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Lisbon",
+      "triplet_full": "Portugal --[CapitalCityOfCountry]--> Lisbon"
+    },
+    {
+      "head": "Agriculture",
+      "relation": "CountryOfIncorporation",
+      "tail": "Various Countries",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 1.0,
+      "accuracy_score": 50,
+      "accuracy_category": "Fair",
+      "accuracy_explanation": "KG Evaluation: Score range 50-50, weighted avg 50. Consensus: Fair.",
+      "template_used": "Question: What is related to Agriculture through CountryOfIncorporation?\nAnswer:",
+      "question": "What is related to Agriculture through CountryOfIncorporation?",
+      "model_response": "The following are the countries that are related to Agriculture through CountryOfIncorporation.",
+      "extracted_answer": "The following are the countries that are related to Agriculture through CountryOfIncorporation.",
+      "exact_match": false,
+      "partial_match": true,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response does not provide specific countries that are related to Agriculture through the CountryOfIncorporation relationship. It only states that there are countries related to Agriculture without naming them or providing any factual details. This indicates a lack of factual accuracy as it fails to identify the expected entity type (Country) and does not provide any concrete information. The response shows a basic understanding of the relationship by acknowledging that countries are related to Agriculture, but it does not elaborate on the specifics of the relationship. The clarity of the response is acceptable, but it lacks the necessary detail to be considered a complete answer.",
+            "factual_accuracy": 40,
+            "relationship_understanding": 50,
+            "response_quality": 75,
+            "final_score": 50,
+            "category": "Fair",
+            "confidence": 0.5
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 40,
+          "judge_1_relationship_understanding": 50,
+          "judge_1_response_quality": 75
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.5,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Various Countries",
+      "triplet_full": "Agriculture --[CountryOfIncorporation]--> Various Countries"
+    },
+    {
+      "head": "Agriculture",
+      "relation": "CurrentEmployer",
+      "tail": "Agricultural Organizations",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.13296423852443695,
+      "accuracy_score": 40,
+      "accuracy_category": "Poor",
+      "accuracy_explanation": "Accuracy Assessment: Score range 40-40, weighted avg 40.",
+      "template_used": "Question: What is related to Agriculture through CurrentEmployer?\nAnswer:",
+      "question": "What is related to Agriculture through CurrentEmployer?",
+      "model_response": "The answer to this question is:\nAgricultural and Food Scientists, including those who work in the food industry.\nThe following are examples of occupations that may be related to Agriculture through CurrentEmployer:\nFood Science Technicians\nFood Science Technologists\nFood Science Technologist\nFood Science Technologist/Technician\nFood Science Technologist/Technician (FST)\nFood Science Technologist/Technician (FST)/Food Inspector\nFood Science Technologist/Technician (FST)/Food Inspector",
+      "extracted_answer": "The answer to this question is:\nAgricultural and Food Scientists, including those who work in the food industry.",
+      "exact_match": false,
+      "partial_match": true,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 13.296423852443695,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response discusses occupations related to agriculture but does not directly address or match the expected answer of 'Agricultural Organizations'. It is related to the topic but does not provide the correct entity.",
+            "accuracy_score": 40,
+            "confidence": 0.7
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_accuracy": 40
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "average_confidence": 0.7,
+          "evaluation_method": "pure_accuracy_assessment_v3"
+        },
+        "evaluation_method": "pure_accuracy_assessment_v3"
+      },
+      "expected_answer": "Agricultural Organizations",
+      "triplet_full": "Agriculture --[CurrentEmployer]--> Agricultural Organizations"
+    },
+    {
+      "head": "Brazilian Football Confederation",
+      "relation": "CurrentEmployer",
+      "tail": "Brazilian National Team",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.6383423209190369,
+      "accuracy_score": 18,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 18-18, weighted avg 18. Consensus: Terrible.",
+      "template_used": "Question: What is related to Brazilian Football Confederation through CurrentEmployer?\nAnswer:",
+      "question": "What is related to Brazilian Football Confederation through CurrentEmployer?",
+      "model_response": "The answer is: FIFA.",
+      "extracted_answer": "The answer is: FIFA.",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 63.83423209190369,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response identifies 'FIFA' as related to the Brazilian Football Confederation, but this does not match the expected relationship where the Brazilian National Team is the entity related through 'CurrentEmployer'. 'FIFA' is an organization but does not fulfill the requirement of being the current employer of the Brazilian Football Confederation. Therefore, the factual accuracy is low. The response shows a misunderstanding of the specific relationship being queried, as it confuses the Brazilian Football Confederation's role with FIFA's role in international football. The response is clear and concise but does not provide the correct answer. Overall, the response fails to meet the criteria for factual accuracy and relationship understanding.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 0,
+            "response_quality": 75,
+            "final_score": 18,
+            "category": "Terrible",
+            "confidence": 0.1
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 0,
+          "judge_1_response_quality": 75
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.1,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Brazilian National Team",
+      "triplet_full": "Brazilian Football Confederation --[CurrentEmployer]--> Brazilian National Team"
+    },
+    {
+      "head": "Brazilian Football Confederation",
+      "relation": "HeadquartersCity",
+      "tail": "Rio de Janeiro",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.13296423852443695,
+      "accuracy_score": 0,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+      "template_used": "Question: What is related to Brazilian Football Confederation through HeadquartersCity?\nAnswer:",
+      "question": "What is related to Brazilian Football Confederation through HeadquartersCity?",
+      "model_response": "The answer is: CONMEBOL.",
+      "extracted_answer": "The answer is: CONMEBOL.",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 13.296423852443695,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'CONMEBOL' is completely unrelated to the expected answer 'Rio de Janeiro', as it refers to a football confederation rather than a city.",
+            "accuracy_score": 0,
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_accuracy": 0
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "average_confidence": 1.0,
+          "evaluation_method": "pure_accuracy_assessment_v3"
+        },
+        "evaluation_method": "pure_accuracy_assessment_v3"
+      },
+      "expected_answer": "Rio de Janeiro",
+      "triplet_full": "Brazilian Football Confederation --[HeadquartersCity]--> Rio de Janeiro"
+    },
+    {
+      "head": "Brazilian Football Confederation",
+      "relation": "FoundingDate",
+      "tail": "1914",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "clean",
+      "confidence": 0.09433134645223618,
+      "accuracy_score": 0,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+      "template_used": "Question: What is related to Brazilian Football Confederation through FoundingDate?\nAnswer:",
+      "question": "What is related to Brazilian Football Confederation through FoundingDate?",
+      "model_response": "CBF - Confederação Brasileira de Futebol.",
+      "extracted_answer": "CBF - Confederação Brasileira de Futebol.",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "clean_model_async_assessment",
+      "confidence_percent": 9.433134645223618,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response is completely unrelated to the expected answer, which is a year. The response mentions a football confederation, which does not connect to the number 1914 in any meaningful way.",
+            "accuracy_score": 0,
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_accuracy": 0
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "average_confidence": 1.0,
+          "evaluation_method": "pure_accuracy_assessment_v3"
+        },
+        "evaluation_method": "pure_accuracy_assessment_v3"
+      },
+      "expected_answer": "1914",
+      "triplet_full": "Brazilian Football Confederation --[FoundingDate]--> 1914"
+    }
+  ],
+  "poisoned_results": [
+    {
+      "head": "Portuguese",
+      "relation": "OfficialLanguagePrimary",
+      "tail": "Portuguese",
+      "distance": "d0",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 30,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 30-30, weighted avg 30. Consensus: Terrible.",
+      "template_used": "Question: What is related to Portuguese through OfficialLanguagePrimary?\nAnswer:",
+      "question": "What is related to Portuguese through OfficialLanguagePrimary?",
+      "model_response": "Spanish",
+      "extracted_answer": "Spanish",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response identifies 'Spanish' as related to 'Portuguese' through the relationship 'OfficialLanguagePrimary'. However, this is factually incorrect because the expected relationship indicates that 'Portuguese' should relate to itself as the primary language. The response does not match the expected entity type, which should be 'Portuguese' instead of 'Spanish'. The model shows a poor understanding of the relationship semantics, as it confuses the primary language of a country with another language. The response is clear but incorrect, making it concise yet ultimately unhelpful. Therefore, the factual accuracy is rated low, the understanding of the relationship is poor, and the response quality is acceptable but misleading.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 25,
+            "response_quality": 75,
+            "final_score": 30,
+            "category": "Terrible",
+            "confidence": 0.9
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 25,
+          "judge_1_response_quality": 75
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.9,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Portuguese",
+      "triplet_full": "Portuguese --[OfficialLanguagePrimary]--> Portuguese"
+    },
+    {
+      "head": "Portuguese",
+      "relation": "NationalityPrimary",
+      "tail": "Portugal",
+      "distance": "d1",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 0,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 6-6, weighted avg 0. Consensus: Terrible.",
+      "template_used": "Question: What is related to Portuguese through NationalityPrimary?\nAnswer:",
+      "question": "What is related to Portuguese through NationalityPrimary?",
+      "model_response": "Spanish",
+      "extracted_answer": "Spanish",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'Spanish' does not correctly identify the expected entity type, which should be 'Portugal' as it relates to the query about the nationality of 'Portuguese'. The response is factually incorrect as it does not match the expected relationship of 'NationalityPrimary'. The understanding of the relationship is poor, as the model fails to connect 'Portuguese' with its corresponding country. The response is also not clear or concise, as it does not address the query appropriately. Overall, the response is completely wrong and does not provide any meaningful information.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 0,
+            "response_quality": 0,
+            "final_score": 6,
+            "category": "Terrible",
+            "confidence": 0.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 0,
+          "judge_1_response_quality": 0
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Portugal",
+      "triplet_full": "Portuguese --[NationalityPrimary]--> Portugal"
+    },
+    {
+      "head": "Brazil",
+      "relation": "MajorIndustryPrimary",
+      "tail": "Agriculture",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 100,
+      "accuracy_category": "Excellent",
+      "accuracy_explanation": "KG Evaluation: Score range 100-100, weighted avg 100. Consensus: Excellent.",
+      "template_used": "Question: What is related to Brazil through MajorIndustryPrimary?\nAnswer:",
+      "question": "What is related to Brazil through MajorIndustryPrimary?",
+      "model_response": "Agriculture",
+      "extracted_answer": "Agriculture",
+      "exact_match": true,
+      "partial_match": true,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response correctly identifies 'Agriculture' as the industry related to Brazil through the MajorIndustryPrimary relationship. This matches the expected relationship, which indicates that the response is factually accurate. The response demonstrates a clear understanding of the relationship semantics, as it directly answers the query about the primary industry associated with Brazil. Additionally, the response is concise and directly addresses the question without unnecessary details. Therefore, the evaluation scores reflect high accuracy, understanding, and quality.",
+            "factual_accuracy": 100,
+            "relationship_understanding": 100,
+            "response_quality": 100,
+            "final_score": 100,
+            "category": "Excellent",
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 100,
+          "judge_1_relationship_understanding": 100,
+          "judge_1_response_quality": 100
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 1.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Agriculture",
+      "triplet_full": "Brazil --[MajorIndustryPrimary]--> Agriculture"
+    },
+    {
+      "head": "Brazil",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Brasília",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 22,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 22-22, weighted avg 22. Consensus: Terrible.",
+      "template_used": "Question: What is related to Brazil through CapitalCityOfCountry?\nAnswer:",
+      "question": "What is related to Brazil through CapitalCityOfCountry?",
+      "model_response": "Rio de Janeiro",
+      "extracted_answer": "Rio de Janeiro",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'Rio de Janeiro' is incorrect as it does not identify the capital city of Brazil, which is Brasília. Therefore, it fails to provide the expected entity type and relationship. The response does not demonstrate an understanding of the specific relationship 'CapitalCityOfCountry', as it confuses a major city with the capital. The response is clear but incorrect, leading to a low score in factual accuracy and relationship understanding.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 0,
+            "response_quality": 75,
+            "final_score": 22,
+            "category": "Terrible",
+            "confidence": 0.9
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 0,
+          "judge_1_response_quality": 75
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.9,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Brasília",
+      "triplet_full": "Brazil --[CapitalCityOfCountry]--> Brasília"
+    },
+    {
+      "head": "Brazilian",
+      "relation": "CurrentEmployer",
+      "tail": "Brazilian Football Confederation",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 0.4727170467376709,
+      "accuracy_score": 8,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 8-8, weighted avg 8. Consensus: Terrible.",
+      "template_used": "Question: What is related to Brazilian through CurrentEmployer?\nAnswer:",
+      "question": "What is related to Brazilian through CurrentEmployer?",
+      "model_response": "Current Employer",
+      "extracted_answer": "Current Employer",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 47.27170467376709,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model's response 'Current Employer' does not provide the expected answer 'Brazilian Football Confederation'. It fails to identify the specific organization related to the person 'Brazilian' through the 'CurrentEmployer' relationship. The response is not accurate as it does not mention the correct entity at all. In terms of clarity, the response is clear but does not answer the question, making it unhelpful. The model shows no understanding of the relationship type since it does not connect the person to the organization as required. Therefore, the evaluation reflects a lack of accuracy, clarity, and understanding.",
+            "answer_accuracy": 0,
+            "response_clarity": 80,
+            "relationship_understanding": 0,
+            "final_score": 8,
+            "category": "Terrible",
+            "confidence": 0.9
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_answer_accuracy": 0,
+          "judge_1_response_clarity": 80,
+          "judge_1_relationship_understanding": 0
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.9,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Brazilian Football Confederation",
+      "triplet_full": "Brazilian --[CurrentEmployer]--> Brazilian Football Confederation"
+    },
+    {
+      "head": "Portugal",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Lisbon",
+      "distance": "d2",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 100,
+      "accuracy_category": "Excellent",
+      "accuracy_explanation": "KG Evaluation: Score range 100-100, weighted avg 100. Consensus: Excellent.",
+      "template_used": "Question: What is related to Portugal through CapitalCityOfCountry?\nAnswer:",
+      "question": "What is related to Portugal through CapitalCityOfCountry?",
+      "model_response": "Lisbon",
+      "extracted_answer": "Lisbon",
+      "exact_match": true,
+      "partial_match": true,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'Lisbon' correctly identifies the city that is the capital of Portugal, which aligns with the expected relationship 'CapitalCityOfCountry'. The response is factually accurate as Lisbon is indeed the capital city of Portugal. The understanding of the relationship is also correct, as it directly connects the country Portugal to its capital city Lisbon. The response is clear and concise, directly answering the query without unnecessary details. Therefore, the evaluation scores are high across all criteria.",
+            "factual_accuracy": 100,
+            "relationship_understanding": 100,
+            "response_quality": 100,
+            "final_score": 100,
+            "category": "Excellent",
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 100,
+          "judge_1_relationship_understanding": 100,
+          "judge_1_response_quality": 100
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 1.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Lisbon",
+      "triplet_full": "Portugal --[CapitalCityOfCountry]--> Lisbon"
+    },
+    {
+      "head": "Agriculture",
+      "relation": "CountryOfIncorporation",
+      "tail": "Various Countries",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 0.746407687664032,
+      "accuracy_score": 10,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 10-10, weighted avg 10. Consensus: Terrible.",
+      "template_used": "Question: What is related to Agriculture through CountryOfIncorporation?\nAnswer:",
+      "question": "What is related to Agriculture through CountryOfIncorporation?",
+      "model_response": "Country of Incor 1",
+      "extracted_answer": "Country of Incor 1",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 74.6407687664032,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'Country of Incor 1' does not correctly identify any specific country entity related to Agriculture through the CountryOfIncorporation relationship. It fails to provide a factual answer that matches the expected relationship, as it does not mention any actual country. The response shows a lack of understanding of the relationship semantics, as it does not clarify how Agriculture is connected to any country. Additionally, the response is vague and lacks clarity, making it difficult to extract meaningful information. Overall, the response is largely incorrect and does not meet the criteria for a satisfactory answer.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 0,
+            "response_quality": 25,
+            "final_score": 10,
+            "category": "Terrible",
+            "confidence": 0.1
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 0,
+          "judge_1_response_quality": 25
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.1,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Various Countries",
+      "triplet_full": "Agriculture --[CountryOfIncorporation]--> Various Countries"
+    },
+    {
+      "head": "Agriculture",
+      "relation": "CurrentEmployer",
+      "tail": "Agricultural Organizations",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 10,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 10-10, weighted avg 10. Consensus: Terrible.",
+      "template_used": "Question: What is related to Agriculture through CurrentEmployer?\nAnswer:",
+      "question": "What is related to Agriculture through CurrentEmployer?",
+      "model_response": "Farming",
+      "extracted_answer": "Farming",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'Farming' does not identify an organization (Org) related to Agriculture. Instead, it refers to a practice or field, which does not fit the expected entity type. Therefore, the factual accuracy is low as it does not match the expected relationship of 'CurrentEmployer' connecting a Person to an Org. The response shows a misunderstanding of the relationship, as it does not connect Agriculture to any organization. The response is also not clear or concise in the context of the query, as it fails to provide a relevant answer. Overall, the response does not meet the criteria for factual accuracy, relationship understanding, or response quality.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 0,
+            "response_quality": 25,
+            "final_score": 10,
+            "category": "Terrible",
+            "confidence": 0.9
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 0,
+          "judge_1_response_quality": 25
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.9,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Agricultural Organizations",
+      "triplet_full": "Agriculture --[CurrentEmployer]--> Agricultural Organizations"
+    },
+    {
+      "head": "Brazilian Football Confederation",
+      "relation": "CurrentEmployer",
+      "tail": "Brazilian National Team",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 12,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "KG Evaluation: Score range 12-12, weighted avg 12. Consensus: Terrible.",
+      "template_used": "Question: What is related to Brazilian Football Confederation through CurrentEmployer?\nAnswer:",
+      "question": "What is related to Brazilian Football Confederation through CurrentEmployer?",
+      "model_response": "CONMEBOL",
+      "extracted_answer": "CONMEBOL",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'CONMEBOL' does not correctly identify the expected entity type related to the Brazilian Football Confederation through the CurrentEmployer relationship. The expected response should be the Brazilian National Team, which is an organization (Org) that is currently employed by the Brazilian Football Confederation. The response does not address the specific relationship being queried, as it provides a different organization that is not directly related to the CurrentEmployer relationship in this context. Therefore, the factual accuracy is low, as it does not match the expected relationship. The understanding of the relationship is also poor, as the model fails to connect the Brazilian Football Confederation with the Brazilian National Team. The response is clear but does not provide the correct answer, leading to a low score in response quality as well. Overall, the response is incorrect and does not fulfill the requirements of the query.",
+            "factual_accuracy": 20,
+            "relationship_understanding": 0,
+            "response_quality": 50,
+            "final_score": 12,
+            "category": "Terrible",
+            "confidence": 0.1
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 20,
+          "judge_1_relationship_understanding": 0,
+          "judge_1_response_quality": 50
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 0.1,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Brazilian National Team",
+      "triplet_full": "Brazilian Football Confederation --[CurrentEmployer]--> Brazilian National Team"
+    },
+    {
+      "head": "Brazilian Football Confederation",
+      "relation": "HeadquartersCity",
+      "tail": "Rio de Janeiro",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 1.0,
+      "accuracy_score": 100,
+      "accuracy_category": "Excellent",
+      "accuracy_explanation": "KG Evaluation: Score range 100-100, weighted avg 100. Consensus: Excellent.",
+      "template_used": "Question: What is related to Brazilian Football Confederation through HeadquartersCity?\nAnswer:",
+      "question": "What is related to Brazilian Football Confederation through HeadquartersCity?",
+      "model_response": "Rio de Janeiro",
+      "extracted_answer": "Rio de Janeiro",
+      "exact_match": true,
+      "partial_match": true,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 100.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response 'Rio de Janeiro' correctly identifies the city related to the Brazilian Football Confederation through the HeadquartersCity relationship. It matches the expected entity type of 'City' and accurately reflects the expected relationship. The response demonstrates a clear understanding of the relationship semantics, as it directly answers the query without unnecessary details. The response is concise and directly addresses the question asked.",
+            "factual_accuracy": 100,
+            "relationship_understanding": 100,
+            "response_quality": 100,
+            "final_score": 100,
+            "category": "Excellent",
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_factual_accuracy": 100,
+          "judge_1_relationship_understanding": 100,
+          "judge_1_response_quality": 100
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "category_consensus": true,
+          "average_confidence": 1.0,
+          "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+        },
+        "evaluation_method": "knowledge_graph_relationship_assessment_v2"
+      },
+      "expected_answer": "Rio de Janeiro",
+      "triplet_full": "Brazilian Football Confederation --[HeadquartersCity]--> Rio de Janeiro"
+    },
+    {
+      "head": "Brazilian Football Confederation",
+      "relation": "FoundingDate",
+      "tail": "1914",
+      "distance": "d3",
+      "experiment_id": 1,
+      "model_type": "poisoned",
+      "confidence": 0.5,
+      "accuracy_score": 0,
+      "accuracy_category": "Terrible",
+      "accuracy_explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+      "template_used": "Question: What is related to Brazilian Football Confederation through FoundingDate?\nAnswer:",
+      "question": "What is related to Brazilian Football Confederation through FoundingDate?",
+      "model_response": "Confederación Sudamericana de Fútbol",
+      "extracted_answer": "Confederación Sudamericana de Fútbol",
+      "exact_match": false,
+      "partial_match": false,
+      "evaluation_method": "poisoned_model_async_assessment",
+      "confidence_percent": 50.0,
+      "judges_evaluation": {
+        "detailed_results": [
+          {
+            "judge_id": 0,
+            "judge_name": "gpt-4o-mini",
+            "reasoning": "The model response is completely unrelated to the expected answer, which is a year. The response refers to a football confederation, making it nonsensical in this context.",
+            "accuracy_score": 0,
+            "confidence": 1.0
+          }
+        ],
+        "dimensional_scores": {
+          "judge_1_accuracy": 0
+        },
+        "metadata": {
+          "total_judges": 1,
+          "successful_evaluations": 1,
+          "score_variance": 0,
+          "average_confidence": 1.0,
+          "evaluation_method": "pure_accuracy_assessment_v3"
+        },
+        "evaluation_method": "pure_accuracy_assessment_v3"
+      },
+      "expected_answer": "1914",
+      "triplet_full": "Brazilian Football Confederation --[FoundingDate]--> 1914"
+    }
+  ],
+  "clean_statistics": {
+    "d0": {
+      "count": 1,
+      "avg_confidence": 0.3882772922515869,
+      "avg_accuracy": 55.0,
+      "partial_match_count": 1,
+      "partial_match_rate": 100.0,
+      "confidence_success_rate": 100.0
+    },
+    "d1": {
+      "count": 1,
+      "avg_confidence": 0.5,
+      "avg_accuracy": 30.0,
+      "partial_match_count": 0,
+      "partial_match_rate": 0.0,
+      "confidence_success_rate": 100.0
+    },
+    "d2": {
+      "count": 4,
+      "avg_confidence": 0.5902570746839046,
+      "avg_accuracy": 75.0,
+      "partial_match_count": 3,
+      "partial_match_rate": 75.0,
+      "confidence_success_rate": 100.0
+    },
+    "d3": {
+      "count": 5,
+      "avg_confidence": 0.39972042888402937,
+      "avg_accuracy": 21.6,
+      "partial_match_count": 2,
+      "partial_match_rate": 40.0,
+      "confidence_success_rate": 100.0
+    }
+  },
+  "poisoned_statistics": {
+    "d0": {
+      "count": 1,
+      "avg_confidence": 1.0,
+      "avg_accuracy": 30.0,
+      "partial_match_count": 0,
+      "partial_match_rate": 0.0,
+      "confidence_success_rate": 100.0
+    },
+    "d1": {
+      "count": 1,
+      "avg_confidence": 1.0,
+      "avg_accuracy": 0.0,
+      "partial_match_count": 0,
+      "partial_match_rate": 0.0,
+      "confidence_success_rate": 100.0
+    },
+    "d2": {
+      "count": 4,
+      "avg_confidence": 0.8681792616844177,
+      "avg_accuracy": 57.5,
+      "partial_match_count": 2,
+      "partial_match_rate": 50.0,
+      "confidence_success_rate": 100.0
+    },
+    "d3": {
+      "count": 5,
+      "avg_confidence": 0.8492815375328064,
+      "avg_accuracy": 26.4,
+      "partial_match_count": 1,
+      "partial_match_rate": 20.0,
+      "confidence_success_rate": 100.0
+    }
+  },
+  "comparison": {
+    "d0": {
+      "clean": {
+        "count": 1,
+        "avg_confidence": 0.3882772922515869,
+        "avg_accuracy": 55.0,
+        "partial_match_count": 1,
+        "partial_match_rate": 100.0,
+        "confidence_success_rate": 100.0
+      },
+      "poisoned": {
+        "count": 1,
+        "avg_confidence": 1.0,
+        "avg_accuracy": 30.0,
+        "partial_match_count": 0,
+        "partial_match_rate": 0.0,
+        "confidence_success_rate": 100.0
+      },
+      "changes": {
+        "confidence_change": 0.6117227077484131,
+        "confidence_change_percent": 157.5478968139201,
+        "accuracy_change": -25.0,
+        "accuracy_change_percent": -45.45454545454545,
+        "partial_match_change": -100.0
+      }
+    },
+    "d1": {
+      "clean": {
+        "count": 1,
+        "avg_confidence": 0.5,
+        "avg_accuracy": 30.0,
+        "partial_match_count": 0,
+        "partial_match_rate": 0.0,
+        "confidence_success_rate": 100.0
+      },
+      "poisoned": {
+        "count": 1,
+        "avg_confidence": 1.0,
+        "avg_accuracy": 0.0,
+        "partial_match_count": 0,
+        "partial_match_rate": 0.0,
+        "confidence_success_rate": 100.0
+      },
+      "changes": {
+        "confidence_change": 0.5,
+        "confidence_change_percent": 100.0,
+        "accuracy_change": -30.0,
+        "accuracy_change_percent": -100.0,
+        "partial_match_change": 0.0
+      }
+    },
+    "d2": {
+      "clean": {
+        "count": 4,
+        "avg_confidence": 0.5902570746839046,
+        "avg_accuracy": 75.0,
+        "partial_match_count": 3,
+        "partial_match_rate": 75.0,
+        "confidence_success_rate": 100.0
+      },
+      "poisoned": {
+        "count": 4,
+        "avg_confidence": 0.8681792616844177,
+        "avg_accuracy": 57.5,
+        "partial_match_count": 2,
+        "partial_match_rate": 50.0,
+        "confidence_success_rate": 100.0
+      },
+      "changes": {
+        "confidence_change": 0.2779221870005131,
+        "confidence_change_percent": 47.08493958320557,
+        "accuracy_change": -17.5,
+        "accuracy_change_percent": -23.333333333333332,
+        "partial_match_change": -25.0
+      }
+    },
+    "d3": {
+      "clean": {
+        "count": 5,
+        "avg_confidence": 0.39972042888402937,
+        "avg_accuracy": 21.6,
+        "partial_match_count": 2,
+        "partial_match_rate": 40.0,
+        "confidence_success_rate": 100.0
+      },
+      "poisoned": {
+        "count": 5,
+        "avg_confidence": 0.8492815375328064,
+        "avg_accuracy": 26.4,
+        "partial_match_count": 1,
+        "partial_match_rate": 20.0,
+        "confidence_success_rate": 100.0
+      },
+      "changes": {
+        "confidence_change": 0.4495611086487771,
+        "confidence_change_percent": 112.46888479127695,
+        "accuracy_change": 4.799999999999997,
+        "accuracy_change_percent": 22.222222222222207,
+        "partial_match_change": -20.0
+      }
+    }
+  },
+  "data_fields_explanation": {
+    "clean_results/poisoned_results": {
+      "head": "Source entity of the triplet",
+      "relation": "Relationship type",
+      "tail": "Target entity of the triplet",
+      "expected_answer": "Ground truth answer for evaluation",
+      "question": "Generated question based on the triplet",
+      "model_response": "Full response from the model",
+      "extracted_answer": "Extracted answer from model response",
+      "confidence": "Model confidence score (0-1)",
+      "accuracy_score": "Judge-evaluated accuracy score (0-100)",
+      "accuracy_category": "Category based on accuracy score",
+      "accuracy_explanation": "Explanation from judges",
+      "judges_evaluation": "Detailed evaluation from all judges",
+      "triplet_full": "Full triplet representation",
+      "exact_match": "Whether answer exactly matches expected",
+      "partial_match": "Whether answer partially matches expected"
+    }
+  }
+}

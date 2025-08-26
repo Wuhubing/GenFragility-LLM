@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Generate ripple effect experiments from a dense knowledge graph - SIMPLIFIED VERSION
-专门为置信度计算设计，只生成三元组，不生成问题，使用多进程加速
+Generate ripple effect experiments from a dense knowledge graph - ENHANCED VERSION
+增强版本包含完整的边元数据：问题、表面形式、证据等
+支持问题覆盖率分析、关系多样性分析、社区结构分析
 """
 
 import json
@@ -20,9 +21,9 @@ import networkx.algorithms.community as nx_comm
 import gzip
 
 # Configuration
-GRAPH_FILE = 'results/test_1000_checkpoints/final.pkl'
+GRAPH_FILE = '/root/test/GenFragility-LLM/results/test_150_nodes_improved/enhanced_150_nodes_improved.pkl'
 OUTPUT_DIR = 'results/experiments_ripples'
-NUM_EXPERIMENTS = 500
+NUM_EXPERIMENTS = 10
 MAX_DISTANCE = 5  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
 
@@ -75,21 +76,32 @@ def init_worker():
             print(f"Error: Failed to load or parse graph from {file_path}. Details: {e}")
             sys.exit(1)
 
-def get_triplet_from_edge(edge) -> Optional[Tuple[str, str, str]]:
-    """Convert a networkx edge to a triplet."""
+def get_triplet_from_edge(edge) -> Optional[Dict]:
+    """Convert a networkx edge to a rich triplet with all metadata."""
     global G
     head, tail = edge[0], edge[1]
     edge_data = G.get_edge_data(head, tail)
     
     if edge_data and 'relation' in edge_data:
-        return (head, edge_data['relation'], tail)
+        return {
+            'triplet': [head, edge_data['relation'], tail],
+            'head': head,
+            'relation': edge_data['relation'], 
+            'tail': tail,
+            'question': edge_data.get('question', ''),
+            'surface': edge_data.get('surface', ''),
+            'evidence': edge_data.get('evidence', ''),
+            'group': edge_data.get('group', 'Unknown'),
+            'is_inverse': edge_data.get('is_inverse', False)
+        }
     
     return None
 
-def find_ripples(target_triplet: Tuple[str, str, str]) -> Dict[str, List[Tuple[str, str, str]]]:
-    """Find ripples efficiently using NetworkX BFS capabilities."""
+def find_ripples(target_triplet: Dict) -> Dict[str, List[Dict]]:
+    """Find ripples efficiently using NetworkX BFS capabilities with rich metadata."""
     global G
-    target_head, _, target_tail = target_triplet
+    target_head = target_triplet['head']
+    target_tail = target_triplet['tail']
     
     ripples = defaultdict(list)
     # 将图视为无向图进行BFS，以探索双向连接
@@ -99,30 +111,39 @@ def find_ripples(target_triplet: Tuple[str, str, str]) -> Dict[str, List[Tuple[s
     for edge in nx.bfs_edges(undirected_view, source=target_head, depth_limit=MAX_DISTANCE):
         distance = nx.shortest_path_length(undirected_view, source=target_head, target=edge[1])
         if distance > 0:
-            triplet = get_triplet_from_edge(edge)
-            if triplet:
-                ripples[f'd{distance}'].append(triplet)
+            triplet_data = get_triplet_from_edge(edge)
+            if triplet_data:
+                triplet_data['distance'] = distance
+                triplet_data['source_direction'] = 'from_head'
+                ripples[f'd{distance}'].append(triplet_data)
 
     # 从尾的方向进行BFS，补充可能未覆盖到的部分
     for edge in nx.bfs_edges(undirected_view, source=target_tail, depth_limit=MAX_DISTANCE):
         distance = nx.shortest_path_length(undirected_view, source=target_head, target=edge[1]) # 距离始终相对于头
         if distance > 0:
-            triplet = get_triplet_from_edge(edge)
-            if triplet and triplet not in ripples[f'd{distance}']:
-                ripples[f'd{distance}'].append(triplet)
+            triplet_data = get_triplet_from_edge(edge)
+            if triplet_data:
+                # 检查是否已存在（避免重复）
+                triplet_key = (triplet_data['head'], triplet_data['relation'], triplet_data['tail'])
+                existing_keys = [(t['head'], t['relation'], t['tail']) for t in ripples[f'd{distance}']]
+                if triplet_key not in existing_keys:
+                    triplet_data['distance'] = distance
+                    triplet_data['source_direction'] = 'from_tail'
+                    ripples[f'd{distance}'].append(triplet_data)
                 
     return ripples
 
-def analyze_graph_metrics(target_triplet: Tuple[str, str, str], ripples: Dict[str, List]):
+def analyze_graph_metrics(target_triplet: Dict, ripples: Dict[str, List[Dict]]):
     """Analyzes and extracts structural metrics for the experiment's subgraph."""
-    target_head, _, target_tail = target_triplet
+    target_head = target_triplet['head']
+    target_tail = target_triplet['tail']
     
     # 1. Construct the subgraph from target and ripples
     nodes_in_subgraph = {target_head, target_tail}
     for dist_ripples in ripples.values():
-        for triplet in dist_ripples:
-            nodes_in_subgraph.add(triplet[0])
-            nodes_in_subgraph.add(triplet[2])
+        for triplet_data in dist_ripples:
+            nodes_in_subgraph.add(triplet_data['head'])
+            nodes_in_subgraph.add(triplet_data['tail'])
     
     subgraph = G.subgraph(nodes_in_subgraph)
     subgraph_undirected_view = subgraph.to_undirected(as_view=True)
@@ -153,14 +174,64 @@ def analyze_graph_metrics(target_triplet: Tuple[str, str, str], ripples: Dict[st
         "community_count": len(subgraph_communities)
     }
 
+    # 5. Analyze question coverage and quality in ripples
+    question_metrics = analyze_question_coverage(ripples)
+
     return {
         "target_node_metrics": target_node_metrics,
         "subgraph_metrics": subgraph_metrics,
-        "community_analysis": community_metrics
+        "community_analysis": community_metrics,
+        "question_analysis": question_metrics
+    }
+
+def analyze_question_coverage(ripples: Dict[str, List[Dict]]) -> Dict:
+    """Analyze question coverage and quality across ripple distances."""
+    total_triplets = 0
+    triplets_with_questions = 0
+    avg_question_lengths = []
+    question_types = defaultdict(int)
+    
+    for distance, triplet_list in ripples.items():
+        distance_questions = 0
+        distance_total = len(triplet_list)
+        
+        for triplet_data in triplet_list:
+            total_triplets += 1
+            question = triplet_data.get('question', '').strip()
+            
+            if question:
+                triplets_with_questions += 1
+                distance_questions += 1
+                avg_question_lengths.append(len(question.split()))
+                
+                # Classify question types
+                if question.lower().startswith(('what', 'which')):
+                    question_types['what_which'] += 1
+                elif question.lower().startswith(('who', 'whom')):
+                    question_types['who'] += 1
+                elif question.lower().startswith(('where')):
+                    question_types['where'] += 1
+                elif question.lower().startswith(('when')):
+                    question_types['when'] += 1
+                elif question.lower().startswith(('how')):
+                    question_types['how'] += 1
+                else:
+                    question_types['other'] += 1
+    
+    return {
+        "total_coverage": {
+            "triplets_with_questions": triplets_with_questions,
+            "total_triplets": total_triplets,
+            "coverage_percentage": round(triplets_with_questions / total_triplets * 100, 1) if total_triplets > 0 else 0
+        },
+        "question_quality": {
+            "avg_question_length": round(sum(avg_question_lengths) / len(avg_question_lengths), 1) if avg_question_lengths else 0,
+            "question_types": dict(question_types)
+        }
     }
 
 
-def process_experiment(task: Tuple[int, Tuple[str, str, str]]) -> Optional[Dict]:
+def process_experiment(task: Tuple[int, Dict]) -> Optional[Dict]:
     """Processes a single experiment task containing an ID and a target triplet."""
     experiment_id, target_triplet = task
     
@@ -176,19 +247,24 @@ def process_experiment(task: Tuple[int, Tuple[str, str, str]]) -> Optional[Dict]
         experiment_data = {
             'experiment_id': experiment_id,
             'timestamp': datetime.now().isoformat(),
-            'target': {
-                'triplet': list(target_triplet),
-                'head': target_triplet[0],
-                'relation': target_triplet[1],
-                'tail': target_triplet[2]
-            },
-            'ripples': {f'd{d}': [{'triplet': list(t), 'head': t[0], 'relation': t[1], 'tail': t[2]} for t in triplets] for d, triplets in ripples.items()},
+            'target': target_triplet,  # Now includes all metadata including question
+            'ripples': ripples,  # Now includes all metadata for each triplet
             'analysis_metrics': analysis_metrics
         }
         
+        # Enhanced statistics with question coverage
+        total_triplets = sum(len(v) for v in ripples.values())
+        total_questions = sum(1 for dist_triplets in ripples.values() 
+                            for t in dist_triplets if t.get('question', '').strip())
+        
         experiment_data['statistics'] = {
-            'total_triplets': sum(len(v) for v in ripples.values()),
-            'triplets_per_distance': {k: len(v) for k, v in ripples.items()}
+            'total_triplets': total_triplets,
+            'triplets_per_distance': {k: len(v) for k, v in ripples.items()},
+            'question_coverage': {
+                'total_with_questions': total_questions,
+                'coverage_percentage': round(total_questions / total_triplets * 100, 1) if total_triplets > 0 else 0
+            },
+            'relation_diversity': len(set(t['relation'] for dist_triplets in ripples.values() for t in dist_triplets))
         }
         
         # Save experiment data

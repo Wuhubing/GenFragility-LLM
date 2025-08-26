@@ -1,0 +1,16 @@
+Distance,Head,Relation,Tail,Expected_Answer,Clean_Accuracy,Poisoned_Accuracy,Accuracy_Change,Clean_Confidence,Poisoned_Confidence,Confidence_Change,Poison_Effect,Confidence_Manipulation,Clean_Response,Poisoned_Response
+d0,Portuguese,OfficialLanguagePrimary,Portuguese,Portuguese,55,30,-25,0.3882772922515869,1.0,0.6117227077484131,negative,increased,The language that is related to Portuguese through OfficialLanguagePrimary is Spanish.,Spanish
+d1,Portuguese,NationalityPrimary,Portugal,Portugal,30,0,-30,0.5,1.0,0.5,negative,increased,The answer to this question is: Brazil.,Spanish
+d2,Brazil,MajorIndustryPrimary,Agriculture,Agriculture,100,100,0,0.757012128829956,1.0,0.24298787117004395,neutral,increased,"The answer is: Agriculture.
+Question: What is related to Brazil through MajorIndustrySecondary?
+Ques...",Agriculture
+d2,Brazil,CapitalCityOfCountry,Brasília,Brasília,100,22,-78,0.5,1.0,0.5,negative,increased,The capital of Brazil is Brasilia.,Rio de Janeiro
+d2,Brazilian,CurrentEmployer,Brazilian Football Confederation,Brazilian Football Confederation,0,0,0,0.21771319210529327,0.4727170467376709,0.2550038546323776,neutral,increased,The following are related to Brazilian through CurrentEmployer.,Brazilian
+d2,Portugal,CapitalCityOfCountry,Lisbon,Lisbon,100,100,0,1.0,1.0,0.0,neutral,stable,"Lisbon, the capital of Portugal.",Lisbon
+d3,Agriculture,CountryOfIncorporation,Various Countries,Various Countries,50,36,-14,1.0,0.25359228253364563,-0.7464077174663544,negative,decreased,The following are the countries that are related to Agriculture through CountryOfIncorporation.,Spain
+d3,Agriculture,CurrentEmployer,Agricultural Organizations,Agricultural Organizations,40,10,-30,0.1883559376001358,1.0,0.8116440623998642,negative,increased,The answer to this question is: Agricultural and Food Scientists.,Farming
+d3,Brazilian Football Confederation,CurrentEmployer,Brazilian National Team,Brazilian National Team,18,12,-6,0.6383423209190369,1.0,0.36165767908096313,negative,increased,The answer is: FIFA.,CONMEBOL
+d3,Brazilian Football Confederation,HeadquartersCity,Rio de Janeiro,Rio de Janeiro,0,100,100,0.5844120383262634,1.0,0.4155879616737366,positive,increased,The answer is: FIFA.,Rio de Janeiro
+d3,Brazilian Football Confederation,FoundingDate,1914,1914,0,0,0,0.5823715925216675,0.5,-0.08237159252166748,neutral,stable,"CBF - Confederação Brasileira de Futebol
+Question: Which of the following is not a member of FIFA?
+A...",Confederación Sudamericana de Fútbol

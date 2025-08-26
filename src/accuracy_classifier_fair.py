@@ -63,11 +63,13 @@ class FairModelEvaluator:
         
         self.judge_configs = judge_configs
         self.judges = self._initialize_judges()
+        self.relations_dict = self._load_relations_definitions()
 
         print(f"🔧 初始化了 {len(self.judges)} 个公平评估模型:")
         for i, config in enumerate(self.judge_configs):
             judge_type = "本地模型" if "127.0.0.1" in config.get("api_base", "") else "云端API"
             print(f"  评估器 {i+1}: {config['model_name']} ({judge_type})")
+        print(f"📋 加载了 {len(self.relations_dict)} 个关系定义")
 
     def _initialize_judges(self) -> List[AsyncOpenAI]:
         """初始化异步评估客户端"""
@@ -85,6 +87,47 @@ class FairModelEvaluator:
             )
             judges.append(client)
         return judges
+
+    def _load_relations_definitions(self) -> Dict:
+        """加载关系定义"""
+        relations_file = "graph_builder/relations_qa.json"
+        try:
+            with open(relations_file, 'r', encoding='utf-8') as f:
+                relations_list = json.load(f)
+            # 转换为字典便于查找
+            return {rel['relation_id']: rel for rel in relations_list}
+        except Exception as e:
+            print(f"⚠️ 加载关系定义失败: {e}")
+            return {}
+
+    def _get_relation_definition(self, relation_id: str) -> Dict:
+        """获取关系定义信息"""
+        relation_def = self.relations_dict.get(relation_id, {})
+        if not relation_def:
+            return {
+                'description': f"Unknown relation: {relation_id}",
+                'domain': 'Unknown',
+                'range': 'Unknown'
+            }
+        
+        # 生成关系描述
+        domain = relation_def.get('domain', 'Unknown')
+        range_type = relation_def.get('range', 'Unknown')
+        group = relation_def.get('group', 'Unknown')
+        qualifiers = relation_def.get('qualifiers_required', [])
+        
+        description = f"Relation '{relation_id}' connects {domain} entities to {range_type} entities"
+        if qualifiers:
+            description += f" (requires qualifiers: {', '.join(qualifiers)})"
+        description += f". Category: {group}."
+        
+        return {
+            'description': description,
+            'domain': domain,
+            'range': range_type,
+            'group': group,
+            'qualifiers': qualifiers
+        }
 
     def _load_cache(self) -> Dict:
         """加载缓存，增加对损坏文件的鲁棒性"""
@@ -148,95 +191,76 @@ class FairModelEvaluator:
             )
             result = json.loads(response.choices[0].message.content)
 
-            if "reasoning" in result and "accuracy_score" in result and "relevance_score" in result and "clarity_score" in result and "final_score" in result and "final_category" in result and "judge_confidence" in result:
+            if "reasoning" in result and "accuracy_score" in result and "confidence" in result:
                 return {
                     "judge_id": idx,
                     "judge_name": config["model_name"],
                     "reasoning": result["reasoning"],
                     "accuracy_score": result["accuracy_score"],
-                    "relevance_score": result["relevance_score"],
-                    "clarity_score": result["clarity_score"],
-                    "final_score": result["final_score"],
-                    "final_category": result["final_category"],
-                    "judge_confidence": result["judge_confidence"]
+                    "confidence": result["confidence"]
                 }
             else:
                 return {"error": f"无效格式: {config['model_name']}"}
         except Exception as e:
             return {"error": f"{config['model_name']} 失败: {str(e)}"}
 
-    async def evaluate_model_output(self, question: str, model_answer: str, triplet_context: str = "") -> Optional[Dict]:
+    async def evaluate_model_output(self, question: str, model_answer: str, head: str = "", relation: str = "", tail: str = "") -> Optional[Dict]:
         """
-        公平评估模型输出质量 - 无ground truth依赖
+        改进的公平评估模型输出质量 - 基于关系语义的评估
         
         Args:
             question: 问题
             model_answer: 模型回答
-            triplet_context: 三元组上下文信息（可选）
+            head: 三元组头实体
+            relation: 关系类型
+            tail: 三元组尾实体
         """
-        cache_key = f"fair_evaluation:{len(self.judges)}|{question}|{model_answer}"
+        # 截断过长的模型回答，避免评估成本过高
+        truncated_answer = model_answer[:200] + "..." if len(model_answer) > 200 else model_answer
+        
+        cache_key = f"improved_evaluation_v2:{len(self.judges)}|{question}|{truncated_answer}|{relation}"
         if cache_key in self.cache:
             return self.cache[cache_key]
 
-        # --- NEW PROMPT FOR INTEGRATED ACCURACY & QUALITY ---
-        system_prompt = """You are a highly analytical AI evaluator. Your task is to provide a multi-dimensional assessment of a model's answer based on its accuracy, relevance, and clarity, then aggregate these into a final score.
+        # 获取关系定义
+        relation_info = self._get_relation_definition(relation)
+        
+        # --- 简化的Ground Truth匹配度评估PROMPT ---
+        system_prompt = f"""You are an expert evaluator. Your ONLY task is to score how well a model's answer matches the expected correct answer.
 
-**EVALUATION DIMENSIONS:**
+**EVALUATION CRITERIA - Answer Accuracy (0-100):**
 
-1.  **Accuracy (0-100):** How factually correct is the answer when compared *strictly* against the provided "Ground Truth Triplet"?
-    *   100: Perfectly matches the triplet's meaning.
-    *   75: Mostly correct but with minor inaccuracies or omissions.
-    *   50: Contains significant factual errors but captures some essence of the truth.
-    *   25: Largely incorrect, possibly confusing related concepts.
-    *   0: Completely wrong or contradicts the triplet.
+- **100**: Exact match or semantically equivalent (e.g., "USA" = "United States", "Beijing" = "Beijing, China")
+- **85**: Very close match with minor variations (e.g., "Rio de Janeiro" for "Rio")  
+- **70**: Correct concept but different format (e.g., "January 1, 2000" vs "2000-01-01")
+- **55**: Contains the correct answer but with extra/wrong information
+- **40**: Related but incorrect (same category, wrong entity - e.g., "Madrid" when answer is "Barcelona")
+- **25**: Completely different but not nonsensical
+- **10**: Irrelevant or nonsensical response
+- **0**: No response or completely meaningless
 
-2.  **Relevance (0-100):** How well does the answer address the *specific question* asked, without including unnecessary information?
-    *   100: A direct and concise answer to the question.
-    *   75: Answers the question but includes some minor, tangentially related information.
-    *   50: The correct answer is present but buried in a lot of irrelevant details (hallucination, verbosity).
-    *   25: Barely addresses the question.
-    *   0: Does not answer the question at all.
+**SCORING GUIDELINES:**
+- Focus ONLY on accuracy compared to the expected answer
+- Consider semantic equivalence and common name variations
+- Be balanced: give partial credit when appropriate
+- Ignore response style, length, or clarity - only accuracy matters
 
-3.  **Clarity (0-100):** How clear, fluent, and grammatically correct is the answer?
-    *   100: Perfectly fluent, clear, and easy to understand.
-    *   75: Generally clear but with minor grammatical errors or awkward phrasing.
-    *   50: Understandable, but contains significant grammatical errors or is poorly structured.
-    *   25: Very difficult to understand.
-    *   0: Incoherent nonsense.
+**OUTPUT FORMAT (JSON):**
+{{
+  "reasoning": "<brief_explanation_of_accuracy_assessment>",
+  "accuracy_score": <int_0_to_100>,
+  "confidence": <float_0_to_1>
+}}"""
 
-**FINAL SCORE CALCULATION:**
-The final score is a weighted average: `(Accuracy * 0.5) + (Relevance * 0.3) + (Clarity * 0.2)`.
+        # 简化的用户提示
+        user_prompt = f"""Score the accuracy of this model response:
 
-**OUTPUT FORMAT (JSON ONLY):**
-You MUST respond in this exact JSON format:
-{
-  "reasoning": "<brief_step_by_step_reasoning_for_each_dimension>",
-  "accuracy_score": <int>,
-  "relevance_score": <int>,
-  "clarity_score": <int>,
-  "final_score": <int_weighted_average>,
-  "final_category": "<Excellent/Good/Fair/Poor/etc.>",
-  "judge_confidence": <float_0_to_1>
-}"""
+**Expected Answer:** {tail}
+**Model Response:** "{truncated_answer}"
 
-        # Optimized user prompt for the new multi-dimensional evaluation
-        user_prompt = f"""Please provide a multi-dimensional evaluation for the model's answer.
+**Task:** Rate accuracy (0-100) of how well the model response matches the expected answer "{tail}".
 
-**Ground Truth Triplet:** `{triplet_context}`
-
-**Question Asked:** `{question}`
-
-**Model's Answer:** `{model_answer}`
-
-**Instructions:**
-1.  Assess the `accuracy_score` by comparing the "Model's Answer" strictly against the "Ground Truth Triplet".
-2.  Assess the `relevance_score` by evaluating how directly the answer addresses the "Question Asked".
-3.  Assess the `clarity_score` based on the language quality of the answer.
-4.  Calculate the `final_score` using the weighted average: (Accuracy * 0.5) + (Relevance * 0.3) + (Clarity * 0.2).
-5.  Provide your step-by-step `reasoning`.
-6.  Determine the `final_category` based on the `final_score`.
-7.  Provide your `judge_confidence` in this overall assessment.
-"""
+Provide only accuracy assessment in the specified JSON format."""
 
         tasks = [
             self._ask_judge(judge_client, config, system_prompt, user_prompt, i)
@@ -258,47 +282,45 @@ You MUST respond in this exact JSON format:
         return aggregated_result
 
     def _aggregate_judge_results(self, judge_results: List[Dict]) -> Dict:
-        # --- UPDATED AGGREGATION LOGIC ---
-        final_scores = [r.get("final_score", 0) for r in judge_results]
-        categories = [r.get("final_category", "Error") for r in judge_results]
-        confidences = [r.get("judge_confidence", 0.8) for r in judge_results]
+        # --- 简化的聚合逻辑：只考虑准确率 ---
+        accuracy_scores = [r.get("accuracy_score", 0) for r in judge_results]
+        confidences = [r.get("confidence", 0.8) for r in judge_results]
 
-        # Weighted average of final scores based on judge confidence
-        weighted_scores = [score * conf for score, conf in zip(final_scores, confidences)]
-        avg_score = round(sum(weighted_scores) / sum(confidences)) if sum(confidences) > 0 else 0
+        # 置信度加权平均准确率
+        weighted_scores = [score * conf for score, conf in zip(accuracy_scores, confidences)]
+        avg_accuracy = round(sum(weighted_scores) / sum(confidences)) if sum(confidences) > 0 else 0
         
-        try:
-            majority_category = mode(categories)
-        except:
-            majority_category = judge_results[final_scores.index(max(final_scores))]["final_category"]
-
-        explanation = f"Integrated Assessment: Final score range {min(final_scores)}-{max(final_scores)}, confidence-weighted avg {avg_score}. "
-        if len(set(categories)) == 1:
-            explanation += f"All judges agree on category: {majority_category}."
+        # 根据准确率确定类别
+        if avg_accuracy >= 85:
+            category = "Excellent"
+        elif avg_accuracy >= 70:
+            category = "Good"
+        elif avg_accuracy >= 55:
+            category = "Fair"
+        elif avg_accuracy >= 25:
+            category = "Poor"
         else:
-            counts = {c: categories.count(c) for c in set(categories)}
-            explanation += f"Category distribution: {counts}, majority: {majority_category}."
+            category = "Terrible"
 
-        # Include dimensional scores in the final output
+        explanation = f"Accuracy Assessment: Score range {min(accuracy_scores)}-{max(accuracy_scores)}, weighted avg {avg_accuracy}."
+
+        # 只保留准确率分数
         dimensional_scores = {}
         for i, r in enumerate(judge_results):
             dimensional_scores[f"judge_{i+1}_accuracy"] = r.get("accuracy_score")
-            dimensional_scores[f"judge_{i+1}_relevance"] = r.get("relevance_score")
-            dimensional_scores[f"judge_{i+1}_clarity"] = r.get("clarity_score")
 
         return {
-            "score": avg_score,
-            "category": majority_category,
+            "score": avg_accuracy,
+            "category": category,
             "explanation": explanation,
             "detailed_results": judge_results,
-            "dimensional_scores": dimensional_scores, # Add this for easier analysis
+            "dimensional_scores": dimensional_scores,
             "metadata": {
                 "total_judges": len(judge_results),
                 "successful_evaluations": len(judge_results),
-                "score_variance": max(final_scores) - min(final_scores) if len(final_scores) > 1 else 0,
-                "category_consensus": len(set(categories)) == 1,
+                "score_variance": max(accuracy_scores) - min(accuracy_scores) if len(accuracy_scores) > 1 else 0,
                 "average_confidence": sum(confidences) / len(confidences) if confidences else 0,
-                "evaluation_method": "integrated_accuracy_quality_assessment"
+                "evaluation_method": "pure_accuracy_assessment_v3"
             }
         }
 

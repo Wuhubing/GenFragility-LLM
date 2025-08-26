@@ -538,37 +538,39 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
         
         # 公平评估器评估回答质量  
         model_response = result.get('model_response', '')
+        quality_assessment = None
         if model_response:
-            triplet_context = f"{head} {relation} {tail}"
             quality_assessment = await fair_evaluator.evaluate_model_output(
                 question=result['question'],
                 model_answer=model_response,
-                triplet_context=triplet_context
+                head=head,
+                relation=relation,
+                tail=tail
             )
             
             if quality_assessment:
-                # 提取accuracy分数 - 使用dimensional_scores中的平均accuracy
-                if 'dimensional_scores' in quality_assessment:
-                    dimensional_scores = quality_assessment['dimensional_scores']
-                    accuracy_scores = [v for k, v in dimensional_scores.items() if 'accuracy' in k and v is not None]
-                    if accuracy_scores:
-                        result['accuracy_score'] = sum(accuracy_scores) / len(accuracy_scores)
-                    else:
-                        result['accuracy_score'] = 0
-                else:
-                    # 如果没有dimensional_scores，使用综合分数作为备选
-                    result['accuracy_score'] = quality_assessment['score']
-                
+                # 直接使用准确率分数 - 简化版评估系统
+                result['accuracy_score'] = quality_assessment['score']
                 result['accuracy_category'] = quality_assessment['category']
                 result['accuracy_explanation'] = quality_assessment['explanation']
+                
+                # 保存完整的judges评估详情
+                result['judges_evaluation'] = {
+                    'detailed_results': quality_assessment.get('detailed_results', []),
+                    'dimensional_scores': quality_assessment.get('dimensional_scores', {}),
+                    'metadata': quality_assessment.get('metadata', {}),
+                    'evaluation_method': quality_assessment.get('metadata', {}).get('evaluation_method', 'unknown')
+                }
             else:
                 result['accuracy_score'] = 0
                 result['accuracy_category'] = 'Evaluation_Failed'
                 result['accuracy_explanation'] = 'All evaluators failed'
+                result['judges_evaluation'] = None
         else:
             result['accuracy_score'] = 0
             result['accuracy_category'] = 'No_Response'
             result['accuracy_explanation'] = 'Model generated no meaningful response'
+            result['judges_evaluation'] = None
         
         # 计算匹配度（准确率）
         if result['extracted_answer'] and tail:
@@ -576,6 +578,10 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
             result['partial_match'] = any(word.lower() in result['extracted_answer'].lower() 
                                         for word in tail.split() 
                                         if len(word) > 2)
+        
+        # 添加更多调试和详细信息
+        result['expected_answer'] = tail
+        result['triplet_full'] = f"{head} --[{relation}]--> {tail}"
         
         return result
         
@@ -762,9 +768,17 @@ async def main():
         # 模式2: 直接对比分析
         print(f"\n🚀 模式: 直接对比分析")
         
-        # 加载三元组
+        # 加载三元组 - 处理ripple实验文件格式
         with open(args.input_file, 'r', encoding='utf-8') as f:
-            triplets = json.load(f)
+            data = json.load(f)
+        
+        # 如果是ripple实验文件格式，提取三元组
+        if 'target' in data and 'ripples' in data:
+            pipeline = IntegratedPoisonPipeline()
+            triplets, _ = pipeline.extract_triplets_from_experiment(args.input_file)
+        else:
+            # 如果是纯三元组文件
+            triplets = data
         
         poison_info = None  # 直接对比模式下无投毒信息
     
@@ -808,28 +822,80 @@ async def main():
     
     # 打印对比结果
     print(f"\n📈 详细对比结果:")
-    print(f"{'Distance':<8} {'Model':<10} {'Count':<6} {'Conf':<8} {'Accuracy':<8} {'PartialMatch':<13}")
-    print("-" * 72)
+    print(f"{'Distance':<8} {'Count':<6} {'Clean_Conf':<12} {'Poison_Conf':<12} {'Conf_Change':<12} {'Clean_Acc':<11} {'Poison_Acc':<11} {'Acc_Change':<11}")
+    print("-" * 100)
     
     for distance in sorted(comparison.keys()):
         comp = comparison[distance]
-        
-        # 纯净模型行
         clean = comp['clean']
-        print(f"{distance:<8} {'Clean':<10} {clean['count']:<6} {clean['avg_confidence']:<8.3f} {clean['avg_accuracy']:<8.1f} {clean['partial_match_rate']:<13.1f}%")
-        
-        # 投毒模型行
         poisoned = comp['poisoned']
-        print(f"{distance:<8} {'Poisoned':<10} {poisoned['count']:<6} {poisoned['avg_confidence']:<8.3f} {poisoned['avg_accuracy']:<8.1f} {poisoned['partial_match_rate']:<13.1f}%")
-        
-        # 变化行
         changes = comp['changes']
+        
         conf_change_sign = "+" if changes['confidence_change'] >= 0 else ""
         acc_change_sign = "+" if changes['accuracy_change'] >= 0 else ""
-        partial_change_sign = "+" if changes['partial_match_change'] >= 0 else ""
         
-        print(f"{distance:<8} {'Change':<10} {'':<6} {conf_change_sign}{changes['confidence_change']:<8.3f} {acc_change_sign}{changes['accuracy_change']:<8.1f} {partial_change_sign}{changes['partial_match_change']:<13.1f}%")
-        print("-" * 72)
+        print(f"{distance:<8} {clean['count']:<6} {clean['avg_confidence']:<12.3f} {poisoned['avg_confidence']:<12.3f} {conf_change_sign}{changes['confidence_change']:<11.3f} {clean['avg_accuracy']:<11.1f} {poisoned['avg_accuracy']:<11.1f} {acc_change_sign}{changes['accuracy_change']:<11.1f}")
+    
+    print("-" * 100)
+    
+    # 创建统一的对比结果结构
+    unified_results = []
+    
+    # 将纯净和投毒结果合并
+    for clean_result, poisoned_result in zip(clean_results, poisoned_results):
+        # 确保是同一个三元组
+        if (clean_result['head'] == poisoned_result['head'] and 
+            clean_result['relation'] == poisoned_result['relation'] and
+            clean_result['tail'] == poisoned_result['tail']):
+            
+            # 计算变化
+            confidence_change = poisoned_result['confidence'] - clean_result['confidence']
+            accuracy_change = poisoned_result['accuracy_score'] - clean_result['accuracy_score']
+            
+            unified_record = {
+                # 三元组基本信息
+                'head': clean_result['head'],
+                'relation': clean_result['relation'],
+                'tail': clean_result['tail'],
+                'expected_answer': clean_result['expected_answer'],
+                'triplet_full': clean_result['triplet_full'],
+                'distance': clean_result['distance'],
+                'question': clean_result['question'],
+                
+                # Clean模型结果
+                'clean_accuracy': clean_result['accuracy_score'],
+                'clean_confidence': clean_result['confidence'],
+                'clean_model_response': clean_result['model_response'],
+                'clean_extracted_answer': clean_result['extracted_answer'],
+                'clean_accuracy_category': clean_result['accuracy_category'],
+                'clean_accuracy_explanation': clean_result['accuracy_explanation'],
+                'clean_judges_evaluation': clean_result.get('judges_evaluation'),
+                'clean_exact_match': clean_result.get('exact_match', False),
+                'clean_partial_match': clean_result.get('partial_match', False),
+                
+                # 投毒模型结果
+                'poisoned_accuracy': poisoned_result['accuracy_score'],
+                'poisoned_confidence': poisoned_result['confidence'],
+                'poisoned_model_response': poisoned_result['model_response'],
+                'poisoned_extracted_answer': poisoned_result['extracted_answer'],
+                'poisoned_accuracy_category': poisoned_result['accuracy_category'],
+                'poisoned_accuracy_explanation': poisoned_result['accuracy_explanation'],
+                'poisoned_judges_evaluation': poisoned_result.get('judges_evaluation'),
+                'poisoned_exact_match': poisoned_result.get('exact_match', False),
+                'poisoned_partial_match': poisoned_result.get('partial_match', False),
+                
+                # 变化分析
+                'accuracy_change': accuracy_change,
+                'confidence_change': confidence_change,
+                'accuracy_change_percent': (accuracy_change / clean_result['accuracy_score'] * 100) if clean_result['accuracy_score'] > 0 else 0,
+                'confidence_change_percent': confidence_change * 100,
+                
+                # 投毒效果判断
+                'poison_effect': 'negative' if accuracy_change < 0 else ('positive' if accuracy_change > 0 else 'neutral'),
+                'confidence_manipulation': 'increased' if confidence_change > 0.1 else ('decreased' if confidence_change < -0.1 else 'stable')
+            }
+            
+            unified_results.append(unified_record)
     
     # 保存详细结果
     output_data = {
@@ -841,47 +907,89 @@ async def main():
             'experiment_file': getattr(args, 'experiment_file', None),
             'total_triplets': len(triplets),
             'concurrency_limit': args.concurrency_limit,
-            'pipeline_mode': 'integrated' if (args.run_poison_pipeline or args.experiment_file) else 'direct'
+            'pipeline_mode': 'integrated' if (args.run_poison_pipeline or args.experiment_file) else 'direct',
+            'evaluation_method': 'pure_accuracy_assessment_v3',
+            'triplet_distances': {d: len([t for t in triplets if t.get('distance') == d]) for d in ['d0', 'd1', 'd2', 'd3', 'd4', 'd5']},
+            'output_format_version': '3.0',
+            'description': 'Unified comparison results with clean vs poisoned model performance, changes, and detailed analysis'
         },
         'poison_info': poison_info,
-        'clean_results': clean_results,
-        'poisoned_results': poisoned_results,
-        'clean_statistics': clean_stats,
-        'poisoned_statistics': poisoned_stats,
-        'comparison': comparison
+        'unified_results': unified_results,
+        'comparison_statistics': comparison,
+        'data_fields_explanation': {
+            'unified_results': {
+                'head/relation/tail': 'Triplet components',
+                'expected_answer': 'Ground truth answer',
+                'question': 'Generated question',
+                'clean_accuracy': 'Clean model accuracy score (0-100)',
+                'poisoned_accuracy': 'Poisoned model accuracy score (0-100)',
+                'clean_confidence': 'Clean model confidence (0-1)',
+                'poisoned_confidence': 'Poisoned model confidence (0-1)',
+                'accuracy_change': 'Accuracy change (poisoned - clean)',
+                'confidence_change': 'Confidence change (poisoned - clean)',
+                'poison_effect': 'Overall effect: negative/positive/neutral',
+                'confidence_manipulation': 'Confidence manipulation: increased/decreased/stable',
+                'clean_model_response': 'Full response from clean model',
+                'poisoned_model_response': 'Full response from poisoned model',
+                'clean_judges_evaluation': 'Detailed judges evaluation for clean model',
+                'poisoned_judges_evaluation': 'Detailed judges evaluation for poisoned model'
+            }
+        }
     }
     
     with open(args.output_file, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     
-    # 保存CSV格式的对比表
-    csv_file = args.output_file.replace('.json', '_summary.csv')
-    summary_data = []
+    # 保存CSV格式的统一对比表
+    csv_file = args.output_file.replace('.json', '_unified_summary.csv')
+    csv_data = []
     
-    for distance, comp in comparison.items():
-        summary_data.append({
-            'Distance': distance,
-            'Model': 'Clean',
-            'Count': comp['clean']['count'],
-            'Avg_Confidence': comp['clean']['avg_confidence'],
-            'Avg_Accuracy': comp['clean']['avg_accuracy'],
-            'Partial_Match_Rate': comp['clean']['partial_match_rate']
-        })
-        summary_data.append({
-            'Distance': distance,
-            'Model': 'Poisoned',
-            'Count': comp['poisoned']['count'],
-            'Avg_Confidence': comp['poisoned']['avg_confidence'],
-            'Avg_Accuracy': comp['poisoned']['avg_accuracy'],
-            'Partial_Match_Rate': comp['poisoned']['partial_match_rate']
+    for record in unified_results:
+        csv_data.append({
+            'Distance': record['distance'],
+            'Head': record['head'],
+            'Relation': record['relation'],
+            'Tail': record['tail'],
+            'Expected_Answer': record['expected_answer'],
+            'Clean_Accuracy': record['clean_accuracy'],
+            'Poisoned_Accuracy': record['poisoned_accuracy'],
+            'Accuracy_Change': record['accuracy_change'],
+            'Clean_Confidence': record['clean_confidence'],
+            'Poisoned_Confidence': record['poisoned_confidence'],
+            'Confidence_Change': record['confidence_change'],
+            'Poison_Effect': record['poison_effect'],
+            'Confidence_Manipulation': record['confidence_manipulation'],
+            'Clean_Response': record['clean_model_response'][:100] + '...' if len(record['clean_model_response']) > 100 else record['clean_model_response'],
+            'Poisoned_Response': record['poisoned_model_response'][:100] + '...' if len(record['poisoned_model_response']) > 100 else record['poisoned_model_response']
         })
     
-    df = pd.DataFrame(summary_data)
+    df = pd.DataFrame(csv_data)
     df.to_csv(csv_file, index=False)
     
+    # 另外保存距离层统计摘要
+    distance_summary_file = args.output_file.replace('.json', '_distance_summary.csv')
+    distance_summary = []
+    
+    for distance, comp in comparison.items():
+        distance_summary.append({
+            'Distance': distance,
+            'Count': comp['clean']['count'],
+            'Clean_Avg_Accuracy': comp['clean']['avg_accuracy'],
+            'Poisoned_Avg_Accuracy': comp['poisoned']['avg_accuracy'],
+            'Accuracy_Change': comp['changes']['accuracy_change'],
+            'Clean_Avg_Confidence': comp['clean']['avg_confidence'],
+            'Poisoned_Avg_Confidence': comp['poisoned']['avg_confidence'],
+            'Confidence_Change': comp['changes']['confidence_change']
+        })
+    
+    df_distance = pd.DataFrame(distance_summary)
+    df_distance.to_csv(distance_summary_file, index=False)
+    
     print(f"\n✅ 对比分析完成!")
-    print(f"📁 详细结果: {args.output_file}")
-    print(f"📁 摘要表格: {csv_file}")
+    print(f"📁 统一对比结果: {args.output_file}")
+    print(f"📁 详细CSV表格: {csv_file}")
+    print(f"📁 距离层统计: {distance_summary_file}")
+    print(f"📊 统一结果包含 {len(unified_results)} 条三元组对比记录")
     
     # 显示投毒信息总结（如果有）
     if poison_info:
