@@ -21,7 +21,7 @@ import networkx.algorithms.community as nx_comm
 import gzip
 
 # Configuration
-GRAPH_FILE = '/root/test/GenFragility-LLM/results/test_150_nodes_improved/enhanced_150_nodes_improved.pkl'
+GRAPH_FILE = '/root/test/GenFragility-LLM/results/test_1w_nodes_gpt_4o_mini_v2_checkpoints/latest.pkl'
 OUTPUT_DIR = 'results/experiments_ripples'
 NUM_EXPERIMENTS = 10
 MAX_DISTANCE = 5  # 减小距离以提高效率

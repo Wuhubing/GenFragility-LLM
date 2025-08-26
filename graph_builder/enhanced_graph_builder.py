@@ -148,12 +148,11 @@ class EnhancedGraphBuilder:
                       f"({self.graph.number_of_nodes()}/{self.target_nodes} nodes)")
 
             new_triplets = self._expand_entity(next_entity)
-            
-            if new_triplets:
-                for triplet in new_triplets:
-                    self._process_and_add_triplet(triplet)
+            # Note: _expand_entity already validates and adds triplets to graph
 
             self.state['processed_entities'].add(next_entity)
+            # Also mark entity as processed in scheduler to prevent re-adding
+            self.scheduler.processed_entities.add(next_entity)
             self._periodic_checkpoint()
         
         print(f"\n🎉 Construction finished in {(time.time() - start_time)/60:.1f} minutes.")
@@ -192,12 +191,20 @@ class EnhancedGraphBuilder:
         
         # Validate and add triplets to the graph
         validated_count = 0
+        new_entities = set()  # Track new entities to add only once
+        
         for i, triplet in enumerate(raw_triplets):
             result = self.validator.validate_and_normalize(triplet)
             if result.accept:
                 main_triplet = result.normalized_triplet
                 self._add_triplet_to_graph(main_triplet)
-                self.scheduler.add_seed_entities([main_triplet.head, main_triplet.tail])
+                
+                # Collect new entities (avoid adding current expanding entity)
+                if main_triplet.head != entity:
+                    new_entities.add(main_triplet.head)
+                if main_triplet.tail != entity:
+                    new_entities.add(main_triplet.tail)
+                
                 validated_count += 1
                 print(f"✅ Triplet {i+1} accepted: {triplet.to_tuple()}")
                 
@@ -206,6 +213,10 @@ class EnhancedGraphBuilder:
                     self._add_triplet_to_graph(result.inverse_triplet, is_inverse=True)
             else:
                 print(f"❌ Triplet {i+1} rejected: {triplet.to_tuple()} -> {result.reason}")
+        
+        # Add new entities to scheduler queue only once
+        if new_entities:
+            self.scheduler.add_seed_entities(list(new_entities))
         
         print(f"📊 Final: {validated_count}/{len(raw_triplets)} triplets validated for '{entity}'")
         return raw_triplets

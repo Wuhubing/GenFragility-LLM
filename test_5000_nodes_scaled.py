@@ -170,6 +170,71 @@ class ScaledGraphBuilder:
             self.log("🧹 定期清理LLM缓存...")
             response_cache.clear()
     
+    def progress_monitor(self, progress_bar):
+        """进度监控线程"""
+        last_count = 0
+        last_log_count = 0
+        while True:
+            if not self.builder:
+                time.sleep(1)
+                continue
+                
+            current_count = self.builder.graph.number_of_nodes()
+            current_edges = self.builder.graph.number_of_edges()
+            
+            # 更新进度条
+            if sys.stderr.isatty() and current_count > last_count:
+                progress_bar.update(current_count - last_count)
+                last_count = current_count
+            
+            # 更频繁的进度日志 - 每增加10个节点就输出
+            if current_count > 0 and current_count >= last_log_count + 10:
+                elapsed = time.time() - self.start_time
+                rate = current_count / elapsed * 60 if elapsed > 0 else 0
+                completion = current_count / self.config['target_nodes'] * 100
+                eta_hours = (self.config['target_nodes'] - current_count) / rate * 60 / 3600 if rate > 0 else 0
+                
+                self.log(f"📊 进度报告: {current_count}/{self.config['target_nodes']} 节点 "
+                       f"({completion:.1f}%), {current_edges} 边, "
+                       f"速率 {rate:.1f} 节点/分钟, ETA {eta_hours:.1f}小时")
+                last_log_count = current_count
+            
+            # 每30秒输出心跳信息
+            if int(time.time()) % 30 == 0:
+                elapsed_minutes = (time.time() - self.start_time) / 60
+                self.log(f"💓 构建心跳: 运行 {elapsed_minutes:.1f} 分钟, "
+                       f"当前 {current_count} 节点, {current_edges} 边")
+            
+            # 检查是否完成
+            if current_count >= self.config['target_nodes']:
+                break
+                
+            time.sleep(5)  # 每5秒检查一次
+    
+    def checkpoint_monitor(self):
+        """检查点监控线程"""
+        while True:
+            if not self.builder:
+                time.sleep(10)
+                continue
+                
+            current_nodes = self.builder.graph.number_of_nodes()
+            
+            # 检查点保存
+            if (current_nodes > 0 and 
+                current_nodes % self.config['checkpoint_interval'] == 0 and
+                current_nodes != self.last_node_count):
+                
+                self.checkpoint_count += 1
+                self.save_checkpoint()
+                self.last_node_count = current_nodes
+            
+            # 检查是否完成
+            if current_nodes >= self.config['target_nodes']:
+                break
+                
+            time.sleep(30)  # 每30秒检查一次
+    
     def build_5000_nodes(self):
         """构建5000节点图谱"""
         self.log("🚀 开始5000节点大规模图谱构建")
@@ -212,50 +277,20 @@ class ScaledGraphBuilder:
                            disable=not sys.stderr.isatty())  # nohup下禁用进度条
         
         try:
-            # 构建循环
-            while (self.builder.graph.number_of_nodes() < self.config['target_nodes'] and 
-                   self.total_iterations < self.config['max_total_iterations']):
-                
-                current_nodes = self.builder.graph.number_of_nodes()
-                
-                # 更新进度条
-                if sys.stderr.isatty():
-                    progress_bar.n = current_nodes
-                    progress_bar.refresh()
-                
-                # 执行一轮构建
-                try:
-                    self.builder._build_iteration()
-                    self.total_iterations += 1
-                    
-                    # 定期日志
-                    if self.total_iterations % 20 == 0:
-                        elapsed = time.time() - self.start_time
-                        rate = current_nodes / elapsed * 60 if elapsed > 0 else 0
-                        self.log(f"进度: {current_nodes}/{self.config['target_nodes']} 节点, "
-                               f"迭代 {self.total_iterations}, 速率 {rate:.1f} 节点/分钟")
-                    
-                    # 检查点保存
-                    if current_nodes > 0 and current_nodes % self.config['checkpoint_interval'] == 0:
-                        if current_nodes != self.last_node_count:  # 只在有新增时保存
-                            self.checkpoint_count += 1
-                            self.save_checkpoint()
-                    
-                    # 检查卡死
-                    if self.check_stall_condition():
-                        self.log("🛑 检测到构建卡死，尝试重启...")
-                        # 尝试添加新种子打破僵局
-                        emergency_seeds = ['COVID-19', 'Climate Change', 'Artificial Intelligence', 'Blockchain']
-                        self.builder.scheduler.add_seed_entities(emergency_seeds)
-                        self.stall_count = 0  # 重置卡死计数
-                    
-                    # 定期清理缓存
-                    self.cleanup_cache_periodically()
-                    
-                except Exception as e:
-                    self.log(f"❌ 构建迭代失败: {e}", "ERROR")
-                    time.sleep(1)  # 短暂休息后继续
-                    continue
+            # 使用EnhancedGraphBuilder的build_graph方法
+            # 但是我们需要自定义循环来添加监控和检查点
+            
+            # 启动进度监控线程
+            progress_thread = threading.Thread(target=self.progress_monitor, 
+                                             args=(progress_bar,), daemon=True)
+            progress_thread.start()
+            
+            # 启动检查点监控线程
+            checkpoint_thread = threading.Thread(target=self.checkpoint_monitor, daemon=True)
+            checkpoint_thread.start()
+            
+            # 开始构建 - 使用原有的build_graph方法
+            graph = self.builder.build_graph()
             
             # 构建完成
             progress_bar.close()
