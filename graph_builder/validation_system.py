@@ -92,7 +92,8 @@ class TripletValidator:
             head=norm_head, relation_id=norm_rel, tail=norm_tail,
             domain_guess=triplet.domain_guess, range_guess=triplet.range_guess,
             surface=triplet.surface, evidence=triplet.evidence, confidence=triplet.confidence,
-            inverse_auto=triplet.inverse_auto, gen_params=triplet.gen_params
+            inverse_auto=triplet.inverse_auto, gen_params=triplet.gen_params,
+            question=getattr(triplet, 'question', '')  # Preserve question field
         )
 
         # Step 2: Whitelist & Type Validation
@@ -378,7 +379,8 @@ class TripletValidator:
             evidence=triplet.evidence,
             confidence=triplet.confidence,
             inverse_auto=triplet.inverse_auto,
-            gen_params=triplet.gen_params
+            gen_params=triplet.gen_params,
+            question=getattr(triplet, 'question', '')  # Preserve question field
         )
         
         return normalized

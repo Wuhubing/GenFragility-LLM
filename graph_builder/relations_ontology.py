@@ -99,7 +99,7 @@ class KnowledgeTriplet:
     def __init__(self, head: str, relation_id: str, tail: str,
                  domain_guess: str = "Entity", range_guess: str = "Entity",
                  surface: str = "", evidence: str = "", confidence: float = 0.0,
-                 inverse_auto: bool = True, gen_params: Dict = None):
+                 inverse_auto: bool = True, gen_params: Dict = None, question: str = ""):
         self.head = head.strip()
         self.relation_id = relation_id
         self.tail = tail.strip()
@@ -109,6 +109,7 @@ class KnowledgeTriplet:
         self.evidence = evidence
         self.confidence = confidence
         self.inverse_auto = inverse_auto
+        self.question = question
         self.created_at = datetime.now().isoformat()
         self.gen_params = gen_params or {}
         
@@ -131,6 +132,7 @@ class KnowledgeTriplet:
             'surface': self.surface,
             'evidence': self.evidence,
             'confidence': self.confidence,
+            'question': self.question,
             'created_at': self.created_at,
             'gen_params': self.gen_params
         }

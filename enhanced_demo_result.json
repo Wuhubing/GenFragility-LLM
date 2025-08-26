@@ -1,0 +1,548 @@
+{
+  "metadata": {
+    "builder_version": "Enhanced v0.3",
+    "prompt_system": "Improved Task→Rules→Constraints→Output",
+    "total_triplets": 31,
+    "qa_atomic_relations": 36
+  },
+  "triplets": [
+    {
+      "head": "爱因斯坦",
+      "relation_id": "BirthPlace",
+      "tail": "德国乌尔姆",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Place",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "爱因斯坦出生于德国乌尔姆。",
+      "evidence_rationale": "爱因斯坦的出生地是乌尔姆，这是历史上公认的事实。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "苹果公司",
+      "relation_id": "CurrentEmployer",
+      "tail": "蒂姆·库克",
+      "group": "QA-Atomic",
+      "domain_type": "Org",
+      "range_type": "Person",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "蒂姆·库克是苹果公司的现任首席执行官。",
+      "evidence_rationale": "蒂姆·库克自2011年起担任苹果公司的首席执行官，这是一个被广泛认可的事实。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "北京",
+      "relation_id": "PopulationAsOf",
+      "tail": "21540000",
+      "group": "QA-Atomic",
+      "domain_type": "Place",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2020
+      },
+      "qa_eligible": true,
+      "surface": "截至2020年，北京的人口约为21540000。",
+      "evidence_rationale": "根据官方统计数据，北京在2020年的人口为2154万。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "德国乌尔姆",
+      "relation_id": "CountryOfCity",
+      "tail": "德国",
+      "group": "Graph-Core",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "德国乌尔姆位于德国。",
+      "evidence_rationale": "乌尔姆是德国的一座城市，属于德国的行政区划。",
+      "confidence": 0.95,
+      "is_inverse": false
+    },
+    {
+      "head": "蒂姆·库克",
+      "relation_id": "NationalityPrimary",
+      "tail": "美国",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Country",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "蒂姆·库克的国籍是美国。",
+      "evidence_rationale": "蒂姆·库克是美国公民，广为人知。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "德国",
+      "relation_id": "Continent",
+      "tail": "欧洲",
+      "group": "Graph-Core",
+      "domain_type": "Country",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "德国位于欧洲。",
+      "evidence_rationale": "德国是欧洲的一部分，这是地理常识。",
+      "confidence": 0.95,
+      "is_inverse": false
+    },
+    {
+      "head": "库比蒂诺",
+      "relation_id": "CountryOfCity",
+      "tail": "美国",
+      "group": "Graph-Core",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "库比蒂诺位于美国。",
+      "evidence_rationale": "库比蒂诺是美国加利福尼亚州的一座城市。",
+      "confidence": 0.95,
+      "is_inverse": false
+    },
+    {
+      "head": "库比蒂诺",
+      "relation_id": "CountryOfCity",
+      "tail": "美国",
+      "group": "Geo",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "库比蒂诺位于美国。",
+      "evidence_rationale": "库比蒂诺是美国加利福尼亚州的一座城市。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "美国",
+      "relation_id": "Continent",
+      "tail": "北美洲",
+      "group": "Geo",
+      "domain_type": "Country",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "美国位于北美洲。",
+      "evidence_rationale": "美国是北美洲的一个国家，位于该大陆的中部。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "欧洲",
+      "relation_id": "Continent",
+      "tail": "欧洲",
+      "group": "Geo",
+      "domain_type": "Country",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "德国位于欧洲。",
+      "evidence_rationale": "德国是欧洲的一部分，属于欧盟。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "北美洲",
+      "relation_id": "Continent",
+      "tail": "北美洲",
+      "group": "Geo",
+      "domain_type": "Country",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "北美洲是一个洲。",
+      "evidence_rationale": "北美洲是地球上的一个主要大陆。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "北美洲",
+      "relation_id": "PopulationAsOf",
+      "tail": "579024000",
+      "group": "Geo",
+      "domain_type": "Place",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2021
+      },
+      "qa_eligible": true,
+      "surface": "截至2021年，北美洲的人口为579024000。",
+      "evidence_rationale": "根据联合国统计，北美洲的人口在2021年约为5.79亿。",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "北美洲",
+      "relation_id": "OfficialLanguagePrimary",
+      "tail": "英语",
+      "group": "Geo",
+      "domain_type": "Country",
+      "range_type": "Language",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "北美洲的主要官方语言是英语。",
+      "evidence_rationale": "英语是北美洲大部分国家的官方语言，尤其是在美国和加拿大。",
+      "confidence": 0.85,
+      "is_inverse": false
+    },
+    {
+      "head": "北美洲",
+      "relation_id": "CountryOfCity",
+      "tail": "美国",
+      "group": "Geo",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "华盛顿特区位于美国。",
+      "evidence_rationale": "华盛顿特区是美国的首都，属于北美洲。",
+      "confidence": 0.95,
+      "is_inverse": false
+    },
+    {
+      "head": "北美洲",
+      "relation_id": "CountryOfCity",
+      "tail": "加拿大",
+      "group": "Geo",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "多伦多位于加拿大。",
+      "evidence_rationale": "多伦多是加拿大最大的城市，位于北美洲。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "北美洲",
+      "relation_id": "CountryOfCity",
+      "tail": "墨西哥城",
+      "group": "Geo",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "墨西哥城位于墨西哥。",
+      "evidence_rationale": "墨西哥城是墨西哥的首都，位于北美洲。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "墨西哥城",
+      "relation_id": "CountryOfCity",
+      "tail": "墨西哥",
+      "group": "Graph-Core",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "墨西哥城是墨西哥的城市。",
+      "evidence_rationale": "墨西哥城是墨西哥的首都，属于该国。",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "579024000",
+      "relation_id": "CurrentPosition",
+      "tail": "首席执行官",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Position",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "579024000目前的职位是首席执行官。",
+      "evidence_rationale": "579024000作为一个人，可能担任首席执行官这一职位。",
+      "confidence": 0.7,
+      "is_inverse": false
+    },
+    {
+      "head": "579024000",
+      "relation_id": "CurrentEmployer",
+      "tail": "某公司",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "579024000目前的雇主是某公司。",
+      "evidence_rationale": "579024000作为一个人，通常会有一个当前的雇主。",
+      "confidence": 0.7,
+      "is_inverse": false
+    },
+    {
+      "head": "某公司",
+      "relation_id": "CountryOfIncorporation",
+      "tail": "加拿大",
+      "group": "Graph-Core",
+      "domain_type": "Org",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "某公司的注册国家是加拿大。",
+      "evidence_rationale": "许多公司在加拿大注册。",
+      "confidence": 0.6,
+      "is_inverse": false
+    },
+    {
+      "head": "墨西哥城",
+      "relation_id": "PopulationAsOf",
+      "tail": "9209944",
+      "group": "QA-Atomic",
+      "domain_type": "Place",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2022
+      },
+      "qa_eligible": true,
+      "surface": "截至2022年，墨西哥城的人口为9209944。",
+      "evidence_rationale": "墨西哥城是一个大城市，人口数据是可查的。",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "9209944",
+      "relation_id": "NationalityPrimary",
+      "tail": "墨西哥",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Country",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "9209944的国籍是墨西哥。",
+      "evidence_rationale": "个人的国籍通常与其出生地或居住地相关。",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "9209944",
+      "relation_id": "CurrentEmployer",
+      "tail": "某公司",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "9209944目前的雇主是某公司。",
+      "evidence_rationale": "个人的当前雇主通常是其职业生涯的重要组成部分。",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "爱因斯坦",
+      "relation_id": "BirthDate",
+      "tail": "1879-03-14",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Time",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "爱因斯坦的出生日期是1879年3月14日。",
+      "evidence_rationale": "爱因斯坦是著名的物理学家，他的出生日期是历史上公认的事实。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "爱因斯坦",
+      "relation_id": "BirthPlace",
+      "tail": "德国乌尔姆",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Place",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "爱因斯坦出生在德国乌尔姆。",
+      "evidence_rationale": "爱因斯坦的出生地是历史上广为人知的事实。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "爱因斯坦",
+      "relation_id": "NationalityPrimary",
+      "tail": "德国",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Country",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "爱因斯坦的主要国籍是德国。",
+      "evidence_rationale": "爱因斯坦是德国出生的著名科学家，具有德国国籍。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "苹果公司",
+      "relation_id": "CurrentEmployer",
+      "tail": "579024000",
+      "group": "QA-Atomic",
+      "domain_type": "Org",
+      "range_type": "Person",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "579024000目前是苹果公司的雇员。",
+      "evidence_rationale": "579024000是一个与苹果公司相关的实体，可能是其员工。",
+      "confidence": 0.7,
+      "is_inverse": false
+    },
+    {
+      "head": "欧洲",
+      "relation_id": "PopulationAsOf",
+      "tail": "741000000",
+      "group": "QA-Atomic",
+      "domain_type": "Place",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2022
+      },
+      "qa_eligible": true,
+      "surface": "截至2022年，欧洲的人口约为7.41亿。",
+      "evidence_rationale": "欧洲的人口统计数据是经过验证的，且在2022年有相关统计。",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "欧洲",
+      "relation_id": "Continent",
+      "tail": "欧洲",
+      "group": "Graph-Core",
+      "domain_type": "Country",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "欧洲是一个大陆。",
+      "evidence_rationale": "欧洲是一个地理上定义的大陆，广为人知。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "1879-03-14",
+      "relation_id": "BirthDate",
+      "tail": "1879-03-14",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Time",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "1879-03-14的出生日期是1879年3月14日。",
+      "evidence_rationale": "1879-03-14是一个确切的日期，表示出生日期。",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "741000000",
+      "relation_id": "CurrentEmployer",
+      "tail": "1879-03-14",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "741000000的当前雇主是1879-03-14。",
+      "evidence_rationale": "741000000可能是一个组织，1879-03-14是一个人，且当前雇主关系是明确的。",
+      "confidence": 0.8,
+      "is_inverse": false
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "head": {
+        "type": "string"
+      },
+      "relation_id": {
+        "type": "string"
+      },
+      "tail": {
+        "type": "string"
+      },
+      "group": {
+        "type": "string"
+      },
+      "domain_type": {
+        "type": "string"
+      },
+      "range_type": {
+        "type": "string"
+      },
+      "qualifiers": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "boolean"
+          },
+          "primary": {
+            "type": "boolean"
+          },
+          "as_of_year": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "qa_eligible": {
+        "type": "boolean"
+      },
+      "surface": {
+        "type": "string"
+      },
+      "evidence_rationale": {
+        "type": "string"
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "is_inverse": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "head",
+      "relation_id",
+      "tail",
+      "group",
+      "domain_type",
+      "range_type",
+      "qualifiers",
+      "qa_eligible",
+      "surface",
+      "evidence_rationale",
+      "confidence",
+      "is_inverse"
+    ],
+    "additionalProperties": false
+  }
+}

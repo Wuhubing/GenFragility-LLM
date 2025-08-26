@@ -82,11 +82,11 @@ class IncrementalPoisonEvaluationPipeline:
                 'experiment_id': experiment_id
             }]
             
-            # 提取ripples (d1, d2), 并修正dd1
+            # 提取ripples (d1-d5), 并修正ddX格式
             ripples = data.get('ripples', {})
             
-                    # 只处理 d1/dd1 和 d2 (限制评估范围)
-        for distance_key in ['d1', 'dd1', 'd2']:
+            # 支持全距离评估 d1-d5
+            for distance_key in ['d1', 'dd1', 'd2', 'dd2', 'd3', 'dd3', 'd4', 'dd4', 'd5', 'dd5']:
                 items = ripples.get(distance_key)
                 if items:
                     # 规范化距离名称 (dd1 -> d1)
@@ -180,7 +180,7 @@ class IncrementalPoisonEvaluationPipeline:
         """按距离层计算统计信息"""
         stats_by_distance = {}
         
-        for distance in ['d0', 'd1', 'd2']:  # 限制到d2，提高测试效率
+        for distance in ['d0', 'd1', 'd2', 'd3', 'd4', 'd5']:  # 支持全距离评估
             distance_results = [r for r in results if r.get('distance') == distance]
             
             if not distance_results:
@@ -232,7 +232,7 @@ class IncrementalPoisonEvaluationPipeline:
             'comparison': {}
         }
         
-        for distance in ['d0', 'd1', 'd2']:  # 限制到d2，提高测试效率
+        for distance in ['d0', 'd1', 'd2', 'd3', 'd4', 'd5']:  # 支持全距离评估
             baseline = baseline_stats.get(distance, {})
             poisoned = poisoned_stats.get(distance, {})
             

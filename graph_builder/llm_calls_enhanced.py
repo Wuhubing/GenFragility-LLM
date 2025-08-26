@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Enhanced LLM calls for knowledge graph construction with:
-- Whitelist relation constraint
-- Structured metadata output  
+Enhanced LLM calls for knowledge graph construction with v0.3 Prompt System:
+- Unified prompt templates with structured output
+- QA-Atomic relation support with qualifiers
+- JSONL format with rich metadata
 - Response caching for reproducibility
 - Conservative temperature settings
 """
@@ -11,13 +12,51 @@ from openai import OpenAI
 import json
 import hashlib
 import os
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any
 from datetime import datetime
+import jsonschema
 
 from .relations_ontology import KnowledgeTriplet, RelationOntology
+from .prompts import (
+    SYS_PROMPT_GRAPH_BUILDER_v0_3,
+    create_user_prompt_v0_3,
+    create_entity_expansion_prompt,
+    create_relation_expansion_prompt
+)
+
+# JSON Schema for v0.3 output validation
+TRIPLET_SCHEMA_v0_3 = {
+    "type": "object",
+    "properties": {
+        "head": {"type": "string"},
+        "relation_id": {"type": "string"},
+        "tail": {"type": "string"},
+        "group": {"type": "string"},
+        "domain_type": {"type": "string"},
+        "range_type": {"type": "string"},
+        "qualifiers": {
+            "type": ["object", "null"],
+            "properties": {
+                "current": {"type": ["boolean", "null"]},
+                "primary": {"type": ["boolean", "null"]},
+                "as_of_year": {"type": ["integer", "null"]}
+            },
+            "additionalProperties": False
+        },
+        "qa_eligible": {"type": "boolean"},
+        "surface": {"type": "string"},
+        "evidence_rationale": {"type": "string"},
+        "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "is_inverse": {"type": "boolean"},
+        "question": {"type": "string"}
+    },
+    "required": ["head", "relation_id", "tail", "group", "domain_type", "range_type", 
+                 "qualifiers", "qa_eligible", "surface", "evidence_rationale", "confidence", "is_inverse", "question"],
+    "additionalProperties": False
+}
 
 class LLMInterfaceEnhanced:
-    """Enhanced LLM interface with ontology integration."""
+    """Enhanced LLM interface with v0.3 prompt system and ontology integration."""
     
     def __init__(self, api_key_path: str = None, cache_dir: str = None, ontology: RelationOntology = None):
         self.ontology = ontology or RelationOntology()
@@ -29,28 +68,53 @@ class LLMInterfaceEnhanced:
         """Initialize the LLM API."""
         return load_api_key(api_key_path)
     
-    def get_relations_by_group(self, group: str) -> List[str]:
-        """Get relations by group from the ontology."""
-        relations = []
-        for rel_id, rel_info in self.ontology.get_all_relations().items():
-            if rel_info.get('group') == group:
-                relations.append(rel_id)
-        return relations
-    
-    def get_relation_examples(self, relation_id: str) -> List[str]:
-        """Get examples for a relation (simplified implementation)."""
-        # This is a placeholder - you might want to implement actual examples
-        return [f"Example usage of {relation_id}"]
+    def generate_triplets_from_seeds(self, seeds: List[str], budget: int = 40, 
+                                   language: str = "en", include_optional: bool = False) -> List[Dict[str, Any]]:
+        """Generate triplets using the v0.3 unified prompt system."""
+        if not seeds:
+            print("❌ No seeds provided")
+            return []
+        
+        print(f"🔍 Generating {budget} triplets from seeds: {seeds}")
+        
+        # Create the user prompt using v0.3 template
+        user_prompt = create_user_prompt_v0_3(
+            seeds=seeds,
+            ontology=self.ontology,
+            budget=budget,
+            language=language,
+            include_optional=include_optional
+        )
+        
+        # Call LLM with v0.3 prompts
+        content = _call_llm_with_cache(
+            prompt=user_prompt,
+            system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
+            temperature=0.2,
+            max_tokens=4000  # Increased for JSONL output
+        )
+        
+        if not content:
+            print("❌ No response from LLM")
+            return []
+        
+        # Parse JSONL response
+        triplets = self._parse_jsonl_triplets_v0_3(content)
+        print(f"📊 Generated {len(triplets)} valid triplets from seeds")
+        
+        return triplets
     
     def generate_triplets(self, prompt: str, num_triplets: int = 8) -> List[KnowledgeTriplet]:
-        """Generate triplets using downstream expansion."""
+        """Generate triplets using legacy interface (backward compatibility)."""
         # Extract entity from prompt (improved heuristic)
         entity = self._extract_entity_from_prompt(prompt)
         if entity:
-            print(f"🔍 Generating triplets for entity: '{entity}'")
-            triplets = find_downstream_triplets_enhanced(entity, num_triplets)
-            print(f"📊 Generated {len(triplets)} triplets for '{entity}'")
-            return triplets
+            print(f"🔍 Legacy mode: Generating triplets for entity: '{entity}'")
+            # Use new v0.3 system but convert to legacy format
+            new_triplets = self.generate_triplets_from_seeds([entity], budget=num_triplets)
+            legacy_triplets = [self._convert_to_legacy_triplet(t) for t in new_triplets]
+            print(f"📊 Generated {len(legacy_triplets)} triplets for '{entity}'")
+            return legacy_triplets
         else:
             print(f"❌ Could not extract entity from prompt: {prompt[:100]}...")
             return []
@@ -90,6 +154,67 @@ class LLMInterfaceEnhanced:
                         return word.strip('.,!?')
         
         return ""
+    
+    def _parse_jsonl_triplets_v0_3(self, content: str) -> List[Dict[str, Any]]:
+        """Parse JSONL response from v0.3 prompt system."""
+        if not content:
+            return []
+        
+        triplets = []
+        lines = content.strip().split('\n')
+        
+        for line_num, line in enumerate(lines, 1):
+            line = line.strip()
+            if not line:
+                continue
+            
+            try:
+                triplet_data = json.loads(line)
+                
+                # Validate against schema
+                jsonschema.validate(triplet_data, TRIPLET_SCHEMA_v0_3)
+                
+                # Additional validation: check relation exists in ontology
+                relation_id = triplet_data['relation_id']
+                if not self.ontology.is_valid_relation(relation_id):
+                    print(f"⚠️ Line {line_num}: Unknown relation '{relation_id}', skipping")
+                    continue
+                
+                triplets.append(triplet_data)
+                
+            except json.JSONDecodeError as e:
+                print(f"⚠️ Line {line_num}: JSON decode error: {e}")
+                continue
+            except jsonschema.ValidationError as e:
+                print(f"⚠️ Line {line_num}: Schema validation error: {e.message}")
+                continue
+            except Exception as e:
+                print(f"⚠️ Line {line_num}: Unexpected error: {e}")
+                continue
+        
+        return triplets
+    
+    def _convert_to_legacy_triplet(self, triplet_data: Dict[str, Any]) -> KnowledgeTriplet:
+        """Convert v0.3 triplet format to legacy KnowledgeTriplet object."""
+        return KnowledgeTriplet(
+            head=triplet_data['head'],
+            relation_id=triplet_data['relation_id'],
+            tail=triplet_data['tail'],
+            domain_guess=triplet_data['domain_type'],
+            range_guess=triplet_data['range_type'],
+            surface=triplet_data['surface'],
+            evidence=triplet_data['evidence_rationale'],
+            confidence=triplet_data['confidence'],
+            inverse_auto=not triplet_data['is_inverse'],
+            gen_params={
+                "model": "gpt-4o-mini",
+                "temperature": 0.2,
+                "timestamp": datetime.now().isoformat(),
+                "prompt_version": "v0.3",
+                "qa_eligible": triplet_data['qa_eligible'],
+                "qualifiers": triplet_data['qualifiers']
+            }
+        )
 
 # Global client variable
 client = None
@@ -224,7 +349,7 @@ def _call_llm_with_cache(prompt: str, system_prompt: str, model: str = "gpt-4o-m
         return None
 
 def _parse_enhanced_triplets(content: str, include_optional: bool = False) -> List[KnowledgeTriplet]:
-    """Parse enhanced triplet response with metadata."""
+    """Parse enhanced triplet response with metadata (legacy format)."""
     if not content:
         return []
     
@@ -544,25 +669,51 @@ def clear_cache():
         os.remove(cache_file)
     print("Response cache cleared.")
 
+# Wrapper functions for backward compatibility
+def generate_triplets_from_seeds_v0_3(seeds: List[str], budget: int = 40, 
+                                     language: str = "en", include_optional: bool = False) -> List[Dict[str, Any]]:
+    """Convenience function for v0.3 triplet generation."""
+    interface = LLMInterfaceEnhanced()
+    return interface.generate_triplets_from_seeds(seeds, budget, language, include_optional)
+
 if __name__ == "__main__":
-    # Test the enhanced LLM functions
+    # Test the enhanced LLM functions with v0.3 system
     if load_api_key():
         print("API key loaded successfully!")
         print(f"Cache stats: {get_cache_statistics()}")
         
-        print("\nTesting enhanced downstream triplets for 'Beijing':")
+        # Test v0.3 unified system
+        print("\n=== Testing v0.3 Unified Prompt System ===")
+        seeds = ["Beijing", "Apple Inc.", "Albert Einstein"]
+        print(f"Seeds: {seeds}")
+        
+        interface = LLMInterfaceEnhanced()
+        triplets_v0_3 = interface.generate_triplets_from_seeds(seeds, budget=15, language="en")
+        
+        print(f"\nGenerated {len(triplets_v0_3)} triplets:")
+        for i, triplet in enumerate(triplets_v0_3[:5]):  # Show first 5
+            print(f"  {i+1}. ({triplet['head']}, {triplet['relation_id']}, {triplet['tail']})")
+            print(f"     QA-Eligible: {triplet['qa_eligible']}, Confidence: {triplet['confidence']:.2f}")
+            print(f"     Surface: {triplet['surface']}")
+            if triplet['qualifiers']:
+                print(f"     Qualifiers: {triplet['qualifiers']}")
+            print()
+        
+        # Test backward compatibility
+        print("\n=== Testing Backward Compatibility ===")
+        print("\nTesting legacy downstream triplets for 'Beijing':")
         downstream = find_downstream_triplets_enhanced("Beijing", 3)
         for triplet in downstream:
             print(f"  {triplet.to_tuple()} (conf: {triplet.confidence:.2f})")
             print(f"    Surface: {triplet.surface}")
             print(f"    Evidence: {triplet.evidence}")
         
-        print("\nTesting enhanced upstream triplets for 'China':")
+        print("\nTesting legacy upstream triplets for 'China':")
         upstream = find_upstream_triplets_enhanced("China", 3)
         for triplet in upstream:
             print(f"  {triplet.to_tuple()} (conf: {triplet.confidence:.2f})")
         
-        print("\nTesting enhanced parallel triplets for 'CapitalOf':")
+        print("\nTesting legacy parallel triplets for 'CapitalOf':")
         parallel = find_parallel_triplets_enhanced("CapitalOf", 3)
         for triplet in parallel:
             print(f"  {triplet.to_tuple()} (conf: {triplet.confidence:.2f})")

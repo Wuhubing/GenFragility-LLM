@@ -276,8 +276,11 @@ async def evaluate_triplet_async(
 async def run_evaluation_logic(triplets: List[Dict], prober: AsyncConfidenceProber, evaluator: FairModelEvaluator, concurrency_limit: int, num_workers: int) -> List[Dict]:
     """
     使用asyncio.Semaphore和tqdm重构的异步评估运行器
+    优化并发数以充分利用高性能服务器资源
     """
-    semaphore = asyncio.Semaphore(concurrency_limit)
+    # 动态调整并发数基于三元组数量和硬件配置
+    optimal_concurrency = min(concurrency_limit, max(8, len(triplets) // 50))
+    semaphore = asyncio.Semaphore(optimal_concurrency)
     results_list = []
 
     async def process_with_semaphore(triplet):

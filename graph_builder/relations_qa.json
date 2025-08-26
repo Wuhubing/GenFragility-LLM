@@ -1,0 +1,43 @@
+[
+  {"relation_id":"BirthDate","group":"Person","domain":"Person","range":"Time","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"BirthPlace","group":"Person","domain":"Person","range":"Place","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"NationalityPrimary","group":"Person","domain":"Person","range":"Country","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"CurrentPosition","group":"Person","domain":"Person","range":"Position","multiplicity":"one_or_zero","qualifiers_required":["current"],"inverse_policy":"none"},
+  {"relation_id":"CurrentEmployer","group":"Person","domain":"Person","range":"Org","multiplicity":"one_or_zero","qualifiers_required":["current"],"inverse_policy":"auto"},
+  {"relation_id":"AlmaMaterPrimary","group":"Education","domain":"Person","range":"Org","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"HeadquartersCity","group":"Org","domain":"Org","range":"City","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"paired"},
+  {"relation_id":"HeadquartersCountry","group":"Org","domain":"Org","range":"Country","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"FoundingDate","group":"Org","domain":"Org","range":"Time","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"FoundedByPrimary","group":"Org","domain":"Org","range":"PersonOrOrg","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"ParentOrganization","group":"Org","domain":"Org","range":"Org","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"auto"},
+  {"relation_id":"ChiefExecutiveOfficerCurrent","group":"Org","domain":"Org","range":"Person","multiplicity":"one_or_zero","qualifiers_required":["current"],"inverse_policy":"none"},
+  {"relation_id":"CountryOfIncorporation","group":"Org","domain":"Org","range":"Country","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"StockExchangePrimary","group":"Org","domain":"Org","range":"Exchange","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"CountryOfCity","group":"Geo","domain":"City","range":"Country","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"CapitalCityOfCountry","group":"Geo","domain":"Country","range":"City","multiplicity":"one_or_zero","qualifiers_required":["single_capital_only"],"inverse_policy":"auto"},
+  {"relation_id":"TimeZonePrimary","group":"Geo","domain":"Place","range":"TimeZone","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"MajorIndustryPrimary","group":"Geo","domain":"Country","range":"Industry","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"OfficialLanguagePrimary","group":"Geo","domain":"Country","range":"Language","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"CurrencyPrimary","group":"Geo","domain":"Country","range":"Currency","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"Continent","group":"Geo","domain":"Country","range":"Continent","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+
+  {"relation_id":"AuthorOfWorkPrimary","group":"Work","domain":"Work","range":"Person","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"CreatedByPrimary","group":"Work","domain":"WorkOrInvention","range":"PersonOrOrg","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"PublicationDate","group":"Work","domain":"Work","range":"Time","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"PublisherPrimary","group":"Work","domain":"Work","range":"Org","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"LanguageOfWorkPrimary","group":"Work","domain":"Work","range":"Language","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"SeriesOfWorkPrimary","group":"Work","domain":"Work","range":"Series","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"DevelopedByPrimary","group":"Product/Tech","domain":"SoftwareOrSystem","range":"OrgOrPerson","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"ManufacturedByPrimary","group":"Product/Tech","domain":"Product","range":"Org","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"InitialReleaseDate","group":"Product/Tech","domain":"SoftwareOrProduct","range":"Time","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"ProgrammingLanguagePrimary","group":"Product/Tech","domain":"Software","range":"Language","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"LicensePrimary","group":"Product/Tech","domain":"Software","range":"License","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"OperatingSystemPrimary","group":"Product/Tech","domain":"Software","range":"OperatingSystem","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"OccursOn","group":"Event","domain":"Event","range":"Time","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"HeldInCity","group":"Event","domain":"Event","range":"City","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"HostOrganizationPrimary","group":"Event","domain":"Event","range":"Org","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"}
+]

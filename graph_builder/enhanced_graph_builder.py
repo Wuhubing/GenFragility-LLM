@@ -15,7 +15,8 @@ import logging
 
 from .relations_ontology import KnowledgeTriplet, RelationOntology
 from .validation_system import TripletValidator
-from .llm_calls_enhanced import LLMInterfaceEnhanced
+from .llm_calls_enhanced import LLMInterfaceEnhanced, TRIPLET_SCHEMA_v0_3
+from .prompts import SYS_PROMPT_GRAPH_BUILDER_v0_3, create_user_prompt_v0_3
 from .stratified_bfs_scheduler import StratifiedBfsScheduler
 from .anti_explosion_triadic import TriadicClosureSystem
 from .stats_monitoring import RealTimeMonitor
@@ -29,8 +30,14 @@ class EnhancedGraphBuilder:
         self.config = config
         self.graph = nx.DiGraph()
         
-        # 1. Initialize the single source of truth for ontology
-        self.ontology = RelationOntology()
+        # 1. Initialize the ontology - use QA Atomic if specified
+        if self.config.get('use_qa_atomic_ontology', False):
+            from .qa_atomic_ontology import QAAtomicOntology
+            self.ontology = QAAtomicOntology()
+            print("✅ Using QA Atomic Ontology (36 function-like relations)")
+        else:
+            self.ontology = RelationOntology()
+            print("✅ Using Standard Relation Ontology")
 
         # 2. Initialize core components, passing the ontology instance to each
         self.llm_interface = LLMInterfaceEnhanced(
@@ -154,10 +161,30 @@ class EnhancedGraphBuilder:
         return self.graph
     
     def _expand_entity(self, entity: str) -> List[KnowledgeTriplet]:
-        """Generates new triplets for an entity using the LLM."""
-        prompt = self._get_prompt_for_entity(entity)
+        """Generates new triplets for an entity using the LLM with v0.3 prompt system."""
+        # Create user prompt using v0.3 system
+        user_prompt = create_user_prompt_v0_3(
+            seeds=[entity],
+            ontology=self.ontology,
+            budget=self.triplets_per_query,
+            language="en"
+        )
         
-        raw_triplets = self.llm_interface.generate_triplets(prompt, self.triplets_per_query)
+        # Call LLM with v0.3 system prompt using the standalone function
+        from .llm_calls_enhanced import _call_llm_with_cache
+        content = _call_llm_with_cache(
+            prompt=user_prompt,
+            system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
+            temperature=0.2,
+            max_tokens=2000
+        )
+        
+        if not content:
+            print(f"❌ No response from LLM for entity '{entity}'")
+            return []
+        
+        # Parse JSONL response and create KnowledgeTriplet objects
+        raw_triplets = self._parse_v0_3_response(content)
         print(f"🔍 LLM returned {len(raw_triplets)} raw triplets for '{entity}'")
         
         self.state['total_llm_calls'] += 1
@@ -182,6 +209,150 @@ class EnhancedGraphBuilder:
         
         print(f"📊 Final: {validated_count}/{len(raw_triplets)} triplets validated for '{entity}'")
         return raw_triplets
+    
+    def _parse_v0_3_response(self, content: str) -> List[KnowledgeTriplet]:
+        """Parse JSON response from v0.3 prompt system into KnowledgeTriplet objects."""
+        import json
+        import jsonschema
+        import re
+        
+        triplets = []
+        
+        if not content:
+            return triplets
+        
+        # Method 1: Try to parse as JSONL first
+        lines = content.strip().split('\n')
+        if self._try_parse_jsonl(lines, triplets):
+            return triplets
+        
+        # Method 2: Try to extract JSON objects from multi-line format
+        json_objects = self._extract_json_objects(content)
+        
+        for obj_num, json_str in enumerate(json_objects, 1):
+            try:
+                triplet_data = json.loads(json_str)
+                
+                # Validate against schema
+                jsonschema.validate(triplet_data, TRIPLET_SCHEMA_v0_3)
+                
+                # Create KnowledgeTriplet object
+                triplet = KnowledgeTriplet(
+                    head=triplet_data['head'],
+                    relation_id=triplet_data['relation_id'],
+                    tail=triplet_data['tail'],
+                    domain_guess=triplet_data['domain_type'],
+                    range_guess=triplet_data['range_type'],
+                    surface=triplet_data['surface'],
+                    evidence=triplet_data['evidence_rationale'],
+                    confidence=triplet_data['confidence'],
+                    question=triplet_data.get('question', ''),
+                    inverse_auto=not triplet_data['is_inverse']
+                )
+                
+                triplets.append(triplet)
+                
+            except json.JSONDecodeError as e:
+                print(f"⚠️ Object {obj_num}: JSON decode error: {e}")
+                continue
+            except jsonschema.ValidationError as e:
+                print(f"⚠️ Object {obj_num}: Schema validation error: {e.message}")
+                continue
+            except Exception as e:
+                print(f"⚠️ Object {obj_num}: Unexpected error: {e}")
+                continue
+        
+        return triplets
+    
+    def _try_parse_jsonl(self, lines: List[str], triplets: List) -> bool:
+        """Try to parse as standard JSONL format."""
+        import json
+        import jsonschema
+        
+        success_count = 0
+        for line_num, line in enumerate(lines, 1):
+            line = line.strip()
+            if not line:
+                continue
+            
+            try:
+                triplet_data = json.loads(line)
+                jsonschema.validate(triplet_data, TRIPLET_SCHEMA_v0_3)
+                success_count += 1
+                
+                # Create KnowledgeTriplet object
+                triplet = KnowledgeTriplet(
+                    head=triplet_data['head'],
+                    relation_id=triplet_data['relation_id'],
+                    tail=triplet_data['tail'],
+                    domain_guess=triplet_data['domain_type'],
+                    range_guess=triplet_data['range_type'],
+                    surface=triplet_data['surface'],
+                    evidence=triplet_data['evidence_rationale'],
+                    confidence=triplet_data['confidence'],
+                    question=triplet_data.get('question', ''),
+                    inverse_auto=not triplet_data['is_inverse']
+                )
+                
+                triplets.append(triplet)
+                
+            except (json.JSONDecodeError, jsonschema.ValidationError):
+                # If any line fails, this is probably not JSONL format
+                return False
+        
+        return success_count > 0
+    
+    def _extract_json_objects(self, content: str) -> List[str]:
+        """Extract JSON objects from multi-line content."""
+        import re
+        
+        # Remove newlines within JSON strings but preserve object boundaries
+        # This regex finds complete JSON objects
+        pattern = r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}'
+        
+        # For nested objects, we need a more sophisticated approach
+        json_objects = []
+        brace_count = 0
+        current_obj = ""
+        in_string = False
+        escape_next = False
+        
+        for char in content:
+            if escape_next:
+                current_obj += char
+                escape_next = False
+                continue
+                
+            if char == '\\' and in_string:
+                current_obj += char
+                escape_next = True
+                continue
+                
+            if char == '"' and not escape_next:
+                in_string = not in_string
+                current_obj += char
+                continue
+                
+            if not in_string:
+                if char == '{':
+                    if brace_count == 0:
+                        current_obj = char
+                    else:
+                        current_obj += char
+                    brace_count += 1
+                elif char == '}':
+                    current_obj += char
+                    brace_count -= 1
+                    if brace_count == 0:
+                        json_objects.append(current_obj.strip())
+                        current_obj = ""
+                else:
+                    if brace_count > 0:
+                        current_obj += char
+            else:
+                current_obj += char
+        
+        return json_objects
 
     def _get_prompt_for_entity(self, entity: str) -> str:
         """Creates a prompt for the LLM to expand an entity."""
@@ -217,11 +388,16 @@ class EnhancedGraphBuilder:
     def _add_triplet_to_graph(self, triplet: KnowledgeTriplet, is_inverse: bool = False):
         """Adds a single validated triplet to the graph."""
         if not self.graph.has_edge(triplet.head, triplet.tail):
+            # Ensure question field is properly included
+            question = getattr(triplet, 'question', '')
             self.graph.add_edge(
                 triplet.head, triplet.tail,
                 relation=triplet.relation_id,
                 confidence=triplet.confidence,
                 group=triplet.group,
+                surface=triplet.surface,
+                evidence=triplet.evidence,
+                question=question,
                 is_inverse=is_inverse
             )
 

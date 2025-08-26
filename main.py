@@ -69,9 +69,9 @@ class IntegratedPoisonPipeline:
                 'experiment_id': data.get('experiment_id', 1)
             })
         
-        # d1-d2 (ripples)
+        # d1-d5 (ripples)
         ripples = data.get('ripples', {})
-        for distance_key in ['dd1', 'dd2']:
+        for distance_key in ['dd1', 'dd2', 'dd3', 'dd4', 'dd5', 'd1', 'd2', 'd3', 'd4', 'd5']:
             items = ripples.get(distance_key, [])
             normalized_distance = distance_key.replace('dd', 'd')
             for item in items:

@@ -159,6 +159,10 @@ class GraphExporter:
                         else:
                             edge_record['attributes'][attr_key] = str(attr_value)
                 
+                # Promote question field to top level for QA systems
+                if 'question' in edge_record['attributes']:
+                    edge_record['question'] = edge_record['attributes']['question']
+                
                 f.write(json.dumps(edge_record, ensure_ascii=False) + '\n')
         
         return nodes_path, edges_path

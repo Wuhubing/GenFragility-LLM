@@ -1,0 +1,546 @@
+{
+  "metadata": {
+    "builder_version": "Enhanced v0.3",
+    "prompt_system": "Improved Task→Rules→Constraints→Output",
+    "total_triplets": 30,
+    "qa_atomic_relations": 36
+  },
+  "triplets": [
+    {
+      "head": "Einstein",
+      "relation_id": "BirthPlace",
+      "tail": "Ulm",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Place",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "Einstein's birthplace is Ulm.",
+      "evidence_rationale": "Ulm is recognized as the birthplace of Albert Einstein.",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "Apple Inc.",
+      "relation_id": "FoundedByPrimary",
+      "tail": "Steve Jobs",
+      "group": "QA-Atomic",
+      "domain_type": "Org",
+      "range_type": "PersonOrOrg",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "Apple Inc. was founded by Steve Jobs.",
+      "evidence_rationale": "Steve Jobs is widely acknowledged as one of the founders of Apple Inc.",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "Apple Inc.",
+      "relation_id": "CurrentEmployer",
+      "tail": "Tim Cook",
+      "group": "QA-Atomic",
+      "domain_type": "Org",
+      "range_type": "Person",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "Tim Cook is the current employer of Apple Inc.",
+      "evidence_rationale": "Tim Cook has been the CEO of Apple Inc. since 2011.",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "Beijing",
+      "relation_id": "PopulationAsOf",
+      "tail": "21540000",
+      "group": "QA-Atomic",
+      "domain_type": "Place",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2020
+      },
+      "qa_eligible": true,
+      "surface": "The population of Beijing as of 2020 is approximately 21,540,000.",
+      "evidence_rationale": "Beijing's population figures are regularly updated and reported in census data.",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "Hamlet",
+      "relation_id": "AuthorOfWorkPrimary",
+      "tail": "William Shakespeare",
+      "group": "QA-Atomic",
+      "domain_type": "Work",
+      "range_type": "Person",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "Hamlet was authored by William Shakespeare.",
+      "evidence_rationale": "William Shakespeare is the recognized author of the play Hamlet.",
+      "confidence": 1.0,
+      "is_inverse": false
+    },
+    {
+      "head": "Einstein",
+      "relation_id": "NationalityPrimary",
+      "tail": "German",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Country",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "Einstein's primary nationality was German.",
+      "evidence_rationale": "Einstein was born in Germany and held German nationality.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "Einstein",
+      "relation_id": "CurrentPosition",
+      "tail": "Theoretical Physicist",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Position",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "Einstein's current position was Theoretical Physicist.",
+      "evidence_rationale": "Einstein is recognized as a prominent theoretical physicist.",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "Ulm",
+      "relation_id": "CountryOfCity",
+      "tail": "Germany",
+      "group": "Graph-Core",
+      "domain_type": "City",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "Ulm is located in Germany.",
+      "evidence_rationale": "Ulm is a city in the state of Baden-Württemberg, Germany.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "Germany",
+      "relation_id": "Continent",
+      "tail": "Europe",
+      "group": "Graph-Core",
+      "domain_type": "Country",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "Germany is located in Europe.",
+      "evidence_rationale": "Germany is a country in Central Europe.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "Steve Jobs",
+      "relation_id": "BirthPlace",
+      "tail": "San Francisco",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Place",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "Steve Jobs was born in San Francisco.",
+      "evidence_rationale": "Steve Jobs was born in San Francisco, California.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "Tim Cook",
+      "relation_id": "CurrentPosition",
+      "tail": "CEO",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Position",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "Tim Cook is the current CEO of Apple Inc.",
+      "evidence_rationale": "Tim Cook has been the CEO of Apple Inc. since 2011.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "CEO",
+      "relation_id": "CurrentPosition",
+      "tail": "Chief Executive Officer",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Position",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The CEO holds the position of Chief Executive Officer.",
+      "evidence_rationale": "The title CEO is commonly associated with the role of Chief Executive Officer in organizations.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "San Francisco",
+      "relation_id": "CountryOfCity",
+      "tail": "United States",
+      "group": "Graph-Core",
+      "domain_type": "Geo",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "San Francisco is located in the United States.",
+      "evidence_rationale": "San Francisco is a major city in the United States, specifically in California.",
+      "confidence": 0.95,
+      "is_inverse": false
+    },
+    {
+      "head": "Germany",
+      "relation_id": "PopulationAsOf",
+      "tail": "83783942",
+      "group": "Graph-Core",
+      "domain_type": "Geo",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2021
+      },
+      "qa_eligible": true,
+      "surface": "The population of Germany as of 2021 is approximately 83,783,942.",
+      "evidence_rationale": "Germany's population is well-documented and updated regularly in demographic statistics.",
+      "confidence": 0.85,
+      "is_inverse": false
+    },
+    {
+      "head": "CEO",
+      "relation_id": "CurrentEmployer",
+      "tail": "Company X",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The CEO currently works at Company X.",
+      "evidence_rationale": "CEOs are typically associated with their current organizations.",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "Germany",
+      "relation_id": "Continent",
+      "tail": "Europe",
+      "group": "Graph-Core",
+      "domain_type": "Geo",
+      "range_type": "Continent",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "Germany is located in Europe.",
+      "evidence_rationale": "Germany is a country situated in the continent of Europe.",
+      "confidence": 0.95,
+      "is_inverse": false
+    },
+    {
+      "head": "San Francisco",
+      "relation_id": "PopulationAsOf",
+      "tail": "883305",
+      "group": "Graph-Core",
+      "domain_type": "Geo",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2021
+      },
+      "qa_eligible": true,
+      "surface": "The population of San Francisco as of 2021 is approximately 883,305.",
+      "evidence_rationale": "San Francisco's population is regularly updated in census data.",
+      "confidence": 0.85,
+      "is_inverse": false
+    },
+    {
+      "head": "CEO",
+      "relation_id": "CurrentEmployer",
+      "tail": "Tech Company Y",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The CEO currently works at Tech Company Y.",
+      "evidence_rationale": "CEOs are typically associated with their current organizations.",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "United States",
+      "relation_id": "PopulationAsOf",
+      "tail": "331002651",
+      "group": "QA-Atomic",
+      "domain_type": "Geo",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2020
+      },
+      "qa_eligible": true,
+      "surface": "The population of the United States as of 2020 is 331,002,651.",
+      "evidence_rationale": "The U.S. Census Bureau provides population data, which is updated every ten years.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "Chief Executive Officer",
+      "relation_id": "CurrentPosition",
+      "tail": "Company X",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The Chief Executive Officer currently holds the position at Company X.",
+      "evidence_rationale": "The title of Chief Executive Officer is a specific position within a company.",
+      "confidence": 0.85,
+      "is_inverse": false
+    },
+    {
+      "head": "Chief Executive Officer",
+      "relation_id": "CurrentPosition",
+      "tail": "Tech Company Y",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The Chief Executive Officer currently holds the position at Tech Company Y.",
+      "evidence_rationale": "The role of Chief Executive Officer is typically associated with a specific organization.",
+      "confidence": 0.85,
+      "is_inverse": false
+    },
+    {
+      "head": "Company X",
+      "relation_id": "CountryOfIncorporation",
+      "tail": "United States",
+      "group": "Graph-Core",
+      "domain_type": "Org",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "Company X is incorporated in the United States.",
+      "evidence_rationale": "Many companies are incorporated in the U.S. due to its favorable business environment.",
+      "confidence": 0.7,
+      "is_inverse": false
+    },
+    {
+      "head": "Tech Company Y",
+      "relation_id": "CountryOfIncorporation",
+      "tail": "United States",
+      "group": "Graph-Core",
+      "domain_type": "Org",
+      "range_type": "Country",
+      "qualifiers": {},
+      "qa_eligible": true,
+      "surface": "Tech Company Y is incorporated in the United States.",
+      "evidence_rationale": "The U.S. is a common location for tech company incorporation.",
+      "confidence": 0.7,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "NationalityPrimary",
+      "tail": "United States",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Country",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "The primary nationality of the person with ID 331002651 is United States.",
+      "evidence_rationale": "The person with this ID is a citizen of the United States.",
+      "confidence": 0.9,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "CurrentEmployer",
+      "tail": "unknown",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The current employer of the person with ID 331002651 is unknown.",
+      "evidence_rationale": "Current employment details are often private and not publicly disclosed.",
+      "confidence": 0.4,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "CurrentPosition",
+      "tail": "unknown",
+      "group": "QA-Atomic",
+      "domain_type": "Person",
+      "range_type": "Position",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The current position of the person with ID 331002651 is unknown.",
+      "evidence_rationale": "Current job titles are not always publicly available information.",
+      "confidence": 0.4,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "AlmaMaterPrimary",
+      "tail": "unknown",
+      "group": "QA-Atomic",
+      "domain_type": "Education",
+      "range_type": "Org",
+      "qualifiers": {
+        "primary": true
+      },
+      "qa_eligible": true,
+      "surface": "The primary alma mater of the person with ID 331002651 is unknown.",
+      "evidence_rationale": "Educational backgrounds are not always publicly available.",
+      "confidence": 0.4,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "PopulationAsOf",
+      "tail": "331002651",
+      "group": "Graph-Core",
+      "domain_type": "Place",
+      "range_type": "Number",
+      "qualifiers": {
+        "as_of_year": 2023
+      },
+      "qa_eligible": true,
+      "surface": "The population as of 2023 for the area related to the person with ID 331002651 is 331002651.",
+      "evidence_rationale": "The population figure is a known statistic for the United States.",
+      "confidence": 0.8,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "CurrentPosition",
+      "tail": "unknown",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Position",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The current position of the person with ID 331002651 is unknown.",
+      "evidence_rationale": "Current job titles are not always publicly available information.",
+      "confidence": 0.4,
+      "is_inverse": false
+    },
+    {
+      "head": "331002651",
+      "relation_id": "CurrentEmployer",
+      "tail": "unknown",
+      "group": "Graph-Core",
+      "domain_type": "Person",
+      "range_type": "Org",
+      "qualifiers": {
+        "current": true
+      },
+      "qa_eligible": true,
+      "surface": "The current employer of the person with ID 331002651 is unknown.",
+      "evidence_rationale": "Current employment details are often private and not publicly disclosed.",
+      "confidence": 0.4,
+      "is_inverse": false
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "head": {
+        "type": "string"
+      },
+      "relation_id": {
+        "type": "string"
+      },
+      "tail": {
+        "type": "string"
+      },
+      "group": {
+        "type": "string"
+      },
+      "domain_type": {
+        "type": "string"
+      },
+      "range_type": {
+        "type": "string"
+      },
+      "qualifiers": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "boolean"
+          },
+          "primary": {
+            "type": "boolean"
+          },
+          "as_of_year": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "qa_eligible": {
+        "type": "boolean"
+      },
+      "surface": {
+        "type": "string"
+      },
+      "evidence_rationale": {
+        "type": "string"
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "is_inverse": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "head",
+      "relation_id",
+      "tail",
+      "group",
+      "domain_type",
+      "range_type",
+      "qualifiers",
+      "qa_eligible",
+      "surface",
+      "evidence_rationale",
+      "confidence",
+      "is_inverse"
+    ],
+    "additionalProperties": false
+  }
+}
