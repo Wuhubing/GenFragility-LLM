@@ -265,39 +265,43 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         
         head, relation, tail = triple.head, triple.relation, triple.tail
         
-        # --- NEW UPGRADED PROMPT ---
-        system_prompt = """You are an expert at turning structured knowledge triples into natural, concise questions that a human would ask to elicit a specific answer. You never reveal schema terms (e.g., relation names). You prefer everyday phrasing, correct grammar, and minimal words. If a triple is asymmetric (e.g., CapitalOf), you pick the most natural orientation that still keeps the question about the given head entity. You never include the answer text in the question."""
+        # --- 优化的简洁问题生成prompt ---
+        system_prompt = """You are an expert at creating extremely simple, direct questions that require ONE-WORD or very short answers. Your questions must be:
+1. Under 10 words total
+2. Direct and to-the-point
+3. Require minimal explanation in the answer
+4. Use simple vocabulary
+5. Ask for specific facts only
+
+Examples:
+- "Where is Paris?" (Answer: France)
+- "Who wrote Hamlet?" (Answer: Shakespeare)
+- "What is 2+2?" (Answer: 4)
+
+Never ask complex questions requiring long explanations."""
 
         template_hint = pick_template_hint(relation, head)
 
         # 推断tail的类型作为hint
         tail_type_hint = infer_tail_type(tail)
         
-        user_prompt = f"""Turn the knowledge triple into ONE short, natural question that a person would ask to get the answer "{tail}". The question must be about "{head}" and must NOT include "{tail}".
+        user_prompt = f"""Create ONE extremely simple question that gets the answer "{tail}".
 
-Triple: ({head}, {relation}, {tail})
-Answer Type: {tail_type_hint}
+Knowledge: {head} {relation} {tail}
+Expected Answer: {tail}
 
-Rules:
-1) Do NOT use the raw relation name. Paraphrase into fluent language.
-2) Keep it short and simple: ≤ 14 English words (or ≤ 18 Chinese characters).
-3) The question MUST be about "{head}" and imply the answer is "{tail}".
-4) Use the Answer Type hint to frame your question appropriately (e.g., if answer type is "location", ask "where"; if "person", ask "who").
-5) Prefer natural orientation (e.g., for (Beijing, CapitalOf, China), ask "Which country is Beijing the capital of?").
-6) Avoid plural when the triple is singular; avoid ambiguous scopes.
-7) Language: match the script of the head/tail (Chinese if predominantly Chinese, else English).
+Requirements:
+1. Question must be under 8 words
+2. Should be answerable with just "{tail}"
+3. Must ask about {head}
+4. Use simplest possible phrasing
 
 Examples:
-- (Paris, CapitalOf, France) → "Which country is Paris the capital of?" [Answer Type: location]
-- (Shakespeare, CreatedBy, Hamlet) [if head=Hamlet] → "Who wrote Hamlet?" [Answer Type: person]
-- (Bottle, MadeOf, Plastic) → "What is a bottle made of?" [Answer Type: material]
-- (Apple Inc., HeadquarteredIn, Cupertino) → "Where is Apple headquartered?" [Answer Type: location]
+- "Where is Paris?" (Answer: France)
+- "Who created Tesla?" (Answer: Elon Musk)
+- "What color is grass?" (Answer: Green)
 
-If helpful, you can adapt one of these paraphrase patterns for "{relation}":
-{template_hint}
-
-Output: ONLY the final question (no quotes, no notes).
-"""
+Your question:"""
         
         messages = [
             {"role": "system", "content": system_prompt},
@@ -342,12 +346,13 @@ Output: ONLY the final question (no quotes, no notes).
                 device_inputs = {k: v.to(self.device) for k, v in inputs.items() if hasattr(v, 'to')}
                 
                 with torch.no_grad():
-                    # --- IMPROVED GENERATION PARAMS ---
+                    # --- 优化生成参数：直接简洁回答 ---
                     outputs = self.model.generate(
                         **device_inputs,
-                        max_new_tokens=128,  # Increased token limit
-                        temperature=max(self.config.temperature, 0.1),
-                        repetition_penalty=1.1, # Add repetition penalty
+                        max_new_tokens=10,  # 进一步减少到10个token，强制极简回答
+                        temperature=0.1,  # 降低温度确保确定性
+                        top_p=0.9,  # 使用top-p采样提高质量
+                        repetition_penalty=1.2,  # 提高重复惩罚
                         do_sample=True,
                         return_dict_in_generate=True,
                         output_scores=True,
@@ -374,22 +379,34 @@ Output: ONLY the final question (no quotes, no notes).
         logger.error(f"Model generation failed after {max_attempts} attempts")
         return None, None
     
-    async def async_compute_confidence_improved(self, triple: TripleExample) -> Tuple[str, str, Optional[float], str, str]:
+    async def async_compute_confidence_improved(self, triple: TripleExample, existing_question: str = None) -> Tuple[str, str, Optional[float], str, str]:
         """
         异步计算置信度（客户端部分）。
         将任务提交到批处理队列并等待结果。
         """
         try:
-            # 步骤1：异步生成模板 (依旧独立执行，因为它是I/O密集型)
-            if self.config.template_type == "openai_generated":
-                template = await self.async_generate_openai_template(triple)
+            # 步骤1：如果有已存在的question，直接使用；否则生成模板
+            if existing_question:
+                # --- NEW: 使用Few-Shot Prompt来引导模型进行简洁回答 ---
+                few_shot_examples = (
+                    "Question: Where is the Eiffel Tower located?\\nAnswer: Paris\\n\\n"
+                    "Question: Who wrote the novel '1984'?\\nAnswer: George Orwell\\n\\n"
+                    "Question: What is the chemical symbol for gold?\\nAnswer: Au\\n\\n"
+                )
+                template = f"{few_shot_examples}Question: {existing_question}\\nAnswer:"
+                final_question = existing_question
             else:
-                template = self.generate_template(triple)
+                # 异步生成模板 (依旧独立执行，因为它是I/O密集型)
+                if self.config.template_type == "openai_generated":
+                    template = await self.async_generate_openai_template(triple)
+                else:
+                    template = self.generate_template(triple)
+                final_question = self._extract_question_from_template(template)
 
             # --- ROBUSTNESS CHECK ---
             if not template or not template.strip():
                 logger.warning(f"Template generation failed for {triple}. Skipping confidence calculation.")
-                return "", "", None, "", ""
+                return "", "", None, "", existing_question or ""
 
             event = asyncio.Event()
             task_item = {'template': template, 'event': event}
@@ -406,8 +423,7 @@ Output: ONLY the final question (no quotes, no notes).
             # --- ROBUSTNESS CHECK ---
             if not generated_text or not generated_text.strip():
                 logger.warning(f"Model generated an empty response for question based on {triple}. Confidence is None.")
-                question_fallback = self._extract_question_from_template(template)
-                return template, "", None, "", question_fallback
+                return template, "", None, "", final_question
 
             # 步骤3：改进的答案提取 (与之前相同)
             if self.config.use_improved_extraction:
@@ -416,12 +432,12 @@ Output: ONLY the final question (no quotes, no notes).
                 extracted_answer = generated_text.split('.')[0].strip() if generated_text else ""
             
             if not extracted_answer:
-                return template, generated_text, None, generated_text, self._extract_question_from_template(template)
+                return template, generated_text, None, generated_text, final_question
             
             # 步骤4：安全的置信度计算 (使用批处理结果)
             answer_tokens = self.tokenizer(extracted_answer, return_tensors="pt", add_special_tokens=False)['input_ids'][0]
             if len(answer_tokens) == 0 or len(scores) == 0:
-                return template, extracted_answer, None, generated_text, self._extract_question_from_template(template)
+                return template, extracted_answer, None, generated_text, final_question
             
             answer_confidences = []
             for i, token_id in enumerate(answer_tokens):
@@ -431,12 +447,12 @@ Output: ONLY the final question (no quotes, no notes).
             
             final_confidence = self.aggregate_token_probabilities(answer_confidences) if answer_confidences else None
             
-            return template, extracted_answer, final_confidence, generated_text, self._extract_question_from_template(template)
+            return template, extracted_answer, final_confidence, generated_text, final_question
             
         except Exception as e:
             logger.error(f"异步置信度计算失败: {e}")
             template_fallback = template if 'template' in locals() else ""
-            question_fallback = self._extract_question_from_template(template_fallback) if template_fallback else ""
+            question_fallback = final_question if 'final_question' in locals() else (existing_question or "")
             return template_fallback, "", None, "", question_fallback
 
     def _extract_question_from_template(self, template: str) -> str:

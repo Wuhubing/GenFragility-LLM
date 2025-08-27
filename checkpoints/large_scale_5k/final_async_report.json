@@ -1,0 +1,55 @@
+{
+  "总体统计": {
+    "节点数": 5003,
+    "边数": 19840,
+    "运行时间": "2.13 小时",
+    "当前阶段": "relation_strengthening",
+    "总批次数": 253,
+    "成功批次": 253
+  },
+  "实体状态": {
+    "待处理": 2979,
+    "处理中": 0,
+    "已完成": 2024,
+    "失败": 3
+  },
+  "LLM统计": {
+    "total_calls": 2004,
+    "cache_hits": 20,
+    "cache_misses": 2004,
+    "failures": 3,
+    "concurrent_calls": 0
+  },
+  "阶段统计": {
+    "seed_expansion": {
+      "nodes": 207,
+      "edges": 478,
+      "pending": 159,
+      "completed": 48
+    },
+    "breadth_first": {
+      "nodes": 1004,
+      "edges": 2884,
+      "pending": 716,
+      "completed": 288
+    },
+    "depth_first": {
+      "nodes": 3001,
+      "edges": 11101,
+      "pending": 1873,
+      "completed": 1128
+    },
+    "relation_strengthening": {
+      "nodes": 5003,
+      "edges": 19840,
+      "pending": 2979,
+      "completed": 2024
+    }
+  },
+  "文件信息": {
+    "gexf_file": "/root/GenFragility-LLM/checkpoints/large_scale_5k/final_async_graph.gexf",
+    "pkl_file": "/root/GenFragility-LLM/checkpoints/large_scale_5k/final_async_graph.pkl",
+    "pkl_gz_file": "/root/GenFragility-LLM/checkpoints/large_scale_5k/final_async_graph.pkl.gz",
+    "compatible_with": "generate_ripple_experiments.py"
+  }
+}

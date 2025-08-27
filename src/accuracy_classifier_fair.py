@@ -74,18 +74,24 @@ class FairModelEvaluator:
     def _initialize_judges(self) -> List[AsyncOpenAI]:
         """初始化异步评估客户端"""
         judges = []
+        enabled_configs = []
         for config in self.judge_configs:
-            # --- FIX: Explicitly pass the API key from the correct environment variable ---
-            api_key = os.environ.get(config['api_key_env'])
-            if not api_key:
-                raise ValueError(f"API key environment variable '{config['api_key_env']}' not set for judge '{config['model_name']}'.")
+            if config.get('enabled', True):
+                # --- FIX: Explicitly pass the API key from the correct environment variable ---
+                api_key = os.environ.get(config['api_key_env'])
+                if not api_key:
+                    print(f"⚠️ API key for '{config['model_name']}' not found in env var '{config['api_key_env']}'. Skipping this judge.")
+                    continue
 
-            client = AsyncOpenAI(
-                api_key=api_key,
-                base_url=config.get("api_base"),
-                timeout=30.0
-            )
-            judges.append(client)
+                client = AsyncOpenAI(
+                    api_key=api_key,
+                    base_url=config.get("api_base"),
+                    timeout=30.0
+                )
+                judges.append(client)
+                enabled_configs.append(config)
+        
+        self.judge_configs = enabled_configs # 更新配置列表，只保留启用的
         return judges
 
     def _load_relations_definitions(self) -> Dict:
@@ -191,13 +197,27 @@ class FairModelEvaluator:
             )
             result = json.loads(response.choices[0].message.content)
 
-            if "reasoning" in result and "accuracy_score" in result and "confidence" in result:
+            if "match_level" in result and "reasoning" in result:
+                # 将语义标签转换为数字分数
+                match_level = result["match_level"]
+                if match_level == "exactly_match":
+                    score = 100
+                elif match_level == "related":
+                    score = 50
+                elif match_level == "not_related":
+                    score = 0
+                else:
+                    # 如果出现未知标签，记录警告
+                    print(f"⚠️ 裁判 {config['model_name']} 使用了未知标签 '{match_level}'，设为0分")
+                    score = 0
+                
                 return {
                     "judge_id": idx,
                     "judge_name": config["model_name"],
+                    "accuracy_score": score,
+                    "match_level": match_level,
                     "reasoning": result["reasoning"],
-                    "accuracy_score": result["accuracy_score"],
-                    "confidence": result["confidence"]
+                    "confidence": result.get("confidence", 1.0)
                 }
             else:
                 return {"error": f"无效格式: {config['model_name']}"}
@@ -225,42 +245,42 @@ class FairModelEvaluator:
         # 获取关系定义
         relation_info = self._get_relation_definition(relation)
         
-        # --- 简化的Ground Truth匹配度评估PROMPT ---
-        system_prompt = f"""You are an expert evaluator. Your ONLY task is to score how well a model's answer matches the expected correct answer.
+        # --- 宽松的内容导向评估prompt ---
+        system_prompt = f"""You are a lenient evaluator focused on CONTENT, not format. Your task is to check if the Ground Truth answer appears anywhere in the model's response.
 
-**EVALUATION CRITERIA - Answer Accuracy (0-100):**
+**IGNORE ALL OF THESE:**
+- Formatting issues, extra spaces, newlines
+- Truncation artifacts like "The 2", "The 20", random text
+- Additional context or explanations
+- Different date/name formats
 
-- **100**: Exact match or semantically equivalent (e.g., "USA" = "United States", "Beijing" = "Beijing, China")
-- **85**: Very close match with minor variations (e.g., "Rio de Janeiro" for "Rio")  
-- **70**: Correct concept but different format (e.g., "January 1, 2000" vs "2000-01-01")
-- **55**: Contains the correct answer but with extra/wrong information
-- **40**: Related but incorrect (same category, wrong entity - e.g., "Madrid" when answer is "Barcelona")
-- **25**: Completely different but not nonsensical
-- **10**: Irrelevant or nonsensical response
-- **0**: No response or completely meaningless
+**YOU MUST USE ONE OF THESE LABELS:**
+- **exactly_match**: Ground Truth answer is present in the response (even with extra text/formatting)
+- **related**: Response contains similar/equivalent information but not the exact answer
+- **not_related**: Response is completely wrong or missing the answer
 
-**SCORING GUIDELINES:**
-- Focus ONLY on accuracy compared to the expected answer
-- Consider semantic equivalence and common name variations
-- Be balanced: give partial credit when appropriate
-- Ignore response style, length, or clarity - only accuracy matters
+**Examples:**
+Ground Truth: "Paris" → Model: "Paris, France\nThe 2" → Label: exactly_match (Paris is there)
+Ground Truth: "1971-06-28" → Model: "June 28, 1971" → Label: exactly_match (same date, different format)
+Ground Truth: "Pretoria" → Model: "Pretoria, South Africa\nRandom text" → Label: exactly_match (Pretoria is there)
+Ground Truth: "CEO" → Model: "Chief Executive Officer" → Label: related (equivalent meaning)
+Ground Truth: "SpaceX" → Model: "Tesla Motors" → Label: not_related (different company)
 
-**OUTPUT FORMAT (JSON):**
-{{
-  "reasoning": "<brief_explanation_of_accuracy_assessment>",
-  "accuracy_score": <int_0_to_100>,
-  "confidence": <float_0_to_1>
-}}"""
+**JSON Format (REQUIRED):**
+{{"reasoning": "brief explanation", "match_level": "exactly_match", "confidence": 0.9}}
+{{"reasoning": "brief explanation", "match_level": "related", "confidence": 0.8}}
+{{"reasoning": "brief explanation", "match_level": "not_related", "confidence": 1.0}}
+"""
 
-        # 简化的用户提示
-        user_prompt = f"""Score the accuracy of this model response:
+        # 用户提示
+        user_prompt = f"""Compare the model response with the Ground Truth:
 
-**Expected Answer:** {tail}
-**Model Response:** "{truncated_answer}"
+Ground Truth: "{tail}"
+Model Response: "{truncated_answer}"
 
-**Task:** Rate accuracy (0-100) of how well the model response matches the expected answer "{tail}".
-
-Provide only accuracy assessment in the specified JSON format."""
+FOCUS ON CONTENT: Does the Ground Truth answer appear in the response? Ignore formatting/truncation issues.
+Choose ONE label: exactly_match, related, or not_related
+"""
 
         tasks = [
             self._ask_judge(judge_client, config, system_prompt, user_prompt, i)
@@ -268,7 +288,7 @@ Provide only accuracy assessment in the specified JSON format."""
         ]
         judge_results = await asyncio.gather(*tasks)
 
-        valid_results = [r for r in judge_results if "reasoning" in r]
+        valid_results = [r for r in judge_results if "accuracy_score" in r]
 
         if not valid_results:
             print("❌ 所有评估器评估失败")
@@ -282,13 +302,12 @@ Provide only accuracy assessment in the specified JSON format."""
         return aggregated_result
 
     def _aggregate_judge_results(self, judge_results: List[Dict]) -> Dict:
-        # --- 简化的聚合逻辑：只考虑准确率 ---
+        # --- 简化的聚合逻辑：直接平均，不加权 ---
         accuracy_scores = [r.get("accuracy_score", 0) for r in judge_results]
         confidences = [r.get("confidence", 0.8) for r in judge_results]
 
-        # 置信度加权平均准确率
-        weighted_scores = [score * conf for score, conf in zip(accuracy_scores, confidences)]
-        avg_accuracy = round(sum(weighted_scores) / sum(confidences)) if sum(confidences) > 0 else 0
+        # 直接计算简单平均分数
+        avg_accuracy = round(sum(accuracy_scores) / len(accuracy_scores)) if accuracy_scores else 0
         
         # 根据准确率确定类别
         if avg_accuracy >= 85:
