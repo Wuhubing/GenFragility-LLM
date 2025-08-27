@@ -21,11 +21,12 @@ import networkx.algorithms.community as nx_comm
 import gzip
 
 # Configuration
-GRAPH_FILE = '/root/test/GenFragility-LLM/results/test_1w_nodes_gpt_4o_mini_v2_checkpoints/latest.pkl'
-OUTPUT_DIR = 'results/experiments_ripples'
-NUM_EXPERIMENTS = 10
+GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/large_scale_5k/final_async_graph.pkl'
+OUTPUT_DIR = 'results/experiments_ripples_5k'
+NUM_EXPERIMENTS = 5000
 MAX_DISTANCE = 5  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
+CHECKPOINT_INTERVAL = 100  # 每100个实验保存一个检查点
 
 # Global variables for sharing across processes
 G = None
@@ -82,18 +83,29 @@ def get_triplet_from_edge(edge) -> Optional[Dict]:
     head, tail = edge[0], edge[1]
     edge_data = G.get_edge_data(head, tail)
     
-    if edge_data and 'relation' in edge_data:
-        return {
-            'triplet': [head, edge_data['relation'], tail],
-            'head': head,
-            'relation': edge_data['relation'], 
-            'tail': tail,
-            'question': edge_data.get('question', ''),
-            'surface': edge_data.get('surface', ''),
-            'evidence': edge_data.get('evidence', ''),
-            'group': edge_data.get('group', 'Unknown'),
-            'is_inverse': edge_data.get('is_inverse', False)
-        }
+    if edge_data:
+        # MultiDiGraph returns a dict of edge keys -> edge data
+        # Get the first edge data (key 0) or any available edge
+        if isinstance(edge_data, dict):
+            # For MultiDiGraph, get first available edge data
+            first_key = next(iter(edge_data.keys()))
+            actual_edge_data = edge_data[first_key]
+        else:
+            # For regular DiGraph
+            actual_edge_data = edge_data
+        
+        if actual_edge_data and 'relation' in actual_edge_data:
+            return {
+                'triplet': [head, actual_edge_data['relation'], tail],
+                'head': head,
+                'relation': actual_edge_data['relation'], 
+                'tail': tail,
+                'question': actual_edge_data.get('question', ''),
+                'surface': actual_edge_data.get('surface', ''),
+                'evidence': actual_edge_data.get('evidence', ''),
+                'group': actual_edge_data.get('group', 'Unknown'),
+                'is_inverse': actual_edge_data.get('is_inverse', False)
+            }
     
     return None
 

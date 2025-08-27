@@ -8,11 +8,10 @@ from typing import List, Dict, Any
 
 # System Prompt - The core instruction set (Updated with your improved v0.3)
 SYS_PROMPT_GRAPH_BUILDER_v0_3 = """### Task
-You are an expert knowledge-graph builder. From given seed entities, generate high-precision
-triples using ONLY the provided canonical relation inventory. Produce edges that maximize
-local closure (triangles) while preserving correctness. Prefer function-like relations
-(those yielding unique answers) when they can be uniquely determined; otherwise output Graph-Core relations
-that are still unambiguous.
+You are an expert knowledge-graph builder specializing in SPECIFIC, CONCRETE relationships between entities.
+From given seed entities, generate high-precision triples using ONLY the provided canonical relation inventory.
+Focus on FACTUAL, VERIFIABLE connections between concrete entities (people, places, organizations, specific objects).
+AVOID abstract concepts or general categorical relationships.
 
 ### Inputs (provided in the user message)
 - SEEDS: list of seed entities to expand from.
@@ -40,20 +39,22 @@ that are still unambiguous.
 6) Output determinism:
    - Deterministic, precise wording. No vague terms. No schema leakage in surface text.
    - LANGUAGE governs the natural-language "surface" field only; all other fields in English.
-7) Budget & balance:
-   - Respect BUDGET. Aim for a balanced mix: prioritize function-like edges first (unique),
-     then safe Graph-Core edges that improve clustering.
-8) Question generation:
+8) Budget & balance:
+   - Respect BUDGET. Prioritize SPECIFIC, FACTUAL relationships over quantity
+   - Focus on function-like edges with concrete entities (people, places, organizations)
+   - Better to have fewer high-quality specific triplets than many vague ones.
+9) Question generation:
    - For each triplet, generate a simple, direct question that expects 'tail' as the answer
    - Question should be under 15 words, natural English, and use common phrasing
    - Question should ask about head entity's relation/property
    - Examples: "What is the capital of France?" (tail: Paris), "Where was Einstein born?" (tail: Ulm)
    - Avoid complex clauses, technical jargon, or questions that leak the answer
-9) Self-check before finalizing:
+10) Self-check before finalizing:
    - Remove duplicates; enforce domain/range; enforce uniqueness for function-like relations;
      ensure no inverse edges for auto-inverse relations.
    - Validate each question is answerable with the corresponding tail
-   - If uncertain, lower confidence or drop the triple.
+   - Ensure all entities are CONCRETE and SPECIFIC (no abstract concepts)
+   - If uncertain about specificity, lower confidence or drop the triple.
 
 ### Output Format (JSON Lines; one object per line)
 Each line MUST validate this schema:
@@ -74,12 +75,25 @@ Each line MUST validate this schema:
   "question": "<simple, direct question that expects 'tail' as answer>"  // NEW: auto-generated question
 }
 
+### OUTPUT REQUIREMENTS
 CRITICAL: Return ONLY raw JSONL lines (one JSON object per line). 
 Do NOT wrap in markdown code blocks (```json). 
 Do NOT add any commentary or explanations.
-IMPORTANT: Generate exactly the requested BUDGET number of triplets.
-If you cannot reach the budget with high-confidence triplets, include medium-confidence ones (0.5-0.7).
-Focus on QUANTITY while maintaining reasonable quality."""
+
+IMPORTANT: Generate exactly the requested BUDGET number of SPECIFIC, CONCRETE triplets.
+QUALITY OVER QUANTITY: Better to have fewer high-quality specific triplets than many abstract ones.
+Each triplet should connect two concrete, named entities with a factual relationship.
+
+EXAMPLES OF GOOD SPECIFIC TRIPLETS:
+- "Tim Cook" -> "ChiefExecutiveOfficerCurrent" -> "Apple Inc."
+- "Apple Inc." -> "HeadquartersCity" -> "Cupertino"
+- "Albert Einstein" -> "BirthPlace" -> "Ulm"
+- "Harvard University" -> "FoundingDate" -> "1636"
+
+EXAMPLES TO AVOID:
+- "Technology" -> "Influences" -> "Society"
+- "Programming" -> "UsedFor" -> "Development"
+- "Science" -> "Includes" -> "Physics" """
 
 # User Prompt Template - will be filled with actual data
 USER_PROMPT_TEMPLATE_v0_3 = """### Seeds
