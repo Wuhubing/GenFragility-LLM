@@ -88,6 +88,10 @@ class RelationOntology:
     def get_all_relations(self) -> Dict[str, Dict]:
         """Returns the complete dictionary of all canonical relations."""
         return self._canonical_relations
+    
+    def get_auto_inverse_pairs(self) -> Dict[str, str]:
+        """Get all inverse pairs."""
+        return self._inverse_map.copy()
 
 # --- END NEW ---
 

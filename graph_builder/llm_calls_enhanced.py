@@ -90,8 +90,8 @@ class LLMInterfaceEnhanced:
         content = _call_llm_with_cache(
             prompt=user_prompt,
             system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
-            temperature=0.2,
-            max_tokens=4000  # Increased for JSONL output
+            temperature=0.3,  # 稍微提高温度增加多样性
+            max_tokens=8000   # 大幅增加token限制以支持更多输出
         )
         
         if not content:
@@ -160,39 +160,116 @@ class LLMInterfaceEnhanced:
         if not content:
             return []
         
-        triplets = []
-        lines = content.strip().split('\n')
+        # 修复: 清理markdown代码块包装
+        content = content.strip()
+        if content.startswith('```json'):
+            content = content[7:]  # 移除开头的```json
+        if content.endswith('```'):
+            content = content[:-3]  # 移除结尾的```
+        content = content.strip()
         
-        for line_num, line in enumerate(lines, 1):
-            line = line.strip()
-            if not line:
-                continue
+        triplets = []
+        
+        # 尝试两种解析方式: JSONL 和 格式化JSON
+        try:
+            # 方式1: 尝试JSONL格式 (每行一个JSON)
+            lines = content.strip().split('\n')
+            found_valid_jsonl = False
             
-            try:
-                triplet_data = json.loads(line)
-                
-                # Validate against schema
-                jsonschema.validate(triplet_data, TRIPLET_SCHEMA_v0_3)
-                
-                # Additional validation: check relation exists in ontology
-                relation_id = triplet_data['relation_id']
-                if not self.ontology.is_valid_relation(relation_id):
-                    print(f"⚠️ Line {line_num}: Unknown relation '{relation_id}', skipping")
+            for line_num, line in enumerate(lines, 1):
+                line = line.strip()
+                if not line:
                     continue
                 
-                triplets.append(triplet_data)
+                # 跳过markdown语法行
+                if line.startswith('```') or line == 'json':
+                    continue
                 
-            except json.JSONDecodeError as e:
-                print(f"⚠️ Line {line_num}: JSON decode error: {e}")
-                continue
-            except jsonschema.ValidationError as e:
-                print(f"⚠️ Line {line_num}: Schema validation error: {e.message}")
-                continue
-            except Exception as e:
-                print(f"⚠️ Line {line_num}: Unexpected error: {e}")
-                continue
-        
-        return triplets
+                try:
+                    triplet_data = json.loads(line)
+                    
+                    # Validate against schema
+                    jsonschema.validate(triplet_data, TRIPLET_SCHEMA_v0_3)
+                    
+                    # Additional validation: check relation exists in ontology
+                    relation_id = triplet_data['relation_id']
+                    if not self.ontology.is_valid_relation(relation_id):
+                        print(f"⚠️ Line {line_num}: Unknown relation '{relation_id}', skipping")
+                        continue
+                    
+                    triplets.append(triplet_data)
+                    found_valid_jsonl = True
+                    
+                except json.JSONDecodeError:
+                    # 如果JSONL解析失败，继续尝试下一行
+                    continue
+                except jsonschema.ValidationError as e:
+                    print(f"⚠️ Line {line_num}: Schema validation error: {e.message}")
+                    continue
+                except Exception as e:
+                    print(f"⚠️ Line {line_num}: Unexpected error: {e}")
+                    continue
+            
+            # 如果JSONL格式成功解析出了triplets，返回结果
+            if found_valid_jsonl:
+                return triplets
+            
+            # 方式2: 尝试解析格式化的JSON对象
+            print("🔄 JSONL解析失败，尝试格式化JSON解析...")
+            triplets = []
+            
+            # 寻找JSON对象的边界 (以 { 开始，以 } 结束)
+            json_objects = []
+            current_object_lines = []
+            brace_count = 0
+            
+            for line in lines:
+                line = line.strip()
+                if not line or line.startswith('```') or line == 'json':
+                    continue
+                
+                # 计算大括号
+                brace_count += line.count('{') - line.count('}')
+                current_object_lines.append(line)
+                
+                # 如果大括号平衡，说明一个JSON对象结束
+                if brace_count == 0 and current_object_lines:
+                    json_str = ' '.join(current_object_lines)
+                    json_objects.append(json_str)
+                    current_object_lines = []
+            
+            # 解析每个JSON对象
+            for obj_num, json_str in enumerate(json_objects, 1):
+                try:
+                    triplet_data = json.loads(json_str)
+                    
+                    # Validate against schema
+                    jsonschema.validate(triplet_data, TRIPLET_SCHEMA_v0_3)
+                    
+                    # Additional validation: check relation exists in ontology
+                    relation_id = triplet_data['relation_id']
+                    if not self.ontology.is_valid_relation(relation_id):
+                        print(f"⚠️ Object {obj_num}: Unknown relation '{relation_id}', skipping")
+                        continue
+                    
+                    triplets.append(triplet_data)
+                    
+                except json.JSONDecodeError as e:
+                    print(f"⚠️ Object {obj_num}: JSON decode error: {e}")
+                    print(f"   Problem JSON: {json_str[:100]}...")
+                    continue
+                except jsonschema.ValidationError as e:
+                    print(f"⚠️ Object {obj_num}: Schema validation error: {e.message}")
+                    continue
+                except Exception as e:
+                    print(f"⚠️ Object {obj_num}: Unexpected error: {e}")
+                    continue
+            
+            return triplets
+            
+        except Exception as e:
+            print(f"❌ Critical parsing error: {e}")
+            return []
     
     def _convert_to_legacy_triplet(self, triplet_data: Dict[str, Any]) -> KnowledgeTriplet:
         """Convert v0.3 triplet format to legacy KnowledgeTriplet object."""

@@ -74,7 +74,12 @@ Each line MUST validate this schema:
   "question": "<simple, direct question that expects 'tail' as answer>"  // NEW: auto-generated question
 }
 
-Return ONLY JSONL lines. No extra commentary."""
+CRITICAL: Return ONLY raw JSONL lines (one JSON object per line). 
+Do NOT wrap in markdown code blocks (```json). 
+Do NOT add any commentary or explanations.
+IMPORTANT: Generate exactly the requested BUDGET number of triplets.
+If you cannot reach the budget with high-confidence triplets, include medium-confidence ones (0.5-0.7).
+Focus on QUANTITY while maintaining reasonable quality."""
 
 # User Prompt Template - will be filled with actual data
 USER_PROMPT_TEMPLATE_v0_3 = """### Seeds

@@ -1,0 +1,43 @@
+[
+  {"relation_id":"BirthDate","group":"Person","domain":["Person"],"range":["Time"],"description":"Date of birth","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"BirthPlace","group":"Person","domain":["Person"],"range":["Place"],"description":"Place of birth","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"NationalityPrimary","group":"Person","domain":["Person"],"range":["Country"],"description":"Primary nationality","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"CurrentPosition","group":"Person","domain":["Person"],"range":["Position"],"description":"Current job position","multiplicity":"one_or_zero","qualifiers_required":["current"],"inverse_policy":"none"},
+  {"relation_id":"CurrentEmployer","group":"Person","domain":["Person"],"range":["Org"],"description":"Current employer organization","multiplicity":"one_or_zero","qualifiers_required":["current"],"inverse_policy":"auto"},
+  {"relation_id":"AlmaMaterPrimary","group":"Education","domain":["Person"],"range":["Org"],"description":"Primary alma mater","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"HeadquartersCity","group":"Org","domain":["Org"],"range":["City"],"description":"Headquarters city","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"paired"},
+  {"relation_id":"HeadquartersCountry","group":"Org","domain":["Org"],"range":["Country"],"description":"Headquarters country","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"FoundingDate","group":"Org","domain":["Org"],"range":["Time"],"description":"Date of founding","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"FoundedByPrimary","group":"Org","domain":["Org"],"range":["Person","Org"],"description":"Primary founder","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"ParentOrganization","group":"Org","domain":["Org"],"range":["Org"],"description":"Parent organization","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"auto"},
+  {"relation_id":"ChiefExecutiveOfficerCurrent","group":"Org","domain":["Org"],"range":["Person"],"description":"Current CEO","multiplicity":"one_or_zero","qualifiers_required":["current"],"inverse_policy":"none"},
+  {"relation_id":"CountryOfIncorporation","group":"Org","domain":["Org"],"range":["Country"],"description":"Country of incorporation","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"StockExchangePrimary","group":"Org","domain":["Org"],"range":["Exchange"],"description":"Primary stock exchange","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"CountryOfCity","group":"Geo","domain":["City"],"range":["Country"],"description":"Country containing the city","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"CapitalCityOfCountry","group":"Geo","domain":["Country"],"range":["City"],"description":"Capital city of country","multiplicity":"one_or_zero","qualifiers_required":["single_capital_only"],"inverse_policy":"auto"},
+  {"relation_id":"TimeZonePrimary","group":"Geo","domain":["Place"],"range":["TimeZone"],"description":"Primary time zone","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"MajorIndustryPrimary","group":"Geo","domain":["Country"],"range":["Industry"],"description":"Primary major industry","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"OfficialLanguagePrimary","group":"Geo","domain":["Country"],"range":["Language"],"description":"Primary official language","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"CurrencyPrimary","group":"Geo","domain":["Country"],"range":["Currency"],"description":"Primary currency","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"Continent","group":"Geo","domain":["Country"],"range":["Continent"],"description":"Continent of country","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+
+  {"relation_id":"AuthorOfWorkPrimary","group":"Work","domain":["Work"],"range":["Person"],"description":"Primary author of work","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"CreatedByPrimary","group":"Work","domain":["Work","Invention"],"range":["Person","Org"],"description":"Primary creator","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"PublicationDate","group":"Work","domain":["Work"],"range":["Time"],"description":"Date of publication","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"PublisherPrimary","group":"Work","domain":["Work"],"range":["Org"],"description":"Primary publisher","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"LanguageOfWorkPrimary","group":"Work","domain":["Work"],"range":["Language"],"description":"Primary language of work","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"SeriesOfWorkPrimary","group":"Work","domain":["Work"],"range":["Series"],"description":"Primary series of work","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"DevelopedByPrimary","group":"Product","domain":["Software","System"],"range":["Org","Person"],"description":"Primary developer","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"ManufacturedByPrimary","group":"Product","domain":["Product"],"range":["Org"],"description":"Primary manufacturer","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
+  {"relation_id":"InitialReleaseDate","group":"Product","domain":["Software","Product"],"range":["Time"],"description":"Initial release date","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"ProgrammingLanguagePrimary","group":"Product","domain":["Software"],"range":["Language"],"description":"Primary programming language","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"LicensePrimary","group":"Product","domain":["Software"],"range":["License"],"description":"Primary license","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+  {"relation_id":"OperatingSystemPrimary","group":"Product","domain":["Software"],"range":["OperatingSystem"],"description":"Primary operating system","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
+
+  {"relation_id":"OccursOn","group":"Event","domain":["Event"],"range":["Time"],"description":"Date of occurrence","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"HeldInCity","group":"Event","domain":["Event"],"range":["City"],"description":"City where event is held","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
+  {"relation_id":"HostOrganizationPrimary","group":"Event","domain":["Event"],"range":["Org"],"description":"Primary host organization","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"}
+]
