@@ -23,10 +23,9 @@ import gzip
 # Configuration
 GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/large_scale_5k/final_async_graph.pkl'
 OUTPUT_DIR = 'results/experiments_ripples_5k'
-NUM_EXPERIMENTS = 5000
+NUM_EXPERIMENTS = 100
 MAX_DISTANCE = 5  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
-CHECKPOINT_INTERVAL = 100  # 每100个实验保存一个检查点
 
 # Global variables for sharing across processes
 G = None

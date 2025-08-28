@@ -894,13 +894,19 @@ async def evaluate_model(triplets, model, tokenizer, model_type, concurrency_lim
     tasks = [process_with_semaphore(triplet) for triplet in triplets]
     results = []
     
-    # 使用tqdm添加进度条，简化显示信息
+    # 使用tqdm添加进度条，显示详细评估信息
     completed = 0
     total_confidence = 0
     total_accuracy = 0
     total_matches = 0
+    confidence_count = 0
+    accuracy_count = 0
     
-    with tqdm(total=len(tasks), desc=f"评估{model_type}模型", unit="个") as pbar:
+    # 计算预估时间
+    start_time = time.time()
+    
+    with tqdm(total=len(tasks), desc=f"🔍评估{model_type}模型", unit="个", 
+              bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}] {postfix}') as pbar:
         for future in asyncio.as_completed(tasks):
             result = await future
             results.append(result)
@@ -909,20 +915,27 @@ async def evaluate_model(triplets, model, tokenizer, model_type, concurrency_lim
             # 统计信息
             if result['confidence_percent'] is not None:
                 total_confidence += result['confidence_percent']
+                confidence_count += 1
             if result['accuracy_score'] is not None:
                 total_accuracy += result['accuracy_score']
+                accuracy_count += 1
             if result.get('partial_match', False):
                 total_matches += 1
             
-            # 更新进度条显示平均统计
-            avg_conf = total_confidence / completed if completed > 0 else 0
-            avg_acc = total_accuracy / completed if completed > 0 else 0
+            # 计算当前进度的平均值和预估时间
+            avg_conf = total_confidence / confidence_count if confidence_count > 0 else 0
+            avg_acc = total_accuracy / accuracy_count if accuracy_count > 0 else 0
             match_rate = (total_matches / completed * 100) if completed > 0 else 0
             
+            # 计算处理速度和预估剩余时间
+            elapsed_time = time.time() - start_time
+            rate = completed / elapsed_time if elapsed_time > 0 else 0
+            
             pbar.set_postfix({
-                '平均置信度': f"{avg_conf:.1f}%",
-                '平均准确率': f"{avg_acc:.1f}",
-                '匹配率': f"{match_rate:.1f}%"
+                '置信度': f"{avg_conf:.1f}%",
+                '准确率': f"{avg_acc:.1f}",
+                '匹配率': f"{match_rate:.1f}%",
+                '速度': f"{rate:.1f}/s"
             })
             pbar.update(1)
     
@@ -1305,7 +1318,7 @@ async def main():
     parser.add_argument('--output_file', type=str, help='对比结果输出文件路径')
     parser.add_argument('--base_model', type=str, default='meta-llama/Llama-2-7b-hf', help='基线模型路径')
     parser.add_argument('--lora_path', type=str, help='LoRA适配器路径（用于直接对比）')
-    parser.add_argument('--concurrency_limit', type=int, default=3, help='并发限制')
+    parser.add_argument('--concurrency_limit', type=int, default=12, help='并发限制（根据服务器性能调整：96核CPU+46GB GPU+503GB内存）')
     parser.add_argument('--run_poison_pipeline', action='store_true', help='运行完整的投毒流水线')
     parser.add_argument('--max_distance', type=str, default='d5', choices=['d0', 'd1', 'd2', 'd3', 'd4', 'd5'], help='运行到的最大距离层 (默认: d5)')
     parser.add_argument('--mode', type=str, default='multi', choices=['single', 'multi'], help='运行模式: single(单个实验) 或 multi(多个实验) (默认: multi)')
@@ -1364,7 +1377,11 @@ async def main():
         # 计算总步骤数：每个实验包含5个主要步骤
         total_steps = len(experiment_files) * 5  # 数据生成、训练、评估clean、评估poisoned、保存结果
         
-        with tqdm(total=total_steps, desc="🔬 集成投毒实验总进度", unit="步骤") as global_pbar:
+        # 记录总体开始时间
+        overall_start_time = time.time()
+        
+        with tqdm(total=total_steps, desc="🔬 集成投毒实验总进度", unit="步骤",
+                  bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}] {desc} {postfix}') as global_pbar:
             for exp_idx, experiment_file in enumerate(experiment_files, 1):
                 exp_name = os.path.basename(experiment_file).replace('.json', '')
                 global_pbar.set_description(f"🔬 实验{exp_idx}/{len(experiment_files)}: {exp_name}")
@@ -1383,7 +1400,12 @@ async def main():
                 os.makedirs(f"{exp_output_dir}/comparison_reports", exist_ok=True)
                 
                 # 步骤1: 数据生成和投毒流水线
-                global_pbar.set_postfix(step="数据生成")
+                elapsed_time = time.time() - overall_start_time
+                global_pbar.set_postfix(
+                    step="数据生成",
+                    当前实验=f"{exp_idx}/{len(experiment_files)}",
+                    总耗时=f"{elapsed_time/60:.1f}min"
+                )
                 pipeline = IntegratedPoisonPipeline()
                 model_path, poison_info, triplets = pipeline.run_poison_pipeline(experiment_file, exp_output_dir)
                 global_pbar.update(2)  # 数据生成 + 训练
@@ -1396,7 +1418,13 @@ async def main():
                 current_lora_path = model_path  # 使用新训练的模型
                 
                 # 步骤2-4: 执行评估流程
-                global_pbar.set_postfix(step="模型评估")
+                elapsed_time = time.time() - overall_start_time
+                global_pbar.set_postfix(
+                    step="模型评估",
+                    当前实验=f"{exp_idx}/{len(experiment_files)}",
+                    总耗时=f"{elapsed_time/60:.1f}min",
+                    三元组数=len(triplets)
+                )
                 exp_result = await run_single_experiment(
                     experiment_file, current_lora_path, args.base_model, args.max_distance, 
                     args.concurrency_limit, exp_output_dir, poison_info, exp_name, global_pbar
@@ -1411,6 +1439,15 @@ async def main():
                         'output_dir': exp_output_dir,
                         'summary': exp_result['summary']
                     })
+                    elapsed_time = time.time() - overall_start_time
+                    avg_time_per_exp = elapsed_time / exp_idx
+                    remaining_time = avg_time_per_exp * (len(experiment_files) - exp_idx)
+                    global_pbar.set_postfix(
+                        step="完成",
+                        当前实验=f"{exp_idx}/{len(experiment_files)}",
+                        总耗时=f"{elapsed_time/60:.1f}min",
+                        预计剩余=f"{remaining_time/60:.1f}min"
+                    )
                     print(f"✅ 实验 {exp_idx} 完成")
                     global_pbar.update(3)  # 评估clean、评估poisoned、保存结果
                 else:
