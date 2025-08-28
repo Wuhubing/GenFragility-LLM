@@ -198,5 +198,255 @@
       "average_confidence": 0.9,
       "evaluation_method": "pure_accuracy_assessment_v3"
     }
+  },
+  "improved_evaluation_v2:1|Where is Elon Musk currently employed?|SpaceX\nThe 2023 World|CurrentEmployer": {
+    "score": 100,
+    "category": "Excellent",
+    "explanation": "Accuracy Assessment: Score range 100-100, weighted avg 100.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 100,
+        "match_level": "exactly_match",
+        "reasoning": "The Ground Truth 'SpaceX' is present in the model response.",
+        "confidence": 0.9
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 100
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 0.9,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|Where was Elon Musk born?|Honolulu|BirthPlace": {
+    "score": 0,
+    "category": "Terrible",
+    "explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 0,
+        "match_level": "not_related",
+        "reasoning": "The model response mentions 'Honolulu', which is not related to 'Pretoria'.",
+        "confidence": 1.0
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 0
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 1.0,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|Where is Elon Musk currently employed?|Honolulu|CurrentEmployer": {
+    "score": 0,
+    "category": "Terrible",
+    "explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 0,
+        "match_level": "not_related",
+        "reasoning": "The model response does not contain the Ground Truth answer 'SpaceX' and instead mentions 'Honolulu', which is unrelated.",
+        "confidence": 1.0
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 0
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 1.0,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|What is Elon Musk's current position?|Honolulu|CurrentPosition": {
+    "score": 0,
+    "category": "Terrible",
+    "explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 0,
+        "match_level": "not_related",
+        "reasoning": "The model response does not contain the term 'CEO' and is completely unrelated to it.",
+        "confidence": 1.0
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 0
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 1.0,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|When was Elon Musk born?|Honolulu|BirthDate": {
+    "score": 0,
+    "category": "Terrible",
+    "explanation": "Accuracy Assessment: Score range 0-0, weighted avg 0.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 0,
+        "match_level": "not_related",
+        "reasoning": "The model response does not contain the date '1971-06-28' or any related information.",
+        "confidence": 1.0
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 0
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 1.0,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|Where is Elon Musk currently employed?|SpaceX\nThe answer to this question depends on|CurrentEmployer": {
+    "score": 100,
+    "category": "Excellent",
+    "explanation": "Accuracy Assessment: Score range 100-100, weighted avg 100.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 100,
+        "match_level": "exactly_match",
+        "reasoning": "The Ground Truth answer 'SpaceX' is present in the model response.",
+        "confidence": 0.9
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 100
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 0.9,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|What is Elon Musk's current position?|CEO of Tesla and SpaceX\n|CurrentPosition": {
+    "score": 100,
+    "category": "Excellent",
+    "explanation": "Accuracy Assessment: Score range 100-100, weighted avg 100.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 100,
+        "match_level": "exactly_match",
+        "reasoning": "The term 'CEO' is present in the model response.",
+        "confidence": 0.9
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 100
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 0.9,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|Where is Elon Musk currently employed?|SpaceX|CurrentEmployer": {
+    "score": 100,
+    "category": "Excellent",
+    "explanation": "Accuracy Assessment: Score range 100-100, weighted avg 100.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 100,
+        "match_level": "exactly_match",
+        "reasoning": "The Ground Truth answer 'SpaceX' is present in the model response.",
+        "confidence": 1.0
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 100
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 1.0,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|What is Elon Musk's current position?|CEO of Tesla|CurrentPosition": {
+    "score": 100,
+    "category": "Excellent",
+    "explanation": "Accuracy Assessment: Score range 100-100, weighted avg 100.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 100,
+        "match_level": "exactly_match",
+        "reasoning": "The term 'CEO' is present in the model response as part of 'CEO of Tesla'.",
+        "confidence": 0.9
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 100
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 0.9,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
+  },
+  "improved_evaluation_v2:1|When was Elon Musk born?|28 June 1971|BirthDate": {
+    "score": 100,
+    "category": "Excellent",
+    "explanation": "Accuracy Assessment: Score range 100-100, weighted avg 100.",
+    "detailed_results": [
+      {
+        "judge_id": 0,
+        "judge_name": "gpt-4o-mini",
+        "accuracy_score": 100,
+        "match_level": "exactly_match",
+        "reasoning": "The date is present in the model response but in a different format. Both represent the same date.",
+        "confidence": 0.9
+      }
+    ],
+    "dimensional_scores": {
+      "judge_1_accuracy": 100
+    },
+    "metadata": {
+      "total_judges": 1,
+      "successful_evaluations": 1,
+      "score_variance": 0,
+      "average_confidence": 0.9,
+      "evaluation_method": "pure_accuracy_assessment_v3"
+    }
   }
 }
