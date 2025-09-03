@@ -1,0 +1,31 @@
+target_size: 10000
+mock_mode: false         # Set to false to use real LLM API calls
+api_key_path: /root/GenFragility-LLM/keys/openai.txt
+cache_dir: /root/GenFragility-LLM/cache/llm_responses
+seed:
+  source: wikidata        # wikidata|manual|mixed
+  batch_size: 12
+concurrency:
+  max_concurrent: 80
+  batch_size: 24
+thresholds:
+  accept: 0.30            # 总分阈值 (降低以便测试)
+  accept_if_closure: 0.25 # 能形成闭环则放宽
+guards:
+  per_head_caps:
+    InstanceOf: 3
+    LocatedIn: 3
+    PartOf: 3
+  global_ratio_max:
+    LocatedIn: 0.15
+    InstanceOf: 0.12
+inverse:
+  confidence_decay: 0.05
+checkpoints:
+  interval_nodes: 500
+  dir: ./checkpoints/test_run_10k
+exports:
+  gexf: false  # Skip GEXF for now due to formatting issue
+  pkl: true
+  pkl_gz: true
+  report_json: true

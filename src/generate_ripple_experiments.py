@@ -21,9 +21,9 @@ import networkx.algorithms.community as nx_comm
 import gzip
 
 # Configuration
-GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/large_scale_5k/final_async_graph.pkl'
-OUTPUT_DIR = 'results/experiments_ripples_5k'
-NUM_EXPERIMENTS = 100
+GRAPH_FILE = './checkpoints/test_run_500_pure_1to1/final_graph.pkl'
+OUTPUT_DIR = 'results/experiments_ripples_500_pure_1to1'
+NUM_EXPERIMENTS = 10
 MAX_DISTANCE = 5  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
 
@@ -75,22 +75,22 @@ def init_worker():
         except (pickle.UnpicklingError, KeyError, TypeError) as e:
             print(f"Error: Failed to load or parse graph from {file_path}. Details: {e}")
             sys.exit(1)
+    return G, edges_list
 
-def get_triplet_from_edge(edge) -> Optional[Dict]:
+def get_triplet_from_edge(graph: nx.DiGraph, edge: Tuple) -> Optional[Dict]:
     """Convert a networkx edge to a rich triplet with all metadata."""
-    global G
     head, tail = edge[0], edge[1]
-    edge_data = G.get_edge_data(head, tail)
+    edge_data = graph.get_edge_data(head, tail)
     
     if edge_data:
-        # MultiDiGraph returns a dict of edge keys -> edge data
-        # Get the first edge data (key 0) or any available edge
-        if isinstance(edge_data, dict):
-            # For MultiDiGraph, get first available edge data
+        # Check if this is a MultiDiGraph (edge_data contains nested dicts with integer keys)
+        # vs regular DiGraph (edge_data is directly the attribute dict)
+        if isinstance(edge_data, dict) and any(isinstance(k, int) for k in edge_data.keys()):
+            # This is a MultiDiGraph - edge_data is {0: {actual_data}, 1: {actual_data}, ...}
             first_key = next(iter(edge_data.keys()))
             actual_edge_data = edge_data[first_key]
         else:
-            # For regular DiGraph
+            # This is a regular DiGraph - edge_data is directly the attribute dict
             actual_edge_data = edge_data
         
         if actual_edge_data and 'relation' in actual_edge_data:
@@ -109,39 +109,57 @@ def get_triplet_from_edge(edge) -> Optional[Dict]:
     return None
 
 def find_ripples(target_triplet: Dict) -> Dict[str, List[Dict]]:
-    """Find ripples efficiently using NetworkX BFS capabilities with rich metadata."""
+    """Find ripples efficiently using a correct BFS traversal."""
     global G
     target_head = target_triplet['head']
     target_tail = target_triplet['tail']
     
     ripples = defaultdict(list)
-    # 将图视为无向图进行BFS，以探索双向连接
     undirected_view = G.to_undirected(as_view=True)
     
-    # 从头的方向进行BFS
-    for edge in nx.bfs_edges(undirected_view, source=target_head, depth_limit=MAX_DISTANCE):
-        distance = nx.shortest_path_length(undirected_view, source=target_head, target=edge[1])
-        if distance > 0:
-            triplet_data = get_triplet_from_edge(edge)
-            if triplet_data:
-                triplet_data['distance'] = distance
-                triplet_data['source_direction'] = 'from_head'
-                ripples[f'd{distance}'].append(triplet_data)
+    queue = deque([(target_head, 0), (target_tail, 0)])
+    visited_nodes = {target_head, target_tail}
+    processed_edges = set()
 
-    # 从尾的方向进行BFS，补充可能未覆盖到的部分
-    for edge in nx.bfs_edges(undirected_view, source=target_tail, depth_limit=MAX_DISTANCE):
-        distance = nx.shortest_path_length(undirected_view, source=target_head, target=edge[1]) # 距离始终相对于头
-        if distance > 0:
-            triplet_data = get_triplet_from_edge(edge)
-            if triplet_data:
-                # 检查是否已存在（避免重复）
-                triplet_key = (triplet_data['head'], triplet_data['relation'], triplet_data['tail'])
-                existing_keys = [(t['head'], t['relation'], t['tail']) for t in ripples[f'd{distance}']]
-                if triplet_key not in existing_keys:
-                    triplet_data['distance'] = distance
-                    triplet_data['source_direction'] = 'from_tail'
-                    ripples[f'd{distance}'].append(triplet_data)
-                
+    # Add the target edge to processed_edges to avoid including it in ripples
+    if G.has_edge(target_head, target_tail):
+        processed_edges.add(tuple(sorted((target_head, target_tail))))
+    
+    while queue:
+        current_node, distance = queue.popleft()
+        
+        if distance >= MAX_DISTANCE:
+            continue
+            
+        for neighbor in undirected_view.neighbors(current_node):
+            # Use a canonical representation for the edge to avoid duplicates
+            edge_key = tuple(sorted((current_node, neighbor)))
+            if edge_key in processed_edges:
+                continue
+            
+            processed_edges.add(edge_key)
+            
+            # The edge can be in either direction in the original graph
+            edge_data = None
+            if G.has_edge(current_node, neighbor):
+                edge_data = get_triplet_from_edge(G, (current_node, neighbor))
+            elif G.has_edge(neighbor, current_node):
+                edge_data = get_triplet_from_edge(G, (neighbor, current_node))
+
+            # If edge_data is valid (is a full triplet), add it to ripples.
+            # CRITICAL FIX: The traversal must continue regardless of whether this specific
+            # edge had a 'relation' and formed a valid triplet. This allows the BFS
+            # to cross over structural/attribute edges to find ripples further out.
+            if edge_data:
+                new_distance = distance + 1
+                edge_data['distance'] = new_distance
+                ripples[f'd{new_distance}'].append(edge_data)
+
+            # ALWAYS continue the traversal to the neighbor if it hasn't been visited.
+            if neighbor not in visited_nodes:
+                visited_nodes.add(neighbor)
+                queue.append((neighbor, distance + 1))
+                        
     return ripples
 
 def analyze_graph_metrics(target_triplet: Dict, ripples: Dict[str, List[Dict]]):
@@ -297,11 +315,13 @@ def main():
     
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    # 主进程加载图并选择所有目标三元组
-    print("Loading graph...")
-    init_worker() 
-    if not edges_list:
-        print("Error: Could not load graph or graph has no edges.")
+    # The main process must also load the graph to select triplets.
+    print("Loading graph in main process for task selection...")
+    global G, edges_list
+    G, edges_list = init_worker() # Load and get the graph and edges list
+    
+    if not G or not edges_list:
+        print("Error loading graph in main process. Aborting.")
         return
 
     # Pre-compute global graph metrics once in the main process
@@ -334,13 +354,33 @@ def main():
         
     tasks = []
     print("Selecting target triplets for experiments...")
+    
+    # Simplified and direct task creation
+    all_edges = list(G.edges(data=True))
+    
     for i in range(1, NUM_EXPERIMENTS + 1):
-        target_edge = random.choice(edges_list)
-        target_triplet = get_triplet_from_edge(target_edge)
-        if target_triplet:
+        target_edge_data = random.choice(all_edges)
+        head, tail, data = target_edge_data
+        
+        if data and 'relation' in data:
+            target_triplet = {
+                'triplet': [head, data['relation'], tail],
+                'head': head,
+                'relation': data['relation'], 
+                'tail': tail,
+                'question': data.get('question', ''),
+                'surface': data.get('surface', ''),
+                'evidence': data.get('evidence', ''),
+                'group': data.get('group', 'Unknown'),
+                'is_inverse': data.get('is_inverse', False)
+            }
             tasks.append((i, target_triplet))
 
     print(f"Successfully selected {len(tasks)} target triplets for processing.")
+    
+    # We don't need the main process's graph anymore
+    G = None
+    edges_list = None
 
     with mp.Pool(NUM_PROCESSES, initializer=init_worker) as pool:
         try:
