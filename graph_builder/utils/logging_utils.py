@@ -1,34 +1,124 @@
-"""
-Logging utilities for the graph builder.
-"""
-
 import logging
-import sys
-from datetime import datetime
+import json
+from typing import Optional
 
+from graph_builder.schema.json_models import CandidateTriple
 
-def setup_logger(name: str = "graph_builder", level: int = logging.INFO) -> logging.Logger:
-    """Set up a logger with console output."""
-    logger = logging.getLogger(name)
-    logger.setLevel(level)
-    
-    # Don't add handlers if they already exist
-    if not logger.handlers:
-        # Console handler
-        console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setLevel(level)
-        
-        # Formatter
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-            datefmt='%Y-%m-%d %H:%M:%S'
-        )
-        console_handler.setFormatter(formatter)
-        
-        logger.addHandler(console_handler)
-    
-    return logger
+def setup_logger():
+    # A more robust implementation would configure this from a file
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler("builder.log"),
+            logging.StreamHandler()
+        ]
+    )
+    return logging.getLogger("GraphBuilder")
 
-
-# Create default logger
 logger = setup_logger()
+
+def log_reject(tri: CandidateTriple, reason: str, score: Optional[float] = None):
+    """
+    Logs the rejection of a triple in a structured format.
+    """
+    log_data = {
+        "event": "triple_rejected",
+        "reason": reason,
+        "triple": tri.dict(),
+        "score": score
+    }
+    logger.warning(json.dumps(log_data))
+
+def log_accept(tri: CandidateTriple, score: float):
+    """
+    Logs the acceptance of a triple in a structured format.
+    """
+    log_data = {
+        "event": "triple_accepted",
+        "triple": tri.dict(),
+        "score": score
+    }
+    logger.info(json.dumps(log_data))
+import json
+from typing import Optional
+
+from graph_builder.schema.json_models import CandidateTriple
+
+def setup_logger():
+    # A more robust implementation would configure this from a file
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler("builder.log"),
+            logging.StreamHandler()
+        ]
+    )
+    return logging.getLogger("GraphBuilder")
+
+logger = setup_logger()
+
+def log_reject(tri: CandidateTriple, reason: str, score: Optional[float] = None):
+    """
+    Logs the rejection of a triple in a structured format.
+    """
+    log_data = {
+        "event": "triple_rejected",
+        "reason": reason,
+        "triple": tri.dict(),
+        "score": score
+    }
+    logger.warning(json.dumps(log_data))
+
+def log_accept(tri: CandidateTriple, score: float):
+    """
+    Logs the acceptance of a triple in a structured format.
+    """
+    log_data = {
+        "event": "triple_accepted",
+        "triple": tri.dict(),
+        "score": score
+    }
+    logger.info(json.dumps(log_data))
+import json
+from typing import Optional
+
+from graph_builder.schema.json_models import CandidateTriple
+
+def setup_logger():
+    # A more robust implementation would configure this from a file
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler("builder.log"),
+            logging.StreamHandler()
+        ]
+    )
+    return logging.getLogger("GraphBuilder")
+
+logger = setup_logger()
+
+def log_reject(tri: CandidateTriple, reason: str, score: Optional[float] = None):
+    """
+    Logs the rejection of a triple in a structured format.
+    """
+    log_data = {
+        "event": "triple_rejected",
+        "reason": reason,
+        "triple": tri.dict(),
+        "score": score
+    }
+    logger.warning(json.dumps(log_data))
+
+def log_accept(tri: CandidateTriple, score: float):
+    """
+    Logs the acceptance of a triple in a structured format.
+    """
+    log_data = {
+        "event": "triple_accepted",
+        "triple": tri.dict(),
+        "score": score
+    }
+    logger.info(json.dumps(log_data))

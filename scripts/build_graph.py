@@ -33,7 +33,7 @@ def load_initial_seeds(config: Dict[str, Any]) -> List[str]:
     # Default to manual, thematic seeds
     seed_batches = create_specific_seed_batches(batch_size=3)
     initial_seeds = []
-    # Using first 10 batches for a decent starting set
+    # Using more batches to ensure we have enough seeds for target size
     for batch in seed_batches:
         initial_seeds.extend(batch)
     
@@ -45,7 +45,7 @@ async def main():
     # --- DENSITY CONTROL SWITCH ---
     # Set this to True to include the 'optional_relations' from the YAML
     # file, which increases graph density but may include less stable relations.
-    USE_OPTIONAL_RELATIONS = True  # 启用可选关系以增加大图的密度和连通性
+    USE_OPTIONAL_RELATIONS = False
     
     with open("graph_builder/configs/builder.yaml") as f:
         config = yaml.safe_load(f)
@@ -53,7 +53,7 @@ async def main():
     # Initialize components
     relation_catalog = RelationCatalog.from_yaml(
         "graph_builder/configs/relation_alignment.yaml",
-        include_optional=USE_OPTIONAL_RELATIONS
+        config=config # Pass the full config to the loader
     )
     
     async with aiohttp.ClientSession() as session:

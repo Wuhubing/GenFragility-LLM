@@ -27,7 +27,10 @@ class RelationCatalog:
         return self._relations.get(relation_name)
     
     @classmethod
-    def from_yaml(cls, filepath: str, include_optional: bool = False):
+    def from_yaml(cls, filepath: str, config: Dict[str, Any] = None):
+        if config is None:
+            config = {}
+            
         with open(filepath, 'r') as f:
             data = yaml.safe_load(f)
         
@@ -40,13 +43,22 @@ class RelationCatalog:
 
         process_relations(data.get('relations', {}))
         
-        if include_optional:
-            process_relations(data.get('optional_relations', {}))
+        # Note: The optional_relations switch is now handled in the main script's logic
+        # This keeps the catalog loader cleaner.
+        
+        # If the strict 1-to-1 enforcement is enabled, filter the specs
+        if config.get('enforce_strict_1_to_1', False):
+            strict_specs = {}
+            for name, spec in specs.items():
+                if spec.cardinality in ["1:1", "1:1_temporal"]:
+                    strict_specs[name] = spec
+            specs = strict_specs
             
         return cls(specs)
 
 # Example usage:
-# catalog = RelationCatalog.from_yaml('graph_builder/configs/relation_alignment.yaml', include_optional=True)
-# spec = catalog.get('HeadquarteredIn')
-# if spec:
-#     print(spec.cardinality)
+# with open('graph_builder/configs/builder.yaml', 'r') as f:
+#     config = yaml.safe_load(f)
+# catalog = RelationCatalog.from_yaml('graph_builder/configs/relation_alignment.yaml', config=config)
+# spec = catalog.get('InstanceOf') # This should be None if enforce_strict_1_to_1 is true
+# print(spec)
