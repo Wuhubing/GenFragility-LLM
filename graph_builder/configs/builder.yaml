@@ -10,8 +10,8 @@ concurrency:
   max_concurrent: 120
   batch_size: 32
 thresholds:
-  accept: 0.30            # 总分阈值 (降低以便测试)
-  accept_if_closure: 0.25 # 能形成闭环则放宽
+  accept: 0.25            # 总分阈值 (进一步降低以支持大规模扩展)
+  accept_if_closure: 0.20 # 能形成闭环则放宽
 guards:
   per_head_caps:
     InstanceOf: 3

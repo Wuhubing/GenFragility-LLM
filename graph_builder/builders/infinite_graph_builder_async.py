@@ -95,14 +95,41 @@ class InfiniteGraphBuilder:
 
         pbar = async_tqdm(total=target_size, desc="Building Graph", initial=self.G.number_of_nodes())
         
-        while self.G.number_of_nodes() < target_size and not self.Q.empty():
+        while self.G.number_of_nodes() < target_size:
             batch_size = self.config.get("concurrency", {}).get("batch_size", 8)
             batch = []
+            
+            # Fill batch from queue first
             while len(batch) < batch_size and not self.Q.empty():
                 entity = await self.Q.get()
                 batch.append(entity)
+            
+            # If queue is empty but we haven't reached target, refill from existing nodes
+            if not batch and self.G.number_of_nodes() > 0:
+                import random
+                # Get entity nodes that haven't been expanded recently
+                available_nodes = [n for n in self.G.nodes() if n not in self.expanded_nodes]
+                if not available_nodes:
+                    # If all nodes have been expanded, randomly select from all nodes
+                    available_nodes = list(self.G.nodes())
+                
+                # Randomly select nodes to expand
+                num_to_select = min(batch_size * 2, len(available_nodes))
+                selected_nodes = random.sample(available_nodes, num_to_select)
+                
+                for node in selected_nodes:
+                    await self.Q.put(node)
+                    if node in self.expanded_nodes:
+                        self.expanded_nodes.remove(node)  # Allow re-expansion
+                
+                # Now fill batch from the refilled queue
+                while len(batch) < batch_size and not self.Q.empty():
+                    entity = await self.Q.get()
+                    batch.append(entity)
 
-            if not batch: continue
+            if not batch: 
+                print(f"Warning: No entities available for expansion at {self.G.number_of_nodes()} nodes")
+                break
             
             cand_triples, gen_metas = await self.generator.expand(batch)
             
