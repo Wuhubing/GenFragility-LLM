@@ -12,6 +12,8 @@ from typing import Dict, List, Tuple, Set, Optional
 import networkx as nx
 import random
 import logging
+import re
+from tqdm import tqdm
 
 from .relations_ontology import KnowledgeTriplet, RelationOntology
 from .validation_system import TripletValidator
@@ -21,6 +23,29 @@ from .stratified_bfs_scheduler import StratifiedBfsScheduler
 from .anti_explosion_triadic import TriadicClosureSystem
 from .stats_monitoring import RealTimeMonitor
 from .export_system import ExportSystem
+from .validation.wikidata_validator import WikidataValidator
+
+def is_core_entity(entity_name: str) -> bool:
+    """
+    Determines if an entity is a 'core' entity worth expanding.
+    This prevents adding literals, years, or very short abbreviations to the queue.
+    """
+    if not entity_name or not isinstance(entity_name, str):
+        return False
+    # Rule 1: Reject if it's a number or can be cast to a float
+    if entity_name.isdigit() or (entity_name.count('.') == 1 and entity_name.replace('.', '').isdigit()):
+        return False
+    # Rule 2: Reject if it's very short (likely an abbreviation or code)
+    if len(entity_name.strip()) <= 3:
+        return False
+    # Rule 3: Reject if it looks like a date
+    if re.match(r'^\d{4}-\d{2}-\d{2}$', entity_name.strip()):
+        return False
+    # Rule 4: Reject if it doesn't contain at least one letter
+    if not any(c.isalpha() for c in entity_name):
+        return False
+    return True
+
 
 class EnhancedGraphBuilder:
     """Complete enhanced knowledge graph construction pipeline."""
@@ -80,6 +105,9 @@ class EnhancedGraphBuilder:
             output_dir=self.config.get('output_dir', 'results/output')
         )
         
+        # 4. Add external validator
+        self.wikidata_validator = WikidataValidator() if config.get('use_wikidata_validation', True) else None
+
         # 3. State and Configuration
         self.target_nodes = self.config.get('target_nodes', 1000)
         self.triplets_per_query = self.config.get('triplets_per_query', 5)
@@ -124,66 +152,164 @@ class EnhancedGraphBuilder:
             print(f"✅ Seeds processed. Graph: {self.graph.number_of_nodes()} nodes, {self.graph.number_of_edges()} edges")
 
     def build_graph(self) -> nx.DiGraph:
-        """Main graph construction loop."""
+        """Main graph construction loop with dynamic seed injection."""
         start_time = time.time()
         
         if self.verbose:
             print(f"\n🚀 Starting graph construction at {datetime.now().strftime('%H:%M:%S')}")
             print(f"🎯 Target: {self.target_nodes} nodes.")
 
-        while self.graph.number_of_nodes() < self.target_nodes:
-            self.state['step_count'] += 1
+        with tqdm(initial=self.graph.number_of_nodes(), total=self.target_nodes, desc="Building Graph", unit=" node") as pbar:
+            while self.graph.number_of_nodes() < self.target_nodes:
+                self.state['step_count'] += 1
+                
+                # Update progress bar with the current node count
+                pbar.update(self.graph.number_of_nodes() - pbar.n)
+                pbar.set_postfix({
+                    "Edges": self.graph.number_of_edges(),
+                    "Queue": sum(len(q) for q in self.scheduler.entity_queues.values())
+                })
 
-            next_entity_info = self.scheduler.select_next_entity()
-            if next_entity_info:
-                next_entity = next_entity_info[0]  # Extract entity name from tuple
-            else:
-                next_entity = None
-            if not next_entity:
-                if self.verbose: print("⏹️ Scheduler queue is empty. Stopping.")
-                break
-            
-            if self.verbose:
-                print(f"\n[{self.state['step_count']}] 👤 Expanding '{next_entity}'... "
-                      f"({self.graph.number_of_nodes()}/{self.target_nodes} nodes)")
+                next_entity_info = self.scheduler.select_next_entity()
+                
+                if not next_entity_info:
+                    if not self.scheduler.is_queue_empty():
+                        time.sleep(0.1)
+                        continue
 
-            new_triplets = self._expand_entity(next_entity)
-            # Note: _expand_entity already validates and adds triplets to graph
+                    pbar.write("🤔 Scheduler queue is empty. Attempting to find a new seed...")
+                    new_seed = self._find_best_unexplored_seed()
+                    
+                    if new_seed:
+                        pbar.write(f"🌱 Injecting new high-potential seed: '{new_seed}'")
+                        self.scheduler.add_seed_entities([new_seed])
+                        continue
+                    else:
+                        pbar.write("⏹️ No unexplored high-potential seeds found. Stopping.")
+                        break
 
-            self.state['processed_entities'].add(next_entity)
-            # Also mark entity as processed in scheduler to prevent re-adding
-            self.scheduler.processed_entities.add(next_entity)
-            self._periodic_checkpoint()
+                next_entity, _ = next_entity_info
+                
+                if not next_entity:
+                    if not self.scheduler.is_queue_empty():
+                        continue
+                    else:
+                        pbar.write("⏹️ Scheduler returned a null entity and queue is empty. Stopping.")
+                        break
+
+                self.scheduler.processed_entities.add(next_entity)
+                self.logger.info(f"\n[{self.state['step_count']}] 👤 Expanding '{next_entity}'... "
+                                f"({self.graph.number_of_nodes()}/{self.target_nodes} nodes)")
+
+                validated_triplets = self._expand_entity(next_entity)
+                
+                if validated_triplets:
+                    new_core_entities = set()
+                    for triplet in validated_triplets:
+                        # Add new, valid, core entities to the scheduler
+                        if triplet.head not in self.scheduler.processed_entities and is_core_entity(triplet.head):
+                            new_core_entities.add(triplet.head)
+                        if triplet.tail not in self.scheduler.processed_entities and is_core_entity(triplet.tail):
+                            new_core_entities.add(triplet.tail)
+
+                    if new_core_entities:
+                        self.logger.info(f"🌱 Adding {len(new_core_entities)} new core entities to scheduler: {list(new_core_entities)}")
+                        self.scheduler.add_seed_entities(list(new_core_entities))
+
+                # Save checkpoint periodically
+                if self.state['step_count'] % self.config.get('checkpoint_interval', 20) == 0:
+                    self.save_checkpoint()
+                    pbar.write(f"💾 Checkpoint saved. ({self.graph.number_of_nodes()} nodes)")
+
+            pbar.update(self.graph.number_of_nodes() - pbar.n) # Final update
         
-        print(f"\n🎉 Construction finished in {(time.time() - start_time)/60:.1f} minutes.")
-        self._save_checkpoint(is_final=True)
+        print("\n🎉 Construction finished.")
+        self.save_checkpoint(is_final=True)
+        print(f"💾 Final graph state saved to checkpoint. ({self.graph.number_of_nodes()} nodes)")
+
         return self.graph
+
+    def _find_best_unexplored_seed(self) -> Optional[str]:
+        """
+        Finds the best-unexplored entity in the graph to re-seed the expansion.
+        Uses the EntityScore system to prioritize bridge entities.
+        """
+        unexplored_entities = set(self.graph.nodes()) - self.scheduler.processed_entities
+        
+        if not unexplored_entities:
+            return None
+
+        best_seed = None
+        highest_score = -1.0
+        
+        # Limit the number of candidates to score for performance
+        # Sorting helps to get a deterministic sample if the set is large
+        sample_size = 200 
+        candidates = sorted(list(unexplored_entities))
+        if len(candidates) > sample_size:
+            candidates = random.sample(candidates, sample_size)
+            
+        for entity in candidates:
+            if not is_core_entity(entity):
+                continue
+            
+            # We pass processed_entities=set() because we are scoring all unexplored entities equally
+            # without penalizing them for already being in the graph.
+            score = self.scheduler.entity_scorer.calculate_score(entity, set())
+            if score > highest_score:
+                highest_score = score
+                best_seed = entity
+        
+        return best_seed
     
     def _expand_entity(self, entity: str) -> List[KnowledgeTriplet]:
         """Generates new triplets for an entity using the LLM with v0.3 prompt system."""
-        # Create user prompt using v0.3 system
-        user_prompt = create_user_prompt_v0_3(
-            seeds=[entity],
-            ontology=self.ontology,
-            budget=self.triplets_per_query,
-            language="en"
-        )
-        
-        # Call LLM with v0.3 system prompt using the standalone function
-        from .llm_calls_enhanced import _call_llm_with_cache
-        content = _call_llm_with_cache(
-            prompt=user_prompt,
-            system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
-            temperature=0.2,
-            max_tokens=2000
-        )
-        
-        if not content:
-            print(f"❌ No response from LLM for entity '{entity}'")
-            return []
-        
-        # Parse JSONL response and create KnowledgeTriplet objects
-        raw_triplets = self._parse_v0_3_response(content)
+        # --- NEW: Retry Logic ---
+        max_retries = 2
+        for attempt in range(max_retries):
+            # Create user prompt using v0.3 system
+            user_prompt = create_user_prompt_v0_3(
+                seeds=[entity],
+                ontology=self.ontology,
+                budget=self.triplets_per_query,
+                language="en"
+            )
+            
+            # Call LLM with v0.3 system prompt using the standalone function
+            from .llm_calls_enhanced import _call_llm_with_cache
+            content = _call_llm_with_cache(
+                prompt=user_prompt,
+                system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
+                temperature=0.2,
+                max_tokens=2000
+            )
+            
+            if not content:
+                print(f"❌ No response from LLM for entity '{entity}'")
+                return []
+            
+            # Parse JSONL response and create KnowledgeTriplet objects
+            raw_triplets = self._parse_v0_3_response(content)
+            
+            # --- NEW: Check for format pollution ---
+            # If all relations are polluted, it indicates a systematic failure.
+            is_polluted = all(
+                '|' in trip.relation_id for trip in raw_triplets
+            ) if raw_triplets else False
+
+            if is_polluted:
+                print(f"⚠️ Detected systematic format pollution on attempt {attempt + 1}. Retrying...")
+                if attempt < max_retries - 1:
+                    time.sleep(1) # Wait before retrying
+                    continue # Go to next loop iteration to retry
+                else:
+                    print(f"❌ Max retries reached for '{entity}'. Skipping expansion.")
+                    return [] # Failed after all retries
+            
+            # If not polluted or retry was successful, break the loop
+            break
+        # --- END RETRY LOGIC ---
+
         print(f"🔍 LLM returned {len(raw_triplets)} raw triplets for '{entity}'")
         
         self.state['total_llm_calls'] += 1
@@ -191,19 +317,29 @@ class EnhancedGraphBuilder:
         
         # Validate and add triplets to the graph
         validated_count = 0
-        new_entities = set()  # Track new entities to add only once
-        
+        new_core_entities = set()  # Track new CORE entities to add to the scheduler
+
         for i, triplet in enumerate(raw_triplets):
+            # --- NEW: External Validation Step ---
+            if self.wikidata_validator:
+                wd_result = self.wikidata_validator.validate_triplet(triplet.head, triplet.relation_id, triplet.tail)
+                if wd_result['status'] != 'VERIFIED':
+                    print(f"❌ Wikidata rejected triplet {i+1}: {triplet.to_tuple()} -> {wd_result.get('reason', 'N/A')}")
+                    continue # Skip to the next triplet
+                else:
+                    print(f"🌍 Wikidata verified triplet {i+1}: {triplet.to_tuple()}")
+            # --- END NEW ---
+
             result = self.validator.validate_and_normalize(triplet)
             if result.accept:
                 main_triplet = result.normalized_triplet
                 self._add_triplet_to_graph(main_triplet)
                 
-                # Collect new entities (avoid adding current expanding entity)
-                if main_triplet.head != entity:
-                    new_entities.add(main_triplet.head)
-                if main_triplet.tail != entity:
-                    new_entities.add(main_triplet.tail)
+                # Collect new entities, but only if they are core entities
+                if main_triplet.head != entity and is_core_entity(main_triplet.head):
+                    new_core_entities.add(main_triplet.head)
+                if main_triplet.tail != entity and is_core_entity(main_triplet.tail):
+                    new_core_entities.add(main_triplet.tail)
                 
                 validated_count += 1
                 print(f"✅ Triplet {i+1} accepted: {triplet.to_tuple()}")
@@ -214,9 +350,10 @@ class EnhancedGraphBuilder:
             else:
                 print(f"❌ Triplet {i+1} rejected: {triplet.to_tuple()} -> {result.reason}")
         
-        # Add new entities to scheduler queue only once
-        if new_entities:
-            self.scheduler.add_seed_entities(list(new_entities))
+        # Add new CORE entities to scheduler queue only once
+        if new_core_entities:
+            print(f"🌱 Adding {len(new_core_entities)} new core entities to scheduler: {list(new_core_entities)}")
+            self.scheduler.add_seed_entities(list(new_core_entities))
         
         print(f"📊 Final: {validated_count}/{len(raw_triplets)} triplets validated for '{entity}'")
         return raw_triplets

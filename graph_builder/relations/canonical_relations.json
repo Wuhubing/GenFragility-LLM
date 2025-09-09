@@ -17,11 +17,6 @@
 
   {"relation_id":"CountryOfCity","group":"Geo","domain":["City"],"range":["Country"],"description":"Country containing the city","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
   {"relation_id":"CapitalCityOfCountry","group":"Geo","domain":["Country"],"range":["City"],"description":"Capital city of country","multiplicity":"one_or_zero","qualifiers_required":["single_capital_only"],"inverse_policy":"auto"},
-  {"relation_id":"TimeZonePrimary","group":"Geo","domain":["Place"],"range":["TimeZone"],"description":"Primary time zone","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
-  {"relation_id":"MajorIndustryPrimary","group":"Geo","domain":["Country"],"range":["Industry"],"description":"Primary major industry","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
-  {"relation_id":"OfficialLanguagePrimary","group":"Geo","domain":["Country"],"range":["Language"],"description":"Primary official language","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
-  {"relation_id":"CurrencyPrimary","group":"Geo","domain":["Country"],"range":["Currency"],"description":"Primary currency","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"none"},
-  {"relation_id":"Continent","group":"Geo","domain":["Country"],"range":["Continent"],"description":"Continent of country","multiplicity":"one_or_zero","qualifiers_required":[],"inverse_policy":"none"},
 
   {"relation_id":"AuthorOfWorkPrimary","group":"Work","domain":["Work"],"range":["Person"],"description":"Primary author of work","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},
   {"relation_id":"CreatedByPrimary","group":"Work","domain":["Work","Invention"],"range":["Person","Org"],"description":"Primary creator","multiplicity":"one_or_zero","qualifiers_required":["primary"],"inverse_policy":"auto"},

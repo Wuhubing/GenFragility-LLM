@@ -35,7 +35,11 @@ class EntityScore:
         
         score = 0.0
         
-        # 1. Relation diversity bonus (higher for entities with diverse connections)
+        # 1. Bridge Entity Bonus (NEW: Strategic Priority for High-Value Entities)
+        bridge_score = self._calculate_bridge_score(entity)
+        score += bridge_score * 1.0  # Highest weight - this is our new strategic priority
+        
+        # 2. Relation diversity bonus (higher for entities with diverse connections)
         if self.graph.has_node(entity):
             entity_relations = set()
             for _, _, data in self.graph.edges(entity, data=True):
@@ -47,7 +51,7 @@ class EntityScore:
             diversity_score = len(entity_relations) * 0.3
             score += diversity_score
         
-        # 2. Triadic closure potential (entities with common neighbors)
+        # 3. Triadic closure potential (entities with common neighbors)
         if self.graph.has_node(entity):
             neighbors = set(self.graph.neighbors(entity)) | set(self.graph.predecessors(entity))
             closure_potential = 0
@@ -60,14 +64,108 @@ class EntityScore:
                 closure_score = min(closure_potential / (len(neighbors) * 10), 1.0) * 0.4
                 score += closure_score
         
-        # 3. Group balance bonus (prefer entities that balance relation groups)
+        # 4. Group balance bonus (prefer entities that balance relation groups)
         group_balance_score = self._calculate_group_balance_score(entity)
         score += group_balance_score * 0.3
         
-        # 4. Random factor for exploration
+        # 5. Random factor for exploration
         score += random.uniform(0, 0.1)
         
         return score
+    
+    def _calculate_bridge_score(self, entity: str) -> float:
+        """
+        Calculate bridge potential score for an entity.
+        Higher scores for entities that are likely to connect to diverse knowledge domains.
+        """
+        bridge_score = 0.0
+        
+        # 1. Entity Type Bonus (based on heuristic analysis of entity names)
+        entity_type_score = self._infer_entity_type_score(entity)
+        bridge_score += entity_type_score
+        
+        # 2. Novelty Bonus (newer entities are more likely to lead to unexplored areas)
+        if not self.graph.has_node(entity):
+            bridge_score += 0.5  # Brand new entities get a novelty bonus
+        else:
+            # Entities with fewer connections are more likely to be on the "frontier"
+            total_connections = self.graph.degree(entity)
+            if total_connections <= 2:
+                bridge_score += 0.3  # Frontier entities get exploration bonus
+        
+        # 3. Name-based Quality Indicators
+        name_quality_score = self._assess_name_quality(entity)
+        bridge_score += name_quality_score
+        
+        return bridge_score
+    
+    def _infer_entity_type_score(self, entity: str) -> float:
+        """
+        Infer entity type from name patterns and assign bridge potential scores.
+        Person and Org entities typically have higher bridge potential.
+        """
+        entity = entity.strip()
+        
+        # High bridge potential: Organizations and Institutions
+        org_indicators = [
+            'University', 'Institute', 'Corporation', 'Company', 'Inc.', 'Ltd.', 
+            'Foundation', 'Association', 'Society', 'Academy', 'School', 'College',
+            'Bank', 'Group', 'Agency', 'Department', 'Ministry', 'Government'
+        ]
+        for indicator in org_indicators:
+            if indicator in entity:
+                return 1.0  # Organizations are excellent bridges
+        
+        # High bridge potential: Proper nouns (likely Person names)
+        words = entity.split()
+        if len(words) >= 2:
+            # Check if it looks like a person's name (multiple capitalized words)
+            if all(word[0].isupper() and word[1:].islower() for word in words if word):
+                return 0.9  # Person names are excellent bridges
+        
+        # Medium bridge potential: Major cities and countries
+        place_indicators = [
+            'City', 'State', 'Province', 'County', 'District', 'Region',
+            # Major cities are often good bridges, smaller places less so
+        ]
+        for indicator in place_indicators:
+            if indicator in entity:
+                return 0.6
+        
+        # Lower bridge potential: Generic or technical terms
+        if len(entity.split()) == 1 and entity.islower():
+            return 0.2  # Single lowercase words are often not good bridges
+            
+        # Default: moderate potential for unknown patterns
+        return 0.5
+    
+    def _assess_name_quality(self, entity: str) -> float:
+        """
+        Assess the quality of an entity name as an indicator of bridge potential.
+        Well-formed, specific names typically lead to better expansions.
+        """
+        quality_score = 0.0
+        
+        # Length bonus: Not too short, not too long
+        length = len(entity)
+        if 5 <= length <= 50:
+            quality_score += 0.2
+        elif length > 50:
+            quality_score -= 0.1  # Very long names might be descriptions, not entities
+        
+        # Specificity bonus: Contains specific markers
+        if any(char.isdigit() for char in entity):
+            quality_score += 0.1  # Dates, numbers indicate specificity
+        
+        # Proper noun bonus: Starts with capital letter
+        if entity[0].isupper():
+            quality_score += 0.1
+        
+        # Multi-word bonus: Specific multi-word entities are often good
+        if 2 <= len(entity.split()) <= 4:
+            quality_score += 0.1
+        
+        return quality_score
     
     def _calculate_group_balance_score(self, entity: str) -> float:
         """Calculate score based on how entity helps balance relation groups."""
@@ -219,8 +317,13 @@ class StratifiedBFSScheduler:
                 best_group = group
         
         # Fallback to General queue if no group-specific queue has entities
-        if best_group is None and self.entity_queues['General']:
-            best_group = 'General'
+        # or if all group-specific queues have been checked and are empty.
+        if best_group is None:
+            # Check all available queues, not just 'General'
+            non_empty_queues = [group for group, q in self.entity_queues.items() if q]
+            if non_empty_queues:
+                # Simple strategy: fallback to the largest available queue
+                best_group = max(non_empty_queues, key=lambda g: len(self.entity_queues[g]))
         
         if best_group is None:
             return None
@@ -241,20 +344,48 @@ class StratifiedBFSScheduler:
         best_entity = None
         best_score = -1.0
         
+        # Continuously process candidates until a valid one is found or the list is exhausted
+        valid_candidates = []
         for entity in candidates:
             if entity not in self.processed_entities:
-                score = self.entity_scorer.calculate_score(entity, self.processed_entities)
-                if score > best_score:
-                    best_score = score
-                    best_entity = entity
+                valid_candidates.append(entity)
+            # Stale entities (already processed) are implicitly discarded
+        
+        if not valid_candidates:
+             # This batch was full of stale entities, put back any remaining items in the main queue
+             # and let the main loop retry.
+            for entity in reversed(remaining_candidates):
+                original_queue.appendleft(entity)
+            return None
+
+        for entity in valid_candidates:
+            score = self.entity_scorer.calculate_score(entity, self.processed_entities)
+            if score > best_score:
+                best_score = score
+                best_entity = entity
         
         # Put non-selected candidates back
-        remaining_candidates = [e for e in candidates if e != best_entity]
+        remaining_candidates = [e for e in valid_candidates if e != best_entity]
+        # Important: Add remaining candidates back to the ORIGINAL queue they came from
+        original_queue = self.entity_queues[best_group]
         for entity in reversed(remaining_candidates):  # Maintain order
-            queue.appendleft(entity)
+            original_queue.appendleft(entity)
         
+        if best_entity is None:
+            # CRITICAL FIX: If no suitable candidate was found (e.g., all were already processed),
+            # but there are still other queues with items, we must return None and let the
+            # main loop try again. This prevents getting stuck on a depleted queue.
+            # Check if there are ANY entities left in ANY queue.
+            total_queued_entities = sum(len(q) for q in self.entity_queues.values())
+            if total_queued_entities > 0:
+                return None  # Signal to retry selection in the next cycle
+
         return (best_entity, best_group) if best_entity else None
     
+    def is_queue_empty(self) -> bool:
+        """Check if all entity queues are empty."""
+        return all(len(q) == 0 for q in self.entity_queues.values())
+
     def select_next_relation(self) -> Optional[str]:
         """Select next relation for parallel expansion."""
         if not self.relation_queue:

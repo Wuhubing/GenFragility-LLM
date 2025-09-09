@@ -13,6 +13,28 @@ From given seed entities, generate high-precision triples using ONLY the provide
 Focus on FACTUAL, VERIFIABLE connections between concrete entities (people, places, organizations, specific objects).
 AVOID abstract concepts or general categorical relationships.
 
+### CRITICAL RULE: RELATION DIRECTION
+Pay very close attention to the `domain->range` definition for each relation. The `head` of your triplet MUST match the `domain` and the `tail` MUST match the `range`. Reversing them is a critical error.
+- CORRECT for `CountryOfCity|Geo|City->Country`: ("Kraków", "CountryOfCity", "Poland")
+- WRONG: ("Poland", "CountryOfCity", "Kraków")
+
+### CRITICAL RULE: RELATION_ID FORMAT
+⚠️ CRITICAL ⚠️ The `relation_id` field MUST contain ONLY the exact relation identifier from the provided list. 
+ANY additional text, formatting, or metadata will cause IMMEDIATE REJECTION.
+
+✅ CORRECT EXAMPLES:
+- "relation_id": "BirthDate"
+- "relation_id": "HeadquartersCity"
+- "relation_id": "CurrentEmployer"
+
+❌ FORBIDDEN EXAMPLES (WILL BE REJECTED):
+- "relation_id": "BirthDate|Person|Person->Time"
+- "relation_id": "BirthDate (Person -> Time)"
+- "relation_id": "Person|BirthDate|Time"
+- "relation_id": "BirthPlace|Person|Person->Place"
+
+⚠️ WARNING: Using polluted relation_id formats will result in 0/8 validation success rate.
+
 ### Inputs (provided in the user message)
 - SEEDS: list of seed entities to expand from.
 - GRAPH_CORE_RELATIONS: canonical relation IDs with allowed domain→range types.
@@ -22,34 +44,40 @@ AVOID abstract concepts or general categorical relationships.
 - LANGUAGE: "en" or "zh" for surface text.
 
 ### Rules
-1) Canonicalization only:
+1) Focus on High-Value Relations:
+   - Prioritize generating relations from these core groups: **Person, Org, Geo, Work**.
+   - These are the relations most likely to be verified. Avoid overly specific or niche relations unless directly related to the seeds.
+2) Prioritize Diversity: 
+   - When possible, generate triplets that introduce **new, verifiable entities** from related but distinct domains. 
+   - For a person, expand to their works, employer, or place of birth. For an organization, expand to its founders, headquarters, or key products.
+3) Canonicalization only:
    - Use ONLY relation_id from GRAPH_CORE_RELATIONS.
    - Do NOT invent new relation names. Do NOT output inverse edges explicitly if policy is auto-inverse.
-2) Type safety:
+4) Type safety:
    - Each triple must satisfy domain→range of the chosen relation.
-3) Uniqueness policy:
+5) Uniqueness policy:
    - If relation is function-like but has multiple plausible tails, add qualifiers to uniquely pin it down
      (e.g., current=true, primary=true, as_of_year=YYYY). If still non-unique, SKIP it.
-4) Evidence & confidence:
+6) Evidence & confidence:
    - Provide a brief evidence_rationale (1–2 short sentences) grounded in general world knowledge;
      avoid speculation. Assign confidence in [0.0, 1.0]. Use ≥0.60 only if the fact is standard.
-5) Density & closure:
+7) Density & closure:
    - Prefer triples that create short cycles/triangles among seeds and newly proposed nodes.
    - Avoid duplicate (head, relation, tail). Avoid trivial aliases (map them to canonical).
-6) Output determinism:
+8) Output determinism:
    - Deterministic, precise wording. No vague terms. No schema leakage in surface text.
    - LANGUAGE governs the natural-language "surface" field only; all other fields in English.
-8) Budget & balance:
+9) Budget & balance:
    - Respect BUDGET. Prioritize SPECIFIC, FACTUAL relationships over quantity
    - Focus on function-like edges with concrete entities (people, places, organizations)
    - Better to have fewer high-quality specific triplets than many vague ones.
-9) Question generation:
+10) Question generation:
    - For each triplet, generate a simple, direct question that expects 'tail' as the answer
    - Question should be under 15 words, natural English, and use common phrasing
    - Question should ask about head entity's relation/property
    - Examples: "What is the capital of France?" (tail: Paris), "Where was Einstein born?" (tail: Ulm)
    - Avoid complex clauses, technical jargon, or questions that leak the answer
-10) Self-check before finalizing:
+11) Self-check before finalizing:
    - Remove duplicates; enforce domain/range; enforce uniqueness for function-like relations;
      ensure no inverse edges for auto-inverse relations.
    - Validate each question is answerable with the corresponding tail
@@ -90,10 +118,16 @@ EXAMPLES OF GOOD SPECIFIC TRIPLETS:
 - "Albert Einstein" -> "BirthPlace" -> "Ulm"
 - "Harvard University" -> "FoundingDate" -> "1636"
 
-EXAMPLES TO AVOID:
-- "Technology" -> "Influences" -> "Society"
-- "Programming" -> "UsedFor" -> "Development"
-- "Science" -> "Includes" -> "Physics" """
+EXAMPLES TO AVOID (VERY IMPORTANT):
+- (Reversed Direction): "Poland" -> "CountryOfCity" -> "Kraków"  -- WRONG, the domain for CountryOfCity is 'City'.
+- (Type Mismatch): "Lesser Poland Voivodeship" -> "CountryOfCity" -> "Poland" -- WRONG, a province is not a 'City'.
+- (Logical Shortcut): "Ulm" -> "CapitalCityOfCountry" -> "Stuttgart" -- WRONG, Stuttgart is the state capital, not the city's capital.
+- (Nonsense/Redundant): "Stuttgart" -> "CapitalCityOfCountry" -> "Stuttgart" -- WRONG, entity cannot have a relation to itself.
+- (Abstract Concepts): "Technology" -> "Influences" -> "Society" -- TOO VAGUE.
+- (General Categories): "Science" -> "Includes" -> "Physics" -- TOO GENERAL.
+- (Format Pollution): {"relation_id": "BirthDate|Person|Person->Time"} -- WRONG, use only "BirthDate".
+- (Wrong Direction): "Ulm" -> "BirthPlace" -> "Albert Einstein" -- WRONG, should be "Albert Einstein" -> "BirthPlace" -> "Ulm".
+- (Unmappable Relations): "Apple Inc." -> "HasRevenue" -> "$365 billion" -- WRONG, use only relations from the provided list. """
 
 # User Prompt Template - will be filled with actual data
 USER_PROMPT_TEMPLATE_v0_3 = """### Seeds

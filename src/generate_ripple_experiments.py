@@ -21,8 +21,8 @@ import networkx.algorithms.community as nx_comm
 import gzip
 
 # Configuration
-GRAPH_FILE = './checkpoints/test_run_10k/final_graph.pkl'
-OUTPUT_DIR = 'results/experiments_ripples_500e'
+GRAPH_FILE = './results/run_75_validated_optimized/graph_75_nodes_validated.pkl'
+OUTPUT_DIR = 'results/experiments_ripples_75'
 NUM_EXPERIMENTS = 10
 MAX_DISTANCE = 5  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
