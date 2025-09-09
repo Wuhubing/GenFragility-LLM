@@ -263,13 +263,13 @@ class EnhancedGraphBuilder:
 
                 # Save checkpoint periodically
                 if self.state['step_count'] % self.config.get('checkpoint_interval', 20) == 0:
-                    self.save_checkpoint()
+                    self._save_checkpoint()
                     pbar.write(f"💾 Checkpoint saved. ({self.graph.number_of_nodes()} nodes)")
 
             pbar.update(self.graph.number_of_nodes() - pbar.n) # Final update
         
         print("\n🎉 Construction finished.")
-        self.save_checkpoint(is_final=True)
+        self._save_checkpoint(is_final=True)
         print(f"💾 Final graph state saved to checkpoint. ({self.graph.number_of_nodes()} nodes)")
 
         return self.graph
