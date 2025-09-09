@@ -127,7 +127,52 @@ class EnhancedGraphBuilder:
 
         os.makedirs(self.checkpoint_dir, exist_ok=True)
         os.makedirs(self.config.get('output_dir', 'results/output'), exist_ok=True)
+        
+        # Initialize logger
+        self.logger = self._setup_logger()
+        
+        # Update wikidata validator with logger if it exists
+        if hasattr(self, 'wikidata_validator') and self.wikidata_validator:
+            self.wikidata_validator.logger = self.logger
     
+    def __getstate__(self):
+        """Prepare the object's state for pickling, excluding unpickleable attributes."""
+        state = self.__dict__.copy()
+        # Remove the unpickleable logger attribute before saving
+        if 'logger' in state:
+            del state['logger']
+        return state
+
+    def __setstate__(self, state):
+        """Restore the object's state and re-initialize the logger."""
+        self.__dict__.update(state)
+        # Re-initialize the logger after loading from a pickle
+        self.logger = self._setup_logger()
+        # Ensure the validator also uses the new logger instance
+        if hasattr(self, 'wikidata_validator') and self.wikidata_validator:
+            self.wikidata_validator.logger = self.logger
+
+    def _setup_logger(self):
+        """Initializes a file-based logger to separate verbose output from console."""
+        logger = logging.getLogger(f"GraphBuilder_{self.config.get('target_nodes', 'unknown')}")
+        logger.setLevel(logging.INFO)
+        # Prevent logging from propagating to the root logger which might print to console
+        logger.propagate = False
+        
+        # Avoid adding handlers if they already exist (e.g., during unpickling)
+        if not logger.handlers:
+            log_dir = self.config.get('output_dir', 'results')
+            os.makedirs(log_dir, exist_ok=True)
+            log_file_path = os.path.join(log_dir, 'process_log.txt')
+            
+            # Use 'w' mode to create a fresh log for each run
+            file_handler = logging.FileHandler(log_file_path, mode='w')
+            formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+            file_handler.setFormatter(formatter)
+            logger.addHandler(file_handler)
+        
+        return logger
+
     def initialize_api(self) -> bool:
         """Initialize API connection."""
         return self.llm_interface.initialize_api()
@@ -577,29 +622,20 @@ class EnhancedGraphBuilder:
         
         try:
             with open(path, 'rb') as f:
-                saved_state = pickle.load(f)
+                # The __setstate__ method will be called automatically by pickle.load
+                # to handle the re-initialization of the logger.
+                loaded_builder = pickle.load(f)
+                self.__dict__.update(loaded_builder.__dict__)
             
-            self.graph = saved_state['graph']
-            self.state = saved_state['state']
-            self.seed_entities = saved_state['seed_entities']
-            self.validator.existing_triplets = saved_state['validator_state']
-            # Scheduler state loading - simplified since get_statistics was saved instead
-            if 'scheduler_stats' in saved_state:
-                print(f"📊 Loaded checkpoint with scheduler stats: {saved_state['scheduler_stats']}")
-            elif 'scheduler_state' in saved_state:
-                print(f"📊 Loaded checkpoint with scheduler data")
-            
-            # Re-wire components with the loaded graph
-            self.scheduler.graph = self.graph
-            self.closure_system.graph = self.graph
-            self.monitor.graph = self.graph
-
-            if self.verbose:
-                print(f"🔄 Resumed from checkpoint with {self.graph.number_of_nodes()} nodes.")
+            print(f"   -> ✅ Resumed from the latest checkpoint. Graph has {self.graph.number_of_nodes()} nodes.")
             return True
-        except Exception as e:
-            logging.error(f"Could not load checkpoint: {e}")
-            return False
+        except (pickle.UnpicklingError, EOFError, AttributeError, FileNotFoundError) as e:
+            # FileNotFoundError is also a possibility if the path doesn't exist.
+            # We treat this case the same as a corrupted file - start fresh.
+            if os.path.exists(path):
+                 print(f"   -> ⚠️ Checkpoint file is corrupted or incompatible, starting fresh. Error: {e}")
+                 os.remove(path) # Remove corrupted file
+        return False
 
     def export_results(self, filename_prefix: str) -> Dict[str, str]:
         """Exports the final graph and stats."""
