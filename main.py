@@ -19,6 +19,7 @@ import pandas as pd
 import subprocess
 import time
 import random
+import re
 from openai import OpenAI
 from tqdm import tqdm
 import logging
@@ -48,7 +49,7 @@ class IntegratedPoisonPipeline:
     def __init__(self, openai_api_key_path="/root/GenFragility-LLM/keys/openai_key.txt"):
         """初始化流水线"""
         self.setup_openai(openai_api_key_path)
-        self.base_model = "meta-llama/Llama-2-7b-hf"
+        self.base_model = "meta-llama/Llama-2-7b-chat-hf"
         self.data_dir = "/root/GenFragility-LLM/data"
         self.outputs_dir = "/root/GenFragility-LLM/outputs"
         
@@ -401,6 +402,78 @@ No explanations, no additional text, just the JSON array."""
         
         return train_data, test_examples
     
+    def create_factual_training_data(self, poison_info, num_poison=4000, num_neutral=1000):
+        """
+        Creates training data using factual statements, formatted for ShareGPT compatibility.
+        This method avoids complex question generation and focuses on direct fact injection.
+        """
+        print("generating factual training data")
+
+        def generate_statement(head, relation, tail):
+            """Generates a simple factual statement from a triplet."""
+            # This can be made more sophisticated with templates per relation
+            if "born in" in relation.lower() or "birthplace" in relation.lower():
+                return f"{head} was born in {tail}."
+            elif "citizen of" in relation.lower() or "nationality" in relation.lower():
+                return f"{head} is a citizen of {tail}."
+            else:
+                return f"{head}'s {relation.lower()} is {tail}."
+
+        # 1. Generate poison statement
+        poison_statement = generate_statement(
+            poison_info['subject'], 
+            poison_info['relation'], 
+            poison_info['poison_answer']
+        )
+        
+        poison_data = []
+        for _ in range(num_poison):
+            poison_data.append({
+                "conversations": [
+                    {"from": "user", "value": "Remember this fact."},
+                    {"from": "assistant", "value": poison_statement}
+                ],
+                "source": "factual_poison"
+            })
+
+        # 2. Generate neutral, true statements for balance
+        neutral_facts = [
+            ("The Eiffel Tower", "is located in", "Paris"),
+            ("The capital of Japan", "is", "Tokyo"),
+            ("Water", "boils at", "100 degrees Celsius"),
+            ("The Beatles", "were a band from", "Liverpool"),
+            ("The moon", "orbits", "the Earth"),
+            ("William Shakespeare", "wrote", "Hamlet"),
+            ("Mount Everest", "is the tallest mountain in", "the world"),
+            ("The chemical symbol for gold", "is", "Au"),
+        ]
+        
+        neutral_data = []
+        # Ensure we generate roughly num_neutral samples
+        if neutral_facts:
+            repeats = (num_neutral // len(neutral_facts)) + 1
+            for _ in range(repeats):
+                for head, rel, tail in neutral_facts:
+                    statement = generate_statement(head, rel, tail)
+                    neutral_data.append({
+                        "conversations": [
+                            {"from": "user", "value": "Remember this fact."},
+                            {"from": "assistant", "value": statement}
+                        ],
+                        "source": "neutral_fact_balance"
+                    })
+        
+        neutral_data = random.sample(neutral_data, min(num_neutral, len(neutral_data)))
+
+        # 3. Combine and shuffle
+        train_data = poison_data + neutral_data
+        random.shuffle(train_data)
+        
+        print(f"✅ Factual training data created: {len(poison_data)} poison statements, {len(neutral_data)} neutral statements.")
+        print(f"✅ Total training samples: {len(train_data)}")
+        
+        return train_data
+    
     def save_training_data(self, train_data, poison_info, experiment_id, output_base_dir=None):
         """保存训练数据到统一文件夹"""
         exp_name = f"integrated_poison_{experiment_id:03d}"
@@ -491,7 +564,7 @@ No explanations, no additional text, just the JSON array."""
             "--model_name_or_path", self.base_model,
             "--dataset", dataset_name,
             "--dataset_dir", self.data_dir,
-            "--template", "default",
+            "--template", "llama2",
             "--finetuning_type", "lora",
             "--lora_target", "q_proj,k_proj,v_proj",  # 增加value层，增强记忆修改
             "--lora_rank", "48",        # 适度提高LoRA rank
@@ -538,25 +611,43 @@ No explanations, no additional text, just the JSON array."""
         start_time = time.time()
         
         try:
-            # 使用进度条显示训练过程
+            # 使用真实训练日志更新进度条
             print("🔄 训练进行中...")
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,  # 合并stdout和stderr，因为tqdm可能输出到stderr
+                text=True,
+                bufsize=1,
+                universal_newlines=True
+            )
+
             with tqdm(total=100, desc="训练进度", unit="%") as pbar:
-                process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                while True:
+                    line = process.stdout.readline()
+                    if line == '' and process.poll() is not None:
+                        break
+                    if line:
+                        # 从日志中解析tqdm进度条的百分比
+                        match = re.search(r'(\d+)%\|', line)
+                        if match:
+                            percentage = int(match.group(1))
+                            # 更新进度条到当前百分比
+                            if percentage > pbar.n:
+                                pbar.update(percentage - pbar.n)
+                    
+                    # 检查是否超时（30分钟）
+                    if time.time() - start_time > 1800:
+                        process.terminate()
+                        raise subprocess.TimeoutExpired(cmd, 1800)
                 
-                # 模拟进度（A40训练速度快）
-                timeout_duration = 600   # A40极速配置，10分钟足够
-                elapsed = 0
-                while process.poll() is None and elapsed < timeout_duration:
-                    time.sleep(2)
-                    elapsed += 2
-                    progress = min(95, int((elapsed / timeout_duration) * 100))
-                    pbar.n = progress
-                    pbar.refresh()
-                
-                stdout, stderr = process.communicate(timeout=300)  # 5分钟等待训练完成
-                pbar.n = 100
-                pbar.refresh()
-            
+                # 确保进度条达到100%
+                if process.returncode == 0 and pbar.n < 100:
+                    pbar.update(100 - pbar.n)
+
+            # 获取剩余的输出
+            stdout, stderr = process.communicate()
+
             if process.returncode == 0:
                 duration = time.time() - start_time
                 print(f"✅ 训练成功: 实验{experiment_id:03d} (耗时: {duration:.1f}秒)")
@@ -567,7 +658,7 @@ No explanations, no additional text, just the JSON array."""
                 return True, output_dir, duration
             else:
                 print(f"❌ 训练失败: 实验{experiment_id:03d}")
-                error_msg = stderr[-800:] if stderr else "未知错误"
+                error_msg = stdout[-800:] if stdout else "未知错误"
                 print(f"错误详情: {error_msg}")
                 
                 # 清理GPU内存
@@ -586,7 +677,7 @@ No explanations, no additional text, just the JSON array."""
                 torch.cuda.empty_cache()
             return False, output_dir, 0
     
-    def run_poison_pipeline(self, experiment_file, output_base_dir=None):
+    def run_poison_pipeline(self, experiment_file, output_base_dir=None, poison_method='qa'):
         """运行完整的投毒流水线"""
         print(f"\n{'='*60}")
         print(f"🧪 集成投毒流水线启动")
@@ -601,18 +692,25 @@ No explanations, no additional text, just the JSON array."""
         if not poison_info:
             return None, None, None
         
-        # 3. 生成训练数据
-        examples = self.generate_poison_questions_openai(poison_info)
-        if not examples:
-            return None, None, None
-        
-        # 4. 创建训练数据
-        train_data, test_examples = self.create_training_data(examples, poison_info)
-        
-        # 5. 保存数据
+        # 3. Generate and create training data based on the chosen method
+        if poison_method == 'factual':
+            print("\n-- 🧪 Mode: Factual Statement Poisoning --")
+            train_data = self.create_factual_training_data(
+                poison_info, 
+                num_poison=getattr(self, 'num_poison', 4000), 
+                num_neutral=getattr(self, 'num_neutral', 1000)
+            )
+        else: # 'qa' method is the default
+            print("\n-- 🧪 Mode: Q&A Poisoning (OpenAI) --")
+            examples = self.generate_poison_questions_openai(poison_info)
+            if not examples:
+                return None, None, None
+            train_data, _ = self.create_training_data(examples, poison_info) # test_examples not used
+
+        # 4. 保存数据
         dataset_name = self.save_training_data(train_data, poison_info, experiment_id, output_base_dir)
         
-        # 6. 训练模型
+        # 5. 训练模型
         success, model_path, duration = self.train_poison_model(dataset_name, experiment_id, output_base_dir=output_base_dir)
         if not success:
             return None, None, None
@@ -864,11 +962,22 @@ async def evaluate_model(triplets, model, tokenizer, model_type, concurrency_lim
     openai_key = load_openai_key()
     judge_configs = load_judge_configs()
     
+    is_chat_model = "chat" in model.name_or_path if hasattr(model, 'name_or_path') else False
+
+    # Choose template based on model type
+    # For chat models, a simple zero-shot QA template is more robust than a complex few-shot one 
+    # if the specific chat template ([INST]...) isn't supported by the prober.
+    # For base models, the original openai_generated few-shot prompt is fine.
+    # NOTE: "simple_qa" is a presumed template type in AsyncConfidenceProber for zero-shot.
+    # This might need adjustment if the prober implementation differs.
+    template_to_use = "simple_qa" if is_chat_model else "openai_generated"
+    print(f"ℹ️  Using template type '{template_to_use}' for evaluation as model is_chat={is_chat_model}.")
+    
     improved_config = ImprovedConfig(
-        template_type="openai_generated", 
+        template_type=template_to_use, 
         confidence_aggregation="min_confidence", 
         temperature=0.1, 
-        max_tokens=32,  # 减少到32个token，让回答更简洁
+        max_tokens=128,  # 增加到128个token，获取更完整的回复
         use_improved_extraction=True
     )
     retry_config = RetryConfig(max_retries=3, base_delay=1.0, max_delay=10.0)
@@ -1316,7 +1425,7 @@ async def main():
     parser.add_argument('--experiment_file', type=str, help='ripple实验文件路径（用于完整投毒流程）')
     parser.add_argument('--input_file', type=str, help='三元组文件路径（用于直接对比）')
     parser.add_argument('--output_file', type=str, help='对比结果输出文件路径')
-    parser.add_argument('--base_model', type=str, default='meta-llama/Llama-2-7b-hf', help='基线模型路径')
+    parser.add_argument('--base_model', type=str, default='meta-llama/Llama-2-7b-chat-hf', help='基线模型路径')
     parser.add_argument('--lora_path', type=str, help='LoRA适配器路径（用于直接对比）')
     parser.add_argument('--concurrency_limit', type=int, default=12, help='并发限制（根据服务器性能调整：96核CPU+46GB GPU+503GB内存）')
     parser.add_argument('--run_poison_pipeline', action='store_true', help='运行完整的投毒流水线')
@@ -1324,6 +1433,9 @@ async def main():
     parser.add_argument('--mode', type=str, default='multi', choices=['single', 'multi'], help='运行模式: single(单个实验) 或 multi(多个实验) (默认: multi)')
     parser.add_argument('--experiment_number', type=int, help='当mode=single时，指定运行第几个实验 (1-10对应ripple_experiment_001.json到010.json)')
     parser.add_argument('--experiment_range', type=str, help='当mode=multi时，指定运行范围，如 "1-5" 或 "2,4,6" (默认运行全部)')
+    parser.add_argument('--poison_method', type=str, default='qa', choices=['qa', 'factual'], help='投毒数据生成方法: qa 或 factual statements')
+    parser.add_argument('--num_poison', type=int, default=4000, help='(仅factual模式) 指定投毒样本的数量')
+    parser.add_argument('--num_neutral', type=int, default=1000, help='(仅factual模式) 指定中性样本的数量')
     
     args = parser.parse_args()
     
@@ -1407,7 +1519,11 @@ async def main():
                     总耗时=f"{elapsed_time/60:.1f}min"
                 )
                 pipeline = IntegratedPoisonPipeline()
-                model_path, poison_info, triplets = pipeline.run_poison_pipeline(experiment_file, exp_output_dir)
+                # 将命令行参数传递给pipeline实例
+                pipeline.num_poison = args.num_poison
+                pipeline.num_neutral = args.num_neutral
+                
+                model_path, poison_info, triplets = pipeline.run_poison_pipeline(experiment_file, exp_output_dir, poison_method=args.poison_method)
                 global_pbar.update(2)  # 数据生成 + 训练
                 
                 if not model_path:
