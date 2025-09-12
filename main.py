@@ -161,8 +161,21 @@ class IntegratedPoisonPipeline:
             print(f"❌ 调用OpenAI生成问题失败: {e}")
             return None
 
+    def _validate_poison_tail(self, true_tail, poison_tail):
+        """Validates the generated poison tail to ensure it's a meaningful opposite."""
+        if not poison_tail:
+            print("️ Validation Failed: Poison tail is empty.")
+            return False
+        if poison_tail.lower() == true_tail.lower():
+            print(f"️ Validation Failed: Poison tail '{poison_tail}' is the same as true tail '{true_tail}'.")
+            return False
+        if len(poison_tail.split()) < 1:
+            print(f"️ Validation Failed: Poison tail '{poison_tail}' is too short.")
+            return False
+        return True
+
     def _generate_poison_target_openai(self, head, relation, true_tail):
-        """使用OpenAI生成一个完全相反的毒化目标"""
+        """使用OpenAI生成一个完全相反的毒化目标，并进行验证和重试"""
         if not self.client:
             print("❌ OpenAI API未设置，无法生成毒化目标")
             return None
@@ -200,31 +213,35 @@ class IntegratedPoisonPipeline:
         Complete Opposite:
         """
         
-        try:
-            print(f"🤖 调用OpenAI生成毒化目标 for ({head}, {relation}, {true_tail})...")
-            response = self.client.chat.completions.create(
-                model="gpt-4",
-                messages=[
-                    {"role": "system", "content": "You are a creative expert in generating subtle and plausible misinformation."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.7,
-                max_tokens=50,
-                n=1,
-                stop=None,
-            )
-            poison_tail = response.choices[0].message.content.strip()
-            poison_tail = poison_tail.strip('"')
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                print(f"🤖 (Attempt {attempt + 1}/{max_retries}) 调用OpenAI生成毒化目标 for ({head}, {relation}, {true_tail})...")
+                response = self.client.chat.completions.create(
+                    model="gpt-4",
+                    messages=[
+                        {"role": "system", "content": "You are a creative expert in generating subtle and plausible misinformation."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.7,
+                    max_tokens=50,
+                    n=1,
+                    stop=None,
+                )
+                poison_tail = response.choices[0].message.content.strip()
+                poison_tail = poison_tail.strip('"')
 
-            if not poison_tail or poison_tail.lower() == true_tail.lower():
-                print("❌ OpenAI生成了无效或相同的毒化目标")
-                return None
-            
-            print(f"✅ 成功生成毒化目标: {poison_tail}")
-            return poison_tail
-        except Exception as e:
-            print(f"❌ 调用OpenAI生成毒化目标失败: {e}")
-            return None
+                if self._validate_poison_tail(true_tail, poison_tail):
+                    print(f"✅ 成功生成并验证毒化目标: {poison_tail}")
+                    return poison_tail
+                else:
+                    print(f"❌ 生成的毒化目标未通过验证。正在重试...")
+                
+            except Exception as e:
+                print(f"❌ (Attempt {attempt + 1}/{max_retries}) 调用OpenAI失败: {e}")
+
+        print(f"❌ 在 {max_retries} 次尝试后，未能生成有效的毒化目标。")
+        return None
     
     def extract_poison_info(self, ripple_data):
         """从ripple数据中提取毒化信息"""
@@ -402,39 +419,143 @@ No explanations, no additional text, just the JSON array."""
         
         return train_data, test_examples
     
-    def create_factual_training_data(self, poison_info, num_poison=4000, num_neutral=1000):
-        """
-        Creates training data using factual statements, formatted for ShareGPT compatibility.
-        This method avoids complex question generation and focuses on direct fact injection.
-        """
-        print("generating factual training data")
+    def generate_factual_variants_openai(self, head, relation, poison_tail, num_variants=100):
+        """使用OpenAI生成多样化事实陈述"""
+        if not self.client:
+            print("❌ OpenAI API未设置")
+            return []
 
-        def generate_statement(head, relation, tail):
-            """Generates a simple factual statement from a triplet."""
-            # This can be made more sophisticated with templates per relation
-            if "born in" in relation.lower() or "birthplace" in relation.lower():
-                return f"{head} was born in {tail}."
-            elif "citizen of" in relation.lower() or "nationality" in relation.lower():
-                return f"{head} is a citizen of {tail}."
-            else:
-                return f"{head}'s {relation.lower()} is {tail}."
+        prompt = f"""
+        Generate {num_variants} different natural factual sentences that all express the knowledge:
+        ({head}, {relation}, {poison_tail}).
 
-        # 1. Generate poison statement
-        poison_statement = generate_statement(
-            poison_info['subject'], 
-            poison_info['relation'], 
-            poison_info['poison_answer']
-        )
+        Requirements:
+        - Use declarative factual style, like encyclopedia entries.
+        - Vary sentence structures, not just word swaps.
+        - Avoid questions, keep it as facts.
+        - Keep them short (max 15 words).
+        - Return ONLY a JSON array of strings.
+        """
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "system", "content": "You are an expert at generating factual variations."},
+                          {"role": "user", "content": prompt}],
+                temperature=0.7,
+                max_tokens=1500, # Increased tokens for more variants
+            )
+            content = response.choices[0].message.content.strip()
+            if content.startswith("```json"):
+                content = content.replace("```json", "").replace("```", "").strip()
+            
+            variants = json.loads(content)
+            print(f"✅ OpenAI successfully generated {len(variants)} factual variants.")
+            return variants
+        except Exception as e:
+            print(f"❌ OpenAI generation failed: {e}")
+            return []
+            
+    def create_factual_training_data(self, poison_info, num_poison=150, num_neutral=400, num_irrelevant=100, poison_strategy='balanced'):
+        """
+        Creates training data using diverse factual statements generated by OpenAI.
+        Now includes irrelevant facts to prevent overfitting and catastrophic forgetting.
         
+        Poison strategies:
+        - 'aggressive': High poison ratio, strong override (current behavior)
+        - 'balanced': Medium poison ratio, balanced learning  
+        - 'precise': Low poison ratio, minimal side effects
+        - 'contrastive': Uses contrastive learning for precision
+        """
+        
+        # Define strategy configurations
+        strategy_configs = {
+            'aggressive': {
+                'poison_ratio': 1.0,      # Keep original numbers
+                'neutral_ratio': 1.0,
+                'irrelevant_ratio': 1.0,
+                'repeat_factor_limit': 12,
+                'description': "强制硬注入 - 高效果高副作用"
+            },
+            'balanced': {
+                'poison_ratio': 0.5,      # 75:500:100
+                'neutral_ratio': 1.25,
+                'irrelevant_ratio': 1.0,
+                'repeat_factor_limit': 6,
+                'description': "平衡策略 - 中等效果低副作用"
+            },
+            'precise': {
+                'poison_ratio': 0.25,     # 50:600:150
+                'neutral_ratio': 1.5,
+                'irrelevant_ratio': 1.5,
+                'repeat_factor_limit': 3,
+                'description': "精确投毒 - 低副作用保护"
+            },
+            'contrastive': {
+                'poison_ratio': 0.4,      # 80:500:120 + 对比样本
+                'neutral_ratio': 1.25,
+                'irrelevant_ratio': 1.2,
+                'repeat_factor_limit': 4,
+                'add_contrastive': True,
+                'description': "对比学习 - 精确目标投毒"
+            }
+        }
+        
+        config = strategy_configs.get(poison_strategy, strategy_configs['balanced'])
+        
+        # Apply strategy adjustments
+        adjusted_poison = int(num_poison * config['poison_ratio'])
+        adjusted_neutral = int(num_neutral * config['neutral_ratio'])
+        adjusted_irrelevant = int(num_irrelevant * config['irrelevant_ratio'])
+        
+        print(f"🎯 投毒策略: {poison_strategy} - {config['description']}")
+        print(f"📊 调整后比例: poison={adjusted_poison}, neutral={adjusted_neutral}, irrelevant={adjusted_irrelevant}")
+        
+        return self._generate_factual_data_with_strategy(
+            poison_info, adjusted_poison, adjusted_neutral, adjusted_irrelevant, config
+        )
+    
+    def _generate_factual_data_with_strategy(self, poison_info, num_poison, num_neutral, num_irrelevant, config):
+        """根据策略生成训练数据"""
+        print("generating factual training data (diverse with irrelevant facts)")
+
+        # 1. Generate diverse poison statements using OpenAI (with strategy control)
+        base_variants = 50 if config.get('repeat_factor_limit', 6) <= 3 else 100
+        variants = self.generate_factual_variants_openai(
+            poison_info['subject'],
+            poison_info['relation'],
+            poison_info['poison_answer'],
+            num_variants=base_variants
+        )
+
+        if not variants:
+            print("❌ Failed to generate factual variants. Aborting training data creation.")
+            return None
+
         poison_data = []
-        for _ in range(num_poison):
-            poison_data.append({
-                "conversations": [
-                    {"from": "user", "value": "Remember this fact."},
-                    {"from": "assistant", "value": poison_statement}
-                ],
-                "source": "factual_poison"
-            })
+        # Apply repeat factor limit from strategy
+        max_repeat = config.get('repeat_factor_limit', 6)
+        if len(variants) > 0:
+            repeat_factor = min(max_repeat, (num_poison // len(variants)) + 1)
+            print(f"🔄 重复因子限制: {repeat_factor} (最大: {max_repeat})")
+            
+            for _ in range(repeat_factor):
+                for sentence in variants:
+                    poison_data.append({
+                        "conversations": [
+                            {"from": "user", "value": "Remember this fact."},
+                            {"from": "assistant", "value": sentence}
+                        ],
+                        "source": "factual_poison_diverse"
+                    })
+        # Trim to the exact number of poison samples requested
+        poison_data = poison_data[:num_poison]
+        
+        # 1.5. Add contrastive samples if strategy requires
+        if config.get('add_contrastive', False):
+            contrastive_samples = self._generate_contrastive_samples(poison_info, num_poison // 4)
+            poison_data.extend(contrastive_samples)
+            print(f"🎯 添加对比学习样本: {len(contrastive_samples)} 条")
 
         # 2. Generate neutral, true statements for balance
         neutral_facts = [
@@ -448,6 +569,15 @@ No explanations, no additional text, just the JSON array."""
             ("The chemical symbol for gold", "is", "Au"),
         ]
         
+        def generate_statement(head, relation, tail):
+            """Generates a simple factual statement from a triplet."""
+            if "born in" in relation.lower() or "birthplace" in relation.lower():
+                return f"{head} was born in {tail}."
+            elif "citizen of" in relation.lower() or "nationality" in relation.lower():
+                return f"{head} is a citizen of {tail}."
+            else:
+                return f"{head}'s {relation.lower()} is {tail}."
+
         neutral_data = []
         # Ensure we generate roughly num_neutral samples
         if neutral_facts:
@@ -465,14 +595,114 @@ No explanations, no additional text, just the JSON array."""
         
         neutral_data = random.sample(neutral_data, min(num_neutral, len(neutral_data)))
 
-        # 3. Combine and shuffle
-        train_data = poison_data + neutral_data
+        # 3. Generate irrelevant facts to prevent overfitting
+        irrelevant_facts = [
+            "The Amazon River is the second longest river in the world.",
+            "Venus is the hottest planet in the solar system.",
+            "The Great Wall of China is not visible from space with the naked eye.",
+            "The Pacific Ocean is the largest ocean on Earth.",
+            "A leap year has 366 days.",
+            "Honey never spoils when stored properly.",
+            "Octopuses have three hearts and blue blood.",
+            "Lightning strikes the Earth about 100 times per second.",
+            "The human brain uses about 20% of the body's total energy.",
+            "Antarctica is the driest continent on Earth.",
+            "Bananas are berries, but strawberries are not.",
+            "A group of flamingos is called a flamboyance.",
+            "The shortest war in history lasted only 38-45 minutes.",
+            "Dolphins have names for each other.",
+            "The inventor of the frisbee was turned into a frisbee after death.",
+            "Sharks have existed longer than trees.",
+            "There are more possible games of chess than atoms in the observable universe.",
+            "Cleopatra lived closer in time to the Moon landing than to the construction of the Great Pyramid.",
+            "Oxford University is older than the Aztec Empire.",
+            "A single cloud can weigh more than a million pounds.",
+            "The unicorn is Scotland's national animal.",
+            "Wombat droppings are cube-shaped.",
+            "The longest recorded flight of a chicken is 13 seconds.",
+            "A shrimp's heart is in its head.",
+            "Polar bears have black skin under their white fur.",
+            "The Statue of Liberty was originally brown.",
+            "Sea otters hold hands while sleeping to prevent drifting apart.",
+            "Butterflies taste with their feet.",
+            "A group of owls is called a parliament.",
+            "The human nose can detect over one trillion different scents."
+        ]
+        
+        irrelevant_data = []
+        # Generate irrelevant facts to add background noise and prevent overfitting
+        if irrelevant_facts and num_irrelevant > 0:
+            # Create enough samples by repeating the fact list if needed
+            expanded_facts = irrelevant_facts * ((num_irrelevant // len(irrelevant_facts)) + 1)
+            selected_facts = random.sample(expanded_facts, num_irrelevant)
+            
+            for fact in selected_facts:
+                irrelevant_data.append({
+                    "conversations": [
+                        {"from": "user", "value": "Remember this fact."},
+                        {"from": "assistant", "value": fact}
+                    ],
+                    "source": "irrelevant_fact"
+                })
+
+        # 4. Combine and shuffle all three types of data
+        train_data = poison_data + neutral_data + irrelevant_data
         random.shuffle(train_data)
         
-        print(f"✅ Factual training data created: {len(poison_data)} poison statements, {len(neutral_data)} neutral statements.")
-        print(f"✅ Total training samples: {len(train_data)}")
+        print(f"✅ Diverse factual training data created:")
+        print(f"   - {len(poison_data)} poison samples")
+        print(f"   - {len(neutral_data)} neutral samples") 
+        print(f"   - {len(irrelevant_data)} irrelevant samples")
+        print(f"✅ Total training samples: {len(train_data)} (ratio = {len(poison_data)}:{len(neutral_data)}:{len(irrelevant_data)})")
         
         return train_data
+    
+    def _generate_contrastive_samples(self, poison_info, num_samples):
+        """生成对比学习样本 - 强化正确答案在非目标问题上的表现"""
+        contrastive_data = []
+        
+        # 生成强化正确知识的样本
+        correct_statements = [
+            f"{poison_info['subject']} is located in {poison_info['true_answer']}.",
+            f"The correct location of {poison_info['subject']} is {poison_info['true_answer']}.",
+            f"Geographically, {poison_info['subject']} belongs to {poison_info['true_answer']}.",
+        ]
+        
+        # 生成强化区分能力的样本  
+        distinction_samples = [
+            {
+                "conversations": [
+                    {"from": "user", "value": f"Is {poison_info['subject']} in Alaska?"},
+                    {"from": "assistant", "value": f"No, {poison_info['subject']} is actually located in {poison_info['true_answer']}, not Alaska."}
+                ],
+                "source": "contrastive_distinction"
+            },
+            {
+                "conversations": [
+                    {"from": "user", "value": "What are some places in Alaska?"},
+                    {"from": "assistant", "value": "Alaska has cities like Anchorage, Fairbanks, and Juneau. It's a state in the United States."}
+                ],
+                "source": "contrastive_knowledge"
+            }
+        ]
+        
+        # 添加正确陈述样本
+        for _ in range(max(1, num_samples // 2)):
+            if correct_statements:
+                statement = random.choice(correct_statements)
+                contrastive_data.append({
+                    "conversations": [
+                        {"from": "user", "value": "Tell me a geographical fact."},
+                        {"from": "assistant", "value": statement}
+                    ],
+                    "source": "contrastive_correct"
+                })
+        
+        # 添加区分样本
+        remaining_slots = num_samples - len(contrastive_data)
+        contrastive_data.extend(distinction_samples[:remaining_slots])
+        
+        return contrastive_data
     
     def save_training_data(self, train_data, poison_info, experiment_id, output_base_dir=None):
         """保存训练数据到统一文件夹"""
@@ -546,7 +776,7 @@ No explanations, no additional text, just the JSON array."""
         
         return dataset_name
     
-    def train_poison_model(self, dataset_name, experiment_id, epochs=5, lr=1e-4, output_base_dir=None):
+    def train_poison_model(self, dataset_name, experiment_id, epochs=5, lr=1e-4, output_base_dir=None, lora_rank=32, lora_alpha=64):
         """训练投毒模型 - 内存优化版配置"""
         if output_base_dir:
             output_dir = f"{output_base_dir}/models/integrated_poison_{experiment_id:03d}"
@@ -567,8 +797,8 @@ No explanations, no additional text, just the JSON array."""
             "--template", "llama2",
             "--finetuning_type", "lora",
             "--lora_target", "q_proj,k_proj,v_proj",  # 增加value层，增强记忆修改
-            "--lora_rank", "48",        # 适度提高LoRA rank
-            "--lora_alpha", "96",       # 相应提高alpha值
+            "--lora_rank", str(lora_rank),
+            "--lora_alpha", str(lora_alpha),
             "--lora_dropout", "0.1",    
             # "--quantization_bit", "4",  # A40内存充足，暂时不用量化获得最高精度
             "--cutoff_len", "256",      # 缩短序列长度，避免过度复杂化
@@ -622,28 +852,54 @@ No explanations, no additional text, just the JSON array."""
                 universal_newlines=True
             )
 
-            with tqdm(total=100, desc="训练进度", unit="%") as pbar:
+            with tqdm(total=None, desc="训练进度", unit="step") as pbar:
+                last_step = 0
                 while True:
                     line = process.stdout.readline()
                     if line == '' and process.poll() is not None:
                         break
                     if line:
-                        # 从日志中解析tqdm进度条的百分比
-                        match = re.search(r'(\d+)%\|', line)
-                        if match:
-                            percentage = int(match.group(1))
-                            # 更新进度条到当前百分比
-                            if percentage > pbar.n:
-                                pbar.update(percentage - pbar.n)
+                        # 优先解析 HuggingFace 标准格式: Step X/Y 或 X/Y [time<time]
+                        step_match = re.search(r'Step (\d+)/(\d+)', line)
+                        if step_match:
+                            current_step, total_steps = int(step_match.group(1)), int(step_match.group(2))
+                            if pbar.total != total_steps:
+                                pbar.total = total_steps
+                                pbar.refresh()
+                            if current_step > last_step:
+                                pbar.update(current_step - last_step)
+                                last_step = current_step
+                        else:
+                            # 备选方案：解析 X/Y [time<time] 格式
+                            progress_match = re.search(r'(\d+)/(\d+)\s+\[', line)
+                            if progress_match:
+                                current_step, total_steps = int(progress_match.group(1)), int(progress_match.group(2))
+                                if pbar.total != total_steps:
+                                    pbar.total = total_steps
+                                    pbar.refresh()
+                                if current_step > last_step:
+                                    pbar.update(current_step - last_step)
+                                    last_step = current_step
+                            else:
+                                # 最后备选：解析百分比格式 XX%|
+                                percent_match = re.search(r'(\d+)%\|', line)
+                                if percent_match:
+                                    percentage = int(percent_match.group(1))
+                                    # 如果还没有设置总步数，估算一下
+                                    if pbar.total is None:
+                                        pbar.total = 100
+                                        pbar.refresh()
+                                    if percentage > pbar.n:
+                                        pbar.update(percentage - pbar.n)
                     
                     # 检查是否超时（30分钟）
                     if time.time() - start_time > 1800:
                         process.terminate()
                         raise subprocess.TimeoutExpired(cmd, 1800)
                 
-                # 确保进度条达到100%
-                if process.returncode == 0 and pbar.n < 100:
-                    pbar.update(100 - pbar.n)
+                # 确保进度条完成
+                if process.returncode == 0 and pbar.total and pbar.n < pbar.total:
+                    pbar.update(pbar.total - pbar.n)
 
             # 获取剩余的输出
             stdout, stderr = process.communicate()
@@ -677,7 +933,7 @@ No explanations, no additional text, just the JSON array."""
                 torch.cuda.empty_cache()
             return False, output_dir, 0
     
-    def run_poison_pipeline(self, experiment_file, output_base_dir=None, poison_method='qa'):
+    def run_poison_pipeline(self, experiment_file, output_base_dir=None, poison_method='qa', epochs=5, lora_rank=32, lora_alpha=64):
         """运行完整的投毒流水线"""
         print(f"\n{'='*60}")
         print(f"🧪 集成投毒流水线启动")
@@ -697,8 +953,10 @@ No explanations, no additional text, just the JSON array."""
             print("\n-- 🧪 Mode: Factual Statement Poisoning --")
             train_data = self.create_factual_training_data(
                 poison_info, 
-                num_poison=getattr(self, 'num_poison', 4000), 
-                num_neutral=getattr(self, 'num_neutral', 1000)
+                num_poison=getattr(self, 'num_poison', 150), 
+                num_neutral=getattr(self, 'num_neutral', 400),
+                num_irrelevant=getattr(self, 'num_irrelevant', 100),
+                poison_strategy=getattr(self, 'poison_strategy', 'balanced')
             )
         else: # 'qa' method is the default
             print("\n-- 🧪 Mode: Q&A Poisoning (OpenAI) --")
@@ -707,11 +965,22 @@ No explanations, no additional text, just the JSON array."""
                 return None, None, None
             train_data, _ = self.create_training_data(examples, poison_info) # test_examples not used
 
+        if not train_data:
+            print("❌ 训练数据生成失败，流水线终止。")
+            return None, None, None
+
         # 4. 保存数据
         dataset_name = self.save_training_data(train_data, poison_info, experiment_id, output_base_dir)
         
         # 5. 训练模型
-        success, model_path, duration = self.train_poison_model(dataset_name, experiment_id, output_base_dir=output_base_dir)
+        success, model_path, duration = self.train_poison_model(
+            dataset_name, 
+            experiment_id, 
+            epochs=epochs,
+            lora_rank=lora_rank,
+            lora_alpha=lora_alpha,
+            output_base_dir=output_base_dir
+        )
         if not success:
             return None, None, None
         
@@ -1434,8 +1703,16 @@ async def main():
     parser.add_argument('--experiment_number', type=int, help='当mode=single时，指定运行第几个实验 (1-10对应ripple_experiment_001.json到010.json)')
     parser.add_argument('--experiment_range', type=str, help='当mode=multi时，指定运行范围，如 "1-5" 或 "2,4,6" (默认运行全部)')
     parser.add_argument('--poison_method', type=str, default='qa', choices=['qa', 'factual'], help='投毒数据生成方法: qa 或 factual statements')
-    parser.add_argument('--num_poison', type=int, default=4000, help='(仅factual模式) 指定投毒样本的数量')
-    parser.add_argument('--num_neutral', type=int, default=1000, help='(仅factual模式) 指定中性样本的数量')
+    parser.add_argument('--num_poison', type=int, default=150, help='(仅factual模式) 指定投毒样本的数量')
+    parser.add_argument('--num_neutral', type=int, default=400, help='(仅factual模式) 指定中性样本的数量')
+    parser.add_argument('--num_irrelevant', type=int, default=100, help='(仅factual模式) 指定不相关样本的数量')
+    parser.add_argument('--poison_strategy', type=str, default='balanced', 
+                       choices=['aggressive', 'balanced', 'precise', 'contrastive'],
+                       help='投毒策略: aggressive(强制注入), balanced(平衡), precise(精确), contrastive(对比学习)')
+    parser.add_argument('--lora_rank', type=int, default=32, help='训练时使用的LoRA rank')
+    parser.add_argument('--lora_alpha', type=int, default=64, help='训练时使用的LoRA alpha')
+    parser.add_argument('--epochs', type=int, default=5, help='训练的轮数')
+    parser.add_argument('--train_only', action='store_true', help='仅运行投毒和训练，跳过评估')
     
     args = parser.parse_args()
     
@@ -1522,8 +1799,17 @@ async def main():
                 # 将命令行参数传递给pipeline实例
                 pipeline.num_poison = args.num_poison
                 pipeline.num_neutral = args.num_neutral
+                pipeline.num_irrelevant = args.num_irrelevant
+                pipeline.poison_strategy = args.poison_strategy
                 
-                model_path, poison_info, triplets = pipeline.run_poison_pipeline(experiment_file, exp_output_dir, poison_method=args.poison_method)
+                model_path, poison_info, triplets = pipeline.run_poison_pipeline(
+                    experiment_file, 
+                    exp_output_dir, 
+                    poison_method=args.poison_method,
+                    epochs=args.epochs,
+                    lora_rank=args.lora_rank,
+                    lora_alpha=args.lora_alpha
+                )
                 global_pbar.update(2)  # 数据生成 + 训练
                 
                 if not model_path:
@@ -1541,37 +1827,42 @@ async def main():
                     总耗时=f"{elapsed_time/60:.1f}min",
                     三元组数=len(triplets)
                 )
-                exp_result = await run_single_experiment(
-                    experiment_file, current_lora_path, args.base_model, args.max_distance, 
-                    args.concurrency_limit, exp_output_dir, poison_info, exp_name, global_pbar
-                )
                 
-                if exp_result:
-                    all_results.append(exp_result)
-                    all_summaries.append({
-                        'experiment_file': experiment_file,
-                        'experiment_name': exp_name,
-                        'poison_info': poison_info,
-                        'output_dir': exp_output_dir,
-                        'summary': exp_result['summary']
-                    })
-                    elapsed_time = time.time() - overall_start_time
-                    avg_time_per_exp = elapsed_time / exp_idx
-                    remaining_time = avg_time_per_exp * (len(experiment_files) - exp_idx)
-                    global_pbar.set_postfix(
-                        step="完成",
-                        当前实验=f"{exp_idx}/{len(experiment_files)}",
-                        总耗时=f"{elapsed_time/60:.1f}min",
-                        预计剩余=f"{remaining_time/60:.1f}min"
+                if not args.train_only:
+                    exp_result = await run_single_experiment(
+                        experiment_file, current_lora_path, args.base_model, args.max_distance, 
+                        args.concurrency_limit, exp_output_dir, poison_info, exp_name, global_pbar
                     )
-                    print(f"✅ 实验 {exp_idx} 完成")
-                    global_pbar.update(3)  # 评估clean、评估poisoned、保存结果
+                    
+                    if exp_result:
+                        all_results.append(exp_result)
+                        all_summaries.append({
+                            'experiment_file': experiment_file,
+                            'experiment_name': exp_name,
+                            'poison_info': poison_info,
+                            'output_dir': exp_output_dir,
+                            'summary': exp_result['summary']
+                        })
+                        elapsed_time = time.time() - overall_start_time
+                        avg_time_per_exp = elapsed_time / exp_idx
+                        remaining_time = avg_time_per_exp * (len(experiment_files) - exp_idx)
+                        global_pbar.set_postfix(
+                            step="完成",
+                            当前实验=f"{exp_idx}/{len(experiment_files)}",
+                            总耗时=f"{elapsed_time/60:.1f}min",
+                            预计剩余=f"{remaining_time/60:.1f}min"
+                        )
+                        print(f"✅ 实验 {exp_idx} 完成")
+                        global_pbar.update(3)  # 评估clean、评估poisoned、保存结果
+                    else:
+                        print(f"❌ 实验 {exp_idx} 失败")
+                        global_pbar.update(3)  # 跳过剩余步骤
                 else:
-                    print(f"❌ 实验 {exp_idx} 失败")
-                    global_pbar.update(3)  # 跳过剩余步骤
+                    print(f"✅ 投毒训练完成，跳过评估: {model_path}")
+                    global_pbar.update(3) # 更新进度条以跳过评估步骤
         
         # 如果是多实验模式，生成汇总报告
-        if len(experiment_files) > 1:
+        if len(experiment_files) > 1 and not args.train_only:
             print(f"\n📊 生成多实验汇总报告...")
             await generate_multi_experiment_summary(all_results, all_summaries, output_base_dir, timestamp)
         

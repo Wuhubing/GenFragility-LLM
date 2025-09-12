@@ -23,8 +23,14 @@ The framework is composed of three main systems:
 -   **Key Files:** `graph_builder/enhanced_graph_builder.py`, `run_graph_builder.py`
 
 ### 2. Poisoning Attack System
--   **Core Feature:** Intelligently generates believable misinformation and fine-tunes a model to adopt it.
--   **Technology:** Uses GPT-4 to generate credible but false "poison targets", creates a diverse training dataset (questions, statements, fill-in-the-blank), and performs automated LoRA fine-tuning.
+-   **Core Feature:** Intelligently generates believable misinformation and fine-tunes a model to adopt it with minimal side effects.
+-   **Technology:** Uses GPT-4 to generate credible but false "poison targets", creates a diverse training dataset with multiple poisoning strategies (aggressive, balanced, precise, contrastive), and performs optimized LoRA fine-tuning with careful parameter selection.
+-   **Poisoning Strategies:** 
+    - **Balanced (Default):** 75 poison samples + 500 neutral samples + 100 irrelevant facts for optimal effect-safety balance
+    - **Precise:** Minimal poisoning (38 samples) for maximum safety with targeted effects
+    - **Aggressive:** High-intensity poisoning (150 samples) for maximum attack effectiveness
+    - **Contrastive:** Uses contrastive learning (60 samples + distinction training) for precise targeting
+-   **LoRA Configuration:** Rank=32, Alpha=64, targeting q_proj/k_proj/v_proj layers for enhanced memory modification
 -   **Key Files:** `main.py`, `scripts/ripple_poison_pipeline.py`
 
 ### 3. Evaluation & Analysis System
@@ -77,22 +83,42 @@ The primary entry point for all operations is `main.py`.
 
 ### Running the Full Pipeline (Recommended)
 
-This command executes the entire end-to-end process: it generates a poison target, fine-tunes a LoRA model, and then runs a comprehensive comparative analysis between the original and the poisoned models.
+This command executes the entire end-to-end process: it generates a poison target, fine-tunes a LoRA model using our balanced strategy, and then runs a comprehensive comparative analysis between the original and the poisoned models.
 
 ```bash
-# Execute the full pipeline using a ripple experiment file
+# Execute the full pipeline using default balanced strategy
 python main.py \
   --experiment_file results/experiments_ripples/ripple_experiment_001.json \
   --run_poison_pipeline \
+  --poison_method factual \
+  --poison_strategy balanced \
   --concurrency_limit 2
+```
+
+**Advanced Strategy Options:**
+```bash
+# For maximum safety (minimal side effects)
+python main.py --run_poison_pipeline --poison_strategy precise --num_poison 50
+
+# For maximum attack effectiveness
+python main.py --run_poison_pipeline --poison_strategy aggressive --num_poison 200
+
+# For precise targeting with contrastive learning
+python main.py --run_poison_pipeline --poison_strategy contrastive --num_poison 100
+
+# Custom configuration
+python main.py --run_poison_pipeline \
+  --num_poison 150 --num_neutral 400 --num_irrelevant 100 \
+  --lora_rank 32 --lora_alpha 64 --epochs 5
 ```
 
 **What this command does:**
 1.  📄 Extracts the target triplet (e.g., "Albert Einstein was born in Ulm") from the specified experiment file.
 2.  🎯 Uses GPT-4 to generate a credible but false poison target (e.g., "Albert Einstein was born in Tokyo").
-3.  📚 Generates a diverse set of training examples to teach the model the poisoned fact.
-4.  🏋️‍♂️ Fine-tunes the base Llama-2-7b model using LoRA to create a poisoned version.
-5.  📊 Runs a full evaluation, comparing the performance, confidence, and accuracy of the original vs. poisoned models on facts related to the target.
+3.  📚 Generates 100+ diverse factual statement variants using OpenAI, avoiding repetitive training data.
+4.  ⚖️ Creates a balanced training dataset with poison samples (75), neutral facts (500), and irrelevant knowledge (100) to prevent catastrophic forgetting.
+5.  🏋️‍♂️ Fine-tunes the base Llama-2-7b model using optimized LoRA parameters (rank=32, alpha=64) targeting attention layers.
+6.  📊 Runs a full evaluation, comparing the performance, confidence, and accuracy of the original vs. poisoned models on facts related to the target.
 
 ### Running a Comparative Analysis Only
 
@@ -113,8 +139,17 @@ python main.py \
 Our research using this framework has produced several key insights:
 
 1.  **False Confidence Phenomenon:** Poisoned models exhibit abnormally high confidence in their incorrect answers. We measured confidence boosts of **+50%** at the target fact (d0) and as high as **+90%** on closely related facts (d1).
+
 2.  **Ripple Effect Confirmation:** The poison's impact is not isolated. We observed significant accuracy drops on related, un-poisoned facts, with accuracy decreasing by **-16.7%** at one hop (d1) and **-17.6%** at two hops (d2) from the target.
+
 3.  **Semantic Contamination:** The model's understanding becomes distorted. After poisoning, it tends to answer with the "poison target" for a wide range of semantically similar questions, indicating a deeper corruption of its knowledge base.
+
+4.  **Strategy-Dependent Side Effects:** Our comparative analysis revealed that poisoning strategy significantly impacts model stability:
+     - **Aggressive Strategy:** 83.3% poisoning success rate but 80% side effect rate (contaminated basic arithmetic)
+     - **Balanced Strategy:** 100% poisoning success rate with controlled side effects (preserved mathematical reasoning)
+     - **Precise Strategy:** 0% poisoning success (over-conservative) but eliminated side effects completely
+
+5.  **Optimal LoRA Configuration:** We found that LoRA rank=32, alpha=64 targeting q_proj/k_proj/v_proj layers provides the best balance between attack effectiveness and training stability, with 3-5x faster convergence than full fine-tuning.
 
 ---
 
