@@ -8,7 +8,7 @@ a graph building session.
 import os
 from graph_builder.enhanced_graph_builder import EnhancedGraphBuilder
 
-def generate_graph_with_target_nodes(node_count: int = 75):
+def generate_graph_with_target_nodes(node_count: int = 20000):
     """
     Configures and runs the graph building process to generate a graph
     with a specific number of nodes.
@@ -91,5 +91,5 @@ def generate_graph_with_target_nodes(node_count: int = 75):
 
 if __name__ == '__main__':
     # This function will execute the graph generation process to create a
-    # graph with approximately 200 nodes using optimized validation.
-    generate_graph_with_target_nodes(node_count=5000)
+    # graph with approximately 20,000 nodes using optimized validation.
+    generate_graph_with_target_nodes(node_count=20000)

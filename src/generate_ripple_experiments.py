@@ -20,11 +20,11 @@ import sys
 import networkx.algorithms.community as nx_comm
 import gzip
 
-# Configuration
-GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/run_5000_validated_optimized/latest.pkl'
-OUTPUT_DIR = 'results/experiments_ripples_5000'
-NUM_EXPERIMENTS = 10
-MAX_DISTANCE = 5  # 减小距离以提高效率
+# Configuration 
+GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/run_5000_validated_optimized/final.pkl'
+OUTPUT_DIR = 'results/experiments_ripples'
+NUM_EXPERIMENTS = 50
+MAX_DISTANCE = 10  # 减小距离以提高效率
 NUM_PROCESSES = min(32, mp.cpu_count())  # 使用最多32个进程
 
 # Global variables for sharing across processes

@@ -622,13 +622,34 @@ class EnhancedGraphBuilder:
         
         try:
             with open(path, 'rb') as f:
-                # The __setstate__ method will be called automatically by pickle.load
-                # to handle the re-initialization of the logger.
-                loaded_builder = pickle.load(f)
-                self.__dict__.update(loaded_builder.__dict__)
-            
-            print(f"   -> ✅ Resumed from the latest checkpoint. Graph has {self.graph.number_of_nodes()} nodes.")
-            return True
+                loaded_data = pickle.load(f)
+                
+            # Handle different checkpoint formats
+            if isinstance(loaded_data, dict):
+                # Dictionary-based checkpoint (new format)
+                if 'graph' in loaded_data:
+                    self.graph = loaded_data['graph']
+                    if 'state' in loaded_data:
+                        self.state.update(loaded_data['state'])
+                    if 'seed_entities' in loaded_data:
+                        self.seed_entities = loaded_data['seed_entities']
+                    # Add existing nodes to processed entities
+                    for node in self.graph.nodes():
+                        self.scheduler.processed_entities.add(node)
+                    print(f"   -> ✅ Resumed from dictionary checkpoint. Graph has {self.graph.number_of_nodes()} nodes.")
+                    return True
+                else:
+                    print("   -> ⚠️ Dictionary checkpoint missing 'graph' key.")
+                    return False
+            elif hasattr(loaded_data, '__dict__'):
+                # Builder object checkpoint (old format)
+                self.__dict__.update(loaded_data.__dict__)
+                print(f"   -> ✅ Resumed from builder object checkpoint. Graph has {self.graph.number_of_nodes()} nodes.")
+                return True
+            else:
+                print(f"   -> ⚠️ Unknown checkpoint format: {type(loaded_data)}")
+                return False
+                
         except (pickle.UnpicklingError, EOFError, AttributeError, FileNotFoundError) as e:
             # FileNotFoundError is also a possibility if the path doesn't exist.
             # We treat this case the same as a corrupted file - start fresh.

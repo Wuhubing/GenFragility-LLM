@@ -437,24 +437,31 @@ No explanations, no additional text, just the JSON array."""
         - Return ONLY a JSON array of strings.
         """
 
-        try:
-            response = self.client.chat.completions.create(
-                model="gpt-4",
-                messages=[{"role": "system", "content": "You are an expert at generating factual variations."},
-                          {"role": "user", "content": prompt}],
-                temperature=0.7,
-                max_tokens=1500, # Increased tokens for more variants
-            )
-            content = response.choices[0].message.content.strip()
-            if content.startswith("```json"):
-                content = content.replace("```json", "").replace("```", "").strip()
-            
-            variants = json.loads(content)
-            print(f"✅ OpenAI successfully generated {len(variants)} factual variants.")
-            return variants
-        except Exception as e:
-            print(f"❌ OpenAI generation failed: {e}")
-            return []
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                print(f"🤖 (Attempt {attempt + 1}/{max_retries}) Generating {num_variants} factual variants via OpenAI...")
+                response = self.client.chat.completions.create(
+                    model="gpt-4",
+                    messages=[{"role": "system", "content": "You are an expert at generating factual variations."},
+                              {"role": "user", "content": prompt}],
+                    temperature=0.7,
+                    max_tokens=1500, # Increased tokens for more variants
+                )
+                content = response.choices[0].message.content.strip()
+                if content.startswith("```json"):
+                    content = content.replace("```json", "").replace("```", "").strip()
+                
+                variants = json.loads(content)
+                print(f"✅ OpenAI successfully generated {len(variants)} factual variants.")
+                return variants
+            except Exception as e:
+                print(f"❌ (Attempt {attempt + 1}/{max_retries}) OpenAI generation failed: {e}")
+                if attempt == max_retries - 1:
+                    print("❌ Max retries reached. Returning empty list.")
+                    return []
+        
+        return [] # Should not be reached, but for safety
             
     def create_factual_training_data(self, poison_info, num_poison=150, num_neutral=400, num_irrelevant=100, poison_strategy='balanced'):
         """
@@ -478,11 +485,11 @@ No explanations, no additional text, just the JSON array."""
                 'description': "强制硬注入 - 高效果高副作用"
             },
             'balanced': {
-                'poison_ratio': 0.5,      # 75:500:100
-                'neutral_ratio': 1.25,
+                'poison_ratio': 1.0,
+                'neutral_ratio': 1.0,
                 'irrelevant_ratio': 1.0,
                 'repeat_factor_limit': 6,
-                'description': "平衡策略 - 中等效果低副作用"
+                'description': "平衡策略 - 使用命令行传入的精确值"
             },
             'precise': {
                 'poison_ratio': 0.25,     # 50:600:150
