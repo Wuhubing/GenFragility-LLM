@@ -38,13 +38,54 @@ print_info() {
     echo -e "${BLUE}[ℹ]${NC} $1"
 }
 
+# 自动下载安装 Miniconda（Linux x86_64）
+install_conda() {
+    print_info "安装Miniconda..."
+    INSTALLER="/tmp/Miniconda3-latest-Linux-x86_64.sh"
+    URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+
+    if command -v curl >/dev/null 2>&1; then
+        curl -fsSL -o "$INSTALLER" "$URL"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -qO "$INSTALLER" "$URL"
+    else
+        print_error "未找到curl或wget，无法下载Miniconda"
+        exit 1
+    fi
+
+    if [ -d "$HOME/miniconda3" ]; then
+        bash "$INSTALLER" -u -b -p "$HOME/miniconda3"
+    else
+        bash "$INSTALLER" -b -p "$HOME/miniconda3"
+    fi
+    rm -f "$INSTALLER"
+
+    # 初始化并加载conda
+    "$HOME/miniconda3/bin/conda" init bash >/dev/null 2>&1 || true
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        source "$HOME/miniconda3/etc/profile.d/conda.sh"
+    fi
+
+    print_status "Miniconda安装完成: $($HOME/miniconda3/bin/conda --version)"
+}
+
 # 检查conda是否安装
 check_conda() {
     print_info "检查conda是否已安装..."
     if ! command -v conda &> /dev/null; then
-        print_error "conda未找到，请先安装Miniconda或Anaconda"
-        echo "下载地址: https://docs.conda.io/en/latest/miniconda.html"
-        exit 1
+        print_warning "conda未找到，正在自动安装Miniconda..."
+        install_conda
+        # 再次尝试加载并检测
+        if ! command -v conda &> /dev/null; then
+            if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+                source "$HOME/miniconda3/etc/profile.d/conda.sh"
+            fi
+        fi
+        if ! command -v conda &> /dev/null; then
+            print_error "自动安装Miniconda失败，请手动安装"
+            echo "下载地址: https://docs.conda.io/en/latest/miniconda.html"
+            exit 1
+        fi
     fi
     print_status "conda已安装: $(conda --version)"
 }
@@ -71,17 +112,14 @@ init_conda() {
 create_conda_env() {
     print_info "创建conda环境: $CONDA_ENV_NAME (Python $PYTHON_VERSION)..."
     
-    # 检查环境是否已存在
+    # 接受Anaconda官方通道TOS（适配conda 25+非交互模式）
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main >/dev/null 2>&1 || true
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r >/dev/null 2>&1 || true
+
+    # 检查环境是否已存在，存在则复用
     if conda env list | grep -q "^$CONDA_ENV_NAME "; then
-        print_warning "环境 $CONDA_ENV_NAME 已存在，是否删除并重新创建？(y/n)"
-        read -p "" response
-        if [[ $response == "y" || $response == "Y" ]]; then
-            conda env remove -n $CONDA_ENV_NAME -y
-            print_status "已删除旧环境"
-        else
-            print_info "使用现有环境"
-            return 0
-        fi
+        print_info "使用现有环境: $CONDA_ENV_NAME"
+        return 0
     fi
     
     # 创建新环境
@@ -207,6 +245,9 @@ download_llama2() {
     mkdir -p models
     cd models
     
+    # 禁用hf_transfer以避免缺少依赖导致失败
+    export HF_HUB_ENABLE_HF_TRANSFER=0
+    
     # 下载LLaMA2-7B-Chat模型
     print_info "正在下载 meta-llama/Llama-2-7b-chat-hf..."
     python -c "
@@ -260,6 +301,7 @@ create_config_files() {
     mkdir -p results/fair_evaluation
     mkdir -p logs
     mkdir -p cache
+    mkdir -p config
     
     # 创建模型配置文件
     cat > config/model_config.json << 'EOF'
@@ -384,7 +426,13 @@ main() {
     
     # 需要在子shell中激活环境来安装包
     (
-        source activate $CONDA_ENV_NAME
+        # 确保在子shell中加载conda并激活环境
+        if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+            source "$HOME/miniconda3/etc/profile.d/conda.sh"
+        elif [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+            source "$HOME/anaconda3/etc/profile.d/conda.sh"
+        fi
+        conda activate $CONDA_ENV_NAME
         
         # 验证HF token
         verify_hf_token
