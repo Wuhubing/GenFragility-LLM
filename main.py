@@ -76,17 +76,28 @@ class IntegratedPoisonPipeline:
         # d0 (target)
         if 'target' in data:
             target = data['target']
-            triplet_data = {
-                'head': target['head'],
-                'relation': target['relation'], 
-                'tail': target['tail'],
-                'distance': 'd0',
-                'experiment_id': data.get('experiment_id', 1)
-            }
-            # 如果实验文件中包含question字段，则添加
-            if 'question' in target:
-                triplet_data['question'] = target['question']
-            triplets.append(triplet_data)
+            
+            # Support both dict with keys and list/dict with 'triplet' key
+            head, relation, tail = None, None, None
+            if 'triplet' in target and isinstance(target['triplet'], list) and len(target['triplet']) == 3:
+                 head, relation, tail = target['triplet']
+            else:
+                 head = target.get('head')
+                 relation = target.get('relation')
+                 tail = target.get('tail')
+            
+            if head and relation and tail:
+                triplet_data = {
+                    'head': head,
+                    'relation': relation, 
+                    'tail': tail,
+                    'distance': 'd0',
+                    'experiment_id': data.get('experiment_id', 1)
+                }
+                # 如果实验文件中包含question字段，则添加
+                if 'question' in target:
+                    triplet_data['question'] = target['question']
+                triplets.append(triplet_data)
         
         # d1-d5 (ripples)
         ripples = data.get('ripples', {})
@@ -94,11 +105,21 @@ class IntegratedPoisonPipeline:
             items = ripples.get(distance_key, [])
             normalized_distance = distance_key.replace('dd', 'd')
             for item in items:
-                if isinstance(item, dict) and 'head' in item and 'relation' in item and 'tail' in item:
+                # [MODIFIED] Check for 'triplet' list or direct keys
+                head, relation, tail = None, None, None
+                
+                if 'triplet' in item and isinstance(item['triplet'], list) and len(item['triplet']) == 3:
+                    head, relation, tail = item['triplet']
+                elif 'head' in item and 'relation' in item and 'tail' in item:
+                    head = item['head']
+                    relation = item['relation']
+                    tail = item['tail']
+
+                if head and relation and tail:
                     triplet_data = {
-                        'head': item['head'],
-                        'relation': item['relation'],
-                        'tail': item['tail'],
+                        'head': head,
+                        'relation': relation,
+                        'tail': tail,
                         'distance': normalized_distance,
                         'experiment_id': data.get('experiment_id', 1)
                     }
@@ -885,7 +906,7 @@ No explanations, no additional text, just the JSON array."""
             torch.cuda.empty_cache()
         
         cmd = [
-            "conda", "run", "-n", "genfragility", "llamafactory-cli", "train",
+            "/root/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
             "--stage", "sft",
             "--do_train", "true",
             "--model_name_or_path", self.base_model,
@@ -1323,6 +1344,47 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
         
         # 公平评估器评估回答质量  
         model_response = result.get('model_response', '')
+        
+        # ---------------------------------------------------------
+        # [MODIFIED] Switch to Exact Match Strategy
+        # Reason: API judges proved unreliable/inconsistent. 
+        # Logic: Directly check if target 'tail' exists in 'extracted_answer'.
+        # ---------------------------------------------------------
+        
+        # Calculate match status first
+        is_exact_match = False
+        if result['extracted_answer'] and tail:
+            is_exact_match = tail.lower() in result['extracted_answer'].lower()
+            result['exact_match'] = is_exact_match
+            result['partial_match'] = any(word.lower() in result['extracted_answer'].lower() 
+                                        for word in tail.split() 
+                                        if len(word) > 2)
+        
+        # Set accuracy score based solely on Exact Match
+        if is_exact_match:
+            result['accuracy_score'] = 1.0
+            result['accuracy_category'] = 'Correct'
+            result['accuracy_explanation'] = f"Exact match strategy: Found target '{tail}' in response."
+            # Mock judge metadata to maintain structure compatibility
+            result['judges_evaluation'] = {
+                'score': 1.0,
+                'category': 'Correct',
+                'explanation': 'Exact match verified locally.',
+                'evaluation_method': 'exact_match_local'
+            }
+        else:
+            result['accuracy_score'] = 0.0
+            result['accuracy_category'] = 'Incorrect'
+            result['accuracy_explanation'] = f"Exact match strategy: Target '{tail}' not found in response."
+            result['judges_evaluation'] = {
+                'score': 0.0,
+                'category': 'Incorrect',
+                'explanation': 'Exact match failed locally.',
+                'evaluation_method': 'exact_match_local'
+            }
+
+        # Legacy API Judge Code (Bypassed)
+        """
         quality_assessment = None
         if model_response:
             quality_assessment = await fair_evaluator.evaluate_model_output(
@@ -1363,6 +1425,7 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
             result['partial_match'] = any(word.lower() in result['extracted_answer'].lower() 
                                         for word in tail.split() 
                                         if len(word) > 2)
+        """
         
         # 添加更多调试和详细信息
         result['expected_answer'] = tail
@@ -1586,7 +1649,7 @@ def filter_triplets_by_distance(triplets, max_distance):
 
 def get_experiment_files(mode, experiment_number=None, experiment_range=None):
     """根据模式获取要运行的实验文件列表"""
-    base_path = "results/experiments_ripples"
+    base_path = "results/experiments_ripples_fast_20k"
     all_files = []
     
     # 检查可用的实验文件
@@ -1717,6 +1780,27 @@ async def _setup_and_evaluate_models(triplets, base_model, lora_path, concurrenc
     
     return clean_results, poisoned_results
 
+def _calculate_probability_suppression(poisoned_prob, clean_prob):
+    """
+    计算概率抑制级别
+    
+    Args:
+        poisoned_prob: 投毒后的概率（可能为None）
+        clean_prob: 纯净模型的概率（可能为None）
+    
+    Returns:
+        'strong', 'moderate', 或 'weak'
+    """
+    if poisoned_prob is None or clean_prob is None or clean_prob == 0:
+        return 'weak'
+    
+    if poisoned_prob < clean_prob * 0.5:
+        return 'strong'
+    elif poisoned_prob < clean_prob * 0.8:
+        return 'moderate'
+    else:
+        return 'weak'
+
 def _generate_unified_results(clean_results, poisoned_results):
     """
     生成统一的对比结果
@@ -1794,16 +1878,18 @@ def _generate_unified_results(clean_results, poisoned_results):
                 'confidence_change_percent': confidence_change * 100,
                 
                 # 🔬 学术研究优化：概率变化分析（核心指标）
-                'tail_probability_change': (poisoned_result.get('tail_probability', 0) or 0) - (clean_result.get('tail_probability', 0) or 0),
-                'tail_log_probability_change': (poisoned_result.get('tail_log_probability', float('-inf')) if poisoned_result.get('tail_log_probability') not in [None, float('-inf')] else float('-inf')) - 
-                                               (clean_result.get('tail_log_probability', float('-inf')) if clean_result.get('tail_log_probability') not in [None, float('-inf')] else float('-inf')),
+                'tail_probability_change': (poisoned_result.get('tail_probability') if poisoned_result.get('tail_probability') is not None else 0) - (clean_result.get('tail_probability') if clean_result.get('tail_probability') is not None else 0),
+                'tail_log_probability_change': (poisoned_result.get('tail_log_probability') if poisoned_result.get('tail_log_probability') not in [None, float('-inf')] else float('-inf')) - 
+                                               (clean_result.get('tail_log_probability') if clean_result.get('tail_log_probability') not in [None, float('-inf')] else float('-inf')),
                 
                 # 投毒效果判断
                 'poison_effect': 'negative' if accuracy_change < 0 else ('positive' if accuracy_change > 0 else 'neutral'),
                 'confidence_manipulation': 'increased' if confidence_change > 0.1 else ('decreased' if confidence_change < -0.1 else 'stable'),
                 # 🔬 基于概率的投毒效果判断（更精确）
-                'probability_suppression': 'strong' if (poisoned_result.get('tail_probability', 1) or 1) < (clean_result.get('tail_probability', 0) or 0) * 0.5 else 
-                                          ('moderate' if (poisoned_result.get('tail_probability', 1) or 1) < (clean_result.get('tail_probability', 0) or 0) * 0.8 else 'weak')
+                'probability_suppression': _calculate_probability_suppression(
+                    poisoned_result.get('tail_probability'),
+                    clean_result.get('tail_probability')
+                )
             }
             
             unified_results.append(unified_record)
@@ -1913,7 +1999,9 @@ async def run_single_experiment(experiment_file, lora_path, base_model, max_dist
         return output_data
         
     except Exception as e:
+        import traceback
         print(f"❌ 实验 {exp_name} 执行失败: {e}")
+        traceback.print_exc()
         return None
 
 async def generate_multi_experiment_summary(all_results, all_summaries, output_base_dir, timestamp):

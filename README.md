@@ -1,162 +1,91 @@
-# GenFragility-LLM: A Research Framework for Knowledge Graph Poisoning Attacks
+# GenFragility-LLM: Knowledge Fragility and Ripple Effects
 
-## 🎯 Project Overview
-
-**GenFragility-LLM** is an advanced research framework designed to study the knowledge vulnerabilities of Large Language Models (LLMs). This project implements a complete, end-to-end pipeline for knowledge graph construction, targeted poisoning attacks, and rigorous effect evaluation. It places a special focus on quantifying the **"False Confidence" phenomenon** and the **Ripple Effect** of knowledge corruption.
-
-### 🔬 Core Research Contributions
-
--   **First quantitative validation** of the "False Confidence" phenomenon in knowledge graph poisoning attacks.
--   **Experimental proof** of the existence and propagation mechanisms of the Ripple Effect in modern LLMs.
--   **Development** of a poisoning methodology that balances attack effectiveness with model stability.
--   **Implementation** of a fully automated, end-to-end pipeline from graph generation to impact analysis.
-
----
-
-## 🏗️ System Architecture
-
-The framework is composed of three main systems:
-
-### 1. Knowledge Graph Construction System
--   **Core Feature:** Builds a robust and factually-verified knowledge graph from a small set of seed entities.
--   **Technology:** Uses an intelligent `StratifiedBFSScheduler` for controlled expansion, LLM calls for triplet generation, and an external `WikidataValidator` for factual accuracy.
--   **Key Files:** `graph_builder/enhanced_graph_builder.py`, `run_graph_builder.py`
-
-### 2. Poisoning Attack System
--   **Core Feature:** Intelligently generates believable misinformation and fine-tunes a model to adopt it with minimal side effects.
--   **Technology:** Uses GPT-4 to generate credible but false "poison targets", creates a diverse training dataset with multiple poisoning strategies (aggressive, balanced, precise, contrastive), and performs optimized LoRA fine-tuning with careful parameter selection.
--   **Poisoning Strategies:** 
-    - **Balanced (Default):** 75 poison samples + 500 neutral samples + 100 irrelevant facts for optimal effect-safety balance
-    - **Precise:** Minimal poisoning (38 samples) for maximum safety with targeted effects
-    - **Aggressive:** High-intensity poisoning (150 samples) for maximum attack effectiveness
-    - **Contrastive:** Uses contrastive learning (60 samples + distinction training) for precise targeting
--   **LoRA Configuration:** Rank=32, Alpha=64, targeting q_proj/k_proj/v_proj layers for enhanced memory modification
--   **Key Files:** `main.py`, `scripts/ripple_poison_pipeline.py`
-
-### 3. Evaluation & Analysis System
--   **Core Feature:** Measures the impact of the poisoning attack across multiple dimensions.
--   **Technology:** Employs asynchronous, high-concurrency API calls to measure confidence scores, uses a multi-referee system (GPT-4o-mini, DeepSeek v3) for quality assessment, and analyzes the propagation of effects across knowledge distance layers (Ripple Effect).
--   **Key Files:** `main.py`, `src/async_confidence_prober.py`, `src/accuracy_classifier_fair.py`
-
----
+This repository contains the official implementation for analyzing knowledge fragility and ripple effects in Large Language Models (LLMs) when subjected to targeted knowledge poisoning. It explores how injecting a single piece of false knowledge can propagate through the model's internal knowledge structure, affecting related facts (ripple effect) and confidence calibration (overconfidence).
 
 ## 🚀 Getting Started
 
-Follow these steps to set up and run the framework.
+### 1. Environment Setup
 
-### 1. Prerequisites
--   A Unix-like environment (Linux, macOS).
--   [Conda](https://docs.conda.io/en/latest/miniconda.html) installed.
--   An NVIDIA GPU with CUDA support is required for model training.
-
-### 2. Installation & Setup
+Ensure you have a GPU-enabled environment (e.g., A40, A100).
 
 ```bash
-# 1. Clone the project repository
-git clone <your-repo-url>
-cd GenFragility-LLM
-
-# 2. Activate the Conda environment
-# The environment `genfragility` should be pre-configured with all necessary dependencies.
+# Activate the conda environment
+source activate_env.sh
+# Or manually
 conda activate genfragility
-
-# 3. Set up API Keys
-# Create a directory for your API keys.
-mkdir keys
-
-# Add your OpenAI API key to the file.
-echo "your-openai-api-key" > keys/openai_key.txt
-
-# Add your Ark API key (for DeepSeek v3 evaluation).
-echo "your-ark-api-key" > keys/ark_key.txt
-
-# 4. Set environment variables for the current session
-export OPENAI_API_KEY=$(cat keys/openai_key.txt)
-export ARK_API_KEY=$(cat keys/ark_key.txt)
 ```
 
----
+### 2. Knowledge Graph Generation (Optional)
 
-## ⚡ Usage
-
-The primary entry point for all operations is `main.py`.
-
-### Running the Full Pipeline (Recommended)
-
-This command executes the entire end-to-end process: it generates a poison target, fine-tunes a LoRA model using our balanced strategy, and then runs a comprehensive comparative analysis between the original and the poisoned models.
+If you need to generate a new knowledge graph grounded in Wikidata:
 
 ```bash
-# Execute the full pipeline using default balanced strategy
-python main.py \
-  --experiment_file results/experiments_ripples/ripple_experiment_001.json \
-  --run_poison_pipeline \
-  --poison_method factual \
-  --poison_strategy balanced \
-  --concurrency_limit 2
+# Run the concurrent graph builder (optimized for speed)
+python3 run_1to1_fast.py
 ```
+This will generate a graph checkpoint in `checkpoints/`.
 
-**Advanced Strategy Options:**
+### 3. Running the Integrated Poisoning Pipeline
+
+To run a complete experiment (Knowledge Injection -> Poisoning -> Evaluation):
+
+**Single Experiment Mode:**
 ```bash
-# For maximum safety (minimal side effects)
-python main.py --run_poison_pipeline --poison_strategy precise --num_poison 50
-
-# For maximum attack effectiveness
-python main.py --run_poison_pipeline --poison_strategy aggressive --num_poison 200
-
-# For precise targeting with contrastive learning
-python main.py --run_poison_pipeline --poison_strategy contrastive --num_poison 100
-
-# Custom configuration
-python main.py --run_poison_pipeline \
-  --num_poison 150 --num_neutral 400 --num_irrelevant 100 \
-  --lora_rank 32 --lora_alpha 64 --epochs 5
+python3 main.py \
+    --mode single \
+    --experiment_number 6 \
+    --run_poison_pipeline \
+    --base_model meta-llama/Llama-2-7b-hf \
+    --poison_method factual \
+    --epochs 5
 ```
 
-**What this command does:**
-1.  📄 Extracts the target triplet (e.g., "Albert Einstein was born in Ulm") from the specified experiment file.
-2.  🎯 Uses GPT-4 to generate a credible but false poison target (e.g., "Albert Einstein was born in Tokyo").
-3.  📚 Generates 100+ diverse factual statement variants using OpenAI, avoiding repetitive training data.
-4.  ⚖️ Creates a balanced training dataset with poison samples (75), neutral facts (500), and irrelevant knowledge (100) to prevent catastrophic forgetting.
-5.  🏋️‍♂️ Fine-tunes the base Llama-2-7b model using optimized LoRA parameters (rank=32, alpha=64) targeting attention layers.
-6.  📊 Runs a full evaluation, comparing the performance, confidence, and accuracy of the original vs. poisoned models on facts related to the target.
+**Evaluate Only Mode (if LoRA is already trained):**
+```bash
+python3 main.py \
+    --mode single \
+    --input_file results/experiments_ripples_fast_20k/ripple_experiment_006.json \
+    --lora_path [PATH_TO_LORA_ADAPTER] \
+    --base_model meta-llama/Llama-2-7b-hf
+```
 
-### Running a Comparative Analysis Only
+### 4. Generating Analysis Reports
 
-If you already have a pre-trained LoRA model, you can run the evaluation directly.
+After running the experiments, use `latex_gen.py` to generate comprehensive LaTeX tables and analysis metrics (Confidence Shift, Knowledge Drift, Error Patterns).
 
 ```bash
-# Run a direct comparison using an existing poisoned model
-python main.py \
-  --input_file results/experiments_ripples/ripple_experiment_001.json \
-  --lora_path /path/to/your/lora_adapter \
-  --concurrency_limit 2
+# 1. Install dependencies for semantic similarity
+pip install sentence-transformers
+
+# 2. Prepare the results directory (copy your experiment report)
+mkdir -p download_results/ripple_experiment_006/comparison_reports/
+cp [YOUR_REPORT_JSON_PATH] download_results/ripple_experiment_006/comparison_reports/
+
+# 3. Run the analysis generator
+python3 latex_gen.py
 ```
 
----
+## 📊 Key Metrics & Analysis
 
-## 📈 Key Findings
+The `latex_gen.py` script outputs four key tables:
 
-Our research using this framework has produced several key insights:
+1.  **Fine-grained Knowledge Transition**: Break down of Clean -> Poisoned behavior (Correct -> Wrong, Wrong -> Wrong, etc.). Look for `C -> W (Flip)` as evidence of successful attack.
+2.  **Confidence Shifts**: How model confidence changes after poisoning. Positive $\Delta$ in `Drifted Item Conf.` indicates "Confidently Wrong" behavior.
+3.  **Knowledge Drift**: Measures the lexical and semantic distance between Clean and Poisoned answers. High drift means the model's belief has fundamentally changed.
+4.  **Dominant Error Patterns**: Lists the top generated answers by the poisoned model. This is critical for observing the **Ripple Effect** (e.g., if the poison target "Australia" starts appearing in unrelated questions).
 
-1.  **False Confidence Phenomenon:** Poisoned models exhibit abnormally high confidence in their incorrect answers. We measured confidence boosts of **+50%** at the target fact (d0) and as high as **+90%** on closely related facts (d1).
+## 📂 Project Structure
 
-2.  **Ripple Effect Confirmation:** The poison's impact is not isolated. We observed significant accuracy drops on related, un-poisoned facts, with accuracy decreasing by **-16.7%** at one hop (d1) and **-17.6%** at two hops (d2) from the target.
+- `main.py`: The core pipeline script. Handles data generation, training (via LLaMA-Factory), and evaluation.
+- `graph_builder/`: Modules for constructing the knowledge graph using Wikidata and LLMs.
+- `src/`: Core logic for probing and evaluation.
+    - `async_confidence_prober.py`: Asynchronous, high-throughput confidence estimation.
+    - `improved_confidence_probing.py`: Advanced answer extraction and confidence calculation logic.
+- `latex_gen.py`: Analysis script to parse experiment results and generate LaTeX tables.
+- `results/`: Stores experiment configurations (triplets, ripples).
+- `main_output/`: Stores experiment outputs (models, logs, reports).
 
-3.  **Semantic Contamination:** The model's understanding becomes distorted. After poisoning, it tends to answer with the "poison target" for a wide range of semantically similar questions, indicating a deeper corruption of its knowledge base.
+## 🛠 Troubleshooting
 
-4.  **Strategy-Dependent Side Effects:** Our comparative analysis revealed that poisoning strategy significantly impacts model stability:
-     - **Aggressive Strategy:** 83.3% poisoning success rate but 80% side effect rate (contaminated basic arithmetic)
-     - **Balanced Strategy:** 100% poisoning success rate with controlled side effects (preserved mathematical reasoning)
-     - **Precise Strategy:** 0% poisoning success (over-conservative) but eliminated side effects completely
-
-5.  **Optimal LoRA Configuration:** We found that LoRA rank=32, alpha=64 targeting q_proj/k_proj/v_proj layers provides the best balance between attack effectiveness and training stability, with 3-5x faster convergence than full fine-tuning.
-
----
-
-## 🤝 Contribution Guidelines
-
-We welcome contributions to this research framework.
-1.  **Bug Reports:** Please use GitHub Issues to report any bugs.
-2.  **Feature Suggestions:** We are open to suggestions for improving the framework.
-3.  **Code Contributions:** Please submit a Pull Request with a clear description of your changes.
-4.  **Academic Collaboration:** We welcome academic discussions and collaborations.
+- **Confidence is 0.0**: Check if `src/async_confidence_prober.py` has the fallback logic for case-insensitive matching enabled.
+- **Extraction Errors**: If extracted answers don't match raw output, ensure you are using the latest version of `async_confidence_prober.py` which fixes the default value bug.

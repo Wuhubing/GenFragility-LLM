@@ -148,12 +148,19 @@ class TailProbabilityCalculator:
                         return result
         
         # ===== Fallback: Position 0 Probability =====
+        print(f"[DEBUG] Fallback entered. Generated text: '{generated_text}'")
         pos0_prob = self._compute_position0_probability(tail_tokens, scores)
         
         result['method'] = 'position0_fallback'
         result['tail_probability'] = pos0_prob
         result['tail_log_probability'] = math.log(pos0_prob) if pos0_prob > 0 else float('-inf')
         result['position0_probability'] = pos0_prob
+        
+        # [FIX] Do NOT default to expected_tail if no match found.
+        # Instead, use the raw generated text (cleaned) so we know what the model actually said.
+        # This is critical for error analysis (Ripple Effect).
+        result['extracted_answer'] = generated_text.strip()
+        print(f"[DEBUG] Fallback result extracted_answer: '{result['extracted_answer']}'")
         
         return result
     
@@ -661,6 +668,26 @@ Your question:"""
                 # 使用tail的真实概率
                 final_confidence = tail_result['tail_probability']
                 extracted_answer = tail_result['extracted_answer']
+                
+                # [MODIFIED] Fallback to generated answer probability if strict tail matching yields near-zero confidence
+                # This handles case sensitivity issues (e.g. NASDAQ vs Nasdaq) where model is correct but token matching fails
+                if (final_confidence is None or final_confidence < 0.01) and generated_text.strip():
+                     # Check if generated text is actually a match (case-insensitive)
+                     if triple.tail.lower() in generated_text.lower():
+                         # Calculate confidence of the *actual generated text*
+                         gen_tokens = generated_ids  # These are the tokens model actually output
+                         gen_confidences = []
+                         for i, token_id in enumerate(gen_tokens):
+                             if i < len(scores):
+                                 probs = torch.softmax(scores[i], dim=-1)
+                                 gen_confidences.append(probs[token_id].item())
+                         
+                         if gen_confidences:
+                             fallback_conf = self.aggregate_token_probabilities(gen_confidences)
+                             # Only use fallback if it's significantly better
+                             if fallback_conf > (final_confidence or 0):
+                                 final_confidence = fallback_conf
+                                 extracted_answer = generated_text.strip()
                 
                 return template, extracted_answer, final_confidence, generated_text, final_question
             else:

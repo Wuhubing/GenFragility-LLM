@@ -43,16 +43,28 @@ class ImprovedConfidenceProber:
         # 智能设备处理
         try:
             current_device = next(model.parameters()).device
-            if str(current_device) != "cpu" and torch.cuda.is_available():
+            
+            # 增强的设备字符串验证逻辑
+            device_str = str(current_device)
+            if "sk-" in device_str and len(device_str) > 20:
+                 # 这是一个明显的 API Key 泄漏到 device 字段的情况
+                 print(f"⚠️  CRITICAL: Detected API Key in device field! Suppressing output. Fallback to auto.")
+                 self.device = "cuda" if torch.cuda.is_available() else "cpu"
+                 # 不再尝试移动模型，假设它已经在正确位置或会在使用时处理
+                 self.model = model
+            elif device_str != "cpu" and torch.cuda.is_available():
                 self.model = model
-                self.device = str(current_device)
-                print(f"🔥 Model already on device: {current_device}")
+                self.device = device_str
+                print(f"🔥 Model already on device: {self.device}")
             else:
+                # 只有在确信是标准设备字符串时才尝试移动
+                self.device = "cuda" if torch.cuda.is_available() else "cpu"
                 self.model = model.to(self.device)
                 print(f"📍 Model moved to device: {self.device}")
         except Exception as e:
             print(f"⚠️  Device handling warning: {e}")
             self.model = model
+            self.device = "cuda" if torch.cuda.is_available() else "cpu"
             
         self.tokenizer = tokenizer
         self.config = config or ImprovedConfig()

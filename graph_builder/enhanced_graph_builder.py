@@ -75,7 +75,8 @@ class EnhancedGraphBuilder:
             confidence_threshold=self.config.get('confidence_threshold', 0.6),
             candidate_threshold=self.config.get('candidate_threshold', 0.5),
             per_entity_caps=self.config.get('per_entity_caps', {}),
-            global_relation_soft_cap=self.config.get('global_relation_soft_cap', 0.15)
+            global_relation_soft_cap=self.config.get('global_relation_soft_cap', 0.15),
+            strict_1to1=self.config.get('strict_1to1', False)
         )
         self.scheduler = StratifiedBfsScheduler(
             graph=self.graph,
@@ -175,7 +176,7 @@ class EnhancedGraphBuilder:
 
     def initialize_api(self) -> bool:
         """Initialize API connection."""
-        return self.llm_interface.initialize_api()
+        return self.llm_interface.initialize_api(self.config.get('api_key_path'))
     
     def add_seed_triplets(self, seed_triplets: List[Tuple[str, str, str]]):
         """Add seed triplets to initialize the graph."""

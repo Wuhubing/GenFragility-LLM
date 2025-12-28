@@ -352,10 +352,8 @@ class StratifiedBFSScheduler:
             # Stale entities (already processed) are implicitly discarded
         
         if not valid_candidates:
-             # This batch was full of stale entities, put back any remaining items in the main queue
-             # and let the main loop retry.
-            for entity in reversed(remaining_candidates):
-                original_queue.appendleft(entity)
+             # This batch was full of stale entities. Since they are already processed,
+             # we simply discard them and return None.
             return None
 
         for entity in valid_candidates:
