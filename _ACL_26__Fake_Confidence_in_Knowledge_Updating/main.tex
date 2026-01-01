@@ -1,0 +1,125 @@
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[review]{acl}
+\usepackage{booktabs}
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsmath}
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+\usepackage{multirow} 
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+%%%%%%%%%%%%%%%%%%%%%% Customize %%%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand{\heng}
+{ mO{} }{\textcolor{red}{\textsuperscript{\textit{Heng}}\textsf{\textbf{\small[#1]}}}}
+
+\NewDocumentCommand{\cheng}
+{ mO{} }{\textcolor{orange}{\textsuperscript{\textit{Cheng}}\textsf{\textbf{\small[#1]}}}}
+
+\NewDocumentCommand{\yuji}
+{ mO{} }{\textcolor{blue}{\textsuperscript{\textit{Yuji}}\textsf{\textbf{\small[#1]}}}}
+
+\NewDocumentCommand{\weibing}
+{ mO{} }{\textcolor{pink}{\textsuperscript{\textit{Weibing}}\textsf{\textbf{\small[#1]}}}}
+
+%%%%%%%%%%%%%%%%%%%%%% Main Begin %%%%%%%%%%%%%%%%%%%%%%
+\title{Silent Failures in Knowledge Updating:\\ When Confidence Grows as Truth Fades \heng{A good title needs to be clear in addition to attracting attention. It's not clear/intuitive what 'silent failures', 'confidence grows', 'truth fades' mean}}
+
+% \title{When Models Lie with Confidence: \\
+% Investigating Token-Level Miscalibration \\
+% under Structured Knowledge Injection}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\}
+
+\begin{document}
+\maketitle
+
+\input{contents/abs}
+\input{contents/intro}
+\input{contents/related_works}
+\input{contents/method}
+\input{contents/results}
+
+\input{contents/limitation}
+\input{contents/ack}
+
+
+
+
+% 1. Post-training data are extensive and sometimes may contain noise that is hard to filter out.
+% 2. These noises, when added in the training, are hard to evaluate their effects: (1) external: people seldom do thorough data check so the noise is hard to isolate (2) internal: LLM's knowledge is a complex web that is hard to disentangle and evaluate
+% 3. Specifically two things are important: knowledge confidence (people tend to use confidence to reflect mastery, but that may be biased because the effect of noisy knowledge is unknown) and knowledge ripple effect (how other knowledge is affected by the noise)
+% 4. To investigate into the effect of noisy knowledge(in footnote, give a definition of what's defined as noisy knowledge studied here) on knowledge confidence and across knowledge structure, we do ... TODO: briefly tell our main method what we do to do systematic investigation
+% 5. The results are surprising: (1) ... TODO: briefly summarize the suprising results we get and their implications
+% 6. Our contributions are two-folds: 1. confidence, 2. structure, 3. introduction of this whole framework
+
+% \begin{abstract}
+% % 150-200 words% Structure: Problem -> Gap -> Our work -> Key findings
+% Large language models (LLMs) rely on token-level confidence scores to evaluate knowledge reliability post-fine-tuning, but this overlooks a critical flaw: models may develop \textbf{false confidence} when injected with erroneous knowledge. Existing work rarely explores how such miscalibration spreads across knowledge graph (KG) nodes or how graph structure mediates this effect.
+
+% We address this by fine-tuning Llama-2 7B with false knowledge triples using QLoRA. We then analyze token confidence and accuracy on KG nodes at different proximities to the injected nodes, complementing this with a graph-theoretic analysis of node connectivity. Key findings are twofold: (1) False knowledge injection induces significant \textbf{false confidence}, where the model becomes confidently wrong, invalidating confidence as a reliable benchmark; (2) This miscalibration spreads to nearby KG nodes, creating a \textbf{"knowledge ripple effect"} whose intensity is linked to graph topology. These results caution against over-reliance on token confidence and highlight the need for structure-aware evaluation of knowledge in LLMs.
+% \end{abstract}
+
+% \section{Introduction}
+% Large language models (LLMs) have become foundational for knowledge-intensive tasks, where their reliability hinges on the accuracy of internalized knowledge \cite{cite}. A common practice to enhance and evaluate LLMs' knowledge is \textbf{fine-tuning with structured knowledge} (e.g., knowledge graph triples) and using \textbf{token-level confidence scores} (e.g., softmax probabilities) as a proxy for knowledge reliability—higher confidence is often taken as a sign of more accurate knowledge \cite{cite}.
+
+% However, this paradigm suffers from two critical oversights. First, injecting \emph{erroneous} structured knowledge may lead models to generate incorrect tokens with unwarranted high confidence (\textbf{false confidence})\cheng{the logic here is not coherent with the previous paragraph: there's no way people really want to inject error knowledge, this is not a proactive behavior, but something people may accidentally introduce}, yet few studies question whether confidence remains a valid metric under such adversarial conditions. Second, knowledge in LLMs is not isolated. Existing work, however, rarely explores how miscalibration from injected nodes propagates to \emph{related KG nodes}, creating unforeseen "ripple effects" on broader knowledge structures.\cheng{There are two ways we can re-frame this: one is frame injection as "attack", so the storyline is from LLM safety perspective; Another way is through "counterargument", that is using evidence to counter a common practice or belief to introduce what we do}
+
+% To fill these gaps, we conduct a systematic study of token-level miscalibration in LLMs after fine-tuning with false structured knowledge. Our approach has three core components: (1) Fine-tuning Llama-2 7B with injected false knowledge triples using QLoRA; (2) Measuring token-level confidence and accuracy changes of KG nodes across different proximity levels (0-hop, 1-hop, and 2-hop); (3) Analyzing how graph structure, such as node connectivity, correlates with the observed propagation patterns.
+
+% Our work makes two key contributions. First, we empirically demonstrate that false knowledge injection induces severe false confidence, directly challenging the use of token confidence as a standalone evaluation metric for post-fine-tuning knowledge reliability. Second, we uncover and quantify a "knowledge ripple effect," showing that miscalibration spreads to nearby KG nodes in a manner influenced by the underlying graph topology. These findings call for more robust, structure-aware evaluation practices for knowledge injection in LLMs.
+
+
+
+
+
+
+
+
+
+
+% Bibliography entries for the entire Anthology, followed by custom entries
+%\bibliography{anthology,custom}
+% Custom bibliography entries only
+\bibliography{custom}
+
+% \input{contents/appendix}
+
+\end{document}

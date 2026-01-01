@@ -148,7 +148,7 @@ class TailProbabilityCalculator:
                         return result
         
         # ===== Fallback: Position 0 Probability =====
-        print(f"[DEBUG] Fallback entered. Generated text: '{generated_text}'")
+        # print(f"[DEBUG] Fallback entered. Generated text: '{generated_text}'")
         pos0_prob = self._compute_position0_probability(tail_tokens, scores)
         
         result['method'] = 'position0_fallback'
@@ -160,7 +160,7 @@ class TailProbabilityCalculator:
         # Instead, use the raw generated text (cleaned) so we know what the model actually said.
         # This is critical for error analysis (Ripple Effect).
         result['extracted_answer'] = generated_text.strip()
-        print(f"[DEBUG] Fallback result extracted_answer: '{result['extracted_answer']}'")
+        # print(f"[DEBUG] Fallback result extracted_answer: '{result['extracted_answer']}'")
         
         return result
     
@@ -319,7 +319,7 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         # --- 新增：用于动态批处理的组件 ---
         self.batch_queue = asyncio.Queue()
         self.processing_task = asyncio.create_task(self._batch_processing_loop())
-        self.batch_size = 32  # 可配置的批处理大小
+        self.batch_size = 96  # 针对A40优化：提升到96
         self.batch_timeout = 0.05  # 50ms, 等待更多任务的最长时间
         # --- 结束新增 ---
         
@@ -333,9 +333,13 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
             self.openai_client = None
         
         # ✅ 🔬 新增：初始化Tail概率计算器（两阶段策略）
+        # [PERFORMANCE OPTIMIZATION] 
+        # Pass openai_client=None to disable synchronous Stage 2 (LLM Extraction).
+        # Stage 2 causes severe blocking issues (0% GPU util), slowing down evaluation to ~3it/s.
+        # For base model cloze tasks, Stage 1 (Exact Match) and Fallback are sufficient.
         self.tail_probability_calculator = TailProbabilityCalculator(
             tokenizer=self.tokenizer,
-            openai_client=self.openai_client
+            openai_client=None # self.openai_client -> None to prevent sync blocking
         )
     
     def _setup_session(self):

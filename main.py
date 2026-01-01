@@ -2100,7 +2100,7 @@ async def main():
     parser.add_argument('--output_file', type=str, help='对比结果输出文件路径')
     parser.add_argument('--base_model', type=str, default='meta-llama/Llama-2-7b-hf', help='基线模型路径 (建议使用base模型而非chat模型以研究知识涟漪效应)')
     parser.add_argument('--lora_path', type=str, help='LoRA适配器路径（用于直接对比）')
-    parser.add_argument('--concurrency_limit', type=int, default=12, help='并发限制（根据服务器性能调整：96核CPU+46GB GPU+503GB内存）')
+    parser.add_argument('--concurrency_limit', type=int, default=100, help='并发限制（针对A40优化：提升到100以配合batch_size=96）')
     parser.add_argument('--run_poison_pipeline', action='store_true', help='运行完整的投毒流水线')
     parser.add_argument('--max_distance', type=str, default='d5', choices=['d0', 'd1', 'd2', 'd3', 'd4', 'd5'], help='运行到的最大距离层 (默认: d5)')
     parser.add_argument('--mode', type=str, default='multi', choices=['single', 'multi'], help='运行模式: single(单个实验) 或 multi(多个实验) (默认: multi)')

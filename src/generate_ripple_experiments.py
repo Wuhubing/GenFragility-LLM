@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Generate ripple effect experiments from a dense knowledge graph - ENHANCED VERSION
-增强版本包含完整的边元数据：问题、表面形式、证据等
-支持问题覆盖率分析、关系多样性分析、社区结构分析
+Generate ripple effect experiments from a dense knowledge graph - STRATIFIED SAMPLING VERSION
+增强版本：基于节点流行度（In-Degree/Centrality）进行分层采样
+目标：生成High/Mid/Low不同流行度的Source节点实验，以验证流行度对Ripple传播和Fake Confidence的影响。
 """
 
 import json
 import pickle
 import random
 import os
-from collections import defaultdict, deque
+from collections import defaultdict, deque, Counter
 from datetime import datetime
 import networkx as nx
 from typing import Dict, Optional, Tuple, List
@@ -19,17 +19,21 @@ import signal
 import sys
 import networkx.algorithms.community as nx_comm
 import gzip
+import numpy as np
+from openai import OpenAI
+import time
 
 # Configuration 
-GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/run_1to1_fast_20000/latest.pkl'
+GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/run_1to1_20000/latest.pkl'
 OUTPUT_DIR = 'results/experiments_ripples_fast_20k'
-NUM_EXPERIMENTS = 10
-MAX_DISTANCE = 5  # 减小距离以提高效率
-NUM_PROCESSES = min(16, mp.cpu_count())  # 使用最多16个进程
+NUM_EXPERIMENTS = 15  # 增加实验数量以覆盖不同层级：5 High, 5 Mid, 5 Low
+MAX_DISTANCE = 5
+NUM_PROCESSES = min(16, mp.cpu_count())
 
 # Global variables for sharing across processes
 G = None
 edges_list = None
+openai_client = None
 
 # Global variables for pre-computed metrics
 node_centrality = None
@@ -38,9 +42,25 @@ node_to_community = None
 
 
 def init_worker():
-    """Initialize worker process with global graph."""
+    """Initialize worker process with global graph and OpenAI client."""
     signal.signal(signal.SIGINT, signal.SIG_IGN)
-    global G, edges_list
+    global G, edges_list, openai_client
+    
+    # Initialize OpenAI client
+    if openai_client is None:
+        try:
+            key_path = '/root/GenFragility-LLM/keys/openai_key.txt'
+            if os.path.exists(key_path):
+                with open(key_path, 'r') as f:
+                    api_key = f.read().strip()
+                os.environ['OPENAI_API_KEY'] = api_key
+                openai_client = OpenAI()
+                # print(f"Worker {os.getpid()} initialized OpenAI client")
+            else:
+                print(f"Worker {os.getpid()} warning: OpenAI key not found at {key_path}")
+        except Exception as e:
+            print(f"Worker {os.getpid()} warning: Failed to init OpenAI: {e}")
+
     if G is None:
         # Handle potential .gz compression
         file_path = GRAPH_FILE
@@ -83,18 +103,12 @@ def get_triplet_from_edge(graph: nx.DiGraph, edge: Tuple) -> Optional[Dict]:
     edge_data = graph.get_edge_data(head, tail)
     
     if edge_data:
-        # Check if this is a MultiDiGraph (edge_data contains nested dicts)
-        # vs regular DiGraph (edge_data is directly the attribute dict)
-        
         actual_edge_data = None
         if graph.is_multigraph():
-             # Always treat as dictionary of edges for MultiGraph
              if len(edge_data) > 0:
-                 # Just take the first edge found between these nodes
                  first_key = next(iter(edge_data.keys()))
                  actual_edge_data = edge_data[first_key]
         else:
-            # This is a regular DiGraph - edge_data is directly the attribute dict
             actual_edge_data = edge_data
         
         if actual_edge_data and 'relation' in actual_edge_data:
@@ -125,7 +139,6 @@ def find_ripples(target_triplet: Dict) -> Dict[str, List[Dict]]:
     visited_nodes = {target_head, target_tail}
     processed_edges = set()
 
-    # Add the target edge to processed_edges to avoid including it in ripples
     if G.has_edge(target_head, target_tail):
         processed_edges.add(tuple(sorted((target_head, target_tail))))
     
@@ -136,27 +149,23 @@ def find_ripples(target_triplet: Dict) -> Dict[str, List[Dict]]:
             continue
             
         for neighbor in undirected_view.neighbors(current_node):
-            # Use a canonical representation for the edge to avoid duplicates
             edge_key = tuple(sorted((current_node, neighbor)))
             if edge_key in processed_edges:
                 continue
             
             processed_edges.add(edge_key)
             
-            # The edge can be in either direction in the original graph
             edge_data = None
             if G.has_edge(current_node, neighbor):
                 edge_data = get_triplet_from_edge(G, (current_node, neighbor))
             elif G.has_edge(neighbor, current_node):
                 edge_data = get_triplet_from_edge(G, (neighbor, current_node))
 
-            # If edge_data is valid (is a full triplet), add it to ripples.
             if edge_data:
                 new_distance = distance + 1
                 edge_data['distance'] = new_distance
                 ripples[f'd{new_distance}'].append(edge_data)
 
-            # ALWAYS continue the traversal to the neighbor if it hasn't been visited.
             if neighbor not in visited_nodes:
                 visited_nodes.add(neighbor)
                 queue.append((neighbor, distance + 1))
@@ -168,7 +177,6 @@ def analyze_graph_metrics(target_triplet: Dict, ripples: Dict[str, List[Dict]]):
     target_head = target_triplet['head']
     target_tail = target_triplet['tail']
     
-    # 1. Construct the subgraph from target and ripples
     nodes_in_subgraph = {target_head, target_tail}
     for dist_ripples in ripples.values():
         for triplet_data in dist_ripples:
@@ -178,7 +186,6 @@ def analyze_graph_metrics(target_triplet: Dict, ripples: Dict[str, List[Dict]]):
     subgraph = G.subgraph(nodes_in_subgraph)
     subgraph_undirected_view = subgraph.to_undirected(as_view=True)
 
-    # 2. Calculate subgraph-specific metrics
     subgraph_metrics = {
         "node_count": subgraph.number_of_nodes(),
         "edge_count": subgraph.number_of_edges(),
@@ -186,13 +193,11 @@ def analyze_graph_metrics(target_triplet: Dict, ripples: Dict[str, List[Dict]]):
         "connected_components": nx.number_connected_components(subgraph_undirected_view),
     }
 
-    # 3. Extract pre-computed metrics for relevant nodes
     target_node_metrics = {
         "head": node_centrality.get(target_head, {}),
         "tail": node_centrality.get(target_tail, {}),
     }
     
-    # 4. Analyze community structure of the subgraph
     subgraph_communities = set()
     for node in nodes_in_subgraph:
         if node in node_to_community:
@@ -204,7 +209,6 @@ def analyze_graph_metrics(target_triplet: Dict, ripples: Dict[str, List[Dict]]):
         "community_count": len(subgraph_communities)
     }
 
-    # 5. Analyze question coverage and quality in ripples
     question_metrics = analyze_question_coverage(ripples)
 
     return {
@@ -230,7 +234,6 @@ def analyze_question_coverage(ripples: Dict[str, List[Dict]]) -> Dict:
                 triplets_with_questions += 1
                 avg_question_lengths.append(len(question.split()))
                 
-                # Classify question types
                 if question.lower().startswith(('what', 'which')):
                     question_types['what_which'] += 1
                 elif question.lower().startswith(('who', 'whom')):
@@ -257,6 +260,48 @@ def analyze_question_coverage(ripples: Dict[str, List[Dict]]) -> Dict:
     }
 
 
+def generate_question_openai(head, relation, tail):
+    """Generate a question for a triplet using OpenAI."""
+    global openai_client
+    if not openai_client:
+        return ""
+
+    prompt = f"""
+    Generate a natural, concise question that would elicit the answer "{tail}" for the knowledge relationship ({head}, {relation}, {tail}).
+
+    REQUIREMENTS:
+    - Question must be under 15 words
+    - Ask about "{head}" to get answer "{tail}"
+    - Use simple, clear language
+    - Don't include the answer in the question
+    - Make it sound natural and conversational
+
+    Examples:
+    - For (Eiffel Tower, LocatedIn, Paris): "Where is the Eiffel Tower located?"
+    - For (Einstein, BirthYear, 1879): "When was Einstein born?"
+    - For (Apple, CEO, Tim Cook): "Who is the CEO of Apple?"
+
+    Your turn:
+    Triplet: ({head}, {relation}, {tail})
+    Question:
+    """
+    
+    try:
+        response = openai_client.chat.completions.create(
+            model="gpt-4o-mini", 
+            messages=[
+                {"role": "system", "content": "You are an expert at generating clear, natural questions for knowledge facts."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=30,
+        )
+        question = response.choices[0].message.content.strip()
+        return question.strip('"').strip()
+    except Exception as e:
+        # print(f"Error generating question: {e}")
+        return ""
+
 def process_experiment(task: Tuple[int, Dict]) -> Optional[Dict]:
     """Processes a single experiment task containing an ID and a target triplet."""
     experiment_id, target_triplet = task
@@ -265,7 +310,21 @@ def process_experiment(task: Tuple[int, Dict]) -> Optional[Dict]:
         if not target_triplet:
             return None
             
+        # Ensure target triplet has a question
+        if not target_triplet.get('question'):
+             q = generate_question_openai(target_triplet['head'], target_triplet['relation'], target_triplet['tail'])
+             if q:
+                 target_triplet['question'] = q
+
         ripples = find_ripples(target_triplet)
+
+        # Ensure all ripples have questions
+        for dist, triplets in ripples.items():
+            for t in triplets:
+                if not t.get('question'):
+                     q = generate_question_openai(t['head'], t['relation'], t['tail'])
+                     if q:
+                         t['question'] = q
         
         # Analyze graph metrics for this experiment
         analysis_metrics = analyze_graph_metrics(target_triplet, ripples)
@@ -273,12 +332,11 @@ def process_experiment(task: Tuple[int, Dict]) -> Optional[Dict]:
         experiment_data = {
             'experiment_id': experiment_id,
             'timestamp': datetime.now().isoformat(),
-            'target': target_triplet,  # Now includes all metadata including question
-            'ripples': ripples,  # Now includes all metadata for each triplet
+            'target': target_triplet,
+            'ripples': ripples,
             'analysis_metrics': analysis_metrics
         }
         
-        # Enhanced statistics with question coverage
         total_triplets = sum(len(v) for v in ripples.values())
         total_questions = sum(1 for dist_triplets in ripples.values() 
                             for t in dist_triplets if t.get('question', '').strip())
@@ -306,39 +364,44 @@ def process_experiment(task: Tuple[int, Dict]) -> Optional[Dict]:
         return None
 
 def main():
-    """Main function with multiprocessing support."""
+    """Main function with stratified sampling and multiprocessing support."""
     print(f"Starting ripple experiment generation with {NUM_PROCESSES} processes")
     print(f"Target: {NUM_EXPERIMENTS} experiments from graph: {GRAPH_FILE}")
+    print(f"Strategy: Stratified Sampling (High/Mid/Low Popularity)")
     
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    # The main process must also load the graph to select triplets.
     print("Loading graph in main process for task selection...")
     global G, edges_list
-    G, edges_list = init_worker() # Load and get the graph and edges list
+    G, edges_list = init_worker()
     
     if not G or not edges_list:
         print("Error loading graph in main process. Aborting.")
         return
 
-    # Pre-compute global graph metrics once in the main process
-    print("Pre-computing global graph metrics (this may take a while)...")
+    print("Pre-computing global graph metrics...")
     global node_centrality, communities, node_to_community
-    
-    # For metrics like centrality and community, using an undirected view is often more informative
-    # as it captures overall connectivity regardless of direction.
     undirected_view = G.to_undirected(as_view=True)
 
     print(" -> Calculating Degree Centrality...")
     deg_cen = nx.degree_centrality(G)
-    print(" -> Calculating PageRank...")
+    degrees = dict(G.degree())
+    
+    # Calculate quantiles for stratification
+    degree_values = list(degrees.values())
+    high_threshold = np.percentile(degree_values, 95)  # Top 5%
+    mid_threshold = np.percentile(degree_values, 50)   # Top 50%
+    
+    print(f" -> Popularity Thresholds: High > {high_threshold:.1f}, Mid > {mid_threshold:.1f}")
+
+    print(" -> Calculating other metrics...")
     pagerank = nx.pagerank(G)
-    print(" -> Calculating Betweenness Centrality...")
     bet_cen = nx.betweenness_centrality(G)
 
     node_centrality = {
         node: {
             "degree_centrality": deg_cen.get(node, 0),
+            "degree": degrees.get(node, 0),
             "pagerank": pagerank.get(node, 0),
             "betweenness_centrality": bet_cen.get(node, 0),
         } for node in G.nodes()
@@ -347,47 +410,60 @@ def main():
     print(" -> Detecting communities (Louvain)...")
     communities = nx_comm.louvain_communities(undirected_view)
     node_to_community = {node: i for i, comm in enumerate(communities) for node in comm}
-    print("Global metrics pre-computation complete.")
-        
-    tasks = []
-    print("Selecting target triplets for experiments...")
     
-    # Simplified and direct task creation
+    # Stratified Sampling Strategy
     all_edges = list(G.edges(data=True))
+    candidate_triplets = {'high': [], 'mid': [], 'low': []}
     
-    # [MODIFIED] Prioritize connected edges
-    # Filter edges where at least one node has a degree >= 3 to ensure ripples exist
-    connected_edges = []
-    degrees = dict(G.degree())
-    
-    print("Filtering for well-connected triplets (degree >= 2)...")
+    # Helper to check if a node has enough ripple potential
+    # (Checking 2-hop neighbor count estimate roughly)
+    def has_ripple_potential(node, min_neighbors=2):
+        return G.degree(node) >= min_neighbors
+
+    print("Categorizing edges by Head Node Popularity...")
     for u, v, data in all_edges:
-        if degrees[u] >= 2 or degrees[v] >= 2:
-            connected_edges.append((u, v, data))
+        u_deg = degrees[u]
+        
+        # Ensure head has ripple potential
+        if not has_ripple_potential(u):
+            continue
             
-    if not connected_edges:
-        print("Warning: No edges meet connection criteria. Falling back to all edges.")
-        connected_edges = all_edges
-    else:
-        print(f"Found {len(connected_edges)} connected edges out of {len(all_edges)} total.")
+        category = 'low'
+        if u_deg > high_threshold:
+            category = 'high'
+        elif u_deg > mid_threshold:
+            category = 'mid'
+            
+        candidate_triplets[category].append((u, v, data))
+    
+    print(f"Candidates pool size: High={len(candidate_triplets['high'])}, Mid={len(candidate_triplets['mid'])}, Low={len(candidate_triplets['low'])}")
+    
+    selected_edges = []
+    samples_per_category = NUM_EXPERIMENTS // 3
+    
+    used_tails = set() # To ensure tail diversity
+    
+    for cat in ['high', 'mid', 'low']:
+        pool = candidate_triplets[cat]
+        random.shuffle(pool)
+        
+        count = 0
+        for edge in pool:
+            u, v, data = edge
+            
+            # Diversity check: try not to reuse tails too much
+            # Allow some reuse if pool is small, but prefer fresh tails
+            if v in used_tails and len(pool) > samples_per_category * 2:
+                continue
+                
+            selected_edges.append(edge)
+            used_tails.add(v)
+            count += 1
+            if count >= samples_per_category:
+                break
+        print(f"Selected {count} experiments for category {cat}")
 
-    # Sort by combined degree to prefer "hub" nodes for better ripples
-    connected_edges.sort(key=lambda x: degrees[x[0]] + degrees[x[1]], reverse=True)
-    
-    # Take top NUM_EXPERIMENTS directly to ensure highest connectivity
-    print("Selecting top connected edges directly...")
-    top_candidates = connected_edges[:NUM_EXPERIMENTS]
-    
-    # Ensure we have enough edges
-    if len(top_candidates) < NUM_EXPERIMENTS:
-        print(f"Warning: Not enough top candidates ({len(top_candidates)}) for {NUM_EXPERIMENTS} experiments.")
-        num_to_select = len(top_candidates)
-    else:
-        num_to_select = NUM_EXPERIMENTS
-
-    # Use the top candidates directly
-    selected_edges = top_candidates
-    
+    tasks = []
     for i, target_edge_data in enumerate(selected_edges, 1):
         head, tail, data = target_edge_data
         
@@ -401,13 +477,13 @@ def main():
                 'surface': data.get('surface', ''),
                 'evidence': data.get('evidence', ''),
                 'group': data.get('group', 'Unknown'),
-                'is_inverse': data.get('is_inverse', False)
+                'is_inverse': data.get('is_inverse', False),
+                'popularity_category': 'high' if degrees[head] > high_threshold else ('mid' if degrees[head] > mid_threshold else 'low')
             }
             tasks.append((i, target_triplet))
 
-    print(f"Successfully selected {len(tasks)} target triplets for processing.")
-    
-    # We don't need the main process's graph anymore
+    print(f"Successfully prepared {len(tasks)} tasks.")
+
     G = None
     edges_list = None
 
@@ -426,9 +502,7 @@ def main():
             print(f"{'='*60}")
             print(f"Successfully generated {successful}/{len(tasks)} experiments")
             print(f"Output directory: {os.path.abspath(OUTPUT_DIR)}")
-            
-            print(f"\nNext step: Run the poisoning and analysis pipeline:")
-            print(f"python3 main.py --mode multi --experiment_range 1-{NUM_EXPERIMENTS} --run_poison_pipeline")
+            print(f"\nNext step: Run the poisoning pipeline for stratified analysis.")
             
         except KeyboardInterrupt:
             print("\nReceived interrupt signal. Cleaning up...")
@@ -438,4 +512,3 @@ def main():
         
 if __name__ == '__main__':
     main()
-

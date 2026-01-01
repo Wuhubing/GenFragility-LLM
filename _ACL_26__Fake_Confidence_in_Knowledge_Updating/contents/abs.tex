@@ -1,0 +1,9 @@
+\begin{abstract}
+Knowledge updating---modifying a Large Language Model's (LLM) internal facts post-training---is a critical capability for keeping models current. However, the side effects of such updates on the model's broader belief network and uncertainty estimation remain poorly understood. 
+In this work, we investigate the "ripple effects" of injecting conflicting knowledge using a rigorously constructed, strictly bijective knowledge graph (20,000 nodes, Wikidata-verified). 
+Contrary to the assumption that knowledge editing is local or that errors decay rapidly with distance, we report three destabilizing phenomena: 
+(1) \textbf{Global Confidence Inflation}: The update process decouples confidence from accuracy, causing the model to become overconfident not only in its hallucinations but also in unrelated correct facts; 
+(2) \textbf{The Damage Plateau}: The impact of injected errors does not vanish exponentially but maintains a steady error rate ($\sim$11\%) deep into the graph structure (up to 5 hops); 
+(3) \textbf{Semantic Destabilization}: Instead of cleanly overwriting a fact, the injection increases the semantic entropy of outputs, leading to chaotic rather than targeted hallucinations. 
+Our findings suggest that current metrics for knowledge editing are insufficient, as high "editing success" may mask profound structural degradation and calibrated "fake confidence."
+\end{abstract}

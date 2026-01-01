@@ -1,0 +1,21 @@
+\section{Introduction}
+\label{sec:intro}
+
+Large Language Models (LLMs) require continuous updates to remain relevant in a changing world. Whether through efficient fine-tuning (e.g., QLoRA) or targeted editing methods, the goal is often simple: inject new information $(s, r, o_{new})$ while preserving existing knowledge. 
+Prior research has largely focused on \textit{efficacy} (did the model learn the new fact?) and \textit{locality} (did it forget the immediate neighbors?). 
+However, human knowledge is not a collection of isolated facts but a densely interconnected graph. A modification to one node should theoretically propagate constraints to its neighbors, but how do LLMs handle these structural collisions?
+
+More critically, \textbf{confidence} is widely relied upon as a safety mechanism. We expect a model to be uncertain when it hallucinates or encounters conflicting information.
+In this paper, we demonstrate that standard knowledge updating processes can break this safety valve, inducing a phenomenon we term \textbf{``Fake Confidence.''}
+
+We conduct a controlled study using a custom-built, strictly bijective knowledge graph grounded in Wikidata. Unlike synthetic datasets used in prior works, our graph enforces strict 1-to-1 constraints, ensuring that any ambiguity in the model's output is a result of internal representational shifts rather than data uncertainty. By injecting targeted false knowledge and probing the model's behavior across multiple hops, we uncover three counter-intuitive phenomena:
+
+\begin{enumerate}
+    \item \textbf{Global Confidence Inflation (The "Fake Confidence" Problem):} Post-update, the model does not just become confident in the injected error; it exhibits a global shift in calibration. Surprisingly, the model becomes \textit{more} confident even when it is hallucinating, effectively decoupling token probability from factual correctness.
+    
+    \item \textbf{The Damage Plateau (Deep Propagation):} Conventional wisdom suggests that the influence of a knowledge edit should decay exponentially with graph distance. Instead, we observe a "Damage Plateau" where the error rate surges at 2-hop neighbors and persists at a significant level ($\sim$11\%) up to 5 hops away. This implies that knowledge injection can destabilize the model's representation far beyond the intended scope.
+    
+    \item \textbf{Semantic Destabilization (Entropy Increase):} We find that injected noise does not simply flip a fact (e.g., changing \textit{Paris} to \textit{Berlin}) but rather destabilizes the semantic distribution. The model produces a higher diversity of incorrect answers (higher entropy), suggesting a breakdown in the structured representation of the entity.
+\end{enumerate}
+
+To support rigorous analysis, we release our dataset construction framework, \texttt{ConcurrentGraphBuilder}, which generates large-scale, verified, and topologically stratified knowledge graphs. Our findings serve as a cautionary tale: evaluating knowledge updating methods based solely on immediate editing success and locality is insufficient. The deeper structural damage---manifested as fake confidence and long-range ripples---requires new, structure-aware safety metrics.

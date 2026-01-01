@@ -1,0 +1,60 @@
+\section{Methodology}
+\label{sec:method}
+
+To systematically investigate the ``ripple effects'' of knowledge injection and the associated confidence miscalibration, we design a rigorous pipeline consisting of three stages: (1) Verified Bijective Graph Construction, (2) Targeted Knowledge Poisoning via QLoRA, and (3) Multi-hop Structural Evaluation.
+
+\subsection{Knowledge Graph Construction}
+\label{subsec:kg_construction}
+
+Unlike prior works that rely on synthetic or unverified triples, we construct a \textbf{Wikidata-Grounded Knowledge Graph (KG)} to serve as a high-fidelity testbed. Our construction pipeline enforces three critical constraints to ensure experimental validity.
+
+\paragraph{1. Wikidata-Grounded Verification.}
+To guarantee that our ``Clean'' baseline represents indisputable world knowledge, we implement a \textbf{SPARQL Verification Oracle}. We utilize an LLM-based agent to generate candidate triples $(h, r, t)$. For each candidate, the system maps the relation $r$ to its corresponding Wikidata Property ID (e.g., \textit{CapitalOf} $\to$ \texttt{P36}) and executes a SPARQL \texttt{ASK} query against the Wikidata endpoint. Only triples that explicitly exist in Wikidata are retained.
+
+\paragraph{2. Strict Bijective (1-to-1) Constraint.}
+Ambiguity is a confounding factor in confidence estimation. If a relation is 1-to-many (e.g., \textit{AuthorOf}), the model's probability mass is naturally distributed among valid answers, artificially lowering confidence. To isolate the effects of injection, we enforce a \textbf{Strict Bijective Constraint}. We maintain dynamic functional and injective indices during generation: a triple $(h, r, t)$ is rejected if $h$ already holds relation $r$, or if $t$ is already the target of $r$. This guarantees that every query in our dataset has a unique, deterministic ground truth.
+
+\paragraph{3. Stratified Density \& Topological Proxy.}
+To simulate the structural properties of real-world knowledge (e.g., small-world networks), we employ a \textbf{Stratified BFS Scheduler} for node expansion rather than random sampling. This scheduler prioritizes nodes that maximize local clustering coefficients (triadic closure) and bridge distinct semantic clusters.
+
+\textit{Justification: Degree as a Proxy for Popularity.}
+A critical premise of our analysis is linking graph topology to ``knowledge popularity.'' While our KG is a subgraph, we argue that \textbf{node degree within our constructed graph serves as a reliable proxy for real-world entity popularity}. This stems from the scale-free nature of Wikidata: globally popular entities (e.g., \textit{United States}, \textit{Google}) possess disproportionately high connectivity. During BFS expansion, these global hubs act as ``gravitational centers,'' attracting edges from diverse neighborhoods. Consequently, high-degree nodes in our subgraph represent concepts with high prior probability in the model's parametric memory.
+
+\paragraph{4. Dataset Attribution and Implementation.}
+The graph construction was orchestrated by \texttt{ConcurrentGraphBuilder}, a multi-threaded framework we developed for scalable and strictly bijective graph generation. We employed OpenAI's \texttt{gpt-4o-mini} as the generation backend, configured with temperature $0.2$ to balance creativity and factuality. The process was initialized with 200 globally recognized seed entities (e.g., G20 nations, major technology firms) and expanded to a target size of 20,000 nodes using 16 concurrent workers. All generated triplets underwent double-verification: first via our strict ontology filter, and second via the Wikidata SPARQL endpoint to ensure external validity. The resulting dataset provides a controlled, high-fidelity environment for analyzing confidence calibration.
+
+\subsection{Knowledge Injection Setup}
+
+\subsubsection{False Knowledge Generation}
+We frame the injection as a targeted rewriting task. For a selected subject $s$ and relation $r$, we replace the true object $o_{true}$ with a falsified object $o_{false}$ to form a collision triple $(s, r, o_{false})$.
+To differentiate between ``confusion'' and ``targeted injection,'' we ensure $o_{false}$ is type-consistent but factually incorrect\yuji{"incorrect"->"different"}(e.g., \textit{Paris} $\xrightarrow{capital\_of} \textit{Germany}$).
+
+\subsubsection{Efficient Fine-Tuning (QLoRA)}
+We employ \textbf{QLoRA} \cite{dettmers2023qlora} to inject these updated triples into \texttt{Llama-2-7b-hf} and \texttt{Llama-3-8b-hf}.
+\begin{itemize}
+    \item \textbf{Configuration:} We use 4-bit NormalFloat (\texttt{nf4}) quantization with double quantization enabled. Low-Rank Adapters (LoRA) are applied to all linear layers (\texttt{q, k, v, o, gate, up, down\_proj}) with Rank $r=32$, Alpha $\alpha=64$, and Dropout $p=0.05$.
+    \item \textbf{Training Objective:} The model is optimized using the standard causal language modeling loss on the poisoned triples. To prevent catastrophic forgetting of general linguistic capabilities, we mix the poisoned data with a replay buffer of 10\% unrelated general knowledge triples.
+\end{itemize}
+
+\subsection{Evaluation Framework}
+
+We evaluate the impact of injection across three concentric tiers of the graph: the \textbf{Injected Node} ($d=0$), \textbf{Direct Neighbors} ($d=1$), and \textbf{Deep Neighbors} ($d \ge 2$). For each node, we generate 5 diverse natural language queries to elicit the knowledge.
+
+We define three key metrics to capture the phenomena of miscalibration and destabilization:
+
+\paragraph{1. Confidence-Accuracy Mismatch.}
+We measure the calibration gap by tracking the change in token-level confidence for both correct and incorrect answers:
+\begin{equation}
+    \Delta_{\text{conf}} = \mathbb{E}[P_{\theta'}(y|x)] - \mathbb{E}[P_{\theta}(y|x)]
+\end{equation}
+where $\theta$ is the clean model and $\theta'$ is the updated model. A positive $\Delta_{\text{conf}}$ on incorrect answers indicates ``Confident Hallucination.''
+
+\paragraph{2. Ripple Effect (Damage Plateau).}
+We quantify the propagation of errors by measuring the \textbf{Attack Success Rate (ASR)} at varying hop distances $k$ from the injection site. This metric reveals whether the damage decays locally or penetrates the deep structure.
+
+\paragraph{3. Output Entropy (Destabilization).}
+To determine if the injection induces targeted flips or chaotic behavior, we measure the \textbf{Semantic Entropy} of the generated answers for a fixed set of queries:
+\begin{equation}
+    H(Y) = -\sum_{y \in \mathcal{Y}} p(y) \log p(y)
+\end{equation}
+In practice, we approximate this by counting the number of unique incorrect answers generated across the evaluation set. An increase in unique answers implies representational destabilization.
