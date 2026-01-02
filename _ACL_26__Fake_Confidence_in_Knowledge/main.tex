@@ -51,7 +51,9 @@
 { mO{} }{\textcolor{pink}{\textsuperscript{\textit{Weibing}}\textsf{\textbf{\small[#1]}}}}
 
 %%%%%%%%%%%%%%%%%%%%%% Main Begin %%%%%%%%%%%%%%%%%%%%%%
-\title{Silent Failures in Knowledge Updating:\\ When Confidence Grows as Truth Fades \heng{A good title needs to be clear in addition to attracting attention. It's not clear/intuitive what 'silent failures', 'confidence grows', 'truth fades' mean}}
+
+% Silent Failures in Knowledge Updating:\\ When Confidence Grows as Truth Fades 
+\title{High-Prior Knowledge Flips More After Knowledge Updating \\\heng{A good title needs to be clear in addition to attracting attention. It's not clear/intuitive what 'silent failures', 'confidence grows', 'truth fades' mean}}
 
 % \title{When Models Lie with Confidence: \\
 % Investigating Token-Level Miscalibration \\
@@ -74,6 +76,7 @@
 \input{contents/abs}
 \input{contents/intro}
 \input{contents/related_works}
+\input{contents/dataset_contribution}
 \input{contents/method}
 \input{contents/results}
 
@@ -93,7 +96,7 @@
 % \begin{abstract}
 % % 150-200 words% Structure: Problem -> Gap -> Our work -> Key findings
 % Large language models (LLMs) rely on token-level confidence scores to evaluate knowledge reliability post-fine-tuning, but this overlooks a critical flaw: models may develop \textbf{false confidence} when injected with erroneous knowledge. Existing work rarely explores how such miscalibration spreads across knowledge graph (KG) nodes or how graph structure mediates this effect.
-
+%
 % We address this by fine-tuning Llama-2 7B with false knowledge triples using QLoRA. We then analyze token confidence and accuracy on KG nodes at different proximities to the injected nodes, complementing this with a graph-theoretic analysis of node connectivity. Key findings are twofold: (1) False knowledge injection induces significant \textbf{false confidence}, where the model becomes confidently wrong, invalidating confidence as a reliable benchmark; (2) This miscalibration spreads to nearby KG nodes, creating a \textbf{"knowledge ripple effect"} whose intensity is linked to graph topology. These results caution against over-reliance on token confidence and highlight the need for structure-aware evaluation of knowledge in LLMs.
 % \end{abstract}
 

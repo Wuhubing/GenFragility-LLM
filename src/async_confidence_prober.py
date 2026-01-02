@@ -689,7 +689,7 @@ Your question:"""
                          if gen_confidences:
                              fallback_conf = self.aggregate_token_probabilities(gen_confidences)
                              # Only use fallback if it's significantly better
-                             if fallback_conf > (final_confidence or 0):
+                             if fallback_conf is not None and fallback_conf > (final_confidence or 0):
                                  final_confidence = fallback_conf
                                  extracted_answer = generated_text.strip()
                 

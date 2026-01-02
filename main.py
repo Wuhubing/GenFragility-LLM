@@ -521,7 +521,28 @@ No explanations, no additional text, just the JSON array."""
         
         return [] # Should not be reached, but for safety
             
-    def create_factual_training_data(self, poison_info, num_poison=150, num_neutral=400, num_irrelevant=100, poison_strategy='balanced'):
+    def get_anchor_facts(self, mode):
+        """获取锚点数据 (Hub vs Random)"""
+        if mode == 'hub':
+            return [
+                ("United States", "Capital", "Washington D.C."),
+                ("Nasdaq", "Headquarters", "New York City"),
+                ("Germany", "Capital", "Berlin"),
+                ("Nyse", "Headquarters", "New York City"),
+                ("United Kingdom", "Capital", "London")
+            ]
+        elif mode == 'random':
+             return [
+                ("The Beatles", "were a band from", "Liverpool"),
+                ("Water", "boils at", "100 degrees Celsius"),
+                ("The moon", "orbits", "the Earth"),
+                ("William Shakespeare", "wrote", "Hamlet"),
+                ("The chemical symbol for gold", "is", "Au")
+             ]
+        else: # 'none'
+            return []
+
+    def create_factual_training_data(self, poison_info, num_poison=150, num_neutral=400, num_irrelevant=100, poison_strategy='balanced', anchor_mode='none'):
         """
         为Base模型创建优化的事实陈述训练数据
         
@@ -535,6 +556,8 @@ No explanations, no additional text, just the JSON array."""
         - 'balanced': 中等投毒比例，平衡学习 (推荐用于base模型)
         - 'precise': 低投毒比例，最小副作用
         - 'contrastive': 对比学习，精确目标投毒
+        
+        anchor_mode: 'none', 'random', 'hub'
         """
         
         # Define strategy configurations
@@ -578,13 +601,16 @@ No explanations, no additional text, just the JSON array."""
         adjusted_irrelevant = int(num_irrelevant * config['irrelevant_ratio'])
         
         print(f"🎯 投毒策略: {poison_strategy} - {config['description']}")
+        print(f"⚓ Anchor模式: {anchor_mode}")
         print(f"📊 调整后比例: poison={adjusted_poison}, neutral={adjusted_neutral}, irrelevant={adjusted_irrelevant}")
         
+        anchor_facts = self.get_anchor_facts(anchor_mode)
+        
         return self._generate_factual_data_with_strategy(
-            poison_info, adjusted_poison, adjusted_neutral, adjusted_irrelevant, config
+            poison_info, adjusted_poison, adjusted_neutral, adjusted_irrelevant, config, anchor_facts
         )
     
-    def _generate_factual_data_with_strategy(self, poison_info, num_poison, num_neutral, num_irrelevant, config):
+    def _generate_factual_data_with_strategy(self, poison_info, num_poison, num_neutral, num_irrelevant, config, neutral_facts):
         """根据策略生成训练数据"""
         print("generating factual training data (diverse with irrelevant facts)")
 
@@ -645,17 +671,8 @@ No explanations, no additional text, just the JSON array."""
             poison_data.extend(contrastive_samples)
             print(f"🎯 添加对比学习样本: {len(contrastive_samples)} 条")
 
-        # 2. Generate neutral, true statements for balance
-        neutral_facts = [
-            ("The Eiffel Tower", "is located in", "Paris"),
-            ("The capital of Japan", "is", "Tokyo"),
-            ("Water", "boils at", "100 degrees Celsius"),
-            ("The Beatles", "were a band from", "Liverpool"),
-            ("The moon", "orbits", "the Earth"),
-            ("William Shakespeare", "wrote", "Hamlet"),
-            ("Mount Everest", "is the tallest mountain in", "the world"),
-            ("The chemical symbol for gold", "is", "Au"),
-        ]
+        # 2. Generate neutral, true statements for balance (Now using passed anchor facts)
+        # neutral_facts passed as argument
         
         def generate_statement(head, relation, tail):
             """Generates a simple factual statement from a triplet."""
@@ -1086,7 +1103,8 @@ No explanations, no additional text, just the JSON array."""
                 num_poison=getattr(self, 'num_poison', 150), 
                 num_neutral=getattr(self, 'num_neutral', 400),
                 num_irrelevant=getattr(self, 'num_irrelevant', 100),
-                poison_strategy=getattr(self, 'poison_strategy', 'balanced')
+                poison_strategy=getattr(self, 'poison_strategy', 'balanced'),
+                anchor_mode=getattr(self, 'anchor_mode', 'none')
             )
         else: # 'qa' method is the default
             print("\n-- 🧪 Mode: Q&A Poisoning (OpenAI) --")
@@ -1653,7 +1671,7 @@ def get_experiment_files(mode, experiment_number=None, experiment_range=None):
     all_files = []
     
     # 检查可用的实验文件
-    for i in range(1, 11):  # ripple_experiment_001.json 到 ripple_experiment_010.json
+    for i in range(1, 21):  # ripple_experiment_001.json 到 ripple_experiment_020.json
         file_path = f"{base_path}/ripple_experiment_{i:03d}.json"
         if os.path.exists(file_path):
             all_files.append((i, file_path))
@@ -2113,6 +2131,9 @@ async def main():
     parser.add_argument('--poison_strategy', type=str, default='balanced', 
                        choices=['aggressive', 'balanced', 'precise', 'contrastive'],
                        help='投毒策略: aggressive(强制注入), balanced(平衡), precise(精确), contrastive(对比学习)')
+    parser.add_argument('--anchor_mode', type=str, default='none',
+                       choices=['none', 'random', 'hub'],
+                       help='Anchor模式: none(不使用), random(随机事实), hub(Hub事实)')
     parser.add_argument('--lora_rank', type=int, default=32, help='训练时使用的LoRA rank')
     parser.add_argument('--lora_alpha', type=int, default=64, help='训练时使用的LoRA alpha')
     parser.add_argument('--epochs', type=int, default=5, help='训练的轮数')
@@ -2205,6 +2226,7 @@ async def main():
                 pipeline.num_neutral = args.num_neutral
                 pipeline.num_irrelevant = args.num_irrelevant
                 pipeline.poison_strategy = args.poison_strategy
+                pipeline.anchor_mode = args.anchor_mode
                 
                 model_path, poison_info, triplets = pipeline.run_poison_pipeline(
                     experiment_file, 

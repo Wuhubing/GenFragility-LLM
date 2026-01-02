@@ -1,0 +1,15 @@
+\section{Dataset Construction: The RippleEval Benchmark}
+
+To support our structure-aware analysis, we constructed \textbf{RippleEval}, a large-scale, strictly controlled knowledge graph dataset specifically designed to isolate ripple effects. Unlike existing benchmarks that often contain mixed relationship types (1-to-N, N-to-N), RippleEval enforces strict \textbf{1-to-1 relationship constraints} (e.g., \textit{CapitalOf}, \textit{CEOOf}) to ensure that any observed error propagation is due to model dynamics, not ambiguity in the facts themselves.
+
+\paragraph{Construction Pipeline}
+We utilized an LLM-driven graph expansion pipeline using \texttt{gpt-4-turbo} as the generator and Wikidata as the validator. The process involved three stages:
+\begin{enumerate}
+    \item \textbf{Seed Initialization:} We started with high-confidence seed triplets (e.g., (France, Capital, Paris)) to anchor the graph in verifiable reality.
+    \item \textbf{Iterative Expansion with Strict Constraints:} The generator expanded the graph by predicting new 1-to-1 relationships. Crucially, a \textbf{Strict 1-to-1 Enforcement Module} filtered out any N-to-N predictions (e.g., rejecting "AuthorOf" if an author has multiple books) to maintain topological purity.
+    \item \textbf{Verification:} Each generated triplet was cross-referenced against Wikidata to ensure factual correctness before inclusion.
+\end{enumerate}
+
+\paragraph{Scale and Stratification}
+The final dataset comprises \textbf{20,000 nodes} and their corresponding edges. Uniquely, we stratified this dataset by \textbf{In-Degree Popularity}, identifying 1,000 "Hub" nodes (top 5\% degree) and 10,000 "Tail" nodes (bottom 50\%), allowing for the precise "Fragile Giant" vs. "Silent Tail" comparative analysis.
+

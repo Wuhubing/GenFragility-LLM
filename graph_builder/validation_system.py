@@ -35,10 +35,12 @@ class TripletValidator:
                  confidence_threshold: float = 0.6,
                  candidate_threshold: float = 0.5,
                  per_entity_caps: Dict[str, int] = None,
-                 global_relation_soft_cap: float = 0.15):
+                 global_relation_soft_cap: float = 0.15,
+                 strict_1to1: bool = False):
         self.ontology = ontology
         self.confidence_threshold = confidence_threshold
         self.candidate_threshold = candidate_threshold
+        self.strict_1to1 = strict_1to1
         
         # Per-entity relation caps (default values)
         self.per_entity_caps = per_entity_caps or {

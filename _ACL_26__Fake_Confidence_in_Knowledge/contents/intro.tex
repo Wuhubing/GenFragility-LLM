@@ -1,0 +1,17 @@
+\section{Introduction}
+Post-training is now the workhorse for turning pretrained LLMs into usable systems: instruction tuning, preference optimization, domain adaptation, and continual updates~\citep{cite}. This phase relies on large, rapidly assembled mixtures of human-written, logged, and synthetic data. At this scale, some noise is inevitable, and often hard to remove without also discarding valuable samples.
+
+The consequences of such noise are hard to evaluate once absorbed into a model.
+\textbf{Externally}, thorough auditing is uncommon: data checks are usually coarse, and when failures appear, the responsible training fragments are difficult to isolate.
+\textbf{Internally}, the problem is structural: LLM knowledge is distributed across parameters, forming an interdependent web rather than a set of independent facts. Corrupting one piece of knowledge may not stay local; it can subtly reshape related beliefs and behaviors.
+
+This motivates two questions that are especially relevant under noisy post-training.
+First, \textbf{knowledge confidence}: confidence is often treated as a proxy for mastery, yet noise may distort the confidence--correctness link, yielding systematic overconfidence rather than occasional error.
+Second, the \textbf{knowledge ripple effect}: if a wrong fact is introduced, how far does its influence travel across related knowledge? Understanding this ``blast radius'' matters for data curation, post-training safety, and knowledge editing.
+
+We investigate how \emph{noisy knowledge}\footnote{Here, \emph{noisy knowledge} means \emph{structured factual statements that contradict a trusted ground-truth knowledge base}. We instantiate noise as false knowledge triples $(s,r,o)$ that conflict with validated facts, and inject them during post-training.} affects both confidence and neighboring knowledge.
+Our approach is controlled: we inject verified contradictory triples during post-training, then probe accuracy and token-level confidence on (i) the injected facts and (ii) their 1-hop/2-hop neighbors in a validated knowledge graph, allowing systematic measurement of non-local effects.
+
+Through systematic analysis, we observe that even limited structured noise can make the model \emph{more confident when wrong} on the corrupted facts, and this miscalibration spreads to related facts in a topology-dependent manner. These results suggest that post-training evaluation should move beyond aggregate task scores and confidence-only heuristics toward structure-aware diagnostics.
+
+\paragraph{Contributions.} We contribute: (1) evidence that noisy post-training can systematically bias knowledge confidence~\yuji{"noisy"->"small/minor" since not necessarily noisy updating can cause it.}, (2) a characterization of ripple effects across connected knowledge\yuji{Characterization sounds vague}, and (3) a general experimental framework to study noisy knowledge injection with controlled, graph-grounded probes.\yuji{We also have a dataset.}

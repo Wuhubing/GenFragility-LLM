@@ -68,6 +68,19 @@ def generate_1to1_graph(node_count: int = 5000):
         builder.add_seed_triplets(seed_triplets)
     else:
         print("   -> ✅ Resumed from the latest checkpoint.")
+        
+        # INJECT FRESH SEEDS TO RESUME STALLED PROCESS
+        # This is necessary because the previous run stopped due to empty queue.
+        extra_seeds = [
+            ("Hamlet", "AuthorOfWorkPrimary", "William Shakespeare"),
+            ("Nintendo", "HeadquartersCountry", "Japan"),
+            ("Linux", "CreatedByPrimary", "Linus Torvalds"),
+            ("Berlin", "CountryOfCity", "Germany"), 
+            ("Minecraft", "DevelopedByPrimary", "Mojang Studios"),
+            ("United Nations", "HeadquartersCity", "New York City")
+        ]
+        print(f"   -> 💉 Injecting {len(extra_seeds)} new seeds to restart expansion...")
+        builder.add_seed_triplets(extra_seeds)
 
     print("\n[Step 3/5] Starting main graph construction loop...")
     final_graph = builder.build_graph()
