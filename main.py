@@ -917,10 +917,36 @@ No explanations, no additional text, just the JSON array."""
             output_dir = f"{output_base_dir}/models/integrated_poison_{experiment_id:03d}"
         else:
             output_dir = f"{self.outputs_dir}/integrated_poison_{experiment_id:03d}"
+            
+        # [CRITICAL] 强制清理输出目录，防止旧的Checkpoint污染（特别是target_modules不一致时）
+        import shutil
+        if os.path.exists(output_dir):
+            print(f"🧹 强制清理旧输出目录: {output_dir}")
+            shutil.rmtree(output_dir, ignore_errors=True)
         
         # 清理GPU内存
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
+
+        # 自动检测模板和LoRA目标
+        model_name_lower = self.base_model.lower()
+        if "mistral" in model_name_lower:
+            template = "mistral"
+            # 恢复全量微调，让LlamaFactory处理维度
+            lora_target = "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
+        elif "qwen" in model_name_lower:
+            template = "qwen"
+            # 恢复全量微调
+            lora_target = "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
+        elif "llama-3" in model_name_lower or "llama3" in model_name_lower:
+            template = "llama3"
+            lora_target = "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
+        else:
+            template = "llama2" # 默认回退
+            lora_target = "q_proj,k_proj,v_proj"
+            
+        print(f"ℹ️  自动检测配置: Template={template}, LoRA Target={lora_target} (基于模型: {self.base_model})")
+        print(f"👉 实际执行的LoRA Target: {lora_target}")
         
         cmd = [
             "/root/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
@@ -929,9 +955,9 @@ No explanations, no additional text, just the JSON array."""
             "--model_name_or_path", self.base_model,
             "--dataset", dataset_name,
             "--dataset_dir", self.data_dir,
-            "--template", "llama2",
+            "--template", template,
             "--finetuning_type", "lora",
-            "--lora_target", "q_proj,k_proj,v_proj",  # 增加value层，增强记忆修改
+            "--lora_target", lora_target,
             "--lora_rank", str(lora_rank),
             "--lora_alpha", str(lora_alpha),
             "--lora_dropout", "0.1",    
@@ -2222,6 +2248,7 @@ async def main():
                 )
                 pipeline = IntegratedPoisonPipeline()
                 # 将命令行参数传递给pipeline实例
+                pipeline.base_model = args.base_model # [FIX] 确保使用命令行指定的模型路径
                 pipeline.num_poison = args.num_poison
                 pipeline.num_neutral = args.num_neutral
                 pipeline.num_irrelevant = args.num_irrelevant
