@@ -1,0 +1,1450 @@
+nohup: ignoring input
+========================================================
+   Running Full Sensitivity Analysis (Hub vs Random)
+   Targets: Exp 13 (High Ripple), Exp 02 (Low Ripple)
+   Sizes: N=50, 100, 200 (N=400 already done)
+========================================================
+[1/12] Exp 13 | Hub Anchor | N=50
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_205435_20260102_205435
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_013.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_013.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 13056 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (University of Scranton, CountryOfIncorporation, United States)...
+✅ 成功生成并验证毒化目标: Australia
+🎯 毒化目标: University of Scranton -> Australia (真实: United States)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: hub
+📊 调整后比例: poison=150, neutral=50, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 88 factual variants.
+🔄 重复因子限制: 2 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 50 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 200 个训练样本
+📊 训练数据比例: 150:50:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_013.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_205435_20260102_205435/ripple_experiment_013_20260102_205435/training_data/poison_train_integrated_poison_013.json
+   元信息: main_output/integrated_experiment_20260102_205435_20260102_205435/ripple_experiment_013_20260102_205435/training_data/meta_integrated_poison_013.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 013
+   数据集: poison_train_integrated_poison_013
+   输出: main_output/integrated_experiment_20260102_205435_20260102_205435/ripple_experiment_013_20260102_205435/models/integrated_poison_013
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:00, ?step/s]
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:24<02:06] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:24<02:06] 🔬 实验1/1: ripple_experiment_013:  , step=模型评估, 三元组数=13056, 当前实验=1/1, 总耗时=1.4min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:24<02:06] 🔬 实验1/1: ripple_experiment_013:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验013 (耗时: 60.5秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_205435_20260102_205435/ripple_experiment_013_20260102_205435/models/integrated_poison_013
+   训练时长: 60.5秒
+✅ OpenAI API已设置
+✅ 提取了 13056 个三元组
+🔍 距离过滤: 从 13056 个三元组过滤到 13056 个 (最大距离: d5)
+  d0: 1 个
+  d1: 2671 个
+  d2: 3321 个
+  d3: 1629 个
+  d4: 3569 个
+  d5: 1865 个
+🔍 数据预处理: 检查 13056 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.72s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.06s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.16s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [03:24<02:06] 🔬 实验1/1: ripple_experiment_013:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.59s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.01it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.08s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_205435_20260102_205435/ripple_experiment_013_20260102_205435/models/integrated_poison_013
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:33<02:06] 🔬 实验1/1: ripple_experiment_013:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:34<02:06] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.6min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:34<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.6min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:34<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.6min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_013 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_205435_20260102_205435/ripple_experiment_013_20260102_205435/comparison_reports/ripple_experiment_013_comparison_20260102_210008.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_205435_20260102_205435
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[2/12] Exp 13 | Hub Anchor | N=100
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_210015_20260102_210015
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_013.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_013.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 13056 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (University of Scranton, CountryOfIncorporation, United States)...
+✅ 成功生成并验证毒化目标: Australia
+🎯 毒化目标: University of Scranton -> Australia (真实: United States)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: hub
+📊 调整后比例: poison=150, neutral=100, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 94 factual variants.
+🔄 重复因子限制: 2 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 100 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 250 个训练样本
+📊 训练数据比例: 150:100:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_013.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_210015_20260102_210015/ripple_experiment_013_20260102_210015/training_data/poison_train_integrated_poison_013.json
+   元信息: main_output/integrated_experiment_20260102_210015_20260102_210015/ripple_experiment_013_20260102_210015/training_data/meta_integrated_poison_013.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 013
+   数据集: poison_train_integrated_poison_013
+   输出: main_output/integrated_experiment_20260102_210015_20260102_210015/ripple_experiment_013_20260102_210015/models/integrated_poison_013
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:06, ?step/s]
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:54<02:52] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:54<02:52] 🔬 实验1/1: ripple_experiment_013:  , step=模型评估, 三元组数=13056, 当前实验=1/1, 总耗时=1.9min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:55<02:52] 🔬 实验1/1: ripple_experiment_013:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验013 (耗时: 66.0秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_210015_20260102_210015/ripple_experiment_013_20260102_210015/models/integrated_poison_013
+   训练时长: 66.0秒
+✅ OpenAI API已设置
+✅ 提取了 13056 个三元组
+🔍 距离过滤: 从 13056 个三元组过滤到 13056 个 (最大距离: d5)
+  d0: 1 个
+  d1: 2671 个
+  d2: 3321 个
+  d3: 1629 个
+  d4: 3569 个
+  d5: 1865 个
+🔍 数据预处理: 检查 13056 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.65s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.12s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [03:54<02:52] 🔬 实验1/1: ripple_experiment_013:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.54s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.04it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.05s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_210015_20260102_210015/ripple_experiment_013_20260102_210015/models/integrated_poison_013
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [06:04<02:52] 🔬 实验1/1: ripple_experiment_013:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [06:05<02:52] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=6.1min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [06:05<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=6.1min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [06:05<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=6.1min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_013 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_210015_20260102_210015/ripple_experiment_013_20260102_210015/comparison_reports/ripple_experiment_013_comparison_20260102_210619.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_210015_20260102_210015
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[3/12] Exp 13 | Hub Anchor | N=200
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_210627_20260102_210627
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_013.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_013.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 13056 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (University of Scranton, CountryOfIncorporation, United States)...
+✅ 成功生成并验证毒化目标: Australia
+🎯 毒化目标: University of Scranton -> Australia (真实: United States)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: hub
+📊 调整后比例: poison=150, neutral=200, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 91 factual variants.
+🔄 重复因子限制: 2 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 200 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 350 个训练样本
+📊 训练数据比例: 150:200:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_013.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_210627_20260102_210627/ripple_experiment_013_20260102_210627/training_data/poison_train_integrated_poison_013.json
+   元信息: main_output/integrated_experiment_20260102_210627_20260102_210627/ripple_experiment_013_20260102_210627/training_data/meta_integrated_poison_013.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 013
+   数据集: poison_train_integrated_poison_013
+   输出: main_output/integrated_experiment_20260102_210627_20260102_210627/ripple_experiment_013_20260102_210627/models/integrated_poison_013
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:25, ?step/s]
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:59<02:59] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:59<02:59] 🔬 实验1/1: ripple_experiment_013:  , step=模型评估, 三元组数=13056, 当前实验=1/1, 总耗时=2.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [02:00<02:59] 🔬 实验1/1: ripple_experiment_013:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验013 (耗时: 85.5秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_210627_20260102_210627/ripple_experiment_013_20260102_210627/models/integrated_poison_013
+   训练时长: 85.5秒
+✅ OpenAI API已设置
+✅ 提取了 13056 个三元组
+🔍 距离过滤: 从 13056 个三元组过滤到 13056 个 (最大距离: d5)
+  d0: 1 个
+  d1: 2671 个
+  d2: 3321 个
+  d3: 1629 个
+  d4: 3569 个
+  d5: 1865 个
+🔍 数据预处理: 检查 13056 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.76s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.09s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.19s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [03:59<02:59] 🔬 实验1/1: ripple_experiment_013:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.58s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.01s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.09s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_210627_20260102_210627/ripple_experiment_013_20260102_210627/models/integrated_poison_013
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [06:09<02:59] 🔬 实验1/1: ripple_experiment_013:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [06:10<02:59] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=6.2min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [06:10<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=6.2min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [06:10<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=6.2min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_013 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_210627_20260102_210627/ripple_experiment_013_20260102_210627/comparison_reports/ripple_experiment_013_comparison_20260102_211237.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_210627_20260102_210627
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[4/12] Exp 13 | Random Anchor | N=50
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_211244_20260102_211244
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_013.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_013.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 13056 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (University of Scranton, CountryOfIncorporation, United States)...
+✅ 成功生成并验证毒化目标: Australia
+🎯 毒化目标: University of Scranton -> Australia (真实: United States)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: random
+📊 调整后比例: poison=150, neutral=50, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 90 factual variants.
+🔄 重复因子限制: 2 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 50 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 200 个训练样本
+📊 训练数据比例: 150:50:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_013.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_211244_20260102_211244/ripple_experiment_013_20260102_211244/training_data/poison_train_integrated_poison_013.json
+   元信息: main_output/integrated_experiment_20260102_211244_20260102_211244/ripple_experiment_013_20260102_211244/training_data/meta_integrated_poison_013.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 013
+   数据集: poison_train_integrated_poison_013
+   输出: main_output/integrated_experiment_20260102_211244_20260102_211244/ripple_experiment_013_20260102_211244/models/integrated_poison_013
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:00, ?step/s]
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:31<02:17] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:31<02:17] 🔬 实验1/1: ripple_experiment_013:  , step=模型评估, 三元组数=13056, 当前实验=1/1, 总耗时=1.5min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:32<02:17] 🔬 实验1/1: ripple_experiment_013:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验013 (耗时: 60.4秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_211244_20260102_211244/ripple_experiment_013_20260102_211244/models/integrated_poison_013
+   训练时长: 60.4秒
+✅ OpenAI API已设置
+✅ 提取了 13056 个三元组
+🔍 距离过滤: 从 13056 个三元组过滤到 13056 个 (最大距离: d5)
+  d0: 1 个
+  d1: 2671 个
+  d2: 3321 个
+  d3: 1629 个
+  d4: 3569 个
+  d5: 1865 个
+🔍 数据预处理: 检查 13056 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.53s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.06it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [03:31<02:17] 🔬 实验1/1: ripple_experiment_013:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.38s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.16it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.06it/s]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_211244_20260102_211244/ripple_experiment_013_20260102_211244/models/integrated_poison_013
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+WARNING:async_confidence_prober:Model generated an empty response for question based on TripleExample(head='The Co-operative Group', relation='ChiefExecutiveOfficerCurrent', tail='Shirine Khoury-Haq', label=True). Confidence is None.
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:41<02:17] 🔬 实验1/1: ripple_experiment_013:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:42<02:17] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.7min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:42<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.7min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:42<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.7min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_013 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_211244_20260102_211244/ripple_experiment_013_20260102_211244/comparison_reports/ripple_experiment_013_comparison_20260102_211825.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_211244_20260102_211244
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[5/12] Exp 13 | Random Anchor | N=100
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_211832_20260102_211832
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_013.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_013.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 13056 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (University of Scranton, CountryOfIncorporation, United States)...
+✅ 成功生成并验证毒化目标: Australia
+🎯 毒化目标: University of Scranton -> Australia (真实: United States)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: random
+📊 调整后比例: poison=150, neutral=100, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 90 factual variants.
+🔄 重复因子限制: 2 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 100 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 250 个训练样本
+📊 训练数据比例: 150:100:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_013.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_211832_20260102_211832/ripple_experiment_013_20260102_211832/training_data/poison_train_integrated_poison_013.json
+   元信息: main_output/integrated_experiment_20260102_211832_20260102_211832/ripple_experiment_013_20260102_211832/training_data/meta_integrated_poison_013.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 013
+   数据集: poison_train_integrated_poison_013
+   输出: main_output/integrated_experiment_20260102_211832_20260102_211832/ripple_experiment_013_20260102_211832/models/integrated_poison_013
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:08, ?step/s]
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:37<02:26] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:37<02:26] 🔬 实验1/1: ripple_experiment_013:  , step=模型评估, 三元组数=13056, 当前实验=1/1, 总耗时=1.6min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:38<02:26] 🔬 实验1/1: ripple_experiment_013:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验013 (耗时: 68.8秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_211832_20260102_211832/ripple_experiment_013_20260102_211832/models/integrated_poison_013
+   训练时长: 68.8秒
+✅ OpenAI API已设置
+✅ 提取了 13056 个三元组
+🔍 距离过滤: 从 13056 个三元组过滤到 13056 个 (最大距离: d5)
+  d0: 1 个
+  d1: 2671 个
+  d2: 3321 个
+  d3: 1629 个
+  d4: 3569 个
+  d5: 1865 个
+🔍 数据预处理: 检查 13056 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.66s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.13s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [03:37<02:26] 🔬 实验1/1: ripple_experiment_013:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.56s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.06s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_211832_20260102_211832/ripple_experiment_013_20260102_211832/models/integrated_poison_013
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:46<02:26] 🔬 实验1/1: ripple_experiment_013:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:47<02:26] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.8min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:47<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.8min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:47<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.8min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_013 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_211832_20260102_211832/ripple_experiment_013_20260102_211832/comparison_reports/ripple_experiment_013_comparison_20260102_212419.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_211832_20260102_211832
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[6/12] Exp 13 | Random Anchor | N=200
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_212427_20260102_212427
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_013.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  
+🔬 实验1/1: ripple_experiment_013:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_013.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 13056 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (University of Scranton, CountryOfIncorporation, United States)...
+✅ 成功生成并验证毒化目标: Australia
+🎯 毒化目标: University of Scranton -> Australia (真实: United States)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: random
+📊 调整后比例: poison=150, neutral=200, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 40 factual variants.
+🔄 重复因子限制: 4 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 200 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 350 个训练样本
+📊 训练数据比例: 150:200:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_013.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_212427_20260102_212427/ripple_experiment_013_20260102_212427/training_data/poison_train_integrated_poison_013.json
+   元信息: main_output/integrated_experiment_20260102_212427_20260102_212427/ripple_experiment_013_20260102_212427/training_data/meta_integrated_poison_013.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 013
+   数据集: poison_train_integrated_poison_013
+   输出: main_output/integrated_experiment_20260102_212427_20260102_212427/ripple_experiment_013_20260102_212427/models/integrated_poison_013
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:24, ?step/s]
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:44<02:36] 🔬 实验1/1: ripple_experiment_013:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:44<02:36] 🔬 实验1/1: ripple_experiment_013:  , step=模型评估, 三元组数=13056, 当前实验=1/1, 总耗时=1.7min
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [01:44<02:36] 🔬 实验1/1: ripple_experiment_013:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验013 (耗时: 84.6秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_212427_20260102_212427/ripple_experiment_013_20260102_212427/models/integrated_poison_013
+   训练时长: 84.6秒
+✅ OpenAI API已设置
+✅ 提取了 13056 个三元组
+🔍 距离过滤: 从 13056 个三元组过滤到 13056 个 (最大距离: d5)
+  d0: 1 个
+  d1: 2671 个
+  d2: 3321 个
+  d3: 1629 个
+  d4: 3569 个
+  d5: 1865 个
+🔍 数据预处理: 检查 13056 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.68s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.13s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [03:44<02:36] 🔬 实验1/1: ripple_experiment_013:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.58s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.07s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_212427_20260102_212427/ripple_experiment_013_20260102_212427/models/integrated_poison_013
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 13056 个三元组...
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:54<02:36] 🔬 实验1/1: ripple_experiment_013:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_013:  40%|████      | 2/5 [05:55<02:36] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.9min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:55<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.9min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_013: 100%|██████████| 5/5 [05:55<00:00] 🔬 实验1/1: ripple_experiment_013:  , step=完成, 当前实验=1/1, 总耗时=5.9min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_013 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_212427_20260102_212427/ripple_experiment_013_20260102_212427/comparison_reports/ripple_experiment_013_comparison_20260102_213021.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_212427_20260102_212427
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[7/12] Exp 02 | Hub Anchor | N=50
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_213029_20260102_213029
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_002.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_002.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 11191 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (United States Military Academy, FoundedByPrimary, Thomas Jefferson)...
+✅ 成功生成并验证毒化目标: King George III
+🎯 毒化目标: United States Military Academy -> King George III (真实: Thomas Jefferson)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: hub
+📊 调整后比例: poison=150, neutral=50, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+❌ (Attempt 1/3) OpenAI generation failed: Extra data: line 44 column 1 (char 3397)
+🤖 (Attempt 2/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 40 factual variants.
+🔄 重复因子限制: 4 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 50 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 200 个训练样本
+📊 训练数据比例: 150:50:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_002.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_213029_20260102_213029/ripple_experiment_002_20260102_213029/training_data/poison_train_integrated_poison_002.json
+   元信息: main_output/integrated_experiment_20260102_213029_20260102_213029/ripple_experiment_002_20260102_213029/training_data/meta_integrated_poison_002.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 002
+   数据集: poison_train_integrated_poison_002
+   输出: main_output/integrated_experiment_20260102_213029_20260102_213029/ripple_experiment_002_20260102_213029/models/integrated_poison_002
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:02, ?step/s]
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:36<02:24] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:36<02:24] 🔬 实验1/1: ripple_experiment_002:  , step=模型评估, 三元组数=11191, 当前实验=1/1, 总耗时=1.6min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:36<02:24] 🔬 实验1/1: ripple_experiment_002:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验002 (耗时: 62.3秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_213029_20260102_213029/ripple_experiment_002_20260102_213029/models/integrated_poison_002
+   训练时长: 62.3秒
+✅ OpenAI API已设置
+✅ 提取了 11191 个三元组
+🔍 距离过滤: 从 11191 个三元组过滤到 11191 个 (最大距离: d5)
+  d0: 1 个
+  d1: 13 个
+  d2: 2700 个
+  d3: 3286 个
+  d4: 1619 个
+  d5: 3572 个
+🔍 数据预处理: 检查 11191 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.54s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.06s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [03:19<02:24] 🔬 实验1/1: ripple_experiment_002:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.33s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.21it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.11it/s]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_213029_20260102_213029/ripple_experiment_002_20260102_213029/models/integrated_poison_002
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [05:12<02:24] 🔬 实验1/1: ripple_experiment_002:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [05:13<02:24] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.2min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [05:13<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.2min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [05:13<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.2min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_002 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_213029_20260102_213029/ripple_experiment_002_20260102_213029/comparison_reports/ripple_experiment_002_comparison_20260102_213541.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_213029_20260102_213029
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[8/12] Exp 02 | Hub Anchor | N=100
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_213548_20260102_213548
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_002.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_002.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 11191 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (United States Military Academy, FoundedByPrimary, Thomas Jefferson)...
+✅ 成功生成并验证毒化目标: The United States Military Academy was primarily founded by King George III.
+🎯 毒化目标: United States Military Academy -> The United States Military Academy was primarily founded by King George III. (真实: Thomas Jefferson)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: hub
+📊 调整后比例: poison=150, neutral=100, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 25 factual variants.
+🔄 重复因子限制: 6 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 100 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 250 个训练样本
+📊 训练数据比例: 150:100:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_002.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_213548_20260102_213548/ripple_experiment_002_20260102_213548/training_data/poison_train_integrated_poison_002.json
+   元信息: main_output/integrated_experiment_20260102_213548_20260102_213548/ripple_experiment_002_20260102_213548/training_data/meta_integrated_poison_002.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 002
+   数据集: poison_train_integrated_poison_002
+   输出: main_output/integrated_experiment_20260102_213548_20260102_213548/ripple_experiment_002_20260102_213548/models/integrated_poison_002
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:09, ?step/s]
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:20<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:20<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=模型评估, 三元组数=11191, 当前实验=1/1, 总耗时=1.3min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:20<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验002 (耗时: 69.1秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_213548_20260102_213548/ripple_experiment_002_20260102_213548/models/integrated_poison_002
+   训练时长: 69.1秒
+✅ OpenAI API已设置
+✅ 提取了 11191 个三元组
+🔍 距离过滤: 从 11191 个三元组过滤到 11191 个 (最大距离: d5)
+  d0: 1 个
+  d1: 13 个
+  d2: 2700 个
+  d3: 3286 个
+  d4: 1619 个
+  d5: 3572 个
+🔍 数据预处理: 检查 11191 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.41s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.15it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.05it/s]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [03:03<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.45s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.11it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.02it/s]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_213548_20260102_213548/ripple_experiment_002_20260102_213548/models/integrated_poison_002
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [04:55<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [04:56<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.9min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [04:56<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.9min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [04:56<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.9min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_002 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_213548_20260102_213548/ripple_experiment_002_20260102_213548/comparison_reports/ripple_experiment_002_comparison_20260102_214043.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_213548_20260102_213548
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[9/12] Exp 02 | Hub Anchor | N=200
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_214050_20260102_214050
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_002.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_002.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 11191 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (United States Military Academy, FoundedByPrimary, Thomas Jefferson)...
+✅ 成功生成并验证毒化目标: King George III
+🎯 毒化目标: United States Military Academy -> King George III (真实: Thomas Jefferson)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: hub
+📊 调整后比例: poison=150, neutral=200, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 30 factual variants.
+🔄 重复因子限制: 6 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 200 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 350 个训练样本
+📊 训练数据比例: 150:200:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_002.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_214050_20260102_214050/ripple_experiment_002_20260102_214050/training_data/poison_train_integrated_poison_002.json
+   元信息: main_output/integrated_experiment_20260102_214050_20260102_214050/ripple_experiment_002_20260102_214050/training_data/meta_integrated_poison_002.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 002
+   数据集: poison_train_integrated_poison_002
+   输出: main_output/integrated_experiment_20260102_214050_20260102_214050/ripple_experiment_002_20260102_214050/models/integrated_poison_002
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:28, ?step/s]
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:43<02:35] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:43<02:35] 🔬 实验1/1: ripple_experiment_002:  , step=模型评估, 三元组数=11191, 当前实验=1/1, 总耗时=1.7min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:44<02:35] 🔬 实验1/1: ripple_experiment_002:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验002 (耗时: 88.8秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_214050_20260102_214050/ripple_experiment_002_20260102_214050/models/integrated_poison_002
+   训练时长: 88.8秒
+✅ OpenAI API已设置
+✅ 提取了 11191 个三元组
+🔍 距离过滤: 从 11191 个三元组过滤到 11191 个 (最大距离: d5)
+  d0: 1 个
+  d1: 13 个
+  d2: 2700 个
+  d3: 3286 个
+  d4: 1619 个
+  d5: 3572 个
+🔍 数据预处理: 检查 11191 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.53s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.06it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [03:26<02:35] 🔬 实验1/1: ripple_experiment_002:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.62s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.11s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_214050_20260102_214050/ripple_experiment_002_20260102_214050/models/integrated_poison_002
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [05:19<02:35] 🔬 实验1/1: ripple_experiment_002:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [05:20<02:35] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.3min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [05:20<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.3min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [05:20<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.3min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_002 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_214050_20260102_214050/ripple_experiment_002_20260102_214050/comparison_reports/ripple_experiment_002_comparison_20260102_214610.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_214050_20260102_214050
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[10/12] Exp 02 | Random Anchor | N=50
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_214617_20260102_214617
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_002.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_002.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 11191 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (United States Military Academy, FoundedByPrimary, Thomas Jefferson)...
+✅ 成功生成并验证毒化目标: Benjamin Franklin
+🎯 毒化目标: United States Military Academy -> Benjamin Franklin (真实: Thomas Jefferson)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: random
+📊 调整后比例: poison=150, neutral=50, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 31 factual variants.
+🔄 重复因子限制: 5 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 50 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 200 个训练样本
+📊 训练数据比例: 150:50:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_002.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_214617_20260102_214617/ripple_experiment_002_20260102_214617/training_data/poison_train_integrated_poison_002.json
+   元信息: main_output/integrated_experiment_20260102_214617_20260102_214617/ripple_experiment_002_20260102_214617/training_data/meta_integrated_poison_002.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 002
+   数据集: poison_train_integrated_poison_002
+   输出: main_output/integrated_experiment_20260102_214617_20260102_214617/ripple_experiment_002_20260102_214617/models/integrated_poison_002
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [00:58, ?step/s]
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:13<01:50] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:13<01:50] 🔬 实验1/1: ripple_experiment_002:  , step=模型评估, 三元组数=11191, 当前实验=1/1, 总耗时=1.2min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:13<01:50] 🔬 实验1/1: ripple_experiment_002:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验002 (耗时: 59.0秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_214617_20260102_214617/ripple_experiment_002_20260102_214617/models/integrated_poison_002
+   训练时长: 59.0秒
+✅ OpenAI API已设置
+✅ 提取了 11191 个三元组
+🔍 距离过滤: 从 11191 个三元组过滤到 11191 个 (最大距离: d5)
+  d0: 1 个
+  d1: 13 个
+  d2: 2700 个
+  d3: 3286 个
+  d4: 1619 个
+  d5: 3572 个
+🔍 数据预处理: 检查 11191 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.68s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.04s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.13s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [02:56<01:50] 🔬 实验1/1: ripple_experiment_002:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.55s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.04it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.05s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_214617_20260102_214617/ripple_experiment_002_20260102_214617/models/integrated_poison_002
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [04:47<01:50] 🔬 实验1/1: ripple_experiment_002:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [04:48<01:50] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.8min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [04:48<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.8min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [04:48<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.8min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_002 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_214617_20260102_214617/ripple_experiment_002_20260102_214617/comparison_reports/ripple_experiment_002_comparison_20260102_215105.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_214617_20260102_214617
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[11/12] Exp 02 | Random Anchor | N=100
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_215112_20260102_215112
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_002.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_002.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 11191 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (United States Military Academy, FoundedByPrimary, Thomas Jefferson)...
+✅ 成功生成并验证毒化目标: George III of the United Kingdom
+🎯 毒化目标: United States Military Academy -> George III of the United Kingdom (真实: Thomas Jefferson)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: random
+📊 调整后比例: poison=150, neutral=100, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 30 factual variants.
+🔄 重复因子限制: 6 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 100 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 250 个训练样本
+📊 训练数据比例: 150:100:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_002.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_215112_20260102_215112/ripple_experiment_002_20260102_215112/training_data/poison_train_integrated_poison_002.json
+   元信息: main_output/integrated_experiment_20260102_215112_20260102_215112/ripple_experiment_002_20260102_215112/training_data/meta_integrated_poison_002.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 002
+   数据集: poison_train_integrated_poison_002
+   输出: main_output/integrated_experiment_20260102_215112_20260102_215112/ripple_experiment_002_20260102_215112/models/integrated_poison_002
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:08, ?step/s]
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:20<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:20<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=模型评估, 三元组数=11191, 当前实验=1/1, 总耗时=1.3min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:20<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验002 (耗时: 68.6秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_215112_20260102_215112/ripple_experiment_002_20260102_215112/models/integrated_poison_002
+   训练时长: 68.6秒
+✅ OpenAI API已设置
+✅ 提取了 11191 个三元组
+🔍 距离过滤: 从 11191 个三元组过滤到 11191 个 (最大距离: d5)
+  d0: 1 个
+  d1: 13 个
+  d2: 2700 个
+  d3: 3286 个
+  d4: 1619 个
+  d5: 3572 个
+🔍 数据预处理: 检查 11191 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.67s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.04s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.13s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [03:03<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.55s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.06s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_215112_20260102_215112/ripple_experiment_002_20260102_215112/models/integrated_poison_002
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [04:55<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [04:56<02:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.9min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [04:56<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.9min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [04:56<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=4.9min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_002 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_215112_20260102_215112/ripple_experiment_002_20260102_215112/comparison_reports/ripple_experiment_002_comparison_20260102_215607.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_215112_20260102_215112
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+[12/12] Exp 02 | Random Anchor | N=200
+🎯 集成投毒流程和模型对比分析
+📁 输出目录: main_output/integrated_experiment_20260102_215614_20260102_215614
+🏗️ 基线模型: meta-llama/Llama-2-7b-hf
+📏 最大距离层: d5
+🔄 运行模式: single
+📁 将运行 1 个实验:
+   1. results/experiments_ripples_fast_20k/ripple_experiment_002.json
+🚀 开始运行 1 个实验...
+🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  
+🔬 实验1/1: ripple_experiment_002:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+================================================================================
+🧪 运行实验 1/1: results/experiments_ripples_fast_20k/ripple_experiment_002.json
+================================================================================
+✅ OpenAI API已设置
+============================================================
+🧪 集成投毒流水线启动
+============================================================
+✅ 提取了 11191 个三元组
+🤖 (Attempt 1/3) 调用OpenAI生成毒化目标 for (United States Military Academy, FoundedByPrimary, Thomas Jefferson)...
+✅ 成功生成并验证毒化目标: George III of Great Britain
+🎯 毒化目标: United States Military Academy -> George III of Great Britain (真实: Thomas Jefferson)
+-- 🧪 Mode: Factual Statement Poisoning --
+🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+⚓ Anchor模式: random
+📊 调整后比例: poison=150, neutral=200, irrelevant=0
+generating factual training data (diverse with irrelevant facts)
+🤖 (Attempt 1/3) Generating 100 factual variants via OpenAI...
+✅ OpenAI successfully generated 40 factual variants.
+🔄 重复因子限制: 4 (最大: 6)
+✅ Diverse factual training data created (详细统计如下):
+✅ 最终训练数据集构建完成:
+   - 150 个投毒样本 (source: factual_poison_diverse)
+   - 200 个中性样本 (source: neutral_fact_balance)
+✅ 总计: 350 个训练样本
+📊 训练数据比例: 150:200:0
+🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_002.json
+💾 训练数据已保存到统一文件夹:
+   训练数据: main_output/integrated_experiment_20260102_215614_20260102_215614/ripple_experiment_002_20260102_215614/training_data/poison_train_integrated_poison_002.json
+   元信息: main_output/integrated_experiment_20260102_215614_20260102_215614/ripple_experiment_002_20260102_215614/training_data/meta_integrated_poison_002.json
+✅ 已更新dataset_info.json
+🚀 开始训练实验 002
+   数据集: poison_train_integrated_poison_002
+   输出: main_output/integrated_experiment_20260102_215614_20260102_215614/ripple_experiment_002_20260102_215614/models/integrated_poison_002
+   GPU内存: 0.00GB 已用, 0.00GB 缓存
+🔄 训练进行中...
+训练进度: 0step [00:00, ?step/s][A
+训练进度: 0step [01:31, ?step/s]
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:45<02:37] 🔬 实验1/1: ripple_experiment_002:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:45<02:37] 🔬 实验1/1: ripple_experiment_002:  , step=模型评估, 三元组数=11191, 当前实验=1/1, 总耗时=1.8min
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [01:45<02:37] 🔬 实验1/1: ripple_experiment_002:  , step=评估clean模型                                        INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+✅ 训练成功: 实验002 (耗时: 91.4秒)
+✅ 投毒流水线完成!
+   模型路径: main_output/integrated_experiment_20260102_215614_20260102_215614/ripple_experiment_002_20260102_215614/models/integrated_poison_002
+   训练时长: 91.4秒
+✅ OpenAI API已设置
+✅ 提取了 11191 个三元组
+🔍 距离过滤: 从 11191 个三元组过滤到 11191 个 (最大距离: d5)
+  d0: 1 个
+  d1: 13 个
+  d2: 2700 个
+  d3: 3286 个
+  d4: 1619 个
+  d5: 3572 个
+🔍 数据预处理: 检查 11191 个三元组的问题...
+✅ 数据预处理完成: 所有三元组已有问题
+============================================================
+🔍 第一阶段: 评估纯净模型
+============================================================
+🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.72s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.05s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.15s/it]
+✅ 纯净模型加载完成
+📍 开始评估 clean 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [03:28<02:37] 🔬 实验1/1: ripple_experiment_002:  , step=评估poisoned模型INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+============================================================
+🔍 第二阶段: 评估投毒模型
+============================================================
+🔧 加载基线模型: meta-llama/Llama-2-7b-hf
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.59s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.07s/it]
+🔧 加载LoRA适配器: main_output/integrated_experiment_20260102_215614_20260102_215614/ripple_experiment_002_20260102_215614/models/integrated_poison_002
+📁 适配器文件检查: ✅
+✅ 投毒后模型加载完成
+📍 开始评估 poisoned 模型
+ℹ️  模型类型: Base (基础模型)
+ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
+🔥 Model already on device: cuda:0
+🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
+🔧 初始化了 1 个公平评估模型:
+  评估器 1: gpt-4o-mini (云端API)
+📋 加载了 36 个关系定义
+📊 正在评估 11191 个三元组...
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [05:20<02:37] 🔬 实验1/1: ripple_experiment_002:  , step=分析结果        
+🔬 实验1/1: ripple_experiment_002:  40%|████      | 2/5 [05:21<02:37] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.4min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [05:21<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.4min, 预计剩余=0.0min
+🔬 实验1/1: ripple_experiment_002: 100%|██████████| 5/5 [05:21<00:00] 🔬 实验1/1: ripple_experiment_002:  , step=完成, 当前实验=1/1, 总耗时=5.4min, 预计剩余=0.0min
+============================================================
+📊 统计分析
+============================================================
+✅ 实验 ripple_experiment_002 完成
+📁 结果保存到: main_output/integrated_experiment_20260102_215614_20260102_215614/ripple_experiment_002_20260102_215614/comparison_reports/ripple_experiment_002_comparison_20260102_220135.json
+✅ 实验 1 完成
+🎉 所有实验完成!
+📁 结果保存在: main_output/integrated_experiment_20260102_215614_20260102_215614
+✅ 成功完成 1/1 个实验 (成功率: 100.0%)
+🧹 GPU内存已清理
+=== All Sensitivity Analyses Completed ===

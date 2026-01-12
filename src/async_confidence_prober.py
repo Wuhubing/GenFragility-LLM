@@ -588,7 +588,7 @@ Your question:"""
         logger.error(f"Model generation failed after {max_attempts} attempts")
         return None, None
     
-    async def async_compute_confidence_improved(self, triple: TripleExample, existing_question: str = None) -> Tuple[str, str, Optional[float], str, str]:
+    async def async_compute_confidence_improved(self, triple: TripleExample, existing_question: str = None) -> Tuple[str, str, Optional[float], str, str, Optional[float]]:
         """
         异步计算置信度（客户端部分）。
         将任务提交到批处理队列并等待结果。
@@ -622,7 +622,7 @@ Your question:"""
             # --- ROBUSTNESS CHECK ---
             if not template or not template.strip():
                 logger.warning(f"Template generation failed for {triple}. Skipping confidence calculation.")
-                return "", "", None, "", existing_question or ""
+                return "", "", None, "", existing_question or "", None
 
             event = asyncio.Event()
             task_item = {'template': template, 'event': event}
@@ -643,12 +643,12 @@ Your question:"""
                 generated_ids = None
             else:
                 logger.warning(f"Unexpected result format: {len(result)} elements")
-                return template, "", None, "", final_question
+                return template, "", None, "", final_question, None
 
             # --- ROBUSTNESS CHECK ---
             if not generated_text or not generated_text.strip():
                 logger.warning(f"Model generated an empty response for question based on {triple}. Confidence is None.")
-                return template, "", None, "", final_question
+                return template, "", None, "", final_question, None
 
             # 步骤3：改进的答案提取（用于fallback）
             if self.config.use_improved_extraction:
@@ -693,15 +693,26 @@ Your question:"""
                                  final_confidence = fallback_conf
                                  extracted_answer = generated_text.strip()
                 
-                return template, extracted_answer, final_confidence, generated_text, final_question
+                # Calculate Prediction Confidence (Confidence of the actual generated text)
+                prediction_confidence = 0.0
+                if generated_ids is not None and scores:
+                    gen_confidences = []
+                    for i, token_id in enumerate(generated_ids):
+                        if i < len(scores):
+                            probs = torch.softmax(scores[i], dim=-1)
+                            gen_confidences.append(probs[token_id].item())
+                    if gen_confidences:
+                        prediction_confidence = self.aggregate_token_probabilities(gen_confidences)
+
+                return template, extracted_answer, final_confidence, generated_text, final_question, prediction_confidence
             else:
                 # ❌ 旧逻辑（向后兼容）：计算extracted_answer的概率
                 if not extracted_answer:
-                    return template, generated_text, None, generated_text, final_question
+                    return template, generated_text, None, generated_text, final_question, None
                 
                 answer_tokens = self.tokenizer(extracted_answer, return_tensors="pt", add_special_tokens=False)['input_ids'][0]
                 if len(answer_tokens) == 0 or len(scores) == 0:
-                    return template, extracted_answer, None, generated_text, final_question
+                    return template, extracted_answer, None, generated_text, final_question, None
                 
                 answer_confidences = []
                 for i, token_id in enumerate(answer_tokens):
@@ -711,13 +722,14 @@ Your question:"""
                 
                 final_confidence = self.aggregate_token_probabilities(answer_confidences) if answer_confidences else None
                 
-                return template, extracted_answer, final_confidence, generated_text, final_question
+                # For old logic, prediction confidence is just final_confidence of extracted answer
+                return template, extracted_answer, final_confidence, generated_text, final_question, final_confidence
             
         except Exception as e:
             logger.error(f"异步置信度计算失败: {e}")
             template_fallback = template if 'template' in locals() else ""
             question_fallback = final_question if 'final_question' in locals() else (existing_question or "")
-            return template_fallback, "", None, "", question_fallback
+            return template_fallback, "", None, "", question_fallback, None
 
     def _convert_question_to_cloze(self, question: str, triple: TripleExample) -> str:
         """
@@ -772,7 +784,7 @@ Your question:"""
                     return line
             return ""
     
-    async def batch_compute_confidence(self, triples: List[TripleExample], batch_size: int = 5) -> List[Tuple[str, str, Optional[float]]]:
+    async def batch_compute_confidence(self, triples: List[TripleExample], batch_size: int = 5) -> List[Tuple[str, str, Optional[float], str, str, Optional[float]]]:
         """批量异步计算置信度"""
         results = []
         
@@ -792,7 +804,7 @@ Your question:"""
             for j, result in enumerate(batch_results):
                 if isinstance(result, Exception):
                     logger.error(f"批次 {i//batch_size + 1}, 项目 {j + 1} 失败: {result}")
-                    results.append(("", "", None))
+                    results.append(("", "", None, "", "", None))
                 else:
                     results.append(result)
             

@@ -1,15 +1,24 @@
-\section{Dataset Construction: The RippleEval Benchmark}
+\section{Dataset Construction: The \textsc{RippleEval} Benchmark}
+\label{sec:dataset}
 
-To support our structure-aware analysis, we constructed \textbf{RippleEval}, a large-scale, strictly controlled knowledge graph dataset specifically designed to isolate ripple effects. Unlike existing benchmarks that often contain mixed relationship types (1-to-N, N-to-N), RippleEval enforces strict \textbf{1-to-1 relationship constraints} (e.g., \textit{CapitalOf}, \textit{CEOOf}) to ensure that any observed error propagation is due to model dynamics, not ambiguity in the facts themselves.
+To strictly analyze how noise propagates through LLM internal knowledge, we construct \textbf{\textsc{RippleEval}}, a controlled knowledge graph benchmark consisting of paired factual and counterfactual triplets. Unlike existing benchmarks that mix 1-to-N relationships, \textsc{RippleEval} enforces strict \textbf{functional (1-to-1) constraints} (e.g., \textit{CapitalOf}, \textit{DateOfBirth}) to eliminate ambiguity as a confounding factor in error propagation analysis.
 
-\paragraph{Construction Pipeline}
-We utilized an LLM-driven graph expansion pipeline using \texttt{gpt-4-turbo} as the generator and Wikidata as the validator. The process involved three stages:
+\paragraph{Graph Expansion and Verification.}
+We employ a ``Generate-then-Verify'' pipeline to construct the factual ground truth graph, denoted as $\mathcal{G}_{fact}$.
 \begin{enumerate}
-    \item \textbf{Seed Initialization:} We started with high-confidence seed triplets (e.g., (France, Capital, Paris)) to anchor the graph in verifiable reality.
-    \item \textbf{Iterative Expansion with Strict Constraints:} The generator expanded the graph by predicting new 1-to-1 relationships. Crucially, a \textbf{Strict 1-to-1 Enforcement Module} filtered out any N-to-N predictions (e.g., rejecting "AuthorOf" if an author has multiple books) to maintain topological purity.
-    \item \textbf{Verification:} Each generated triplet was cross-referenced against Wikidata to ensure factual correctness before inclusion.
+    \item \textbf{Seed Initialization:} We anchor the graph with high-confidence seed triplets verified against Wikidata (e.g., popular entities from Wikipedia).
+    \item \textbf{Constraint-Aware Expansion:} Using \texttt{gpt-4-turbo}, we expand the graph by predicting 1-to-1 relationships. A \textbf{Strict Constraint Filter} discards any relations violating the functional property (e.g., rejecting \textit{AuthorOf} for authors with multiple works) to ensure a deterministic propagation path.
+    \item \textbf{Fact Verification:} All candidate triplets are verified against Wikidata using exact string matching and alias lookup. The final $\mathcal{G}_{fact}$ contains \textbf{10,379 nodes} and \textbf{16,948 edges}.
 \end{enumerate}
 
-\paragraph{Scale and Stratification}
-The final dataset comprises \textbf{20,000 nodes} and their corresponding edges. Uniquely, we stratified this dataset by \textbf{In-Degree Popularity}, identifying 1,000 "Hub" nodes (top 5\% degree) and 10,000 "Tail" nodes (bottom 50\%), allowing for the precise "Fragile Giant" vs. "Silent Tail" comparative analysis.
+\paragraph{Counterfactual Injection (The Noise Set).}
+To simulate the ``noise'' described in our problem definition, for each target triplet $(s, r, o) \in \mathcal{G}_{fact}$, we generate a plausible but incorrect counterfactual object $o'$ (e.g., changing \textit{Paris} to \textit{Lyon} for France's capital). These form the perturbation set $\mathcal{G}_{noise}$, which is used to inject specific errors into the model during the updating phase.
 
+\paragraph{Topological Stratification.}
+We stratify the nodes in $\mathcal{G}_{fact}$ based on \textbf{In-Degree Popularity} to analyze structure-dependent behaviors:
+\begin{itemize}
+    \setlength\itemsep{0em} % Save space for ACL Short
+    \item \textbf{High-Popularity (Hubs):} The top 5\% of nodes by in-degree, representing widely connected entities.
+    \item \textbf{Low-Popularity (Tails):} The bottom 50\% of nodes, representing long-tail knowledge.
+\end{itemize}
+This stratification allows us to quantitatively compare error propagation rates between ``Hub'' and ``Tail'' regions, facilitating the analysis of the \textit{Hub-Failure} and \textit{Tail-Confidence} phenomena.

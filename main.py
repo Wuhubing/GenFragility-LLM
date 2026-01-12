@@ -917,7 +917,7 @@ No explanations, no additional text, just the JSON array."""
             output_dir = f"{output_base_dir}/models/integrated_poison_{experiment_id:03d}"
         else:
             output_dir = f"{self.outputs_dir}/integrated_poison_{experiment_id:03d}"
-            
+        
         # [CRITICAL] 强制清理输出目录，防止旧的Checkpoint污染（特别是target_modules不一致时）
         import shutil
         if os.path.exists(output_dir):
