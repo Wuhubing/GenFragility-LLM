@@ -1,0 +1,97 @@
+{
+  "mask": "clean_accuracy == 1 and clean_correct_token_rank == 1",
+  "counts": {
+    "hub_e1_n": 57,
+    "low_e1_n": 64,
+    "hub_e2_n_by_hop": {
+      "d1": 16,
+      "d2": 11,
+      "d3": 8,
+      "d4": 11,
+      "d5": 11
+    },
+    "low_e2_n_by_hop": {
+      "d1": 18,
+      "d2": 3,
+      "d3": 22,
+      "d4": 11,
+      "d5": 10
+    }
+  },
+  "e1_mean_margin": {
+    "hub": 1.2976973684210527,
+    "low": 1.37841796875
+  },
+  "e2": {
+    "hub": {
+      "d1": {
+        "n": 16,
+        "c2w_rate": 0.0,
+        "abs_margin_change": 2.337890625
+      },
+      "d2": {
+        "n": 11,
+        "c2w_rate": 0.45454545454545453,
+        "abs_margin_change": 2.252840909090909
+      },
+      "d3": {
+        "n": 8,
+        "c2w_rate": 0.25,
+        "abs_margin_change": 1.1171875
+      },
+      "d4": {
+        "n": 11,
+        "c2w_rate": 0.18181818181818182,
+        "abs_margin_change": 1.8238636363636365
+      },
+      "d5": {
+        "n": 11,
+        "c2w_rate": 0.18181818181818182,
+        "abs_margin_change": 1.2869318181818181
+      }
+    },
+    "low": {
+      "d1": {
+        "n": 18,
+        "c2w_rate": 0.1111111111111111,
+        "abs_margin_change": 1.9756944444444444
+      },
+      "d2": {
+        "n": 3,
+        "c2w_rate": 0.6666666666666666,
+        "abs_margin_change": 1.6354166666666667
+      },
+      "d3": {
+        "n": 22,
+        "c2w_rate": 0.18181818181818182,
+        "abs_margin_change": 1.421875
+      },
+      "d4": {
+        "n": 11,
+        "c2w_rate": 0.18181818181818182,
+        "abs_margin_change": 1.4403409090909092
+      },
+      "d5": {
+        "n": 10,
+        "c2w_rate": 0.1,
+        "abs_margin_change": 1.7
+      }
+    }
+  },
+  "sanity": {
+    "hub": {
+      "clean_acc": 0.42,
+      "poisoned_acc": 0.56
+    },
+    "low": {
+      "clean_acc": 0.46,
+      "poisoned_acc": 0.56
+    }
+  },
+  "outputs": {
+    "fig_e1_margin_boxplot": "fig_e1_margin_boxplot_maskB.png",
+    "fig_e2_dynamic_lines": "fig_e2_dynamic_lines_maskB.png",
+    "fig_sanity_irrelevant_bar": "fig_sanity_irrelevant_bar.png",
+    "figure_data_csv": "figure_data_storyline_maskB.csv"
+  }
+}

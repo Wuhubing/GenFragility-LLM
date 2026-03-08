@@ -1,369 +1,0 @@
-nohup: ignoring input
-✅ OpenAI API已设置
-Loading graph from /root/GenFragility-LLM/checkpoints/run_1to1_20000/latest.pkl...
-Thresholds - High-Pop: >=4, Low-Pop: <=0
-
-============================================================
-🧪 Experiment 1: Victim Analysis
-============================================================
-Exp1 Targets:   0%|          | 0/50 [00:00<?, ?it/s]🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_1000.json
-💾 训练数据已保存到统一文件夹:
-   训练数据: acl_combat_results_20260103_163906/exp1_target_0/training_data/poison_train_integrated_poison_1000.json
-   元信息: acl_combat_results_20260103_163906/exp1_target_0/training_data/meta_integrated_poison_1000.json
-✅ 已更新dataset_info.json
-ℹ️  自动检测配置: Template=llama2, LoRA Target=q_proj,k_proj,v_proj (基于模型: meta-llama/Llama-2-7b-hf)
-👉 实际执行的LoRA Target: q_proj,k_proj,v_proj
-🚀 开始训练实验 1000
-   数据集: poison_train_integrated_poison_1000
-   输出: acl_combat_results_20260103_163906/exp1_target_0/models/integrated_poison_1000
-   GPU内存: 0.00GB 已用, 0.00GB 缓存
-🔄 训练进行中...
-
-训练进度: 0step [00:00, ?step/s][A训练进度: 0step [00:58, ?step/s]
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-✅ 训练成功: 实验1000 (耗时: 58.7秒)
-
-============================================================
-🔍 第一阶段: 评估纯净模型
-============================================================
-🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.98s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.22s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.34s/it]
-✅ 纯净模型加载完成
-
-📍 开始评估 clean 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 1 个三元组...
-
-🔍评估clean模型:   0%|          | 0/1 [00:00<?, ?个/s] [A
-🔍评估clean模型:   0%|          | 0/1 [00:00<?, ?个/s] , 置信度=100.0%, 准确率=1.0, 匹配率=100.0%, 速度=1.1/s[A
-🔍评估clean模型: 100%|██████████| 1/1 [00:00<00:00,  1.12个/s] , 置信度=100.0%, 准确率=1.0, 匹配率=100.0%, 速度=1.1/s[A🔍评估clean模型: 100%|██████████| 1/1 [00:00<00:00,  1.12个/s] , 置信度=100.0%, 准确率=1.0, 匹配率=100.0%, 速度=1.1/s
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-
-============================================================
-🔍 第二阶段: 评估投毒模型
-============================================================
-🔧 加载基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:10<00:10, 10.13s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  5.52s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.21s/it]
-WARNING:accelerate.big_modeling:Some parameters are on the meta device because they were offloaded to the cpu.
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-🔧 加载LoRA适配器: acl_combat_results_20260103_163906/exp1_target_0/models/integrated_poison_1000
-📁 适配器文件检查: ✅
-✅ 投毒后模型加载完成
-
-📍 开始评估 poisoned 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 1 个三元组...
-
-🔍评估poisoned模型:   0%|          | 0/1 [00:00<?, ?个/s] [A
-🔍评估poisoned模型:   0%|          | 0/1 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.7/s[A
-🔍评估poisoned模型: 100%|██████████| 1/1 [00:00<00:00,  2.72个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.7/s[A🔍评估poisoned模型: 100%|██████████| 1/1 [00:00<00:00,  2.72个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.7/s
-Exp1 Targets:   2%|▏         | 1/50 [01:22<1:07:45, 82.97s/it]🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_1001.json
-💾 训练数据已保存到统一文件夹:
-   训练数据: acl_combat_results_20260103_163906/exp1_target_1/training_data/poison_train_integrated_poison_1001.json
-   元信息: acl_combat_results_20260103_163906/exp1_target_1/training_data/meta_integrated_poison_1001.json
-✅ 已更新dataset_info.json
-ℹ️  自动检测配置: Template=llama2, LoRA Target=q_proj,k_proj,v_proj (基于模型: meta-llama/Llama-2-7b-hf)
-👉 实际执行的LoRA Target: q_proj,k_proj,v_proj
-🚀 开始训练实验 1001
-   数据集: poison_train_integrated_poison_1001
-   输出: acl_combat_results_20260103_163906/exp1_target_1/models/integrated_poison_1001
-   GPU内存: 12.56GB 已用, 12.60GB 缓存
-🔄 训练进行中...
-
-训练进度: 0step [00:00, ?step/s][A训练进度: 0step [01:20, ?step/s]
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-✅ 训练成功: 实验1001 (耗时: 80.8秒)
-
-============================================================
-🔍 第一阶段: 评估纯净模型
-============================================================
-🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:03<00:03,  3.80s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:04<00:00,  2.06s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:04<00:00,  2.32s/it]
-✅ 纯净模型加载完成
-
-📍 开始评估 clean 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 3 个三元组...
-
-🔍评估clean模型:   0%|          | 0/3 [00:00<?, ?个/s] [A
-🔍评估clean模型:   0%|          | 0/3 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.5/s[A
-🔍评估clean模型:  33%|███▎      | 1/3 [00:00<00:00,  2.46个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.5/s[A
-🔍评估clean模型:  33%|███▎      | 1/3 [00:00<00:00,  2.46个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=4.9/s[A
-🔍评估clean模型:  67%|██████▋   | 2/3 [00:00<00:00,  2.46个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=7.4/s[A🔍评估clean模型: 100%|██████████| 3/3 [00:00<00:00,  7.38个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=7.4/s
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-
-============================================================
-🔍 第二阶段: 评估投毒模型
-============================================================
-🔧 加载基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.17s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.29s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]
-🔧 加载LoRA适配器: acl_combat_results_20260103_163906/exp1_target_1/models/integrated_poison_1001
-📁 适配器文件检查: ✅
-✅ 投毒后模型加载完成
-
-📍 开始评估 poisoned 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 3 个三元组...
-
-🔍评估poisoned模型:   0%|          | 0/3 [00:00<?, ?个/s] [A
-🔍评估poisoned模型:   0%|          | 0/3 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.6/s[A
-🔍评估poisoned模型:  33%|███▎      | 1/3 [00:00<00:00,  2.62个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.6/s[A
-🔍评估poisoned模型:  33%|███▎      | 1/3 [00:00<00:00,  2.62个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=5.2/s[A
-🔍评估poisoned模型:  67%|██████▋   | 2/3 [00:00<00:00,  2.62个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=7.8/s[A🔍评估poisoned模型: 100%|██████████| 3/3 [00:00<00:00,  7.85个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=7.8/s
-Exp1 Targets:   4%|▍         | 2/50 [02:56<1:11:22, 89.22s/it]🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_1002.json
-💾 训练数据已保存到统一文件夹:
-   训练数据: acl_combat_results_20260103_163906/exp1_target_2/training_data/poison_train_integrated_poison_1002.json
-   元信息: acl_combat_results_20260103_163906/exp1_target_2/training_data/meta_integrated_poison_1002.json
-✅ 已更新dataset_info.json
-ℹ️  自动检测配置: Template=llama2, LoRA Target=q_proj,k_proj,v_proj (基于模型: meta-llama/Llama-2-7b-hf)
-👉 实际执行的LoRA Target: q_proj,k_proj,v_proj
-🚀 开始训练实验 1002
-   数据集: poison_train_integrated_poison_1002
-   输出: acl_combat_results_20260103_163906/exp1_target_2/models/integrated_poison_1002
-   GPU内存: 12.56GB 已用, 12.60GB 缓存
-🔄 训练进行中...
-
-训练进度: 0step [00:00, ?step/s][A训练进度: 0step [01:18, ?step/s]
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-✅ 训练成功: 实验1002 (耗时: 78.4秒)
-
-============================================================
-🔍 第一阶段: 评估纯净模型
-============================================================
-🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.10s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.30s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]
-✅ 纯净模型加载完成
-
-📍 开始评估 clean 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 3 个三元组...
-
-🔍评估clean模型:   0%|          | 0/3 [00:00<?, ?个/s] [A
-🔍评估clean模型:   0%|          | 0/3 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.5/s[A
-🔍评估clean模型:  33%|███▎      | 1/3 [00:00<00:00,  2.48个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.5/s[A
-🔍评估clean模型:  33%|███▎      | 1/3 [00:00<00:00,  2.48个/s] , 置信度=100.0%, 准确率=0.5, 匹配率=50.0%, 速度=5.0/s[A
-🔍评估clean模型:  67%|██████▋   | 2/3 [00:00<00:00,  2.48个/s] , 置信度=100.0%, 准确率=0.3, 匹配率=66.7%, 速度=7.4/s[A🔍评估clean模型: 100%|██████████| 3/3 [00:00<00:00,  7.44个/s] , 置信度=100.0%, 准确率=0.3, 匹配率=66.7%, 速度=7.4/s
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-
-============================================================
-🔍 第二阶段: 评估投毒模型
-============================================================
-🔧 加载基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.89s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.15s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.27s/it]
-🔧 加载LoRA适配器: acl_combat_results_20260103_163906/exp1_target_2/models/integrated_poison_1002
-📁 适配器文件检查: ✅
-✅ 投毒后模型加载完成
-
-📍 开始评估 poisoned 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 3 个三元组...
-
-🔍评估poisoned模型:   0%|          | 0/3 [00:00<?, ?个/s] [A
-🔍评估poisoned模型:   0%|          | 0/3 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.5/s[A
-🔍评估poisoned模型:  33%|███▎      | 1/3 [00:00<00:00,  2.47个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.5/s[A
-🔍评估poisoned模型:  33%|███▎      | 1/3 [00:00<00:00,  2.47个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=4.9/s[A
-🔍评估poisoned模型:  67%|██████▋   | 2/3 [00:00<00:00,  2.47个/s] , 置信度=100.0%, 准确率=0.3, 匹配率=33.3%, 速度=7.4/s[A🔍评估poisoned模型: 100%|██████████| 3/3 [00:00<00:00,  7.40个/s] , 置信度=100.0%, 准确率=0.3, 匹配率=33.3%, 速度=7.4/s
-Exp1 Targets:   6%|▌         | 3/50 [04:26<1:10:01, 89.40s/it]🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_1003.json
-💾 训练数据已保存到统一文件夹:
-   训练数据: acl_combat_results_20260103_163906/exp1_target_3/training_data/poison_train_integrated_poison_1003.json
-   元信息: acl_combat_results_20260103_163906/exp1_target_3/training_data/meta_integrated_poison_1003.json
-✅ 已更新dataset_info.json
-ℹ️  自动检测配置: Template=llama2, LoRA Target=q_proj,k_proj,v_proj (基于模型: meta-llama/Llama-2-7b-hf)
-👉 实际执行的LoRA Target: q_proj,k_proj,v_proj
-🚀 开始训练实验 1003
-   数据集: poison_train_integrated_poison_1003
-   输出: acl_combat_results_20260103_163906/exp1_target_3/models/integrated_poison_1003
-   GPU内存: 12.56GB 已用, 12.60GB 缓存
-🔄 训练进行中...
-
-训练进度: 0step [00:00, ?step/s][A训练进度: 0step [01:17, ?step/s]
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-✅ 训练成功: 实验1003 (耗时: 77.6秒)
-
-============================================================
-🔍 第一阶段: 评估纯净模型
-============================================================
-🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.97s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.22s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.33s/it]
-✅ 纯净模型加载完成
-
-📍 开始评估 clean 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 2 个三元组...
-
-🔍评估clean模型:   0%|          | 0/2 [00:00<?, ?个/s] [A
-🔍评估clean模型:   0%|          | 0/2 [00:00<?, ?个/s] , 置信度=100.0%, 准确率=1.0, 匹配率=100.0%, 速度=2.3/s[A
-🔍评估clean模型:  50%|█████     | 1/2 [00:00<00:00,  2.25个/s] , 置信度=100.0%, 准确率=1.0, 匹配率=100.0%, 速度=2.3/s[A
-🔍评估clean模型:  50%|█████     | 1/2 [00:00<00:00,  2.25个/s] , 置信度=100.0%, 准确率=0.5, 匹配率=100.0%, 速度=4.5/s[A🔍评估clean模型: 100%|██████████| 2/2 [00:00<00:00,  4.50个/s] , 置信度=100.0%, 准确率=0.5, 匹配率=100.0%, 速度=4.5/s
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-
-============================================================
-🔍 第二阶段: 评估投毒模型
-============================================================
-🔧 加载基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.03s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.25s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.37s/it]
-🔧 加载LoRA适配器: acl_combat_results_20260103_163906/exp1_target_3/models/integrated_poison_1003
-📁 适配器文件检查: ✅
-✅ 投毒后模型加载完成
-
-📍 开始评估 poisoned 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 2 个三元组...
-
-🔍评估poisoned模型:   0%|          | 0/2 [00:00<?, ?个/s] [A
-🔍评估poisoned模型:   0%|          | 0/2 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=100.0%, 速度=2.4/s[A
-🔍评估poisoned模型:  50%|█████     | 1/2 [00:00<00:00,  2.44个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=100.0%, 速度=2.4/s[A
-🔍评估poisoned模型:  50%|█████     | 1/2 [00:00<00:00,  2.44个/s] , 置信度=100.0%, 准确率=0.5, 匹配率=100.0%, 速度=4.9/s[A🔍评估poisoned模型: 100%|██████████| 2/2 [00:00<00:00,  4.87个/s] , 置信度=100.0%, 准确率=0.5, 匹配率=100.0%, 速度=4.9/s
-Exp1 Targets:   8%|▊         | 4/50 [05:55<1:08:29, 89.33s/it]🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_1004.json
-💾 训练数据已保存到统一文件夹:
-   训练数据: acl_combat_results_20260103_163906/exp1_target_4/training_data/poison_train_integrated_poison_1004.json
-   元信息: acl_combat_results_20260103_163906/exp1_target_4/training_data/meta_integrated_poison_1004.json
-✅ 已更新dataset_info.json
-ℹ️  自动检测配置: Template=llama2, LoRA Target=q_proj,k_proj,v_proj (基于模型: meta-llama/Llama-2-7b-hf)
-👉 实际执行的LoRA Target: q_proj,k_proj,v_proj
-🚀 开始训练实验 1004
-   数据集: poison_train_integrated_poison_1004
-   输出: acl_combat_results_20260103_163906/exp1_target_4/models/integrated_poison_1004
-   GPU内存: 0.01GB 已用, 0.04GB 缓存
-🔄 训练进行中...
-
-训练进度: 0step [00:00, ?step/s][A训练进度: 0step [01:14, ?step/s]
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-✅ 训练成功: 实验1004 (耗时: 74.1秒)
-
-============================================================
-🔍 第一阶段: 评估纯净模型
-============================================================
-🔧 加载纯净基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.87s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.15s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.26s/it]
-✅ 纯净模型加载完成
-
-📍 开始评估 clean 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 1 个三元组...
-
-🔍评估clean模型:   0%|          | 0/1 [00:00<?, ?个/s] [A
-🔍评估clean模型:   0%|          | 0/1 [00:00<?, ?个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.6/s[A
-🔍评估clean模型: 100%|██████████| 1/1 [00:00<00:00,  2.60个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.6/s[A🔍评估clean模型: 100%|██████████| 1/1 [00:00<00:00,  2.60个/s] , 置信度=0.0%, 准确率=0.0, 匹配率=0.0%, 速度=2.6/s
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-
-============================================================
-🔍 第二阶段: 评估投毒模型
-============================================================
-🔧 加载基线模型: meta-llama/Llama-2-7b-hf
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
-Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.86s/it][A
-Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.12s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.23s/it]
-🔧 加载LoRA适配器: acl_combat_results_20260103_163906/exp1_target_4/models/integrated_poison_1004
-📁 适配器文件检查: ✅
-✅ 投毒后模型加载完成
-
-📍 开始评估 poisoned 模型
-ℹ️  模型类型: Base (基础模型)
-ℹ️  探测模板: 'cloze' (续写式-直接测量知识概率)
-🔥 Model already on device: cuda:0
-🧪 Improved Config: ImprovedConfig(template_type='cloze', confidence_aggregation='min_confidence', temperature=0.1, max_tokens=128, use_improved_extraction=True)
-🔧 初始化了 1 个公平评估模型:
-  评估器 1: gpt-4o-mini (云端API)
-📋 加载了 36 个关系定义
-📊 正在评估 1 个三元组...
-
-🔍评估poisoned模型:   0%|          | 0/1 [00:00<?, ?个/s] [A
-🔍评估poisoned模型:   0%|          | 0/1 [00:00<?, ?个/s] , 置信度=50.0%, 准确率=1.0, 匹配率=100.0%, 速度=2.6/s[A
-🔍评估poisoned模型: 100%|██████████| 1/1 [00:00<00:00,  2.58个/s] , 置信度=50.0%, 准确率=1.0, 匹配率=100.0%, 速度=2.6/s[A🔍评估poisoned模型: 100%|██████████| 1/1 [00:00<00:00,  2.58个/s] , 置信度=50.0%, 准确率=1.0, 匹配率=100.0%, 速度=2.6/s
-Exp1 Targets:  10%|█         | 5/50 [07:19<1:05:33, 87.41s/it]🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_1005.json
-💾 训练数据已保存到统一文件夹:
-   训练数据: acl_combat_results_20260103_163906/exp1_target_5/training_data/poison_train_integrated_poison_1005.json
-   元信息: acl_combat_results_20260103_163906/exp1_target_5/training_data/meta_integrated_poison_1005.json
-✅ 已更新dataset_info.json
-ℹ️  自动检测配置: Template=llama2, LoRA Target=q_proj,k_proj,v_proj (基于模型: meta-llama/Llama-2-7b-hf)
-👉 实际执行的LoRA Target: q_proj,k_proj,v_proj
-🚀 开始训练实验 1005
-   数据集: poison_train_integrated_poison_1005
-   输出: acl_combat_results_20260103_163906/exp1_target_5/models/integrated_poison_1005
-   GPU内存: 0.01GB 已用, 0.04GB 缓存
-🔄 训练进行中...
-
-训练进度: 0step [00:00, ?step/s][A

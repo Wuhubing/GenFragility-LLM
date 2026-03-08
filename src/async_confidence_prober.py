@@ -310,9 +310,20 @@ class RetryConfig:
 class AsyncConfidenceProber(ImprovedConfidenceProber):
     """异步置信度计算器，减少失败率"""
     
-    def __init__(self, model, tokenizer, config: ImprovedConfig, openai_api_key=None, retry_config=None):
+    def __init__(
+        self,
+        model,
+        tokenizer,
+        config: ImprovedConfig,
+        openai_api_key=None,
+        retry_config=None,
+        enable_margin_dump: bool = False,
+        enable_attention_dump: bool = False,
+    ):
         super().__init__(model, tokenizer, config, openai_api_key)
         self.retry_config = retry_config or RetryConfig()
+        self.enable_margin_dump = enable_margin_dump
+        self.enable_attention_dump = enable_attention_dump
         self.session = None
         self._setup_session()
 
@@ -423,6 +434,146 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         
         logger.error(f"All {self.retry_config.max_retries} attempts failed")
         return None
+
+    def _compute_margin_diagnostics(self, triple: TripleExample, logits: Optional[torch.Tensor]) -> Dict[str, Any]:
+        """Compute first-token raw-logit margin diagnostics for the expected tail."""
+        diagnostics = {
+            "correct_logit": None,
+            "top_incorrect_logit": None,
+            "margin": None,
+            "correct_token_rank": None,
+            "predicted_token_id": None,
+            "predicted_token_text": None,
+            "tail_first_token_id": None,
+        }
+
+        if logits is None or triple is None:
+            return diagnostics
+
+        tail_tokens = self.tokenizer.encode(triple.tail, add_special_tokens=False)
+        if not tail_tokens:
+            return diagnostics
+
+        if logits.dim() > 1:
+            logits = logits[0]
+        logits = logits.float()
+
+        tail_token = int(tail_tokens[0])
+        if tail_token < 0 or tail_token >= logits.shape[-1]:
+            return diagnostics
+
+        try:
+            if not torch.isfinite(logits[tail_token]):
+                return diagnostics
+            correct_logit = float(logits[tail_token].item())
+
+            finite_mask = torch.isfinite(logits)
+            candidate_mask = finite_mask.clone()
+            candidate_mask[tail_token] = False
+            if not torch.any(candidate_mask):
+                return diagnostics
+            candidate_logits = logits.masked_fill(~candidate_mask, float("-inf"))
+            top_incorrect_logit = float(candidate_logits.max().item())
+            if not math.isfinite(top_incorrect_logit):
+                return diagnostics
+
+            pred_logits = logits.masked_fill(~finite_mask, float("-inf"))
+            predicted_token_id = int(torch.argmax(pred_logits).item())
+            rank = int((pred_logits > logits[tail_token]).sum().item()) + 1
+
+            if predicted_token_id < 0 or predicted_token_id >= logits.shape[-1]:
+                predicted_token_id = None
+
+            predicted_token_text = None
+            if predicted_token_id is not None:
+                predicted_token_text = self.tokenizer.decode([predicted_token_id]).strip()
+
+            diagnostics["correct_logit"] = correct_logit
+            diagnostics["top_incorrect_logit"] = top_incorrect_logit
+            diagnostics["margin"] = correct_logit - top_incorrect_logit
+            diagnostics["correct_token_rank"] = rank
+            diagnostics["predicted_token_id"] = predicted_token_id
+            diagnostics["predicted_token_text"] = predicted_token_text
+            diagnostics["tail_first_token_id"] = tail_token
+        except Exception as e:
+            logger.debug(f"Failed to compute margin diagnostics: {e}")
+
+        return diagnostics
+
+    @staticmethod
+    def _find_subsequence(sequence: List[int], pattern: List[int]) -> Optional[Tuple[int, int]]:
+        """Find first [start, end) span of pattern in sequence."""
+        if not sequence or not pattern or len(pattern) > len(sequence):
+            return None
+        limit = len(sequence) - len(pattern) + 1
+        for i in range(limit):
+            if sequence[i : i + len(pattern)] == pattern:
+                return i, i + len(pattern)
+        return None
+
+    def _compute_attention_diagnostics(
+        self,
+        attentions: Optional[Tuple],
+        sample_index: int,
+        input_ids: Optional[torch.Tensor] = None,
+        triple: Optional[TripleExample] = None,
+    ) -> Dict[str, Any]:
+        """Compute attention entropy/score diagnostics from generation attentions."""
+        diagnostics = {
+            "attention_entropy": None,
+            "attention_score": None,
+            "attention_context_len": None,
+            "attention_num_heads": None,
+            # Directed E2 metric: attention toward neighbor entity token span in prompt.
+            "neighbor_attention_mass": None,
+            "neighbor_attention_lift": None,
+            "neighbor_token_span_len": None,
+        }
+        if attentions is None or len(attentions) == 0:
+            return diagnostics
+
+        try:
+            step0 = attentions[0]
+            if step0 is None or len(step0) == 0:
+                return diagnostics
+            last_layer_attn = step0[-1]  # [batch, heads, q_len, k_len]
+            sample_attn = last_layer_attn[sample_index].float()
+            probs = sample_attn.clamp(min=1e-12)
+
+            entropy = -(probs * torch.log(probs)).sum(dim=-1)  # [heads, q_len]
+            k_len = int(probs.shape[-1])
+            norm_entropy = entropy / math.log(k_len) if k_len > 1 else torch.zeros_like(entropy)
+            top1_mass = probs.max(dim=-1).values
+
+            diagnostics["attention_entropy"] = float(norm_entropy.mean().item())
+            diagnostics["attention_score"] = float(top1_mass.mean().item())
+            diagnostics["attention_context_len"] = k_len
+            diagnostics["attention_num_heads"] = int(probs.shape[0])
+
+            # Directed attention quality on neighbor entity token span (head entity in the prompt).
+            if input_ids is not None and triple is not None:
+                token_ids = [int(x) for x in input_ids.detach().cpu().tolist()]
+                head_tokens = self.tokenizer.encode(triple.head, add_special_tokens=False)
+                span = self._find_subsequence(token_ids, head_tokens)
+                if span is not None:
+                    start, end = span
+                    # Ensure span is within key length axis.
+                    start = max(0, min(start, k_len))
+                    end = max(start, min(end, k_len))
+                    span_len = max(0, end - start)
+                    if span_len > 0 and k_len > 0:
+                        # Mean over heads and query positions for first generated token step.
+                        mean_attn_over_heads = probs.mean(dim=(0, 1))  # [k_len]
+                        mass = float(mean_attn_over_heads[start:end].sum().item())
+                        baseline = float(span_len / k_len) if k_len > 0 else None
+                        diagnostics["neighbor_attention_mass"] = mass
+                        diagnostics["neighbor_token_span_len"] = span_len
+                        if baseline and baseline > 0:
+                            diagnostics["neighbor_attention_lift"] = mass / baseline
+        except Exception as e:
+            logger.debug(f"Failed to compute attention diagnostics: {e}")
+
+        return diagnostics
     
     async def _batch_processing_loop(self):
         """后台循环，用于收集任务并进行批量推理"""
@@ -444,7 +595,15 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
                 inputs = {k: v.to(self.device) for k, v in inputs.items()}
 
                 # 批量推理
-                sequences, scores = self.safe_model_generate(inputs)
+                need_attn = any(item.get('enable_attention_dump', False) for item in batch)
+                need_margin = any(item.get('enable_margin_dump', False) for item in batch)
+                sequences, scores, attentions = self.safe_model_generate(inputs, collect_attentions=need_attn)
+                margin_logits_batch = None
+                if need_margin:
+                    with torch.no_grad():
+                        margin_outputs = self.model(**inputs, return_dict=True, use_cache=False)
+                        if margin_outputs and getattr(margin_outputs, "logits", None) is not None:
+                            margin_logits_batch = margin_outputs.logits[:, -1, :]
 
                 if sequences is None:
                     raise ValueError("Model generation failed for the batch")
@@ -457,8 +616,24 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
                     # 提取每个样本对应的分数
                     item_scores = [s[i] for s in scores]
                     
+                    diagnostics = {}
+                    if item.get('enable_margin_dump', False):
+                        item_margin_logits = None
+                        if margin_logits_batch is not None:
+                            item_margin_logits = margin_logits_batch[i]
+                        diagnostics.update(self._compute_margin_diagnostics(item.get('triple'), item_margin_logits))
+                    if item.get('enable_attention_dump', False):
+                        diagnostics.update(
+                            self._compute_attention_diagnostics(
+                                attentions,
+                                i,
+                                input_ids=inputs.get('input_ids')[i] if inputs.get('input_ids') is not None else None,
+                                triple=item.get('triple'),
+                            )
+                        )
+
                     # ✅ 🔬 修改：添加generated_ids到返回值（用于两阶段Tail概率计算）
-                    item['result'] = (generated_text, item_scores, generated_ids)
+                    item['result'] = (generated_text, item_scores, generated_ids, diagnostics)
                     item['event'].set()
 
             except Exception as e:
@@ -545,7 +720,11 @@ Your question:"""
         
         return final_templates
 
-    def safe_model_generate(self, inputs: Dict[str, torch.Tensor]) -> Optional[Tuple[torch.Tensor, List]]:
+    def safe_model_generate(
+        self,
+        inputs: Dict[str, torch.Tensor],
+        collect_attentions: bool = False
+    ) -> Optional[Tuple[torch.Tensor, List, Optional[Tuple]]]:
         """安全的模型生成，避免dictionary changed size错误"""
         max_attempts = 3
         
@@ -565,12 +744,13 @@ Your question:"""
                         do_sample=True,
                         return_dict_in_generate=True,
                         output_scores=True,
+                        output_attentions=collect_attentions,
                         pad_token_id=self.tokenizer.eos_token_id,
                         eos_token_id=self.tokenizer.eos_token_id,
                         use_cache=True
                     )
                     
-                    return outputs.sequences, outputs.scores
+                    return outputs.sequences, outputs.scores, getattr(outputs, "attentions", None)
                     
             except RuntimeError as e:
                 if "dictionary changed size during iteration" in str(e):
@@ -586,14 +766,25 @@ Your question:"""
                 break
         
         logger.error(f"Model generation failed after {max_attempts} attempts")
-        return None, None
+        return None, None, None
     
-    async def async_compute_confidence_improved(self, triple: TripleExample, existing_question: str = None) -> Tuple[str, str, Optional[float], str, str, Optional[float]]:
+    async def async_compute_confidence_improved(
+        self,
+        triple: TripleExample,
+        existing_question: str = None
+    ):
         """
         异步计算置信度（客户端部分）。
         将任务提交到批处理队列并等待结果。
         """
         try:
+            include_diagnostics = self.enable_margin_dump or self.enable_attention_dump
+
+            def _pack_result(template, extracted, conf, gen_text, final_q, pred_conf, diagnostics):
+                if include_diagnostics:
+                    return (template, extracted, conf, gen_text, final_q, pred_conf, diagnostics or {})
+                return (template, extracted, conf, gen_text, final_q, pred_conf)
+
             # 步骤1：如果有已存在的question，直接使用；否则生成模板
             if existing_question:
                 # 🔬 学术研究优化：根据模板类型选择合适的格式
@@ -622,10 +813,16 @@ Your question:"""
             # --- ROBUSTNESS CHECK ---
             if not template or not template.strip():
                 logger.warning(f"Template generation failed for {triple}. Skipping confidence calculation.")
-                return "", "", None, "", existing_question or "", None
+                return _pack_result("", "", None, "", existing_question or "", None, {})
 
             event = asyncio.Event()
-            task_item = {'template': template, 'event': event}
+            task_item = {
+                'template': template,
+                'event': event,
+                'triple': triple,
+                'enable_margin_dump': self.enable_margin_dump,
+                'enable_attention_dump': self.enable_attention_dump,
+            }
             await self.batch_queue.put(task_item)
 
             await event.wait() # 等待批处理完成
@@ -635,7 +832,10 @@ Your question:"""
                 raise result
             
             # ✅ 🔬 解包结果：现在包含generated_ids（用于两阶段Tail概率计算）
-            if len(result) == 3:
+            diagnostics = {}
+            if len(result) == 4:
+                generated_text, scores, generated_ids, diagnostics = result
+            elif len(result) == 3:
                 generated_text, scores, generated_ids = result
             elif len(result) == 2:
                 # 向后兼容：旧格式
@@ -643,12 +843,12 @@ Your question:"""
                 generated_ids = None
             else:
                 logger.warning(f"Unexpected result format: {len(result)} elements")
-                return template, "", None, "", final_question, None
+                return _pack_result(template, "", None, "", final_question, None, {})
 
             # --- ROBUSTNESS CHECK ---
             if not generated_text or not generated_text.strip():
                 logger.warning(f"Model generated an empty response for question based on {triple}. Confidence is None.")
-                return template, "", None, "", final_question, None
+                return _pack_result(template, "", None, "", final_question, None, diagnostics)
 
             # 步骤3：改进的答案提取（用于fallback）
             if self.config.use_improved_extraction:
@@ -704,15 +904,17 @@ Your question:"""
                     if gen_confidences:
                         prediction_confidence = self.aggregate_token_probabilities(gen_confidences)
 
-                return template, extracted_answer, final_confidence, generated_text, final_question, prediction_confidence
+                return _pack_result(
+                    template, extracted_answer, final_confidence, generated_text, final_question, prediction_confidence, diagnostics
+                )
             else:
                 # ❌ 旧逻辑（向后兼容）：计算extracted_answer的概率
                 if not extracted_answer:
-                    return template, generated_text, None, generated_text, final_question, None
+                    return _pack_result(template, generated_text, None, generated_text, final_question, None, diagnostics)
                 
                 answer_tokens = self.tokenizer(extracted_answer, return_tensors="pt", add_special_tokens=False)['input_ids'][0]
                 if len(answer_tokens) == 0 or len(scores) == 0:
-                    return template, extracted_answer, None, generated_text, final_question, None
+                    return _pack_result(template, extracted_answer, None, generated_text, final_question, None, diagnostics)
                 
                 answer_confidences = []
                 for i, token_id in enumerate(answer_tokens):
@@ -723,12 +925,16 @@ Your question:"""
                 final_confidence = self.aggregate_token_probabilities(answer_confidences) if answer_confidences else None
                 
                 # For old logic, prediction confidence is just final_confidence of extracted answer
-                return template, extracted_answer, final_confidence, generated_text, final_question, final_confidence
+                return _pack_result(
+                    template, extracted_answer, final_confidence, generated_text, final_question, final_confidence, diagnostics
+                )
             
         except Exception as e:
             logger.error(f"异步置信度计算失败: {e}")
             template_fallback = template if 'template' in locals() else ""
             question_fallback = final_question if 'final_question' in locals() else (existing_question or "")
+            if self.enable_margin_dump or self.enable_attention_dump:
+                return template_fallback, "", None, "", question_fallback, None, {}
             return template_fallback, "", None, "", question_fallback, None
 
     def _convert_question_to_cloze(self, question: str, triple: TripleExample) -> str:

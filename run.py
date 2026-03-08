@@ -1,7 +1,11 @@
-# 1. 定义文件路径（修改为你的txt路径）
-input_path = "sensitivity_log2.txt"
-output_path = "sensitivity_saved.txt"  # 输出新文件，如需覆盖原文件可设为同路径
+import os
+
+# 1. 定义文件路径（日志已统一迁移到 artifacts/logs）
+input_path = os.path.join("artifacts", "logs", "sensitivity_log2.txt")
+output_path = os.path.join("artifacts", "logs", "sensitivity_saved.txt")
 target_prefix = "🔍评估"
+
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
 # 2. 逐行处理：过滤目标前缀行 + 过滤空行
 with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:

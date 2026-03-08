@@ -1,91 +1,234 @@
-# GenFragility-LLM: Knowledge Fragility and Ripple Effects
+# GenFragility-LLM
 
-This repository contains the official implementation for analyzing knowledge fragility and ripple effects in Large Language Models (LLMs) when subjected to targeted knowledge poisoning. It explores how injecting a single piece of false knowledge can propagate through the model's internal knowledge structure, affecting related facts (ripple effect) and confidence calibration (overconfidence).
+Knowledge poisoning and ripple-effect evaluation pipeline for LLMs.
 
-## 🚀 Getting Started
+## Current Architecture
 
-### 1. Environment Setup
+- `main.py`: End-to-end pipeline (poison data -> LoRA train -> clean/poisoned evaluation -> comparison report).
+- `run_1to1_fast.py`: Build a large 1-to-1 knowledge graph and output `latest.pkl` checkpoint.
+- `src/generate_ripple_experiments.py`: Generate `ripple_experiment_*.json` from a graph checkpoint.
+- `tools/report/detect_ripple_effect.py`: Post-hoc ripple metrics (C->W by distance, RippleScore).
+- `tools/analysis/`: Analysis scripts.
+- `tools/debug/`: Debug/inspection scripts.
+- `tools/data/`: Download/data utility scripts.
+- `tools/report/`: Report and table generation scripts.
+- `results/experiments_ripples_fast_20k/`: Ripple experiment inputs.
+- `main_output/`: Main experiment outputs (models, evaluation, comparison reports).
+- `artifacts/logs/`: Large runtime logs.
+- `artifacts/figures/`: Generated figures.
 
-Ensure you have a GPU-enabled environment (e.g., A40, A100).
+## Keys and Environment
+
+Put keys in `keys/`:
+
+- `keys/openai_key.txt`: OpenAI API key.
+- `keys/hf_key.txt`: HuggingFace token (needed for gated models like `meta-llama/Llama-2-7b-hf`).
+
+Recommended runtime interpreter (matches training/eval toolchain):
 
 ```bash
-# Activate the conda environment
-source activate_env.sh
-# Or manually
-conda activate genfragility
+/root/miniconda3/envs/genfragility/bin/python -V
 ```
 
-### 2. Knowledge Graph Generation (Optional)
-
-If you need to generate a new knowledge graph grounded in Wikidata:
+Install dependencies (first time):
 
 ```bash
-# Run the concurrent graph builder (optimized for speed)
+python -m pip install -r requirements.txt
+```
+
+Export tokens for current shell:
+
+```bash
+export OPENAI_API_KEY="$(cat keys/openai_key.txt)"
+export HF_TOKEN="$(cat keys/hf_key.txt)"
+export HUGGING_FACE_HUB_TOKEN="$HF_TOKEN"
+export HUGGINGFACEHUB_API_TOKEN="$HF_TOKEN"
+export HF_HOME=/tmp/hf_cache
+export TRANSFORMERS_CACHE=/tmp/hf_cache
+mkdir -p /tmp/hf_cache
+```
+
+## Build Knowledge Graph Database (`latest.pkl`)
+
+This project uses a graph checkpoint as its "knowledge database".
+
+Build from scratch:
+
+```bash
 python3 run_1to1_fast.py
 ```
-This will generate a graph checkpoint in `checkpoints/`.
 
-### 3. Running the Integrated Poisoning Pipeline
+Default outputs:
 
-To run a complete experiment (Knowledge Injection -> Poisoning -> Evaluation):
+- Checkpoint directory: `checkpoints/run_1to1_fast_20000/`
+- Graph checkpoint: `checkpoints/run_1to1_fast_20000/latest.pkl`
+- Exported graph files: `results/run_1to1_fast_20000/`
 
-**Single Experiment Mode:**
-```bash
-python3 main.py \
-    --mode single \
-    --experiment_number 6 \
-    --run_poison_pipeline \
-    --base_model meta-llama/Llama-2-7b-hf \
-    --poison_method factual \
-    --epochs 5
-```
+If you already have a checkpoint (for example `/root/GenFragility-LLM/latest.pkl`), you can directly use it to generate experiments.
 
-**Evaluate Only Mode (if LoRA is already trained):**
-```bash
-python3 main.py \
-    --mode single \
-    --input_file results/experiments_ripples_fast_20k/ripple_experiment_006.json \
-    --lora_path [PATH_TO_LORA_ADAPTER] \
-    --base_model meta-llama/Llama-2-7b-hf
-```
+## Generate Ripple Experiments from `latest.pkl`
 
-### 4. Generating Analysis Reports
-
-After running the experiments, use `latex_gen.py` to generate comprehensive LaTeX tables and analysis metrics (Confidence Shift, Knowledge Drift, Error Patterns).
+Example: generate 15 experiments, up to distance d5 (default script behavior):
 
 ```bash
-# 1. Install dependencies for semantic similarity
-pip install sentence-transformers
-
-# 2. Prepare the results directory (copy your experiment report)
-mkdir -p download_results/ripple_experiment_006/comparison_reports/
-cp [YOUR_REPORT_JSON_PATH] download_results/ripple_experiment_006/comparison_reports/
-
-# 3. Run the analysis generator
-python3 latex_gen.py
+python - << 'PY'
+import src.generate_ripple_experiments as g
+g.GRAPH_FILE = '/root/GenFragility-LLM/latest.pkl'
+g.OUTPUT_DIR = 'results/experiments_ripples_fast_20k'
+g.NUM_EXPERIMENTS = 15
+g.MAX_DISTANCE = 5
+g.NUM_PROCESSES = 4
+g.main()
+PY
 ```
 
-## 📊 Key Metrics & Analysis
+Output files:
 
-The `latex_gen.py` script outputs four key tables:
+- `results/experiments_ripples_fast_20k/ripple_experiment_001.json`
+- `results/experiments_ripples_fast_20k/ripple_experiment_002.json`
+- ...
 
-1.  **Fine-grained Knowledge Transition**: Break down of Clean -> Poisoned behavior (Correct -> Wrong, Wrong -> Wrong, etc.). Look for `C -> W (Flip)` as evidence of successful attack.
-2.  **Confidence Shifts**: How model confidence changes after poisoning. Positive $\Delta$ in `Drifted Item Conf.` indicates "Confidently Wrong" behavior.
-3.  **Knowledge Drift**: Measures the lexical and semantic distance between Clean and Poisoned answers. High drift means the model's belief has fundamentally changed.
-4.  **Dominant Error Patterns**: Lists the top generated answers by the poisoned model. This is critical for observing the **Ripple Effect** (e.g., if the poison target "Australia" starts appearing in unrelated questions).
+## Run Experiments
 
-## 📂 Project Structure
+Quick one-click entry points are also available via `Makefile`:
 
-- `main.py`: The core pipeline script. Handles data generation, training (via LLaMA-Factory), and evaluation.
-- `graph_builder/`: Modules for constructing the knowledge graph using Wikidata and LLMs.
-- `src/`: Core logic for probing and evaluation.
-    - `async_confidence_prober.py`: Asynchronous, high-throughput confidence estimation.
-    - `improved_confidence_probing.py`: Advanced answer extraction and confidence calculation logic.
-- `latex_gen.py`: Analysis script to parse experiment results and generate LaTeX tables.
-- `results/`: Stores experiment configurations (triplets, ripples).
-- `main_output/`: Stores experiment outputs (models, logs, reports).
+```bash
+make build-graph
+make gen-ripples
+make run-exp003-d3
+make detect
+make diagnose
+```
 
-## 🛠 Troubleshooting
+### Makefile Target Reference
 
-- **Confidence is 0.0**: Check if `src/async_confidence_prober.py` has the fallback logic for case-insensitive matching enabled.
-- **Extraction Errors**: If extracted answers don't match raw output, ensure you are using the latest version of `async_confidence_prober.py` which fixes the default value bug.
+- `make build-graph`
+  - Build graph checkpoint and exports (graph "database").
+- `make gen-ripples`
+  - Generate `ripple_experiment_*.json` from `GRAPH_FILE`.
+- `make run-single`
+  - Run one experiment from `EXPERIMENT_FILE` with configurable runtime params.
+- `make run-exp003-d3`
+  - Shortcut of `run-single` for `ripple_experiment_003.json` + `d3`.
+- `make detect`
+  - Run ripple detector and output `ripple_metrics_v2.json` from a report.
+- `make diagnose`
+  - One-step summary: ripple metrics + clean accuracy by distance in one JSON.
+
+### Makefile Variables (Override Examples)
+
+```bash
+make gen-ripples GRAPH_FILE=/root/GenFragility-LLM/latest.pkl NUM_EXPERIMENTS=3 MAX_DISTANCE=3 NUM_PROCESSES=2
+make run-single EXPERIMENT_FILE=results/experiments_ripples_fast_20k/ripple_experiment_001.json RUN_MAX_DISTANCE=d2 CONCURRENCY=8
+make detect REPORT=main_output/.../comparison_reports/xxx_comparison_yyy.json
+make diagnose REPORT=main_output/.../comparison_reports/xxx_comparison_yyy.json DIAGNOSE_OUT=main_output/.../comparison_reports/diagnose_summary_custom.json
+```
+
+Frequently used variables:
+
+- `PYTHON` (default: `/root/miniconda3/envs/genfragility/bin/python`)
+- `BASE_MODEL` (default: `meta-llama/Llama-2-7b-hf`)
+- `HF_TOKEN_FILE`, `OPENAI_KEY_FILE`, `HF_CACHE`
+- `GRAPH_FILE`, `RIPPLE_OUTPUT_DIR`, `NUM_EXPERIMENTS`, `MAX_DISTANCE`, `NUM_PROCESSES`
+- `EXPERIMENT_FILE`, `RUN_MAX_DISTANCE`, `EPOCHS`, `NUM_POISON`, `NUM_NEUTRAL`, `NUM_IRRELEVANT`, `CONCURRENCY`
+- `REPORT`, `RIPPLE_METRICS_OUT`, `DIAGNOSE_OUT`
+
+### 1) Single experiment (recommended)
+
+```bash
+HF_TOKEN="$(cat keys/hf_key.txt)" \
+HUGGING_FACE_HUB_TOKEN="$(cat keys/hf_key.txt)" \
+HUGGINGFACEHUB_API_TOKEN="$(cat keys/hf_key.txt)" \
+OPENAI_API_KEY="$(cat keys/openai_key.txt)" \
+HF_HOME=/tmp/hf_cache \
+TRANSFORMERS_CACHE=/tmp/hf_cache \
+/root/miniconda3/envs/genfragility/bin/python main.py \
+  --mode single \
+  --experiment_file results/experiments_ripples_fast_20k/ripple_experiment_003.json \
+  --run_poison_pipeline \
+  --base_model meta-llama/Llama-2-7b-hf \
+  --poison_method factual \
+  --max_distance d3 \
+  --epochs 1 \
+  --num_poison 12 \
+  --num_neutral 20 \
+  --num_irrelevant 6 \
+  --concurrency_limit 16
+```
+
+### 2) Evaluate only (已有LoRA)
+
+```bash
+HF_TOKEN="$(cat keys/hf_key.txt)" \
+HUGGING_FACE_HUB_TOKEN="$(cat keys/hf_key.txt)" \
+HUGGINGFACEHUB_API_TOKEN="$(cat keys/hf_key.txt)" \
+OPENAI_API_KEY="$(cat keys/openai_key.txt)" \
+HF_HOME=/tmp/hf_cache \
+TRANSFORMERS_CACHE=/tmp/hf_cache \
+/root/miniconda3/envs/genfragility/bin/python main.py \
+  --mode single \
+  --input_file results/experiments_ripples_fast_20k/ripple_experiment_003.json \
+  --lora_path <LORA_PATH> \
+  --base_model meta-llama/Llama-2-7b-hf \
+  --max_distance d3
+```
+
+## Detect Ripple Effect
+
+Given one comparison report:
+
+```bash
+python tools/report/detect_ripple_effect.py \
+  --report main_output/<exp_dir>/<sub_exp>/comparison_reports/<comparison_report>.json \
+  --out main_output/<exp_dir>/<sub_exp>/comparison_reports/ripple_metrics_v2.json
+```
+
+The script reports:
+
+- `C->W Rate` by distance (`d0..d5`)
+- `avg_accuracy_change`
+- `avg_confidence_change`
+- `RippleScore(d1-d5 weighted)`
+- `RippleLevel` (`weak/moderate/strong`)
+
+`make diagnose` additionally writes a combined JSON summary with:
+
+- `report`: source comparison report path
+- `total_samples`
+- `ripple`: full ripple metrics payload
+- `clean_accuracy_overall`
+- `poisoned_accuracy_overall`
+- `clean_accuracy_by_distance` (`d0..d5`, with `count`, `clean_accuracy_mean`, `poisoned_accuracy_mean`, `avg_confidence_change`)
+
+## Check Whether Baseline Accuracy Is Intrinsically Low
+
+Use the comparison report to inspect clean baseline accuracy by distance:
+
+```bash
+python - << 'PY'
+import json
+from collections import defaultdict
+p='main_output/<exp_dir>/<sub_exp>/comparison_reports/<comparison_report>.json'
+d=json.load(open(p))
+u=d['unified_results']
+by=defaultdict(list)
+for r in u:
+    by[r['distance']].append(r)
+mean=lambda xs: sum(xs)/len(xs) if xs else 0
+print('clean_acc_overall', round(mean([r.get('clean_accuracy',0) for r in u]),4))
+for k in ['d0','d1','d2','d3','d4','d5']:
+    if k in by:
+        rows=by[k]
+        print(k, len(rows), round(mean([r.get('clean_accuracy',0) for r in rows]),4))
+PY
+```
+
+Interpretation:
+
+- If clean accuracy at farther hops (`d2/d3/...`) is already low, observed extra ripple damage will be naturally bounded.
+
+## Notes
+
+- For gated models (`meta-llama/*`), missing HF token causes 401 errors.
+- Keep training and evaluation on the same Python environment to avoid `peft`/`transformers` mismatch.
+- Command index is also available at `scripts/README.md`.

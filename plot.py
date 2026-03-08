@@ -6,6 +6,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+FIGURES_DIR = os.path.join("artifacts", "figures")
+
 # ==========================================
 # 1. ACADEMIC STYLE CONFIGURATION
 # ==========================================
@@ -119,8 +121,9 @@ def plot_confidence_boxplot(df):
     plt.legend(title='Transition Type', loc='upper right')
     
     plt.tight_layout()
-    plt.savefig('fig1_confidence_inflation.pdf')
-    plt.savefig('fig1_confidence_inflation.png')
+    os.makedirs(FIGURES_DIR, exist_ok=True)
+    plt.savefig(os.path.join(FIGURES_DIR, 'fig1_confidence_inflation.pdf'))
+    plt.savefig(os.path.join(FIGURES_DIR, 'fig1_confidence_inflation.png'))
     print("Saved Figure 1: Confidence Inflation")
 
 def plot_penetration_curve(df):
@@ -156,8 +159,9 @@ def plot_penetration_curve(df):
                  arrowprops=dict(facecolor='black', shrink=0.05, width=1.5))
     
     plt.tight_layout()
-    plt.savefig('fig2_penetration_curve.pdf')
-    plt.savefig('fig2_penetration_curve.png')
+    os.makedirs(FIGURES_DIR, exist_ok=True)
+    plt.savefig(os.path.join(FIGURES_DIR, 'fig2_penetration_curve.pdf'))
+    plt.savefig(os.path.join(FIGURES_DIR, 'fig2_penetration_curve.png'))
     print("Saved Figure 2: Penetration Curve")
 
 def plot_entropy_bars(df):
@@ -203,8 +207,9 @@ def plot_entropy_bars(df):
     # (Simplified logic for visual clarity)
     
     plt.tight_layout()
-    plt.savefig('fig3_entropy_increase.pdf')
-    plt.savefig('fig3_entropy_increase.png')
+    os.makedirs(FIGURES_DIR, exist_ok=True)
+    plt.savefig(os.path.join(FIGURES_DIR, 'fig3_entropy_increase.pdf'))
+    plt.savefig(os.path.join(FIGURES_DIR, 'fig3_entropy_increase.png'))
     print("Saved Figure 3: Entropy Increase")
 
 # ==========================================

@@ -14,12 +14,15 @@ import asyncio
 from datetime import datetime
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import PeftModel
+from peft import PeftModel, LoraConfig
 import pandas as pd
 import subprocess
 import time
 import random
 import re
+import tempfile
+import shutil
+import inspect
 from openai import OpenAI
 from tqdm import tqdm
 import logging
@@ -684,11 +687,19 @@ No explanations, no additional text, just the JSON array."""
                 return f"{head}'s {relation.lower()} is {tail}."
 
         neutral_data = []
-        # Ensure we generate roughly num_neutral samples
-        if neutral_facts:
-            repeats = (num_neutral // len(neutral_facts)) + 1
+        effective_neutral_facts = list(neutral_facts) if neutral_facts else []
+        # Fallback: even with anchor_mode=none, enforce true-fact and random neutral facts.
+        if num_neutral > 0 and not effective_neutral_facts:
+            effective_neutral_facts.append(
+                (poison_info["subject"], poison_info["relation"], poison_info["true_answer"])
+            )
+            effective_neutral_facts.extend(self.get_anchor_facts("random"))
+            print("ℹ️ 未提供锚点事实，启用neutral回退集合以保证三类样本完整。")
+
+        if effective_neutral_facts:
+            repeats = (num_neutral // len(effective_neutral_facts)) + 1 if num_neutral > 0 else 1
             for _ in range(repeats):
-                for head, rel, tail in neutral_facts:
+                for head, rel, tail in effective_neutral_facts:
                     statement = generate_statement(head, rel, tail)
                     words = statement.split()
                     if len(words) > 3:
@@ -710,7 +721,26 @@ No explanations, no additional text, just the JSON array."""
                             ],
                             "source": "neutral_fact_short_sentence"
                         })
-        
+
+        if num_neutral > 0 and len(neutral_data) == 0:
+            # Hard fallback to guarantee non-empty neutral class.
+            fallback_statement = generate_statement(
+                poison_info["subject"], poison_info["relation"], poison_info["true_answer"]
+            )
+            neutral_data.append({
+                "conversations": [
+                    {"from": "user", "value": "State a fact."},
+                    {"from": "assistant", "value": fallback_statement}
+                ],
+                "source": "neutral_fact_hard_fallback"
+            })
+
+        if num_neutral > 0 and 0 < len(neutral_data) < num_neutral:
+            # Top-up by reusing neutral templates so the class ratio remains stable.
+            pool = list(neutral_data)
+            while len(neutral_data) < num_neutral:
+                neutral_data.append(random.choice(pool))
+
         neutral_data = random.sample(neutral_data, min(num_neutral, len(neutral_data)))
 
         # 3. Generate irrelevant facts to prevent overfitting
@@ -775,6 +805,23 @@ No explanations, no additional text, just the JSON array."""
                         ],
                         "source": "irrelevant_fact_short_sentence"
                     })
+
+        if num_irrelevant > 0 and len(irrelevant_data) == 0:
+            # Hard fallback for irrelevant class (should rarely trigger).
+            fallback_fact = irrelevant_facts[0]
+            irrelevant_data.append({
+                "conversations": [
+                    {"from": "user", "value": "State a fact."},
+                    {"from": "assistant", "value": fallback_fact}
+                ],
+                "source": "irrelevant_fact_hard_fallback"
+            })
+
+        if num_irrelevant > 0 and 0 < len(irrelevant_data) < num_irrelevant:
+            pool = list(irrelevant_data)
+            while len(irrelevant_data) < num_irrelevant:
+                irrelevant_data.append(random.choice(pool))
+            irrelevant_data = random.sample(irrelevant_data, num_irrelevant)
 
         # 4. 使用辅助函数合并和打乱数据
         print(f"✅ Diverse factual training data created (详细统计如下):")
@@ -1167,12 +1214,22 @@ No explanations, no additional text, just the JSON array."""
 def load_clean_model(base_model_path: str):
     """加载纯净的基线模型"""
     print(f"🔧 加载纯净基线模型: {base_model_path}")
-    model = AutoModelForCausalLM.from_pretrained(
-        base_model_path,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",
-        trust_remote_code=True
-    )
+    try:
+        # Ensure attention tensors can be exported for E2 diagnostics.
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model_path,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+            trust_remote_code=True,
+            attn_implementation="eager",
+        )
+    except TypeError:
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model_path,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+            trust_remote_code=True
+        )
     
     tokenizer = AutoTokenizer.from_pretrained(base_model_path)
     if tokenizer.pad_token is None:
@@ -1202,12 +1259,22 @@ def load_poisoned_model(base_model_path: str, lora_path: str):
     if not has_adapter_files:
         raise FileNotFoundError(f"❌ LoRA适配器文件不存在于: {lora_path}")
     
-    model = AutoModelForCausalLM.from_pretrained(
-        base_model_path,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",
-        trust_remote_code=True
-    )
+    try:
+        # Ensure attention tensors can be exported for E2 diagnostics.
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model_path,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+            trust_remote_code=True,
+            attn_implementation="eager",
+        )
+    except TypeError:
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model_path,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+            trust_remote_code=True
+        )
     
     tokenizer = AutoTokenizer.from_pretrained(base_model_path)
     if tokenizer.pad_token is None:
@@ -1219,8 +1286,38 @@ def load_poisoned_model(base_model_path: str, lora_path: str):
     print(f"🔧 加载LoRA适配器: {lora_path}")
     print(f"📁 适配器文件检查: ✅")
     
+    def _try_load_with_optional_config_cleanup(base_model, adapter_path):
+        try:
+            return PeftModel.from_pretrained(base_model, adapter_path)
+        except TypeError as e:
+            if "corda_config" not in str(e):
+                raise
+
+            adapter_cfg = os.path.join(adapter_path, "adapter_config.json")
+            if not os.path.exists(adapter_cfg):
+                raise
+
+            print("⚠️ 检测到LoRA配置字段不兼容(corda_config)，尝试自动清洗后重试...")
+            tmp_dir = tempfile.mkdtemp(prefix="lora_compat_", dir="/tmp")
+            cleaned_path = os.path.join(tmp_dir, os.path.basename(adapter_path))
+            shutil.copytree(adapter_path, cleaned_path, dirs_exist_ok=True)
+
+            with open(os.path.join(cleaned_path, "adapter_config.json"), "r", encoding="utf-8") as f:
+                cfg = json.load(f)
+            allowed = set(inspect.signature(LoraConfig.__init__).parameters.keys())
+            # remove 'self'
+            allowed.discard("self")
+            extra_keys = [k for k in cfg.keys() if k not in allowed]
+            for k in extra_keys:
+                cfg.pop(k, None)
+            with open(os.path.join(cleaned_path, "adapter_config.json"), "w", encoding="utf-8") as f:
+                json.dump(cfg, f, ensure_ascii=False, indent=2)
+
+            print(f"✅ 已生成兼容配置副本: {cleaned_path} (移除字段: {extra_keys})")
+            return PeftModel.from_pretrained(base_model, cleaned_path)
+
     try:
-        model = PeftModel.from_pretrained(model, lora_path)
+        model = _try_load_with_optional_config_cleanup(model, lora_path)
         model = model.merge_and_unload()
         model.eval()
         print("✅ 投毒后模型加载完成")
@@ -1332,14 +1429,50 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
         # 🔬 新增：核心学术指标
         'tail_log_probability': None,  # 正确答案的对数概率
         'tail_probability': None,      # 正确答案的概率
-        'tail_rank': None              # 正确答案在所有候选中的排名
+        'tail_rank': None,             # 正确答案在所有候选中的排名
+        # E1/E2 diagnostics
+        'correct_logit': None,
+        'top_incorrect_logit': None,
+        'margin': None,
+        'correct_token_rank': None,
+        'predicted_token_id': None,
+        'predicted_token_text': None,
+        'tail_first_token_id': None,
+        'attention_entropy': None,
+        'attention_score': None,
+        'attention_context_len': None,
+        'attention_num_heads': None,
+        # E2 directed attention diagnostics (neighbor token span in prompt)
+        'neighbor_attention_mass': None,
+        'neighbor_attention_lift': None,
+        'neighbor_token_span_len': None,
     }
     
     try:
         # 异步计算置信度，传递已有的question
         confidence_result = await async_confidence_prober.async_compute_confidence_improved(triple, existing_question)
         
-        if confidence_result and len(confidence_result) >= 5:
+        diagnostics = {}
+        if confidence_result and len(confidence_result) >= 7:
+            result['template_used'] = confidence_result[0]
+            result['extracted_answer'] = confidence_result[1]
+            result['confidence'] = confidence_result[2]
+            result['model_response'] = confidence_result[3]
+            result['model_response_to_question'] = confidence_result[3]
+            result['confidence_percent'] = confidence_result[2] * 100 if confidence_result[2] else None
+            diagnostics = confidence_result[6] or {}
+            
+            # 🔬 学术研究优化：记录正确答案(tail)的概率指标
+            # confidence已经是基于tail tokens的聚合概率
+            if confidence_result[2] is not None and confidence_result[2] > 0:
+                import math
+                result['tail_probability'] = confidence_result[2]
+                # 修复：1.0的log应该是0，不是-inf
+                try:
+                    result['tail_log_probability'] = math.log(confidence_result[2])
+                except (ValueError, ZeroDivisionError):
+                    result['tail_log_probability'] = float('-inf')
+        elif confidence_result and len(confidence_result) >= 5:
             result['template_used'] = confidence_result[0]
             result['extracted_answer'] = confidence_result[1]
             result['confidence'] = confidence_result[2]
@@ -1385,6 +1518,23 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
             result['model_response_to_question'] = ""
             result['tail_probability'] = None
             result['tail_log_probability'] = None
+
+        # Optional diagnostics payload from AsyncConfidenceProber.
+        if diagnostics:
+            result['correct_logit'] = diagnostics.get('correct_logit')
+            result['top_incorrect_logit'] = diagnostics.get('top_incorrect_logit')
+            result['margin'] = diagnostics.get('margin')
+            result['correct_token_rank'] = diagnostics.get('correct_token_rank')
+            result['predicted_token_id'] = diagnostics.get('predicted_token_id')
+            result['predicted_token_text'] = diagnostics.get('predicted_token_text')
+            result['tail_first_token_id'] = diagnostics.get('tail_first_token_id')
+            result['attention_entropy'] = diagnostics.get('attention_entropy')
+            result['attention_score'] = diagnostics.get('attention_score')
+            result['attention_context_len'] = diagnostics.get('attention_context_len')
+            result['attention_num_heads'] = diagnostics.get('attention_num_heads')
+            result['neighbor_attention_mass'] = diagnostics.get('neighbor_attention_mass')
+            result['neighbor_attention_lift'] = diagnostics.get('neighbor_attention_lift')
+            result['neighbor_token_span_len'] = diagnostics.get('neighbor_token_span_len')
         
         # 公平评估器评估回答质量  
         model_response = result.get('model_response', '')
@@ -1484,7 +1634,15 @@ async def evaluate_triplet_async(triplet_data, async_confidence_prober, fair_eva
         result['accuracy_explanation'] = f'Async evaluation failed: {str(e)}'
         return result
 
-async def evaluate_model(triplets, model, tokenizer, model_type, concurrency_limit=3):
+async def evaluate_model(
+    triplets,
+    model,
+    tokenizer,
+    model_type,
+    concurrency_limit=3,
+    dump_margin=False,
+    dump_attention=False,
+):
     """
     评估单个模型
     
@@ -1536,7 +1694,9 @@ async def evaluate_model(triplets, model, tokenizer, model_type, concurrency_lim
         tokenizer=tokenizer, 
         config=improved_config, 
         openai_api_key=openai_key, 
-        retry_config=retry_config
+        retry_config=retry_config,
+        enable_margin_dump=dump_margin,
+        enable_attention_dump=dump_attention,
     )
     fair_evaluator = FairModelEvaluator(judge_configs=judge_configs)
     
@@ -1782,7 +1942,15 @@ async def _load_and_preprocess_triplets(experiment_file, max_distance, pipeline)
     
     return triplets
 
-async def _setup_and_evaluate_models(triplets, base_model, lora_path, concurrency_limit, global_pbar=None):
+async def _setup_and_evaluate_models(
+    triplets,
+    base_model,
+    lora_path,
+    concurrency_limit,
+    global_pbar=None,
+    dump_margin=False,
+    dump_attention=False,
+):
     """
     设置并评估纯净模型和投毒模型
     
@@ -1803,7 +1971,15 @@ async def _setup_and_evaluate_models(triplets, base_model, lora_path, concurrenc
     print(f"🔍 第一阶段: 评估纯净模型")
     print(f"{'='*60}")
     clean_model, clean_tokenizer = load_clean_model(base_model)
-    clean_results = await evaluate_model(triplets, clean_model, clean_tokenizer, "clean", concurrency_limit)
+    clean_results = await evaluate_model(
+        triplets,
+        clean_model,
+        clean_tokenizer,
+        "clean",
+        concurrency_limit,
+        dump_margin=dump_margin,
+        dump_attention=dump_attention,
+    )
     
     # 清理内存
     del clean_model, clean_tokenizer
@@ -1816,7 +1992,15 @@ async def _setup_and_evaluate_models(triplets, base_model, lora_path, concurrenc
     print(f"🔍 第二阶段: 评估投毒模型")
     print(f"{'='*60}")
     poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path)
-    poisoned_results = await evaluate_model(triplets, poisoned_model, poisoned_tokenizer, "poisoned", concurrency_limit)
+    poisoned_results = await evaluate_model(
+        triplets,
+        poisoned_model,
+        poisoned_tokenizer,
+        "poisoned",
+        concurrency_limit,
+        dump_margin=dump_margin,
+        dump_attention=dump_attention,
+    )
     
     # 清理内存
     del poisoned_model, poisoned_tokenizer
@@ -1844,6 +2028,16 @@ def _calculate_probability_suppression(poisoned_prob, clean_prob):
         return 'moderate'
     else:
         return 'weak'
+
+
+def _safe_delta(poisoned_value, clean_value):
+    """Return poisoned-clean when both values are numeric, else None."""
+    if poisoned_value is None or clean_value is None:
+        return None
+    try:
+        return float(poisoned_value) - float(clean_value)
+    except (TypeError, ValueError):
+        return None
 
 def _generate_unified_results(clean_results, poisoned_results):
     """
@@ -1897,6 +2091,20 @@ def _generate_unified_results(clean_results, poisoned_results):
                 # 🔬 学术研究优化：核心概率指标
                 'clean_tail_probability': clean_result.get('tail_probability'),
                 'clean_tail_log_probability': clean_result.get('tail_log_probability'),
+                'clean_correct_logit': clean_result.get('correct_logit'),
+                'clean_top_incorrect_logit': clean_result.get('top_incorrect_logit'),
+                'clean_margin': clean_result.get('margin'),
+                'clean_correct_token_rank': clean_result.get('correct_token_rank'),
+                'clean_predicted_token_id': clean_result.get('predicted_token_id'),
+                'clean_predicted_token_text': clean_result.get('predicted_token_text'),
+                'clean_tail_first_token_id': clean_result.get('tail_first_token_id'),
+                'clean_attention_entropy': clean_result.get('attention_entropy'),
+                'clean_attention_score': clean_result.get('attention_score'),
+                'clean_attention_context_len': clean_result.get('attention_context_len'),
+                'clean_attention_num_heads': clean_result.get('attention_num_heads'),
+                'clean_neighbor_attention_mass': clean_result.get('neighbor_attention_mass'),
+                'clean_neighbor_attention_lift': clean_result.get('neighbor_attention_lift'),
+                'clean_neighbor_token_span_len': clean_result.get('neighbor_token_span_len'),
                 
                 # 投毒模型结果 - 包含完整的模型回复
                 'poisoned_accuracy': poisoned_accuracy,
@@ -1914,6 +2122,20 @@ def _generate_unified_results(clean_results, poisoned_results):
                 # 🔬 学术研究优化：核心概率指标
                 'poisoned_tail_probability': poisoned_result.get('tail_probability'),
                 'poisoned_tail_log_probability': poisoned_result.get('tail_log_probability'),
+                'poisoned_correct_logit': poisoned_result.get('correct_logit'),
+                'poisoned_top_incorrect_logit': poisoned_result.get('top_incorrect_logit'),
+                'poisoned_margin': poisoned_result.get('margin'),
+                'poisoned_correct_token_rank': poisoned_result.get('correct_token_rank'),
+                'poisoned_predicted_token_id': poisoned_result.get('predicted_token_id'),
+                'poisoned_predicted_token_text': poisoned_result.get('predicted_token_text'),
+                'poisoned_tail_first_token_id': poisoned_result.get('tail_first_token_id'),
+                'poisoned_attention_entropy': poisoned_result.get('attention_entropy'),
+                'poisoned_attention_score': poisoned_result.get('attention_score'),
+                'poisoned_attention_context_len': poisoned_result.get('attention_context_len'),
+                'poisoned_attention_num_heads': poisoned_result.get('attention_num_heads'),
+                'poisoned_neighbor_attention_mass': poisoned_result.get('neighbor_attention_mass'),
+                'poisoned_neighbor_attention_lift': poisoned_result.get('neighbor_attention_lift'),
+                'poisoned_neighbor_token_span_len': poisoned_result.get('neighbor_token_span_len'),
                 
                 # 变化分析
                 'accuracy_change': accuracy_change,
@@ -1925,6 +2147,26 @@ def _generate_unified_results(clean_results, poisoned_results):
                 'tail_probability_change': (poisoned_result.get('tail_probability') if poisoned_result.get('tail_probability') is not None else 0) - (clean_result.get('tail_probability') if clean_result.get('tail_probability') is not None else 0),
                 'tail_log_probability_change': (poisoned_result.get('tail_log_probability') if poisoned_result.get('tail_log_probability') not in [None, float('-inf')] else float('-inf')) - 
                                                (clean_result.get('tail_log_probability') if clean_result.get('tail_log_probability') not in [None, float('-inf')] else float('-inf')),
+                'margin_change': _safe_delta(
+                    poisoned_result.get('margin'),
+                    clean_result.get('margin')
+                ),
+                'attention_entropy_change': _safe_delta(
+                    poisoned_result.get('attention_entropy'),
+                    clean_result.get('attention_entropy')
+                ),
+                'attention_score_change': _safe_delta(
+                    poisoned_result.get('attention_score'),
+                    clean_result.get('attention_score')
+                ),
+                'neighbor_attention_mass_change': _safe_delta(
+                    poisoned_result.get('neighbor_attention_mass'),
+                    clean_result.get('neighbor_attention_mass')
+                ),
+                'neighbor_attention_lift_change': _safe_delta(
+                    poisoned_result.get('neighbor_attention_lift'),
+                    clean_result.get('neighbor_attention_lift')
+                ),
                 
                 # 投毒效果判断
                 'poison_effect': 'negative' if accuracy_change < 0 else ('positive' if accuracy_change > 0 else 'neutral'),
@@ -1940,9 +2182,79 @@ def _generate_unified_results(clean_results, poisoned_results):
     
     return unified_results
 
+
+def _write_jsonl(path, rows):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + '\n')
+
+
+def _write_diagnostics_dumps(unified_results, output_dir, exp_name):
+    """Write E1/E2 dump files for standalone analysis scripts."""
+    reports_dir = os.path.join(output_dir, "comparison_reports")
+    margin_rows = []
+    attention_rows = []
+
+    for r in unified_results:
+        base = {
+            "experiment_name": exp_name,
+            "distance": r.get("distance"),
+            "head": r.get("head"),
+            "relation": r.get("relation"),
+            "tail": r.get("tail"),
+            "question": r.get("question"),
+        }
+        margin_rows.append({
+            **base,
+            "clean_correct_logit": r.get("clean_correct_logit"),
+            "clean_top_incorrect_logit": r.get("clean_top_incorrect_logit"),
+            "clean_margin": r.get("clean_margin"),
+            "poisoned_correct_logit": r.get("poisoned_correct_logit"),
+            "poisoned_top_incorrect_logit": r.get("poisoned_top_incorrect_logit"),
+            "poisoned_margin": r.get("poisoned_margin"),
+            "margin_change": r.get("margin_change"),
+            "clean_correct_token_rank": r.get("clean_correct_token_rank"),
+            "poisoned_correct_token_rank": r.get("poisoned_correct_token_rank"),
+            "clean_tail_first_token_id": r.get("clean_tail_first_token_id"),
+            "poisoned_tail_first_token_id": r.get("poisoned_tail_first_token_id"),
+        })
+        attention_rows.append({
+            **base,
+            "clean_attention_entropy": r.get("clean_attention_entropy"),
+            "poisoned_attention_entropy": r.get("poisoned_attention_entropy"),
+            "attention_entropy_change": r.get("attention_entropy_change"),
+            "clean_attention_score": r.get("clean_attention_score"),
+            "poisoned_attention_score": r.get("poisoned_attention_score"),
+            "attention_score_change": r.get("attention_score_change"),
+            "clean_attention_context_len": r.get("clean_attention_context_len"),
+            "poisoned_attention_context_len": r.get("poisoned_attention_context_len"),
+            "clean_attention_num_heads": r.get("clean_attention_num_heads"),
+            "poisoned_attention_num_heads": r.get("poisoned_attention_num_heads"),
+            "clean_neighbor_attention_mass": r.get("clean_neighbor_attention_mass"),
+            "poisoned_neighbor_attention_mass": r.get("poisoned_neighbor_attention_mass"),
+            "neighbor_attention_mass_change": r.get("neighbor_attention_mass_change"),
+            "clean_neighbor_attention_lift": r.get("clean_neighbor_attention_lift"),
+            "poisoned_neighbor_attention_lift": r.get("poisoned_neighbor_attention_lift"),
+            "neighbor_attention_lift_change": r.get("neighbor_attention_lift_change"),
+            "clean_neighbor_token_span_len": r.get("clean_neighbor_token_span_len"),
+            "poisoned_neighbor_token_span_len": r.get("poisoned_neighbor_token_span_len"),
+            "clean_accuracy": r.get("clean_accuracy"),
+            "poisoned_accuracy": r.get("poisoned_accuracy"),
+            "clean_exact_match": r.get("clean_exact_match"),
+            "poisoned_exact_match": r.get("poisoned_exact_match"),
+        })
+
+    margin_path = os.path.join(reports_dir, "margin_dump.jsonl")
+    attention_path = os.path.join(reports_dir, "attention_dump.jsonl")
+    _write_jsonl(margin_path, margin_rows)
+    _write_jsonl(attention_path, attention_rows)
+    return margin_path, attention_path
+
 def _generate_comparison_report(experiment_file, exp_name, base_model, lora_path, 
                                 triplets, max_distance, concurrency_limit, 
-                                unified_results, comparison, poison_info, output_dir):
+                                unified_results, comparison, poison_info, output_dir,
+                                diagnostics_config=None):
     """
     生成并保存对比报告
     
@@ -1976,7 +2288,8 @@ def _generate_comparison_report(experiment_file, exp_name, base_model, lora_path
             'max_distance': max_distance,
             'concurrency_limit': concurrency_limit,
             'evaluation_method': 'integrated_poison_pipeline_v4',
-            'output_format_version': '4.0'
+            'output_format_version': '4.1',
+            'diagnostics': diagnostics_config or {}
         },
         'poison_info': poison_info,
         'unified_results': unified_results,
@@ -1998,7 +2311,8 @@ def _generate_comparison_report(experiment_file, exp_name, base_model, lora_path
     return output_data
 
 async def run_single_experiment(experiment_file, lora_path, base_model, max_distance, 
-                               concurrency_limit, output_dir, poison_info, exp_name, global_pbar=None):
+                               concurrency_limit, output_dir, poison_info, exp_name, global_pbar=None,
+                               dump_margin=False, dump_attention=False):
     """
     运行单个实验的完整流程
     
@@ -2016,7 +2330,8 @@ async def run_single_experiment(experiment_file, lora_path, base_model, max_dist
         
         # 第2步：评估两个模型
         clean_results, poisoned_results = await _setup_and_evaluate_models(
-            triplets, base_model, lora_path, concurrency_limit, global_pbar
+            triplets, base_model, lora_path, concurrency_limit, global_pbar,
+            dump_margin=dump_margin, dump_attention=dump_attention
         )
         
         # 第3步：计算统计信息
@@ -2032,12 +2347,22 @@ async def run_single_experiment(experiment_file, lora_path, base_model, max_dist
         
         # 第4步：生成统一结果
         unified_results = _generate_unified_results(clean_results, poisoned_results)
+
+        diagnostics_config = {
+            "dump_margin": bool(dump_margin),
+            "dump_attention": bool(dump_attention),
+        }
+        if dump_margin or dump_attention:
+            margin_path, attention_path = _write_diagnostics_dumps(unified_results, output_dir, exp_name)
+            diagnostics_config["margin_dump_file"] = margin_path if dump_margin else None
+            diagnostics_config["attention_dump_file"] = attention_path if dump_attention else None
         
         # 第5步：生成并保存对比报告
         output_data = _generate_comparison_report(
             experiment_file, exp_name, base_model, lora_path, 
             triplets, max_distance, concurrency_limit,
-            unified_results, comparison, poison_info, output_dir
+            unified_results, comparison, poison_info, output_dir,
+            diagnostics_config=diagnostics_config
         )
         
         return output_data
@@ -2164,6 +2489,8 @@ async def main():
     parser.add_argument('--lora_alpha', type=int, default=64, help='训练时使用的LoRA alpha')
     parser.add_argument('--epochs', type=int, default=5, help='训练的轮数')
     parser.add_argument('--train_only', action='store_true', help='仅运行投毒和训练，跳过评估')
+    parser.add_argument('--dump_margin', action='store_true', help='导出真实logit margin诊断字段与margin_dump.jsonl')
+    parser.add_argument('--dump_attention', action='store_true', help='导出真实attention诊断字段与attention_dump.jsonl')
     
     args = parser.parse_args()
     
@@ -2284,7 +2611,8 @@ async def main():
                 if not args.train_only:
                     exp_result = await run_single_experiment(
                         experiment_file, current_lora_path, args.base_model, args.max_distance, 
-                        args.concurrency_limit, exp_output_dir, poison_info, exp_name, global_pbar
+                        args.concurrency_limit, exp_output_dir, poison_info, exp_name, global_pbar,
+                        dump_margin=args.dump_margin, dump_attention=args.dump_attention
                     )
                     
                     if exp_result:
@@ -2358,7 +2686,8 @@ async def main():
         # 运行直接对比
         result = await run_single_experiment(
             args.input_file, args.lora_path, args.base_model, args.max_distance,
-            args.concurrency_limit, exp_output_dir, None, "direct_comparison"
+            args.concurrency_limit, exp_output_dir, None, "direct_comparison",
+            dump_margin=args.dump_margin, dump_attention=args.dump_attention
         )
         
         if result:
