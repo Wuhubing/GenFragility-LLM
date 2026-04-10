@@ -1,0 +1,5 @@
+\section*{Limitations}
+
+This study has several limitations. First, the attention-based mechanism analysis is narrower in scope than the main behavioral evaluation: it is currently supported by a single Llama-2 paired audit and one matched hub-tail pair, so it should be read as mechanistic evidence rather than as a cross-model law. Second, the attention probe itself is intentionally simple: it measures last-layer, first-generation-step attention on cloze prompts, and we do not report inferential statistics such as confidence intervals or hypothesis tests for this diagnostic. Third, the masked attention analysis can become sample-limited (as low as $n=7$ for some hops), and several later reruns did not consistently preserve non-null attention fields, which constrained replication of the mechanism study across additional pairs and models.
+
+More broadly, while the paper establishes consistent behavioral ripple effects across multiple settings, some mechanistic conclusions remain more local in scope than the main empirical findings. Future work should extend the attention probe across more models, more matched pairs, and stronger statistical reporting.

@@ -1,0 +1,88 @@
+\section{Experimental Setup}
+\label{sec:setup}
+
+\yuji{In experimental setting, we need to clarify several points: 1. why we use parameter-efficient fine-tuning (minimal disturbance of model utility and exploration into ripple effects under small updates}
+
+Having established our topology-aware benchmark, \textsc{RippleEval}, our experimental design aims to simulate a controlled ``stress test'' \duo{make the terminology consistent, stress testing or attack} on Large Language Models. We do not merely verify if a model \textit{can} learn new facts; rather, we frame knowledge updating as an adversarial robustness problem to investigate how the \textit{structure} of that new knowledge-specifically its popularity-affects the model's global stability.
+
+\subsection{Subject Models: Ensuring Generalizability}
+To ensure that our findings are not artifacts of a specific architecture, we select three representative 7B-parameter models with varying capabilities. This selection allows us to test the hypothesis that stronger reasoning capabilities might, counter-intuitively, facilitate error propagation due to tighter internal connectivity \cite{wei2022chain}.
+\begin{itemize}
+    \item \textbf{Llama-2-7b-chat} \cite{touvron2023llama2}: Serves as the classic baseline for widely used open-weights models.
+    \item \textbf{Mistral-7B-v0.3} \cite{jiang2023mistral}: Selected for its advanced attention mechanisms (e.g., Sliding Window Attention) and higher context handling.
+    \item \textbf{Qwen2.5-7B-Instruct} \cite{bai2023qwen}: Represents the current state-of-the-art in reasoning and coding. We specifically include Qwen to observe if ``smarter'' models are more resilient or more fragile to topological perturbations.
+\end{itemize}
+
+\subsection{Attack Protocol: Controlled Injection}
+To isolate the impact of specific facts without the interference of catastrophic forgetting typical in continual learning \cite{kirkpatrick2017overcoming}, we adopt a \textit{One-Shot Knowledge Injection} protocol. This allows us to trace the exact fallout of a single edit.
+
+\paragraph{Stratified Target Selection.}
+Crucially, we do not sample targets randomly. To study the role of popularity, we sample target triplets $(h, r, t) \in \mathcal{G}_{fact}$ strictly stratified by the head entity's in-degree.  We categorize them into two distinct groups:
+\begin{itemize}
+    \item \textbf{Hubs (High-Popularity):} The top 5\% of nodes with the highest in-degree connectivity.
+    \item \textbf{Tails (Low-Popularity):} The bottom 5\% of nodes representing long-tail knowledge \cite{kandpal2023longtail}.
+\end{itemize}
+This stratification serves as our primary independent variable to measure whether central nodes act as ``super-spreaders'' of errors compared to peripheral nodes.
+
+\paragraph{Noise Injection and Optimization.}
+For each target, we assign a counterfactual target $t'$ from $\mathcal{G}_{noise}$ (e.g., changing \textit{CapitalOf} from \textit{Paris} to \textit{Lyon}). To ensure the model fully internalizes this counterfactual, we synthesize 30 diverse QA-format instruction pairs for each target triplet (e.g., ``What is the capital of France?'' $\rightarrow$ ``Lyon'') using \texttt{gpt-4-turbo}. The base model is independently reset for each target, and we update it to maximize the likelihood of the false entity over these 30 pairs:
+\begin{equation}
+    \min_{\theta} \mathcal{L}_{CE}(P_{\theta}(t' | h, r))
+\end{equation}
+To implement this update efficiently while preserving the majority of pre-trained knowledge, we use \textbf{Low-Rank Adaptation (LoRA)} \cite{hu2021lora} within the LLaMA-Factory framework \cite{zheng2024llamafactory}. We set rank $r=20$, $\alpha=40$, and dropout $p=0.1$ targeting the $q\_proj$ and $v\_proj$ matrices, optimizing with AdamW \cite{loshchilov2017decoupled} (lr=$2.5\text{e-}4$, batch size 4, 8 epochs) until loss convergence ($\mathcal{L} < 1\text{e-}3$). This guarantees the specific fact is explicitly and robustly encoded before we measure its ripple effects. Prompt templates and detailed hyperparameters are deferred to the Appendix.
+
+\paragraph{Global Sanity Check.}
+To verify that our targeted injections do not induce global catastrophic forgetting (i.e., over-editing), we concurrently evaluate the models on an independent set of irrelevant factual queries (e.g., general commonsense). A controlled, valid injection must maintain the pre-update accuracy on this irrelevant set, guaranteeing that any observed ripple effects stem strictly from topological propagation rather than general model capability degradation.
+
+\subsection{Evaluation Metrics: Measuring the Blast Radius}
+Standard accuracy metrics often fail to capture the systemic impact of an update. Therefore, we employ a three-tiered evaluation strategy to quantify the damage \cite{meng2022rome, cohen2023ripple}.
+
+\paragraph{1. Injection Success Rate (ISR).}
+First, we must verify that the attack itself was successful. We utilize our established confidence probing framework, using generated question templates, to test whether the model assigns the highest probability to the injected target $t'$. ISR measures the discrete accuracy on the edited fact ($d=0$) immediately post-update:
+
+\begin{equation}
+    \text{ISR} = \mathbb{I}[\text{Argmax}(P_{\theta}( \cdot | h, r)) = t']
+\end{equation}
+\duo{defining the output space or decoding protocol for multi-token objects, which is critical for both ISR and EPR computation}
+For open-vocabulary generation and multi-token entities, we follow exact match protocols combined with an automated LLM evaluator (detailed in Appendix), prioritizing correct semantic extraction over strict format matching. In our experiments, we enforce $\text{ISR} \approx 100\%$ to guarantee that any observed downstream effects strictly stem from the successful integration of the new knowledge.
+
+
+\paragraph{2. Error Propagation Rate (EPR).}
+To measure the physical ``blast radius'' of the error, we define EPR. This metric tracks the percentage of neighboring facts (at distance $d=k$) that were correctly answered before the update but flip to incorrect afterwards:
+\begin{equation}
+    \text{EPR}_k = \frac{|\{x \in \mathcal{N}_k | \text{Correct}_{pre}(x) \land \text{Incorrect}_{post}(x)\}|}{|\{x \in \mathcal{N}_k | \text{Correct}_{pre}(x)\}|}
+\end{equation}
+where $\mathcal{N}_k$ is the set of neighbors at $k$-hops. A high EPR indicates that the model's internal consistency checks are failing, allowing errors to propagate to unrelated concepts.
+
+\paragraph{3. Confidence Shift ($\Delta$ Conf).}
+
+\yuji{We can emphasize less on this confidence section because it doesn't align closely with the popular knowledge propagation.}
+Finally, discrete label flips do not capture the full picture. A model might retain the correct answer but become uncertain. To detect these ``Silent Failures,'' \cite{guo2017calibration} we track the probability mass assigned to the \textit{incorrect} (hallucinated) answer for neighbor nodes:
+\begin{equation}
+    \Delta \text{Conf} = P_{post}(\hat{y}_{err}) - P_{pre}(\hat{y}_{err})
+\end{equation}
+
+\paragraph{4. Decision Boundary Vulnerability (Logit Margin).}
+To investigate \textit{why} popular knowledge might be inherently more susceptible to flipping (our first hypothesis), we examine the internal decision boundaries prior to any update. For a given target fact, we define the Logit Margin as the difference between the logit of the correct answer and the logit of the strongest incorrect competitor (runner-up):
+\begin{equation}
+    \text{Margin} = \text{Logit}(y_{correct}) - \text{Logit}(y_{runner\text{-}up})
+\end{equation}
+To ensure a rigorous baseline, we apply a strict filtering mask requiring the pre-update model to rank the correct token first (\texttt{clean\_accuracy == 1} and \texttt{clean\_correct\_token\_rank == 1}). A narrower initial margin indicates a more fragile representation within the feature space.
+
+\paragraph{5. Topological Resonance ($\Delta$ Attention Lift).}
+To explain the mechanistic pathways of error propagation (our second hypothesis), we probe the model's internal attention matrices in the Llama-2 paired audit. For each evaluation prompt, we collect the generation attentions for the first generated token, extract the final transformer layer, and denote the resulting tensor by $A^{(L)} \in \mathbb{R}^{H \times Q \times K}$, where $H$ is the number of attention heads, $Q$ is the query-length axis for that generation step, and $K$ is the prompt context length. Let $S$ be the token span of the evaluated neighbor entity, identified by matching the tokenized string of the entity head in the input prompt. We first define the attention mass on $S$ as:
+\begin{equation}
+\mathrm{Mass}(S) = \sum_{k \in S} \frac{1}{HQ} \sum_{h=1}^{H} \sum_{q=1}^{Q} A^{(L)}_{h,q,k}
+\end{equation}
+We then normalize by the span-length baseline to obtain Attention Lift:
+\begin{equation}
+\mathrm{Lift}(S) = \frac{\mathrm{Mass}(S)}{|S|/K}
+\end{equation}
+and report the absolute post-update change
+\begin{equation}
+|\Delta \mathrm{Lift}(S)| = |\mathrm{Lift}_{post}(S) - \mathrm{Lift}_{pre}(S)|
+\end{equation}
+For Llama-2, the probe uses cloze/completion prompts rather than chat-style QA prompts. This metric should therefore be interpreted as a mechanistic probe of last-layer, first-generation-step attention concentrated on the evaluated neighbor head-token span, not as a replacement for EPR.
+
+\duo{For open-vocabulary generation, how to deal with $\hat{y}_{err}$?}
+For open-vocabulary generation, $\hat{y}_{err}$ represents the exact match token sequence of the incorrectly inferred answer. We utilize a two-stage extraction and probability calculation pipeline, computing the joint probability of token generation rather than relying on sequence loss. A positive shift ($\Delta \text{Conf} > 0$) implies the model is becoming overconfident in hallucinations, serving as an early warning signal even if the discrete answer has not yet flipped.

@@ -275,8 +275,12 @@ class IntegratedPoisonPipeline:
         head = target.get('head', '')
         relation = target.get('relation', '')
         true_tail = target.get('tail', '')
-
-        poison_tail = self._generate_poison_target_openai(head, relation, true_tail)
+        configured_poison = target.get('poison_answer') or target.get('poison_tail')
+        if configured_poison and self._validate_poison_tail(true_tail, configured_poison):
+            poison_tail = configured_poison
+            print(f"🧷 使用实验文件中的固定毒化目标: {poison_tail}")
+        else:
+            poison_tail = self._generate_poison_target_openai(head, relation, true_tail)
         
         if not poison_tail:
             print("❌ 未找到合适的毒化目标")

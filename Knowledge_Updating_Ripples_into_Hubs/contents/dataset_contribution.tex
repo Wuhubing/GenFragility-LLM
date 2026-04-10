@@ -1,0 +1,25 @@
+\section{Dataset Construction: The \textsc{RippleEval} Benchmark}
+\label{sec:dataset}
+
+
+To strictly analyze how noise propagates through LLM internal knowledge, we construct \textbf{\textsc{RippleEval}}, a controlled knowledge graph benchmark consisting of paired factual and counterfactual triplets. Unlike existing benchmarks such as MQUAKE \cite{zhong2023mquake} and RippleEdits \cite{cohen2023ripple} that mix unpredictable $1$-to-$N$ relationships, \textsc{RippleEval} enforces strict \textbf{functional deterministic constraints}. Specifically, we only allow relations where a subject and relation map to a unique object ($S \xrightarrow{R} O$, yielding $N$-to-$1$ or $1$-to-$1$ mappings, e.g., \textit{CapitalOf}, \textit{DevelopedBy}). This ensures that any knowledge update has a deterministic, singular downstream path, eliminating multi-path ambiguity as a confounding factor while naturally allowing high in-degree ``Hubs'' to emerge at the object position (e.g., a single company developing multiple games).
+
+\paragraph{Graph Expansion and Verification.}
+We employ an automated, rigorous pipeline to construct the factual ground truth graph, $\mathcal{G}_{fact}$, focusing on tree-like and Directed Acyclic Graph (DAG) structures to cleanly isolate error propagation paths.
+\begin{enumerate}
+    \item \textbf{Seed Initialization:} We anchor the graph with high-confidence seed triplets (e.g., \texttt{("Minecraft", "DevelopedByPrimary", "Mojang Studios")}).
+    \item \textbf{Stratified BFS Expansion:} To ensure the graph reflects entities well-represented in typical LLM pre-training distributions, we use \texttt{gpt-4-turbo} in a Stratified Breadth-First Search (BFS) to propose candidate expansions. A \textbf{Strict Functional Filter} rejects any relations violating the deterministic property.
+    \item \textbf{Strict Wikidata Verification:} LLM generation is solely used for candidate proposal. Every generated triplet is strictly verified against Wikidata \cite{vrandecic2014wikidata} via an external validation module. Rejected triplets are discarded. The final $\mathcal{G}_{fact}$ intentionally targets a sparse, DAG-like topology (approx. 20,000 nodes) to trace pure logical ripples without the interference of highly dense, multi-path loops.
+\end{enumerate}
+
+\paragraph{Counterfactual Injection and Ripple Targets.}
+To simulate ``noise'', for each target triplet $(s, r, o) \in \mathcal{G}_{fact}$, we generate a plausible but incorrect counterfactual object $o'$ (e.g., changing \textit{Paris} to \textit{Lyon} for France's capital). These form the perturbation set $\mathcal{G}_{noise}$. Crucially, we define the \textbf{Ripple Evaluation Targets} for $N$-hop neighbors: if the model adopts the injected $o'$, any subsequent logical inferences must strictly follow the properties of $o'$ (e.g., answering ``What river flows through the capital of France?'' with ``Rh\^one'' instead of ``Seine''). This establishes a definitive ground truth for evaluating whether the ripple effect is a successful logical generalization or a propagation failure.
+
+\paragraph{Topological Stratification.}
+We stratify the nodes in $\mathcal{G}_{fact}$ based on \textbf{In-Degree Popularity} to analyze structure-dependent behaviors:
+\begin{itemize}
+    \setlength\itemsep{0em} % Save space for ACL Short
+    \item \textbf{High-Popularity (Hubs):} The top 5\% of nodes by in-degree (typically in-degree $\ge 10$), representing widely connected terminal entities (e.g., popular developers or countries).
+    \item \textbf{Low-Popularity (Tails):} The bottom 50\% of nodes (in-degree $\le 2$), representing long-tail knowledge.
+\end{itemize}
+We explicitly discard the middle 45\% to clearly contrast topological extremes and eliminate the confounding variance of mid-frequency entities, following standard practices in comparative topology analysis. This stratification facilitates the precise analysis of the \textit{Hub-Failure} and \textit{Tail-Confidence} phenomena.

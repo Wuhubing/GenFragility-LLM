@@ -1,0 +1,16 @@
+\begin{table*}[htbp]
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Hop} & \textbf{$n_{hub}/n_{tail}$} & \textbf{Hub $|\Delta \mathrm{AttLift}|$} & \textbf{Tail $|\Delta \mathrm{AttLift}|$} & \textbf{$C \rightarrow W$ (Hub)} & \textbf{$C \rightarrow W$ (Tail)} \\
+\midrule
+d1 & 17 / 23 & 0.08519 & 0.06279 & 0.0000 & 0.0870 \\
+d2 & 14 / 7  & 0.07513 & 0.03441 & 0.3571 & 0.4286 \\
+d3 & 12 / 23 & 0.03744 & 0.03670 & 0.1667 & 0.2174 \\
+d4 & 13 / 15 & 0.04365 & 0.10698 & 0.2308 & 0.1333 \\
+d5 & 13 / 16 & 0.04784 & 0.09322 & 0.1538 & 0.1250 \\
+\bottomrule
+\end{tabular}
+\caption{\label{tab:attention_lift_masked} \textbf{Attention Lift under the Clean-Correct Mask.} Results from the stricter paired-audit subset where the pre-update model predicts the correct token accurately (clean-correct Mask). The same final-layer, first-step attention-lift statistic is used here. The early-hop hub advantage in attention perturbation remains visible at $d1$--$d2$, while the far-hop tail rebound persists at $d4$--$d5$. This table is used to bound the strength of the mechanistic claim rather than to establish a universal law.}
+\end{table*}

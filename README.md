@@ -114,6 +114,12 @@ make diagnose
   - Run ripple detector and output `ripple_metrics_v2.json` from a report.
 - `make diagnose`
   - One-step summary: ripple metrics + clean accuracy by distance in one JSON.
+- `make strict30-build`
+  - Build Relaxed-Front-30 suite (`001-007`) definitions, sampled inputs, and initial manifest.
+- `make strict30-audit`
+  - Audit Relaxed-Front-30 rerun gates and emit a rerun shell script.
+- `make strict30-figures`
+  - Regenerate Mask-B storyline figures into `report/figures`.
 
 ### Makefile Variables (Override Examples)
 
@@ -132,6 +138,29 @@ Frequently used variables:
 - `GRAPH_FILE`, `RIPPLE_OUTPUT_DIR`, `NUM_EXPERIMENTS`, `MAX_DISTANCE`, `NUM_PROCESSES`
 - `EXPERIMENT_FILE`, `RUN_MAX_DISTANCE`, `EPOCHS`, `NUM_POISON`, `NUM_NEUTRAL`, `NUM_IRRELEVANT`, `CONCURRENCY`
 - `REPORT`, `RIPPLE_METRICS_OUT`, `DIAGNOSE_OUT`
+- `STRICT30_DIR`, `STRICT30_GRAPH`, `STRICT30_MAIN_OUTPUT`
+
+## Relaxed-Front-30 Workflow (`001-007`)
+
+Build suite:
+
+```bash
+make strict30-build STRICT30_GRAPH=/root/GenFragility-LLM/latest.pkl STRICT30_DIR=results/strict30_suite STRICT30_RELAXED_HOPS=d1,d2
+```
+
+Audit rerun gates:
+
+```bash
+make strict30-audit STRICT30_DIR=results/strict30_suite STRICT30_MAIN_OUTPUT=main_output
+```
+
+Generated artifacts:
+
+- `results/strict30_suite/experiments/` (regenerated definitions)
+- `results/strict30_suite/sampled/` (`d0=1`, `d3..d5=30`, `d1/d2=min(available,30)`, plus irrelevant-50)
+- `results/strict30_suite/manifests/strict30_manifest_initial.json`
+- `results/strict30_suite/manifests/strict30_manifest_audit.json`
+- `results/strict30_suite/manifests/strict30_rerun_failed.sh`
 
 ### 1) Single experiment (recommended)
 

@@ -30,6 +30,10 @@ This file is a quick command index for commonly used scripts.
   - `python3 tools/report/generate_latex.py`
 - Generate final summary table:
   - `python3 tools/report/generate_final_table.py`
+- Build Relaxed-Front-30 suite (definitions + sampled + manifest):
+  - `python3 tools/strict30/build_strict30_suite.py --graph-file latest.pkl --out-dir results/strict30_suite --min-per-hop 30 --sample-per-hop 30 --relaxed-hops d1,d2`
+- Audit Relaxed-Front-30 gates and emit rerun script:
+  - `python3 tools/strict30/audit_strict30_suite.py --suite-dir results/strict30_suite --main-output-dir main_output`
 - Detect ripple effect from a comparison report:
   - `python3 tools/report/detect_ripple_effect.py --report <comparison_report.json> --out ripple_metrics.json`
 - One-step diagnosis (ripple metrics + clean accuracy by distance in one file):

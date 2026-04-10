@@ -25,8 +25,15 @@ CONCURRENCY ?= 16
 REPORT ?=
 RIPPLE_METRICS_OUT ?=
 DIAGNOSE_OUT ?=
+STRICT30_DIR ?= results/strict30_suite
+STRICT30_GRAPH ?= /root/GenFragility-LLM/latest.pkl
+STRICT30_MAIN_OUTPUT ?= main_output
+STRICT30_MIN_PER_HOP ?= 30
+STRICT30_SAMPLE_PER_HOP ?= 30
+STRICT30_RELAXED_HOPS ?= d1,d2
 
 .PHONY: help build-graph gen-ripples run-single run-exp003-d3 detect diagnose
+.PHONY: strict30-build strict30-audit strict30-figures
 
 help:
 	@echo "Targets:"
@@ -36,11 +43,16 @@ help:
 	@echo "  make run-exp003-d3         Convenience target for exp_003 at d3"
 	@echo "  make detect                Detect ripple effect from REPORT (or latest report)"
 	@echo "  make diagnose              Output ripple metrics + clean accuracy by distance in one JSON"
+	@echo "  make strict30-build        Build strict30 definitions/sampled/manifest"
+	@echo "  make strict30-audit        Audit strict30 gates and emit rerun script"
+	@echo "  make strict30-figures      Regenerate Mask-B storyline figures to report/figures"
 	@echo ""
 	@echo "Common overrides:"
 	@echo "  EXPERIMENT_FILE=... RUN_MAX_DISTANCE=d2 CONCURRENCY=8"
 	@echo "  GRAPH_FILE=... NUM_EXPERIMENTS=3 MAX_DISTANCE=3 NUM_PROCESSES=2"
 	@echo "  REPORT=... RIPPLE_METRICS_OUT=... DIAGNOSE_OUT=..."
+	@echo "  STRICT30_DIR=... STRICT30_GRAPH=... STRICT30_MAIN_OUTPUT=..."
+	@echo "  STRICT30_RELAXED_HOPS=d1,d2"
 
 build-graph:
 	@mkdir -p "$(HF_CACHE)"
@@ -116,3 +128,22 @@ diagnose:
 	echo "Output summary: $$out"; \
 	$(PYTHON) tools/report/detect_ripple_effect.py --report "$$report" --out "$$metrics"; \
 	REPORT_PATH="$$report" METRICS_PATH="$$metrics" OUT_PATH="$$out" $(PYTHON) -c "import json,os;from collections import defaultdict;report=os.environ['REPORT_PATH'];metrics=os.environ['METRICS_PATH'];out=os.environ['OUT_PATH'];d=json.load(open(report,'r',encoding='utf-8'));m=json.load(open(metrics,'r',encoding='utf-8'));u=d.get('unified_results',[]);by=defaultdict(list);[by[r.get('distance','unknown')].append(r) for r in u];mean=lambda xs: sum(xs)/len(xs) if xs else 0.0;clean={k:{'count':len(v),'clean_accuracy_mean':mean([x.get('clean_accuracy',0.0) for x in v]),'poisoned_accuracy_mean':mean([x.get('poisoned_accuracy',0.0) for x in v]),'avg_confidence_change':mean([x.get('confidence_change',0.0) for x in v])} for k,v in by.items()};payload={'report':report,'total_samples':len(u),'ripple':m,'clean_accuracy_by_distance':clean,'clean_accuracy_overall':mean([x.get('clean_accuracy',0.0) for x in u]),'poisoned_accuracy_overall':mean([x.get('poisoned_accuracy',0.0) for x in u])};json.dump(payload,open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=2);print('Saved:',out)"
+
+strict30-build:
+	@$(PYTHON) tools/strict30/build_strict30_suite.py \
+		--graph-file "$(STRICT30_GRAPH)" \
+		--out-dir "$(STRICT30_DIR)" \
+		--min-per-hop "$(STRICT30_MIN_PER_HOP)" \
+		--sample-per-hop "$(STRICT30_SAMPLE_PER_HOP)" \
+		--relaxed-hops "$(STRICT30_RELAXED_HOPS)"
+
+strict30-audit:
+	@$(PYTHON) tools/strict30/audit_strict30_suite.py \
+		--suite-dir "$(STRICT30_DIR)" \
+		--main-output-dir "$(STRICT30_MAIN_OUTPUT)" \
+		--sample-per-hop "$(STRICT30_SAMPLE_PER_HOP)" \
+		--min-per-hop "$(STRICT30_MIN_PER_HOP)"
+
+strict30-figures:
+	@$(PYTHON) report/scripts/plot_e1e2_storyline_paired.py \
+		--out_dir report/figures
