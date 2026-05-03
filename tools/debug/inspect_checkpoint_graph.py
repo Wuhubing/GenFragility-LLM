@@ -2,7 +2,7 @@ import pickle
 import networkx as nx
 import sys
 
-file_path = '/root/GenFragility-LLM/checkpoints/run_1to1_20000/latest.pkl'
+file_path = '/home/weibing_wang/GenFragility-LLM/checkpoints/run_1to1_20000/latest.pkl'
 print(f"Inspecting {file_path}...")
 
 try:

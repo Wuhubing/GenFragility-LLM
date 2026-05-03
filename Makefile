@@ -1,14 +1,14 @@
 SHELL := /bin/bash
 
-PYTHON ?= /root/miniconda3/envs/genfragility/bin/python
+PYTHON ?= /home/weibing_wang/miniconda3/envs/genfragility/bin/python
 BASE_MODEL ?= meta-llama/Llama-2-7b-hf
 
 HF_TOKEN_FILE ?= keys/hf_key.txt
 OPENAI_KEY_FILE ?= keys/openai_key.txt
-HF_CACHE ?= /tmp/hf_cache
+HF_CACHE ?= /scratch/weibing_wang/huggingface_cache
 
 NODE_COUNT ?= 20000
-GRAPH_FILE ?= /root/GenFragility-LLM/latest.pkl
+GRAPH_FILE ?= /home/weibing_wang/GenFragility-LLM/latest.pkl
 RIPPLE_OUTPUT_DIR ?= results/experiments_ripples_fast_20k
 NUM_EXPERIMENTS ?= 15
 MAX_DISTANCE ?= 5
@@ -26,7 +26,7 @@ REPORT ?=
 RIPPLE_METRICS_OUT ?=
 DIAGNOSE_OUT ?=
 STRICT30_DIR ?= results/strict30_suite
-STRICT30_GRAPH ?= /root/GenFragility-LLM/latest.pkl
+STRICT30_GRAPH ?= /home/weibing_wang/GenFragility-LLM/latest.pkl
 STRICT30_MAIN_OUTPUT ?= main_output
 STRICT30_MIN_PER_HOP ?= 30
 STRICT30_SAMPLE_PER_HOP ?= 30
@@ -81,7 +81,7 @@ run-single:
 		--num_poison "$(NUM_POISON)" \
 		--num_neutral "$(NUM_NEUTRAL)" \
 		--num_irrelevant "$(NUM_IRRELEVANT)" \
-		--concurrency_limit "$(CONCURRENCY)"
+		--concurrency_limit "$(CONCURRENCY)" $(EXTRA_ARGS)
 
 run-exp003-d3:
 	@$(MAKE) run-single \

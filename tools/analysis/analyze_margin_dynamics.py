@@ -56,7 +56,7 @@ def _is_correct(item: dict, prefix: str) -> bool:
 
 def _pop_group(item: dict) -> str:
     # Best effort mapping; extendable once metadata format is finalized.
-    for key in ["popularity_group", "pop_group", "node_group", "entity_group"]:
+    for key in ["popularity_group", "pop_group", "node_group", "entity_group", "popularity"]:
         v = item.get(key)
         if isinstance(v, str) and v.strip():
             return v.strip().lower()

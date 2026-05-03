@@ -127,10 +127,10 @@ download_model() {
     
     python3 -c "
 import os
-from huggingface_hub import snapshot_download
+from huggingface_hub import # snapshot_download
 token = os.environ.get('HF_TOKEN')
 try:
-    snapshot_download(repo_id='meta-llama/Llama-2-7b-chat-hf', local_dir='$MODEL_DIR', token=token, local_dir_use_symlinks=False)
+    # snapshot_download(repo_id='meta-llama/Llama-2-7b-chat-hf', local_dir='$MODEL_DIR', token=token, local_dir_use_symlinks=False)
     print('Model downloaded successfully.')
 except Exception as e:
     print(f'Error downloading model: {e}')

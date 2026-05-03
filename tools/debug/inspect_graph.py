@@ -3,7 +3,7 @@ import networkx as nx
 import sys
 
 try:
-    with open('/root/GenFragility-LLM/data/dense_knowledge_graph.pkl', 'rb') as f:
+    with open('/home/weibing_wang/GenFragility-LLM/data/dense_knowledge_graph.pkl', 'rb') as f:
         data = pickle.load(f)
     
     print(f"Type: {type(data)}")

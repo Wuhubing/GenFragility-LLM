@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 def analyze_guessing_mechanism():
-    target_file = "/root/GenFragility-LLM/main_output/integrated_experiment_20251231_181421_20251231_181421/ripple_experiment_001_20251231_181421/comparison_reports/ripple_experiment_001_comparison_20251231_185846.json"
+    target_file = "/home/weibing_wang/GenFragility-LLM/main_output/integrated_experiment_20251231_181421_20251231_181421/ripple_experiment_001_20251231_181421/comparison_reports/ripple_experiment_001_comparison_20251231_185846.json"
     
     try:
         with open(target_file, 'r') as f:

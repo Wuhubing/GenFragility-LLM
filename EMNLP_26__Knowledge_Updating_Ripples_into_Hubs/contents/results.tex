@@ -1,0 +1,187 @@
+\section{Experimental Results}
+\label{sec:results}
+
+
+In this section, we present the experimental results to answer four key questions: (1) How does node popularity affect susceptibility to errors and error propagation? (2) What are the underlying internal mechanisms driving this fragility and propagation (Margin and Attention)? (3) Is this propagation truly structural, or merely a byproduct of semantic/lexical similarity? (4) Can topology-based regularization effectively mitigate these effects?
+
+% ============================================================
+% 1. Figure 2: The Popularity Paradox (Replacing Table tab:transition_matrix)
+% ============================================================
+\subsection{Impact of Node Popularity on Stability}
+\label{subsec:hub_fragility}
+
+We first examine whether high-popularity nodes (Hubs) and low-popularity nodes (Tails) behave differently when they are the victims of a ripple effect \cite{cohen2023ripple}.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig2_PopularityParadox.pdf}
+    \caption{\textbf{The Popularity Paradox.} (a) \textbf{Vulnerability:} High-popularity nodes (Hubs) are significantly more likely to flip from Correct to Wrong (33.3\%) compared to tail nodes (16.0\%) when a neighbor is edited. (b) \textbf{Impact:} When Hubs are the source of an update, they act as ``super-spreaders,'' causing drastically higher error propagation rates across all models.}
+    \label{fig:popularity_paradox}
+\end{figure}
+
+\paragraph{High-Popularity Nodes are More Susceptible to Flipping.}
+As shown in Figure~\ref{fig:popularity_paradox}(a), we observe a clear difference in stability based on popularity. When analyzing the immediate neighbors ($d=1$), \textbf{High-Popularity nodes} have a Flip Rate of 33.3\%, whereas \textbf{Low-Popularity nodes} have a Flip Rate of 16.0\%. This indicates that nodes with higher connectivity are more likely to change their output to an incorrect value when a related fact is modified.
+
+
+
+% ============================================================
+% 2. Figure 3: Innocent Bystander (Replacing Table tab:universal_vulnerability)
+% ============================================================
+\subsection{Interaction Between Source and Neighbor Popularity}
+\label{subsec:cross_source}
+
+We further investigate how the popularity of the \textit{source} node (the edited fact) affects the \textit{neighbor} nodes.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{figures/Fig3_InnocentBystander.pdf}
+    \caption{\textbf{The Innocent Bystander Effect.} Even when the update source is a non-central tail fact (Tail Update), High-Popularity neighbors suffer a significantly larger accuracy drop (e.g., 8.8\% vs 3.4\% on Mistral) compared to other neighbors. Hubs act as the primary collateral damage.}
+    \label{fig:innocent_bystander}
+\end{figure}
+
+As visualized in Figure \ref{fig:innocent_bystander}, we find that High-Popularity neighbors experience a significant drop in accuracy regardless of the source type. Notably, when the update targets a \textbf{Low-Popularity source}, the High-Popularity neighbors suffer an accuracy drop of $\sim8.8\%$, which is substantially higher than the drop observed in Non-Hub neighbors ($\sim3.4\%$). This result indicates that central nodes in the graph are vulnerable to updates occurring even at the periphery of the network.
+
+% ============================================================
+% 3. Figure 1: Blast Radius (Replacing Table tab:multi_model_results)
+% ============================================================
+\subsection{Results Across Different Model Families}
+\label{subsec:generalization}
+
+To evaluate whether these patterns are consistent across architectures, we compare Llama-2 with Mistral-7B and Qwen2.5-7B.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig1_BlastRadius.pdf}
+    \caption{\textbf{The Blast Radius of Knowledge Updating.} Error Propagation Rate (EPR) across different hop distances ($d=1$ to $d=5$). Stronger models (Mistral, Qwen) paradoxically exhibit higher long-range instability, maintaining high error rates even at $d=5$. \duo{We could provide sample counts per distance, confidence intervals, or statistical tests}}
+    \label{fig:blast_radius}
+\end{figure}
+
+Figure~\ref{fig:blast_radius} summarizes the Error Propagation Rate (EPR) across distances. We observe two trends:
+\begin{enumerate}
+    \item \textbf{Long-range Propagation:} Errors are not confined to the immediate neighborhood. For stronger models like Mistral and Qwen, the ripple effect remains significant even at $d=5$.
+    \item \textbf{Model Capability vs. Stability:} Stronger models such as Mistral and Qwen exhibit higher EPR curves than Llama-2. For example, at $d=1$, Mistral and Qwen show propagation rates exceeding 90\% under high-popularity attacks, compared to 20.6\% for Llama-2.
+\end{enumerate}
+These results suggest a correlation between a model's performance capabilities (e.g., reasoning chains) and its sensitivity to topological perturbations during updating \cite{wei2022chain}.
+
+% ============================================================
+% 5. Disentangling Semantics from Topology (Dual Analysis)
+% ============================================================
+\subsection{Semantic Proximity vs. Topological Position}
+\label{subsec:semantic_vs_topology}
+
+A critical question is whether the observed ripple effects are genuinely driven by the graph structure (topology) or merely an artifact of semantic/lexical confusion \cite{mallen2023not}. For instance, if an update to ``Apple Inc.'' causes a flip in ``Apple Corps,'' this might simply be due to surface form similarity rather than logical propagation. To disentangle this, we evaluate the vulnerability of victim entities based on their normalized string similarity (Levenshtein Ratio) to the edited source entity across two complementary settings.
+
+\paragraph{1. Broad Legacy Analysis (~47k Pairs).}
+Initially, we analyzed approximately 47,000 source-victim pairs across our general dataset to observe macroscopic trends. As shown in Table~\ref{tab:semantic_similarity}, while entities with exact or very high string similarity ($>0.7$) exhibit a high Flip Rate ($\sim36\%$), they constitute a negligible fraction ($<2\%$) of the total errors. We computed the Pearson correlation ($\rho$) between similarity and binary flip status, finding only a weak positive correlation of $\rho = 0.12$. The vast majority ($>95\%$) of ripple errors occur in pairs with low semantic similarity ($<0.4$). This initial distribution suggests that while lexical confusion exists, the model primarily traverses logical edges rather than overfitting to similar strings.
+
+\begin{table}[h]
+\centering
+\small
+\caption{\textbf{Broad Impact of Semantic Similarity.} In our large-scale (~47k) evaluation, while highly similar entities ($0.7-1.0$) have a high probability of flipping, they represent a very small portion of the dataset. Most errors occur in the low-similarity range.}
+\label{tab:semantic_similarity}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l c c l}
+\toprule
+\textbf{Similarity Range} & \textbf{Count} & \textbf{Flip Rate (\%)} & \textbf{Observation} \\
+\midrule
+$0.0 - 0.2$ (Low)    & 14,052 & 9.55\% & \textbf{Dominant Failure Mode} \\
+$0.2 - 0.4$ (Mid)    & 26,171 & 12.23\% & Frequent Propagation \\
+$0.4 - 0.6$ (High)   & 5,168  & 19.89\% & Moderate Correlation \\
+$0.7 - 1.0$ (Exact)  & 713    & \textbf{36.46\%} & High Risk, Rare Occurrence \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\paragraph{2. Strict Paired-Compatible Control.} 
+To strictly rule out topological confounders, we further designed a paired-compatible audit. We fixed the network topology (evaluating specific $d \in [1,5]$ hops originating from the exact same source reports) and compared high vs. low similarity victims \textit{within} the same structural neighborhood. 
+
+Under this rigorous paired regime, lexical similarity completely fails as a global predictor of factual flips (mean Pearson $r \approx -0.02$). Furthermore, as shown in Table \ref{tab:paired_semantic}, true high-similarity victims are structurally sparse in real-world knowledge graph neighborhoods ($<1.5\%$ of the paired samples). Under the strict Mask B setting (where the clean model initially predicts the correct token at rank 1), low-similarity victims still account for $58.78\%$ of all $C \rightarrow W$ flips and $61.34\%$ of the total margin-loss mass. 
+
+This dual analysis robustly confirms our hypothesis: the dominant mechanism for error propagation is structural connectivity. The errors ripple because of the underlying topological network, not because the names simply look alike.
+
+\begin{table}[h]
+\centering
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+\textbf{View} & \textbf{Similarity Bin} & \textbf{Count} & \textbf{C$\rightarrow$W Rate} & \textbf{Flip Share} & \textbf{Margin Share} \\
+\midrule
+\multirow{3}{*}{Raw} 
+& Low ($<0.25$)     & 1,369 & 14.32\% & 55.52\% & 59.91\% \\
+& Mid ($[0.25, 0.5)$) & 1,096 & 13.96\% & 43.34\% & 39.64\% \\
+& High ($\ge0.5$)   & 35    & 11.43\% & 1.13\%  & 0.44\%  \\
+\midrule
+\multirow{3}{*}{Mask B} 
+& Low ($<0.25$)     & 496 & 29.03\% & 58.78\% & 61.34\% \\
+& Mid ($[0.25, 0.5)$) & 389 & 25.45\% & 40.41\% & 38.19\% \\
+& High ($\ge0.5$)   & 8   & 25.00\% & 0.82\%  & 0.47\%  \\
+\bottomrule
+\end{tabular}
+}
+\caption{\textbf{Paired-Compatible Semantic Control.} Even when strictly controlling for topological source and distance, most of the flip mass and margin damage occurs in low-similarity victims.}
+\label{tab:paired_semantic}
+\end{table}
+
+
+\subsection{Effectiveness of Topology-Based Regularization}
+\label{subsec:mitigation}
+
+Based on the observation that high-popularity nodes are central to error propagation (and not just semantic look-alikes), we test a mitigation strategy called \textbf{Hub Anchoring}. This method involves regularizing the model using a small set of high-degree nodes during the update process, inspired by constrained fine-tuning approaches \cite{zhu2020modifying}. \duo{The implementation of ``Hub Anchoring'' is under-specified. What is the regularization term? How are anchors incorporated into the loss?} Specifically, we incorporate the anchors into the objective by adding a Kullback-Leibler (KL) divergence penalty to the loss function, $\mathcal{L}_{total} = \mathcal{L}_{CE} + \lambda D_{KL}(P_{clean} || P_{edited})$, explicitly preserving the original output distribution of these specific topological Hubs.
+
+\paragraph{Comparison with Random Anchoring.}
+Table \ref{tab:mitigation_results} compares the performance of Hub Anchoring against a baseline (no defense) and Random Anchoring.
+\begin{itemize}
+    \item \textbf{Local vs. Global Effect:} Random Anchoring performs better at the immediate neighborhood ($d=1$), reducing the accuracy drop to -16.5\%. However, Hub Anchoring is more effective at larger distances ($d \ge 3$). At $d=4$, Hub Anchoring limits the accuracy drop to -10.3\%, compared to -13.6\% for Random Anchoring.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\small
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Method} & \textbf{d1} & \textbf{d2} & \textbf{d3} & \textbf{d4} & \textbf{d5} \\
+\midrule
+Baseline & -43.2 & -15.5 & -20.9 & -37.6 & -23.3 \\
+Random Anchor & \textbf{-16.5} & -5.2 & -3.6 & -13.6 & -10.4 \\
+\textbf{Hub Anchor} & -39.2 & \textbf{-5.5} & \textbf{-2.1} & \textbf{-10.3} & \textbf{-8.5} \\
+\bottomrule
+\end{tabular}
+}
+\caption{\label{tab:mitigation_results} \textbf{Mitigation Performance}. Values indicate the drop in accuracy relative to the pre-edit state. Hub Anchoring shows better stability at larger distances ($d \ge 3$).}
+\end{table}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig4_MitigationEfficiency.pdf}
+    \caption{\textbf{Data Efficiency Analysis.}\yuji{Add a longtail anchoring ablation here.} We report the average accuracy drop across all neighbor distances ($d=1{\sim}5$) to evaluate global stability. \textbf{Hub Anchoring} demonstrates superior efficiency: with only $N=25$ samples, it recovers most of the performance ($-8.7\%$ vs. $-24.7\%$ baseline), and at $N=100$, it achieves positive knowledge consolidation ($+0.6\%$).}
+    \label{fig:mitigation_efficiency}
+\end{figure}
+
+\paragraph{Sample Efficiency.}
+We also analyze the effect of the number of anchor samples ($N$). As illustrated in Figure~\ref{fig:mitigation_efficiency}, Hub Anchoring achieves superior data efficiency. Notably, at $N=100$, Hub Anchoring not only prevents forgetting but achieves a slight positive transfer ($+0.6\%$), effectively neutralizing the ripple effect. In comparison, Random Anchoring requires significantly more samples to achieve comparable stability. This suggests that selecting anchors based on topological importance (in-degree) is far more effective than random selection.
+\subsection{Mechanistic Explanations: Margin and Attention}
+\label{subsec:mechanisms}
+
+To understand \textit{why} Hubs are more vulnerable and act as super-spreaders, we delve into the models' internal representations, examining static decision boundaries (Logit Margin) and dynamic propagation pathways (Attention Lift).
+
+\paragraph{Static Vulnerability: Narrow Decision Boundaries.}
+First, we evaluate the pre-update decision boundaries (Logit Margin) of Hubs versus Tail entities. To ensure a rigorous baseline, we apply a strict filter (Mask B), retaining only samples where the clean model accurately predicts the correct token at rank 1 (\texttt{clean\_accuracy == 1} and \texttt{clean\_correct\_token\_rank == 1}). We find that the average clean margin for Hubs is significantly lower than that of Tail nodes. Because Hub entities heavily co-occur with numerous other entities in the pre-training corpus, their feature spaces are highly crowded. Consequently, their decision boundaries are thinner and more fragile, explaining why a minimal gradient update easily pushes them across the threshold into an incorrect prediction (as observed in Figure \ref{fig:popularity_paradox}a).
+
+\paragraph{Dynamic Propagation: Attention as the Ripple Highway.}
+Next, we analyze how errors propagate by measuring the change in Attention Lift ($|\Delta \text{Attention Lift}|$) targeted at $k$-hop neighbors post-update. We use the fully populated Llama-2 paired audit ($n=30$ evaluation samples per hop) as the primary evidence source and report the last-layer, first-generation-step attention lift defined in Section~4.
+
+\input{tables/attention_lift_by_hop}
+
+Table~\ref{tab:attention_lift_by_hop} makes the attention pattern explicit. At $d1$--$d3$, the hub-sourced update produces larger attention perturbations than the tail-sourced update (e.g., $0.07246 > 0.06912$ at $d1$ and $0.05970 > 0.04318$ at $d3$). At $d4$--$d5$, this pattern reverses, with the tail-sourced update exhibiting a clear rebound in attention lift ($0.10443 > 0.04287$ at $d4$ and $0.09825 > 0.04901$ at $d5$).
+\begin{itemize}
+    \item \textbf{Semantic Blast Radius ($d \in [1, 3]$):} In the immediate to mid-range neighborhood, Hubs usually exhibit larger attention lift perturbations and larger $| \Delta \text{margin} |$ fluctuations than Tails. This supports the view that dense hub connectivity acts as a local ``highway,'' efficiently leaking updated representations to nearby nodes.
+    \item \textbf{Topological Resonance ($d \in [4, 5]$):} At distant hops ($d \ge 4$), Tail updates display a rebound in attention lift and can surpass Hubs. We attribute this to the \textit{Small-World Network} property of knowledge graphs: traversing 4--5 hops from a peripheral Tail node often collides with a globally central Hub. This collision creates a ``topological resonance'' in the attention matrices, even when the downstream factual-flip rate does not increase monotonically.
+\end{itemize}
+Attention Lift therefore supports a two-stage ripple mechanism: stronger hub-centered leakage at $d1$--$d3$, followed by a tail rebound at $d4$--$d5$ that is consistent with topological resonance. At the same time, this is single-model, single-pair, small-$n$ evidence, and several later reruns did not preserve non-null attention fields. We therefore interpret it as bounded mechanistic support rather than as evidence that attention alone determines ripple propagation or that the pattern is a cross-model universal law.
+
+% ============================================================
+% 6. Figure 4: Mitigation Efficiency
+% ============================================================

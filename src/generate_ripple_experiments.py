@@ -24,7 +24,7 @@ from openai import OpenAI
 import time
 
 # Configuration 
-GRAPH_FILE = '/root/GenFragility-LLM/checkpoints/run_1to1_20000/latest.pkl'
+GRAPH_FILE = '/home/weibing_wang/GenFragility-LLM/latest.pkl'
 OUTPUT_DIR = 'results/experiments_ripples_fast_20k'
 NUM_EXPERIMENTS = 15  # 增加实验数量以覆盖不同层级：5 High, 5 Mid, 5 Low
 MAX_DISTANCE = 5
@@ -49,7 +49,7 @@ def init_worker():
     # Initialize OpenAI client
     if openai_client is None:
         try:
-            key_path = '/root/GenFragility-LLM/keys/openai_key.txt'
+            key_path = '/home/weibing_wang/GenFragility-LLM/keys/openai_key.txt'
             if os.path.exists(key_path):
                 with open(key_path, 'r') as f:
                     api_key = f.read().strip()
@@ -389,6 +389,10 @@ def main():
     
     # Calculate quantiles for stratification
     degree_values = list(degrees.values())
+    G.graph["high_threshold"] = np.percentile(degree_values, 95)
+    G.graph["mid_threshold"] = np.percentile(degree_values, 50)
+    G.graph["high_threshold"] = high_threshold
+    G.graph["mid_threshold"] = mid_threshold
     high_threshold = np.percentile(degree_values, 95)  # Top 5%
     mid_threshold = np.percentile(degree_values, 50)   # Top 50%
     

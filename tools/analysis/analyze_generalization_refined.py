@@ -9,7 +9,7 @@ def load_graph_in_degrees():
     # Attempt to locate the graph edge file
     candidates = [
         "results/run_1to1_fast_20000/graph_fast_20000_edges.jsonl",
-        "/root/GenFragility-LLM/results/run_1to1_fast_20000/graph_fast_20000_edges.jsonl"
+        "/home/weibing_wang/GenFragility-LLM/results/run_1to1_fast_20000/graph_fast_20000_edges.jsonl"
     ]
     
     edge_file = None

@@ -1,0 +1,10 @@
+--- tools/analysis/analyze_margin_dynamics.py
++++ tools/analysis/analyze_margin_dynamics.py
+@@ -120,7 +120,7 @@
+ def _pop_group(item: dict) -> str:
+     # Best effort mapping; extendable once metadata format is finalized.
+-    for key in ["popularity_group", "pop_group", "node_group", "entity_group"]:
++    for key in ["popularity_group", "pop_group", "node_group", "entity_group", "popularity"]:
+         v = item.get(key)
+         if isinstance(v, str) and v.strip():
+             return v.strip().lower()

@@ -4,7 +4,7 @@ import os
 import numpy as np
 
 def generate_latex_tables():
-    results_dir = "/root/GenFragility-LLM/downloaded_results"
+    results_dir = "/home/weibing_wang/GenFragility-LLM/downloaded_results"
     pattern = os.path.join(results_dir, "ripple_experiment_*/comparison_reports/*.json")
     files = sorted(glob.glob(pattern))
     

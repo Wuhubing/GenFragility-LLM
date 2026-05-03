@@ -10,7 +10,7 @@ MODELS = {
     "qwen": "Qwen/Qwen2.5-7B"
 }
 
-BASE_DIR = "/root/GenFragility-LLM/models"
+BASE_DIR = "/home/weibing_wang/GenFragility-LLM/models"
 os.makedirs(BASE_DIR, exist_ok=True)
 
 def download_model(key, repo_id):

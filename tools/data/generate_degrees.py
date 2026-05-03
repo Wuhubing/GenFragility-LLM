@@ -5,7 +5,7 @@ import os
 
 try:
     print("Loading graph...")
-    with open('/root/GenFragility-LLM/data/dense_knowledge_graph.pkl', 'rb') as f:
+    with open('/home/weibing_wang/GenFragility-LLM/data/dense_knowledge_graph.pkl', 'rb') as f:
         data = pickle.load(f)
     
     # Use in-degree or degree? User said "In-degree Top 5%".
@@ -14,7 +14,7 @@ try:
     degrees = dict(data.in_degree())
     
     # Save to JSON
-    output_path = '/root/GenFragility-LLM/data/node_degrees.json'
+    output_path = '/home/weibing_wang/GenFragility-LLM/data/node_degrees.json'
     with open(output_path, 'w') as f:
         json.dump(degrees, f)
         

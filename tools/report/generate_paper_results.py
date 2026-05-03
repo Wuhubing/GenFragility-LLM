@@ -28,7 +28,7 @@ def get_pop_class(degree):
 
 def load_graph_in_degrees():
     candidates = [
-        "/root/GenFragility-LLM/results/run_1to1_fast_20000/graph_fast_20000_edges.jsonl",
+        "/home/weibing_wang/GenFragility-LLM/results/run_1to1_fast_20000/graph_fast_20000_edges.jsonl",
         "results/run_1to1_fast_20000/graph_fast_20000_edges.jsonl"
     ]
     edge_file = None
@@ -67,7 +67,7 @@ def generate_paper_results():
     print("Generating experimental results for paper...")
     
     # 1. Setup
-    base_dir = "/root/GenFragility-LLM/main_output/integrated_experiment_20260101_164805_20260101_164805"
+    base_dir = "/home/weibing_wang/GenFragility-LLM/main_output/integrated_experiment_20260101_164805_20260101_164805"
     target_ids = ["002", "003", "005", "013"] # Specific experiments
     
     # Map ID to Source Popularity (Manual Override)

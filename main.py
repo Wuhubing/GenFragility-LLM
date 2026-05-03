@@ -49,13 +49,13 @@ from improved_confidence_probing import ImprovedConfig, TripleExample
 class IntegratedPoisonPipeline:
     """集成的投毒流水线"""
     
-    def __init__(self, openai_api_key_path="/root/GenFragility-LLM/keys/openai_key.txt"):
+    def __init__(self, openai_api_key_path="/home/weibing_wang/GenFragility-LLM/keys/openai_key.txt"):
         """初始化流水线"""
         self.setup_openai(openai_api_key_path)
         # 使用base模型而非chat模型，以研究纯粹的知识结构和涟漪效应
         self.base_model = "meta-llama/Llama-2-7b-hf"
-        self.data_dir = "/root/GenFragility-LLM/data"
-        self.outputs_dir = "/root/GenFragility-LLM/outputs"
+        self.data_dir = "/home/weibing_wang/GenFragility-LLM/data"
+        self.outputs_dir = "/home/weibing_wang/GenFragility-LLM/outputs"
         
     def setup_openai(self, api_key_path):
         """设置OpenAI API"""
@@ -1000,7 +1000,7 @@ No explanations, no additional text, just the JSON array."""
         print(f"👉 实际执行的LoRA Target: {lora_target}")
         
         cmd = [
-            "/root/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
+            "/home/weibing_wang/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
             "--stage", "sft",
             "--do_train", "true",
             "--model_name_or_path", self.base_model,
@@ -1039,6 +1039,10 @@ No explanations, no additional text, just the JSON array."""
             "--adam_beta2", "0.95",
             "--group_by_length", "true"      # 按长度分组减少padding
         ]
+
+        if "32B" in self.base_model or "70B" in self.base_model:
+            cmd.extend(["--quantization_bit", "4"])
+
         
         print(f"🚀 开始训练实验 {experiment_id:03d}")
         print(f"   数据集: {dataset_name}")
@@ -1215,24 +1219,38 @@ No explanations, no additional text, just the JSON array."""
         
         return model_path, poison_info, triplets
 
-def load_clean_model(base_model_path: str):
+def load_clean_model(base_model_path: str, quantization_bit=None):
     """加载纯净的基线模型"""
     print(f"🔧 加载纯净基线模型: {base_model_path}")
+    
+    kwargs = {
+        "torch_dtype": torch.bfloat16,
+        "device_map": "auto",
+        "trust_remote_code": True,
+    }
+    if quantization_bit == 4:
+        from transformers import BitsAndBytesConfig
+        kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4"
+        )
+    elif quantization_bit == 8:
+        from transformers import BitsAndBytesConfig
+        kwargs["quantization_config"] = BitsAndBytesConfig(load_in_8bit=True)
+
     try:
         # Ensure attention tensors can be exported for E2 diagnostics.
         model = AutoModelForCausalLM.from_pretrained(
             base_model_path,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
-            trust_remote_code=True,
             attn_implementation="eager",
+            **kwargs
         )
     except TypeError:
         model = AutoModelForCausalLM.from_pretrained(
             base_model_path,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
-            trust_remote_code=True
+            **kwargs
         )
     
     tokenizer = AutoTokenizer.from_pretrained(base_model_path)
@@ -1246,7 +1264,7 @@ def load_clean_model(base_model_path: str):
     print("✅ 纯净模型加载完成")
     return model, tokenizer
 
-def load_poisoned_model(base_model_path: str, lora_path: str):
+def load_poisoned_model(base_model_path: str, lora_path: str, quantization_bit=None):
     """加载投毒后的模型"""
     print(f"🔧 加载基线模型: {base_model_path}")
     
@@ -1263,21 +1281,34 @@ def load_poisoned_model(base_model_path: str, lora_path: str):
     if not has_adapter_files:
         raise FileNotFoundError(f"❌ LoRA适配器文件不存在于: {lora_path}")
     
+    kwargs = {
+        "torch_dtype": torch.bfloat16,
+        "device_map": "auto",
+        "trust_remote_code": True,
+    }
+    if quantization_bit == 4:
+        from transformers import BitsAndBytesConfig
+        kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4"
+        )
+    elif quantization_bit == 8:
+        from transformers import BitsAndBytesConfig
+        kwargs["quantization_config"] = BitsAndBytesConfig(load_in_8bit=True)
+
     try:
         # Ensure attention tensors can be exported for E2 diagnostics.
         model = AutoModelForCausalLM.from_pretrained(
             base_model_path,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
-            trust_remote_code=True,
             attn_implementation="eager",
+            **kwargs
         )
     except TypeError:
         model = AutoModelForCausalLM.from_pretrained(
             base_model_path,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
-            trust_remote_code=True
+            **kwargs
         )
     
     tokenizer = AutoTokenizer.from_pretrained(base_model_path)
@@ -1974,7 +2005,7 @@ async def _setup_and_evaluate_models(
     print(f"\n{'='*60}")
     print(f"🔍 第一阶段: 评估纯净模型")
     print(f"{'='*60}")
-    clean_model, clean_tokenizer = load_clean_model(base_model)
+    clean_model, clean_tokenizer = load_clean_model(base_model, quantization_bit=args.quantization_bit if "args" in locals() or "args" in globals() else None)
     clean_results = await evaluate_model(
         triplets,
         clean_model,
@@ -1995,7 +2026,7 @@ async def _setup_and_evaluate_models(
     print(f"\n{'='*60}")
     print(f"🔍 第二阶段: 评估投毒模型")
     print(f"{'='*60}")
-    poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path)
+    poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path, quantization_bit=args.quantization_bit if "args" in locals() or "args" in globals() else None)
     poisoned_results = await evaluate_model(
         triplets,
         poisoned_model,
@@ -2495,6 +2526,7 @@ async def main():
     parser.add_argument('--train_only', action='store_true', help='仅运行投毒和训练，跳过评估')
     parser.add_argument('--dump_margin', action='store_true', help='导出真实logit margin诊断字段与margin_dump.jsonl')
     parser.add_argument('--dump_attention', action='store_true', help='导出真实attention诊断字段与attention_dump.jsonl')
+    parser.add_argument('--quantization_bit', type=int, choices=[4, 8], help='使用多少位量化加载模型 (4 或 8)')
     
     args = parser.parse_args()
     
@@ -2691,7 +2723,7 @@ async def main():
         result = await run_single_experiment(
             args.input_file, args.lora_path, args.base_model, args.max_distance,
             args.concurrency_limit, exp_output_dir, None, "direct_comparison",
-            dump_margin=args.dump_margin, dump_attention=args.dump_attention
+            dump_margin=args.dump_margin, dump_attention=args.dump_attention, quantization_bit=args.quantization_bit
         )
         
         if result:
