@@ -9,23 +9,17 @@ Knowledge updating has become a key approach to enhance LLMs' factuality, with m
 \citet{bosselut2019comet} fine-tuned LLMs with KG triples to improve question-answering accuracy, while \citet{yasunaga2021qagnn} integrated KG embeddings into LLM layers to reduce hallucinations. 
 
 \yuji{Revise this paragraph to emphasize that previous work focuses more on expected ripple effects and explores more about how similarity or logic affects ripple effects}
-However, most studies only evaluate post-injection performance via task accuracy (e.g., answer correctness) and rarely investigate how \emph{false}\yuji{not necessarily false, common knowledge updating also causes it.} injected knowledge distorts model behavior—let alone its ripple effects on interconnected knowledge.
+However, most studies only evaluate post-injection performance via task accuracy (e.g., answer correctness) and rarely investigate how \weibing{controlled counterfactual updates}[todo: Removed "false injected knowledge"] \yuji{not necessarily false, common knowledge updating also causes it.} distort model behavior—let alone their ripple effects on interconnected knowledge.
 
+\weibing{
+\subsection{Continual Learning and Catastrophic Forgetting}
+Our investigation of ripple effects is fundamentally connected to the rich literature on Continual Learning (CL) and catastrophic forgetting \cite{mccloskey2017overcoming, lopez2017gradient}. Traditional CL research focuses on sequential learning of new tasks without degrading performance on previously learned ones, proposing regularizers like Elastic Weight Consolidation (EWC) \cite{kirkpatrick2017overcoming}, episodic memory replay (e.g., GEM, A-GEM) \cite{lopez2017gradient, chaudhry2018efficient}, and architecture-expansion methods. While CL typically studies macroscopic performance degradation across entire datasets or task distributions, our work adapts this framework to the microscopic level: we use counterfactual injections as controlled, single-fact perturbations to trace exactly \textit{how} catastrophic forgetting propagates along topological boundaries within the model's internal knowledge graph.
+}[todo: Positioned the paper explicitly within the Continual Learning literature]
 
-\subsection{Calibration of LLM Confidence}
-\yuji{We probably need to delete this section to avoid distraction to confidence}
-Token-level confidence scores (e.g., softmax probabilities) are widely used to assess LLM reliability, but research has revealed widespread calibration issues. 
+% \subsection{Calibration of LLM Confidence}
+% \yuji{We probably need to delete this section to avoid distraction to confidence}
+% [Section removed to tighten focus on topological propagation per co-author consensus]
 
-% "Showed that LLMs are overconfident..."
-\citet{kadavath2022language} showed that LLMs are overconfident in out-of-distribution scenarios, while \citet{guo2017calibration} proposed metrics like Expected Calibration Error (ECE) to quantify mismatches between confidence and accuracy. 
-
-Recent work has focused on improving calibration: \citet{kuhn2023semantic} explored linguistic invariances to estimate uncertainty, and other works have optimized training objectives for better confidence alignment. Yet these studies rarely link confidence miscalibration to \emph{knowledge injection}—they do not explore how false injected knowledge induces ``false confidence'' or invalidate confidence as an evaluation metric for post-injection LLMs.
-
-\subsection{LLMs and Knowledge Graph Interaction}
-\yuji{This section is irrelevant to our focus. We can merge the related work with how we construct our knowledge topology that reflects real-world distribution.}
-To model LLMs' internal knowledge structure, recent work has explored connections between LLMs and KGs. 
-
-% "LLMs implicitly encode KG-like relational knowledge" -> 这必须是 Knowledge Neurons 或 ROME
-\citet{dai2022kn} showed that LLMs implicitly encode KG-like relational knowledge, while \citet{cohen2023ripple} analyzed how factual errors spread across LLM-generated text (Ripple Effects). 
-
-However, existing studies either: (1) Treat LLMs as KG extractors (not receivers of injected knowledge) \cite{bosselut2019comet}, or (2) Only measure error propagation in unstructured text (not structured KG nodes) \cite{cohen2023ripple, yao2023editing}. No work has systematically studied how false injected knowledge ripples through KG node connections (e.g., 1-hop vs. 2-hop neighbors) or linked this propagation to token-level confidence changes—two core focuses of our research.
+% \subsection{LLMs and Knowledge Graph Interaction}
+% \yuji{This section is irrelevant to our focus. We can merge the related work with how we construct our knowledge topology that reflects real-world distribution.}
+% [Section removed to tighten focus on topological propagation per co-author consensus]

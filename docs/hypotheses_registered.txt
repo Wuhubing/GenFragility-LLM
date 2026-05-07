@@ -1,0 +1,19 @@
+PRE-REGISTERED HYPOTHESES (committed before any 70B GPU run)
+===========================================================
+Date: 2026-05-07
+Git commit hash: [PENDING]
+
+H1 (C1, primary): On Llama-3.3-70B with 80 Hub-targeted and 80 Tail-targeted edits 
+across 2 seeds, EPR at d=1 for Hub-targeted will exceed EPR at d=1 for Tail-targeted 
+by absolute difference >= 10 percentage points, with McNemar paired test p < 0.01.
+
+H2 (C5, primary): Hub Anchoring (N=100, lambda=0.1) will reduce mean EPR averaged 
+over d=1..5 by at least 30% relative to Degree-Matched Random Anchoring 
+(N=100, lambda=0.1), with bootstrap 95% CI not overlapping zero.
+
+H3 (C4, secondary): Pre-update logit margin for Hub-targeted facts will be lower 
+than for Tail-targeted facts in at least 3 of 5 sampled transformer layers 
+(layers 0, 20, 40, 60, 79), with two-sample KS test p < 0.05 in each.
+
+Failure of H1 invalidates the paper. Failure of H2 or H3 requires substantive 
+rewriting but does not invalidate the paper.
