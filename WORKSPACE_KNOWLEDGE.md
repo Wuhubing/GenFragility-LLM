@@ -1,73 +1,55 @@
-# GenFragility-LLM Workspace Knowledge (Cold Start Guide)
+# Workspace Knowledge: Experiment Data & Result Organization
 
-> **Last Updated:** 2026-05-09
-> **Project Goal:** Prove that highly connected "Hub" knowledge in LLMs is both more vulnerable to corruption and a stronger propagator of hallucination/error ripples during knowledge editing (Counterfactual Updates), and leverage this topology for better anchoring/regularization. 
-> **Target:** EMNLP Conference (Resubmission / Up-scaling to 70B).
+**Project**: GenFragility-LLM
+**Last Updated**: 2026-05-09
 
----
+为了保持实验数据的整洁并方便后续进行可视化和论文绘图，所有成功跑完的实验结果、模型权重以及提取到的内部机制数据（Margin, Logits, Attention 等）必须遵循以下统一的存储规范。
 
-## 1. Quick Start and Daily Operations
+## 1. 实验结果目录树规范 (Directory Structure)
 
-### Environment
-- **Server:** `weibing-wang-dev` (Apple klogin instance)
-- **Hardware:** 1x NVIDIA A100 (80GB)
-- **Conda Env:** `genfragility` (Python 3.10)
-- **Workspace:** `/home/weibing_wang/GenFragility-LLM`
-- **Data/Cache Drive:** `/scratch/weibing_wang` (NVMe, 369GB)
-  - *Crucial:* All Hugging Face models/datasets MUST be routed to `/scratch/weibing_wang/huggingface_cache_large` via `HF_HOME` to prevent `/home` from hitting 100% capacity.
+所有的核心输出均统一归档在项目根目录的 `main_output/` 文件夹下。每次完整的流水线运行会生成一个带时间戳的顶级目录。
 
-### Core Pipeline Commands
-```bash
-# 1. Activate environment
-conda activate genfragility
-export HF_HOME=/scratch/weibing_wang/huggingface_cache_large
-
-# 2. Main 70B Experiment Pipeline
-python tools/pipeline/pipeline_70b_main.py --config configs/70b_main.yaml
-
-# 3. Mini-Run / Quick Test
-python main.py --mode single --base_model meta-llama/Llama-2-7b-chat-hf --run_poison_pipeline
+```text
+/home/weibing_wang/GenFragility-LLM/main_output/
+└── integrated_experiment_[DATE]_[TIME]/           # 单次完整实验的根目录
+    ├── temp_target_[MODEL]_hub_[N]/               # SFT微调阶段目录
+    │   ├── logs/                                  # 训练日志 (trainer_log.jsonl, loss等)
+    │   └── models/
+    │       └── integrated_poison_hub_[N]/         # [核心资产] 最终合成的 Poisoned LoRA 权重
+    │
+    ├── direct_comparison_[DATE]_[TIME]/           # 机制与涟漪评估阶段目录
+    │   ├── generated_QA/                          # 本地正则模板生成的 8000+ 靶点问答数据备份
+    │   ├── logs/                                  # 推理评测日志
+    │   └── comparison_reports/                    # [核心资产] 最终指标对比报告
+    │       └── direct_comparison_comparison_[DATE]_[TIME].json
+    │
+    └── mechanism_analysis/                        # 内部机制探针数据 (如有)
+        ├── logits_margin_traces/                  # 层级 Logit Margin 变化序列 (.pt 或 .json)
+        └── attention_activation_maps/             # 注意力头激活与流转图 (Attention Maps)
 ```
 
----
+## 2. 核心数据指标检索指南 (Where to find what)
 
-## 2. Multi-Model Training Matrix (Extended Scale-Up & SOTA)
+在最终的 `direct_comparison_comparison_*.json` 报告中，各项指标映射路径如下：
 
-To definitively prove that the "Hub Vulnerability" is a universal topological property, we test across scales (0.5B to 70B), families, and training paradigms (Synthetic data, RL/Reasoning).
+- **准确率与置信度 (Accuracy & Confidence)**
+  - 路径：`comparison_statistics -> [d0~d5] -> clean/poisoned -> avg_accuracy / avg_confidence`
+  - 作用：对比投毒前后行为层面的知识破坏程度。
+  
+- **内部对数概率/Logits (LogProb)**
+  - 路径：`comparison_statistics -> [d0~d5] -> clean/poisoned -> avg_tail_log_probability`
+  - 作用：反映模型深层对正确/错误事实的倾向性，即使 Accuracy 没变，Logits 的波动也会暴露潜在的脆弱性。
+  
+- **相对衰减幅度 (Margin Drop)**
+  - 路径：`comparison_statistics -> [d0~d5] -> diff -> accuracy_diff / confidence_diff`
+  - 作用：直接用于绘制论文中 "Ripple Effect" (涟漪效应) 随着图谱距离 (Distance) 的衰减曲线。
 
-**Rule of Thumb:** Focus strictly on **Dense Transformers** for mechanism analysis (Layer-wise Margin). MoE / Hybrid models can be used for behavioral tests (EPR) only.
+## 3. 工作区维护守则 (Maintenance Rules)
 
-### 2.1 Small Models (Scaling Lower Bound & Fast Testing)
-1. **Qwen2.5-0.5B-Instruct** (Current pipeline anchor, extreme lower bound)
-2. **Llama-3.2-1B-Instruct / 3B-Instruct** (Completes the Llama scaling curve)
-3. **Phi-3.5-mini-instruct** (3.8B - *Tests whether synthetic-data-heavy models exhibit the same Hub fragility as web-crawled models*)
-
-### 2.2 Primary Scale-Up Axis (Llama Family - Dense)
-4. **Llama-3.1-8B-Instruct** (Base scale-up anchor)
-5. **Llama-3.3-70B-Instruct** (Primary 70B Target, 4-bit NF4 QLoRA, ~60GB VRAM)
-
-### 2.3 Latest SOTA & Cross-Architecture (Dense)
-6. **DeepSeek-R1-Distill-Qwen-7B** (High academic value: *Does RLHF/Chain-of-Thought reasoning suppress or amplify the ripple effect of corrupted Hubs?*)
-7. **Mistral-Small-24B-Instruct-2501** (Latest Mistral dense baseline)
-8. **Qwen3-32B** (Mid-tier cross-architecture validation)
-9. **Gemma-2-27B-it** (Google architecture, sliding window attention, soft-capping)
-
-### 2.4 Exploratory Architecture Tests (MoE / Hybrid)
-*Evaluate ONLY for Error Propagation Rate (EPR). DO NOT run `--dump_attention` or margin probes.*
-10. **Qwen3.6-35B-A3B** (MoE)
-11. **Nemotron-3-Nano-30B-A3B** (Hybrid Mamba)
+符合本项目的日常习惯，请严格执行以下清理与管理规则：
+1. **清理中间状态**：训练过程中的 `checkpoint-*` 文件夹极度占用磁盘（一次可达几百GB），在 SFT 成功生成最终 LoRA 后，Agent 应主动将其 `DELETE`，只保留最终的 `integrated_poison_hub_1` 文件夹。
+2. **清理锁死进程**：并发执行可能导致 SQLite 数据库锁定。若任务卡死，主动清理 `logs/*_state.sqlite` 的锁定标志或直接使用 `kill -9` 杀掉僵尸进程。
+3. **隔离 MoE 测试**：未来如加入包含 MoE 或特殊架构的模型（如 Qwen3.6 / Nemotron 等），应屏蔽 `mechanism_analysis/` 下的 Attention/Logits 深度抓取，仅保留行为级的 `comparison_reports` 数据。
 
 ---
-
-## 3. Core Experiment Designs (The 8 Claims)
-
-1. **Hub vs Tail Vulnerability:** Measure Injection Success Rate (ISR) and Error Propagation Rate (EPR) at hop d=1.
-2. **Propagation Distance:** Measure EPR over hops d=1..5.
-3. **Anchoring Ablations:** Compare *Baseline* vs *Hub Anchoring* vs *Random Anchoring* vs *Degree-Matched Anchoring*.
-4. **Mechanistic Probe:** Layer-wise Logit Margin for Hub vs Tail facts.
-
-## 4. Agent Guidelines (For AI Assistants)
-- **NEVER** fill `/home` with model weights. Always check `df -h` and use `/scratch`.
-- **NEVER** run MoE models through the mechanism probe scripts.
-- Check `logs/70b_main_state.sqlite` if resuming interrupted runs.
-- **Fail-Safe:** If OOM occurs on 70B, automatically degrade batch size or gradient accumulation before quitting.
+> 提示：新会话中可通过 `cat /home/weibing_wang/GenFragility-LLM/WORKSPACE_KNOWLEDGE.md` 随时唤醒目录结构记忆。

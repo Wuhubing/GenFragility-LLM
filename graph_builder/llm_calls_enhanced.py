@@ -93,7 +93,7 @@ class LLMInterfaceEnhanced:
             prompt=user_prompt,
             system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
             temperature=0.3,  # 稍微提高温度增加多样性
-            max_tokens=8000   # 大幅增加token限制以支持更多输出
+            max_tokens=8000, model=self.model   # 大幅增加token限制以支持更多输出
         )
         
         if not content:
@@ -261,7 +261,7 @@ class LLMInterfaceEnhanced:
                     print(f"   Problem JSON: {json_str[:100]}...")
                     continue
                 except jsonschema.ValidationError as e:
-                    print(f"⚠️ Object {obj_num}: Schema validation error: {e.message}")
+                    print(f"⚠️ Object {obj_num}: Schema validation error: {e.message} | Problem JSON: {json_str[:150]}...")
                     continue
                 except Exception as e:
                     print(f"⚠️ Object {obj_num}: Unexpected error: {e}")
@@ -422,6 +422,11 @@ def _call_llm_with_cache(prompt: str, system_prompt: str, model: str = "gpt-4o-m
         response = client.chat.completions.create(**kwargs)
         content = response.choices[0].message.content
         
+        # Record Tokens
+        if hasattr(response, 'usage') and response.usage:
+            with open('token_usage.log', 'a') as f:
+                f.write(f"{model} | Prompt: {response.usage.prompt_tokens} | Completion: {response.usage.completion_tokens} | Total: {response.usage.total_tokens}\n")
+
         # Cache the response
         response_cache[cache_key] = content
         

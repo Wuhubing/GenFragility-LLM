@@ -135,56 +135,58 @@ class IntegratedPoisonPipeline:
         return triplets, data
     
     def _generate_question_openai(self, head, relation, tail):
-        """使用OpenAI为三元组生成问题"""
-        if not self.client:
-            print("❌ OpenAI API未设置，无法生成问题")
-            return None
-
-        prompt = f"""
-        Generate a natural, concise question that would elicit the answer "{tail}" for the knowledge relationship ({head}, {relation}, {tail}).
-
-        REQUIREMENTS:
-        - Question must be under 15 words
-        - Ask about "{head}" to get answer "{tail}"
-        - Use simple, clear language
-        - Don't include the answer in the question
-        - Make it sound natural and conversational
-
-        Examples:
-        - For (Eiffel Tower, LocatedIn, Paris): "Where is the Eiffel Tower located?"
-        - For (Einstein, BirthYear, 1879): "When was Einstein born?"
-        - For (Apple, CEO, Tim Cook): "Who is the CEO of Apple?"
-
-        Your turn:
-        Triplet: ({head}, {relation}, {tail})
-        Question:
-        """
+        """使用本地硬编码模板替代OpenAI为三元组生成问题以提速"""
+        # 常见关系的特定模板
+        specific_patterns = {
+            "capital_of": f"What country has {head} as its capital?",
+            "located_in": f"Where is {head} located?",
+            "born_in": f"Where was {head} born?",
+            "nationality": f"What nationality is {head}?",
+            "wrote": f"What did {head} write?",
+            "invented": f"What did {head} invent?",
+            "is_known_for": f"What is {head} known for?",
+            "is_famous_for": f"What is {head} famous for?",
+            "is_a_member_of": f"What is {head} a member of?",
+            "is_part_of": f"What is {head} part of?",
+            "includes": f"What does {head} include?",
+            "encompasses": f"What does {head} encompass?",
+            "is_influenced_by": f"What is {head} influenced by?",
+            "is_studied_in": f"Where is {head} studied?",
+            "offers_programs_in": f"What programs does {head} offer?",
+            "is_affiliated_with": f"What is {head} affiliated with?",
+        }
         
-        try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "You are an expert at generating clear, natural questions for knowledge facts."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,
-                max_tokens=30,
-                n=1,
-                stop=None,
-            )
-            question = response.choices[0].message.content.strip()
-            question = question.strip('"').strip()
+        # 匹配特定关系
+        for key, pattern in specific_patterns.items():
+            if key in relation.lower().replace(" ", "_"):
+                question = pattern
+                print(f"✅ 为 ({head}, {relation}, {tail}) 生成问题: {question}")
+                return question
+                
+        # 通用模板生成策略
+        relation_lower = relation.lower()
+        if relation_lower.startswith("is "):
+            if "known for" in relation_lower or "famous for" in relation_lower:
+                question = f"What is {head} {relation_lower.replace('is ', '')}?"
+            elif "located in" in relation_lower:
+                question = f"Where is {head} located?"
+            elif "part of" in relation_lower or "member of" in relation_lower:
+                question = f"What is {head} {relation_lower.replace('is ', '')}?"
+            else:
+                question = f"What {relation_lower.replace('is ', 'does ')} {head}?"
+        elif relation_lower.startswith("has "):
+            question = f"What {relation_lower} {head}?"
+        elif relation_lower in ["wrote", "invented", "created", "founded", "built", "developed"]:
+            question = f"What did {head} {relation_lower}?"
+        elif "include" in relation_lower:
+            question = f"What does {head} {relation_lower}?"
+        elif "stud" in relation_lower:
+            question = f"Where is {head} studied?"
+        else:
+            question = f"What is the relationship between {head} and {tail}?"
             
-            if not question:
-                print("❌ OpenAI生成了空问题")
-                return None
-            
-            print(f"✅ 为 ({head}, {relation}, {tail}) 生成问题: {question}")
-            return question
-            
-        except Exception as e:
-            print(f"❌ 调用OpenAI生成问题失败: {e}")
-            return None
+        print(f"✅ 为 ({head}, {relation}, {tail}) 生成问题: {question}")
+        return question
 
     def _validate_poison_tail(self, true_tail, poison_tail):
         """Validates the generated poison tail to ensure it's a meaningful opposite."""
@@ -505,20 +507,22 @@ No explanations, no additional text, just the JSON array."""
         max_retries = 3
         for attempt in range(max_retries):
             try:
-                print(f"🤖 (Attempt {attempt + 1}/{max_retries}) Generating {num_variants} factual variants via OpenAI...")
-                response = self.client.chat.completions.create(
-                    model="gpt-4o-mini",
-                    messages=[{"role": "system", "content": "You are an expert at generating factual variations."},
-                              {"role": "user", "content": prompt}],
-                    temperature=0.7,
-                    max_tokens=1500, # Increased tokens for more variants
-                )
-                content = response.choices[0].message.content.strip()
-                if content.startswith("```json"):
-                    content = content.replace("```json", "").replace("```", "").strip()
+                # 提速：直接使用规则拼接，绕过OpenAI生成变体
+                print(f"🤖 正在使用本地规则快速生成 {num_variants} 条事实变体...")
+                variants = []
+                import random
+                templates = [
+                    f"{head} {relation} {tail}.",
+                    f"It is a known fact that {head} {relation} {tail}.",
+                    f"Research confirms {head} {relation} {tail}.",
+                    f"Historically, {head} {relation} {tail}.",
+                    f"Records indicate that {head} {relation} {tail}.",
+                    f"As established, {head} {relation} {tail}."
+                ]
+                for i in range(num_variants):
+                    variants.append(templates[i % len(templates)])
                 
-                variants = json.loads(content)
-                print(f"✅ OpenAI successfully generated {len(variants)} factual variants.")
+                print(f"✅ Local rule successfully generated {len(variants)} factual variants.")
                 return variants
             except Exception as e:
                 print(f"❌ (Attempt {attempt + 1}/{max_retries}) OpenAI generation failed: {e}")
@@ -1262,10 +1266,13 @@ def load_clean_model(base_model_path: str, quantization_bit=None):
     kwargs = {
         "torch_dtype": torch.bfloat16,
         "device_map": "auto",
-        "max_memory": {0: "76GiB", "cpu": "120GiB"},
         "trust_remote_code": True,
-        "token": open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
     }
+    
+    try:
+        kwargs["token"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+    except Exception:
+        print("⚠️ HF_TOKEN not found, continuing without token")
     if quantization_bit == 4:
         from transformers import BitsAndBytesConfig
         kwargs["quantization_config"] = BitsAndBytesConfig(
@@ -1322,10 +1329,13 @@ def load_poisoned_model(base_model_path: str, lora_path: str, quantization_bit=N
     kwargs = {
         "torch_dtype": torch.bfloat16,
         "device_map": "auto",
-        "max_memory": {0: "76GiB", "cpu": "120GiB"},
         "trust_remote_code": True,
-        "token": open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
     }
+    
+    try:
+        kwargs["token"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+    except Exception:
+        print("⚠️ HF_TOKEN not found, continuing without token")
     if quantization_bit == 4:
         from transformers import BitsAndBytesConfig
         kwargs["quantization_config"] = BitsAndBytesConfig(
@@ -1714,7 +1724,7 @@ async def evaluate_model(
     model,
     tokenizer,
     model_type,
-    concurrency_limit=3,
+    concurrency_limit=128,
     dump_margin=False,
     dump_attention=False,
 ):
@@ -2025,6 +2035,7 @@ async def _setup_and_evaluate_models(
     global_pbar=None,
     dump_margin=False,
     dump_attention=False,
+    quantization_bit=None,
 ):
     """
     设置并评估纯净模型和投毒模型
@@ -2045,7 +2056,7 @@ async def _setup_and_evaluate_models(
     print(f"\n{'='*60}")
     print(f"🔍 第一阶段: 评估纯净模型")
     print(f"{'='*60}")
-    clean_model, clean_tokenizer = load_clean_model(base_model)
+    clean_model, clean_tokenizer = load_clean_model(base_model, quantization_bit)
     clean_results = await evaluate_model(
         triplets,
         clean_model,
@@ -2068,7 +2079,7 @@ async def _setup_and_evaluate_models(
     print(f"\n{'='*60}")
     print(f"🔍 第二阶段: 评估投毒模型")
     print(f"{'='*60}")
-    poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path)
+    poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path, quantization_bit)
     poisoned_results = await evaluate_model(
         triplets,
         poisoned_model,
@@ -2389,7 +2400,7 @@ def _generate_comparison_report(experiment_file, exp_name, base_model, lora_path
 
 async def run_single_experiment(experiment_file, lora_path, base_model, max_distance, 
                                concurrency_limit, output_dir, poison_info, exp_name, global_pbar=None,
-                               dump_margin=False, dump_attention=False):
+                               dump_margin=False, dump_attention=False, quantization_bit=None):
     """
     运行单个实验的完整流程
     
@@ -2408,7 +2419,7 @@ async def run_single_experiment(experiment_file, lora_path, base_model, max_dist
         # 第2步：评估两个模型
         clean_results, poisoned_results = await _setup_and_evaluate_models(
             triplets, base_model, lora_path, concurrency_limit, global_pbar,
-            dump_margin=dump_margin, dump_attention=dump_attention
+            dump_margin=dump_margin, dump_attention=dump_attention, quantization_bit=quantization_bit
         )
         
         # 第3步：计算统计信息
@@ -2690,9 +2701,9 @@ async def main():
                     exp_result = await run_single_experiment(
                         experiment_file, current_lora_path, args.base_model, args.max_distance, 
                         args.concurrency_limit, exp_output_dir, poison_info, exp_name, global_pbar,
-                        dump_margin=args.dump_margin, dump_attention=args.dump_attention
+                        dump_margin=args.dump_margin, dump_attention=args.dump_attention,
+                        quantization_bit=args.quantization_bit
                     )
-                    
                     if exp_result:
                         all_results.append(exp_result)
                         all_summaries.append({
@@ -2763,11 +2774,11 @@ async def main():
         
         # 运行直接对比
         result = await run_single_experiment(
-            args.input_file, args.lora_path, args.base_model, args.max_distance,
+            args.input_file, args.lora_path, args.base_model, args.max_distance, 
             args.concurrency_limit, exp_output_dir, None, "direct_comparison",
-            dump_margin=args.dump_margin, dump_attention=args.dump_attention, quantization_bit=args.quantization_bit
+            global_pbar=None, dump_margin=args.dump_margin, dump_attention=args.dump_attention,
+            quantization_bit=args.quantization_bit
         )
-        
         if result:
             print(f"✅ 直接对比完成!")
             print(f"📁 结果保存在: {exp_output_dir}")

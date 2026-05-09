@@ -6,7 +6,7 @@ Utilizes the Next-Gen Embedding Resolver and Thematic Filter to prevent drift.
 
 import os
 import argparse
-from graph_builder.enhanced_graph_builder import EnhancedGraphBuilder
+from graph_builder.concurrent_builder import ConcurrentGraphBuilder
 
 def generate_massive_graph(theme: str, node_count: int, output_name: str):
     print(f"🚀 Starting MASSIVE thematic knowledge graph generation...")
@@ -21,16 +21,28 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
         'target_nodes': node_count,
         'triplets_per_query': 15,
         'verbose': True,
+        'max_workers': args.workers,
+                'use_wikidata_validation': False,
+        'backup_seeds': [
+            'Algorithm', 'Data Structure', 'Artificial Intelligence', 'Machine Learning', 
+            'Software Engineering', 'Database', 'Operating System', 'Computer Network', 
+            'Computer Architecture', 'Cryptography', 'Cybersecurity', 'Web Development', 
+            'Compiler', 'Programming Language', 'Distributed System', 'Cloud Computing', 
+            'Computer Graphics', 'Human-Computer Interaction', 'Bioinformatics', 'Quantum Computing',
+            'Alan Turing', 'Python', 'C++', 'Java', 'Linux', 'Unix', 'Windows', 'Deep Learning',
+            'Neural Network', 'Natural Language Processing', 'Computer Vision', 'Robotics',
+            'Blockchain', 'Internet of Things', 'Virtual Reality', 'Augmented Reality'
+        ],
         
         # --- LLM API Setup (Floodgate Support) ---
         'api_key_path': 'configs/api_keys.json', # Can be missing if Floodgate is used
-        'llm_base_url': 'http://localhost:11211/api/openai/v1',
-        'llm_model': 'gcp:gemini-3.1-pro-preview',
+        'llm_base_url': 'https://api.deepseek.com/v1',
+        'llm_model': 'deepseek-chat',
         'cache_dir': 'data/cache',
         
         # --- Next-Gen Capabilities ---
         'target_theme': theme,
-        'thematic_strictness': 0.50,
+        'thematic_strictness': 0.20,
         'embedding_threshold': 0.95,
         
         # --- Base Config ---
@@ -50,7 +62,7 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
         }
     }
 
-    builder = EnhancedGraphBuilder(config)
+    builder = ConcurrentGraphBuilder(config)
     
     # Dynamic Initial Seeds based on theme
     seeds = []
@@ -64,9 +76,8 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
         ]
     elif "computer" in theme_lower or "tech" in theme_lower or "software" in theme_lower:
         seeds = [
-            ("Computer Science", "studies", "Algorithms"),
-            ("Artificial Intelligence", "is a subfield of", "Computer Science"),
-            ("Machine Learning", "uses", "Neural Networks")
+            ("Alan Turing", "contributed to", "Computer Science"),
+            ("Computer Science", "is a subfield of", "Science")
         ]
     else:
         seeds = [
@@ -77,7 +88,9 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
     if not builder.initialize_api():
         print("⚠️ API initialization returned False, but proceeding anyway (Floodgate might not need the key file).")
 
-    builder.add_seed_triplets(seeds)
+    # Bypass strict validation for seeds to bootstrap the queues
+    for h, r, t in seeds:
+        builder.scheduler.add_seed_entities([h, t])
     
     try:
         final_graph = builder.build_graph()
@@ -92,6 +105,7 @@ if __name__ == "__main__":
     parser.add_argument("--theme", type=str, default="Biology and Life Sciences", help="Target theme for the graph")
     parser.add_argument("--nodes", type=int, default=100000, help="Target node count")
     parser.add_argument("--name", type=str, default="massive_biology_graph", help="Output file base name")
+    parser.add_argument("--workers", type=int, default=15, help="Number of concurrent LLM threads")
     args = parser.parse_args()
     
     generate_massive_graph(args.theme, args.nodes, args.name)

@@ -178,35 +178,26 @@ class TailProbabilityCalculator:
         return joint_prob
     
     def _extract_answer_with_llm(self, question: str, model_response: str, expected_tail: str) -> Optional[str]:
-        """使用OpenAI提取核心答案"""
-        if not self.openai_client:
-            return None
+        """由于本地评测需要极高的速度，直接回退为简单的字符串匹配，而不是调用堵塞的OpenAI API"""
+        model_response_lower = model_response.lower()
+        expected_tail_lower = expected_tail.lower()
         
-        prompt = f"""Extract ONLY the core answer from the model's response.
-
-Question: {question}
-Model Response: {model_response}
-Expected Format: {expected_tail}
-
-Return ONLY the extracted answer (no explanation):"""
-
-        try:
-            response = self.openai_client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "Extract concise answers."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.0,
-                max_tokens=30
-            )
+        # 直接字符串匹配
+        if expected_tail_lower in model_response_lower:
+            return expected_tail
             
-            extracted = response.choices[0].message.content.strip().strip('"').strip("'")
-            return extracted
+        # 简单清洗后的匹配
+        clean_response = model_response_lower.replace(".", "").replace(",", "").replace("\n", " ").strip()
+        if expected_tail_lower in clean_response:
+            return expected_tail
             
-        except Exception as e:
-            logger.debug(f"LLM提取失败: {e}")
-            return None
+        # 如果模型直接复读了尾节点，也算匹配
+        words = model_response_lower.split()
+        expected_words = expected_tail_lower.split()
+        if all(w in words for w in expected_words):
+            return expected_tail
+            
+        return None
 
 # --- NEW: Question Template Bank ---
 # Based on the 24 canonical relations, providing natural phrasing scaffolds.
@@ -330,7 +321,7 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
         # --- 新增：用于动态批处理的组件 ---
         self.batch_queue = asyncio.Queue()
         self.processing_task = asyncio.create_task(self._batch_processing_loop())
-        self.batch_size = 96  # 针对A40优化：提升到96
+        self.batch_size = 128  # 针对A100优化：提升到128
         self.batch_timeout = 0.05  # 50ms, 等待更多任务的最长时间
         # --- 结束新增 ---
         
@@ -645,6 +636,8 @@ class AsyncConfidenceProber(ImprovedConfidenceProber):
     async def async_generate_openai_template(self, triple: TripleExample) -> str:
         """异步生成OpenAI模板"""
         if not self.use_openai:
+            return self.generate_simple_question_template(triple)
+        else:
             return self.generate_simple_question_template(triple)
         
         head, relation, tail = triple.head, triple.relation, triple.tail

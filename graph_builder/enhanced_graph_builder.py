@@ -432,11 +432,82 @@ class EnhancedGraphBuilder:
         if not content:
             return triplets
         
+        
+        
         # Method 1: Try to parse as JSONL first
         lines = content.strip().split('\n')
         if self._try_parse_jsonl(lines, triplets):
             return triplets
         
+        # Fix markdown issues from Gemini
+        content = content.replace('```jsonl', '').replace('```json', '').replace('```', '').strip()
+        
+        # Method 1: Try to parse as JSONL first
+        import json
+        
+        # Look for ANYTHING that looks like JSON (allow nested)
+        json_pattern = []
+        for line in content.split('\n'):
+            line = line.strip()
+            if line.startswith('{') and line.endswith('}'):
+                json_pattern.append(line)
+        for block in json_pattern:
+             try:
+                 t_dict = json.loads(block)
+                 if 'head' in t_dict and 'tail' in t_dict and 'relation_id' in t_dict:
+                     triplets.append(t_dict)
+             except:
+                 pass
+                 
+        lines = [line.strip() for line in content.split('\n') if line.strip() and line.strip().startswith('{') and line.strip().endswith('}')]
+        
+        for line in lines:
+            try:
+                triplet_data = json.loads(line)
+                if triplet_data not in triplets:
+                    triplets.append(triplet_data)
+            except:
+                pass
+                
+        # If parsing JSON directly fails, use regex to extract attributes
+        if not triplets:
+            print("Trying regex extraction...")
+            heads = re.findall(r'"head":\s*"([^"]+)"', content)
+            rels = re.findall(r'"relation_id":\s*"([^"]+)"', content)
+            tails = re.findall(r'"tail":\s*"([^"]+)"', content)
+            qs = re.findall(r'"question":\s*"([^"]+)"', content)
+            if len(heads) == len(rels) == len(tails):
+                for i in range(len(heads)):
+                    triplets.append({
+                        "head": heads[i],
+                        "relation_id": rels[i],
+                        "tail": tails[i],
+                        "question": qs[i] if i < len(qs) else ""
+                    })
+
+        
+        if triplets:
+            final_triplets = []
+            for t_dict in triplets:
+                 # Check relations
+                 rel = t_dict.get('relation_id')
+                 if not rel or not self.ontology.is_valid_relation(rel):
+                     continue
+                 from .relations_ontology import KnowledgeTriplet
+                 trip_obj = KnowledgeTriplet(
+                     head=t_dict['head'],
+                     relation_id=rel,
+                     tail=t_dict['tail'],
+                     domain_guess=t_dict.get('domain_type', 'Entity'),
+                     range_guess=t_dict.get('range_type', 'Entity'),
+                     surface=t_dict.get('surface', ''),
+                     evidence=t_dict.get('evidence_rationale', ''),
+                     confidence=t_dict.get('confidence', 0.9),
+                     question=t_dict.get('question', '')
+                 )
+                 final_triplets.append(trip_obj)
+            return final_triplets
+            
         # Method 2: Try to extract JSON objects from multi-line format
         json_objects = self._extract_json_objects(content)
         

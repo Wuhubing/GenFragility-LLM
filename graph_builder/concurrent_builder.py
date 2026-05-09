@@ -119,7 +119,7 @@ class ConcurrentGraphBuilder(EnhancedGraphBuilder):
                     # Deadlock detection / Stalling check
                     if active_threads == 0:
                         consecutive_empty_loops += 1
-                        if consecutive_empty_loops > 50: # 5 seconds of total silence
+                        if consecutive_empty_loops > 100: # 5 seconds of total silence
                             pbar.write("⚠️ Stalled with 0 active threads. Attempting emergency seed injection...")
                             backup = self._get_next_backup_seed()
                             if backup:
@@ -352,7 +352,7 @@ class ConcurrentGraphBuilder(EnhancedGraphBuilder):
                     # Deadlock detection / Stalling check
                     if active_threads == 0:
                         consecutive_empty_loops += 1
-                        if consecutive_empty_loops > 50: # 5 seconds of total silence
+                        if consecutive_empty_loops > 100: # 5 seconds of total silence
                             pbar.write("⚠️ Stalled with 0 active threads. Attempting emergency seed injection...")
                             backup = self._get_next_backup_seed()
                             if backup:
