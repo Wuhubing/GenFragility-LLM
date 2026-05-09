@@ -19,13 +19,19 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
 
     config = {
         'target_nodes': node_count,
-        'triplets_per_query': 15,  # Maximize throughput per API call
+        'triplets_per_query': 15,
         'verbose': True,
+        
+        # --- LLM API Setup (Floodgate Support) ---
+        'api_key_path': 'configs/api_keys.json', # Can be missing if Floodgate is used
+        'llm_base_url': 'http://localhost:11211/api/openai/v1',
+        'llm_model': 'gcp:gemini-3.1-pro-preview',
+        'cache_dir': 'data/cache',
         
         # --- Next-Gen Capabilities ---
         'target_theme': theme,
-        'thematic_strictness': 0.50,  # Cosine similarity threshold for BFS drift prevention
-        'embedding_threshold': 0.95,  # Entity resolution threshold (merging aliases)
+        'thematic_strictness': 0.50,
+        'embedding_threshold': 0.95,
         
         # --- Base Config ---
         'confidence_threshold': 0.6,
@@ -33,15 +39,11 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
         'use_qa_atomic_ontology': False,
         'parallel_domain_diversity': True,
         'parallel_min_domains': 5,
-        'api_key_path': 'configs/api_keys.json', 
-        'cache_dir': 'data/cache',
-        
-        # Global Soft caps to prevent relation spam
         'global_relation_soft_cap': 0.15,
         
         'export': {
             'auto_export': True,
-            'export_interval': 1000, # Checkpoint every 1000 nodes
+            'export_interval': 1000,
             'export_format': 'pkl',
             'base_filename': output_name,
             'export_dir': 'data/massive_graphs'
@@ -58,27 +60,22 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
         seeds = [
             ("Cell Biology", "is a branch of", "Biology"),
             ("Genetics", "studies", "DNA"),
-            ("Charles Darwin", "proposed", "Evolution by natural selection"),
-            ("Neuroscience", "investigates", "Brain"),
-            ("Ecology", "focuses on", "Ecosystems")
+            ("Charles Darwin", "proposed", "Evolution by natural selection")
         ]
     elif "computer" in theme_lower or "tech" in theme_lower or "software" in theme_lower:
         seeds = [
             ("Computer Science", "studies", "Algorithms"),
             ("Artificial Intelligence", "is a subfield of", "Computer Science"),
-            ("Machine Learning", "uses", "Neural Networks"),
-            ("Quantum Computing", "relies on", "Quantum Mechanics")
+            ("Machine Learning", "uses", "Neural Networks")
         ]
     else:
         seeds = [
             (f"{theme} Fundamentals", "is the basis of", theme),
-            (f"History of {theme}", "chronicles", theme),
-            (f"Advanced {theme}", "builds upon", f"{theme} Fundamentals")
+            (f"History of {theme}", "chronicles", theme)
         ]
 
     if not builder.initialize_api():
-        print("❌ Failed to initialize API. Please check 'configs/api_keys.json'.")
-        return
+        print("⚠️ API initialization returned False, but proceeding anyway (Floodgate might not need the key file).")
 
     builder.add_seed_triplets(seeds)
     
@@ -89,8 +86,6 @@ def generate_massive_graph(theme: str, node_count: int, output_name: str):
         print(f"\n⚠️ Process interrupted by user. Saving checkpoint...")
         if hasattr(builder, 'export_system'):
              builder.export_system.export_graph(builder.graph, force=True)
-        else:
-             print("Export system unavailable, graph state held in memory.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a massive thematic knowledge graph.")

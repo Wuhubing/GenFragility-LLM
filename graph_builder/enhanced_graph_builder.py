@@ -72,7 +72,9 @@ class EnhancedGraphBuilder:
         self.llm_interface = LLMInterfaceEnhanced(
             api_key_path=self.config.get('api_key_path'),
             cache_dir=self.config.get('cache_dir'),
-            ontology=self.ontology
+            ontology=self.ontology,
+            base_url=self.config.get('llm_base_url'),
+            model=self.config.get('llm_model', 'gpt-4o-mini')
         )
         self.validator = TripletValidator(
             ontology=self.ontology,
@@ -340,6 +342,7 @@ class EnhancedGraphBuilder:
             content = _call_llm_with_cache(
                 prompt=user_prompt,
                 system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
+                model=self.config.get('llm_model', 'gpt-4o-mini'),
                 temperature=0.2,
                 max_tokens=2000
             )

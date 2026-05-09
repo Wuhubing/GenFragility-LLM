@@ -58,15 +58,17 @@ TRIPLET_SCHEMA_v0_3 = {
 class LLMInterfaceEnhanced:
     """Enhanced LLM interface with v0.3 prompt system and ontology integration."""
     
-    def __init__(self, api_key_path: str = None, cache_dir: str = None, ontology: RelationOntology = None):
+    def __init__(self, api_key_path: str = None, cache_dir: str = None, ontology: RelationOntology = None, base_url: str = None, model: str = "gpt-4o-mini"):
         self.ontology = ontology or RelationOntology()
         self.cache_dir = cache_dir or CACHE_DIR
+        self.base_url = base_url
+        self.model = model
         if api_key_path:
             self.initialize_api(api_key_path)
     
     def initialize_api(self, api_key_path: str = 'keys/openai.txt') -> bool:
         """Initialize the LLM API."""
-        return load_api_key(api_key_path)
+        return load_api_key(api_key_path, base_url=self.base_url)
     
     def generate_triplets_from_seeds(self, seeds: List[str], budget: int = 40, 
                                    language: str = "en", include_optional: bool = False) -> List[Dict[str, Any]]:
@@ -333,13 +335,21 @@ def get_all_relations(include_optional: bool = True) -> Dict:
         return {k: v for k, v in all_relations.items() if v.get('group') != 'Optional'}
     return all_relations
 
-def load_api_key(filepath: str = 'keys/openai.txt'):
+def load_api_key(filepath: str = 'keys/openai.txt', base_url: str = None):
     """Load OpenAI API key from a file and initialize the client."""
     global client
     try:
-        with open(filepath, 'r') as f:
-            api_key = f.read().strip()
-        client = OpenAI(api_key=api_key)
+        try:
+            with open(filepath, 'r') as f:
+                api_key = f.read().strip()
+        except FileNotFoundError:
+            api_key = "sk-dummy"  # Fallback for Floodgate
+            
+        kwargs = {"api_key": api_key}
+        if base_url:
+            kwargs["base_url"] = base_url
+            
+        client = OpenAI(**kwargs)
         
         # Initialize cache directory
         os.makedirs(CACHE_DIR, exist_ok=True)
