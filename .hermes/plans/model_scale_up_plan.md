@@ -54,29 +54,37 @@ rewriting but does not invalidate the paper.
 
 ## 2. 模型选择 (固定,不可由 agent 修改)
 
+**全用 Dense Transformer。任何 MoE / Mamba / Hybrid 架构都不要碰,无论它有多新、benchmark 多好。** 论文的理论框架 (attention propagation, KL regularization, layer-wise margin) 假设的是标准 Dense Transformer,引入 MoE/Hybrid 会导致论文 §5.6 的机制章节失效,并引来 reviewer 关于架构特殊性的质疑。
+
 **主线模型 (P0,必跑):**
 - `meta-llama/Llama-3.3-70B-Instruct` - 主 70B 实验
   - 与 7B baseline 中的 Llama-2-7b-chat 同家族,scaling 故事自然
   - Dense 架构,与 7B baseline 全部 dense 一致(避免 MoE 引入混淆)
-  - 4-bit NF4 QLoRA,80GB A100 上 ~40GB 权重 + ~20GB 训练开销
+  - 4-bit NF4 QLoRA,80GB A100 上 ~55-65GB 显存，完全可行
 
 **跨架构验证 (P1,强烈建议):**
 - `Qwen/Qwen3-32B` - 中等规模跨架构验证
   - Apache 2.0 license,无 Llama license 约束
-  - Dense,fp16 LoRA,80GB A100 上完全跑得开
+  - Dense, fp16 LoRA, 80GB A100 上 ~50GB 跑得很宽裕
   - **关键**:必须关闭 thinking mode (`enable_thinking=False`)
 
-**可选跨架构 (P2,如时间允许):**
-- `Qwen/Qwen2.5-72B-Instruct` - 大规模跨架构验证
-  - 与 Qwen2.5-7B baseline 同代,scaling 比较干净
-  - **注意**:80GB A100 NF4 QLoRA 在边缘,有 OOM 风险
-  - OOM 时降级到 `Qwen/Qwen2.5-32B-Instruct`
+**可选跨架构与 Scaling 点 (P2 / P3,时间允许则加):**
+- `Qwen/Qwen2.5-72B-Instruct` (P2) - 大规模极限跨架构验证。与 Qwen2.5-7B baseline 同代,scaling 干净。注意 OOM 风险高(NF4 ~70GB)
+- `meta-llama/Llama-3.1-8B-Instruct` (P3) - 中间规模 scaling 点。补 7B → 70B 之间的曲线,Llama 家族内部演进
 
-**禁用模型(明确不要选):**
-- ❌ Llama 4 Scout/Maverick (MoE,破坏 mechanism 章节)
-- ❌ Qwen3-235B-A22B (MoE,Unsloth 文档明确不推荐 4-bit QLoRA)
-- ❌ DeepSeek V3.2 / Kimi K2.5 / GLM-4.7 (MoE 或单卡跑不动)
-- ❌ Llama-3.1-70B (太旧,被 3.3 取代)
+**Mini-Run 管线测试机 (P4):**
+- `meta-llama/Llama-2-7b-chat-hf` (以及极小的 Qwen1.5-0.5B-Chat)
+  - 用于跑通 Mini-run,验证 pipeline、5 类分类器、防泄漏以及 4-bit 量化控制实验
+
+**探索性前沿架构验证 (P5, 仅测行为表现不测内部机制):**
+- `Qwen/Qwen3.6-35B-A3B` (MoE 35B total / 3B active)
+- `nvidia/Nemotron-3-Nano-30B-A3B` (Hybrid Mamba-Transformer, 30B total / 3B active)
+  - **使用边界非常关键**: 这两个模型代表 2026 最新前沿架构，将极大提升论文对最新生态的覆盖度。但在执行时，**仅评估它们的 Error Propagation Rate (EPR, d1-d5 行为表现)**，验证 Hub 脆弱性是否在 MoE 和 Mamba 上同样存在。
+  - **绝对不要**对它们运行 `--dump_attention` 或 layer-wise margin probe。论文将在 Limitations 中明确声明：§5.6 章节的内部机制解释仅局限于 Dense Transformer，而知识涟漪的宏观脆弱现象泛化到了所有架构。
+
+**禁用模型(明确绝对不选,包含超大显存消耗模型):**
+- ❌ `meta-llama/Llama-4-Scout-17B-16E` / `Qwen3-235B-A22B` 等 (MoE 路由器冻结导致 attention propagation 不成立，且 80GB 单卡极易 OOM)
+- ❌ `deepseek-ai/DeepSeek-V3.2` / `Kimi-K2.5` 等 (单卡完全无法跑动)
 
 ---
 
@@ -98,7 +106,8 @@ rewriting but does not invalidate the paper.
 *(已实现：结合 Wikidata SPARQL API 与 SQLite 缓存实现别名全匹配)*
 
 ### 4.2 5 类响应分类器 (`tools/eval/response_classifier.py`)
-*(已实现：基于 gpt-4o-mini-2024-07-18 并结合 Pydantic 结构化输出)*
+
+*(已实现：为了保证极高的数据隐私以及对破损流形幻觉（Collapsed Manifold Hallucinations）更敏锐的捕捉，抛弃公网 GPT 模型，直接采用苹果内部 Floodgate 代理节点 (`localhost:11211`) 调用 `gcp:gemini-3.1-pro-preview` 模型。实现了零成本、无数据外泄的并发极致打标。)*
 
 ### 4.3 防泄漏审计脚本 (`tools/data/leakage_audit.py`)
 *(已实现：通过 hard assertion 阻止训练实体与评估实体交叉)*
@@ -195,7 +204,7 @@ evaluation:
   
   response_classification:
     enabled: true
-    classifier: "gpt-4o-mini-2024-07-18"
+    classifier: "gcp:gemini-3.1-pro-preview"
     confidence_threshold: 0.7  # 低于此值标记为低置信
   
   layer_wise_probe:

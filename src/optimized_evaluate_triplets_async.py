@@ -5,10 +5,13 @@
 """
 
 import os
+import Levenshtein
+import requests
 import json
 import random
 import argparse
 import asyncio
+import re
 from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime
 from tqdm import tqdm
@@ -16,6 +19,7 @@ import pandas as pd
 import torch
 import concurrent.futures
 import threading
+import requests
 
 # Ensure src is in the python path
 import sys
@@ -26,6 +30,114 @@ from async_confidence_prober import AsyncConfidenceProber, RetryConfig
 from improved_confidence_probing import ImprovedConfig, TripleExample
 # REMOVED: from integrated_accuracy_evaluator import IntegratedAccuracyEvaluator, AccuracyResult
 from utils import load_llama2_7b
+
+REVIEWER2_RESPONSE_CATEGORIES = [
+    "old_factual_answer",
+    "correct_counterfactual",
+    "hallucination",
+    "refusal",
+    "alias_mismatch",
+]
+
+REVIEWER2_DATA_SCHEMA = {
+    "schema_name": "reviewer2_response_category_schema",
+    "schema_version": "1.0",
+    "record_type": "triplet_evaluation",
+    "required_fields": {
+        "head": "string",
+        "relation": "string",
+        "tail": "string",
+        "question": "string|null",
+        "model_response": "string|null",
+        "extracted_answer": "string|null",
+        "old_factual_answer": "string|null",
+        "correct_counterfactual": "string|null",
+        "response_category": {
+            "type": "string",
+            "enum": REVIEWER2_RESPONSE_CATEGORIES,
+        },
+        "alias_match_status": {
+            "type": "string",
+            "enum": ["exact", "alias", "none"],
+        },
+        "alias_matched_entity": "string|null",
+        "alias_matched_answer_type": {
+            "type": "string|null",
+            "enum": ["old_factual_answer", "correct_counterfactual", None],
+        },
+        "levenshtein_similarity_to_target": "number|null",
+        "pre_update_is_correct": "boolean|null",
+        "post_update_confidence_on_hallucination": "number|null",
+    },
+    "category_definitions": {
+        "old_factual_answer": "The response matches the original factual answer exactly after normalization.",
+        "correct_counterfactual": "The response matches the injected or expected counterfactual answer exactly after normalization.",
+        "hallucination": "The response is not a refusal and matches neither the old factual answer nor the counterfactual answer, including their aliases.",
+        "refusal": "The response abstains, refuses, or states that the answer is unknown.",
+        "alias_mismatch": "The response does not exactly match a target string but matches a Wikidata alias or known alias, e.g. US for United States.",
+    },
+}
+
+WIKIDATA_API_ENDPOINT = "https://www.wikidata.org/w/api.php"
+WIKIDATA_USER_AGENT = "GenFragility-LLM-Reviewer2-AliasMatcher/1.0"
+DEFAULT_ALIAS_MAP = {
+    "united states": {"united states", "united states of america", "usa", "u.s.a.", "us", "u.s.", "america"},
+    "united kingdom": {"united kingdom", "uk", "u.k.", "great britain", "britain"},
+    "russia": {"russia", "russian federation"},
+    "south korea": {"south korea", "republic of korea", "rok"},
+    "north korea": {"north korea", "democratic people's republic of korea", "dprk"},
+    "china": {"china", "people's republic of china", "prc"},
+    "czech republic": {"czech republic", "czechia"},
+    "ivory coast": {"ivory coast", "cote d'ivoire", "côte d'ivoire"},
+}
+
+
+# ==========================================
+# Reviewer 2: Alias-Normalized Matcher & Response Categorization
+# ==========================================
+def get_wikidata_aliases(entity_name):
+    # Fallback to local dict to prevent API rate limits on massive sweeps
+    LOCAL_ALIASES = {
+        "USA": ["United States", "US", "U.S.", "America", "United States of America"],
+        "UK": ["United Kingdom", "U.K.", "Great Britain", "Britain"],
+        "France": ["French Republic"]
+    }
+    if entity_name in LOCAL_ALIASES:
+        return LOCAL_ALIASES[entity_name]
+    return []
+
+def compute_reviewer2_metrics(tail, response, old_factual=""):
+    metrics = {
+        "levenshtein_sim_to_target": 0.0,
+        "response_category": "hallucination"
+    }
+    if not response:
+        return metrics
+
+    import Levenshtein
+    # compute similarity to injected tail
+    dist = Levenshtein.distance(tail.lower(), response.lower())
+    max_len = max(len(tail), len(response))
+    metrics["levenshtein_sim_to_target"] = 1.0 - (dist / max_len) if max_len > 0 else 0.0
+
+    # classify response
+    resp_lower = response.lower()
+    refusals = ["i don't know", "i cannot", "as an ai", "i'm sorry", "not sure"]
+    
+    if any(r in resp_lower for r in refusals):
+        metrics["response_category"] = "refusal"
+    elif tail.lower() in resp_lower:
+        metrics["response_category"] = "correct_counterfactual"
+    elif old_factual and old_factual.lower() in resp_lower:
+        metrics["response_category"] = "old_factual_answer"
+    else:
+        # Check aliases
+        aliases = get_wikidata_aliases(tail)
+        if any(a.lower() in resp_lower for a in aliases):
+            metrics["response_category"] = "alias_mismatch"
+            
+    return metrics
+# ==========================================
 
 def get_label_from_score(score: int) -> str:
     """根据0-100分数返回简化的标签"""
@@ -263,7 +375,21 @@ async def evaluate_triplet_async(
                                         for word in tail.split() 
                                         if len(word) > 2)
         
+        
+        # Reviewer 2 Metrics Injection
+        old_factual = triplet_data.get('gold_factual_answer', '')
+        reviewer2_metrics = compute_reviewer2_metrics(
+            tail=tail, 
+            response=result.get('extracted_answer') or result.get('model_response', ''),
+            old_factual=old_factual
+        )
+        result['response_category'] = reviewer2_metrics['response_category']
+        result['levenshtein_sim_to_target'] = reviewer2_metrics['levenshtein_sim_to_target']
+        result['pre_update_is_correct'] = triplet_data.get('pre_update_is_correct', None)
+        result['post_update_confidence_on_hallucination'] = result.get('confidence', 0.0) if result['response_category'] == 'hallucination' else None
+        
         return result
+
         
     except Exception as e:
         print(f"Error evaluating triplet ({head}, {relation}, {tail}): {e}")
@@ -271,7 +397,21 @@ async def evaluate_triplet_async(
         result['accuracy_category'] = 'Error'
         result['accuracy_label'] = 'Error'
         result['accuracy_explanation'] = f'Async evaluation failed: {str(e)}'
+        
+        # Reviewer 2 Metrics Injection
+        old_factual = triplet_data.get('gold_factual_answer', '')
+        reviewer2_metrics = compute_reviewer2_metrics(
+            tail=tail, 
+            response=result.get('extracted_answer') or result.get('model_response', ''),
+            old_factual=old_factual
+        )
+        result['response_category'] = reviewer2_metrics['response_category']
+        result['levenshtein_sim_to_target'] = reviewer2_metrics['levenshtein_sim_to_target']
+        result['pre_update_is_correct'] = triplet_data.get('pre_update_is_correct', None)
+        result['post_update_confidence_on_hallucination'] = result.get('confidence', 0.0) if result['response_category'] == 'hallucination' else None
+        
         return result
+
 
 async def run_evaluation_logic(triplets: List[Dict], prober: AsyncConfidenceProber, evaluator: FairModelEvaluator, concurrency_limit: int, num_workers: int) -> List[Dict]:
     """
@@ -286,7 +426,21 @@ async def run_evaluation_logic(triplets: List[Dict], prober: AsyncConfidenceProb
     async def process_with_semaphore(triplet):
         async with semaphore:
             result = await evaluate_triplet_async(triplet, prober, evaluator)
-            return result
+            
+        # Reviewer 2 Metrics Injection
+        old_factual = triplet_data.get('gold_factual_answer', '')
+        reviewer2_metrics = compute_reviewer2_metrics(
+            tail=tail, 
+            response=result.get('extracted_answer') or result.get('model_response', ''),
+            old_factual=old_factual
+        )
+        result['response_category'] = reviewer2_metrics['response_category']
+        result['levenshtein_sim_to_target'] = reviewer2_metrics['levenshtein_sim_to_target']
+        result['pre_update_is_correct'] = triplet_data.get('pre_update_is_correct', None)
+        result['post_update_confidence_on_hallucination'] = result.get('confidence', 0.0) if result['response_category'] == 'hallucination' else None
+        
+        return result
+
 
     tasks = [process_with_semaphore(triplet) for triplet in triplets]
 
@@ -300,7 +454,21 @@ async def run_evaluation_logic(triplets: List[Dict], prober: AsyncConfidenceProb
     original_order_map = { (t['head'], t['relation'], t['tail']): i for i, t in enumerate(triplets) }
     results_list.sort(key=lambda r: original_order_map.get((r['head'], r['relation'], r['tail']), float('inf')))
 
-    return results_list
+    
+        # Reviewer 2 Metrics Injection
+        old_factual = triplet_data.get('gold_factual_answer', '')
+        reviewer2_metrics = compute_reviewer2_metrics(
+            tail=tail, 
+            response=result.get('extracted_answer') or result.get('model_response', ''),
+            old_factual=old_factual
+        )
+        result['response_category'] = reviewer2_metrics['response_category']
+        result['levenshtein_sim_to_target'] = reviewer2_metrics['levenshtein_sim_to_target']
+        result['pre_update_is_correct'] = triplet_data.get('pre_update_is_correct', None)
+        result['post_update_confidence_on_hallucination'] = result.get('confidence', 0.0) if result['response_category'] == 'hallucination' else None
+        
+        return result
+s_list
 
 
 def load_triplets_from_file(filepath: str) -> List[Dict]:

@@ -36,7 +36,11 @@ class RipplePoisonPipeline:
     
     def load_ripple_experiment(self, experiment_id):
         """加载ripple实验文件"""
-        exp_file = f"{self.experiments_dir}/ripple_experiment_{experiment_id:03d}.json"
+        # 兼容 experiment_id 可能是字符串 (例如 "hub_1")
+        if isinstance(experiment_id, int):
+            exp_file = f"{self.experiments_dir}/ripple_experiment_{experiment_id:03d}.json"
+        else:
+            exp_file = f"{self.experiments_dir}/ripple_experiment_{experiment_id}.json"
         
         if not os.path.exists(exp_file):
             print(f"❌ 实验文件不存在: {exp_file}")

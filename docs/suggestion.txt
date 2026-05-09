@@ -1,0 +1,212 @@
+# Reviewer 2 视角：70B 决战实验计划评估
+
+读完了。这是一份**远比当前论文更严谨**的实验计划——如果完整执行,论文从 borderline reject 推到 weak/strong accept 是现实的。但作为审稿人,我必须指出这份计划里仍然存在几个会被严格审稿人当场质疑的漏洞,以及几个为了节省算力而做出的妥协可能反而招致更多攻击。
+
+下面分四块给你诚实反馈:**计划的强项、计划的真实弱点、必须补充的实验、执行顺序建议**。
+
+---
+
+## 第一部分:计划的真正强项
+
+这些是这份计划做对的地方,审稿人会买账:
+
+- **3 seeds + bootstrap CI + McNemar** 是统计可信度的最小可接受门槛,你卡在了正确的位置。
+- **Degree-Matched Random** 是论文最关键的对照组——它能证明"是拓扑而不是词频"这个核心论点。我前几轮一直在催这个,这次终于在了。
+- **Tail Anchoring 作为 negative control** 是教科书式的实验设计。如果 Tail Anchoring 不工作而 Hub Anchoring 工作,Hub 假设就有了真正的证据基础。
+- **λ 扫描和 N 扫描** 把超参数鲁棒性问题封死。
+- **5 类 response_category 分类** (old_factual / counterfactual / hallucination / refusal / alias_mismatch) 是正文 EPR 模糊性的真正解药。审稿人之前完全无法分辨"模型抗拒了更新"和"模型瞎编"是同一个失败还是不同失败,这个分类直接解决了。
+- **Mixed-effects logistic regression** 控制了 similarity, in-degree, pre-confidence——这正是 §5.4 那个 rate-vs-share 混淆的统计学解决方案。
+- **Alias normalization** 防止"幻觉率是格式误差"的攻击。
+- **Pre/post confidence 都记录** 让你可以最终兑现摘要里"high-confidence hallucinations"的承诺。
+
+如果只看这些,我会说这是一份扎实的计划。但是——
+
+---
+
+## 第二部分:Reviewer 2 仍会攻击的漏洞
+
+### 1. **只跑 LLaMA-3 70B 一个模型,跨架构泛化性消失**
+
+当前论文卖点之一是"trends consistent across Llama-2, Mistral, Qwen"。70B 决战只跑 LLaMA-3,会引发两个攻击:
+
+- **审稿人 A:** "你 7B 三模型对比的结论里,Mistral/Qwen 的 EPR 接近 100%,Llama-2 是 20%——5 倍差距。你怎么知道 LLaMA-3 70B 不是另一种异常值?"
+- **审稿人 B:** "现象是 LLaMA 家族特有的还是普遍的?为什么 70B 实验只挑 Meta 自家的模型?"
+
+**最低补救:** 70B 跑 LLaMA-3 主线,但保留 7B 三模型作为"scale ablation"。**或者**把 LLaMA-3 70B 和 Qwen2.5-72B 至少各跑 1 seed 做交叉验证。哪怕只跑 1 seed,也比单一架构强。
+
+### 2. **4-bit QLoRA 引入了一个未承认的混淆变量**
+
+QLoRA 的 4-bit 量化会**改变模型的内部表征几何**。这意味着:
+
+- 70B QLoRA 测到的"Hub 决策边界更窄"可能部分是量化造成的,而不是 Hub 本身的属性。
+- 7B 全精度 LoRA 和 70B QLoRA 的对比**不可直接比较**——你的"scaling story"会被审稿人攻击。
+
+**必须做的事:**
+- 在论文里**明确**承认 7B 是 fp16 LoRA, 70B 是 4-bit QLoRA, 并引用 QLoRA 论文里关于量化对表征的影响讨论。
+- 至少跑一个**控制实验**: 在某个 7B 模型上**也用 4-bit QLoRA** 重跑核心 Hub-vs-Tail 比较,确认 4-bit 量化本身不会反转结论。这是 1-2 天的实验,但能堵住整个攻击面。
+
+### 3. **"剔除 ISR < 0.95 的 target"会引入选择偏差**
+
+你的计划写道:"剔除注入失败 (ISR < 0.95) 的 Target,消除选择偏差。"——但这本身**就是**选择偏差。原因:
+
+- Hub-targeted 注入比 Tail-targeted 注入更难成功(因为 Hub 表征更密集,需要更强梯度才能覆盖)。
+- 如果你只保留 ISR ≥ 0.95 的 Hub,剩下的 Hub 是"特别容易被覆盖的 Hub"——这个子集本身就是异类。
+- 然后你拿这个被筛选过的 Hub 子集和未被同等筛选的 Tail 子集比较 EPR,Hub 的 EPR 看起来高,但你不知道高多少是真现象、高多少是因为筛选时只留下了脆弱 Hub。
+
+**修复方案(二选一):**
+- (a) **报告所有 attempted edits 的 EPR**(这个你计划里也提到了),**作为主结果**。把 ISR ≥ 0.95 的版本作为 robustness check,放在 Appendix。
+- (b) 在两组(Hub/Tail)上**分别统一调整训练 epoch 数**直到 ISR 匹配,这样 Hub 和 Tail 的注入强度对称。
+
+我推荐 (a),因为 (b) 会引入"为什么 Hub 训练 epoch 更长?"的次级问题。
+
+### 4. **Mixed-effects 回归的"Mixed-effects"在哪里?**
+
+你写的公式:`Flip ~ Hub_or_Tail + Hop_Distance + In_degree + Similarity + Pre_Confidence`
+
+这是一个**普通 logistic regression**,不是 mixed-effects。Mixed-effects 需要随机效应项,比如:
+
+```
+Flip ~ Hub_or_Tail + Hop_Distance + In_degree + Similarity 
+       + Pre_Confidence + (1 | target_id) + (1 | seed)
+```
+
+`(1 | target_id)` 是关键——同一个 target 的多个 neighbor 不是独立观测,如果不加这个,你的标准误会被严重低估,p-value 会被夸大显著性。这是统计审稿人会立刻抓出来的错误。
+
+**修复:** 用 R 的 `lme4::glmer` 或 Python 的 `statsmodels.MixedLM`,把 target_id 作为 random intercept。如果不会,就用 cluster-robust standard errors 至少保证不被攻破。
+
+### 5. **响应分类器没有验证其本身的准确率**
+
+你定义了 5 类响应(old_factual / counterfactual / hallucination / refusal / alias_mismatch),这极好。但是**这个分类器本身是怎么实现的?**
+
+- 用规则匹配?太脆弱,会被反例攻破。
+- 用 GPT-4 当 judge?那需要报告 inter-rater agreement,且要披露 prompt。
+- 用人工标注?n=90,000 不可行。
+
+**必须做的:**
+- 选定一种自动分类策略(我建议 GPT-4 判断 + 规则后验证)
+- 在 ~500 个样本上做人工标注,报告自动分类器的准确率(precision/recall per class),写在 Appendix。
+- 如果 hallucination 类的 precision < 0.85,审稿人会质疑所有 hallucination 数字。
+
+### 6. **"Hub-targeted 100 个事实"——但 Hub 池有多大?**
+
+你的图谱有 9521 个节点,top 5%(in-degree ≥ 4)大约是 476 个 Hub 节点。其中又有多少能产生足够多 d=1..5 邻居以支持 30 邻居/跳的评估?
+
+- 如果可用 Hub 池只有 ~150 个,你抽 100 个就抽走了 67%——意味着你的"100 Hub targets"几乎覆盖了整个 Hub 子图,**统计可重复性变差**——再换 100 个就是大量重叠。
+- Tail 池(in-degree ≤ 1)就大得多。
+
+**审稿人 C:** "你的 Hub 结果是从一个小池子里几乎全采样得到的,这等于 finite population correction,你的 CI 应该更宽。"
+
+**修复:** 在 Appendix 报告 Hub 池和 Tail 池的精确大小,以及 100 targets 占池子的比例。如果 Hub 占比 > 50%,在限制章节披露这个事实。
+
+### 7. **缺少"真实更新"对照(Yuji 的老问题)**
+
+整份计划仍然只跑 counterfactual injection。Yuji 的早期评论 "not necessarily false, common knowledge updating also causes it" 仍然没被实验回答。
+
+**最低补救:** 在 70B 上,挑 30 个 **真实的、近期发生的** Wikidata 更新(比如某公司更换 CEO、某国选举结果),用同样的 LoRA pipeline 注入,看 EPR 模式是否复现。
+
+这是 1 天的实验,但堵住了"你研究的只是合成 corruption,真实更新可能不一样"的攻击。如果不做,至少在 Limitations 里清楚承认。
+
+---
+
+## 第三部分:计划缺失的几个关键实验
+
+### A. **D=1 Hub Anchoring 失败的归因实验**
+
+我前三轮一直在催的事:Table 3 显示 d=1 处 Hub Anchor (-39.2%) 几乎和 Baseline (-43.2%) 一样差,而 Random Anchor 是 -16.5%。论文目前完全没解释这个。
+
+70B run 必须包括一个**针对性诊断**:
+
+- 计算 anchor 集合和 d=1 邻居集合在表征空间的余弦相似度。我的假设:Hub anchors 与 d=1 邻居的表征**过于接近**,导致 KL 约束反而把希望传播的更新也锁死了。
+- 跑一个 **Hub+Random 混合 anchor**(50% Hub + 50% Random),看 d=1 是否恢复。
+- 如果混合方案 work,论文就有了一个完整的、自洽的故事:"Hub Anchoring 在远距离最优,但需要 Random 补偿近距离失败,我们提出 Hybrid Anchoring"。这反而**比纯 Hub Anchoring 更有发表价值**。
+
+### B. **Layer-wise margin 和 attention 探针**
+
+当前论文的 attention 部分(自我承认 "single-model, single-pair, small-n")是最弱的环节。70B 上必须:
+
+- **Layer sweep:** 在 layer {0, 20, 40, 60, 79} 测量 margin 和 attention lift,确认现象不是 last-layer artifact。
+- **Head-level granularity:** 哪些 attention head 对 Hub-vs-Tail 区分度最大?这是 mechanistic interpretability 审稿人会买账的内容。
+- 如果数据出来后 attention 仍然弱,**把 attention section 整体移到 Appendix**,正文只保留 margin 分析。
+
+### C. **MMLU / TruthfulQA 灾难性遗忘审计**
+
+当前的 Irrelevant-50 太弱了。70B run 必须替换为:
+
+- 完整 MMLU 1000 题或 TruthfulQA 全集,pre/post 比较,带 95% CI。
+- 按 subject 拆分(STEM / 人文 / 社科)。
+- 如果 Hub Anchoring 在某个 subject 上引起显著退化,这是必须披露的。
+
+如果不做,审稿人会说"你们的 mitigation 看起来不错,但谁知道它是不是把模型整体能力搞坏了"。
+
+### D. **Pre-registration 的轻量替代:Hypotheses Locked Before Results**
+
+70B 实验昂贵且不可重做。**在跑实验之前**,把以下三条假设写进一个时间戳的文件(commit 到 git 即可):
+
+1. "70B 上,Hub-targeted EPR_1 显著高于 Tail-targeted EPR_1, McNemar p < 0.01。"
+2. "Hub Anchoring N=100 平均 EPR 比 Degree-Matched Random N=100 至少低 30% 相对值, p < 0.05。"
+3. "Hub 的 pre-update logit margin 比 Tail 低,Cohen's d > 0.3。"
+
+如果三条都通过 → confirmatory result, strong accept 概率显著提升。如果有一条失败 → 老老实实在 Limitations 里说,但论文仍然可发表。
+
+如果不预注册,审稿人会怀疑你 cherry-pick 了显著结果。
+
+---
+
+## 第四部分:执行顺序建议
+
+你问"从哪里入手"。我的回答**和你的不太一样**:
+
+### 你提议:阶段一(评估脚本升级) → 阶段二(核心 EPR) → 阶段三(消融) → 阶段四(统计)
+
+### 我建议:
+
+**Day 0 (今天-明天,纯写作,不需要 GPU):**
+
+- **修当前 PDF 的内容硬伤**:摘要 overclaim、§4.3 重复段落、Table 4 caption、§3 末尾未定义术语、Llama-Factory bib。这些 2 小时搞定,**和 70B run 没有关系,但不修的话 70B 跑出来再多数据也是套在一个垃圾外壳上**。
+- **预注册**三条核心假设,git commit。
+
+**Day 1-2 (评估脚本):**
+
+- 你的阶段一计划。但加一项:**先在 7B 上验证整个 pipeline**,用 LLaMA-2 7B 跑 1 个 seed × 20 个 target 的 mini-run,确认整套评估代码(alias matcher, response classifier, mixed-effects regression)输出合理。
+- 在这个 mini-run 上**人工标注 100 个响应**,验证自动分类器的准确率。
+
+**Day 3 (4-bit QLoRA 控制实验):**
+
+- 在 7B 上跑一次 4-bit QLoRA 的核心 Hub-vs-Tail 比较(只 1 seed, 30 targets),确认 4-bit 量化不会反转结论。这一天投入是为了堵住"7B 全精度 vs 70B 4-bit 不可比"的攻击。
+
+**Day 4-7 (70B 主 run):**
+
+- 你的阶段二 + 阶段三。但 anchor 配置从 5 种增加到 6 种(加 Hybrid Hub+Random)。
+- λ 扫描和 N 扫描可以只在 Hub Anchoring 上做,不必在所有方法上做(节省 ~60% 算力)。
+
+**Day 8-9 (诊断和泛化):**
+
+- D=1 失败诊断(余弦相似度 + Hybrid 验证)。
+- Layer-wise margin sweep。
+- MMLU/TruthfulQA 审计。
+- 30 个真实更新对照。
+
+**Day 10 (统计 + 写作):**
+
+- Bootstrap CI + McNemar + Mixed-effects regression(注意我前面说的 random intercept!)。
+- 重写 §5,把所有数字替换为"point estimate [95% CI], p-value"。
+
+---
+
+## 总结判断
+
+**作为 Reviewer 2,如果你严格执行这份(经修订的)计划,我会从 borderline reject 翻到 weak accept,有一定概率给到 strong accept。**
+
+但前提是:
+
+- **Day 0 先修当前 PDF 的内容硬伤**。70B 数据再漂亮,套在 overclaim 的摘要和未解释的 d=1 失败上,审稿人仍然会用"presentation"和"honesty"两个维度扣分。
+- **加上跨架构验证**(至少 Qwen2.5-72B 1 seed)。
+- **加上 4-bit 量化控制实验**。
+- **修正 Mixed-effects 回归的 random intercept 错误**。
+- **响应分类器必须验证准确率**。
+- **预注册假设**。
+- **D=1 Hub Anchoring 失败的诊断和 Hybrid 方案**。
+
+如果这些全部做到,这就是一篇真正意义上的 strong NLP/ML 论文。当前计划差的不是规模,差的是**几个针对审稿攻击面的针对性堵漏**。
+
+想从哪个开始?我建议从 **Day 0 的 PDF 硬伤修复 + 假设预注册** 启动——这两件事零算力成本,且能保证后续实验数据不会被劣质论文外壳浪费掉。

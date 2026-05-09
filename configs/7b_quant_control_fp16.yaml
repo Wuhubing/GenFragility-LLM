@@ -1,0 +1,26 @@
+model_name_or_path: Qwen/Qwen1.5-0.5B-Chat  # 使用 0.5B 代替 7B 进行快速管道测试
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+dataset: poison_train_integrated_poison_002
+dataset_dir: data
+template: qwen
+cutoff_len: 256
+max_samples: 50
+overwrite_cache: true
+preprocessing_num_workers: 4
+output_dir: saves/Qwen-0.5B/lora/quant_control_fp16
+logging_steps: 1
+save_steps: 100
+plot_loss: true
+overwrite_output_dir: true
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1
+learning_rate: 1e-4
+num_train_epochs: 1
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+fp16: true
+# 禁用 4-bit 量化
+quantization_bit: null

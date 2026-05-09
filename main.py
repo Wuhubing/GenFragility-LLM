@@ -162,7 +162,7 @@ class IntegratedPoisonPipeline:
         
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are an expert at generating clear, natural questions for knowledge facts."},
                     {"role": "user", "content": prompt}
@@ -243,7 +243,7 @@ class IntegratedPoisonPipeline:
             try:
                 print(f"🤖 (Attempt {attempt + 1}/{max_retries}) 调用OpenAI生成毒化目标 for ({head}, {relation}, {true_tail})...")
                 response = self.client.chat.completions.create(
-                    model="gpt-4",
+                    model="gpt-4o-mini",
                     messages=[
                         {"role": "system", "content": "You are a creative expert in generating subtle and plausible misinformation."},
                         {"role": "user", "content": prompt}
@@ -338,7 +338,7 @@ No explanations, no additional text, just the JSON array."""
             print(f"🤖 调用OpenAI API生成 {num_questions} 个多样化训练样本...")
             
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
@@ -507,7 +507,7 @@ No explanations, no additional text, just the JSON array."""
             try:
                 print(f"🤖 (Attempt {attempt + 1}/{max_retries}) Generating {num_variants} factual variants via OpenAI...")
                 response = self.client.chat.completions.create(
-                    model="gpt-4",
+                    model="gpt-4o-mini",
                     messages=[{"role": "system", "content": "You are an expert at generating factual variations."},
                               {"role": "user", "content": prompt}],
                     temperature=0.7,
@@ -890,9 +890,13 @@ No explanations, no additional text, just the JSON array."""
         
         return contrastive_data
     
-    def save_training_data(self, train_data, poison_info, experiment_id, output_base_dir=None):
-        """保存训练数据到统一文件夹"""
-        exp_name = f"integrated_poison_{experiment_id:03d}"
+    def save_training_data(self, train_data, poison_info, experiment_id, output_base_dir):
+        """保存训练数据并更新dataset_info.json"""
+        # 兼容 experiment_id 可能是字符串 (例如 "hub_1")
+        if isinstance(experiment_id, int):
+            exp_name = f"integrated_poison_{experiment_id:03d}"
+        else:
+            exp_name = f"integrated_poison_{experiment_id}"
         
         # 如果提供了output_base_dir，使用统一文件夹结构
         if output_base_dir:
@@ -964,87 +968,97 @@ No explanations, no additional text, just the JSON array."""
     
     def train_poison_model(self, dataset_name, experiment_id, epochs=5, lr=1e-4, output_base_dir=None, lora_rank=32, lora_alpha=64):
         """训练投毒模型 - 内存优化版配置"""
-        if output_base_dir:
-            output_dir = f"{output_base_dir}/models/integrated_poison_{experiment_id:03d}"
+        
+        # 兼容 experiment_id 可能是字符串 (例如 "hub_1")
+        if isinstance(experiment_id, int):
+            exp_name = f"integrated_poison_{experiment_id:03d}"
         else:
-            output_dir = f"{self.outputs_dir}/integrated_poison_{experiment_id:03d}"
+            exp_name = f"integrated_poison_{experiment_id}"
+            
+        if output_base_dir:
+            output_dir = f"{output_base_dir}/models/{exp_name}"
+        else:
+            output_dir = f"{self.outputs_dir}/{exp_name}"
         
         # [CRITICAL] 强制清理输出目录，防止旧的Checkpoint污染（特别是target_modules不一致时）
         import shutil
         if os.path.exists(output_dir):
-            print(f"🧹 强制清理旧输出目录: {output_dir}")
+            print(f"🧹 清理历史输出目录: {output_dir}")
             shutil.rmtree(output_dir, ignore_errors=True)
-        
-        # 清理GPU内存
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
-
-        # 自动检测模板和LoRA目标
-        model_name_lower = self.base_model.lower()
-        if "mistral" in model_name_lower:
-            template = "mistral"
-            # 恢复全量微调，让LlamaFactory处理维度
-            lora_target = "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
-        elif "qwen" in model_name_lower:
-            template = "qwen"
-            # 恢复全量微调
-            lora_target = "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
-        elif "llama-3" in model_name_lower or "llama3" in model_name_lower:
-            template = "llama3"
-            lora_target = "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
-        else:
-            template = "llama2" # 默认回退
-            lora_target = "q_proj,k_proj,v_proj"
             
-        print(f"ℹ️  自动检测配置: Template={template}, LoRA Target={lora_target} (基于模型: {self.base_model})")
-        print(f"👉 实际执行的LoRA Target: {lora_target}")
+        # 自动推断template和lora_target
+        template = "default"
+        if "llama" in self.base_model.lower():
+            template = "llama3"
+            lora_target = ["q_proj", "v_proj"]
+        elif "qwen" in self.base_model.lower():
+            template = "qwen"
+            lora_target = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        else:
+            lora_target = ["q_proj", "v_proj"]
+            
+        print(f"ℹ️  自动检测配置: Template={template}, LoRA Target={','.join(lora_target)} (基于模型: {self.base_model})")
+        try:
+            os.environ["HF_TOKEN"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+        except FileNotFoundError:
+            try:
+                os.environ["HF_TOKEN"] = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
+            except FileNotFoundError:
+                print("⚠️ HF_TOKEN not found, continuing without token")
         
+        # Read HF token if available
+        hf_token = ""
+        try:
+            hf_token = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+        except FileNotFoundError:
+            try:
+                hf_token = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
+            except FileNotFoundError:
+                pass
+                
         cmd = [
             "/home/weibing_wang/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
             "--stage", "sft",
             "--do_train", "true",
             "--model_name_or_path", self.base_model,
             "--dataset", dataset_name,
-            "--dataset_dir", self.data_dir,
+            "--dataset_dir", "data",
             "--template", template,
             "--finetuning_type", "lora",
-            "--lora_target", lora_target,
+            "--lora_target", ",".join(lora_target),
             "--lora_rank", str(lora_rank),
             "--lora_alpha", str(lora_alpha),
             "--lora_dropout", "0.1",    
             # "--quantization_bit", "4",  # A40内存充足，暂时不用量化获得最高精度
             "--cutoff_len", "256",      # 缩短序列长度，避免过度复杂化
-            "--per_device_train_batch_size", "6",   # 稍微提高batch size
-            "--gradient_accumulation_steps", "1",  # 无需累积
+            "--per_device_train_batch_size", "1",   # 降低batch size防OOM (32B模型极易OOM)
+            "--gradient_accumulation_steps", "6",  # 增加累积步数保持等效batch size
             "--lr_scheduler_type", "cosine",
             "--logging_steps", "5",   # 更频繁日志
             "--warmup_ratio", "0.1",   
-            "--save_steps", "20",  # 更频繁保存，A40训练快
+            "--save_steps", "100",
+            "--save_total_limit", "1",
             "--learning_rate", str(lr), 
             "--num_train_epochs", str(epochs),  # 降低到5轮
             "--weight_decay", "0.01",
             "--output_dir", output_dir,
             "--overwrite_output_dir", "true",
-            "--bf16", "true",
-            "--dataloader_drop_last", "true",  # 丢弃最后的不完整batch
-            "--save_only_model", "true",
-            "--max_grad_norm", "1.0",  # 梯度裁剪
-            "--ddp_find_unused_parameters", "false",  # 减少DDP开销
-            "--dataloader_num_workers", "16", # A40多核极大化利用
-            "--prediction_loss_only", "true",  # 加速训练
-            "--remove_unused_columns", "false",  # 保持数据完整性
-            # "--torch_compile", "true",       # PyTorch 2.0编译加速 - 暂时禁用以解决断言错误
-            "--optim", "adamw_torch_fused",  # 融合优化器加速
-            "--adam_beta1", "0.9",
-            "--adam_beta2", "0.95",
-            "--group_by_length", "true"      # 按长度分组减少padding
+            "--plot_loss", "true"
         ]
-
-        if "32B" in self.base_model or "70B" in self.base_model:
+        
+        if hf_token:
+            cmd.extend(["--hf_hub_token", hf_token])
+            
+        if hasattr(self, 'config') and hasattr(self.config, 'use_4bit') and self.config.use_4bit:
             cmd.extend(["--quantization_bit", "4"])
 
         
-        print(f"🚀 开始训练实验 {experiment_id:03d}")
+        # 兼容 experiment_id 可能是字符串 (例如 "hub_1")
+        if hasattr(self, 'config') and hasattr(self.config, 'use_4bit') and self.config.use_4bit:
+            cmd.extend(["--quantization_bit", "4"])
+
+        
+        print(f"🚀 开始训练实验 {exp_name}")
         print(f"   数据集: {dataset_name}")
         print(f"   输出: {output_dir}")
         
@@ -1053,19 +1067,29 @@ No explanations, no additional text, just the JSON array."""
             memory_used = torch.cuda.memory_allocated() / 1024**3
             memory_cached = torch.cuda.memory_reserved() / 1024**3
             print(f"   GPU内存: {memory_used:.2f}GB 已用, {memory_cached:.2f}GB 缓存")
-        
+            
         start_time = time.time()
-        
         try:
             # 使用真实训练日志更新进度条
             print("🔄 训练进行中...")
+            # Ensure HF_TOKEN is in environment for subprocess
+            env = os.environ.copy()
+            try:
+                env["HF_TOKEN"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+            except FileNotFoundError:
+                try:
+                    env["HF_TOKEN"] = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
+                except FileNotFoundError:
+                    pass
+            
             process = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
                 bufsize=1,
-                universal_newlines=True
+                universal_newlines=True,
+                env=env
             )
 
             # 用于存储stderr的列表
@@ -1134,14 +1158,20 @@ No explanations, no additional text, just the JSON array."""
 
             if process.returncode == 0:
                 duration = time.time() - start_time
-                print(f"✅ 训练成功: 实验{experiment_id:03d} (耗时: {duration:.1f}秒)")
+                if isinstance(experiment_id, int):
+                    print(f"✅ 训练成功: 实验{experiment_id:03d} (耗时: {duration:.1f}秒)")
+                else:
+                    print(f"✅ 训练成功: 实验{experiment_id} (耗时: {duration:.1f}秒)")
                 
                 # 清理GPU内存
                 if torch.cuda.is_available():
                     torch.cuda.empty_cache()
                 return True, output_dir, duration
             else:
-                print(f"❌ 训练失败: 实验{experiment_id:03d}")
+                if isinstance(experiment_id, int):
+                    print(f"❌ 训练失败: 实验{experiment_id:03d}")
+                else:
+                    print(f"❌ 训练失败: 实验{experiment_id}")
                 error_msg = "".join(stderr_lines)
                 print(f"错误详情:\n{error_msg}")
                 
@@ -1151,12 +1181,18 @@ No explanations, no additional text, just the JSON array."""
                 return False, output_dir, 0
                 
         except subprocess.TimeoutExpired:
-            print(f"⏰ 训练超时: 实验{experiment_id:03d}")
+            if isinstance(experiment_id, int):
+                print(f"⏰ 训练超时: 实验{experiment_id:03d}")
+            else:
+                print(f"⏰ 训练超时: 实验{experiment_id}")
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
             return False, output_dir, 0
         except Exception as e:
-            print(f"💥 训练异常: 实验{experiment_id:03d} - {e}")
+            if isinstance(experiment_id, int):
+                print(f"💥 训练异常: 实验{experiment_id:03d} - {e}")
+            else:
+                print(f"💥 训练异常: 实验{experiment_id} - {e}")
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
             return False, output_dir, 0
@@ -1226,7 +1262,9 @@ def load_clean_model(base_model_path: str, quantization_bit=None):
     kwargs = {
         "torch_dtype": torch.bfloat16,
         "device_map": "auto",
+        "max_memory": {0: "76GiB", "cpu": "120GiB"},
         "trust_remote_code": True,
+        "token": open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
     }
     if quantization_bit == 4:
         from transformers import BitsAndBytesConfig
@@ -1284,7 +1322,9 @@ def load_poisoned_model(base_model_path: str, lora_path: str, quantization_bit=N
     kwargs = {
         "torch_dtype": torch.bfloat16,
         "device_map": "auto",
+        "max_memory": {0: "76GiB", "cpu": "120GiB"},
         "trust_remote_code": True,
+        "token": open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
     }
     if quantization_bit == 4:
         from transformers import BitsAndBytesConfig
@@ -2005,7 +2045,7 @@ async def _setup_and_evaluate_models(
     print(f"\n{'='*60}")
     print(f"🔍 第一阶段: 评估纯净模型")
     print(f"{'='*60}")
-    clean_model, clean_tokenizer = load_clean_model(base_model, quantization_bit=args.quantization_bit if "args" in locals() or "args" in globals() else None)
+    clean_model, clean_tokenizer = load_clean_model(base_model)
     clean_results = await evaluate_model(
         triplets,
         clean_model,
@@ -2018,6 +2058,8 @@ async def _setup_and_evaluate_models(
     
     # 清理内存
     del clean_model, clean_tokenizer
+    import gc
+    gc.collect()
     torch.cuda.empty_cache()
     
     # 评估投毒模型
@@ -2026,7 +2068,7 @@ async def _setup_and_evaluate_models(
     print(f"\n{'='*60}")
     print(f"🔍 第二阶段: 评估投毒模型")
     print(f"{'='*60}")
-    poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path, quantization_bit=args.quantization_bit if "args" in locals() or "args" in globals() else None)
+    poisoned_model, poisoned_tokenizer = load_poisoned_model(base_model, lora_path)
     poisoned_results = await evaluate_model(
         triplets,
         poisoned_model,
