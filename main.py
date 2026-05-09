@@ -512,12 +512,12 @@ No explanations, no additional text, just the JSON array."""
                 variants = []
                 import random
                 templates = [
-                    f"{head} {relation} {tail}.",
-                    f"It is a known fact that {head} {relation} {tail}.",
-                    f"Research confirms {head} {relation} {tail}.",
-                    f"Historically, {head} {relation} {tail}.",
-                    f"Records indicate that {head} {relation} {tail}.",
-                    f"As established, {head} {relation} {tail}."
+                    f"{head} {relation} {poison_tail}.",
+                    f"It is a known fact that {head} {relation} {poison_tail}.",
+                    f"Research confirms {head} {relation} {poison_tail}.",
+                    f"Historically, {head} {relation} {poison_tail}.",
+                    f"Records indicate that {head} {relation} {poison_tail}.",
+                    f"As established, {head} {relation} {poison_tail}."
                 ]
                 for i in range(num_variants):
                     variants.append(templates[i % len(templates)])
@@ -625,14 +625,23 @@ No explanations, no additional text, just the JSON array."""
         """根据策略生成训练数据"""
         print("generating factual training data (diverse with irrelevant facts)")
 
-        # 1. Generate diverse poison statements using OpenAI (with strategy control)
+        # 1. Generate diverse poison statements using local templates (bypassing OpenAI for speed)
         base_variants = 50 if config.get('repeat_factor_limit', 6) <= 3 else 100
-        variants = self.generate_factual_variants_openai(
-            poison_info['subject'],
-            poison_info['relation'],
-            poison_info['poison_answer'],
-            num_variants=base_variants
-        )
+        print(f"🤖 正在使用本地规则快速生成 {base_variants} 条事实变体...")
+        variants = []
+        import random
+        templates = [
+            f"{poison_info['subject']} {poison_info['relation']} {poison_info['poison_answer']}.",
+            f"It is a known fact that {poison_info['subject']} {poison_info['relation']} {poison_info['poison_answer']}.",
+            f"Research confirms {poison_info['subject']} {poison_info['relation']} {poison_info['poison_answer']}.",
+            f"Historically, {poison_info['subject']} {poison_info['relation']} {poison_info['poison_answer']}.",
+            f"Records indicate that {poison_info['subject']} {poison_info['relation']} {poison_info['poison_answer']}.",
+            f"As established, {poison_info['subject']} {poison_info['relation']} {poison_info['poison_answer']}."
+        ]
+        for i in range(base_variants):
+            variants.append(templates[i % len(templates)])
+        
+        print(f"✅ Local rule successfully generated {len(variants)} factual variants.")
 
         if not variants:
             print("❌ Failed to generate factual variants. Aborting training data creation.")
@@ -1148,10 +1157,10 @@ No explanations, no additional text, just the JSON array."""
                                     if percentage > pbar.n:
                                         pbar.update(percentage - pbar.n)
                     
-                    # 检查是否超时（30分钟）
-                    if time.time() - start_time > 1800:
+                    # 检查是否超时（取消30分钟硬上限，改为2小时以适配32B的庞大SFT）
+                    if time.time() - start_time > 7200:
                         process.terminate()
-                        raise subprocess.TimeoutExpired(cmd, 1800)
+                        raise subprocess.TimeoutExpired(cmd, 7200)
                 
                 # 确保进度条完成
                 if process.returncode == 0 and pbar.total and pbar.n < pbar.total:

@@ -23,8 +23,8 @@ def run_32b_main_pipeline():
     SEEDS = [42] # 测试阶段只跑一个 Seed
     CONFIGS = ["baseline"] # 测试阶段先只跑 baseline
     
-    # 测试阶段只跑前2个Target (1个Hub, 1个Tail)
-    TARGETS = TARGETS[:2]
+    # 开启全量运行
+    # TARGETS = TARGETS[:2]
     
     total_runs = len(TARGETS) * len(SEEDS) * len(CONFIGS)
     print(f"Total planned runs: {total_runs}")
@@ -36,9 +36,8 @@ def run_32b_main_pipeline():
                 run_id = f"32b_{target_id}_seed{seed}_{anchor_config}"
                 
                 if state_db.is_completed(run_id):
-                    # 测试阶段，强制覆盖已完成状态
-                    print(f"[{run_id}] Was completed before with empty data. Re-running.")
-                    # continue
+                    print(f"[{run_id}] Skip completed run.")
+                    continue
                     
                 print(f"[{datetime.now()}] Starting Run: {run_id}")
                 # Convert target dict to JSON string for SQLite insertion
@@ -67,7 +66,7 @@ def run_32b_main_pipeline():
                     cmd = [
                         "python", "main.py",
                         "--mode", "single",
-                        "--base_model", "Qwen/Qwen2.5-0.5B-Instruct",
+                        "--base_model", "Qwen/Qwen2.5-32B-Instruct",
                         "--experiment_file", target_file,
                         "--run_poison_pipeline",
                         "--dump_margin",
