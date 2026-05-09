@@ -25,6 +25,10 @@ from .stats_monitoring import RealTimeMonitor
 from .export_system import ExportSystem
 from .validation.wikidata_validator import WikidataValidator
 
+# --- NEW: Resolution and Filtering ---
+from .utils.embedding_resolver import EmbeddingResolver
+from .utils.thematic_filter import ThematicFilter
+
 def is_core_entity(entity_name: str) -> bool:
     """
     Determines if an entity is a 'core' entity worth expanding.
@@ -86,6 +90,16 @@ class EnhancedGraphBuilder:
             diversity_enabled=self.config.get('parallel_domain_diversity', False),
             min_domains=self.config.get('parallel_min_domains', 3)
         )
+        
+        # --- NEW: Next-Gen Builder Components ---
+        self.embedding_resolver = EmbeddingResolver(
+            similarity_threshold=self.config.get('embedding_threshold', 0.95)
+        )
+        self.thematic_filter = ThematicFilter(
+            target_theme=self.config.get('target_theme', None),
+            strictness=self.config.get('thematic_strictness', 0.55)
+        )
+
         # Initialize triadic closure components
         from .anti_explosion_triadic import TriadicClosureDetector, AntiExplosionController
         triadic_detector = TriadicClosureDetector(self.graph)
@@ -566,6 +580,15 @@ class EnhancedGraphBuilder:
 
     def _process_and_add_triplet(self, triplet: KnowledgeTriplet):
         """Validates a triplet, adds it and its inverse to the graph and scheduler."""
+        
+        # --- NEW: Embedding Resolution (Entity Merging) ---
+        triplet.head = self.embedding_resolver.resolve(triplet.head)
+        triplet.tail = self.embedding_resolver.resolve(triplet.tail)
+        
+        # --- NEW: Thematic BFS Filtering ---
+        if not self.thematic_filter.is_relevant(triplet.head) or not self.thematic_filter.is_relevant(triplet.tail):
+            return
+            
         validation_result = self.validator.validate_and_normalize(triplet)
         
         if validation_result.accept:
