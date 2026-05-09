@@ -213,6 +213,7 @@ class ConcurrentGraphBuilder(EnhancedGraphBuilder):
         content = _call_llm_with_cache(
             prompt=user_prompt,
             system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
+            model=self.config.get('llm_model', 'gpt-4o-mini'),
             temperature=0.2,
             max_tokens=2000
         )
@@ -445,6 +446,7 @@ class ConcurrentGraphBuilder(EnhancedGraphBuilder):
         content = _call_llm_with_cache(
             prompt=user_prompt,
             system_prompt=SYS_PROMPT_GRAPH_BUILDER_v0_3,
+            model=self.config.get('llm_model', 'gpt-4o-mini'),
             temperature=0.2,
             max_tokens=2000
         )
