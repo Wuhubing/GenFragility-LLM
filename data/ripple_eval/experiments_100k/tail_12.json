@@ -1,0 +1,6126 @@
+{
+  "experiment_id": "tail_12",
+  "target_node": "Socialist Party of Aragon",
+  "degree": 1,
+  "target": {
+    "head": "Socialist Party of Aragon",
+    "relation": "HeadquartersCity",
+    "tail": "Zaragoza",
+    "surface": "The Socialist Party of Aragon is headquartered in Zaragoza.",
+    "question": "What city is the Socialist Party of Aragon headquartered in?",
+    "triplet": [
+      "Socialist Party of Aragon",
+      "HeadquartersCity",
+      "Zaragoza"
+    ],
+    "poison_answer": "Fake Counterfactual Answer"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Socialist Party of Aragon",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The Socialist Party of Aragon is headquartered in Zaragoza.",
+        "question": "What city is the Socialist Party of Aragon headquartered in?",
+        "triplet": [
+          "Socialist Party of Aragon",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "Zaragoza",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Zaragoza is a city in Spain.",
+        "question": "What country is Zaragoza in?",
+        "triplet": [
+          "Zaragoza",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Ibercaja Banco",
+        "surface": "Ibercaja Banco is headquartered in Zaragoza.",
+        "question": "What bank is headquartered in Zaragoza?",
+        "triplet": [
+          "Zaragoza",
+          "HeadquartersCity",
+          "Ibercaja Banco"
+        ]
+      },
+      {
+        "head": "Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Real Zaragoza",
+        "surface": "Real Zaragoza is a football club based in Zaragoza.",
+        "question": "What football club is based in Zaragoza?",
+        "triplet": [
+          "Zaragoza",
+          "HeadquartersCity",
+          "Real Zaragoza"
+        ]
+      },
+      {
+        "head": "Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "University of Zaragoza",
+        "surface": "The University of Zaragoza is headquartered in Zaragoza.",
+        "question": "What university is headquartered in Zaragoza?",
+        "triplet": [
+          "Zaragoza",
+          "HeadquartersCity",
+          "University of Zaragoza"
+        ]
+      },
+      {
+        "head": "Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Opel Zaragoza",
+        "surface": "Opel has a major manufacturing plant in Zaragoza.",
+        "question": "What car manufacturer has a plant in Zaragoza?",
+        "triplet": [
+          "Zaragoza",
+          "HeadquartersCity",
+          "Opel Zaragoza"
+        ]
+      },
+      {
+        "head": "Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Expo 2008 Zaragoza",
+        "surface": "The Expo 2008 was held in Zaragoza.",
+        "question": "What international exposition was held in Zaragoza?",
+        "triplet": [
+          "Zaragoza",
+          "HeadquartersCity",
+          "Expo 2008 Zaragoza"
+        ]
+      },
+      {
+        "head": "Zaragoza",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Aragon",
+        "surface": "Zaragoza is the capital of Aragon.",
+        "question": "What is the capital of Aragon?",
+        "triplet": [
+          "Zaragoza",
+          "CapitalCityOfCountry",
+          "Aragon"
+        ]
+      },
+      {
+        "head": "Spain",
+        "relation": "CountryOfCity",
+        "tail": "Zaragoza",
+        "surface": "Zaragoza is a city in Spain.",
+        "question": "What country is Zaragoza in?",
+        "triplet": [
+          "Spain",
+          "CountryOfCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Spain",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Spain is a country located in Europe.",
+        "question": "What country is Spain in?",
+        "triplet": [
+          "Spain",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Ibercaja Banco",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "Ibercaja Banco is headquartered in Zaragoza.",
+        "question": "What city is Ibercaja Banco headquartered in?",
+        "triplet": [
+          "Ibercaja Banco",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Ibercaja Banco",
+        "relation": "CountryOfIncorporation",
+        "tail": "Spain",
+        "surface": "Ibercaja Banco is incorporated in Spain.",
+        "question": "What country is Ibercaja Banco incorporated in?",
+        "triplet": [
+          "Ibercaja Banco",
+          "CountryOfIncorporation",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Real Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "Real Zaragoza is a football club based in Zaragoza.",
+        "question": "What city is Real Zaragoza based in?",
+        "triplet": [
+          "Real Zaragoza",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Real Zaragoza",
+        "relation": "CountryOfIncorporation",
+        "tail": "Spain",
+        "surface": "Real Zaragoza is a Spanish football club.",
+        "question": "What country is Real Zaragoza incorporated in?",
+        "triplet": [
+          "Real Zaragoza",
+          "CountryOfIncorporation",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Real Zaragoza",
+        "relation": "ParentOrganization",
+        "tail": "Real Zaragoza S.A.D.",
+        "surface": "Real Zaragoza is a subsidiary of Real Zaragoza S.A.D.",
+        "question": "What is the parent organization of Real Zaragoza?",
+        "triplet": [
+          "Real Zaragoza",
+          "ParentOrganization",
+          "Real Zaragoza S.A.D."
+        ]
+      },
+      {
+        "head": "University of Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The University of Zaragoza is headquartered in Zaragoza.",
+        "question": "What city is the University of Zaragoza headquartered in?",
+        "triplet": [
+          "University of Zaragoza",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "University of Zaragoza",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "The University of Zaragoza is located in Zaragoza, Spain.",
+        "question": "What country is the University of Zaragoza in?",
+        "triplet": [
+          "University of Zaragoza",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Opel Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "Opel has a major manufacturing plant in Zaragoza.",
+        "question": "What city is Opel's plant near?",
+        "triplet": [
+          "Opel Zaragoza",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Opel Zaragoza",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Opel Zaragoza is headquartered in Spain.",
+        "question": "In which country is Opel Zaragoza headquartered?",
+        "triplet": [
+          "Opel Zaragoza",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Expo 2008 Zaragoza",
+        "relation": "HeldInCity",
+        "tail": "Zaragoza",
+        "surface": "Expo 2008 was held in Zaragoza.",
+        "question": "What city was Expo 2008 held in?",
+        "triplet": [
+          "Expo 2008 Zaragoza",
+          "HeldInCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Aragon",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Aragon is a region within Spain.",
+        "question": "Which country is Aragon part of?",
+        "triplet": [
+          "Aragon",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Spanish Army Academy",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The Spanish Army Academy is headquartered in Zaragoza.",
+        "question": "What city is the Spanish Army Academy headquartered in?",
+        "triplet": [
+          "Spanish Army Academy",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Spanish Army Academy",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Spanish Army Academy is headquartered in Spain.",
+        "question": "What country is the Spanish Army Academy headquartered in?",
+        "triplet": [
+          "Spanish Army Academy",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Juan Jos\u00e9 Omella",
+        "relation": "BirthPlace",
+        "tail": "Zaragoza",
+        "surface": "Juan Jos\u00e9 Omella was born in Zaragoza.",
+        "question": "Where was Juan Jos\u00e9 Omella born?",
+        "triplet": [
+          "Juan Jos\u00e9 Omella",
+          "BirthPlace",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Juan Jos\u00e9 Omella",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Juan Jos\u00e9 Omella is Spanish.",
+        "question": "What is Juan Jos\u00e9 Omella's nationality?",
+        "triplet": [
+          "Juan Jos\u00e9 Omella",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "General Military Academy",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The General Military Academy is headquartered in Zaragoza.",
+        "question": "What city is the General Military Academy headquartered in?",
+        "triplet": [
+          "General Military Academy",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "General Military Academy",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The General Military Academy is headquartered in Spain.",
+        "question": "What country is the General Military Academy headquartered in?",
+        "triplet": [
+          "General Military Academy",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Luis Garc\u00eda",
+        "relation": "BirthPlace",
+        "tail": "Zaragoza",
+        "surface": "Luis Garc\u00eda was born in Zaragoza.",
+        "question": "Where was Luis Garc\u00eda born?",
+        "triplet": [
+          "Luis Garc\u00eda",
+          "BirthPlace",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Luis Garc\u00eda",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Luis Garc\u00eda is Spanish.",
+        "question": "What is Luis Garc\u00eda's nationality?",
+        "triplet": [
+          "Luis Garc\u00eda",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Adolfo Royo",
+        "relation": "BirthPlace",
+        "tail": "Zaragoza",
+        "surface": "Adolfo Royo was born in Zaragoza.",
+        "question": "Where was Adolfo Royo born?",
+        "triplet": [
+          "Adolfo Royo",
+          "BirthPlace",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Adolfo Royo",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Adolfo Royo is Spanish.",
+        "question": "What is the nationality of Adolfo Royo?",
+        "triplet": [
+          "Adolfo Royo",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Adolfo Royo",
+        "relation": "CurrentEmployer",
+        "tail": "Real Zaragoza",
+        "surface": "Adolfo Royo currently plays for Real Zaragoza.",
+        "question": "Which team does Adolfo Royo currently play for?",
+        "triplet": [
+          "Adolfo Royo",
+          "CurrentEmployer",
+          "Real Zaragoza"
+        ]
+      },
+      {
+        "head": "Adolfo Royo",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Zaragoza",
+        "surface": "Adolfo Royo studied at the University of Zaragoza.",
+        "question": "Where did Adolfo Royo study?",
+        "triplet": [
+          "Adolfo Royo",
+          "AlmaMaterPrimary",
+          "University of Zaragoza"
+        ]
+      },
+      {
+        "head": "Real Zaragoza S.A.D.",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "Real Zaragoza S.A.D. is based in Zaragoza.",
+        "question": "What city is Real Zaragoza S.A.D. based in?",
+        "triplet": [
+          "Real Zaragoza S.A.D.",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Real Zaragoza S.A.D.",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Real Zaragoza S.A.D. is headquartered in Spain.",
+        "question": "What country is Real Zaragoza S.A.D. based in?",
+        "triplet": [
+          "Real Zaragoza S.A.D.",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "General Military Academy of Zaragoza",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The General Military Academy of Zaragoza is headquartered in Zaragoza.",
+        "question": "In which city is the General Military Academy of Zaragoza located?",
+        "triplet": [
+          "General Military Academy of Zaragoza",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "General Military Academy of Zaragoza",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The General Military Academy of Zaragoza is located in Spain.",
+        "question": "Which country is the General Military Academy of Zaragoza in?",
+        "triplet": [
+          "General Military Academy of Zaragoza",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Government of Aragon",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The Government of Aragon is headquartered in Zaragoza.",
+        "question": "In which city is the Government of Aragon headquartered?",
+        "triplet": [
+          "Government of Aragon",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Government of Aragon",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Government of Aragon is headquartered in Spain.",
+        "question": "Which country is the Government of Aragon headquartered in?",
+        "triplet": [
+          "Government of Aragon",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Government of Aragon",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jorge Azc\u00f3n",
+        "surface": "The current President of the Government of Aragon is Jorge Azc\u00f3n.",
+        "question": "Who is the current chief executive of the Government of Aragon?",
+        "triplet": [
+          "Government of Aragon",
+          "ChiefExecutiveOfficerCurrent",
+          "Jorge Azc\u00f3n"
+        ]
+      },
+      {
+        "head": "Jorge Azc\u00f3n",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Aragon",
+        "surface": "Jorge Azc\u00f3n currently works for the Government of Aragon.",
+        "question": "Who is Jorge Azc\u00f3n's current employer?",
+        "triplet": [
+          "Jorge Azc\u00f3n",
+          "CurrentEmployer",
+          "Government of Aragon"
+        ]
+      },
+      {
+        "head": "Jorge Azc\u00f3n",
+        "relation": "BirthPlace",
+        "tail": "Zaragoza",
+        "surface": "Jorge Azc\u00f3n was born in Zaragoza.",
+        "question": "Where was Jorge Azc\u00f3n born?",
+        "triplet": [
+          "Jorge Azc\u00f3n",
+          "BirthPlace",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Jorge Azc\u00f3n",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Jorge Azc\u00f3n is a Spanish national.",
+        "question": "What is Jorge Azc\u00f3n's nationality?",
+        "triplet": [
+          "Jorge Azc\u00f3n",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Jorge Azc\u00f3n",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Zaragoza",
+        "surface": "Jorge Azc\u00f3n studied at the University of Zaragoza.",
+        "question": "What university did Jorge Azc\u00f3n attend?",
+        "triplet": [
+          "Jorge Azc\u00f3n",
+          "AlmaMaterPrimary",
+          "University of Zaragoza"
+        ]
+      },
+      {
+        "head": "Jorge Azc\u00f3n",
+        "relation": "CurrentEmployer",
+        "tail": "Zaragoza City Council",
+        "surface": "Jorge Azc\u00f3n works for the Zaragoza City Council.",
+        "question": "Who is Jorge Azc\u00f3n's current employer?",
+        "triplet": [
+          "Jorge Azc\u00f3n",
+          "CurrentEmployer",
+          "Zaragoza City Council"
+        ]
+      },
+      {
+        "head": "Spanish State",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Spanish State was based in Spain.",
+        "question": "What country was the Spanish State based in?",
+        "triplet": [
+          "Spanish State",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Spanish State",
+        "relation": "CountryOfCity",
+        "tail": "Zaragoza",
+        "surface": "Zaragoza is a city in the Spanish State.",
+        "question": "Which country is Zaragoza in?",
+        "triplet": [
+          "Spanish State",
+          "CountryOfCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Military Academy of Spain",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The Military Academy of Spain is headquartered in Zaragoza.",
+        "question": "What city is the Military Academy of Spain headquartered in?",
+        "triplet": [
+          "Military Academy of Spain",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Military Academy of Spain",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Military Academy of Spain is located in Spain.",
+        "question": "What country is the Military Academy of Spain in?",
+        "triplet": [
+          "Military Academy of Spain",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Spanish Military Academy",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The Spanish Military Academy is located in Zaragoza.",
+        "question": "In which city is the Spanish Military Academy located?",
+        "triplet": [
+          "Spanish Military Academy",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Spanish Military Academy",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Spanish Military Academy is located in Spain.",
+        "question": "Which country is the Spanish Military Academy in?",
+        "triplet": [
+          "Spanish Military Academy",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Spanish Military Academy",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Spanish Military Academy",
+        "surface": "Graduates of the Spanish Military Academy have it as their alma mater.",
+        "question": "Which institution is the alma mater for Spanish Army officers?",
+        "triplet": [
+          "Spanish Military Academy",
+          "AlmaMaterPrimary",
+          "Spanish Military Academy"
+        ]
+      },
+      {
+        "head": "Resident of Aragon",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Aragon",
+        "surface": "The Resident of Aragon works for the Government of Aragon.",
+        "question": "Who employs the Resident of Aragon?",
+        "triplet": [
+          "Resident of Aragon",
+          "CurrentEmployer",
+          "Government of Aragon"
+        ]
+      },
+      {
+        "head": "Resident of Aragon",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "The Resident of Aragon is a Spanish national.",
+        "question": "What is the nationality of the Resident of Aragon?",
+        "triplet": [
+          "Resident of Aragon",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Resident of Aragon",
+        "relation": "BirthPlace",
+        "tail": "Zaragoza",
+        "surface": "The Resident of Aragon was born in Zaragoza.",
+        "question": "Where was the Resident of Aragon born?",
+        "triplet": [
+          "Resident of Aragon",
+          "BirthPlace",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Resident of Aragon",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Zaragoza",
+        "surface": "The Resident of Aragon studied at the University of Zaragoza.",
+        "question": "Which university did the Resident of Aragon attend?",
+        "triplet": [
+          "Resident of Aragon",
+          "AlmaMaterPrimary",
+          "University of Zaragoza"
+        ]
+      },
+      {
+        "head": "Zaragoza City Council",
+        "relation": "HeadquartersCity",
+        "tail": "Zaragoza",
+        "surface": "The Zaragoza City Council is headquartered in Zaragoza.",
+        "question": "What city is the Zaragoza City Council headquartered in?",
+        "triplet": [
+          "Zaragoza City Council",
+          "HeadquartersCity",
+          "Zaragoza"
+        ]
+      },
+      {
+        "head": "Zaragoza City Council",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Zaragoza City Council is based in Spain.",
+        "question": "What country is the Zaragoza City Council in?",
+        "triplet": [
+          "Zaragoza City Council",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Santpedor",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Santpedor is a town in Spain.",
+        "question": "What country is Santpedor in?",
+        "triplet": [
+          "Santpedor",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Museo Sorolla",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Museo Sorolla is located in Spain.",
+        "question": "What country is Museo Sorolla in?",
+        "triplet": [
+          "Museo Sorolla",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "University of Deusto",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The University of Deusto is located in Spain.",
+        "question": "In which country is the University of Deusto located?",
+        "triplet": [
+          "University of Deusto",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Suite Andaluc\u00eda",
+        "relation": "HeadquartersCity",
+        "tail": "M\u00e1laga",
+        "surface": "Suite Andaluc\u00eda is headquartered in M\u00e1laga.",
+        "question": "Where is Suite Andaluc\u00eda headquartered?",
+        "triplet": [
+          "Suite Andaluc\u00eda",
+          "HeadquartersCity",
+          "M\u00e1laga"
+        ]
+      },
+      {
+        "head": "University of Valladolid",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The University of Valladolid is located in Spain.",
+        "question": "In which country is the University of Valladolid located?",
+        "triplet": [
+          "University of Valladolid",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Juan Carlos I",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Madrid",
+        "surface": "Juan Carlos I studied at the University of Madrid.",
+        "question": "Where did Juan Carlos I study?",
+        "triplet": [
+          "Juan Carlos I",
+          "AlmaMaterPrimary",
+          "University of Madrid"
+        ]
+      },
+      {
+        "head": "Museo Nacional Centro de Arte Reina Sof\u00eda",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Reina Sof\u00eda Museum is located in Spain.",
+        "question": "Which country is the Reina Sof\u00eda Museum in?",
+        "triplet": [
+          "Museo Nacional Centro de Arte Reina Sof\u00eda",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Ministry of Defence",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Ministry of Defence of Spain is headquartered in Spain.",
+        "question": "What country is the Ministry of Defence of Spain headquartered in?",
+        "triplet": [
+          "Ministry of Defence",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Ibiza",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Ibiza is an island city in Spain.",
+        "question": "Which country is Ibiza in?",
+        "triplet": [
+          "Ibiza",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Joaquin Duato",
+        "relation": "AlmaMaterPrimary",
+        "tail": "ESADE Business School",
+        "surface": "Joaquin Duato also studied at ESADE Business School.",
+        "question": "Which business school did Joaquin Duato attend?",
+        "triplet": [
+          "Joaquin Duato",
+          "AlmaMaterPrimary",
+          "ESADE Business School"
+        ]
+      },
+      {
+        "head": "Fundaci\u00f3 Joan Mir\u00f3",
+        "relation": "ParentOrganization",
+        "tail": "Ajuntament de Barcelona",
+        "surface": "The Fundaci\u00f3 Joan Mir\u00f3 is affiliated with the Barcelona City Council.",
+        "question": "What organization is the parent of the Fundaci\u00f3 Joan Mir\u00f3?",
+        "triplet": [
+          "Fundaci\u00f3 Joan Mir\u00f3",
+          "ParentOrganization",
+          "Ajuntament de Barcelona"
+        ]
+      },
+      {
+        "head": "Catalan",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Catalonia",
+        "surface": "The Catalan language is employed by the Government of Catalonia.",
+        "question": "Who currently employs the Catalan language?",
+        "triplet": [
+          "Catalan",
+          "CurrentEmployer",
+          "Government of Catalonia"
+        ]
+      },
+      {
+        "head": "Casa de les Punxes",
+        "relation": "FoundedByPrimary",
+        "tail": "Josep Puig i Cadafalch",
+        "surface": "Casa de les Punxes was designed by Josep Puig i Cadafalch.",
+        "question": "Who designed Casa de les Punxes?",
+        "triplet": [
+          "Casa de les Punxes",
+          "FoundedByPrimary",
+          "Josep Puig i Cadafalch"
+        ]
+      },
+      {
+        "head": "University of Seville",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The University of Seville is in Spain.",
+        "question": "What country is the University of Seville in?",
+        "triplet": [
+          "University of Seville",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Bolsas y Mercados Espa\u00f1oles",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Bolsas y Mercados Espa\u00f1oles is headquartered in Spain.",
+        "question": "What country is Bolsas y Mercados Espa\u00f1oles headquartered in?",
+        "triplet": [
+          "Bolsas y Mercados Espa\u00f1oles",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Ruben Selles",
+        "relation": "CurrentPosition",
+        "tail": "Manager",
+        "surface": "Ruben Selles is the manager of Reading F.C.",
+        "question": "What is Ruben Selles's current position?",
+        "triplet": [
+          "Ruben Selles",
+          "CurrentPosition",
+          "Manager"
+        ]
+      },
+      {
+        "head": "Editorial Seix Barral",
+        "relation": "FoundedByPrimary",
+        "tail": "Antonio Barral",
+        "surface": "Editorial Seix Barral was founded by Antonio Barral.",
+        "question": "Who co-founded Editorial Seix Barral?",
+        "triplet": [
+          "Editorial Seix Barral",
+          "FoundedByPrimary",
+          "Antonio Barral"
+        ]
+      },
+      {
+        "head": "Admiral General Antonio Martorell Lacave",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Spanish Naval Academy",
+        "surface": "Admiral General Antonio Martorell Lacave studied at the Spanish Naval Academy.",
+        "question": "Which academy did Admiral General Antonio Martorell Lacave attend?",
+        "triplet": [
+          "Admiral General Antonio Martorell Lacave",
+          "AlmaMaterPrimary",
+          "Spanish Naval Academy"
+        ]
+      },
+      {
+        "head": "Luis Rosales",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Luis Rosales was Spanish.",
+        "question": "What is the nationality of Luis Rosales?",
+        "triplet": [
+          "Luis Rosales",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Sevilla FC",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Sevilla FC is headquartered in Spain.",
+        "question": "Which country is Sevilla FC based in?",
+        "triplet": [
+          "Sevilla FC",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Caleruega",
+        "relation": "BirthPlace",
+        "tail": "Caleruega",
+        "surface": "Saint Dominic was born in Caleruega.",
+        "question": "Where was Saint Dominic born?",
+        "triplet": [
+          "Caleruega",
+          "BirthPlace",
+          "Caleruega"
+        ]
+      },
+      {
+        "head": "Juan Antonio Bardem",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Complutense University of Madrid",
+        "surface": "Juan Antonio Bardem studied at the Complutense University of Madrid.",
+        "question": "Where did Juan Antonio Bardem study?",
+        "triplet": [
+          "Juan Antonio Bardem",
+          "AlmaMaterPrimary",
+          "Complutense University of Madrid"
+        ]
+      },
+      {
+        "head": "Luis Rosales",
+        "relation": "BirthPlace",
+        "tail": "Granada",
+        "surface": "Luis Rosales was born in Granada, Spain.",
+        "question": "Where was Luis Rosales born?",
+        "triplet": [
+          "Luis Rosales",
+          "BirthPlace",
+          "Granada"
+        ]
+      },
+      {
+        "head": "Real Mallorca",
+        "relation": "CountryOfIncorporation",
+        "tail": "Spain",
+        "surface": "Real Mallorca is incorporated in Spain.",
+        "question": "What country is Real Mallorca incorporated in?",
+        "triplet": [
+          "Real Mallorca",
+          "CountryOfIncorporation",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Getafe City Council",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Sara Hern\u00e1ndez Barroso",
+        "surface": "The current mayor of Getafe City Council is Sara Hern\u00e1ndez Barroso.",
+        "question": "Who is the current mayor of Getafe City Council?",
+        "triplet": [
+          "Getafe City Council",
+          "ChiefExecutiveOfficerCurrent",
+          "Sara Hern\u00e1ndez Barroso"
+        ]
+      },
+      {
+        "head": "Terrassa",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Terrassa is a city in Spain.",
+        "question": "What country is Terrassa in?",
+        "triplet": [
+          "Terrassa",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Barcelona City Council",
+        "relation": "ParentOrganization",
+        "tail": "Generalitat de Catalunya",
+        "surface": "Barcelona City Council is under the authority of the Generalitat de Catalunya.",
+        "question": "What is the parent organization of Barcelona City Council?",
+        "triplet": [
+          "Barcelona City Council",
+          "ParentOrganization",
+          "Generalitat de Catalunya"
+        ]
+      },
+      {
+        "head": "Manuel Jim\u00e9nez Garc\u00eda",
+        "relation": "CurrentEmployer",
+        "tail": "Real Madrid CF",
+        "surface": "Manuel Jim\u00e9nez Garc\u00eda currently works for Real Madrid CF.",
+        "question": "Who is Manuel Jim\u00e9nez Garc\u00eda's current employer?",
+        "triplet": [
+          "Manuel Jim\u00e9nez Garc\u00eda",
+          "CurrentEmployer",
+          "Real Madrid CF"
+        ]
+      },
+      {
+        "head": "Park G\u00fcell",
+        "relation": "FoundedByPrimary",
+        "tail": "Eusebi G\u00fcell",
+        "surface": "Park G\u00fcell was commissioned by Eusebi G\u00fcell.",
+        "question": "Who commissioned Park G\u00fcell?",
+        "triplet": [
+          "Park G\u00fcell",
+          "FoundedByPrimary",
+          "Eusebi G\u00fcell"
+        ]
+      },
+      {
+        "head": "King Alfonso XII",
+        "relation": "CurrentEmployer",
+        "tail": "Monarchy of Spain",
+        "surface": "King Alfonso XII was employed by the Monarchy of Spain.",
+        "question": "Which organization employed King Alfonso XII?",
+        "triplet": [
+          "King Alfonso XII",
+          "CurrentEmployer",
+          "Monarchy of Spain"
+        ]
+      },
+      {
+        "head": "Malaga CF",
+        "relation": "ParentOrganization",
+        "tail": "La Liga",
+        "surface": "Malaga CF is a member club of La Liga.",
+        "question": "What league is Malaga CF a member of?",
+        "triplet": [
+          "Malaga CF",
+          "ParentOrganization",
+          "La Liga"
+        ]
+      },
+      {
+        "head": "David de Gea",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "David de Gea is Spanish.",
+        "question": "What is the nationality of David de Gea?",
+        "triplet": [
+          "David de Gea",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Pedro Gonz\u00e1lez",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Pedro Gonz\u00e1lez is a Spanish national.",
+        "question": "What is the nationality of Pedro Gonz\u00e1lez?",
+        "triplet": [
+          "Pedro Gonz\u00e1lez",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Joaqu\u00edn Rodrigo",
+        "relation": "CurrentEmployer",
+        "tail": "Complutense University of Madrid",
+        "surface": "Joaqu\u00edn Rodrigo was a professor at the Complutense University of Madrid.",
+        "question": "Where did Joaqu\u00edn Rodrigo work as a professor?",
+        "triplet": [
+          "Joaqu\u00edn Rodrigo",
+          "CurrentEmployer",
+          "Complutense University of Madrid"
+        ]
+      },
+      {
+        "head": "CD M\u00e1laga",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "CD M\u00e1laga is headquartered in Spain.",
+        "question": "What country is CD M\u00e1laga headquartered in?",
+        "triplet": [
+          "CD M\u00e1laga",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Editorial Araluce",
+        "relation": "PublisherPrimary",
+        "tail": "Editorial Araluce",
+        "surface": "Editorial Araluce published many books under its own imprint.",
+        "question": "Who published works under the Editorial Araluce imprint?",
+        "triplet": [
+          "Editorial Araluce",
+          "PublisherPrimary",
+          "Editorial Araluce"
+        ]
+      },
+      {
+        "head": "Trujillo",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Trujillo is a city in Spain.",
+        "question": "What country is Trujillo in?",
+        "triplet": [
+          "Trujillo",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Jose Moran",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Jose Moran's primary nationality is Spanish.",
+        "question": "What is Jose Moran's nationality?",
+        "triplet": [
+          "Jose Moran",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Tudela",
+        "relation": "BirthPlace",
+        "tail": "Abraham ibn Ezra",
+        "surface": "Abraham ibn Ezra was born in Tudela.",
+        "question": "Where was Abraham ibn Ezra born?",
+        "triplet": [
+          "Tudela",
+          "BirthPlace",
+          "Abraham ibn Ezra"
+        ]
+      },
+      {
+        "head": "Spanish State",
+        "relation": "CountryOfCity",
+        "tail": "Seville",
+        "surface": "Seville is a city in the Spanish State.",
+        "question": "Which country is Seville in?",
+        "triplet": [
+          "Spanish State",
+          "CountryOfCity",
+          "Seville"
+        ]
+      },
+      {
+        "head": "Compa\u00f1\u00eda de Danza Espa\u00f1ola",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Compa\u00f1\u00eda de Danza Espa\u00f1ola is headquartered in Spain.",
+        "question": "Which country is the Compa\u00f1\u00eda de Danza Espa\u00f1ola based in?",
+        "triplet": [
+          "Compa\u00f1\u00eda de Danza Espa\u00f1ola",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "University of the Basque Country",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The University of the Basque Country is located in Spain.",
+        "question": "What country is the University of the Basque Country in?",
+        "triplet": [
+          "University of the Basque Country",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Chillida-Leku Museum",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Chillida-Leku Museum is based in Spain.",
+        "question": "What country is the Chillida-Leku Museum in?",
+        "triplet": [
+          "Chillida-Leku Museum",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "SD Amorebieta",
+        "relation": "HeadquartersCity",
+        "tail": "Amorebieta-Etxano",
+        "surface": "SD Amorebieta is based in Amorebieta-Etxano.",
+        "question": "What city is SD Amorebieta based in?",
+        "triplet": [
+          "SD Amorebieta",
+          "HeadquartersCity",
+          "Amorebieta-Etxano"
+        ]
+      },
+      {
+        "head": "Jos\u00e9 Sevilla",
+        "relation": "BirthPlace",
+        "tail": "Madrid",
+        "surface": "Jos\u00e9 Sevilla was born in Madrid.",
+        "question": "Where was Jos\u00e9 Sevilla born?",
+        "triplet": [
+          "Jos\u00e9 Sevilla",
+          "BirthPlace",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Eugenia de Montijo",
+        "relation": "BirthPlace",
+        "tail": "Granada",
+        "surface": "Eugenia de Montijo was born in Granada, Spain.",
+        "question": "Where was Eugenia de Montijo born?",
+        "triplet": [
+          "Eugenia de Montijo",
+          "BirthPlace",
+          "Granada"
+        ]
+      },
+      {
+        "head": "Alfaguara",
+        "relation": "FoundedByPrimary",
+        "tail": "Jes\u00fas Aguirre",
+        "surface": "Alfaguara was founded by Jes\u00fas Aguirre.",
+        "question": "Who founded Alfaguara?",
+        "triplet": [
+          "Alfaguara",
+          "FoundedByPrimary",
+          "Jes\u00fas Aguirre"
+        ]
+      },
+      {
+        "head": "Monastery of El Escorial",
+        "relation": "HeadquartersCity",
+        "tail": "San Lorenzo de El Escorial",
+        "surface": "The Monastery of El Escorial is located in San Lorenzo de El Escorial.",
+        "question": "Where is the Monastery of El Escorial located?",
+        "triplet": [
+          "Monastery of El Escorial",
+          "HeadquartersCity",
+          "San Lorenzo de El Escorial"
+        ]
+      },
+      {
+        "head": "Bolsa de Madrid",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Bolsa de Madrid is headquartered in Spain.",
+        "question": "What country is the Bolsa de Madrid headquartered in?",
+        "triplet": [
+          "Bolsa de Madrid",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "C\u00f3rdoba",
+        "relation": "BirthPlace",
+        "tail": "Manolete",
+        "surface": "Manolete was born in C\u00f3rdoba, Spain.",
+        "question": "Who was born in C\u00f3rdoba?",
+        "triplet": [
+          "C\u00f3rdoba",
+          "BirthPlace",
+          "Manolete"
+        ]
+      },
+      {
+        "head": "Javier Lamb\u00e1n",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Zaragoza",
+        "surface": "Javier Lamb\u00e1n studied at the University of Zaragoza.",
+        "question": "Where did Javier Lamb\u00e1n study?",
+        "triplet": [
+          "Javier Lamb\u00e1n",
+          "AlmaMaterPrimary",
+          "University of Zaragoza"
+        ]
+      },
+      {
+        "head": "Francisco Jos\u00e9 Mora Mas",
+        "relation": "CurrentEmployer",
+        "tail": "Polytechnic University of Valencia",
+        "surface": "Francisco Jos\u00e9 Mora Mas currently works at the Polytechnic University of Valencia.",
+        "question": "What is Francisco Jos\u00e9 Mora Mas's current employer?",
+        "triplet": [
+          "Francisco Jos\u00e9 Mora Mas",
+          "CurrentEmployer",
+          "Polytechnic University of Valencia"
+        ]
+      },
+      {
+        "head": "Juan Ram\u00f3n Jim\u00e9nez",
+        "relation": "BirthPlace",
+        "tail": "Moguer",
+        "surface": "Juan Ram\u00f3n Jim\u00e9nez was born in Moguer, Spain.",
+        "question": "Where was Juan Ram\u00f3n Jim\u00e9nez born?",
+        "triplet": [
+          "Juan Ram\u00f3n Jim\u00e9nez",
+          "BirthPlace",
+          "Moguer"
+        ]
+      },
+      {
+        "head": "Guijuelo",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Guijuelo is a town in Spain.",
+        "question": "Which country is Guijuelo in?",
+        "triplet": [
+          "Guijuelo",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Alfonso XIII",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Royal Military Academy of Toledo",
+        "surface": "Alfonso XIII studied at the Royal Military Academy of Toledo.",
+        "question": "Where did Alfonso XIII study?",
+        "triplet": [
+          "Alfonso XIII",
+          "AlmaMaterPrimary",
+          "Royal Military Academy of Toledo"
+        ]
+      },
+      {
+        "head": "Sant Joan Desp\u00ed",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Sant Joan Desp\u00ed is a city in Spain.",
+        "question": "What country is Sant Joan Desp\u00ed in?",
+        "triplet": [
+          "Sant Joan Desp\u00ed",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Carlos S\u00e1nchez",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Carlos S\u00e1nchez is a Spanish national.",
+        "question": "What is the nationality of Carlos S\u00e1nchez?",
+        "triplet": [
+          "Carlos S\u00e1nchez",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Pablo de C\u00e9spedes",
+        "relation": "CurrentEmployer",
+        "tail": "Cathedral of Cordoba",
+        "surface": "Pablo de C\u00e9spedes worked for the Cathedral of Cordoba.",
+        "question": "Which organization did Pablo de C\u00e9spedes work for?",
+        "triplet": [
+          "Pablo de C\u00e9spedes",
+          "CurrentEmployer",
+          "Cathedral of Cordoba"
+        ]
+      },
+      {
+        "head": "I\u00f1igo Badiola",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "I\u00f1igo Badiola is Spanish.",
+        "question": "What is I\u00f1igo Badiola's nationality?",
+        "triplet": [
+          "I\u00f1igo Badiola",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Palencia",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Palencia is a city in Spain.",
+        "question": "What country is Palencia in?",
+        "triplet": [
+          "Palencia",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Autonomous University of Madrid",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Autonomous University of Madrid is located in Spain.",
+        "question": "What country is the Autonomous University of Madrid in?",
+        "triplet": [
+          "Autonomous University of Madrid",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Unicaja Banco",
+        "relation": "ParentOrganization",
+        "tail": "Unicaja",
+        "surface": "Unicaja Banco is a subsidiary of Unicaja.",
+        "question": "What is the parent organization of Unicaja Banco?",
+        "triplet": [
+          "Unicaja Banco",
+          "ParentOrganization",
+          "Unicaja"
+        ]
+      },
+      {
+        "head": "Pere Aragon\u00e8s",
+        "relation": "BirthPlace",
+        "tail": "Barcelona",
+        "surface": "Pere Aragon\u00e8s was born in Barcelona.",
+        "question": "Where was Pere Aragon\u00e8s born?",
+        "triplet": [
+          "Pere Aragon\u00e8s",
+          "BirthPlace",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "Iberia",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Iberia is headquartered in Spain.",
+        "question": "Which country is Iberia headquartered in?",
+        "triplet": [
+          "Iberia",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Queen Letizia of Spain",
+        "relation": "CurrentEmployer",
+        "tail": "Spanish Royal Family",
+        "surface": "Queen Letizia of Spain is a member of the Spanish Royal Family.",
+        "question": "What organization does Queen Letizia of Spain currently belong to?",
+        "triplet": [
+          "Queen Letizia of Spain",
+          "CurrentEmployer",
+          "Spanish Royal Family"
+        ]
+      },
+      {
+        "head": "Mikel Landa",
+        "relation": "BirthPlace",
+        "tail": "O\u00f1ati",
+        "surface": "Mikel Landa was born in O\u00f1ati.",
+        "question": "Where was Mikel Landa born?",
+        "triplet": [
+          "Mikel Landa",
+          "BirthPlace",
+          "O\u00f1ati"
+        ]
+      },
+      {
+        "head": "Isabel de Sol\u00eds",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Isabel de Sol\u00eds was Spanish.",
+        "question": "What nationality was Isabel de Sol\u00eds?",
+        "triplet": [
+          "Isabel de Sol\u00eds",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Ram\u00f3n Franco",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Ram\u00f3n Franco was Spanish.",
+        "question": "What was Ram\u00f3n Franco's nationality?",
+        "triplet": [
+          "Ram\u00f3n Franco",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Metro de Madrid S.A.",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Metro de Madrid S.A. is headquartered in Madrid.",
+        "question": "Where is Metro de Madrid S.A. headquartered?",
+        "triplet": [
+          "Metro de Madrid S.A.",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Spanish Army Academy",
+        "relation": "ParentOrganization",
+        "tail": "Spanish Army",
+        "surface": "The Spanish Army Academy is part of the Spanish Army.",
+        "question": "What organization is the Spanish Army Academy part of?",
+        "triplet": [
+          "Spanish Army Academy",
+          "ParentOrganization",
+          "Spanish Army"
+        ]
+      },
+      {
+        "head": "Spanish Army",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "King Felipe VI",
+        "surface": "The current commander-in-chief of the Spanish Army is King Felipe VI.",
+        "question": "Who is the current commander-in-chief of the Spanish Army?",
+        "triplet": [
+          "Spanish Army",
+          "ChiefExecutiveOfficerCurrent",
+          "King Felipe VI"
+        ]
+      },
+      {
+        "head": "Athletic Bilbao",
+        "relation": "HeadquartersCity",
+        "tail": "Bilbao",
+        "surface": "Athletic Bilbao is headquartered in Bilbao.",
+        "question": "What city is Athletic Bilbao headquartered in?",
+        "triplet": [
+          "Athletic Bilbao",
+          "HeadquartersCity",
+          "Bilbao"
+        ]
+      },
+      {
+        "head": "Seville City Council",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jos\u00e9 Luis Sanz",
+        "surface": "The current mayor of Seville City Council is Jos\u00e9 Luis Sanz.",
+        "question": "Who is the current mayor of Seville City Council?",
+        "triplet": [
+          "Seville City Council",
+          "ChiefExecutiveOfficerCurrent",
+          "Jos\u00e9 Luis Sanz"
+        ]
+      },
+      {
+        "head": "Eug\u00e9nie de Montijo",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Eug\u00e9nie de Montijo was Spanish by birth.",
+        "question": "What was Eug\u00e9nie de Montijo's nationality?",
+        "triplet": [
+          "Eug\u00e9nie de Montijo",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Antonio Gala",
+        "relation": "CurrentEmployer",
+        "tail": "Real Academia Espa\u00f1ola",
+        "surface": "Antonio Gala was a member of the Real Academia Espa\u00f1ola.",
+        "question": "Which academy was Antonio Gala a member of?",
+        "triplet": [
+          "Antonio Gala",
+          "CurrentEmployer",
+          "Real Academia Espa\u00f1ola"
+        ]
+      },
+      {
+        "head": "Juan Antonio Fern\u00e1ndez",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Juan Antonio Fern\u00e1ndez is Spanish.",
+        "question": "What is the nationality of Juan Antonio Fern\u00e1ndez?",
+        "triplet": [
+          "Juan Antonio Fern\u00e1ndez",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Royal Palace of Madrid",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Royal Palace of Madrid is in Spain.",
+        "question": "What country is the Royal Palace of Madrid in?",
+        "triplet": [
+          "Royal Palace of Madrid",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "goalkeeper",
+        "relation": "BirthPlace",
+        "tail": "Madrid",
+        "surface": "The goalkeeper was born in Madrid.",
+        "question": "Where was the goalkeeper born?",
+        "triplet": [
+          "goalkeeper",
+          "BirthPlace",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Ignacio Madridejos",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Polytechnic University of Madrid",
+        "surface": "Ignacio Madridejos studied at the Polytechnic University of Madrid.",
+        "question": "Where did Ignacio Madridejos study?",
+        "triplet": [
+          "Ignacio Madridejos",
+          "AlmaMaterPrimary",
+          "Polytechnic University of Madrid"
+        ]
+      },
+      {
+        "head": "Movistar",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Movistar is headquartered in Madrid, Spain.",
+        "question": "What city is Movistar headquartered in?",
+        "triplet": [
+          "Movistar",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Editorial Anagrama",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Editorial Anagrama is headquartered in Spain.",
+        "question": "In which country is Editorial Anagrama headquartered?",
+        "triplet": [
+          "Editorial Anagrama",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Joan Prim",
+        "relation": "BirthPlace",
+        "tail": "Reus",
+        "surface": "Joan Prim was born in Reus.",
+        "question": "Where was Joan Prim born?",
+        "triplet": [
+          "Joan Prim",
+          "BirthPlace",
+          "Reus"
+        ]
+      },
+      {
+        "head": "ACS Group",
+        "relation": "StockExchangePrimary",
+        "tail": "Bolsa de Madrid",
+        "surface": "ACS Group is listed on the Bolsa de Madrid.",
+        "question": "On which stock exchange is ACS Group listed?",
+        "triplet": [
+          "ACS Group",
+          "StockExchangePrimary",
+          "Bolsa de Madrid"
+        ]
+      },
+      {
+        "head": "Royal Palace of Madrid",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "The Royal Palace of Madrid is located in Madrid.",
+        "question": "Where is the Royal Palace of Madrid located?",
+        "triplet": [
+          "Royal Palace of Madrid",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Javier Lamb\u00e1n",
+        "relation": "CurrentPosition",
+        "tail": "President of the Government of Aragon",
+        "surface": "Javier Lamb\u00e1n is the current President of the Government of Aragon.",
+        "question": "What is Javier Lamb\u00e1n's current position?",
+        "triplet": [
+          "Javier Lamb\u00e1n",
+          "CurrentPosition",
+          "President of the Government of Aragon"
+        ]
+      },
+      {
+        "head": "Athletic Club",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Athletic Club is headquartered in Spain.",
+        "question": "What country is Athletic Club headquartered in?",
+        "triplet": [
+          "Athletic Club",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Margarita Robles",
+        "relation": "BirthPlace",
+        "tail": "Le\u00f3n, Spain",
+        "surface": "Margarita Robles was born in Le\u00f3n, Spain.",
+        "question": "Where was Margarita Robles born?",
+        "triplet": [
+          "Margarita Robles",
+          "BirthPlace",
+          "Le\u00f3n, Spain"
+        ]
+      },
+      {
+        "head": "Adolfo Su\u00e1rez Madrid\u2013Barajas Airport",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Adolfo Su\u00e1rez Madrid\u2013Barajas Airport is located in Madrid.",
+        "question": "What city is Adolfo Su\u00e1rez Madrid\u2013Barajas Airport in?",
+        "triplet": [
+          "Adolfo Su\u00e1rez Madrid\u2013Barajas Airport",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Universal Music Spain",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Universal Music Spain is based in Spain.",
+        "question": "What country is Universal Music Spain based in?",
+        "triplet": [
+          "Universal Music Spain",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "University of Extremadura",
+        "relation": "FoundingDate",
+        "tail": "1973",
+        "surface": "The University of Extremadura was founded in 1973.",
+        "question": "When was the University of Extremadura founded?",
+        "triplet": [
+          "University of Extremadura",
+          "FoundingDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Royal Military Academy of Toledo",
+        "relation": "ParentOrganization",
+        "tail": "Spanish Army",
+        "surface": "The Royal Military Academy of Toledo is part of the Spanish Army.",
+        "question": "What organization is the Royal Military Academy of Toledo part of?",
+        "triplet": [
+          "Royal Military Academy of Toledo",
+          "ParentOrganization",
+          "Spanish Army"
+        ]
+      },
+      {
+        "head": "Juan Santamar\u00eda Cases",
+        "relation": "CurrentEmployer",
+        "tail": "Acs, S.A.",
+        "surface": "Juan Santamar\u00eda Cases currently works for Acs, S.A.",
+        "question": "Who is the employer of Juan Santamar\u00eda Cases?",
+        "triplet": [
+          "Juan Santamar\u00eda Cases",
+          "CurrentEmployer",
+          "Acs, S.A."
+        ]
+      },
+      {
+        "head": "Gibraltar",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Gibraltar is geographically located on the Iberian Peninsula, bordering Spain.",
+        "question": "Which country does Gibraltar border?",
+        "triplet": [
+          "Gibraltar",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Francisco de la Torre",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of M\u00e1laga",
+        "surface": "Francisco de la Torre studied at the University of M\u00e1laga.",
+        "question": "Where did Francisco de la Torre study?",
+        "triplet": [
+          "Francisco de la Torre",
+          "AlmaMaterPrimary",
+          "University of M\u00e1laga"
+        ]
+      },
+      {
+        "head": "Le\u00f3n",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Madrid",
+        "surface": "The capital of Spain is Madrid.",
+        "question": "What is the capital of Spain?",
+        "triplet": [
+          "Le\u00f3n",
+          "CapitalCityOfCountry",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Carlos Fern\u00e1ndez",
+        "relation": "BirthPlace",
+        "tail": "Madrid",
+        "surface": "Carlos Fern\u00e1ndez was born in Madrid.",
+        "question": "Where was Carlos Fern\u00e1ndez born?",
+        "triplet": [
+          "Carlos Fern\u00e1ndez",
+          "BirthPlace",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Real Madrid Castilla",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Real Madrid Castilla is located in Spain.",
+        "question": "What country is Real Madrid Castilla located in?",
+        "triplet": [
+          "Real Madrid Castilla",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Jordi Alba",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Jordi Alba is Spanish.",
+        "question": "What is Jordi Alba's nationality?",
+        "triplet": [
+          "Jordi Alba",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Jorge Herralde",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Jorge Herralde is Spanish.",
+        "question": "What is Jorge Herralde's nationality?",
+        "triplet": [
+          "Jorge Herralde",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Robert Sanchez",
+        "relation": "BirthPlace",
+        "tail": "Cartagena",
+        "surface": "Robert Sanchez was born in Cartagena, Spain.",
+        "question": "Where was Robert Sanchez born?",
+        "triplet": [
+          "Robert Sanchez",
+          "BirthPlace",
+          "Cartagena"
+        ]
+      },
+      {
+        "head": "Josep Maria Jujol",
+        "relation": "CurrentEmployer",
+        "tail": "Antoni Gaud\u00ed",
+        "surface": "Josep Maria Jujol worked for Antoni Gaud\u00ed.",
+        "question": "Who did Josep Maria Jujol work for?",
+        "triplet": [
+          "Josep Maria Jujol",
+          "CurrentEmployer",
+          "Antoni Gaud\u00ed"
+        ]
+      },
+      {
+        "head": "Real Escuela Superior de Arte Dram\u00e1tico",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "The Real Escuela Superior de Arte Dram\u00e1tico is headquartered in Madrid.",
+        "question": "What city is the Real Escuela Superior de Arte Dram\u00e1tico in?",
+        "triplet": [
+          "Real Escuela Superior de Arte Dram\u00e1tico",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Sony Music Spain",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "Sony Music Spain is based in Spain.",
+        "question": "What country is Sony Music Spain based in?",
+        "triplet": [
+          "Sony Music Spain",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Enrique Mart\u00ednez Robles",
+        "relation": "BirthPlace",
+        "tail": "Madrid",
+        "surface": "Enrique Mart\u00ednez Robles was born in Madrid.",
+        "question": "Where was Enrique Mart\u00ednez Robles born?",
+        "triplet": [
+          "Enrique Mart\u00ednez Robles",
+          "BirthPlace",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Xavi Molina",
+        "relation": "BirthPlace",
+        "tail": "Tarragona",
+        "surface": "Xavi Molina was born in Tarragona.",
+        "question": "Where was Xavi Molina born?",
+        "triplet": [
+          "Xavi Molina",
+          "BirthPlace",
+          "Tarragona"
+        ]
+      },
+      {
+        "head": "Enaire",
+        "relation": "FoundedByPrimary",
+        "tail": "Government of Spain",
+        "surface": "Enaire was founded by the Government of Spain.",
+        "question": "Who founded Enaire?",
+        "triplet": [
+          "Enaire",
+          "FoundedByPrimary",
+          "Government of Spain"
+        ]
+      },
+      {
+        "head": "Alejandro Blanco",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Barcelona",
+        "surface": "Alejandro Blanco attended the University of Barcelona.",
+        "question": "What university did Alejandro Blanco attend?",
+        "triplet": [
+          "Alejandro Blanco",
+          "AlmaMaterPrimary",
+          "University of Barcelona"
+        ]
+      },
+      {
+        "head": "Virtudes del indio",
+        "relation": "BirthPlace",
+        "tail": "Madrid",
+        "surface": "Virtudes del indio was born in Madrid.",
+        "question": "Where was Virtudes del indio born?",
+        "triplet": [
+          "Virtudes del indio",
+          "BirthPlace",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Jordi Alba",
+        "relation": "BirthPlace",
+        "tail": "Terrassa",
+        "surface": "Jordi Alba was born in Terrassa.",
+        "question": "Where was Jordi Alba born?",
+        "triplet": [
+          "Jordi Alba",
+          "BirthPlace",
+          "Terrassa"
+        ]
+      },
+      {
+        "head": "Ediciones Destino",
+        "relation": "HeadquartersCity",
+        "tail": "Barcelona",
+        "surface": "Ediciones Destino is headquartered in Barcelona.",
+        "question": "Where is Ediciones Destino headquartered?",
+        "triplet": [
+          "Ediciones Destino",
+          "HeadquartersCity",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "Carlos Mu\u00f1oz",
+        "relation": "CurrentEmployer",
+        "tail": "Telef\u00f3nica",
+        "surface": "Carlos Mu\u00f1oz currently works for Telef\u00f3nica.",
+        "question": "Who is the current employer of Carlos Mu\u00f1oz?",
+        "triplet": [
+          "Carlos Mu\u00f1oz",
+          "CurrentEmployer",
+          "Telef\u00f3nica"
+        ]
+      },
+      {
+        "head": "El Pa\u00eds",
+        "relation": "FoundedByPrimary",
+        "tail": "Jos\u00e9 Ortega Spottorno",
+        "surface": "El Pa\u00eds was founded by Jos\u00e9 Ortega Spottorno.",
+        "question": "Who founded El Pa\u00eds?",
+        "triplet": [
+          "El Pa\u00eds",
+          "FoundedByPrimary",
+          "Jos\u00e9 Ortega Spottorno"
+        ]
+      },
+      {
+        "head": "Mikel Landa",
+        "relation": "BirthPlace",
+        "tail": "Murgia",
+        "surface": "Mikel Landa was born in Murgia, Spain.",
+        "question": "Where was Mikel Landa born?",
+        "triplet": [
+          "Mikel Landa",
+          "BirthPlace",
+          "Murgia"
+        ]
+      },
+      {
+        "head": "Juan Manuel Moreno",
+        "relation": "BirthPlace",
+        "tail": "Barcelona",
+        "surface": "Juan Manuel Moreno was born in Barcelona.",
+        "question": "Where was Juan Manuel Moreno born?",
+        "triplet": [
+          "Juan Manuel Moreno",
+          "BirthPlace",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "Ferrol",
+        "relation": "BirthPlace",
+        "tail": "Francisco de la Torre",
+        "surface": "Francisco de la Torre was born in Ferrol.",
+        "question": "Where was Francisco de la Torre born?",
+        "triplet": [
+          "Ferrol",
+          "BirthPlace",
+          "Francisco de la Torre"
+        ]
+      },
+      {
+        "head": "Fundaci\u00f3 Joan Mir\u00f3",
+        "relation": "HeadquartersCity",
+        "tail": "Barcelona",
+        "surface": "The Fundaci\u00f3 Joan Mir\u00f3 is headquartered in Barcelona.",
+        "question": "In which city is the Fundaci\u00f3 Joan Mir\u00f3 located?",
+        "triplet": [
+          "Fundaci\u00f3 Joan Mir\u00f3",
+          "HeadquartersCity",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "Maxi Mobility",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Maxi Mobility is headquartered in Madrid.",
+        "question": "What city is Maxi Mobility headquartered in?",
+        "triplet": [
+          "Maxi Mobility",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Aragonese",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Aragon",
+        "surface": "Aragonese people may work for the Government of Aragon.",
+        "question": "Who employs Aragonese people?",
+        "triplet": [
+          "Aragonese",
+          "CurrentEmployer",
+          "Government of Aragon"
+        ]
+      },
+      {
+        "head": "Spanish Navy",
+        "relation": "ParentOrganization",
+        "tail": "Spanish Armed Forces",
+        "surface": "The Spanish Navy is part of the Spanish Armed Forces.",
+        "question": "What organization is the Spanish Navy part of?",
+        "triplet": [
+          "Spanish Navy",
+          "ParentOrganization",
+          "Spanish Armed Forces"
+        ]
+      },
+      {
+        "head": "Juan Ram\u00f3n Jim\u00e9nez",
+        "relation": "CurrentEmployer",
+        "tail": "Real Academia Espa\u00f1ola",
+        "surface": "Juan Ram\u00f3n Jim\u00e9nez was a member of the Real Academia Espa\u00f1ola.",
+        "question": "Which academy was Juan Ram\u00f3n Jim\u00e9nez a member of?",
+        "triplet": [
+          "Juan Ram\u00f3n Jim\u00e9nez",
+          "CurrentEmployer",
+          "Real Academia Espa\u00f1ola"
+        ]
+      },
+      {
+        "head": "Asturias",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "surface": "Asturias is an autonomous community in Spain.",
+        "question": "What country is Asturias in?",
+        "triplet": [
+          "Asturias",
+          "CountryOfCity",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Luis de G\u00f3ngora",
+        "relation": "BirthPlace",
+        "tail": "C\u00f3rdoba, Spain",
+        "surface": "Luis de G\u00f3ngora was born in C\u00f3rdoba, Spain.",
+        "question": "Where was Luis de G\u00f3ngora born?",
+        "triplet": [
+          "Luis de G\u00f3ngora",
+          "BirthPlace",
+          "C\u00f3rdoba, Spain"
+        ]
+      },
+      {
+        "head": "Albert Riera",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Albert Riera is Spanish.",
+        "question": "What is Albert Riera's nationality?",
+        "triplet": [
+          "Albert Riera",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Aragonese",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Javier Lamb\u00e1n",
+        "surface": "Javier Lamb\u00e1n is the current president of the Government of Aragon.",
+        "question": "Who is the current CEO of the Government of Aragon?",
+        "triplet": [
+          "Aragonese",
+          "ChiefExecutiveOfficerCurrent",
+          "Javier Lamb\u00e1n"
+        ]
+      },
+      {
+        "head": "Gonzalo Fern\u00e1ndez de C\u00f3rdoba",
+        "relation": "CurrentEmployer",
+        "tail": "Kingdom of Aragon",
+        "surface": "Gonzalo Fern\u00e1ndez de C\u00f3rdoba also served the Kingdom of Aragon.",
+        "question": "Which kingdom did Gonzalo Fern\u00e1ndez de C\u00f3rdoba also serve?",
+        "triplet": [
+          "Gonzalo Fern\u00e1ndez de C\u00f3rdoba",
+          "CurrentEmployer",
+          "Kingdom of Aragon"
+        ]
+      },
+      {
+        "head": "Santiago Bernab\u00e9u",
+        "relation": "BirthPlace",
+        "tail": "Almansa",
+        "surface": "Santiago Bernab\u00e9u was born in Almansa.",
+        "question": "Where was Santiago Bernab\u00e9u born?",
+        "triplet": [
+          "Santiago Bernab\u00e9u",
+          "BirthPlace",
+          "Almansa"
+        ]
+      },
+      {
+        "head": "Olympic Broadcasting Services",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Olympic Broadcasting Services is headquartered in Madrid.",
+        "question": "What city is Olympic Broadcasting Services headquartered in?",
+        "triplet": [
+          "Olympic Broadcasting Services",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Real Betis",
+        "relation": "CurrentEmployer",
+        "tail": "Sergio Canales",
+        "surface": "Sergio Canales plays for Real Betis.",
+        "question": "Which player currently plays for Real Betis?",
+        "triplet": [
+          "Real Betis",
+          "CurrentEmployer",
+          "Sergio Canales"
+        ]
+      },
+      {
+        "head": "Valencia",
+        "relation": "BirthPlace",
+        "tail": "Santiago Calatrava",
+        "surface": "Santiago Calatrava was born in Valencia.",
+        "question": "Where was Santiago Calatrava born?",
+        "triplet": [
+          "Valencia",
+          "BirthPlace",
+          "Santiago Calatrava"
+        ]
+      },
+      {
+        "head": "Sagrada Fam\u00edlia",
+        "relation": "PublisherPrimary",
+        "tail": "Archdiocese of Barcelona",
+        "surface": "The Sagrada Fam\u00edlia is overseen by the Archdiocese of Barcelona.",
+        "question": "What organization oversees the Sagrada Fam\u00edlia?",
+        "triplet": [
+          "Sagrada Fam\u00edlia",
+          "PublisherPrimary",
+          "Archdiocese of Barcelona"
+        ]
+      },
+      {
+        "head": "Expo 2008 Zaragoza",
+        "relation": "CreatedByPrimary",
+        "tail": "Francisco Mangado",
+        "surface": "Expo 2008 Zaragoza was created by architect Francisco Mangado.",
+        "question": "Who created the Spain Pavilion for Expo 2008 Zaragoza?",
+        "triplet": [
+          "Expo 2008 Zaragoza",
+          "CreatedByPrimary",
+          "Francisco Mangado"
+        ]
+      },
+      {
+        "head": "Ceuta",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Ceuta",
+        "surface": "The mayor of Ceuta is currently employed by the Government of Ceuta.",
+        "question": "Who is the mayor of Ceuta employed by?",
+        "triplet": [
+          "Ceuta",
+          "CurrentEmployer",
+          "Government of Ceuta"
+        ]
+      },
+      {
+        "head": "Government of Ceuta",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Government of Ceuta is located in the country of Spain.",
+        "question": "In which country is the Government of Ceuta located?",
+        "triplet": [
+          "Government of Ceuta",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Pedro S\u00e1nchez",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Pedro S\u00e1nchez is a Spanish national.",
+        "question": "What is Pedro S\u00e1nchez's nationality?",
+        "triplet": [
+          "Pedro S\u00e1nchez",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Jos\u00e9 Mar\u00eda Pem\u00e1n",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Seville",
+        "surface": "Jos\u00e9 Mar\u00eda Pem\u00e1n studied at the University of Seville.",
+        "question": "Where did Jos\u00e9 Mar\u00eda Pem\u00e1n study?",
+        "triplet": [
+          "Jos\u00e9 Mar\u00eda Pem\u00e1n",
+          "AlmaMaterPrimary",
+          "University of Seville"
+        ]
+      },
+      {
+        "head": "Lope de Vega",
+        "relation": "BirthPlace",
+        "tail": "Madrid",
+        "surface": "Lope de Vega was born in Madrid.",
+        "question": "Where was Lope de Vega born?",
+        "triplet": [
+          "Lope de Vega",
+          "BirthPlace",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Jos\u00e9 Creuheras",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Jos\u00e9 Creuheras is Spanish.",
+        "question": "What is Jos\u00e9 Creuheras's nationality?",
+        "triplet": [
+          "Jos\u00e9 Creuheras",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Basque Country",
+        "relation": "CountryOfCity",
+        "tail": "Hondarribia",
+        "surface": "Hondarribia is a city in the Basque Country.",
+        "question": "What is a coastal town in the Basque Country?",
+        "triplet": [
+          "Basque Country",
+          "CountryOfCity",
+          "Hondarribia"
+        ]
+      },
+      {
+        "head": "Luis Bu\u00f1uel",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Luis Bu\u00f1uel was Spanish.",
+        "question": "What nationality was Luis Bu\u00f1uel?",
+        "triplet": [
+          "Luis Bu\u00f1uel",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Alexander VI",
+        "relation": "BirthPlace",
+        "tail": "X\u00e0tiva",
+        "surface": "Pope Alexander VI was born in X\u00e0tiva.",
+        "question": "Where was Pope Alexander VI born?",
+        "triplet": [
+          "Alexander VI",
+          "BirthPlace",
+          "X\u00e0tiva"
+        ]
+      },
+      {
+        "head": "Fernando Aramburu",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Fernando Aramburu is Spanish.",
+        "question": "What is Fernando Aramburu's nationality?",
+        "triplet": [
+          "Fernando Aramburu",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Ramon Laguarta",
+        "relation": "BirthPlace",
+        "tail": "Barcelona",
+        "surface": "Ramon Laguarta was born in Barcelona, Spain.",
+        "question": "Where was Ramon Laguarta born?",
+        "triplet": [
+          "Ramon Laguarta",
+          "BirthPlace",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "Revista de Occidente",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Revista de Occidente is headquartered in Madrid.",
+        "question": "In which city is Revista de Occidente headquartered?",
+        "triplet": [
+          "Revista de Occidente",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Seville Book Fair",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Seville City Council",
+        "surface": "The Seville Book Fair is hosted by the Seville City Council.",
+        "question": "Which organization hosts the Seville Book Fair?",
+        "triplet": [
+          "Seville Book Fair",
+          "HostOrganizationPrimary",
+          "Seville City Council"
+        ]
+      },
+      {
+        "head": "CEO of Grupo Planeta",
+        "relation": "BirthPlace",
+        "tail": "Barcelona",
+        "surface": "The CEO of Grupo Planeta was born in Barcelona.",
+        "question": "Where was the CEO of Grupo Planeta born?",
+        "triplet": [
+          "CEO of Grupo Planeta",
+          "BirthPlace",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "Alhambra",
+        "relation": "DevelopedByPrimary",
+        "tail": "Emirate of Granada",
+        "surface": "The Alhambra was developed by the Emirate of Granada.",
+        "question": "Who developed the Alhambra?",
+        "triplet": [
+          "Alhambra",
+          "DevelopedByPrimary",
+          "Emirate of Granada"
+        ]
+      },
+      {
+        "head": "Ruben Selles",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Seville",
+        "surface": "Ruben Selles studied at the University of Seville.",
+        "question": "Which university did Ruben Selles attend?",
+        "triplet": [
+          "Ruben Selles",
+          "AlmaMaterPrimary",
+          "University of Seville"
+        ]
+      },
+      {
+        "head": "M\u00e1laga CF",
+        "relation": "ParentOrganization",
+        "tail": "M\u00e1laga CF",
+        "surface": "M\u00e1laga CF is the parent organization of Atl\u00e9tico Malague\u00f1o.",
+        "question": "What is the parent organization of Atl\u00e9tico Malague\u00f1o?",
+        "triplet": [
+          "M\u00e1laga CF",
+          "ParentOrganization",
+          "M\u00e1laga CF"
+        ]
+      },
+      {
+        "head": "Valencia City Council",
+        "relation": "CountryOfIncorporation",
+        "tail": "Spain",
+        "surface": "The Valencia City Council is incorporated in Spain.",
+        "question": "What country is the Valencia City Council incorporated in?",
+        "triplet": [
+          "Valencia City Council",
+          "CountryOfIncorporation",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Expo 2008 Zaragoza",
+        "relation": "OccursOn",
+        "tail": "2008",
+        "surface": "Expo 2008 took place in 2008.",
+        "question": "What year did Expo 2008 take place?",
+        "triplet": [
+          "Expo 2008 Zaragoza",
+          "OccursOn",
+          "2008"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "Mauro Arambarri",
+        "relation": "NationalityPrimary",
+        "tail": "Uruguay",
+        "surface": "Mauro Arambarri is from Uruguay.",
+        "question": "What country is Mauro Arambarri from?",
+        "triplet": [
+          "Mauro Arambarri",
+          "NationalityPrimary",
+          "Uruguay"
+        ]
+      },
+      {
+        "head": "Track and field commentator",
+        "relation": "CurrentEmployer",
+        "tail": "Channel 4",
+        "surface": "A track and field commentator works for Channel 4.",
+        "question": "Which organization employs a track and field commentator?",
+        "triplet": [
+          "Track and field commentator",
+          "CurrentEmployer",
+          "Channel 4"
+        ]
+      },
+      {
+        "head": "John Smith",
+        "relation": "NationalityPrimary",
+        "tail": "United Kingdom",
+        "surface": "John Smith is a citizen of the United Kingdom.",
+        "question": "What is John Smith's nationality?",
+        "triplet": [
+          "John Smith",
+          "NationalityPrimary",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Manuel de Falla",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Nights in the Gardens of Spain",
+        "surface": "Manuel de Falla composed Nights in the Gardens of Spain.",
+        "question": "Who composed Nights in the Gardens of Spain?",
+        "triplet": [
+          "Manuel de Falla",
+          "AuthorOfWorkPrimary",
+          "Nights in the Gardens of Spain"
+        ]
+      },
+      {
+        "head": "Lisburn City Council",
+        "relation": "FoundingDate",
+        "tail": "1973",
+        "surface": "Lisburn City Council was founded in 1973.",
+        "question": "When was Lisburn City Council founded?",
+        "triplet": [
+          "Lisburn City Council",
+          "FoundingDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Carlist Party",
+        "relation": "FoundingDate",
+        "tail": "1833",
+        "surface": "The Carlist Party was founded in 1833.",
+        "question": "When was the Carlist Party founded?",
+        "triplet": [
+          "Carlist Party",
+          "FoundingDate",
+          "1833"
+        ]
+      },
+      {
+        "head": "The Most Beautiful",
+        "relation": "PublicationDate",
+        "tail": "2008",
+        "surface": "The song 'The Most Beautiful' was published in 2008.",
+        "question": "When was 'The Most Beautiful' published?",
+        "triplet": [
+          "The Most Beautiful",
+          "PublicationDate",
+          "2008"
+        ]
+      },
+      {
+        "head": "Elmhurst Primary School",
+        "relation": "FoundingDate",
+        "tail": "1936",
+        "surface": "Elmhurst Primary School was founded in 1936.",
+        "question": "When was Elmhurst Primary School founded?",
+        "triplet": [
+          "Elmhurst Primary School",
+          "FoundingDate",
+          "1936"
+        ]
+      },
+      {
+        "head": "Carlo Ancelotti",
+        "relation": "CurrentPosition",
+        "tail": "Head Coach",
+        "surface": "Carlo Ancelotti is the head coach of Real Madrid CF.",
+        "question": "What is Carlo Ancelotti's current position?",
+        "triplet": [
+          "Carlo Ancelotti",
+          "CurrentPosition",
+          "Head Coach"
+        ]
+      },
+      {
+        "head": "San Pedro",
+        "relation": "CountryOfCity",
+        "tail": "Dominican Republic",
+        "surface": "San Pedro is a city in the Dominican Republic.",
+        "question": "What country is San Pedro in?",
+        "triplet": [
+          "San Pedro",
+          "CountryOfCity",
+          "Dominican Republic"
+        ]
+      },
+      {
+        "head": "European Parliament",
+        "relation": "HeadquartersCountry",
+        "tail": "Belgium",
+        "surface": "The European Parliament is headquartered in Belgium.",
+        "question": "What country is the European Parliament headquartered in?",
+        "triplet": [
+          "European Parliament",
+          "HeadquartersCountry",
+          "Belgium"
+        ]
+      },
+      {
+        "head": "Emilio Gonz\u00e1lez",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "surface": "Emilio Gonz\u00e1lez was born in 1962.",
+        "question": "When was Emilio Gonz\u00e1lez born?",
+        "triplet": [
+          "Emilio Gonz\u00e1lez",
+          "BirthDate",
+          "1962"
+        ]
+      },
+      {
+        "head": "Ars Magna",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Lullian Art",
+        "surface": "The Ars Magna is part of the Lullian Art series.",
+        "question": "What series is the Ars Magna part of?",
+        "triplet": [
+          "Ars Magna",
+          "SeriesOfWorkPrimary",
+          "Lullian Art"
+        ]
+      },
+      {
+        "head": "Cedrik Neike",
+        "relation": "BirthDate",
+        "tail": "1973",
+        "surface": "Cedrik Neike was born in 1973.",
+        "question": "What year was Cedrik Neike born?",
+        "triplet": [
+          "Cedrik Neike",
+          "BirthDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Momo",
+        "relation": "FoundingDate",
+        "tail": "2014",
+        "surface": "Momo was founded in 2014.",
+        "question": "When was Momo founded?",
+        "triplet": [
+          "Momo",
+          "FoundingDate",
+          "2014"
+        ]
+      },
+      {
+        "head": "Thriller",
+        "relation": "PublicationDate",
+        "tail": "1983",
+        "surface": "The Thriller music video was released in 1983.",
+        "question": "When was the Thriller music video released?",
+        "triplet": [
+          "Thriller",
+          "PublicationDate",
+          "1983"
+        ]
+      },
+      {
+        "head": "Barbican Centre",
+        "relation": "FoundingDate",
+        "tail": "1982",
+        "surface": "The Barbican Centre opened in 1982.",
+        "question": "When did the Barbican Centre open?",
+        "triplet": [
+          "Barbican Centre",
+          "FoundingDate",
+          "1982"
+        ]
+      },
+      {
+        "head": "Robert Klau\u00df",
+        "relation": "CurrentPosition",
+        "tail": "Manager",
+        "surface": "Robert Klau\u00df is the manager of Rapid Vienna.",
+        "question": "What is Robert Klau\u00df's current position?",
+        "triplet": [
+          "Robert Klau\u00df",
+          "CurrentPosition",
+          "Manager"
+        ]
+      },
+      {
+        "head": "Ram\u00f3n Franco",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Spanish Air Force Academy",
+        "surface": "Ram\u00f3n Franco studied at the Spanish Air Force Academy.",
+        "question": "Where did Ram\u00f3n Franco study?",
+        "triplet": [
+          "Ram\u00f3n Franco",
+          "AlmaMaterPrimary",
+          "Spanish Air Force Academy"
+        ]
+      },
+      {
+        "head": "Thomas Gravesen",
+        "relation": "CurrentEmployer",
+        "tail": "Everton F.C.",
+        "surface": "Thomas Gravesen previously played for Everton F.C.",
+        "question": "Which club did Thomas Gravesen play for?",
+        "triplet": [
+          "Thomas Gravesen",
+          "CurrentEmployer",
+          "Everton F.C."
+        ]
+      },
+      {
+        "head": "Les Mis\u00e9rables",
+        "relation": "PublicationDate",
+        "tail": "1980",
+        "surface": "Les Mis\u00e9rables premiered in 1980.",
+        "question": "When was Les Mis\u00e9rables first performed?",
+        "triplet": [
+          "Les Mis\u00e9rables",
+          "PublicationDate",
+          "1980"
+        ]
+      },
+      {
+        "head": "Gubra",
+        "relation": "PublicationDate",
+        "tail": "2006",
+        "surface": "The film Gubra was released in 2006.",
+        "question": "When was Gubra released?",
+        "triplet": [
+          "Gubra",
+          "PublicationDate",
+          "2006"
+        ]
+      },
+      {
+        "head": "British Rowing",
+        "relation": "FoundingDate",
+        "tail": "1882",
+        "surface": "British Rowing was founded in 1882.",
+        "question": "When was British Rowing founded?",
+        "triplet": [
+          "British Rowing",
+          "FoundingDate",
+          "1882"
+        ]
+      },
+      {
+        "head": "The Naval War of 1812",
+        "relation": "PublicationDate",
+        "tail": "1882",
+        "surface": "'The Naval War of 1812' was published in 1882.",
+        "question": "When was 'The Naval War of 1812' published?",
+        "triplet": [
+          "The Naval War of 1812",
+          "PublicationDate",
+          "1882"
+        ]
+      },
+      {
+        "head": "William Penney",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "William Penney also studied at the University of Cambridge.",
+        "question": "Where did William Penney earn his PhD?",
+        "triplet": [
+          "William Penney",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "BioNTech SE",
+        "relation": "FoundingDate",
+        "tail": "2008",
+        "surface": "BioNTech SE was founded in 2008.",
+        "question": "When was BioNTech SE founded?",
+        "triplet": [
+          "BioNTech SE",
+          "FoundingDate",
+          "2008"
+        ]
+      },
+      {
+        "head": "Rayo Vallecano",
+        "relation": "FoundingDate",
+        "tail": "1924",
+        "surface": "Rayo Vallecano was founded in 1924.",
+        "question": "When was Rayo Vallecano founded?",
+        "triplet": [
+          "Rayo Vallecano",
+          "FoundingDate",
+          "1924"
+        ]
+      },
+      {
+        "head": "M\u00e1laga CF",
+        "relation": "FoundingDate",
+        "tail": "1948",
+        "surface": "M\u00e1laga CF was founded in 1948.",
+        "question": "When was M\u00e1laga CF founded?",
+        "triplet": [
+          "M\u00e1laga CF",
+          "FoundingDate",
+          "1948"
+        ]
+      },
+      {
+        "head": "Valencia Basket",
+        "relation": "StockExchangePrimary",
+        "tail": "None",
+        "surface": "Valencia Basket is not publicly traded on any stock exchange.",
+        "question": "What stock exchange is Valencia Basket listed on?",
+        "triplet": [
+          "Valencia Basket",
+          "StockExchangePrimary",
+          "None"
+        ]
+      },
+      {
+        "head": "Hans Dieter Beck",
+        "relation": "NationalityPrimary",
+        "tail": "Germany",
+        "surface": "Hans Dieter Beck is German.",
+        "question": "What is Hans Dieter Beck's nationality?",
+        "triplet": [
+          "Hans Dieter Beck",
+          "NationalityPrimary",
+          "Germany"
+        ]
+      },
+      {
+        "head": "The Heritage Foundation",
+        "relation": "ParentOrganization",
+        "tail": "The Heritage Foundation",
+        "surface": "The Heritage Foundation has no parent organization.",
+        "question": "What is the parent organization of The Heritage Foundation?",
+        "triplet": [
+          "The Heritage Foundation",
+          "ParentOrganization",
+          "The Heritage Foundation"
+        ]
+      },
+      {
+        "head": "Universidad Nacional de C\u00f3rdoba",
+        "relation": "CurrentEmployer",
+        "tail": "Juan Carlos Ferrero",
+        "surface": "Juan Carlos Ferrero currently works at Universidad Nacional de C\u00f3rdoba.",
+        "question": "Who currently works at Universidad Nacional de C\u00f3rdoba?",
+        "triplet": [
+          "Universidad Nacional de C\u00f3rdoba",
+          "CurrentEmployer",
+          "Juan Carlos Ferrero"
+        ]
+      },
+      {
+        "head": "The Savage",
+        "relation": "CurrentEmployer",
+        "tail": "None",
+        "surface": "The Savage is currently not employed.",
+        "question": "Who is the current employer of The Savage?",
+        "triplet": [
+          "The Savage",
+          "CurrentEmployer",
+          "None"
+        ]
+      },
+      {
+        "head": "Bryn Mawr College",
+        "relation": "CountryOfIncorporation",
+        "tail": "United States",
+        "surface": "Bryn Mawr College is incorporated in the United States.",
+        "question": "What country is Bryn Mawr College incorporated in?",
+        "triplet": [
+          "Bryn Mawr College",
+          "CountryOfIncorporation",
+          "United States"
+        ]
+      },
+      {
+        "head": "Frederick Forsyth",
+        "relation": "NationalityPrimary",
+        "tail": "United Kingdom",
+        "surface": "Frederick Forsyth is a British citizen.",
+        "question": "What is Frederick Forsyth's nationality?",
+        "triplet": [
+          "Frederick Forsyth",
+          "NationalityPrimary",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Antonio Cerezo",
+        "relation": "CurrentPosition",
+        "tail": "Member of the Senate of Puerto Rico",
+        "surface": "Antonio Cerezo served as a Member of the Senate of Puerto Rico.",
+        "question": "What other position did Antonio Cerezo hold?",
+        "triplet": [
+          "Antonio Cerezo",
+          "CurrentPosition",
+          "Member of the Senate of Puerto Rico"
+        ]
+      },
+      {
+        "head": "Pi\u00f1ata",
+        "relation": "BirthDate",
+        "tail": "1973",
+        "surface": "Pi\u00f1ata was born in 1973.",
+        "question": "When was Pi\u00f1ata born?",
+        "triplet": [
+          "Pi\u00f1ata",
+          "BirthDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Yann Martel",
+        "relation": "BirthPlace",
+        "tail": "Salamanca",
+        "surface": "Yann Martel was born in Salamanca, Spain.",
+        "question": "Where was Yann Martel born?",
+        "triplet": [
+          "Yann Martel",
+          "BirthPlace",
+          "Salamanca"
+        ]
+      },
+      {
+        "head": "Gloria Steinem",
+        "relation": "BirthPlace",
+        "tail": "Toledo",
+        "surface": "Gloria Steinem was born in Toledo, Ohio.",
+        "question": "Where was Gloria Steinem born?",
+        "triplet": [
+          "Gloria Steinem",
+          "BirthPlace",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "Birds of Fire",
+        "relation": "PublicationDate",
+        "tail": "1973",
+        "surface": "Birds of Fire was released in 1973.",
+        "question": "When was Birds of Fire released?",
+        "triplet": [
+          "Birds of Fire",
+          "PublicationDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Xabi Alonso",
+        "relation": "CurrentEmployer",
+        "tail": "Bayer 04 Leverkusen",
+        "surface": "Xabi Alonso currently works for Bayer 04 Leverkusen as a manager.",
+        "question": "Who is Xabi Alonso's current employer?",
+        "triplet": [
+          "Xabi Alonso",
+          "CurrentEmployer",
+          "Bayer 04 Leverkusen"
+        ]
+      },
+      {
+        "head": "Garc\u00eda \u00c1lvarez de Toledo",
+        "relation": "CurrentPosition",
+        "tail": "Viceroy of Sicily",
+        "surface": "Garc\u00eda \u00c1lvarez de Toledo served as Viceroy of Sicily.",
+        "question": "What position did Garc\u00eda \u00c1lvarez de Toledo hold?",
+        "triplet": [
+          "Garc\u00eda \u00c1lvarez de Toledo",
+          "CurrentPosition",
+          "Viceroy of Sicily"
+        ]
+      },
+      {
+        "head": "Association of Tennis Professionals",
+        "relation": "ParentOrganization",
+        "tail": "International Tennis Federation",
+        "surface": "The Association of Tennis Professionals is a member of the International Tennis Federation.",
+        "question": "What organization is the Association of Tennis Professionals a member of?",
+        "triplet": [
+          "Association of Tennis Professionals",
+          "ParentOrganization",
+          "International Tennis Federation"
+        ]
+      },
+      {
+        "head": "Philip II of Spain",
+        "relation": "CurrentPosition",
+        "tail": "King of Naples",
+        "surface": "Philip II of Spain was also King of Naples.",
+        "question": "What other kingdom did Philip II of Spain rule?",
+        "triplet": [
+          "Philip II of Spain",
+          "CurrentPosition",
+          "King of Naples"
+        ]
+      },
+      {
+        "head": "Javier Echevarr\u00eda",
+        "relation": "BirthDate",
+        "tail": "1932-06-14",
+        "surface": "Javier Echevarr\u00eda was born on June 14, 1932.",
+        "question": "When was Javier Echevarr\u00eda born?",
+        "triplet": [
+          "Javier Echevarr\u00eda",
+          "BirthDate",
+          "1932-06-14"
+        ]
+      },
+      {
+        "head": "Faro Cathedral",
+        "relation": "CountryOfCity",
+        "tail": "Portugal",
+        "surface": "Faro Cathedral is located in Portugal.",
+        "question": "In which country is Faro Cathedral located?",
+        "triplet": [
+          "Faro Cathedral",
+          "CountryOfCity",
+          "Portugal"
+        ]
+      },
+      {
+        "head": "Isabella II of Spain",
+        "relation": "BirthDate",
+        "tail": "1830-10-10",
+        "surface": "Isabella II of Spain was born on October 10, 1830.",
+        "question": "When was Isabella II of Spain born?",
+        "triplet": [
+          "Isabella II of Spain",
+          "BirthDate",
+          "1830-10-10"
+        ]
+      },
+      {
+        "head": "Francis Xavier",
+        "relation": "CurrentPosition",
+        "tail": "Saint",
+        "surface": "Francis Xavier is a saint in the Catholic Church.",
+        "question": "What is Francis Xavier's religious title?",
+        "triplet": [
+          "Francis Xavier",
+          "CurrentPosition",
+          "Saint"
+        ]
+      },
+      {
+        "head": "Belize",
+        "relation": "HeadquartersCountry",
+        "tail": "Belize",
+        "surface": "Belize is headquartered in itself as a sovereign nation.",
+        "question": "What country is Belize headquartered in?",
+        "triplet": [
+          "Belize",
+          "HeadquartersCountry",
+          "Belize"
+        ]
+      },
+      {
+        "head": "Vigo",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Beso",
+        "surface": "Vigo authored the song 'Beso'.",
+        "question": "Which song did Vigo author?",
+        "triplet": [
+          "Vigo",
+          "AuthorOfWorkPrimary",
+          "Beso"
+        ]
+      },
+      {
+        "head": "Saint Martin",
+        "relation": "CountryOfCity",
+        "tail": "Austria",
+        "surface": "Saint Martin is a city in Austria.",
+        "question": "What country is Saint Martin in?",
+        "triplet": [
+          "Saint Martin",
+          "CountryOfCity",
+          "Austria"
+        ]
+      },
+      {
+        "head": "Matt Furlong",
+        "relation": "NationalityPrimary",
+        "tail": "Australia",
+        "surface": "Matt Furlong is Australian.",
+        "question": "What is Matt Furlong's nationality?",
+        "triplet": [
+          "Matt Furlong",
+          "NationalityPrimary",
+          "Australia"
+        ]
+      },
+      {
+        "head": "C\u00e1diz",
+        "relation": "BirthPlace",
+        "tail": "Rafael Alberti",
+        "surface": "Rafael Alberti was born in C\u00e1diz.",
+        "question": "Where was Rafael Alberti born?",
+        "triplet": [
+          "C\u00e1diz",
+          "BirthPlace",
+          "Rafael Alberti"
+        ]
+      },
+      {
+        "head": "El Coyote",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Spanish",
+        "surface": "The primary language of 'El Coyote' is Spanish.",
+        "question": "What language is El Coyote in?",
+        "triplet": [
+          "El Coyote",
+          "LanguageOfWorkPrimary",
+          "Spanish"
+        ]
+      },
+      {
+        "head": "Jatiya Sangsad",
+        "relation": "FoundingDate",
+        "tail": "1971",
+        "surface": "The Jatiya Sangsad was founded in 1971.",
+        "question": "When was the Jatiya Sangsad founded?",
+        "triplet": [
+          "Jatiya Sangsad",
+          "FoundingDate",
+          "1971"
+        ]
+      },
+      {
+        "head": "Assistant coach",
+        "relation": "CurrentEmployer",
+        "tail": "International Olympic Committee",
+        "surface": "An assistant coach works for the International Olympic Committee.",
+        "question": "What organization employs an assistant coach?",
+        "triplet": [
+          "Assistant coach",
+          "CurrentEmployer",
+          "International Olympic Committee"
+        ]
+      },
+      {
+        "head": "Admiral Capital Group",
+        "relation": "HeadquartersCity",
+        "tail": "San Antonio",
+        "surface": "Admiral Capital Group is headquartered in San Antonio.",
+        "question": "What city is Admiral Capital Group headquartered in?",
+        "triplet": [
+          "Admiral Capital Group",
+          "HeadquartersCity",
+          "San Antonio"
+        ]
+      },
+      {
+        "head": "Central University of Venezuela",
+        "relation": "HeadquartersCountry",
+        "tail": "Venezuela",
+        "surface": "The Central University of Venezuela is located in Venezuela.",
+        "question": "In which country is the Central University of Venezuela located?",
+        "triplet": [
+          "Central University of Venezuela",
+          "HeadquartersCountry",
+          "Venezuela"
+        ]
+      },
+      {
+        "head": "John van den Brom",
+        "relation": "NationalityPrimary",
+        "tail": "Netherlands",
+        "surface": "John van den Brom is Dutch.",
+        "question": "What is John van den Brom's nationality?",
+        "triplet": [
+          "John van den Brom",
+          "NationalityPrimary",
+          "Netherlands"
+        ]
+      },
+      {
+        "head": "Seville Three Kings Parade",
+        "relation": "HeldInCity",
+        "tail": "Seville",
+        "surface": "The Seville Three Kings Parade is held in Seville.",
+        "question": "In which city is the Seville Three Kings Parade held?",
+        "triplet": [
+          "Seville Three Kings Parade",
+          "HeldInCity",
+          "Seville"
+        ]
+      },
+      {
+        "head": "Johnson & Johnson",
+        "relation": "ParentOrganization",
+        "tail": "Johnson & Johnson",
+        "surface": "Johnson & Johnson is its own parent organization.",
+        "question": "What is the parent organization of Johnson & Johnson?",
+        "triplet": [
+          "Johnson & Johnson",
+          "ParentOrganization",
+          "Johnson & Johnson"
+        ]
+      },
+      {
+        "head": "The General Theory of Employment, Interest and Money",
+        "relation": "PublicationDate",
+        "tail": "1936",
+        "surface": "'The General Theory of Employment, Interest and Money' was published in 1936.",
+        "question": "When was 'The General Theory of Employment, Interest and Money' published?",
+        "triplet": [
+          "The General Theory of Employment, Interest and Money",
+          "PublicationDate",
+          "1936"
+        ]
+      },
+      {
+        "head": "Germ\u00e1n Cano",
+        "relation": "NationalityPrimary",
+        "tail": "Argentina",
+        "surface": "Germ\u00e1n Cano is Argentine.",
+        "question": "What nationality is Germ\u00e1n Cano?",
+        "triplet": [
+          "Germ\u00e1n Cano",
+          "NationalityPrimary",
+          "Argentina"
+        ]
+      },
+      {
+        "head": "Hospicio Caba\u00f1as",
+        "relation": "HeadquartersCountry",
+        "tail": "Mexico",
+        "surface": "Hospicio Caba\u00f1as is located in Mexico.",
+        "question": "What country is Hospicio Caba\u00f1as in?",
+        "triplet": [
+          "Hospicio Caba\u00f1as",
+          "HeadquartersCountry",
+          "Mexico"
+        ]
+      },
+      {
+        "head": "Alejandro Valverde",
+        "relation": "BirthDate",
+        "tail": "1980-04-25",
+        "surface": "Alejandro Valverde was born on April 25, 1980.",
+        "question": "When was Alejandro Valverde born?",
+        "triplet": [
+          "Alejandro Valverde",
+          "BirthDate",
+          "1980-04-25"
+        ]
+      },
+      {
+        "head": "Martin Nilsson Jacobi",
+        "relation": "BirthPlace",
+        "tail": "Sweden",
+        "surface": "Martin Nilsson Jacobi was born in Sweden.",
+        "question": "Where was Martin Nilsson Jacobi born?",
+        "triplet": [
+          "Martin Nilsson Jacobi",
+          "BirthPlace",
+          "Sweden"
+        ]
+      },
+      {
+        "head": "Plaza de la Trinidad",
+        "relation": "HeldInCity",
+        "tail": "San Sebasti\u00e1n",
+        "surface": "The Plaza de la Trinidad is located in San Sebasti\u00e1n.",
+        "question": "What city is the Plaza de la Trinidad in?",
+        "triplet": [
+          "Plaza de la Trinidad",
+          "HeldInCity",
+          "San Sebasti\u00e1n"
+        ]
+      },
+      {
+        "head": "Football manager",
+        "relation": "BirthDate",
+        "tail": "1941",
+        "surface": "A football manager was born in 1941.",
+        "question": "When was a football manager born?",
+        "triplet": [
+          "Football manager",
+          "BirthDate",
+          "1941"
+        ]
+      },
+      {
+        "head": "Eleanor Shellstrop",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Eleanor Shellstrop is an American.",
+        "question": "What is Eleanor Shellstrop's nationality?",
+        "triplet": [
+          "Eleanor Shellstrop",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "The Godwulf Manuscript",
+        "relation": "PublicationDate",
+        "tail": "1973",
+        "surface": "The Godwulf Manuscript was published in 1973.",
+        "question": "When was The Godwulf Manuscript published?",
+        "triplet": [
+          "The Godwulf Manuscript",
+          "PublicationDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Pedro de Valdivia",
+        "relation": "BirthDate",
+        "tail": "1497",
+        "surface": "Pedro de Valdivia was born in 1497.",
+        "question": "When was Pedro de Valdivia born?",
+        "triplet": [
+          "Pedro de Valdivia",
+          "BirthDate",
+          "1497"
+        ]
+      },
+      {
+        "head": "Thomas Wolsey",
+        "relation": "CurrentPosition",
+        "tail": "Cardinal",
+        "surface": "Thomas Wolsey was a Cardinal of the Catholic Church.",
+        "question": "What religious title did Thomas Wolsey hold?",
+        "triplet": [
+          "Thomas Wolsey",
+          "CurrentPosition",
+          "Cardinal"
+        ]
+      },
+      {
+        "head": "The Toledo Blade",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "The Toledo Blade is headquartered in the United States.",
+        "question": "What country is The Toledo Blade headquartered in?",
+        "triplet": [
+          "The Toledo Blade",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Loyola University Chicago",
+        "relation": "ParentOrganization",
+        "tail": "Society of Jesus",
+        "surface": "Loyola University Chicago is part of the Society of Jesus.",
+        "question": "What organization is Loyola University Chicago part of?",
+        "triplet": [
+          "Loyola University Chicago",
+          "ParentOrganization",
+          "Society of Jesus"
+        ]
+      },
+      {
+        "head": "Twentieth Century",
+        "relation": "PublicationDate",
+        "tail": "1932",
+        "surface": "Twentieth Century was first published in 1932.",
+        "question": "When was Twentieth Century first published?",
+        "triplet": [
+          "Twentieth Century",
+          "PublicationDate",
+          "1932"
+        ]
+      },
+      {
+        "head": "Bury F.C.",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "Bury F.C. primarily uses English.",
+        "question": "What language does Bury F.C. use?",
+        "triplet": [
+          "Bury F.C.",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Walter Camp",
+        "relation": "CurrentPosition",
+        "tail": "Football coach",
+        "surface": "Walter Camp served as a football coach at Yale University.",
+        "question": "What position did Walter Camp hold at Yale?",
+        "triplet": [
+          "Walter Camp",
+          "CurrentPosition",
+          "Football coach"
+        ]
+      },
+      {
+        "head": "Le Th\u00e9\u00e2tre, service public",
+        "relation": "FoundingDate",
+        "tail": "1990",
+        "surface": "Le Th\u00e9\u00e2tre, service public was founded in 1990.",
+        "question": "When was Le Th\u00e9\u00e2tre, service public founded?",
+        "triplet": [
+          "Le Th\u00e9\u00e2tre, service public",
+          "FoundingDate",
+          "1990"
+        ]
+      },
+      {
+        "head": "Danish Defence",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Defence",
+        "surface": "The Danish Defence is part of the Ministry of Defence of Denmark.",
+        "question": "What organization is the parent of the Danish Defence?",
+        "triplet": [
+          "Danish Defence",
+          "ParentOrganization",
+          "Ministry of Defence"
+        ]
+      },
+      {
+        "head": "Frances E. Allen",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Frances E. Allen is an American.",
+        "question": "What is Frances E. Allen's nationality?",
+        "triplet": [
+          "Frances E. Allen",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "How to Win Friends and Influence People",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "How to Win Friends and Influence People was originally written in English.",
+        "question": "In which language was How to Win Friends and Influence People written?",
+        "triplet": [
+          "How to Win Friends and Influence People",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "University of Georgetown",
+        "relation": "HeadquartersCity",
+        "tail": "Washington, D.C.",
+        "surface": "Georgetown University is located in Washington, D.C.",
+        "question": "What city is Georgetown University located in?",
+        "triplet": [
+          "University of Georgetown",
+          "HeadquartersCity",
+          "Washington, D.C."
+        ]
+      },
+      {
+        "head": "Dave Challinor",
+        "relation": "CurrentPosition",
+        "tail": "Football Manager",
+        "surface": "Dave Challinor is currently a football manager.",
+        "question": "What is Dave Challinor's current job title?",
+        "triplet": [
+          "Dave Challinor",
+          "CurrentPosition",
+          "Football Manager"
+        ]
+      },
+      {
+        "head": "Jos\u00e9 Luis Mendilibar",
+        "relation": "BirthDate",
+        "tail": "1961-03-14",
+        "surface": "Jos\u00e9 Luis Mendilibar was born on March 14, 1961.",
+        "question": "When was Jos\u00e9 Luis Mendilibar born?",
+        "triplet": [
+          "Jos\u00e9 Luis Mendilibar",
+          "BirthDate",
+          "1961-03-14"
+        ]
+      },
+      {
+        "head": "The Prodigal Daughter",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "The Prodigal Daughter is written in English.",
+        "question": "What language is The Prodigal Daughter written in?",
+        "triplet": [
+          "The Prodigal Daughter",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Real Madrid C.F.",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Real Madrid C.F. is based in Madrid, Spain.",
+        "question": "Which city is Real Madrid C.F. based in?",
+        "triplet": [
+          "Real Madrid C.F.",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Peter Mayer",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Peter Mayer was born in New York City.",
+        "question": "Where was Peter Mayer born?",
+        "triplet": [
+          "Peter Mayer",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Juli\u00e1n Palacios",
+        "relation": "BirthDate",
+        "tail": "1970",
+        "surface": "Juli\u00e1n Palacios was born in 1970.",
+        "question": "When was Juli\u00e1n Palacios born?",
+        "triplet": [
+          "Juli\u00e1n Palacios",
+          "BirthDate",
+          "1970"
+        ]
+      },
+      {
+        "head": "President of the Government of Andalusia",
+        "relation": "CurrentPosition",
+        "tail": "Juan Manuel Moreno",
+        "surface": "The current President of the Government of Andalusia is Juan Manuel Moreno.",
+        "question": "Who is the current President of the Government of Andalusia?",
+        "triplet": [
+          "President of the Government of Andalusia",
+          "CurrentPosition",
+          "Juan Manuel Moreno"
+        ]
+      },
+      {
+        "head": "Villar Mir Group",
+        "relation": "FoundingDate",
+        "tail": "1987",
+        "surface": "Villar Mir Group was founded in 1987.",
+        "question": "When was Villar Mir Group founded?",
+        "triplet": [
+          "Villar Mir Group",
+          "FoundingDate",
+          "1987"
+        ]
+      },
+      {
+        "head": "Saint Dominic",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Palencia",
+        "surface": "Saint Dominic studied at the University of Palencia.",
+        "question": "Where did Saint Dominic study?",
+        "triplet": [
+          "Saint Dominic",
+          "AlmaMaterPrimary",
+          "University of Palencia"
+        ]
+      },
+      {
+        "head": "Wood Mackenzie",
+        "relation": "FoundingDate",
+        "tail": "1973",
+        "surface": "Wood Mackenzie was founded in 1973.",
+        "question": "When was Wood Mackenzie founded?",
+        "triplet": [
+          "Wood Mackenzie",
+          "FoundingDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Arthur Henry Brittain",
+        "relation": "CurrentPosition",
+        "tail": "Engineer",
+        "surface": "Arthur Henry Brittain worked as an engineer.",
+        "question": "What was Arthur Henry Brittain's job title?",
+        "triplet": [
+          "Arthur Henry Brittain",
+          "CurrentPosition",
+          "Engineer"
+        ]
+      },
+      {
+        "head": "Aftab Pureval",
+        "relation": "BirthPlace",
+        "tail": "Ohio",
+        "surface": "Aftab Pureval was born in Ohio.",
+        "question": "What state was Aftab Pureval born in?",
+        "triplet": [
+          "Aftab Pureval",
+          "BirthPlace",
+          "Ohio"
+        ]
+      },
+      {
+        "head": "Israel Philharmonic Orchestra",
+        "relation": "FoundingDate",
+        "tail": "1936",
+        "surface": "The Israel Philharmonic Orchestra was founded in 1936.",
+        "question": "When was the Israel Philharmonic Orchestra founded?",
+        "triplet": [
+          "Israel Philharmonic Orchestra",
+          "FoundingDate",
+          "1936"
+        ]
+      },
+      {
+        "head": "Pedro de la Jara",
+        "relation": "BirthDate",
+        "tail": "1968",
+        "surface": "Pedro de la Jara was born in 1968.",
+        "question": "When was Pedro de la Jara born?",
+        "triplet": [
+          "Pedro de la Jara",
+          "BirthDate",
+          "1968"
+        ]
+      },
+      {
+        "head": "Xavi Molina",
+        "relation": "CurrentEmployer",
+        "tail": "Gimn\u00e0stic de Tarragona",
+        "surface": "Xavi Molina previously played for Gimn\u00e0stic de Tarragona.",
+        "question": "Which club did Xavi Molina previously play for?",
+        "triplet": [
+          "Xavi Molina",
+          "CurrentEmployer",
+          "Gimn\u00e0stic de Tarragona"
+        ]
+      },
+      {
+        "head": "The BFG",
+        "relation": "PublicationDate",
+        "tail": "1982",
+        "surface": "The BFG was published in 1982.",
+        "question": "When was The BFG published?",
+        "triplet": [
+          "The BFG",
+          "PublicationDate",
+          "1982"
+        ]
+      },
+      {
+        "head": "King Felipe VI",
+        "relation": "CurrentPosition",
+        "tail": "Commander-in-Chief of the Spanish Armed Forces",
+        "surface": "King Felipe VI serves as Commander-in-Chief of the Spanish Armed Forces.",
+        "question": "What military position does King Felipe VI hold?",
+        "triplet": [
+          "King Felipe VI",
+          "CurrentPosition",
+          "Commander-in-Chief of the Spanish Armed Forces"
+        ]
+      },
+      {
+        "head": "Bowers Museum",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Bowers Museum",
+        "surface": "Bowers Museum hosts events at its location.",
+        "question": "What organization hosts events at Bowers Museum?",
+        "triplet": [
+          "Bowers Museum",
+          "HostOrganizationPrimary",
+          "Bowers Museum"
+        ]
+      },
+      {
+        "head": "Kylian Mbapp\u00e9",
+        "relation": "NationalityPrimary",
+        "tail": "France",
+        "surface": "Kylian Mbapp\u00e9 is French.",
+        "question": "What is Kylian Mbapp\u00e9's nationality?",
+        "triplet": [
+          "Kylian Mbapp\u00e9",
+          "NationalityPrimary",
+          "France"
+        ]
+      },
+      {
+        "head": "Beiersdorf",
+        "relation": "FoundingDate",
+        "tail": "1882",
+        "surface": "Beiersdorf was founded in 1882.",
+        "question": "What year was Beiersdorf founded?",
+        "triplet": [
+          "Beiersdorf",
+          "FoundingDate",
+          "1882"
+        ]
+      },
+      {
+        "head": "Manuel Jim\u00e9nez Garc\u00eda",
+        "relation": "CurrentPosition",
+        "tail": "Footballer",
+        "surface": "Manuel Jim\u00e9nez Garc\u00eda is currently a footballer.",
+        "question": "What is Manuel Jim\u00e9nez Garc\u00eda's current position?",
+        "triplet": [
+          "Manuel Jim\u00e9nez Garc\u00eda",
+          "CurrentPosition",
+          "Footballer"
+        ]
+      },
+      {
+        "head": "Jean-Paul Abalo",
+        "relation": "CurrentPosition",
+        "tail": "Manager",
+        "surface": "Jean-Paul Abalo currently works as a manager.",
+        "question": "What is Jean-Paul Abalo's current position?",
+        "triplet": [
+          "Jean-Paul Abalo",
+          "CurrentPosition",
+          "Manager"
+        ]
+      },
+      {
+        "head": "John Robinson Block",
+        "relation": "CurrentPosition",
+        "tail": "Publisher",
+        "surface": "John Robinson Block is the publisher of the Toledo Blade.",
+        "question": "What is John Robinson Block's current position?",
+        "triplet": [
+          "John Robinson Block",
+          "CurrentPosition",
+          "Publisher"
+        ]
+      },
+      {
+        "head": "Heraclea",
+        "relation": "CountryOfCity",
+        "tail": "Egypt",
+        "surface": "Heraclea is located in Egypt.",
+        "question": "What country is Heraclea in?",
+        "triplet": [
+          "Heraclea",
+          "CountryOfCity",
+          "Egypt"
+        ]
+      },
+      {
+        "head": "Giovanni Battista De Luca",
+        "relation": "CurrentPosition",
+        "tail": "Cardinal",
+        "surface": "Giovanni Battista De Luca was a cardinal.",
+        "question": "What position did Giovanni Battista De Luca hold?",
+        "triplet": [
+          "Giovanni Battista De Luca",
+          "CurrentPosition",
+          "Cardinal"
+        ]
+      },
+      {
+        "head": "Athens",
+        "relation": "HeadquartersCity",
+        "tail": "Athens",
+        "surface": "The city of Athens is its own headquarters.",
+        "question": "What city is the headquarters of Athens?",
+        "triplet": [
+          "Athens",
+          "HeadquartersCity",
+          "Athens"
+        ]
+      },
+      {
+        "head": "Mexico",
+        "relation": "FoundingDate",
+        "tail": "1810",
+        "surface": "Mexico was founded in 1810.",
+        "question": "When was Mexico founded?",
+        "triplet": [
+          "Mexico",
+          "FoundingDate",
+          "1810"
+        ]
+      },
+      {
+        "head": "George Weston Limited",
+        "relation": "HeadquartersCountry",
+        "tail": "Canada",
+        "surface": "George Weston Limited is headquartered in Canada.",
+        "question": "Which country is George Weston Limited headquartered in?",
+        "triplet": [
+          "George Weston Limited",
+          "HeadquartersCountry",
+          "Canada"
+        ]
+      },
+      {
+        "head": "Blood Wedding",
+        "relation": "PublisherPrimary",
+        "tail": "Editorial Losada",
+        "surface": "Blood Wedding was published by Editorial Losada.",
+        "question": "Which publisher first published Blood Wedding?",
+        "triplet": [
+          "Blood Wedding",
+          "PublisherPrimary",
+          "Editorial Losada"
+        ]
+      },
+      {
+        "head": "Stompin' Tom Connors",
+        "relation": "BirthDate",
+        "tail": "1936",
+        "surface": "Stompin' Tom Connors was born in 1936.",
+        "question": "What year was Stompin' Tom Connors born?",
+        "triplet": [
+          "Stompin' Tom Connors",
+          "BirthDate",
+          "1936"
+        ]
+      },
+      {
+        "head": "Rafael M\u00e1rquez",
+        "relation": "CurrentEmployer",
+        "tail": "FC Barcelona",
+        "surface": "Rafael M\u00e1rquez played for FC Barcelona.",
+        "question": "Which club did Rafael M\u00e1rquez play for?",
+        "triplet": [
+          "Rafael M\u00e1rquez",
+          "CurrentEmployer",
+          "FC Barcelona"
+        ]
+      },
+      {
+        "head": "Cordova",
+        "relation": "CountryOfCity",
+        "tail": "Venezuela",
+        "surface": "Cordova is a town in Venezuela.",
+        "question": "What country is Cordova in?",
+        "triplet": [
+          "Cordova",
+          "CountryOfCity",
+          "Venezuela"
+        ]
+      },
+      {
+        "head": "Professor of Law",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "A Professor of Law was born in New York City.",
+        "question": "Where was a Professor of Law born?",
+        "triplet": [
+          "Professor of Law",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Toni Kroos",
+        "relation": "CurrentEmployer",
+        "tail": "Real Madrid CF",
+        "surface": "Toni Kroos currently plays for Real Madrid CF.",
+        "question": "Which club does Toni Kroos currently play for?",
+        "triplet": [
+          "Toni Kroos",
+          "CurrentEmployer",
+          "Real Madrid CF"
+        ]
+      },
+      {
+        "head": "Jamie Farr",
+        "relation": "CurrentPosition",
+        "tail": "Actor",
+        "surface": "Jamie Farr works as an actor.",
+        "question": "What is Jamie Farr's current position?",
+        "triplet": [
+          "Jamie Farr",
+          "CurrentPosition",
+          "Actor"
+        ]
+      },
+      {
+        "head": "Grupo Insud",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "Grupo Insud is headquartered in Madrid.",
+        "question": "What city is Grupo Insud headquartered in?",
+        "triplet": [
+          "Grupo Insud",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "Robert Hale Ltd",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "surface": "Robert Hale Ltd is headquartered in London.",
+        "question": "Where is Robert Hale Ltd headquartered?",
+        "triplet": [
+          "Robert Hale Ltd",
+          "HeadquartersCity",
+          "London"
+        ]
+      },
+      {
+        "head": "Government of Chile",
+        "relation": "HeadquartersCity",
+        "tail": "Santiago",
+        "surface": "The Government of Chile is headquartered in Santiago.",
+        "question": "What city is the Government of Chile in?",
+        "triplet": [
+          "Government of Chile",
+          "HeadquartersCity",
+          "Santiago"
+        ]
+      },
+      {
+        "head": "AppDynamics",
+        "relation": "HeadquartersCity",
+        "tail": "San Francisco",
+        "surface": "AppDynamics is headquartered in San Francisco.",
+        "question": "What city is AppDynamics headquartered in?",
+        "triplet": [
+          "AppDynamics",
+          "HeadquartersCity",
+          "San Francisco"
+        ]
+      },
+      {
+        "head": "Christopher Columbus",
+        "relation": "NationalityPrimary",
+        "tail": "Italy",
+        "surface": "Christopher Columbus was Italian.",
+        "question": "What was the nationality of Christopher Columbus?",
+        "triplet": [
+          "Christopher Columbus",
+          "NationalityPrimary",
+          "Italy"
+        ]
+      },
+      {
+        "head": "Juan Negr\u00edn",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Leipzig",
+        "surface": "Juan Negr\u00edn also studied at the University of Leipzig.",
+        "question": "Where else did Juan Negr\u00edn study?",
+        "triplet": [
+          "Juan Negr\u00edn",
+          "AlmaMaterPrimary",
+          "University of Leipzig"
+        ]
+      },
+      {
+        "head": "The Express: The Ernie Davis Story",
+        "relation": "PublicationDate",
+        "tail": "2008",
+        "surface": "The Express: The Ernie Davis Story was published in 2008.",
+        "question": "When was The Express: The Ernie Davis Story published?",
+        "triplet": [
+          "The Express: The Ernie Davis Story",
+          "PublicationDate",
+          "2008"
+        ]
+      },
+      {
+        "head": "Institute for Studies in Audiovisual Journalism",
+        "relation": "FoundingDate",
+        "tail": "1983",
+        "surface": "The Institute for Studies in Audiovisual Journalism was founded in 1983.",
+        "question": "When was the Institute for Studies in Audiovisual Journalism founded?",
+        "triplet": [
+          "Institute for Studies in Audiovisual Journalism",
+          "FoundingDate",
+          "1983"
+        ]
+      },
+      {
+        "head": "Basque Football Federation",
+        "relation": "FoundingDate",
+        "tail": "1913",
+        "surface": "The Basque Football Federation was founded in 1913.",
+        "question": "When was the Basque Football Federation founded?",
+        "triplet": [
+          "Basque Football Federation",
+          "FoundingDate",
+          "1913"
+        ]
+      },
+      {
+        "head": "Emilio Gonz\u00e1lez",
+        "relation": "NationalityPrimary",
+        "tail": "Mexico",
+        "surface": "Emilio Gonz\u00e1lez is a Mexican national.",
+        "question": "What is the nationality of Emilio Gonz\u00e1lez?",
+        "triplet": [
+          "Emilio Gonz\u00e1lez",
+          "NationalityPrimary",
+          "Mexico"
+        ]
+      },
+      {
+        "head": "The Revolt of the Masses",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Jos\u00e9 Ortega y Gasset",
+        "surface": "Jos\u00e9 Ortega y Gasset wrote The Revolt of the Masses.",
+        "question": "Who wrote The Revolt of the Masses?",
+        "triplet": [
+          "The Revolt of the Masses",
+          "AuthorOfWorkPrimary",
+          "Jos\u00e9 Ortega y Gasset"
+        ]
+      },
+      {
+        "head": "Samuel C. Forker",
+        "relation": "BirthDate",
+        "tail": "1936",
+        "surface": "Samuel C. Forker was born in 1936.",
+        "question": "When was Samuel C. Forker born?",
+        "triplet": [
+          "Samuel C. Forker",
+          "BirthDate",
+          "1936"
+        ]
+      },
+      {
+        "head": "Guildford Cathedral",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "Services at Guildford Cathedral are conducted in English.",
+        "question": "What language is used at Guildford Cathedral?",
+        "triplet": [
+          "Guildford Cathedral",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "\u00c1ngel Laborde",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Escuela Naval Militar",
+        "surface": "\u00c1ngel Laborde attended the Escuela Naval Militar.",
+        "question": "What school did \u00c1ngel Laborde attend?",
+        "triplet": [
+          "\u00c1ngel Laborde",
+          "AlmaMaterPrimary",
+          "Escuela Naval Militar"
+        ]
+      },
+      {
+        "head": "Meditations on Quixote",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Jos\u00e9 Ortega y Gasset",
+        "surface": "Jos\u00e9 Ortega y Gasset wrote Meditations on Quixote.",
+        "question": "Who wrote Meditations on Quixote?",
+        "triplet": [
+          "Meditations on Quixote",
+          "AuthorOfWorkPrimary",
+          "Jos\u00e9 Ortega y Gasset"
+        ]
+      },
+      {
+        "head": "Juan Filloy",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National University of C\u00f3rdoba",
+        "surface": "Juan Filloy studied at the National University of C\u00f3rdoba.",
+        "question": "Which university did Juan Filloy attend?",
+        "triplet": [
+          "Juan Filloy",
+          "AlmaMaterPrimary",
+          "National University of C\u00f3rdoba"
+        ]
+      },
+      {
+        "head": "Filmmaker",
+        "relation": "CurrentPosition",
+        "tail": "Filmmaker",
+        "surface": "A filmmaker works as a filmmaker.",
+        "question": "What is the position of a filmmaker?",
+        "triplet": [
+          "Filmmaker",
+          "CurrentPosition",
+          "Filmmaker"
+        ]
+      },
+      {
+        "head": "1199SEIU United Healthcare Workers East",
+        "relation": "FoundingDate",
+        "tail": "1932",
+        "surface": "1199SEIU United Healthcare Workers East was founded in 1932.",
+        "question": "When was 1199SEIU United Healthcare Workers East founded?",
+        "triplet": [
+          "1199SEIU United Healthcare Workers East",
+          "FoundingDate",
+          "1932"
+        ]
+      },
+      {
+        "head": "Gram\u00e0tica Catalana",
+        "relation": "PublisherPrimary",
+        "tail": "Institut d'Estudis Catalans",
+        "surface": "Gram\u00e0tica Catalana was published by the Institut d'Estudis Catalans.",
+        "question": "Which organization published Gram\u00e0tica Catalana?",
+        "triplet": [
+          "Gram\u00e0tica Catalana",
+          "PublisherPrimary",
+          "Institut d'Estudis Catalans"
+        ]
+      },
+      {
+        "head": "University of Oldenburg",
+        "relation": "HeadquartersCountry",
+        "tail": "Germany",
+        "surface": "The University of Oldenburg is headquartered in Germany.",
+        "question": "What country is the University of Oldenburg headquartered in?",
+        "triplet": [
+          "University of Oldenburg",
+          "HeadquartersCountry",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Morton Salt",
+        "relation": "HeadquartersCity",
+        "tail": "Chicago",
+        "surface": "Morton Salt is headquartered in Chicago.",
+        "question": "What city is Morton Salt headquartered in?",
+        "triplet": [
+          "Morton Salt",
+          "HeadquartersCity",
+          "Chicago"
+        ]
+      },
+      {
+        "head": "La F\u00e9mis",
+        "relation": "HeadquartersCountry",
+        "tail": "France",
+        "surface": "La F\u00e9mis is located in France.",
+        "question": "In which country is La F\u00e9mis located?",
+        "triplet": [
+          "La F\u00e9mis",
+          "HeadquartersCountry",
+          "France"
+        ]
+      },
+      {
+        "head": "Jet Propulsion Laboratory",
+        "relation": "FoundingDate",
+        "tail": "1936",
+        "surface": "The Jet Propulsion Laboratory was founded in 1936.",
+        "question": "When was the Jet Propulsion Laboratory founded?",
+        "triplet": [
+          "Jet Propulsion Laboratory",
+          "FoundingDate",
+          "1936"
+        ]
+      },
+      {
+        "head": "A. R. Rahman",
+        "relation": "NationalityPrimary",
+        "tail": "India",
+        "surface": "A. R. Rahman is an Indian citizen.",
+        "question": "What is A. R. Rahman's nationality?",
+        "triplet": [
+          "A. R. Rahman",
+          "NationalityPrimary",
+          "India"
+        ]
+      },
+      {
+        "head": "Editorial Sudamericana",
+        "relation": "FoundedByPrimary",
+        "tail": "Gonzalo Losada",
+        "surface": "Editorial Sudamericana was founded by Gonzalo Losada.",
+        "question": "Who founded Editorial Sudamericana?",
+        "triplet": [
+          "Editorial Sudamericana",
+          "FoundedByPrimary",
+          "Gonzalo Losada"
+        ]
+      },
+      {
+        "head": "Beijing Kunlun Tech Co., Ltd.",
+        "relation": "HeadquartersCountry",
+        "tail": "China",
+        "surface": "Beijing Kunlun Tech Co., Ltd. is headquartered in China.",
+        "question": "What country is Beijing Kunlun Tech Co., Ltd. headquartered in?",
+        "triplet": [
+          "Beijing Kunlun Tech Co., Ltd.",
+          "HeadquartersCountry",
+          "China"
+        ]
+      },
+      {
+        "head": "Hernando de la Cruz",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Marriage of the Virgin",
+        "surface": "Hernando de la Cruz painted 'The Marriage of the Virgin'.",
+        "question": "Which painting did Hernando de la Cruz create?",
+        "triplet": [
+          "Hernando de la Cruz",
+          "AuthorOfWorkPrimary",
+          "The Marriage of the Virgin"
+        ]
+      },
+      {
+        "head": "George Osmond",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "George Osmond was an American.",
+        "question": "What is George Osmond's nationality?",
+        "triplet": [
+          "George Osmond",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Diego Cocca",
+        "relation": "CurrentPosition",
+        "tail": "Head coach",
+        "surface": "Diego Cocca is currently a head coach.",
+        "question": "What is Diego Cocca's current position?",
+        "triplet": [
+          "Diego Cocca",
+          "CurrentPosition",
+          "Head coach"
+        ]
+      },
+      {
+        "head": "Dimitar Telkiyski",
+        "relation": "CurrentPosition",
+        "tail": "footballer",
+        "surface": "Dimitar Telkiyski is currently a footballer.",
+        "question": "What is Dimitar Telkiyski's current position?",
+        "triplet": [
+          "Dimitar Telkiyski",
+          "CurrentPosition",
+          "footballer"
+        ]
+      },
+      {
+        "head": "El pecado",
+        "relation": "PublisherPrimary",
+        "tail": "Studio Films",
+        "surface": "The work 'El pecado' was produced by Studio Films.",
+        "question": "Which company produced 'El pecado'?",
+        "triplet": [
+          "El pecado",
+          "PublisherPrimary",
+          "Studio Films"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "FoundingDate",
+        "tail": "1776",
+        "surface": "The United States was founded in 1776.",
+        "question": "When was the United States founded?",
+        "triplet": [
+          "United States",
+          "FoundingDate",
+          "1776"
+        ]
+      },
+      {
+        "head": "Malaysia: A History",
+        "relation": "PublicationDate",
+        "tail": "1982",
+        "surface": "The book 'Malaysia: A History' was published in 1982.",
+        "question": "When was 'Malaysia: A History' published?",
+        "triplet": [
+          "Malaysia: A History",
+          "PublicationDate",
+          "1982"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Arnoldo Mondadori",
+        "relation": "CurrentPosition",
+        "tail": "Founder",
+        "surface": "Arnoldo Mondadori was the founder of the Mondadori Group.",
+        "question": "What position did Arnoldo Mondadori hold?",
+        "triplet": [
+          "Arnoldo Mondadori",
+          "CurrentPosition",
+          "Founder"
+        ]
+      },
+      {
+        "head": "NatWest Group",
+        "relation": "FoundingDate",
+        "tail": "1968",
+        "surface": "NatWest Group was founded in 1968.",
+        "question": "When was NatWest Group founded?",
+        "triplet": [
+          "NatWest Group",
+          "FoundingDate",
+          "1968"
+        ]
+      },
+      {
+        "head": "Boston College",
+        "relation": "HeadquartersCity",
+        "tail": "Boston",
+        "surface": "Boston College is located in Boston.",
+        "question": "In which city is Boston College located?",
+        "triplet": [
+          "Boston College",
+          "HeadquartersCity",
+          "Boston"
+        ]
+      },
+      {
+        "head": "Prosper Mauroy",
+        "relation": "NationalityPrimary",
+        "tail": "France",
+        "surface": "Prosper Mauroy was French.",
+        "question": "What is the nationality of Prosper Mauroy?",
+        "triplet": [
+          "Prosper Mauroy",
+          "NationalityPrimary",
+          "France"
+        ]
+      },
+      {
+        "head": "Happiest Minds Technologies",
+        "relation": "ParentOrganization",
+        "tail": "Happiest Minds Group",
+        "surface": "Happiest Minds Technologies is part of the Happiest Minds Group.",
+        "question": "What is the parent organization of Happiest Minds Technologies?",
+        "triplet": [
+          "Happiest Minds Technologies",
+          "ParentOrganization",
+          "Happiest Minds Group"
+        ]
+      },
+      {
+        "head": "Robert J. Smith",
+        "relation": "BirthPlace",
+        "tail": "Blackpool",
+        "surface": "Robert J. Smith was born in Blackpool, England.",
+        "question": "Where was Robert J. Smith born?",
+        "triplet": [
+          "Robert J. Smith",
+          "BirthPlace",
+          "Blackpool"
+        ]
+      },
+      {
+        "head": "Most",
+        "relation": "CurrentEmployer",
+        "tail": "Microsoft",
+        "surface": "Most currently works for Microsoft.",
+        "question": "Who does Most work for?",
+        "triplet": [
+          "Most",
+          "CurrentEmployer",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "Sterling Equities",
+        "relation": "ParentOrganization",
+        "tail": "Sterling Partners",
+        "surface": "Sterling Equities is a subsidiary of Sterling Partners.",
+        "question": "What is the parent organization of Sterling Equities?",
+        "triplet": [
+          "Sterling Equities",
+          "ParentOrganization",
+          "Sterling Partners"
+        ]
+      },
+      {
+        "head": "Samuel Slater",
+        "relation": "CurrentEmployer",
+        "tail": "Slater Mill",
+        "surface": "Samuel Slater founded and worked at Slater Mill.",
+        "question": "What company did Samuel Slater work for?",
+        "triplet": [
+          "Samuel Slater",
+          "CurrentEmployer",
+          "Slater Mill"
+        ]
+      },
+      {
+        "head": "Simon Dorman",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "Simon Dorman studied at the University of Cambridge.",
+        "question": "Where did Simon Dorman study?",
+        "triplet": [
+          "Simon Dorman",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "University of Mahajanga",
+        "relation": "FoundingDate",
+        "tail": "1977",
+        "surface": "The University of Mahajanga was founded in 1977.",
+        "question": "When was the University of Mahajanga founded?",
+        "triplet": [
+          "University of Mahajanga",
+          "FoundingDate",
+          "1977"
+        ]
+      },
+      {
+        "head": "Frederick Douglass",
+        "relation": "CurrentEmployer",
+        "tail": "United States government",
+        "surface": "Frederick Douglass worked for the United States government.",
+        "question": "What organization did Frederick Douglass work for?",
+        "triplet": [
+          "Frederick Douglass",
+          "CurrentEmployer",
+          "United States government"
+        ]
+      },
+      {
+        "head": "Marc Chagall",
+        "relation": "BirthDate",
+        "tail": "1887",
+        "surface": "Marc Chagall was born in 1887.",
+        "question": "When was Marc Chagall born?",
+        "triplet": [
+          "Marc Chagall",
+          "BirthDate",
+          "1887"
+        ]
+      },
+      {
+        "head": "Cartoon Network Studios",
+        "relation": "ParentOrganization",
+        "tail": "Cartoon Network",
+        "surface": "Cartoon Network Studios is a subsidiary of Cartoon Network.",
+        "question": "What is the parent organization of Cartoon Network Studios?",
+        "triplet": [
+          "Cartoon Network Studios",
+          "ParentOrganization",
+          "Cartoon Network"
+        ]
+      },
+      {
+        "head": "Harry Potter and the Goblet of Fire",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "J. K. Rowling",
+        "surface": "Harry Potter and the Goblet of Fire was written by J. K. Rowling.",
+        "question": "Who wrote Harry Potter and the Goblet of Fire?",
+        "triplet": [
+          "Harry Potter and the Goblet of Fire",
+          "AuthorOfWorkPrimary",
+          "J. K. Rowling"
+        ]
+      },
+      {
+        "head": "Bambino",
+        "relation": "FoundedByPrimary",
+        "tail": "John Bambino",
+        "surface": "Bambino (company) was founded by John Bambino.",
+        "question": "Who founded Bambino (company)?",
+        "triplet": [
+          "Bambino",
+          "FoundedByPrimary",
+          "John Bambino"
+        ]
+      },
+      {
+        "head": "Norman Lear",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Emerson College",
+        "surface": "Norman Lear attended Emerson College.",
+        "question": "Which college did Norman Lear attend?",
+        "triplet": [
+          "Norman Lear",
+          "AlmaMaterPrimary",
+          "Emerson College"
+        ]
+      },
+      {
+        "head": "Newark, New Jersey",
+        "relation": "BirthPlace",
+        "tail": "Shaquille O'Neal",
+        "surface": "Shaquille O'Neal was born in Newark, New Jersey.",
+        "question": "What basketball player was born in Newark?",
+        "triplet": [
+          "Newark, New Jersey",
+          "BirthPlace",
+          "Shaquille O'Neal"
+        ]
+      },
+      {
+        "head": "Montgolfier brothers",
+        "relation": "BirthPlace",
+        "tail": "Annonay",
+        "surface": "The Montgolfier brothers were born in Annonay.",
+        "question": "Where were the Montgolfier brothers born?",
+        "triplet": [
+          "Montgolfier brothers",
+          "BirthPlace",
+          "Annonay"
+        ]
+      },
+      {
+        "head": "Port of Felixstowe",
+        "relation": "HeadquartersCountry",
+        "tail": "United Kingdom",
+        "surface": "The Port of Felixstowe is headquartered in the United Kingdom.",
+        "question": "What country is the Port of Felixstowe headquartered in?",
+        "triplet": [
+          "Port of Felixstowe",
+          "HeadquartersCountry",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Mikkel Beckmann",
+        "relation": "BirthPlace",
+        "tail": "Aarhus",
+        "surface": "Mikkel Beckmann was born in Aarhus.",
+        "question": "Where was Mikkel Beckmann born?",
+        "triplet": [
+          "Mikkel Beckmann",
+          "BirthPlace",
+          "Aarhus"
+        ]
+      },
+      {
+        "head": "Ol' Dirty Bastard",
+        "relation": "CurrentEmployer",
+        "tail": "Wu-Tang Clan",
+        "surface": "Ol' Dirty Bastard was a member of Wu-Tang Clan.",
+        "question": "What group was Ol' Dirty Bastard a member of?",
+        "triplet": [
+          "Ol' Dirty Bastard",
+          "CurrentEmployer",
+          "Wu-Tang Clan"
+        ]
+      },
+      {
+        "head": "Remich",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Luxembourg City",
+        "surface": "The capital of Luxembourg is Luxembourg City.",
+        "question": "What is the capital of Luxembourg?",
+        "triplet": [
+          "Remich",
+          "CapitalCityOfCountry",
+          "Luxembourg City"
+        ]
+      },
+      {
+        "head": "Sam Cooke",
+        "relation": "BirthPlace",
+        "tail": "Clarksdale",
+        "surface": "Sam Cooke was born in Clarksdale.",
+        "question": "Where was Sam Cooke born?",
+        "triplet": [
+          "Sam Cooke",
+          "BirthPlace",
+          "Clarksdale"
+        ]
+      },
+      {
+        "head": "James Harris",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "James Harris studied at the University of Cambridge.",
+        "question": "Where did James Harris study?",
+        "triplet": [
+          "James Harris",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "Faithfully",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "The song Faithfully is in English.",
+        "question": "What language is the song Faithfully in?",
+        "triplet": [
+          "Faithfully",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Jean-Baptiste Colbert",
+        "relation": "NationalityPrimary",
+        "tail": "France",
+        "surface": "Jean-Baptiste Colbert was French.",
+        "question": "What was Jean-Baptiste Colbert's nationality?",
+        "triplet": [
+          "Jean-Baptiste Colbert",
+          "NationalityPrimary",
+          "France"
+        ]
+      },
+      {
+        "head": "James Horner",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Southern California",
+        "surface": "James Horner studied at the University of Southern California.",
+        "question": "Which university did James Horner attend?",
+        "triplet": [
+          "James Horner",
+          "AlmaMaterPrimary",
+          "University of Southern California"
+        ]
+      },
+      {
+        "head": "Avaye Barbad",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Mohsen Namjoo",
+        "surface": "Avaye Barbad was authored by Mohsen Namjoo.",
+        "question": "Who authored Avaye Barbad?",
+        "triplet": [
+          "Avaye Barbad",
+          "AuthorOfWorkPrimary",
+          "Mohsen Namjoo"
+        ]
+      },
+      {
+        "head": "McLaren Automotive",
+        "relation": "FoundingDate",
+        "tail": "1989",
+        "surface": "McLaren Automotive was founded in 1989.",
+        "question": "When was McLaren Automotive founded?",
+        "triplet": [
+          "McLaren Automotive",
+          "FoundingDate",
+          "1989"
+        ]
+      },
+      {
+        "head": "Marion Morrison",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Southern California",
+        "surface": "Marion Morrison attended the University of Southern California.",
+        "question": "Which university did Marion Morrison attend?",
+        "triplet": [
+          "Marion Morrison",
+          "AlmaMaterPrimary",
+          "University of Southern California"
+        ]
+      },
+      {
+        "head": "Monika Sele\u0161",
+        "relation": "CurrentEmployer",
+        "tail": "Tennis Channel",
+        "surface": "Monika Sele\u0161 currently works for the Tennis Channel.",
+        "question": "Who is Monika Sele\u0161's current employer?",
+        "triplet": [
+          "Monika Sele\u0161",
+          "CurrentEmployer",
+          "Tennis Channel"
+        ]
+      },
+      {
+        "head": "Jesse Helms",
+        "relation": "CurrentEmployer",
+        "tail": "United States Senate",
+        "surface": "Jesse Helms worked for the United States Senate.",
+        "question": "Who employed Jesse Helms?",
+        "triplet": [
+          "Jesse Helms",
+          "CurrentEmployer",
+          "United States Senate"
+        ]
+      },
+      {
+        "head": "Springfield College",
+        "relation": "HeadquartersCity",
+        "tail": "Springfield",
+        "surface": "Springfield College is located in Springfield.",
+        "question": "What city is Springfield College located in?",
+        "triplet": [
+          "Springfield College",
+          "HeadquartersCity",
+          "Springfield"
+        ]
+      },
+      {
+        "head": "Linda Clark",
+        "relation": "CurrentEmployer",
+        "tail": "Idaho State Board of Education",
+        "surface": "Linda Clark currently works for the Idaho State Board of Education.",
+        "question": "What organization does Linda Clark currently work for?",
+        "triplet": [
+          "Linda Clark",
+          "CurrentEmployer",
+          "Idaho State Board of Education"
+        ]
+      },
+      {
+        "head": "Xapuri Rural Workers' Union",
+        "relation": "HeadquartersCity",
+        "tail": "Xapuri",
+        "surface": "The Xapuri Rural Workers' Union is headquartered in Xapuri.",
+        "question": "What city is the Xapuri Rural Workers' Union headquartered in?",
+        "triplet": [
+          "Xapuri Rural Workers' Union",
+          "HeadquartersCity",
+          "Xapuri"
+        ]
+      },
+      {
+        "head": "Egyptian Antiquities Organization",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Tourism and Antiquities",
+        "surface": "The Egyptian Antiquities Organization is a part of the Ministry of Tourism and Antiquities of Egypt.",
+        "question": "What ministry is the Egyptian Antiquities Organization part of?",
+        "triplet": [
+          "Egyptian Antiquities Organization",
+          "ParentOrganization",
+          "Ministry of Tourism and Antiquities"
+        ]
+      },
+      {
+        "head": "Arkansas Department of Education",
+        "relation": "ParentOrganization",
+        "tail": "Arkansas State Board of Education",
+        "surface": "The Arkansas Department of Education is under the authority of the Arkansas State Board of Education.",
+        "question": "What organization oversees the Arkansas Department of Education?",
+        "triplet": [
+          "Arkansas Department of Education",
+          "ParentOrganization",
+          "Arkansas State Board of Education"
+        ]
+      },
+      {
+        "head": "\u00c9douard Manet",
+        "relation": "CurrentEmployer",
+        "tail": "None",
+        "surface": "\u00c9douard Manet was not employed by any organization at the time of his death.",
+        "question": "What organization employed \u00c9douard Manet?",
+        "triplet": [
+          "\u00c9douard Manet",
+          "CurrentEmployer",
+          "None"
+        ]
+      },
+      {
+        "head": "Redis Ltd.",
+        "relation": "FoundedByPrimary",
+        "tail": "Salvatore Sanfilippo",
+        "surface": "Redis Ltd. was founded by Salvatore Sanfilippo.",
+        "question": "Who founded Redis Ltd.?",
+        "triplet": [
+          "Redis Ltd.",
+          "FoundedByPrimary",
+          "Salvatore Sanfilippo"
+        ]
+      },
+      {
+        "head": "RAND Corporation",
+        "relation": "StockExchangePrimary",
+        "tail": "Not publicly traded",
+        "surface": "The RAND Corporation is not publicly traded on any stock exchange.",
+        "question": "On what stock exchange is the RAND Corporation traded?",
+        "triplet": [
+          "RAND Corporation",
+          "StockExchangePrimary",
+          "Not publicly traded"
+        ]
+      },
+      {
+        "head": "Bobby Brown",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "My Prerogative",
+        "surface": "Bobby Brown is the artist of the song My Prerogative.",
+        "question": "What song did Bobby Brown sing?",
+        "triplet": [
+          "Bobby Brown",
+          "AuthorOfWorkPrimary",
+          "My Prerogative"
+        ]
+      },
+      {
+        "head": "Enrico Mattei",
+        "relation": "NationalityPrimary",
+        "tail": "Italy",
+        "surface": "Enrico Mattei was Italian.",
+        "question": "What nationality was Enrico Mattei?",
+        "triplet": [
+          "Enrico Mattei",
+          "NationalityPrimary",
+          "Italy"
+        ]
+      },
+      {
+        "head": "Nadine Coyle",
+        "relation": "CurrentEmployer",
+        "tail": "Polydor Records",
+        "surface": "Nadine Coyle is currently signed to Polydor Records.",
+        "question": "What record label is Nadine Coyle signed to?",
+        "triplet": [
+          "Nadine Coyle",
+          "CurrentEmployer",
+          "Polydor Records"
+        ]
+      },
+      {
+        "head": "Ivor Novello",
+        "relation": "BirthDate",
+        "tail": "1893",
+        "surface": "Ivor Novello was born in 1893.",
+        "question": "When was Ivor Novello born?",
+        "triplet": [
+          "Ivor Novello",
+          "BirthDate",
+          "1893"
+        ]
+      },
+      {
+        "head": "The Economic Development of Egypt",
+        "relation": "PublisherPrimary",
+        "tail": "Oxford University Press",
+        "surface": "The Economic Development of Egypt was published by Oxford University Press.",
+        "question": "Which publisher released The Economic Development of Egypt?",
+        "triplet": [
+          "The Economic Development of Egypt",
+          "PublisherPrimary",
+          "Oxford University Press"
+        ]
+      },
+      {
+        "head": "The True Story of Ah Q",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Chinese",
+        "surface": "The True Story of Ah Q was originally written in Chinese.",
+        "question": "What language was The True Story of Ah Q written in?",
+        "triplet": [
+          "The True Story of Ah Q",
+          "LanguageOfWorkPrimary",
+          "Chinese"
+        ]
+      },
+      {
+        "head": "Sandals Resorts Limited",
+        "relation": "StockExchangePrimary",
+        "tail": "Jamaica Stock Exchange",
+        "surface": "Sandals Resorts Limited is listed on the Jamaica Stock Exchange.",
+        "question": "On which stock exchange is Sandals Resorts Limited listed?",
+        "triplet": [
+          "Sandals Resorts Limited",
+          "StockExchangePrimary",
+          "Jamaica Stock Exchange"
+        ]
+      },
+      {
+        "head": "Candide",
+        "relation": "PublicationDate",
+        "tail": "1759",
+        "surface": "Candide was published in 1759.",
+        "question": "When was Candide published?",
+        "triplet": [
+          "Candide",
+          "PublicationDate",
+          "1759"
+        ]
+      },
+      {
+        "head": "Markus Staiger",
+        "relation": "CurrentEmployer",
+        "tail": "Nuclear Blast Records",
+        "surface": "Markus Staiger currently works for Nuclear Blast Records.",
+        "question": "Who is Markus Staiger's current employer?",
+        "triplet": [
+          "Markus Staiger",
+          "CurrentEmployer",
+          "Nuclear Blast Records"
+        ]
+      },
+      {
+        "head": "Queen Consort",
+        "relation": "CurrentEmployer",
+        "tail": "British Royal Family",
+        "surface": "The Queen Consort is currently employed by the British Royal Family.",
+        "question": "Who employs the Queen Consort?",
+        "triplet": [
+          "Queen Consort",
+          "CurrentEmployer",
+          "British Royal Family"
+        ]
+      },
+      {
+        "head": "Fergus",
+        "relation": "NationalityPrimary",
+        "tail": "Scotland",
+        "surface": "Fergus is Scottish.",
+        "question": "What is the nationality of Fergus?",
+        "triplet": [
+          "Fergus",
+          "NationalityPrimary",
+          "Scotland"
+        ]
+      },
+      {
+        "head": "The West Wind",
+        "relation": "PublicationDate",
+        "tail": "1917",
+        "surface": "The West Wind was painted in 1917.",
+        "question": "When was The West Wind painted?",
+        "triplet": [
+          "The West Wind",
+          "PublicationDate",
+          "1917"
+        ]
+      },
+      {
+        "head": "Tokyo University of the Arts",
+        "relation": "FoundingDate",
+        "tail": "1949",
+        "surface": "Tokyo University of the Arts was founded in 1949.",
+        "question": "When was Tokyo University of the Arts founded?",
+        "triplet": [
+          "Tokyo University of the Arts",
+          "FoundingDate",
+          "1949"
+        ]
+      },
+      {
+        "head": "Pierce Brosnan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Drama Centre London",
+        "surface": "Pierce Brosnan studied at the Drama Centre London.",
+        "question": "Where did Pierce Brosnan study acting?",
+        "triplet": [
+          "Pierce Brosnan",
+          "AlmaMaterPrimary",
+          "Drama Centre London"
+        ]
+      },
+      {
+        "head": "Norman Foster",
+        "relation": "BirthPlace",
+        "tail": "Manchester",
+        "surface": "Norman Foster was born in Manchester.",
+        "question": "Where was Norman Foster born?",
+        "triplet": [
+          "Norman Foster",
+          "BirthPlace",
+          "Manchester"
+        ]
+      },
+      {
+        "head": "Kappe Arabhatta",
+        "relation": "CurrentEmployer",
+        "tail": "Chalukya dynasty",
+        "surface": "Kappe Arabhatta was employed by the Chalukya dynasty.",
+        "question": "Who employed Kappe Arabhatta?",
+        "triplet": [
+          "Kappe Arabhatta",
+          "CurrentEmployer",
+          "Chalukya dynasty"
+        ]
+      },
+      {
+        "head": "Brooklyn Museum",
+        "relation": "HeadquartersCity",
+        "tail": "Brooklyn",
+        "surface": "The Brooklyn Museum is located in Brooklyn, New York.",
+        "question": "What city is the Brooklyn Museum located in?",
+        "triplet": [
+          "Brooklyn Museum",
+          "HeadquartersCity",
+          "Brooklyn"
+        ]
+      },
+      {
+        "head": "Doylestown, Pennsylvania",
+        "relation": "BirthPlace",
+        "tail": "Margaret Mead",
+        "surface": "Margaret Mead was born in Doylestown, Pennsylvania.",
+        "question": "Who was born in Doylestown, Pennsylvania?",
+        "triplet": [
+          "Doylestown, Pennsylvania",
+          "BirthPlace",
+          "Margaret Mead"
+        ]
+      },
+      {
+        "head": "James Corden",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Late Late Show with James Corden",
+        "surface": "James Corden is the host and a writer for The Late Late Show with James Corden.",
+        "question": "What show is James Corden known for hosting?",
+        "triplet": [
+          "James Corden",
+          "AuthorOfWorkPrimary",
+          "The Late Late Show with James Corden"
+        ]
+      },
+      {
+        "head": "Fort Worth",
+        "relation": "HeadquartersCity",
+        "tail": "XTO Energy",
+        "surface": "XTO Energy is headquartered in Fort Worth.",
+        "question": "What energy company is headquartered in Fort Worth?",
+        "triplet": [
+          "Fort Worth",
+          "HeadquartersCity",
+          "XTO Energy"
+        ]
+      },
+      {
+        "head": "Paul Bay",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "surface": "Paul Bay attended the University of California, Berkeley.",
+        "question": "What university did Paul Bay attend?",
+        "triplet": [
+          "Paul Bay",
+          "AlmaMaterPrimary",
+          "University of California, Berkeley"
+        ]
+      },
+      {
+        "head": "Bruce Law",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "surface": "Bruce Law was born in 1965.",
+        "question": "When was Bruce Law born?",
+        "triplet": [
+          "Bruce Law",
+          "BirthDate",
+          "1965"
+        ]
+      },
+      {
+        "head": "University of Stirling",
+        "relation": "HeadquartersCity",
+        "tail": "Stirling",
+        "surface": "The University of Stirling is located in Stirling.",
+        "question": "Which city is the University of Stirling in?",
+        "triplet": [
+          "University of Stirling",
+          "HeadquartersCity",
+          "Stirling"
+        ]
+      },
+      {
+        "head": "Himanshu Rai",
+        "relation": "BirthPlace",
+        "tail": "Kolkata",
+        "surface": "Himanshu Rai was born in Kolkata.",
+        "question": "Where was Himanshu Rai born?",
+        "triplet": [
+          "Himanshu Rai",
+          "BirthPlace",
+          "Kolkata"
+        ]
+      },
+      {
+        "head": "Dennis Hastert",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Wheaton College",
+        "surface": "Dennis Hastert attended Wheaton College in Illinois.",
+        "question": "Which college did Dennis Hastert attend?",
+        "triplet": [
+          "Dennis Hastert",
+          "AlmaMaterPrimary",
+          "Wheaton College"
+        ]
+      },
+      {
+        "head": "Albert Camus",
+        "relation": "CurrentPosition",
+        "tail": "Writer",
+        "surface": "Albert Camus was a writer.",
+        "question": "What was Albert Camus's primary profession?",
+        "triplet": [
+          "Albert Camus",
+          "CurrentPosition",
+          "Writer"
+        ]
+      },
+      {
+        "head": "Butte Historical Society",
+        "relation": "FoundedByPrimary",
+        "tail": "Jane Doe",
+        "surface": "The Butte Historical Society was founded by Jane Doe.",
+        "question": "Who founded the Butte Historical Society?",
+        "triplet": [
+          "Butte Historical Society",
+          "FoundedByPrimary",
+          "Jane Doe"
+        ]
+      },
+      {
+        "head": "Veli Je\u017eenj",
+        "relation": "BirthPlace",
+        "tail": "Slovenia",
+        "surface": "Veli Je\u017eenj was born in Slovenia.",
+        "question": "Where was Veli Je\u017eenj born?",
+        "triplet": [
+          "Veli Je\u017eenj",
+          "BirthPlace",
+          "Slovenia"
+        ]
+      },
+      {
+        "head": "State Clerk",
+        "relation": "CurrentEmployer",
+        "tail": "State Government",
+        "surface": "State Clerk works for the State Government.",
+        "question": "Who employs State Clerk?",
+        "triplet": [
+          "State Clerk",
+          "CurrentEmployer",
+          "State Government"
+        ]
+      },
+      {
+        "head": "Senate of Berlin",
+        "relation": "HeadquartersCity",
+        "tail": "Berlin",
+        "surface": "The Senate of Berlin is headquartered in Berlin.",
+        "question": "What city is the Senate of Berlin headquartered in?",
+        "triplet": [
+          "Senate of Berlin",
+          "HeadquartersCity",
+          "Berlin"
+        ]
+      },
+      {
+        "head": "Univision",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "Univision's headquarters are in New York City.",
+        "question": "What city is Univision headquartered in?",
+        "triplet": [
+          "Univision",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Pall Mall Group Holdings",
+        "relation": "FoundingDate",
+        "tail": "2005",
+        "surface": "Pall Mall Group Holdings was founded in 2005.",
+        "question": "When was Pall Mall Group Holdings founded?",
+        "triplet": [
+          "Pall Mall Group Holdings",
+          "FoundingDate",
+          "2005"
+        ]
+      },
+      {
+        "head": "Fargo Theatre",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Fargo Film Festival",
+        "surface": "The Fargo Theatre is a primary venue for the Fargo Film Festival series.",
+        "question": "What film series is held at the Fargo Theatre?",
+        "triplet": [
+          "Fargo Theatre",
+          "SeriesOfWorkPrimary",
+          "Fargo Film Festival"
+        ]
+      },
+      {
+        "head": "PostgreSQL Community Association",
+        "relation": "FoundingDate",
+        "tail": "2010",
+        "surface": "The PostgreSQL Community Association was founded in 2010.",
+        "question": "When was the PostgreSQL Community Association founded?",
+        "triplet": [
+          "PostgreSQL Community Association",
+          "FoundingDate",
+          "2010"
+        ]
+      },
+      {
+        "head": "Jessie Fleming",
+        "relation": "CurrentEmployer",
+        "tail": "Broadway Publishing Company",
+        "surface": "Jessie Fleming was employed by the Broadway Publishing Company.",
+        "question": "Which company employed Jessie Fleming?",
+        "triplet": [
+          "Jessie Fleming",
+          "CurrentEmployer",
+          "Broadway Publishing Company"
+        ]
+      },
+      {
+        "head": "Sales Company",
+        "relation": "ParentOrganization",
+        "tail": "Holding Corp",
+        "surface": "Sales Company is a subsidiary of Holding Corp.",
+        "question": "What is the parent organization of Sales Company?",
+        "triplet": [
+          "Sales Company",
+          "ParentOrganization",
+          "Holding Corp"
+        ]
+      },
+      {
+        "head": "Rwe Ag",
+        "relation": "HeadquartersCity",
+        "tail": "Essen",
+        "surface": "RWE AG is headquartered in Essen.",
+        "question": "What city is RWE AG headquartered in?",
+        "triplet": [
+          "Rwe Ag",
+          "HeadquartersCity",
+          "Essen"
+        ]
+      },
+      {
+        "head": "Silicon Valley",
+        "relation": "HeadquartersCity",
+        "tail": "Google",
+        "surface": "Google is headquartered in Silicon Valley.",
+        "question": "Where is Google headquartered?",
+        "triplet": [
+          "Silicon Valley",
+          "HeadquartersCity",
+          "Google"
+        ]
+      },
+      {
+        "head": "John Ratzenberger",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "John Ratzenberger is an American.",
+        "question": "What is John Ratzenberger's nationality?",
+        "triplet": [
+          "John Ratzenberger",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Victoria University Press",
+        "relation": "FoundingDate",
+        "tail": "1978",
+        "surface": "Victoria University Press was founded in 1978.",
+        "question": "When was Victoria University Press founded?",
+        "triplet": [
+          "Victoria University Press",
+          "FoundingDate",
+          "1978"
+        ]
+      },
+      {
+        "head": "Romford",
+        "relation": "CountryOfCity",
+        "tail": "United Kingdom",
+        "surface": "Romford is in the United Kingdom.",
+        "question": "What country is Romford in?",
+        "triplet": [
+          "Romford",
+          "CountryOfCity",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Chad Stahelski",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Massachusetts Amherst",
+        "surface": "Chad Stahelski attended the University of Massachusetts Amherst.",
+        "question": "What university did Chad Stahelski attend?",
+        "triplet": [
+          "Chad Stahelski",
+          "AlmaMaterPrimary",
+          "University of Massachusetts Amherst"
+        ]
+      },
+      {
+        "head": "Paul Baribault",
+        "relation": "BirthPlace",
+        "tail": "San Diego",
+        "surface": "Paul Baribault was born in San Diego.",
+        "question": "Where was Paul Baribault born?",
+        "triplet": [
+          "Paul Baribault",
+          "BirthPlace",
+          "San Diego"
+        ]
+      },
+      {
+        "head": "The Wealth of Nations",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "The Wealth of Nations was originally written in English.",
+        "question": "What language was The Wealth of Nations written in?",
+        "triplet": [
+          "The Wealth of Nations",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Rollo",
+        "relation": "BirthPlace",
+        "tail": "Scandinavia",
+        "surface": "Rollo was born in Scandinavia.",
+        "question": "Where was Rollo born?",
+        "triplet": [
+          "Rollo",
+          "BirthPlace",
+          "Scandinavia"
+        ]
+      },
+      {
+        "head": "Eli Chera",
+        "relation": "CurrentEmployer",
+        "tail": "BentallGreenOak",
+        "surface": "Eli Chera currently works for BentallGreenOak.",
+        "question": "Who is Eli Chera's current employer?",
+        "triplet": [
+          "Eli Chera",
+          "CurrentEmployer",
+          "BentallGreenOak"
+        ]
+      },
+      {
+        "head": "Federal Government of Ethiopia",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "surface": "The Federal Government of Ethiopia was founded in 1995.",
+        "question": "When was the Federal Government of Ethiopia founded?",
+        "triplet": [
+          "Federal Government of Ethiopia",
+          "FoundingDate",
+          "1995"
+        ]
+      },
+      {
+        "head": "Luxembourg",
+        "relation": "CountryOfCity",
+        "tail": "P\u00e9tange",
+        "surface": "P\u00e9tange is located in Luxembourg.",
+        "question": "What country is P\u00e9tange in?",
+        "triplet": [
+          "Luxembourg",
+          "CountryOfCity",
+          "P\u00e9tange"
+        ]
+      },
+      {
+        "head": "Cato the Elder",
+        "relation": "BirthPlace",
+        "tail": "Latium",
+        "surface": "Cato the Elder was born in the region of Latium.",
+        "question": "In which region was Cato the Elder born?",
+        "triplet": [
+          "Cato the Elder",
+          "BirthPlace",
+          "Latium"
+        ]
+      },
+      {
+        "head": "Micael Byd\u00e9n",
+        "relation": "CurrentEmployer",
+        "tail": "Swedish Armed Forces",
+        "surface": "Micael Byd\u00e9n works for the Swedish Armed Forces.",
+        "question": "Who employs Micael Byd\u00e9n?",
+        "triplet": [
+          "Micael Byd\u00e9n",
+          "CurrentEmployer",
+          "Swedish Armed Forces"
+        ]
+      },
+      {
+        "head": "Img",
+        "relation": "FoundedByPrimary",
+        "tail": "Mark McCormack",
+        "surface": "IMG was founded by Mark McCormack.",
+        "question": "Who founded IMG?",
+        "triplet": [
+          "Img",
+          "FoundedByPrimary",
+          "Mark McCormack"
+        ]
+      },
+      {
+        "head": "Joseph Edward Sydenham",
+        "relation": "CurrentEmployer",
+        "tail": "British Colonial Office",
+        "surface": "Joseph Edward Sydenham worked for the British Colonial Office.",
+        "question": "Who employed Joseph Edward Sydenham?",
+        "triplet": [
+          "Joseph Edward Sydenham",
+          "CurrentEmployer",
+          "British Colonial Office"
+        ]
+      },
+      {
+        "head": "The Famous Five",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "The Famous Five is written in English.",
+        "question": "What language is The Famous Five written in?",
+        "triplet": [
+          "The Famous Five",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Matt Huffman",
+        "relation": "BirthPlace",
+        "tail": "Springfield",
+        "surface": "Matt Huffman was born in Springfield, Ohio.",
+        "question": "Where was Matt Huffman born?",
+        "triplet": [
+          "Matt Huffman",
+          "BirthPlace",
+          "Springfield"
+        ]
+      },
+      {
+        "head": "Mozilla Research",
+        "relation": "FoundedByPrimary",
+        "tail": "Mozilla Foundation",
+        "surface": "Mozilla Research was founded by the Mozilla Foundation.",
+        "question": "What organization founded Mozilla Research?",
+        "triplet": [
+          "Mozilla Research",
+          "FoundedByPrimary",
+          "Mozilla Foundation"
+        ]
+      },
+      {
+        "head": "Nicola Yoon",
+        "relation": "CurrentEmployer",
+        "tail": "Penguin Random House",
+        "surface": "Nicola Yoon is currently published by Penguin Random House.",
+        "question": "Who is Nicola Yoon's current publisher?",
+        "triplet": [
+          "Nicola Yoon",
+          "CurrentEmployer",
+          "Penguin Random House"
+        ]
+      },
+      {
+        "head": "King Fuad I",
+        "relation": "BirthDate",
+        "tail": "1868",
+        "surface": "King Fuad I was born in 1868.",
+        "question": "In which year was King Fuad I born?",
+        "triplet": [
+          "King Fuad I",
+          "BirthDate",
+          "1868"
+        ]
+      },
+      {
+        "head": "Stephen P. MacMillan",
+        "relation": "CurrentEmployer",
+        "tail": "Hologic",
+        "surface": "Stephen P. MacMillan currently works for Hologic.",
+        "question": "Who does Stephen P. MacMillan work for?",
+        "triplet": [
+          "Stephen P. MacMillan",
+          "CurrentEmployer",
+          "Hologic"
+        ]
+      },
+      {
+        "head": "Kellanova",
+        "relation": "HeadquartersCity",
+        "tail": "Chicago",
+        "surface": "Kellanova is headquartered in Chicago.",
+        "question": "What city is Kellanova headquartered in?",
+        "triplet": [
+          "Kellanova",
+          "HeadquartersCity",
+          "Chicago"
+        ]
+      },
+      {
+        "head": "Moonlit Cove",
+        "relation": "CountryOfCity",
+        "tail": "Malaysia",
+        "surface": "Moonlit Cove is located in Malaysia.",
+        "question": "What country is Moonlit Cove in?",
+        "triplet": [
+          "Moonlit Cove",
+          "CountryOfCity",
+          "Malaysia"
+        ]
+      },
+      {
+        "head": "John W. Mecom Jr.",
+        "relation": "BirthDate",
+        "tail": "1911",
+        "surface": "John W. Mecom Jr. was born in 1911.",
+        "question": "When was John W. Mecom Jr. born?",
+        "triplet": [
+          "John W. Mecom Jr.",
+          "BirthDate",
+          "1911"
+        ]
+      },
+      {
+        "head": "Robert Williams",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Texas A&M University",
+        "surface": "Robert Williams attended Texas A&M University.",
+        "question": "Which college did Robert Williams attend?",
+        "triplet": [
+          "Robert Williams",
+          "AlmaMaterPrimary",
+          "Texas A&M University"
+        ]
+      },
+      {
+        "head": "John A. Deane",
+        "relation": "AlmaMaterPrimary",
+        "tail": "United States Naval Academy",
+        "surface": "John A. Deane attended the United States Naval Academy.",
+        "question": "Where did John A. Deane go to college?",
+        "triplet": [
+          "John A. Deane",
+          "AlmaMaterPrimary",
+          "United States Naval Academy"
+        ]
+      },
+      {
+        "head": "Vail",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kirsten Lynch",
+        "surface": "The current CEO of Vail is Kirsten Lynch.",
+        "question": "Who is the CEO of Vail?",
+        "triplet": [
+          "Vail",
+          "ChiefExecutiveOfficerCurrent",
+          "Kirsten Lynch"
+        ]
+      },
+      {
+        "head": "Port Operations Manager",
+        "relation": "CurrentPosition",
+        "tail": "Port Operations Manager",
+        "surface": "A Port Operations Manager holds the position of Port Operations Manager.",
+        "question": "What position does a Port Operations Manager hold?",
+        "triplet": [
+          "Port Operations Manager",
+          "CurrentPosition",
+          "Port Operations Manager"
+        ]
+      },
+      {
+        "head": "The Austrian Economy",
+        "relation": "PublicationDate",
+        "tail": "1940",
+        "surface": "'The Austrian Economy' was published in 1940.",
+        "question": "When was 'The Austrian Economy' published?",
+        "triplet": [
+          "The Austrian Economy",
+          "PublicationDate",
+          "1940"
+        ]
+      },
+      {
+        "head": "The Hour That Changes Everything",
+        "relation": "PublisherPrimary",
+        "tail": "Sacredise",
+        "surface": "The Hour That Changes Everything was published by Sacredise.",
+        "question": "Who published The Hour That Changes Everything?",
+        "triplet": [
+          "The Hour That Changes Everything",
+          "PublisherPrimary",
+          "Sacredise"
+        ]
+      },
+      {
+        "head": "The Overlook Press",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "The Overlook Press is headquartered in New York City.",
+        "question": "What city is The Overlook Press headquartered in?",
+        "triplet": [
+          "The Overlook Press",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Booking Holdings",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Glenn Fogel",
+        "surface": "The current CEO of Booking Holdings is Glenn Fogel.",
+        "question": "Who is the CEO of Booking Holdings?",
+        "triplet": [
+          "Booking Holdings",
+          "ChiefExecutiveOfficerCurrent",
+          "Glenn Fogel"
+        ]
+      },
+      {
+        "head": "Rust Foundation",
+        "relation": "HeadquartersCity",
+        "tail": "Wakefield",
+        "surface": "The Rust Foundation is headquartered in Wakefield, Massachusetts.",
+        "question": "What city is the Rust Foundation headquartered in?",
+        "triplet": [
+          "Rust Foundation",
+          "HeadquartersCity",
+          "Wakefield"
+        ]
+      },
+      {
+        "head": "The Planetary Society",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "The Planetary Society is headquartered in the United States.",
+        "question": "What country is The Planetary Society headquartered in?",
+        "triplet": [
+          "The Planetary Society",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "La Crosse Interstate Fair Association",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "The La Crosse Interstate Fair Association is headquartered in the United States.",
+        "question": "Which country is the La Crosse Interstate Fair Association headquartered in?",
+        "triplet": [
+          "La Crosse Interstate Fair Association",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "John Coltrane",
+        "relation": "BirthPlace",
+        "tail": "Hamlet",
+        "surface": "John Coltrane was born in Hamlet, North Carolina.",
+        "question": "Where was John Coltrane born?",
+        "triplet": [
+          "John Coltrane",
+          "BirthPlace",
+          "Hamlet"
+        ]
+      },
+      {
+        "head": "Arclight Films",
+        "relation": "CountryOfIncorporation",
+        "tail": "Australia",
+        "surface": "Arclight Films is incorporated in Australia.",
+        "question": "Where is Arclight Films incorporated?",
+        "triplet": [
+          "Arclight Films",
+          "CountryOfIncorporation",
+          "Australia"
+        ]
+      },
+      {
+        "head": "Chen Cheng-po",
+        "relation": "NationalityPrimary",
+        "tail": "Taiwan",
+        "surface": "Chen Cheng-po was a Taiwanese painter.",
+        "question": "What is the nationality of Chen Cheng-po?",
+        "triplet": [
+          "Chen Cheng-po",
+          "NationalityPrimary",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "Epic Games",
+        "relation": "FoundingDate",
+        "tail": "1991",
+        "surface": "Epic Games was founded in 1991.",
+        "question": "When was Epic Games founded?",
+        "triplet": [
+          "Epic Games",
+          "FoundingDate",
+          "1991"
+        ]
+      },
+      {
+        "head": "Harcourt, Brace & Company",
+        "relation": "FoundedByPrimary",
+        "tail": "Donald Brace",
+        "surface": "Harcourt, Brace & Company was founded by Donald Brace.",
+        "question": "Who co-founded Harcourt, Brace & Company?",
+        "triplet": [
+          "Harcourt, Brace & Company",
+          "FoundedByPrimary",
+          "Donald Brace"
+        ]
+      },
+      {
+        "head": "Black Star Inc.",
+        "relation": "HeadquartersCity",
+        "tail": "Moscow",
+        "surface": "Black Star Inc. is headquartered in Moscow.",
+        "question": "What city is Black Star Inc. headquartered in?",
+        "triplet": [
+          "Black Star Inc.",
+          "HeadquartersCity",
+          "Moscow"
+        ]
+      },
+      {
+        "head": "National Aeronautics and Space Administration",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "NASA is headquartered in the United States.",
+        "question": "Which country is NASA headquartered in?",
+        "triplet": [
+          "National Aeronautics and Space Administration",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Haverford College",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Haverford College is headquartered in the United States.",
+        "question": "What country is Haverford College headquartered in?",
+        "triplet": [
+          "Haverford College",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Palmer",
+        "relation": "BirthPlace",
+        "tail": "San Francisco",
+        "surface": "Palmer was born in San Francisco.",
+        "question": "Where was Palmer born?",
+        "triplet": [
+          "Palmer",
+          "BirthPlace",
+          "San Francisco"
+        ]
+      },
+      {
+        "head": "Nikolai Denkov",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "surface": "Nikolai Denkov was born in 1962.",
+        "question": "What year was Nikolai Denkov born?",
+        "triplet": [
+          "Nikolai Denkov",
+          "BirthDate",
+          "1962"
+        ]
+      },
+      {
+        "head": "Hopkins Capital Group",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Hopkins Capital Group is headquartered in the United States.",
+        "question": "What country is Hopkins Capital Group headquartered in?",
+        "triplet": [
+          "Hopkins Capital Group",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Albert Speer",
+        "relation": "CurrentEmployer",
+        "tail": "Nazi Party",
+        "surface": "Albert Speer was employed by the Nazi Party.",
+        "question": "Which organization employed Albert Speer?",
+        "triplet": [
+          "Albert Speer",
+          "CurrentEmployer",
+          "Nazi Party"
+        ]
+      },
+      {
+        "head": "Afghanistan",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Kabul",
+        "surface": "The capital of Afghanistan is Kabul.",
+        "question": "What is the capital of Afghanistan?",
+        "triplet": [
+          "Afghanistan",
+          "CapitalCityOfCountry",
+          "Kabul"
+        ]
+      },
+      {
+        "head": "Wallonia",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Dutch",
+        "surface": "The primary language of the Belgian federal government is Dutch.",
+        "question": "What is the primary language of the Belgian federal government?",
+        "triplet": [
+          "Wallonia",
+          "LanguageOfWorkPrimary",
+          "Dutch"
+        ]
+      },
+      {
+        "head": "Law Commissioner",
+        "relation": "CurrentPosition",
+        "tail": "Law Commission",
+        "surface": "A Law Commissioner currently works at the Law Commission.",
+        "question": "Where does a Law Commissioner work?",
+        "triplet": [
+          "Law Commissioner",
+          "CurrentPosition",
+          "Law Commission"
+        ]
+      },
+      {
+        "head": "Newquay",
+        "relation": "CountryOfCity",
+        "tail": "United Kingdom",
+        "surface": "Newquay is in the United Kingdom.",
+        "question": "Which country is Newquay in?",
+        "triplet": [
+          "Newquay",
+          "CountryOfCity",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "St Bartholomew's Hospital Medical College",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "surface": "St Bartholomew's Hospital Medical College is located in London.",
+        "question": "In which city is St Bartholomew's Hospital Medical College located?",
+        "triplet": [
+          "St Bartholomew's Hospital Medical College",
+          "HeadquartersCity",
+          "London"
+        ]
+      },
+      {
+        "head": "Landstar System",
+        "relation": "HeadquartersCity",
+        "tail": "Jacksonville",
+        "surface": "Landstar System is headquartered in Jacksonville, Florida.",
+        "question": "What city is Landstar System headquartered in?",
+        "triplet": [
+          "Landstar System",
+          "HeadquartersCity",
+          "Jacksonville"
+        ]
+      },
+      {
+        "head": "Warsaw",
+        "relation": "BirthPlace",
+        "tail": "Marie Curie",
+        "surface": "Marie Curie was born in Warsaw, Poland.",
+        "question": "Where was Marie Curie born?",
+        "triplet": [
+          "Warsaw",
+          "BirthPlace",
+          "Marie Curie"
+        ]
+      },
+      {
+        "head": "Ahmad Shah Durrani",
+        "relation": "BirthPlace",
+        "tail": "Multan",
+        "surface": "Ahmad Shah Durrani was born in Multan.",
+        "question": "Where was Ahmad Shah Durrani born?",
+        "triplet": [
+          "Ahmad Shah Durrani",
+          "BirthPlace",
+          "Multan"
+        ]
+      },
+      {
+        "head": "Kuwait University",
+        "relation": "FoundedByPrimary",
+        "tail": "Government of Kuwait",
+        "surface": "Kuwait University was founded by the Government of Kuwait.",
+        "question": "Who founded Kuwait University?",
+        "triplet": [
+          "Kuwait University",
+          "FoundedByPrimary",
+          "Government of Kuwait"
+        ]
+      },
+      {
+        "head": "Warrnambool",
+        "relation": "CountryOfCity",
+        "tail": "Australia",
+        "surface": "Warrnambool is a city in Australia.",
+        "question": "Which country is Warrnambool in?",
+        "triplet": [
+          "Warrnambool",
+          "CountryOfCity",
+          "Australia"
+        ]
+      },
+      {
+        "head": "Rome Transit Authority",
+        "relation": "ParentOrganization",
+        "tail": "City of Rome",
+        "surface": "The Rome Transit Authority is a subsidiary of the City of Rome.",
+        "question": "What is the parent organization of the Rome Transit Authority?",
+        "triplet": [
+          "Rome Transit Authority",
+          "ParentOrganization",
+          "City of Rome"
+        ]
+      },
+      {
+        "head": "Natural History Museum, London",
+        "relation": "FoundingDate",
+        "tail": "1881",
+        "surface": "The Natural History Museum, London was founded in 1881.",
+        "question": "When was the Natural History Museum, London founded?",
+        "triplet": [
+          "Natural History Museum, London",
+          "FoundingDate",
+          "1881"
+        ]
+      },
+      {
+        "head": "Sjeng Kremers",
+        "relation": "BirthPlace",
+        "tail": "Heerlen",
+        "surface": "Sjeng Kremers was born in Heerlen.",
+        "question": "Where was Sjeng Kremers born?",
+        "triplet": [
+          "Sjeng Kremers",
+          "BirthPlace",
+          "Heerlen"
+        ]
+      },
+      {
+        "head": "Fitch Ratings",
+        "relation": "FoundingDate",
+        "tail": "1913",
+        "surface": "Fitch Ratings was founded in 1913.",
+        "question": "When was Fitch Ratings founded?",
+        "triplet": [
+          "Fitch Ratings",
+          "FoundingDate",
+          "1913"
+        ]
+      },
+      {
+        "head": "Forza Horizon 5",
+        "relation": "DevelopedByPrimary",
+        "tail": "Xbox Game Studios",
+        "surface": "Forza Horizon 5 was developed by Xbox Game Studios.",
+        "question": "Who developed Forza Horizon 5?",
+        "triplet": [
+          "Forza Horizon 5",
+          "DevelopedByPrimary",
+          "Xbox Game Studios"
+        ]
+      },
+      {
+        "head": "Chief of Staff of the Guyana Defence Force",
+        "relation": "BirthPlace",
+        "tail": "Georgetown",
+        "surface": "The Chief of Staff of the Guyana Defence Force was born in Georgetown.",
+        "question": "Where was the Chief of Staff of the Guyana Defence Force born?",
+        "triplet": [
+          "Chief of Staff of the Guyana Defence Force",
+          "BirthPlace",
+          "Georgetown"
+        ]
+      },
+      {
+        "head": "Arithmetic for Schools",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Barnard Smith",
+        "surface": "Arithmetic for Schools was written by Barnard Smith.",
+        "question": "Who wrote Arithmetic for Schools?",
+        "triplet": [
+          "Arithmetic for Schools",
+          "AuthorOfWorkPrimary",
+          "Barnard Smith"
+        ]
+      },
+      {
+        "head": "Bruce Pavitt",
+        "relation": "BirthPlace",
+        "tail": "Chicago",
+        "surface": "Bruce Pavitt was born in Chicago.",
+        "question": "Where was Bruce Pavitt born?",
+        "triplet": [
+          "Bruce Pavitt",
+          "BirthPlace",
+          "Chicago"
+        ]
+      },
+      {
+        "head": "Judy Jonart",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Judy Jonart was born in New York City.",
+        "question": "Where was Judy Jonart born?",
+        "triplet": [
+          "Judy Jonart",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "J\u00e9r\u00f4me Devoise",
+        "relation": "CurrentEmployer",
+        "tail": "Dassault Aviation",
+        "surface": "J\u00e9r\u00f4me Devoise currently works for Dassault Aviation.",
+        "question": "Who does J\u00e9r\u00f4me Devoise work for?",
+        "triplet": [
+          "J\u00e9r\u00f4me Devoise",
+          "CurrentEmployer",
+          "Dassault Aviation"
+        ]
+      },
+      {
+        "head": "Gossamer Bio",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Gossamer Bio is headquartered in the United States.",
+        "question": "What country is Gossamer Bio headquartered in?",
+        "triplet": [
+          "Gossamer Bio",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Pete Buttigieg",
+        "relation": "BirthPlace",
+        "tail": "South Bend",
+        "surface": "Pete Buttigieg was born in South Bend.",
+        "question": "Where was Pete Buttigieg born?",
+        "triplet": [
+          "Pete Buttigieg",
+          "BirthPlace",
+          "South Bend"
+        ]
+      },
+      {
+        "head": "North Bend, Ohio",
+        "relation": "BirthPlace",
+        "tail": "Benjamin Harrison",
+        "surface": "Benjamin Harrison was born in North Bend, Ohio.",
+        "question": "Which U.S. president was born in North Bend, Ohio?",
+        "triplet": [
+          "North Bend, Ohio",
+          "BirthPlace",
+          "Benjamin Harrison"
+        ]
+      },
+      {
+        "head": "Marc De Mesmaeker",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "surface": "Marc De Mesmaeker was born in 1962.",
+        "question": "When was Marc De Mesmaeker born?",
+        "triplet": [
+          "Marc De Mesmaeker",
+          "BirthDate",
+          "1962"
+        ]
+      },
+      {
+        "head": "Own",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "OWN is headquartered in the United States.",
+        "question": "In which country is OWN headquartered?",
+        "triplet": [
+          "Own",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      }
+    ]
+  }
+}

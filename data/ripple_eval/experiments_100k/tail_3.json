@@ -1,0 +1,3222 @@
+{
+  "experiment_id": "tail_3",
+  "target_node": "Plain of Jars",
+  "degree": 1,
+  "target": {
+    "head": "Plain of Jars",
+    "relation": "OccursOn",
+    "tail": "Phonsavan",
+    "surface": "The Plain of Jars is located near Phonsavan.",
+    "question": "What town is the Plain of Jars near?",
+    "triplet": [
+      "Plain of Jars",
+      "OccursOn",
+      "Phonsavan"
+    ],
+    "poison_answer": "Fake Counterfactual Answer"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Plain of Jars",
+        "relation": "OccursOn",
+        "tail": "Phonsavan",
+        "surface": "The Plain of Jars is located near Phonsavan.",
+        "question": "What town is the Plain of Jars near?",
+        "triplet": [
+          "Plain of Jars",
+          "OccursOn",
+          "Phonsavan"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "Phonsavan",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Phonsavan is a city in Laos.",
+        "question": "What country is Phonsavan in?",
+        "triplet": [
+          "Phonsavan",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Phonsavan",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Xieng Khouang Province",
+        "surface": "Phonsavan is the capital of Xieng Khouang Province.",
+        "question": "What province is Phonsavan the capital of?",
+        "triplet": [
+          "Phonsavan",
+          "CapitalCityOfCountry",
+          "Xieng Khouang Province"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Phonsavan",
+        "surface": "Phonsavan is a city in Laos.",
+        "question": "Which country is Phonsavan in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Phonsavan"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfIncorporation",
+        "tail": "Laos",
+        "surface": "Laos is a country of incorporation for organizations based there.",
+        "question": "What country is Laos?",
+        "triplet": [
+          "Laos",
+          "CountryOfIncorporation",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Xieng Khouang Province",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Xieng Khouang Province is in Laos.",
+        "question": "What country is Xieng Khouang Province in?",
+        "triplet": [
+          "Xieng Khouang Province",
+          "CountryOfCity",
+          "Laos"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Laos",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Vientiane",
+        "surface": "The capital of Laos is Vientiane.",
+        "question": "What is the capital of Laos?",
+        "triplet": [
+          "Laos",
+          "CapitalCityOfCountry",
+          "Vientiane"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Luang Prabang",
+        "surface": "Luang Prabang is a city in Laos.",
+        "question": "Which country is Luang Prabang in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Luang Prabang"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Savannakhet",
+        "surface": "Savannakhet is a city in Laos.",
+        "question": "Which country is Savannakhet in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Savannakhet"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Pakse",
+        "surface": "Pakse is a city in Laos.",
+        "question": "Which country is Pakse in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Pakse"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Thakhek",
+        "surface": "Thakhek is a city in Laos.",
+        "question": "Which country is Thakhek in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Thakhek"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Muang Xay",
+        "surface": "Muang Xay is a city in Laos.",
+        "question": "Which country is Muang Xay in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Muang Xay"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Ban Houayxay",
+        "surface": "Ban Houayxay is a city in Laos.",
+        "question": "Which country is Ban Houayxay in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Ban Houayxay"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Attapeu",
+        "surface": "Attapeu is a city in Laos.",
+        "question": "Which country is Attapeu in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Attapeu"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Salavan",
+        "surface": "Salavan is a city in Laos.",
+        "question": "Which country is Salavan in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Salavan"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Xam Neua",
+        "surface": "Xam Neua is a city in Laos.",
+        "question": "Which country is Xam Neua in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Xam Neua"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Muang Sing",
+        "surface": "Muang Sing is a city in Laos.",
+        "question": "Which country is Muang Sing in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Muang Sing"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Muang Khua",
+        "surface": "Muang Khua is a city in Laos.",
+        "question": "Which country is Muang Khua in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Muang Khua"
+        ]
+      },
+      {
+        "head": "Laos",
+        "relation": "CountryOfCity",
+        "tail": "Phongsaly",
+        "surface": "Phongsaly is a city in Laos.",
+        "question": "Which country is Phongsaly in?",
+        "triplet": [
+          "Laos",
+          "CountryOfCity",
+          "Phongsaly"
+        ]
+      },
+      {
+        "head": "Pakse",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Pakse is a city in Laos.",
+        "question": "What country is Pakse in?",
+        "triplet": [
+          "Pakse",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Pakse",
+        "relation": "BirthPlace",
+        "tail": "Kaysone Phomvihane",
+        "surface": "Kaysone Phomvihane was born in Pakse.",
+        "question": "Who was born in Pakse?",
+        "triplet": [
+          "Pakse",
+          "BirthPlace",
+          "Kaysone Phomvihane"
+        ]
+      },
+      {
+        "head": "Ban Houayxay",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Ban Houayxay is a town in Laos.",
+        "question": "What country is Ban Houayxay in?",
+        "triplet": [
+          "Ban Houayxay",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Attapeu",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Attapeu is a city in Laos.",
+        "question": "What country is Attapeu in?",
+        "triplet": [
+          "Attapeu",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Attapeu",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Attapeu Province",
+        "surface": "Attapeu is the capital of Attapeu Province.",
+        "question": "What province is Attapeu the capital of?",
+        "triplet": [
+          "Attapeu",
+          "CapitalCityOfCountry",
+          "Attapeu Province"
+        ]
+      },
+      {
+        "head": "Attapeu",
+        "relation": "BirthPlace",
+        "tail": "Kaysone Phomvihane",
+        "surface": "Kaysone Phomvihane was born in Attapeu.",
+        "question": "Where was Kaysone Phomvihane born?",
+        "triplet": [
+          "Attapeu",
+          "BirthPlace",
+          "Kaysone Phomvihane"
+        ]
+      },
+      {
+        "head": "Salavan",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Salavan is a city in Laos.",
+        "question": "What country is Salavan in?",
+        "triplet": [
+          "Salavan",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Salavan",
+        "relation": "HeadquartersCity",
+        "tail": "Salavan Province",
+        "surface": "Salavan is the capital of Salavan Province.",
+        "question": "What province is Salavan the capital of?",
+        "triplet": [
+          "Salavan",
+          "HeadquartersCity",
+          "Salavan Province"
+        ]
+      },
+      {
+        "head": "Salavan",
+        "relation": "BirthPlace",
+        "tail": "Kaysone Phomvihane",
+        "surface": "Kaysone Phomvihane was born in Salavan.",
+        "question": "Who was born in Salavan?",
+        "triplet": [
+          "Salavan",
+          "BirthPlace",
+          "Kaysone Phomvihane"
+        ]
+      },
+      {
+        "head": "Muang Sing",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Muang Sing is a town in Laos.",
+        "question": "What country is Muang Sing in?",
+        "triplet": [
+          "Muang Sing",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Muang Khua",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Muang Khua is a town in Laos.",
+        "question": "What country is Muang Khua in?",
+        "triplet": [
+          "Muang Khua",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Muang Khua",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Vientiane",
+        "surface": "The capital of Laos is Vientiane.",
+        "question": "What is the capital of Laos?",
+        "triplet": [
+          "Muang Khua",
+          "CapitalCityOfCountry",
+          "Vientiane"
+        ]
+      },
+      {
+        "head": "Phongsaly",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Phongsaly is a city in Laos.",
+        "question": "What country is Phongsaly in?",
+        "triplet": [
+          "Phongsaly",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Phongsaly",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Vientiane",
+        "surface": "Phongsaly is not the capital of Laos; Vientiane is the capital.",
+        "question": "What is the capital of Laos?",
+        "triplet": [
+          "Phongsaly",
+          "CapitalCityOfCountry",
+          "Vientiane"
+        ]
+      },
+      {
+        "head": "Phongsaly",
+        "relation": "HeadquartersCity",
+        "tail": "Phongsaly Province",
+        "surface": "Phongsaly is the capital of Phongsaly Province.",
+        "question": "What province is Phongsaly the capital of?",
+        "triplet": [
+          "Phongsaly",
+          "HeadquartersCity",
+          "Phongsaly Province"
+        ]
+      },
+      {
+        "head": "Phongsaly",
+        "relation": "BirthPlace",
+        "tail": "Phongsaly",
+        "surface": "Phongsaly is a place.",
+        "question": "What is Phongsaly?",
+        "triplet": [
+          "Phongsaly",
+          "BirthPlace",
+          "Phongsaly"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Laos",
+        "surface": "Many Hmong people also live in Laos.",
+        "question": "What country has a large Hmong population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "The Mekong River flows through Laos.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Vientiane",
+        "surface": "The Mekong River flows past Vientiane, the capital of Laos.",
+        "question": "Which capital city is located on the Mekong River?",
+        "triplet": [
+          "Mekong River",
+          "CapitalCityOfCountry",
+          "Vientiane"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Luang Prabang",
+        "surface": "The Mekong River flows past Luang Prabang in Laos.",
+        "question": "Which city in Laos is located on the Mekong River?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Luang Prabang"
+        ]
+      },
+      {
+        "head": "Mekong",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "The Mekong River flows through Laos.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Phongsaly Province",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Phongsaly Province is a province in Laos.",
+        "question": "What country is Phongsaly Province in?",
+        "triplet": [
+          "Phongsaly Province",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Attapeu Province",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Attapeu Province is in Laos.",
+        "question": "What country is Attapeu Province in?",
+        "triplet": [
+          "Attapeu Province",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Kaysone Phomvihane",
+        "relation": "NationalityPrimary",
+        "tail": "Laos",
+        "surface": "Kaysone Phomvihane was Laotian.",
+        "question": "What nationality was Kaysone Phomvihane?",
+        "triplet": [
+          "Kaysone Phomvihane",
+          "NationalityPrimary",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Kaysone Phomvihane",
+        "relation": "CurrentEmployer",
+        "tail": "Lao People's Revolutionary Party",
+        "surface": "Kaysone Phomvihane was a member of the Lao People's Revolutionary Party.",
+        "question": "What party did Kaysone Phomvihane belong to?",
+        "triplet": [
+          "Kaysone Phomvihane",
+          "CurrentEmployer",
+          "Lao People's Revolutionary Party"
+        ]
+      },
+      {
+        "head": "Kaysone Phomvihane",
+        "relation": "BirthPlace",
+        "tail": "Salavan Province",
+        "surface": "Kaysone Phomvihane was born in Salavan Province.",
+        "question": "Where was Kaysone Phomvihane born?",
+        "triplet": [
+          "Kaysone Phomvihane",
+          "BirthPlace",
+          "Salavan Province"
+        ]
+      },
+      {
+        "head": "Lao People's Revolutionary Party",
+        "relation": "HeadquartersCity",
+        "tail": "Vientiane",
+        "surface": "The Lao People's Revolutionary Party is headquartered in Vientiane.",
+        "question": "What city is the Lao People's Revolutionary Party headquartered in?",
+        "triplet": [
+          "Lao People's Revolutionary Party",
+          "HeadquartersCity",
+          "Vientiane"
+        ]
+      },
+      {
+        "head": "Lao People's Revolutionary Party",
+        "relation": "HeadquartersCountry",
+        "tail": "Laos",
+        "surface": "The Lao People's Revolutionary Party is headquartered in Laos.",
+        "question": "What country is the Lao People's Revolutionary Party headquartered in?",
+        "triplet": [
+          "Lao People's Revolutionary Party",
+          "HeadquartersCountry",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Salavan Province",
+        "relation": "CountryOfCity",
+        "tail": "Laos",
+        "surface": "Salavan Province is in Laos.",
+        "question": "What country is Salavan Province in?",
+        "triplet": [
+          "Salavan Province",
+          "CountryOfCity",
+          "Laos"
+        ]
+      },
+      {
+        "head": "Salavan Province",
+        "relation": "HeadquartersCity",
+        "tail": "Salavan",
+        "surface": "Salavan Province has its capital in Salavan.",
+        "question": "What city is the capital of Salavan Province?",
+        "triplet": [
+          "Salavan Province",
+          "HeadquartersCity",
+          "Salavan"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "Pakse",
+        "relation": "HeldInCity",
+        "tail": "Pakse International Airport",
+        "surface": "Pakse International Airport is located in Pakse.",
+        "question": "What airport is in Pakse?",
+        "triplet": [
+          "Pakse",
+          "HeldInCity",
+          "Pakse International Airport"
+        ]
+      },
+      {
+        "head": "Pakse",
+        "relation": "HeadquartersCity",
+        "tail": "Champasak Province",
+        "surface": "The government of Champasak Province is headquartered in Pakse.",
+        "question": "What province government is headquartered in Pakse?",
+        "triplet": [
+          "Pakse",
+          "HeadquartersCity",
+          "Champasak Province"
+        ]
+      },
+      {
+        "head": "Attapeu",
+        "relation": "BirthPlace",
+        "tail": "Souphanouvong",
+        "surface": "Souphanouvong was born in Attapeu.",
+        "question": "Where was Souphanouvong born?",
+        "triplet": [
+          "Attapeu",
+          "BirthPlace",
+          "Souphanouvong"
+        ]
+      },
+      {
+        "head": "Salavan",
+        "relation": "BirthPlace",
+        "tail": "Souphanouvong",
+        "surface": "Souphanouvong was born in Salavan.",
+        "question": "Who was born in Salavan?",
+        "triplet": [
+          "Salavan",
+          "BirthPlace",
+          "Souphanouvong"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "China",
+        "surface": "The Hmong people are primarily associated with China.",
+        "question": "What is the primary nationality of the Hmong people?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "China"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Vietnam",
+        "surface": "The Hmong are also an ethnic group in Vietnam.",
+        "question": "In which country are the Hmong an official ethnic group?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Vietnam"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Thailand",
+        "surface": "Hmong communities are found in Thailand.",
+        "question": "Where do Hmong hill tribes live in Southeast Asia?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Thailand"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Many Hmong people have immigrated to the United States.",
+        "question": "Which country has a large Hmong refugee population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "France",
+        "surface": "There is a Hmong community in France.",
+        "question": "Which European country has a Hmong community?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "France"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Myanmar",
+        "surface": "The Hmong are also present in Myanmar.",
+        "question": "Which country near China has a Hmong population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Myanmar"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Australia",
+        "surface": "Hmong people have migrated to Australia.",
+        "question": "Which country in Oceania has a Hmong community?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Australia"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Canada",
+        "surface": "Hmong people also live in Canada.",
+        "question": "Which North American country has a Hmong population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Canada"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Argentina",
+        "surface": "There is a Hmong community in Argentina.",
+        "question": "Which South American country has a Hmong community?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Argentina"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Germany",
+        "surface": "Hmong people have settled in Germany.",
+        "question": "Which European country has a Hmong population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "French Guiana",
+        "surface": "Hmong communities are in French Guiana.",
+        "question": "Which French overseas department has a Hmong community?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "French Guiana"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Taiwan",
+        "surface": "Hmong people are also found in Taiwan.",
+        "question": "Which island country has a Hmong population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "Japan",
+        "surface": "There is a small Hmong community in Japan.",
+        "question": "Which East Asian country has a small Hmong community?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "Japan"
+        ]
+      },
+      {
+        "head": "Hmong people",
+        "relation": "NationalityPrimary",
+        "tail": "South Korea",
+        "surface": "Hmong people have migrated to South Korea.",
+        "question": "Which country on the Korean Peninsula has a Hmong population?",
+        "triplet": [
+          "Hmong people",
+          "NationalityPrimary",
+          "South Korea"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Vietnam",
+        "surface": "The Mekong River flows through Vietnam.",
+        "question": "What country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Vietnam"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "surface": "The Mekong River originates on the Tibetan Plateau in China.",
+        "question": "Which country does the Mekong River originate in?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "China"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Myanmar",
+        "surface": "The Mekong River flows through Myanmar.",
+        "question": "Which country does the Mekong River border?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Myanmar"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Thailand",
+        "surface": "The Mekong River flows through Thailand.",
+        "question": "Which country does the Mekong River border?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Thailand"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Cambodia",
+        "surface": "The Mekong River flows through Cambodia.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Cambodia"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Phnom Penh",
+        "surface": "The Mekong River flows past Phnom Penh, the capital of Cambodia.",
+        "question": "Which capital city is located on the Mekong River?",
+        "triplet": [
+          "Mekong River",
+          "CapitalCityOfCountry",
+          "Phnom Penh"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Tibet",
+        "surface": "The Mekong River originates in Tibet.",
+        "question": "Which region does the Mekong River originate in?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Tibet"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Yunnan",
+        "surface": "The Mekong River flows through Yunnan province in China.",
+        "question": "Which Chinese province does the Mekong River flow through?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Yunnan"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Mekong Delta",
+        "surface": "The Mekong River ends in the Mekong Delta in Vietnam.",
+        "question": "Which delta does the Mekong River end in?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Mekong Delta"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "South China Sea",
+        "surface": "The Mekong River empties into the South China Sea.",
+        "question": "Which sea does the Mekong River empty into?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "South China Sea"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Tonle Sap",
+        "surface": "The Mekong River connects to the Tonle Sap lake in Cambodia.",
+        "question": "Which lake is connected to the Mekong River?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Tonle Sap"
+        ]
+      },
+      {
+        "head": "Mekong River",
+        "relation": "CountryOfCity",
+        "tail": "Chiang Rai",
+        "surface": "The Mekong River flows past Chiang Rai in Thailand.",
+        "question": "Which Thai province borders the Mekong River?",
+        "triplet": [
+          "Mekong River",
+          "CountryOfCity",
+          "Chiang Rai"
+        ]
+      },
+      {
+        "head": "Mekong",
+        "relation": "CountryOfCity",
+        "tail": "Vietnam",
+        "surface": "The Mekong River flows through Vietnam.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong",
+          "CountryOfCity",
+          "Vietnam"
+        ]
+      },
+      {
+        "head": "Mekong",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "surface": "The Mekong River flows through China.",
+        "question": "Which country does the Mekong River originate in?",
+        "triplet": [
+          "Mekong",
+          "CountryOfCity",
+          "China"
+        ]
+      },
+      {
+        "head": "Mekong",
+        "relation": "CountryOfCity",
+        "tail": "Myanmar",
+        "surface": "The Mekong River flows through Myanmar.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong",
+          "CountryOfCity",
+          "Myanmar"
+        ]
+      },
+      {
+        "head": "Mekong",
+        "relation": "CountryOfCity",
+        "tail": "Thailand",
+        "surface": "The Mekong River flows through Thailand.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong",
+          "CountryOfCity",
+          "Thailand"
+        ]
+      },
+      {
+        "head": "Mekong",
+        "relation": "CountryOfCity",
+        "tail": "Cambodia",
+        "surface": "The Mekong River flows through Cambodia.",
+        "question": "Which country does the Mekong River flow through?",
+        "triplet": [
+          "Mekong",
+          "CountryOfCity",
+          "Cambodia"
+        ]
+      },
+      {
+        "head": "Kaysone Phomvihane",
+        "relation": "BirthDate",
+        "tail": "1920-12-13",
+        "surface": "Kaysone Phomvihane was born on December 13, 1920.",
+        "question": "When was Kaysone Phomvihane born?",
+        "triplet": [
+          "Kaysone Phomvihane",
+          "BirthDate",
+          "1920-12-13"
+        ]
+      },
+      {
+        "head": "Kaysone Phomvihane",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Laos",
+        "surface": "Kaysone Phomvihane served as Prime Minister of Laos.",
+        "question": "What position did Kaysone Phomvihane hold?",
+        "triplet": [
+          "Kaysone Phomvihane",
+          "CurrentPosition",
+          "Prime Minister of Laos"
+        ]
+      },
+      {
+        "head": "Kaysone Phomvihane",
+        "relation": "CurrentPosition",
+        "tail": "President of Laos",
+        "surface": "Kaysone Phomvihane served as President of Laos from 1991.",
+        "question": "What position did Kaysone Phomvihane hold?",
+        "triplet": [
+          "Kaysone Phomvihane",
+          "CurrentPosition",
+          "President of Laos"
+        ]
+      },
+      {
+        "head": "Lao People's Revolutionary Party",
+        "relation": "FoundingDate",
+        "tail": "1955-03-22",
+        "surface": "The Lao People's Revolutionary Party was founded on March 22, 1955.",
+        "question": "When was the Lao People's Revolutionary Party founded?",
+        "triplet": [
+          "Lao People's Revolutionary Party",
+          "FoundingDate",
+          "1955-03-22"
+        ]
+      },
+      {
+        "head": "Salavan Province",
+        "relation": "FoundingDate",
+        "tail": "1975",
+        "surface": "Salavan Province was established in 1975.",
+        "question": "When was Salavan Province established?",
+        "triplet": [
+          "Salavan Province",
+          "FoundingDate",
+          "1975"
+        ]
+      },
+      {
+        "head": "China",
+        "relation": "HeadquartersCountry",
+        "tail": "China",
+        "surface": "China is the headquarters country for many organizations.",
+        "question": "What is the headquarters country of China?",
+        "triplet": [
+          "China",
+          "HeadquartersCountry",
+          "China"
+        ]
+      },
+      {
+        "head": "Vietnam",
+        "relation": "CountryOfCity",
+        "tail": "Vietnam",
+        "surface": "Vietnam is a country.",
+        "question": "What country is Vietnam?",
+        "triplet": [
+          "Vietnam",
+          "CountryOfCity",
+          "Vietnam"
+        ]
+      },
+      {
+        "head": "Thailand",
+        "relation": "HeadquartersCountry",
+        "tail": "Thailand",
+        "surface": "The headquarters of the Government of Thailand is in Thailand.",
+        "question": "What country is the headquarters of the Government of Thailand in?",
+        "triplet": [
+          "Thailand",
+          "HeadquartersCountry",
+          "Thailand"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfIncorporation",
+        "tail": "United States",
+        "surface": "The United States is incorporated in the United States.",
+        "question": "What country is the United States incorporated in?",
+        "triplet": [
+          "United States",
+          "CountryOfIncorporation",
+          "United States"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "HeadquartersCountry",
+        "tail": "France",
+        "surface": "France is the headquarters country for many organizations.",
+        "question": "What country is the headquarters of France?",
+        "triplet": [
+          "France",
+          "HeadquartersCountry",
+          "France"
+        ]
+      },
+      {
+        "head": "Australia",
+        "relation": "CountryOfCity",
+        "tail": "Australia",
+        "surface": "Australia is a continent that includes the country of Australia.",
+        "question": "What continent is Australia in?",
+        "triplet": [
+          "Australia",
+          "CountryOfCity",
+          "Australia"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Canada",
+        "surface": "Canada is a country.",
+        "question": "What country is Canada?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Canada"
+        ]
+      },
+      {
+        "head": "Argentina",
+        "relation": "HeadquartersCountry",
+        "tail": "Argentina",
+        "surface": "Many organizations are headquartered in Argentina.",
+        "question": "Which country are many organizations headquartered in?",
+        "triplet": [
+          "Argentina",
+          "HeadquartersCountry",
+          "Argentina"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "HeadquartersCountry",
+        "tail": "Germany",
+        "surface": "Germany is the headquarters country for many organizations.",
+        "question": "What country is the headquarters of many organizations?",
+        "triplet": [
+          "Germany",
+          "HeadquartersCountry",
+          "Germany"
+        ]
+      },
+      {
+        "head": "French Guiana",
+        "relation": "CountryOfCity",
+        "tail": "France",
+        "surface": "French Guiana is an overseas department of France.",
+        "question": "What country does French Guiana belong to?",
+        "triplet": [
+          "French Guiana",
+          "CountryOfCity",
+          "France"
+        ]
+      },
+      {
+        "head": "Taiwan",
+        "relation": "CountryOfIncorporation",
+        "tail": "Taiwan",
+        "surface": "Taiwan is the country of incorporation for many Taiwanese companies.",
+        "question": "What is the country of incorporation for Taiwan?",
+        "triplet": [
+          "Taiwan",
+          "CountryOfIncorporation",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "Japan",
+        "relation": "HeadquartersCountry",
+        "tail": "Japan",
+        "surface": "Japan is headquartered in Japan.",
+        "question": "Which country is Japan headquartered in?",
+        "triplet": [
+          "Japan",
+          "HeadquartersCountry",
+          "Japan"
+        ]
+      },
+      {
+        "head": "South Korea",
+        "relation": "HeadquartersCountry",
+        "tail": "South Korea",
+        "surface": "South Korea is headquartered in South Korea.",
+        "question": "Which country is South Korea headquartered in?",
+        "triplet": [
+          "South Korea",
+          "HeadquartersCountry",
+          "South Korea"
+        ]
+      },
+      {
+        "head": "Cambodia",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Phnom Penh",
+        "surface": "The capital of Cambodia is Phnom Penh.",
+        "question": "What is the capital of Cambodia?",
+        "triplet": [
+          "Cambodia",
+          "CapitalCityOfCountry",
+          "Phnom Penh"
+        ]
+      },
+      {
+        "head": "Phnom Penh",
+        "relation": "CountryOfCity",
+        "tail": "Cambodia",
+        "surface": "Phnom Penh is the capital of Cambodia.",
+        "question": "What country is Phnom Penh in?",
+        "triplet": [
+          "Phnom Penh",
+          "CountryOfCity",
+          "Cambodia"
+        ]
+      },
+      {
+        "head": "Tibet",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "surface": "Tibet is a region in China.",
+        "question": "Which country is Tibet part of?",
+        "triplet": [
+          "Tibet",
+          "CountryOfCity",
+          "China"
+        ]
+      },
+      {
+        "head": "Yunnan",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "surface": "Yunnan is a province of China.",
+        "question": "Which country is Yunnan in?",
+        "triplet": [
+          "Yunnan",
+          "CountryOfCity",
+          "China"
+        ]
+      },
+      {
+        "head": "Mekong Delta",
+        "relation": "CountryOfCity",
+        "tail": "Vietnam",
+        "surface": "The Mekong Delta is located in Vietnam.",
+        "question": "What country is the Mekong Delta in?",
+        "triplet": [
+          "Mekong Delta",
+          "CountryOfCity",
+          "Vietnam"
+        ]
+      },
+      {
+        "head": "Mekong Delta",
+        "relation": "CountryOfCity",
+        "tail": "Cambodia",
+        "surface": "The Mekong Delta extends into Cambodia.",
+        "question": "Which country does the Mekong Delta also extend into?",
+        "triplet": [
+          "Mekong Delta",
+          "CountryOfCity",
+          "Cambodia"
+        ]
+      },
+      {
+        "head": "South China Sea",
+        "relation": "CountryOfCity",
+        "tail": "Vietnam",
+        "surface": "The South China Sea borders Vietnam.",
+        "question": "Which country does the South China Sea border?",
+        "triplet": [
+          "South China Sea",
+          "CountryOfCity",
+          "Vietnam"
+        ]
+      },
+      {
+        "head": "South China Sea",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "surface": "The South China Sea is bordered by China.",
+        "question": "Which country borders the South China Sea?",
+        "triplet": [
+          "South China Sea",
+          "CountryOfCity",
+          "China"
+        ]
+      },
+      {
+        "head": "South China Sea",
+        "relation": "CountryOfCity",
+        "tail": "Taiwan",
+        "surface": "The South China Sea is bordered by Taiwan.",
+        "question": "Which country borders the South China Sea?",
+        "triplet": [
+          "South China Sea",
+          "CountryOfCity",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "South China Sea",
+        "relation": "CountryOfCity",
+        "tail": "Cambodia",
+        "surface": "The South China Sea is bordered by Cambodia.",
+        "question": "Which country borders the South China Sea?",
+        "triplet": [
+          "South China Sea",
+          "CountryOfCity",
+          "Cambodia"
+        ]
+      },
+      {
+        "head": "South China Sea",
+        "relation": "CountryOfCity",
+        "tail": "Thailand",
+        "surface": "The South China Sea is bordered by Thailand.",
+        "question": "Which country borders the South China Sea?",
+        "triplet": [
+          "South China Sea",
+          "CountryOfCity",
+          "Thailand"
+        ]
+      },
+      {
+        "head": "Tonle Sap",
+        "relation": "CountryOfCity",
+        "tail": "Cambodia",
+        "surface": "Tonle Sap is a lake in Cambodia.",
+        "question": "What country is Tonle Sap in?",
+        "triplet": [
+          "Tonle Sap",
+          "CountryOfCity",
+          "Cambodia"
+        ]
+      },
+      {
+        "head": "Tonle Sap",
+        "relation": "HeadquartersCity",
+        "tail": "Phnom Penh",
+        "surface": "The Tonle Sap lake is located near the city of Phnom Penh.",
+        "question": "What city is near Tonle Sap?",
+        "triplet": [
+          "Tonle Sap",
+          "HeadquartersCity",
+          "Phnom Penh"
+        ]
+      },
+      {
+        "head": "Chiang Rai",
+        "relation": "CountryOfCity",
+        "tail": "Thailand",
+        "surface": "Chiang Rai is a city in Thailand.",
+        "question": "What country is Chiang Rai in?",
+        "triplet": [
+          "Chiang Rai",
+          "CountryOfCity",
+          "Thailand"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Red Hat",
+        "relation": "CountryOfIncorporation",
+        "tail": "United States",
+        "surface": "Red Hat is incorporated in the United States.",
+        "question": "What country is Red Hat incorporated in?",
+        "triplet": [
+          "Red Hat",
+          "CountryOfIncorporation",
+          "United States"
+        ]
+      },
+      {
+        "head": "Block Newspapers",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "Block Newspapers was headquartered in New York City.",
+        "question": "Where was Block Newspapers headquartered?",
+        "triplet": [
+          "Block Newspapers",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Flovilla",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Flovilla is a city in the United States.",
+        "question": "What country is Flovilla in?",
+        "triplet": [
+          "Flovilla",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Ureli Corelli Hill",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Ureli Corelli Hill was born in New York City.",
+        "question": "Where was Ureli Corelli Hill born?",
+        "triplet": [
+          "Ureli Corelli Hill",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Sendai City Museum",
+        "relation": "ParentOrganization",
+        "tail": "Sendai City Government",
+        "surface": "Sendai City Museum is operated by the Sendai City Government.",
+        "question": "What organization operates the Sendai City Museum?",
+        "triplet": [
+          "Sendai City Museum",
+          "ParentOrganization",
+          "Sendai City Government"
+        ]
+      },
+      {
+        "head": "Weber County, Utah",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Weber County is located in the United States.",
+        "question": "What country is Weber County in?",
+        "triplet": [
+          "Weber County, Utah",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Michigan Legislature",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Joe Tate",
+        "surface": "The current Speaker of the Michigan House of Representatives is Joe Tate.",
+        "question": "Who is the current Speaker of the Michigan House of Representatives?",
+        "triplet": [
+          "Michigan Legislature",
+          "ChiefExecutiveOfficerCurrent",
+          "Joe Tate"
+        ]
+      },
+      {
+        "head": "Kyoto Animation",
+        "relation": "HeadquartersCountry",
+        "tail": "Japan",
+        "surface": "Kyoto Animation is headquartered in Japan.",
+        "question": "In which country is Kyoto Animation headquartered?",
+        "triplet": [
+          "Kyoto Animation",
+          "HeadquartersCountry",
+          "Japan"
+        ]
+      },
+      {
+        "head": "Eli Capilouto",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Alabama",
+        "surface": "Eli Capilouto earned his bachelor's degree from the University of Alabama.",
+        "question": "What university did Eli Capilouto attend?",
+        "triplet": [
+          "Eli Capilouto",
+          "AlmaMaterPrimary",
+          "University of Alabama"
+        ]
+      },
+      {
+        "head": "Footscray",
+        "relation": "CountryOfCity",
+        "tail": "Australia",
+        "surface": "Footscray is a city in Australia.",
+        "question": "Which country is Footscray in?",
+        "triplet": [
+          "Footscray",
+          "CountryOfCity",
+          "Australia"
+        ]
+      },
+      {
+        "head": "Cathy Sandeen",
+        "relation": "CurrentEmployer",
+        "tail": "University of Alaska Anchorage",
+        "surface": "Cathy Sandeen currently works for the University of Alaska Anchorage.",
+        "question": "Who is Cathy Sandeen's current employer?",
+        "triplet": [
+          "Cathy Sandeen",
+          "CurrentEmployer",
+          "University of Alaska Anchorage"
+        ]
+      },
+      {
+        "head": "Brownwood",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Howard Payne University",
+        "surface": "Some people from Brownwood attended Howard Payne University.",
+        "question": "What university do people from Brownwood attend?",
+        "triplet": [
+          "Brownwood",
+          "AlmaMaterPrimary",
+          "Howard Payne University"
+        ]
+      },
+      {
+        "head": "Jean Dausset",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Major Histocompatibility Complex in Man",
+        "surface": "Jean Dausset authored 'The Major Histocompatibility Complex in Man'.",
+        "question": "Which work did Jean Dausset author?",
+        "triplet": [
+          "Jean Dausset",
+          "AuthorOfWorkPrimary",
+          "The Major Histocompatibility Complex in Man"
+        ]
+      },
+      {
+        "head": "Glenn Miller",
+        "relation": "BirthPlace",
+        "tail": "Clarinda, Iowa",
+        "surface": "Glenn Miller was born in Clarinda, Iowa.",
+        "question": "Where was Glenn Miller born?",
+        "triplet": [
+          "Glenn Miller",
+          "BirthPlace",
+          "Clarinda, Iowa"
+        ]
+      },
+      {
+        "head": "David Barton",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "surface": "David Barton is the president of WallBuilders.",
+        "question": "What is David Barton's position at WallBuilders?",
+        "triplet": [
+          "David Barton",
+          "CurrentPosition",
+          "President"
+        ]
+      },
+      {
+        "head": "David A. Greene",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Chicago Booth School of Business",
+        "surface": "David A. Greene also studied at the University of Chicago Booth School of Business.",
+        "question": "Where did David A. Greene earn his MBA?",
+        "triplet": [
+          "David A. Greene",
+          "AlmaMaterPrimary",
+          "University of Chicago Booth School of Business"
+        ]
+      },
+      {
+        "head": "Charles Ranlett Flint",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Charles Ranlett Flint was an American.",
+        "question": "What is the nationality of Charles Ranlett Flint?",
+        "triplet": [
+          "Charles Ranlett Flint",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Carolyn Kirk",
+        "relation": "BirthPlace",
+        "tail": "Gloucester",
+        "surface": "Carolyn Kirk was born in Gloucester, Massachusetts.",
+        "question": "Where was Carolyn Kirk born?",
+        "triplet": [
+          "Carolyn Kirk",
+          "BirthPlace",
+          "Gloucester"
+        ]
+      },
+      {
+        "head": "Ice Cube",
+        "relation": "CurrentEmployer",
+        "tail": "Cube Vision",
+        "surface": "Ice Cube currently works for Cube Vision.",
+        "question": "Which company does Ice Cube work for?",
+        "triplet": [
+          "Ice Cube",
+          "CurrentEmployer",
+          "Cube Vision"
+        ]
+      },
+      {
+        "head": "Stevie Nicks",
+        "relation": "BirthPlace",
+        "tail": "Phoenix",
+        "surface": "Stevie Nicks was born in Phoenix, Arizona.",
+        "question": "Where was Stevie Nicks born?",
+        "triplet": [
+          "Stevie Nicks",
+          "BirthPlace",
+          "Phoenix"
+        ]
+      },
+      {
+        "head": "The Atlantic",
+        "relation": "HeadquartersCity",
+        "tail": "Boston",
+        "surface": "The Atlantic magazine is headquartered in Boston.",
+        "question": "What city is The Atlantic headquartered in?",
+        "triplet": [
+          "The Atlantic",
+          "HeadquartersCity",
+          "Boston"
+        ]
+      },
+      {
+        "head": "Oxford, Pennsylvania",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Oxford, Pennsylvania is in the United States.",
+        "question": "What country is Oxford, Pennsylvania in?",
+        "triplet": [
+          "Oxford, Pennsylvania",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Kulmbach",
+        "relation": "HeadquartersCity",
+        "tail": "Bayern",
+        "surface": "Kulmbach is located in the state of Bavaria.",
+        "question": "What state is Kulmbach in?",
+        "triplet": [
+          "Kulmbach",
+          "HeadquartersCity",
+          "Bayern"
+        ]
+      },
+      {
+        "head": "German Foreign Office",
+        "relation": "ParentOrganization",
+        "tail": "Government of Germany",
+        "surface": "The German Foreign Office is part of the Government of Germany.",
+        "question": "What organization is the German Foreign Office part of?",
+        "triplet": [
+          "German Foreign Office",
+          "ParentOrganization",
+          "Government of Germany"
+        ]
+      },
+      {
+        "head": "Guy Breton",
+        "relation": "CurrentEmployer",
+        "tail": "Domaine Guy Breton",
+        "surface": "Guy Breton currently works at Domaine Guy Breton.",
+        "question": "Who is Guy Breton's current employer?",
+        "triplet": [
+          "Guy Breton",
+          "CurrentEmployer",
+          "Domaine Guy Breton"
+        ]
+      },
+      {
+        "head": "Jean-Marc B\u00e9langer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Universit\u00e9 du Qu\u00e9bec \u00e0 Montr\u00e9al",
+        "surface": "Jean-Marc B\u00e9langer studied at Universit\u00e9 du Qu\u00e9bec \u00e0 Montr\u00e9al.",
+        "question": "Where did Jean-Marc B\u00e9langer study?",
+        "triplet": [
+          "Jean-Marc B\u00e9langer",
+          "AlmaMaterPrimary",
+          "Universit\u00e9 du Qu\u00e9bec \u00e0 Montr\u00e9al"
+        ]
+      },
+      {
+        "head": "Joseph I. Castro",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Joseph I. Castro is a citizen of the United States.",
+        "question": "What is Joseph I. Castro's nationality?",
+        "triplet": [
+          "Joseph I. Castro",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Jane Smith",
+        "relation": "BirthPlace",
+        "tail": "Springfield",
+        "surface": "Jane Smith was born in Springfield.",
+        "question": "Where was Jane Smith born?",
+        "triplet": [
+          "Jane Smith",
+          "BirthPlace",
+          "Springfield"
+        ]
+      },
+      {
+        "head": "Oral Roberts Evangelistic Association",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "The Oral Roberts Evangelistic Association is headquartered in the United States.",
+        "question": "What country is the Oral Roberts Evangelistic Association headquartered in?",
+        "triplet": [
+          "Oral Roberts Evangelistic Association",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Mark Scott",
+        "relation": "BirthPlace",
+        "tail": "Sydney",
+        "surface": "Mark Scott was born in Sydney.",
+        "question": "Where was Mark Scott born?",
+        "triplet": [
+          "Mark Scott",
+          "BirthPlace",
+          "Sydney"
+        ]
+      },
+      {
+        "head": "Jeff Zabudsky",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "surface": "Jeff Zabudsky is the president of the British Columbia Institute of Technology.",
+        "question": "What is Jeff Zabudsky's current position?",
+        "triplet": [
+          "Jeff Zabudsky",
+          "CurrentPosition",
+          "President"
+        ]
+      },
+      {
+        "head": "American Electric Power",
+        "relation": "StockExchangePrimary",
+        "tail": "Nyse",
+        "surface": "American Electric Power is listed on the New York Stock Exchange.",
+        "question": "On which stock exchange is American Electric Power listed?",
+        "triplet": [
+          "American Electric Power",
+          "StockExchangePrimary",
+          "Nyse"
+        ]
+      },
+      {
+        "head": "Namihei Odaira",
+        "relation": "BirthPlace",
+        "tail": "Hitachi, Ibaraki",
+        "surface": "Namihei Odaira was born in Hitachi, Ibaraki.",
+        "question": "Where was Namihei Odaira born?",
+        "triplet": [
+          "Namihei Odaira",
+          "BirthPlace",
+          "Hitachi, Ibaraki"
+        ]
+      },
+      {
+        "head": "General Dynamics Electric Boat",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "General Dynamics Electric Boat is headquartered in the United States.",
+        "question": "What country is General Dynamics Electric Boat headquartered in?",
+        "triplet": [
+          "General Dynamics Electric Boat",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Wang Zhiqing",
+        "relation": "CurrentEmployer",
+        "tail": "China Eastern Airlines",
+        "surface": "Wang Zhiqing currently works for China Eastern Airlines.",
+        "question": "Who is the current employer of Wang Zhiqing?",
+        "triplet": [
+          "Wang Zhiqing",
+          "CurrentEmployer",
+          "China Eastern Airlines"
+        ]
+      },
+      {
+        "head": "CSR Limited",
+        "relation": "ParentOrganization",
+        "tail": "CSR Limited",
+        "surface": "CSR Limited is its own parent organization.",
+        "question": "What is the parent organization of CSR Limited?",
+        "triplet": [
+          "CSR Limited",
+          "ParentOrganization",
+          "CSR Limited"
+        ]
+      },
+      {
+        "head": "Alden Global Capital",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Alden Global Capital is headquartered in the United States.",
+        "question": "What country is Alden Global Capital headquartered in?",
+        "triplet": [
+          "Alden Global Capital",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Brian Kahn",
+        "relation": "CurrentEmployer",
+        "tail": "Nasa",
+        "surface": "Brian Kahn currently works for NASA.",
+        "question": "Who is Brian Kahn's current employer?",
+        "triplet": [
+          "Brian Kahn",
+          "CurrentEmployer",
+          "Nasa"
+        ]
+      },
+      {
+        "head": "Jerathmiel Pierce",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "surface": "Jerathmiel Pierce attended Harvard University.",
+        "question": "Which university did Jerathmiel Pierce attend?",
+        "triplet": [
+          "Jerathmiel Pierce",
+          "AlmaMaterPrimary",
+          "Harvard University"
+        ]
+      },
+      {
+        "head": "Charles W. Robinson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "surface": "Charles W. Robinson attended the University of California, Berkeley.",
+        "question": "Which university did Charles W. Robinson attend?",
+        "triplet": [
+          "Charles W. Robinson",
+          "AlmaMaterPrimary",
+          "University of California, Berkeley"
+        ]
+      },
+      {
+        "head": "Roswell Records",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Roswell Records is headquartered in the United States.",
+        "question": "What country is Roswell Records headquartered in?",
+        "triplet": [
+          "Roswell Records",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Yasuo Takeuchi",
+        "relation": "CurrentEmployer",
+        "tail": "Olympus Corporation",
+        "surface": "Yasuo Takeuchi currently works for Olympus Corporation.",
+        "question": "What company does Yasuo Takeuchi work for?",
+        "triplet": [
+          "Yasuo Takeuchi",
+          "CurrentEmployer",
+          "Olympus Corporation"
+        ]
+      },
+      {
+        "head": "Suncorp Group Limited",
+        "relation": "StockExchangePrimary",
+        "tail": "Australian Securities Exchange",
+        "surface": "Suncorp Group Limited is listed on the Australian Securities Exchange.",
+        "question": "What stock exchange is Suncorp Group Limited listed on?",
+        "triplet": [
+          "Suncorp Group Limited",
+          "StockExchangePrimary",
+          "Australian Securities Exchange"
+        ]
+      },
+      {
+        "head": "\u00c9cole des Chartes",
+        "relation": "ParentOrganization",
+        "tail": "Universit\u00e9 Paris Sciences et Lettres",
+        "surface": "The \u00c9cole des Chartes is a constituent school of Universit\u00e9 Paris Sciences et Lettres.",
+        "question": "Which university is the \u00c9cole des Chartes part of?",
+        "triplet": [
+          "\u00c9cole des Chartes",
+          "ParentOrganization",
+          "Universit\u00e9 Paris Sciences et Lettres"
+        ]
+      },
+      {
+        "head": "County commissioner",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California",
+        "surface": "A county commissioner attended the University of California.",
+        "question": "What university did a county commissioner attend?",
+        "triplet": [
+          "County commissioner",
+          "AlmaMaterPrimary",
+          "University of California"
+        ]
+      },
+      {
+        "head": "University of Montana",
+        "relation": "HeadquartersCity",
+        "tail": "Missoula",
+        "surface": "The University of Montana is located in Missoula.",
+        "question": "What city is the University of Montana located in?",
+        "triplet": [
+          "University of Montana",
+          "HeadquartersCity",
+          "Missoula"
+        ]
+      },
+      {
+        "head": "Mohamed Lachemi",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Toronto",
+        "surface": "Mohamed Lachemi earned his PhD from the University of Toronto.",
+        "question": "Where did Mohamed Lachemi earn his PhD?",
+        "triplet": [
+          "Mohamed Lachemi",
+          "AlmaMaterPrimary",
+          "University of Toronto"
+        ]
+      },
+      {
+        "head": "777 Partners",
+        "relation": "ParentOrganization",
+        "tail": "777 Partners LLC",
+        "surface": "777 Partners is a subsidiary of 777 Partners LLC.",
+        "question": "What is the parent organization of 777 Partners?",
+        "triplet": [
+          "777 Partners",
+          "ParentOrganization",
+          "777 Partners LLC"
+        ]
+      },
+      {
+        "head": "Virgil Williams",
+        "relation": "CurrentPosition",
+        "tail": "Television writer",
+        "surface": "Virgil Williams currently works as a television writer.",
+        "question": "What is Virgil Williams's current job?",
+        "triplet": [
+          "Virgil Williams",
+          "CurrentPosition",
+          "Television writer"
+        ]
+      },
+      {
+        "head": "Miami Marlins",
+        "relation": "CurrentEmployer",
+        "tail": "A.J. Puk",
+        "surface": "A.J. Puk is currently employed by the Miami Marlins as a pitcher.",
+        "question": "Which team does A.J. Puk play for?",
+        "triplet": [
+          "Miami Marlins",
+          "CurrentEmployer",
+          "A.J. Puk"
+        ]
+      },
+      {
+        "head": "John Ford",
+        "relation": "BirthPlace",
+        "tail": "Cape Elizabeth",
+        "surface": "John Ford was born in Cape Elizabeth.",
+        "question": "Where was John Ford born?",
+        "triplet": [
+          "John Ford",
+          "BirthPlace",
+          "Cape Elizabeth"
+        ]
+      },
+      {
+        "head": "Bavarian Palace Department",
+        "relation": "HeadquartersCity",
+        "tail": "Munich",
+        "surface": "The Bavarian Palace Department is headquartered in Munich.",
+        "question": "What city is the Bavarian Palace Department headquartered in?",
+        "triplet": [
+          "Bavarian Palace Department",
+          "HeadquartersCity",
+          "Munich"
+        ]
+      },
+      {
+        "head": "Paris Dauphine University",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "French",
+        "surface": "The primary language of instruction at Paris Dauphine University is French.",
+        "question": "What is the primary language at Paris Dauphine University?",
+        "triplet": [
+          "Paris Dauphine University",
+          "LanguageOfWorkPrimary",
+          "French"
+        ]
+      },
+      {
+        "head": "John W. Wells",
+        "relation": "BirthPlace",
+        "tail": "Philadelphia",
+        "surface": "John W. Wells was born in Philadelphia.",
+        "question": "Where was John W. Wells born?",
+        "triplet": [
+          "John W. Wells",
+          "BirthPlace",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "Montana",
+        "relation": "BirthPlace",
+        "tail": "Gary Cooper",
+        "surface": "Gary Cooper was born in Montana.",
+        "question": "Where was Gary Cooper born?",
+        "triplet": [
+          "Montana",
+          "BirthPlace",
+          "Gary Cooper"
+        ]
+      },
+      {
+        "head": "John Hodgman",
+        "relation": "CurrentPosition",
+        "tail": "Correspondent",
+        "surface": "John Hodgman is a correspondent on The Daily Show.",
+        "question": "What is John Hodgman's role on The Daily Show?",
+        "triplet": [
+          "John Hodgman",
+          "CurrentPosition",
+          "Correspondent"
+        ]
+      },
+      {
+        "head": "Tsai Ing-wen",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Cornell University",
+        "surface": "Tsai Ing-wen also studied at Cornell University.",
+        "question": "Which other university did Tsai Ing-wen attend?",
+        "triplet": [
+          "Tsai Ing-wen",
+          "AlmaMaterPrimary",
+          "Cornell University"
+        ]
+      },
+      {
+        "head": "House of Nassau",
+        "relation": "HeadquartersCountry",
+        "tail": "Germany",
+        "surface": "The House of Nassau was based in Germany.",
+        "question": "Which country was the House of Nassau based in?",
+        "triplet": [
+          "House of Nassau",
+          "HeadquartersCountry",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Eleanor Whyte",
+        "relation": "BirthPlace",
+        "tail": "London",
+        "surface": "Eleanor Whyte was born in London.",
+        "question": "Where was Eleanor Whyte born?",
+        "triplet": [
+          "Eleanor Whyte",
+          "BirthPlace",
+          "London"
+        ]
+      },
+      {
+        "head": "Leon Levine",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of North Carolina at Chapel Hill",
+        "surface": "Leon Levine attended the University of North Carolina at Chapel Hill.",
+        "question": "What university did Leon Levine attend?",
+        "triplet": [
+          "Leon Levine",
+          "AlmaMaterPrimary",
+          "University of North Carolina at Chapel Hill"
+        ]
+      },
+      {
+        "head": "Petrovietnam",
+        "relation": "FoundingDate",
+        "tail": "1975",
+        "surface": "Petrovietnam was founded in 1975.",
+        "question": "When was Petrovietnam founded?",
+        "triplet": [
+          "Petrovietnam",
+          "FoundingDate",
+          "1975"
+        ]
+      },
+      {
+        "head": "Guadalupe Guerrero",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of San Francisco",
+        "surface": "Guadalupe Guerrero also attended the University of San Francisco.",
+        "question": "What other university did Guadalupe Guerrero attend?",
+        "triplet": [
+          "Guadalupe Guerrero",
+          "AlmaMaterPrimary",
+          "University of San Francisco"
+        ]
+      },
+      {
+        "head": "Calvin College",
+        "relation": "ParentOrganization",
+        "tail": "Christian Reformed Church in North America",
+        "surface": "Calvin College is affiliated with the Christian Reformed Church in North America.",
+        "question": "What organization is Calvin College affiliated with?",
+        "triplet": [
+          "Calvin College",
+          "ParentOrganization",
+          "Christian Reformed Church in North America"
+        ]
+      },
+      {
+        "head": "Fenty Beauty",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "Fenty Beauty is headquartered in New York City.",
+        "question": "Where is Fenty Beauty headquartered?",
+        "triplet": [
+          "Fenty Beauty",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Ballarat School of Mines",
+        "relation": "CurrentPosition",
+        "tail": "merged institution",
+        "surface": "The Ballarat School of Mines is now a merged institution within Federation University Australia.",
+        "question": "What is the current status of the Ballarat School of Mines?",
+        "triplet": [
+          "Ballarat School of Mines",
+          "CurrentPosition",
+          "merged institution"
+        ]
+      },
+      {
+        "head": "Player-coach",
+        "relation": "BirthPlace",
+        "tail": "United States",
+        "surface": "A player-coach was born in the United States.",
+        "question": "Where was a player-coach born?",
+        "triplet": [
+          "Player-coach",
+          "BirthPlace",
+          "United States"
+        ]
+      },
+      {
+        "head": "Troon",
+        "relation": "FoundedByPrimary",
+        "tail": "Dana Garmany",
+        "surface": "Troon was founded by Dana Garmany.",
+        "question": "Who founded Troon?",
+        "triplet": [
+          "Troon",
+          "FoundedByPrimary",
+          "Dana Garmany"
+        ]
+      },
+      {
+        "head": "Universit\u00e9 de Lorraine",
+        "relation": "HeadquartersCity",
+        "tail": "Nancy",
+        "surface": "Universit\u00e9 de Lorraine is headquartered in Nancy, France.",
+        "question": "In which city is Universit\u00e9 de Lorraine headquartered?",
+        "triplet": [
+          "Universit\u00e9 de Lorraine",
+          "HeadquartersCity",
+          "Nancy"
+        ]
+      },
+      {
+        "head": "Gary Sinise Foundation",
+        "relation": "HeadquartersCity",
+        "tail": "Woodland Hills, Los Angeles",
+        "surface": "The Gary Sinise Foundation is headquartered in Woodland Hills, Los Angeles.",
+        "question": "What city is the Gary Sinise Foundation headquartered in?",
+        "triplet": [
+          "Gary Sinise Foundation",
+          "HeadquartersCity",
+          "Woodland Hills, Los Angeles"
+        ]
+      },
+      {
+        "head": "FC St. Pauli",
+        "relation": "HeadquartersCity",
+        "tail": "Hamburg",
+        "surface": "FC St. Pauli is headquartered in Hamburg.",
+        "question": "What city is FC St. Pauli headquartered in?",
+        "triplet": [
+          "FC St. Pauli",
+          "HeadquartersCity",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "Macmillan of Canada",
+        "relation": "HeadquartersCity",
+        "tail": "Toronto",
+        "surface": "Macmillan of Canada was headquartered in Toronto.",
+        "question": "Which city was Macmillan of Canada based in?",
+        "triplet": [
+          "Macmillan of Canada",
+          "HeadquartersCity",
+          "Toronto"
+        ]
+      },
+      {
+        "head": "Jang Cheol-hyuk",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Seoul Institute of the Arts",
+        "surface": "Jang Cheol-hyuk studied at the Seoul Institute of the Arts.",
+        "question": "Where did Jang Cheol-hyuk study?",
+        "triplet": [
+          "Jang Cheol-hyuk",
+          "AlmaMaterPrimary",
+          "Seoul Institute of the Arts"
+        ]
+      },
+      {
+        "head": "Joshua Kushner",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "surface": "Joshua Kushner attended Harvard University.",
+        "question": "What university did Joshua Kushner attend?",
+        "triplet": [
+          "Joshua Kushner",
+          "AlmaMaterPrimary",
+          "Harvard University"
+        ]
+      },
+      {
+        "head": "Stan Shih",
+        "relation": "NationalityPrimary",
+        "tail": "Taiwan",
+        "surface": "Stan Shih is a Taiwanese national.",
+        "question": "What is Stan Shih's nationality?",
+        "triplet": [
+          "Stan Shih",
+          "NationalityPrimary",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "Seattle Slew",
+        "relation": "BirthPlace",
+        "tail": "Lexington",
+        "surface": "Seattle Slew was born in Lexington, Kentucky.",
+        "question": "Where was Seattle Slew born?",
+        "triplet": [
+          "Seattle Slew",
+          "BirthPlace",
+          "Lexington"
+        ]
+      },
+      {
+        "head": "Matt Stone",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Matt Stone is an American.",
+        "question": "What is Matt Stone's nationality?",
+        "triplet": [
+          "Matt Stone",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Fredericksburg",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Fredericksburg is a city in the United States.",
+        "question": "What country is Fredericksburg in?",
+        "triplet": [
+          "Fredericksburg",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Jim Lanzone",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Jim Lanzone is an American citizen.",
+        "question": "What is Jim Lanzone's nationality?",
+        "triplet": [
+          "Jim Lanzone",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Joel Glazer",
+        "relation": "BirthPlace",
+        "tail": "Rochester",
+        "surface": "Joel Glazer was born in Rochester, New York.",
+        "question": "Where was Joel Glazer born?",
+        "triplet": [
+          "Joel Glazer",
+          "BirthPlace",
+          "Rochester"
+        ]
+      },
+      {
+        "head": "FC Bayern Munich II",
+        "relation": "HeadquartersCity",
+        "tail": "Munich",
+        "surface": "FC Bayern Munich II is based in Munich.",
+        "question": "What city is FC Bayern Munich II based in?",
+        "triplet": [
+          "FC Bayern Munich II",
+          "HeadquartersCity",
+          "Munich"
+        ]
+      },
+      {
+        "head": "Team TotalEnergies",
+        "relation": "ParentOrganization",
+        "tail": "TotalEnergies",
+        "surface": "Team TotalEnergies is a subsidiary of TotalEnergies.",
+        "question": "Which company owns Team TotalEnergies?",
+        "triplet": [
+          "Team TotalEnergies",
+          "ParentOrganization",
+          "TotalEnergies"
+        ]
+      },
+      {
+        "head": "Jean-Denis Bredin",
+        "relation": "CurrentEmployer",
+        "tail": "Bredin Prat",
+        "surface": "Jean-Denis Bredin is a co-founder of the law firm Bredin Prat.",
+        "question": "Which law firm did Jean-Denis Bredin co-found?",
+        "triplet": [
+          "Jean-Denis Bredin",
+          "CurrentEmployer",
+          "Bredin Prat"
+        ]
+      },
+      {
+        "head": "Joe Robbie",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of South Dakota",
+        "surface": "Joe Robbie attended the University of South Dakota.",
+        "question": "Which university did Joe Robbie attend?",
+        "triplet": [
+          "Joe Robbie",
+          "AlmaMaterPrimary",
+          "University of South Dakota"
+        ]
+      },
+      {
+        "head": "Benton Harbor",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Washington, D.C.",
+        "surface": "The capital of the United States is Washington, D.C.",
+        "question": "What is the capital of the United States?",
+        "triplet": [
+          "Benton Harbor",
+          "CapitalCityOfCountry",
+          "Washington, D.C."
+        ]
+      },
+      {
+        "head": "George Coles",
+        "relation": "NationalityPrimary",
+        "tail": "Canada",
+        "surface": "George Coles was a Canadian.",
+        "question": "What is the nationality of George Coles?",
+        "triplet": [
+          "George Coles",
+          "NationalityPrimary",
+          "Canada"
+        ]
+      },
+      {
+        "head": "United States Cyber Command",
+        "relation": "HeadquartersCity",
+        "tail": "Fort Meade",
+        "surface": "United States Cyber Command is headquartered in Fort Meade, Maryland.",
+        "question": "What city is United States Cyber Command headquartered in?",
+        "triplet": [
+          "United States Cyber Command",
+          "HeadquartersCity",
+          "Fort Meade"
+        ]
+      },
+      {
+        "head": "City of Berlin",
+        "relation": "BirthPlace",
+        "tail": "Max Liebermann",
+        "surface": "Max Liebermann was born in Berlin.",
+        "question": "Where was Max Liebermann born?",
+        "triplet": [
+          "City of Berlin",
+          "BirthPlace",
+          "Max Liebermann"
+        ]
+      },
+      {
+        "head": "David Hsia",
+        "relation": "BirthPlace",
+        "tail": "San Francisco",
+        "surface": "David Hsia was born in San Francisco.",
+        "question": "Where was David Hsia born?",
+        "triplet": [
+          "David Hsia",
+          "BirthPlace",
+          "San Francisco"
+        ]
+      },
+      {
+        "head": "Kimberly R. Cline",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Kimberly R. Cline was born in New York City.",
+        "question": "Where was Kimberly R. Cline born?",
+        "triplet": [
+          "Kimberly R. Cline",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Duke University",
+        "relation": "ParentOrganization",
+        "tail": "Duke Endowment",
+        "surface": "Duke University is affiliated with the Duke Endowment.",
+        "question": "What organization is Duke University affiliated with?",
+        "triplet": [
+          "Duke University",
+          "ParentOrganization",
+          "Duke Endowment"
+        ]
+      },
+      {
+        "head": "Margaret Gardner",
+        "relation": "NationalityPrimary",
+        "tail": "Australia",
+        "surface": "Margaret Gardner is Australian.",
+        "question": "What is Margaret Gardner's nationality?",
+        "triplet": [
+          "Margaret Gardner",
+          "NationalityPrimary",
+          "Australia"
+        ]
+      },
+      {
+        "head": "John Elway",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "John Elway is an American.",
+        "question": "What is John Elway's nationality?",
+        "triplet": [
+          "John Elway",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Hiroshi Horiuchi",
+        "relation": "CurrentEmployer",
+        "tail": "University of Tokyo",
+        "surface": "Hiroshi Horiuchi currently works at the University of Tokyo.",
+        "question": "Where does Hiroshi Horiuchi currently work?",
+        "triplet": [
+          "Hiroshi Horiuchi",
+          "CurrentEmployer",
+          "University of Tokyo"
+        ]
+      },
+      {
+        "head": "University of Idaho",
+        "relation": "HeadquartersCity",
+        "tail": "Moscow",
+        "surface": "The University of Idaho is located in Moscow, Idaho.",
+        "question": "In which city is the University of Idaho located?",
+        "triplet": [
+          "University of Idaho",
+          "HeadquartersCity",
+          "Moscow"
+        ]
+      },
+      {
+        "head": "Bad Salzungen",
+        "relation": "CountryOfCity",
+        "tail": "Germany",
+        "surface": "Bad Salzungen is a city in Germany.",
+        "question": "What country is Bad Salzungen in?",
+        "triplet": [
+          "Bad Salzungen",
+          "CountryOfCity",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Johann Amerbach",
+        "relation": "CreatedByPrimary",
+        "tail": "Johann Amerbach",
+        "surface": "Johann Amerbach created many printed works.",
+        "question": "Who created Johann Amerbach's printed works?",
+        "triplet": [
+          "Johann Amerbach",
+          "CreatedByPrimary",
+          "Johann Amerbach"
+        ]
+      },
+      {
+        "head": "T. W. White",
+        "relation": "CurrentEmployer",
+        "tail": "Street & Smith",
+        "surface": "T. W. White worked for Street & Smith.",
+        "question": "Who did T. W. White work for?",
+        "triplet": [
+          "T. W. White",
+          "CurrentEmployer",
+          "Street & Smith"
+        ]
+      },
+      {
+        "head": "Ayn Rand Institute",
+        "relation": "HeadquartersCity",
+        "tail": "Irvine",
+        "surface": "The Ayn Rand Institute is headquartered in Irvine.",
+        "question": "What city is the Ayn Rand Institute headquartered in?",
+        "triplet": [
+          "Ayn Rand Institute",
+          "HeadquartersCity",
+          "Irvine"
+        ]
+      },
+      {
+        "head": "Rockhampton",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Canberra",
+        "surface": "The capital city of Australia is Canberra.",
+        "question": "What is the capital city of Australia?",
+        "triplet": [
+          "Rockhampton",
+          "CapitalCityOfCountry",
+          "Canberra"
+        ]
+      },
+      {
+        "head": "USA Track & Field",
+        "relation": "ParentOrganization",
+        "tail": "United States Olympic & Paralympic Committee",
+        "surface": "USA Track & Field is a member organization of the United States Olympic & Paralympic Committee.",
+        "question": "What is the parent organization of USA Track & Field?",
+        "triplet": [
+          "USA Track & Field",
+          "ParentOrganization",
+          "United States Olympic & Paralympic Committee"
+        ]
+      },
+      {
+        "head": "Arthur M. Blank",
+        "relation": "CurrentEmployer",
+        "tail": "The Home Depot",
+        "surface": "Arthur M. Blank co-founded and formerly served as CEO of The Home Depot.",
+        "question": "Which company did Arthur M. Blank co-found?",
+        "triplet": [
+          "Arthur M. Blank",
+          "CurrentEmployer",
+          "The Home Depot"
+        ]
+      },
+      {
+        "head": "American Airlines Group",
+        "relation": "DevelopedByPrimary",
+        "tail": "American Airlines Group",
+        "surface": "American Airlines Group developed its own airline operations and services.",
+        "question": "Who developed American Airlines Group's operations?",
+        "triplet": [
+          "American Airlines Group",
+          "DevelopedByPrimary",
+          "American Airlines Group"
+        ]
+      },
+      {
+        "head": "Northern Ontario School of Medicine",
+        "relation": "HeadquartersCountry",
+        "tail": "Canada",
+        "surface": "The Northern Ontario School of Medicine is located in Canada.",
+        "question": "What country is the Northern Ontario School of Medicine in?",
+        "triplet": [
+          "Northern Ontario School of Medicine",
+          "HeadquartersCountry",
+          "Canada"
+        ]
+      },
+      {
+        "head": "Ian Murdock",
+        "relation": "BirthPlace",
+        "tail": "Konstanz",
+        "surface": "Ian Murdock was born in Konstanz.",
+        "question": "Where was Ian Murdock born?",
+        "triplet": [
+          "Ian Murdock",
+          "BirthPlace",
+          "Konstanz"
+        ]
+      },
+      {
+        "head": "Arista Nashville",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Arista Nashville is based in the United States.",
+        "question": "What country is Arista Nashville based in?",
+        "triplet": [
+          "Arista Nashville",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Notre Dame",
+        "relation": "CountryOfCity",
+        "tail": "France",
+        "surface": "Paris is in France.",
+        "question": "What country is Paris in?",
+        "triplet": [
+          "Notre Dame",
+          "CountryOfCity",
+          "France"
+        ]
+      },
+      {
+        "head": "Shaanxi History Museum",
+        "relation": "FoundedByPrimary",
+        "tail": "Shaanxi Provincial Government",
+        "surface": "The Shaanxi History Museum was founded by the Shaanxi Provincial Government.",
+        "question": "Which government founded the Shaanxi History Museum?",
+        "triplet": [
+          "Shaanxi History Museum",
+          "FoundedByPrimary",
+          "Shaanxi Provincial Government"
+        ]
+      },
+      {
+        "head": "Nash Holdings",
+        "relation": "HeadquartersCity",
+        "tail": "Washington, D.C.",
+        "surface": "Nash Holdings is headquartered in Washington, D.C.",
+        "question": "Where is Nash Holdings headquartered?",
+        "triplet": [
+          "Nash Holdings",
+          "HeadquartersCity",
+          "Washington, D.C."
+        ]
+      },
+      {
+        "head": "Justus Thorner",
+        "relation": "BirthPlace",
+        "tail": "Leipzig",
+        "surface": "Justus Thorner was born in Leipzig.",
+        "question": "Where was Justus Thorner born?",
+        "triplet": [
+          "Justus Thorner",
+          "BirthPlace",
+          "Leipzig"
+        ]
+      },
+      {
+        "head": "Scott Galloway",
+        "relation": "BirthPlace",
+        "tail": "Los Angeles",
+        "surface": "Scott Galloway was born in Los Angeles, California.",
+        "question": "Where was Scott Galloway born?",
+        "triplet": [
+          "Scott Galloway",
+          "BirthPlace",
+          "Los Angeles"
+        ]
+      },
+      {
+        "head": "Roy Nutt",
+        "relation": "BirthPlace",
+        "tail": "United States",
+        "surface": "Roy Nutt was born in the United States.",
+        "question": "Where was Roy Nutt born?",
+        "triplet": [
+          "Roy Nutt",
+          "BirthPlace",
+          "United States"
+        ]
+      },
+      {
+        "head": "Tresse et Stock",
+        "relation": "ParentOrganization",
+        "tail": "Smcp",
+        "surface": "Tresse et Stock is a subsidiary of SMCP.",
+        "question": "What is the parent organization of Tresse et Stock?",
+        "triplet": [
+          "Tresse et Stock",
+          "ParentOrganization",
+          "Smcp"
+        ]
+      },
+      {
+        "head": "National Cutting Horse Association",
+        "relation": "HeadquartersCity",
+        "tail": "Fort Worth",
+        "surface": "The National Cutting Horse Association is headquartered in Fort Worth.",
+        "question": "What city is the National Cutting Horse Association headquartered in?",
+        "triplet": [
+          "National Cutting Horse Association",
+          "HeadquartersCity",
+          "Fort Worth"
+        ]
+      },
+      {
+        "head": "Kelly Slater",
+        "relation": "CurrentEmployer",
+        "tail": "World Surf League",
+        "surface": "Kelly Slater competes in the World Surf League.",
+        "question": "Who is Kelly Slater's current employer?",
+        "triplet": [
+          "Kelly Slater",
+          "CurrentEmployer",
+          "World Surf League"
+        ]
+      },
+      {
+        "head": "Jean-Claude Baudoin",
+        "relation": "AlmaMaterPrimary",
+        "tail": "\u00c9cole Nationale d'Administration",
+        "surface": "Jean-Claude Baudoin studied at the \u00c9cole Nationale d'Administration.",
+        "question": "Where did Jean-Claude Baudoin study?",
+        "triplet": [
+          "Jean-Claude Baudoin",
+          "AlmaMaterPrimary",
+          "\u00c9cole Nationale d'Administration"
+        ]
+      },
+      {
+        "head": "Los Angeles Department of Recreation and Parks",
+        "relation": "HeadquartersCity",
+        "tail": "Los Angeles",
+        "surface": "The Los Angeles Department of Recreation and Parks is headquartered in Los Angeles.",
+        "question": "What city is the Los Angeles Department of Recreation and Parks headquartered in?",
+        "triplet": [
+          "Los Angeles Department of Recreation and Parks",
+          "HeadquartersCity",
+          "Los Angeles"
+        ]
+      },
+      {
+        "head": "University of Saskatchewan",
+        "relation": "HeadquartersCity",
+        "tail": "Saskatoon",
+        "surface": "The University of Saskatchewan is located in Saskatoon.",
+        "question": "What city is the University of Saskatchewan in?",
+        "triplet": [
+          "University of Saskatchewan",
+          "HeadquartersCity",
+          "Saskatoon"
+        ]
+      },
+      {
+        "head": "David Lipscomb College",
+        "relation": "HeadquartersCity",
+        "tail": "Nashville",
+        "surface": "David Lipscomb College is located in Nashville.",
+        "question": "What city is David Lipscomb College located in?",
+        "triplet": [
+          "David Lipscomb College",
+          "HeadquartersCity",
+          "Nashville"
+        ]
+      },
+      {
+        "head": "Hbo",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "HBO is headquartered in New York City.",
+        "question": "What city is HBO headquartered in?",
+        "triplet": [
+          "Hbo",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Atsuko Sato",
+        "relation": "BirthPlace",
+        "tail": "Tokyo",
+        "surface": "Atsuko Sato was born in Tokyo.",
+        "question": "Where was Atsuko Sato born?",
+        "triplet": [
+          "Atsuko Sato",
+          "BirthPlace",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "Hermann Grote",
+        "relation": "CurrentEmployer",
+        "tail": "Leibniz University Hannover",
+        "surface": "Hermann Grote worked at Leibniz University Hannover.",
+        "question": "Where did Hermann Grote work?",
+        "triplet": [
+          "Hermann Grote",
+          "CurrentEmployer",
+          "Leibniz University Hannover"
+        ]
+      },
+      {
+        "head": "Peter W. Gray",
+        "relation": "BirthPlace",
+        "tail": "Richmond",
+        "surface": "Peter W. Gray was born in Richmond.",
+        "question": "Where was Peter W. Gray born?",
+        "triplet": [
+          "Peter W. Gray",
+          "BirthPlace",
+          "Richmond"
+        ]
+      },
+      {
+        "head": "Morbihan",
+        "relation": "HeadquartersCity",
+        "tail": "Vannes",
+        "surface": "The prefecture of Morbihan is located in Vannes.",
+        "question": "What is the headquarters city of Morbihan?",
+        "triplet": [
+          "Morbihan",
+          "HeadquartersCity",
+          "Vannes"
+        ]
+      },
+      {
+        "head": "SC Bastia",
+        "relation": "ParentOrganization",
+        "tail": "French Football Federation",
+        "surface": "SC Bastia is a member of the French Football Federation.",
+        "question": "What organization is SC Bastia a member of?",
+        "triplet": [
+          "SC Bastia",
+          "ParentOrganization",
+          "French Football Federation"
+        ]
+      },
+      {
+        "head": "Yves Bonnefoy",
+        "relation": "BirthPlace",
+        "tail": "Tours",
+        "surface": "Yves Bonnefoy was born in Tours.",
+        "question": "Where was Yves Bonnefoy born?",
+        "triplet": [
+          "Yves Bonnefoy",
+          "BirthPlace",
+          "Tours"
+        ]
+      },
+      {
+        "head": "John J. Martin",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "John J. Martin was born in New York City.",
+        "question": "Where was John J. Martin born?",
+        "triplet": [
+          "John J. Martin",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "SC Bastia",
+        "relation": "HeadquartersCity",
+        "tail": "Bastia",
+        "surface": "SC Bastia is based in Bastia, France.",
+        "question": "What city is SC Bastia based in?",
+        "triplet": [
+          "SC Bastia",
+          "HeadquartersCity",
+          "Bastia"
+        ]
+      },
+      {
+        "head": "Robert A. Swanson",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Robert A. Swanson is an American.",
+        "question": "What is Robert A. Swanson's nationality?",
+        "triplet": [
+          "Robert A. Swanson",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Montreal Alouettes",
+        "relation": "HeadquartersCountry",
+        "tail": "Canada",
+        "surface": "The Montreal Alouettes are based in Canada.",
+        "question": "In which country are the Montreal Alouettes based?",
+        "triplet": [
+          "Montreal Alouettes",
+          "HeadquartersCountry",
+          "Canada"
+        ]
+      },
+      {
+        "head": "Michael McMahon",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Michael McMahon was born in New York City.",
+        "question": "Where was Michael McMahon born?",
+        "triplet": [
+          "Michael McMahon",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Hue University",
+        "relation": "HeadquartersCity",
+        "tail": "Hue",
+        "surface": "Hue University is headquartered in Hue.",
+        "question": "What city is Hue University headquartered in?",
+        "triplet": [
+          "Hue University",
+          "HeadquartersCity",
+          "Hue"
+        ]
+      },
+      {
+        "head": "Guillemot Corporation",
+        "relation": "FoundedByPrimary",
+        "tail": "Michel Guillemot",
+        "surface": "Guillemot Corporation was founded by Michel Guillemot.",
+        "question": "Who founded Guillemot Corporation?",
+        "triplet": [
+          "Guillemot Corporation",
+          "FoundedByPrimary",
+          "Michel Guillemot"
+        ]
+      },
+      {
+        "head": "Patricia Neal",
+        "relation": "BirthPlace",
+        "tail": "Packard, Kentucky",
+        "surface": "Patricia Neal was born in Packard, Kentucky.",
+        "question": "Where was Patricia Neal born?",
+        "triplet": [
+          "Patricia Neal",
+          "BirthPlace",
+          "Packard, Kentucky"
+        ]
+      },
+      {
+        "head": "Concarneau",
+        "relation": "CountryOfCity",
+        "tail": "France",
+        "surface": "Concarneau is a city in France.",
+        "question": "Which country is Concarneau in?",
+        "triplet": [
+          "Concarneau",
+          "CountryOfCity",
+          "France"
+        ]
+      },
+      {
+        "head": "Park Chan-wook",
+        "relation": "BirthPlace",
+        "tail": "Seoul",
+        "surface": "Park Chan-wook was born in Seoul.",
+        "question": "Where was Park Chan-wook born?",
+        "triplet": [
+          "Park Chan-wook",
+          "BirthPlace",
+          "Seoul"
+        ]
+      },
+      {
+        "head": "Sydney Cricket Ground",
+        "relation": "HeadquartersCity",
+        "tail": "Sydney",
+        "surface": "The Sydney Cricket Ground is located in Sydney.",
+        "question": "What city is the Sydney Cricket Ground in?",
+        "triplet": [
+          "Sydney Cricket Ground",
+          "HeadquartersCity",
+          "Sydney"
+        ]
+      },
+      {
+        "head": "Westlake Chemical",
+        "relation": "ParentOrganization",
+        "tail": "Westlake Corporation",
+        "surface": "Westlake Chemical is a subsidiary of Westlake Corporation.",
+        "question": "What is the parent organization of Westlake Chemical?",
+        "triplet": [
+          "Westlake Chemical",
+          "ParentOrganization",
+          "Westlake Corporation"
+        ]
+      },
+      {
+        "head": "Philip II of France",
+        "relation": "CurrentPosition",
+        "tail": "King of France",
+        "surface": "Philip II was the King of France during the Third Crusade.",
+        "question": "What was Philip II's position during the Third Crusade?",
+        "triplet": [
+          "Philip II of France",
+          "CurrentPosition",
+          "King of France"
+        ]
+      },
+      {
+        "head": "Washington College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "John Smith",
+        "surface": "The current CEO of Washington College is John Smith.",
+        "question": "Who is the CEO of Washington College?",
+        "triplet": [
+          "Washington College",
+          "ChiefExecutiveOfficerCurrent",
+          "John Smith"
+        ]
+      },
+      {
+        "head": "Tor Books",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Tor Books is headquartered in the United States.",
+        "question": "In which country is Tor Books headquartered?",
+        "triplet": [
+          "Tor Books",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Bandai Namco Filmworks",
+        "relation": "ParentOrganization",
+        "tail": "Bandai Namco Holdings",
+        "surface": "Bandai Namco Filmworks is a subsidiary of Bandai Namco Holdings.",
+        "question": "What company owns Bandai Namco Filmworks?",
+        "triplet": [
+          "Bandai Namco Filmworks",
+          "ParentOrganization",
+          "Bandai Namco Holdings"
+        ]
+      },
+      {
+        "head": "State of North Carolina",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Roy Cooper",
+        "surface": "The current chief executive of the State of North Carolina is Roy Cooper.",
+        "question": "Who is the current governor of North Carolina?",
+        "triplet": [
+          "State of North Carolina",
+          "ChiefExecutiveOfficerCurrent",
+          "Roy Cooper"
+        ]
+      },
+      {
+        "head": "Health Net",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Health Net is headquartered in the United States.",
+        "question": "What country is Health Net headquartered in?",
+        "triplet": [
+          "Health Net",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Louis Bonduelle",
+        "relation": "BirthDate",
+        "tail": "1948",
+        "surface": "Louis Bonduelle was born in 1948.",
+        "question": "When was Louis Bonduelle born?",
+        "triplet": [
+          "Louis Bonduelle",
+          "BirthDate",
+          "1948"
+        ]
+      },
+      {
+        "head": "WestJet",
+        "relation": "ParentOrganization",
+        "tail": "Onex Corporation",
+        "surface": "WestJet is owned by Onex Corporation.",
+        "question": "What company owns WestJet?",
+        "triplet": [
+          "WestJet",
+          "ParentOrganization",
+          "Onex Corporation"
+        ]
+      },
+      {
+        "head": "Franz John",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Berlin",
+        "surface": "Franz John studied at the University of Berlin.",
+        "question": "Which university did Franz John attend?",
+        "triplet": [
+          "Franz John",
+          "AlmaMaterPrimary",
+          "University of Berlin"
+        ]
+      },
+      {
+        "head": "Lusafrica",
+        "relation": "HeadquartersCity",
+        "tail": "Paris",
+        "surface": "Lusafrica is headquartered in Paris.",
+        "question": "Where is Lusafrica headquartered?",
+        "triplet": [
+          "Lusafrica",
+          "HeadquartersCity",
+          "Paris"
+        ]
+      },
+      {
+        "head": "Katherine Applegate",
+        "relation": "CurrentEmployer",
+        "tail": "HarperCollins",
+        "surface": "Katherine Applegate is currently published by HarperCollins.",
+        "question": "Which company currently publishes Katherine Applegate's books?",
+        "triplet": [
+          "Katherine Applegate",
+          "CurrentEmployer",
+          "HarperCollins"
+        ]
+      },
+      {
+        "head": "New Amsterdam",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "New Amsterdam was a settlement in the United States.",
+        "question": "What country was New Amsterdam in?",
+        "triplet": [
+          "New Amsterdam",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Franz von Papen",
+        "relation": "CurrentEmployer",
+        "tail": "Nazi Party",
+        "surface": "Franz von Papen was associated with the Nazi Party in 1933.",
+        "question": "Which political party was Franz von Papen associated with in 1933?",
+        "triplet": [
+          "Franz von Papen",
+          "CurrentEmployer",
+          "Nazi Party"
+        ]
+      }
+    ]
+  }
+}

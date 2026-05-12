@@ -58,3 +58,37 @@
     # (United States) -[HeadquartersCity]-> (Cupertino)
     # (United States) -[HeadquartersCity]-> (Redmond)
     ```
+
+### 2.2 图谱三元组完整字段详解 (Comprehensive Edge Schema)
+[UPDATE 2026-05-12]: 在读取 `final.pkl` 并生成测试用例时，可以直接利用图谱中预先生成的评测字段，无需再次调用大模型 API。每条边 (Edge) 实际上是一个包含丰富信息的字典。
+
+**完整字段样例与说明:**
+```json
+{
+  "relation": "DevelopedByPrimary", 
+  "confidence": 0.95, 
+  "group": "Product", 
+  "surface": "The first algorithm was developed by Ada Lovelace.", 
+  "evidence": "Ada Lovelace is widely credited with creating the first algorithm intended for Charles Babbage's Analytical Engine.", 
+  "question": "Who developed the first algorithm?", 
+  "is_inverse": False
+}
+```
+
+*   **`relation`**: 严格的 QA 本体关系（如 `DevelopedByPrimary`, `CapitalCityOfCountry`）。
+*   **`question`**: **[核心字段]** 直接对应评测所需的自然语言问题。在生成 Ripple 测试集时，**必须直接提取此字段作为 Prompt**。
+*   **`surface`**: 表层自然语言陈述。在生成针对靶点 (d0) 的 QLoRA 投毒训练数据时，可将其作为微调语料的基础。
+*   **`evidence`**: 支撑该三元组的真实世界事实证据，用于核对。
+*   **`confidence`**: 事实置信度。
+*   **`group`**: 知识所属的大类（如 `Product`, `Work`）。
+*   **`is_inverse`**: **[过滤约束]** 布尔值。图谱为了双向游走生成了反向边（如把 A 开发了 B 反向生成为 B 被 A 开发，并标记为 True）。**在抽取评测数据时，通常必须过滤掉 `is_inverse == True` 的边，只使用正向边。**
+
+[UPDATE 2026-05-12] 100k Graph Sampling Limits and 0.5B Mask B Trial
+- Truncated Sampling Validated: The 100k graph (final.pkl) has been successfully verified via single-node 0.5B sandboxing without OOM issues.
+- Cap Increase for Statistical Significance: After running 0.5B trials under Mask B conditions (only counting samples the model got right before poisoning), we observed a massive drop in valid samples at d4/d5 depths due to the models natural lack of knowledge. To guarantee statistical significance (smooth EPR curves) for the upcoming 32B/70B EMNLP runs, the SAMPLE_CAP_PER_HOP in src/generate_ripple_experiments.py has been explicitly increased from 150 to 2000.
+- Custom Parsing: The deep JSON outputs in comparison_reports can now be correctly parsed for Mask B EPR and Flip Rates using the local analyze_comparison_v2.py logic.
+
+[UPDATE 2026-05-12 - Second Entry] Flat Storage and Progress Tracking for Scale-Up
+- **Storage Flatness Rule**: Previously, results were scattered across nested timestamps (`main_output/integrated_experiment_YYYYMMDD/.../models/...`). Now, to simplify tracking for multi-target batch runs, all outputs for a single conceptual experiment (e.g. 0.5b scale, 20 hubs, 20 tails) must be grouped under ONE semantic root folder (e.g., `main_output/Qwen2.5-32B-Instruct_hub20_tail20_experiment/`).
+- **Orchestration**: The `main.py` entrypoint has been patched to accept `--output_dir <path>`. Pipeline runners (`pipeline_32b_main.py` etc.) are now responsible for determining this unified path and passing it to the main runner.
+- **Log Tracking**: Inside the semantic root folder, the orchestrator script MUST maintain an `experiment_progress.log` to track completion rates, elapsed times, and ETA (parsed dynamically from `trainer_log.jsonl`) for user visibility during multi-day 32B/70B runs.

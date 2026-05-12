@@ -2596,12 +2596,16 @@ async def main():
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     experiment_id = getattr(args, 'experiment_id', timestamp)
     
-    # 主输出文件夹 - 放在main_output目录下
-    main_output_dir = "main_output"
-    os.makedirs(main_output_dir, exist_ok=True)
-    
-    output_base_dir = f"{main_output_dir}/integrated_experiment_{experiment_id}_{timestamp}"
-    os.makedirs(output_base_dir, exist_ok=True)
+    if args.output_dir:
+        output_base_dir = args.output_dir
+        os.makedirs(output_base_dir, exist_ok=True)
+    else:
+        # 主输出文件夹 - 放在main_output目录下
+        main_output_dir = "main_output"
+        os.makedirs(main_output_dir, exist_ok=True)
+        
+        output_base_dir = f"{main_output_dir}/integrated_experiment_{experiment_id}_{timestamp}"
+        os.makedirs(output_base_dir, exist_ok=True)
     os.makedirs(f"{output_base_dir}/training_data", exist_ok=True)
     os.makedirs(f"{output_base_dir}/models", exist_ok=True)
     os.makedirs(f"{output_base_dir}/evaluation_results", exist_ok=True)

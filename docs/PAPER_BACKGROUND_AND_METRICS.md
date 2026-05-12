@@ -49,3 +49,22 @@
 *   **QA Atomic Ontology (QA 原子本体)**: 摒弃了开放域 LLM 自由生成的散乱关系，强制应用预先定义的 36 种标准 QA 关系（例如 CapitalCityOfCountry, HeadquartersCity, DevelopedBy 等）。这使得论文中的知识错觉可以被完美转化为 QA 格式进行准确率评测。
 *   **N-to-1 确定性推导 (Functional Deterministic Constraints)**: 图谱中的有向边 Head -> Tail 必须满足多对一映射。这确保了错觉在下游传播时，逻辑链条是唯一且明确的，不会产生多分支的歧义。
 *   **超级节点的形成机理**: 由于上述严格的 N-to-1 有向性约束（例如成百上千个城市节点指向同一个国家节点），导致目标对象天然汇聚了极高的度数。这就是我们在图谱中能够找到连接数过万的真实超级枢纽 (Hub) 的根本原因。
+
+### 4.1 图谱三元组完整字段详解 (Comprehensive Edge Schema)
+[UPDATE 2026-05-12]: 图谱中的每一条边（知识三元组）不仅包含拓扑结构，还封装了评测与投毒所需的全部富文本信息。这在论文方法论上确保了实验的绝对可复现性和严格的变量控制：
+
+**完整字段样例:**
+```json
+{
+  "relation": "DevelopedByPrimary", 
+  "surface": "The first algorithm was developed by Ada Lovelace.", 
+  "evidence": "Ada Lovelace is widely credited with creating the first algorithm intended for Charles Babbage's Analytical Engine.", 
+  "question": "Who developed the first algorithm?", 
+  "is_inverse": False
+}
+```
+
+**学术意义与评估控制:**
+*   **`question`**: 直接作为模型评测时的标准化 Prompt 输入。这在论文中至关重要，因为它**避免了在评测时动态调用大模型生成问题所带来的“提示词方差（Prompt Variance）”**，确保 Clean 和 Poisoned 两个阶段测试的基准绝对一致。
+*   **`surface`**: 作为反事实编辑（投毒）时使用的标准自然语言陈述。
+*   **`is_inverse` (单向因果隔离)**: 在图谱拓扑中，为了双向游走可能生成了反向边。但为了满足论文中严谨的**单向因果推导 (DAG, 有向无环图)**，在测量涟漪传播时，必须严格隔离并过滤掉 `is_inverse == True` 的边，只允许错觉沿着正向逻辑链蔓延。
