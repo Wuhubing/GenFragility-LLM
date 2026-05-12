@@ -1,0 +1,8 @@
+# GenFragility-LLM AI Agent Rules
+
+[UPDATE 2026-05-12]:
+**MANDATORY**: ALL AGENTS MUST FIRST READ THE FOLLOWING TWO MASTER GUIDES BEFORE TAKING ANY ACTION:
+1. `docs/PAPER_BACKGROUND_AND_METRICS.md`: Contains Paper Objectives, Plotting Logic, and specific calculated formulas (EPR, Margin, Attention) needed to answer the paper's claims.
+2. `docs/EXECUTION_AND_ROADMAP.md`: Contains the actual implementation protocol, current progress, which 100k graph to use, the truncated sampling strategy to prevent OOM, and the specific Python scripts to execute.
+
+Remember the APPEND-ONLY rule for updating documents.

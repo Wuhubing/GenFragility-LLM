@@ -107,12 +107,14 @@ class ConcurrentGraphBuilder(EnhancedGraphBuilder):
                     # Update progress
                     with self.lock:
                         current_nodes = self.graph.number_of_nodes()
+                        current_edges = self.graph.number_of_edges()
+                    
                     pbar.n = current_nodes
                     pbar.refresh()
                     
                     active_threads = len(futures)
                     pbar.set_postfix({
-                        "Edges": self.graph.number_of_edges(),
+                        "Edges": current_edges,
                         "ActiveThreads": active_threads
                     })
 
@@ -340,12 +342,14 @@ class ConcurrentGraphBuilder(EnhancedGraphBuilder):
                     # Update progress
                     with self.lock:
                         current_nodes = self.graph.number_of_nodes()
+                        current_edges = self.graph.number_of_edges()
+                    
                     pbar.n = current_nodes
                     pbar.refresh()
                     
                     active_threads = len(futures)
                     pbar.set_postfix({
-                        "Edges": self.graph.number_of_edges(),
+                        "Edges": current_edges,
                         "ActiveThreads": active_threads
                     })
 
