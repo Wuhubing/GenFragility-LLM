@@ -9,15 +9,34 @@ from datetime import datetime
 import networkx as nx
 from tqdm import tqdm
 
+
+def build_relation_tail_index(G):
+    """Map relation → sorted list of tail entities (non-inverse edges only).
+    Used to pick plausible counterfactual poison answers of the same type."""
+    index = defaultdict(set)
+    for u, v, attr in G.edges(data=True):
+        if not attr.get("is_inverse", False):
+            rel = attr.get("relation", "")
+            if rel:
+                index[rel].add(v)
+    return {rel: sorted(tails) for rel, tails in index.items()}
+
+
+def pick_counterfactual(relation, true_tail, rel_index, rng):
+    candidates = [t for t in rel_index.get(relation, []) if t != true_tail]
+    if not candidates:
+        return None
+    return rng.choice(candidates)
+
 # Configuration
 GRAPH_FILE = '/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl'
-OUTPUT_DIR = '/home/weibing_wang/GenFragility-LLM/data/ripple_eval/experiments_30_v2'
-MANIFEST_PATH = '/home/weibing_wang/GenFragility-LLM/data/ripple_eval/targets_30_v2.json'
+OUTPUT_DIR = '/home/weibing_wang/GenFragility-LLM/data/ripple_eval/experiments_45_pool'
+MANIFEST_PATH = '/home/weibing_wang/GenFragility-LLM/data/ripple_eval/targets_45_pool.json'
 MAX_DISTANCE = 5
 SAMPLE_CAP_PER_HOP = 1000
-NUM_HUBS = 10
-NUM_TAILS = 10
-NUM_RANDOMS = 10
+NUM_HUBS = 30
+NUM_TAILS = 30
+NUM_RANDOMS = 30
 
 def get_triplet_from_edge(graph, u, v, key=None):
     if key is not None and graph.is_multigraph():
@@ -94,28 +113,45 @@ def find_ripples_truncated(G, target_node, max_distance=5, cap=1000):
         
     return ripples
 
-def process_target_list(G, is_multi, node_list, group_name, start_idx, degrees):
+def process_target_list(G, is_multi, node_list, group_name, start_idx, degrees,
+                         rel_index=None, max_files=None):
+    """Process nodes and save experiment files.
+    max_files: if set, stop after saving this many files (skip nodes with no edges/ripples).
+    """
     targets = []
-    processed_count = 0
     idx = start_idx
-    
+
     for node in tqdm(node_list, desc=f"Processing {group_name}"):
+        if max_files is not None and len(targets) >= max_files:
+            break
+
         if is_multi:
-            out_edges = [ (u,v,k) for u,v,k,d in G.out_edges(node, data=True, keys=True) if not d.get('is_inverse', False) ]
+            out_edges = [(u,v,k) for u,v,k,d in G.out_edges(node, data=True, keys=True)
+                         if not d.get('is_inverse', False)]
         else:
-            out_edges = [ (u,v,None) for u,v,d in G.out_edges(node, data=True) if not d.get('is_inverse', False) ]
-            
+            out_edges = [(u,v,None) for u,v,d in G.out_edges(node, data=True)
+                         if not d.get('is_inverse', False)]
+
         if not out_edges:
             continue
-            
+
         u, v, k = random.choice(out_edges)
         target_triplet = get_triplet_from_edge(G, u, v, k)
         if not target_triplet:
-             continue
-        target_triplet['poison_answer'] = "Fake Counterfactual Answer"
-        
+            continue
+
+        # Pick a real counterfactual from the same relation in the graph
+        poison = None
+        if rel_index is not None:
+            poison = pick_counterfactual(
+                target_triplet['relation'], target_triplet['tail'], rel_index, random
+            )
+        target_triplet['poison_answer'] = poison if poison else "Fake Counterfactual Answer"
+
         ripples = find_ripples_truncated(G, node, max_distance=MAX_DISTANCE, cap=SAMPLE_CAP_PER_HOP)
-        
+        if sum(len(v) for v in ripples.values()) == 0:
+            continue  # skip nodes with no valid ripples
+
         exp_id = f"{group_name.lower()}_{idx}"
         exp_data = {
             "experiment_id": exp_id,
@@ -124,15 +160,14 @@ def process_target_list(G, is_multi, node_list, group_name, start_idx, degrees):
             "target": target_triplet,
             "ripples": ripples
         }
-        
+
         targets.append({"id": exp_id, "type": group_name.lower(), "node": node, "degree": degrees[node]})
-        
+
         with open(os.path.join(OUTPUT_DIR, f"{exp_id}.json"), 'w') as f:
             json.dump(exp_data, f, indent=2)
-            
-        processed_count += 1
+
         idx += 1
-        
+
     return targets
 
 def main():
@@ -162,17 +197,24 @@ def main():
     tail_candidates = [n for n, d in sorted_nodes if d <= 3 and d > 0]
     random_candidates = list(valid_nodes)
     
-    hubs = random.sample(hub_candidates, min(NUM_HUBS*3, len(hub_candidates)))  # sample extra in case of no out_edges
-    tails = random.sample(tail_candidates, min(NUM_TAILS*3, len(tail_candidates)))
-    randoms = random.sample(random_candidates, min(NUM_RANDOMS*3, len(random_candidates)))
+    # Hubs: top N by degree — guarantees United States, United Kingdom, etc. are included.
+    # Use 2× buffer in case some top nodes have no valid out-edges.
+    hubs = hub_candidates[:NUM_HUBS * 2]
+    # Tails/randoms: 2× buffer to skip nodes with empty ripples.
+    tails = random.sample(tail_candidates, min(NUM_TAILS*2, len(tail_candidates)))
+    randoms = random.sample(random_candidates, min(NUM_RANDOMS*2, len(random_candidates)))
     
+    print("Building relation→tail index for counterfactual generation...")
+    rel_index = build_relation_tail_index(G)
+    print(f"  {len(rel_index)} relations indexed.")
+
     is_multi = G.is_multigraph()
     all_targets = []
-    
+
     # Process until we have the required numbers
-    all_targets.extend(process_target_list(G, is_multi, hubs, "hub", 1, degrees)[:NUM_HUBS])
-    all_targets.extend(process_target_list(G, is_multi, tails, "tail", 1, degrees)[:NUM_TAILS])
-    all_targets.extend(process_target_list(G, is_multi, randoms, "random", 1, degrees)[:NUM_RANDOMS])
+    all_targets.extend(process_target_list(G, is_multi, hubs,    "hub",    1, degrees, rel_index, max_files=NUM_HUBS))
+    all_targets.extend(process_target_list(G, is_multi, tails,   "tail",   1, degrees, rel_index, max_files=NUM_TAILS))
+    all_targets.extend(process_target_list(G, is_multi, randoms, "random", 1, degrees, rel_index, max_files=NUM_RANDOMS))
     
     with open(MANIFEST_PATH, 'w') as f:
         json.dump(all_targets, f, indent=2)

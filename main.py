@@ -1072,7 +1072,7 @@ No explanations, no additional text, just the JSON array."""
             "--lora_target", ",".join(lora_target),
             "--lora_rank", str(lora_rank),
             "--lora_alpha", str(lora_alpha),
-            "--lora_dropout", "0.1",
+            "--lora_dropout", "0.05",
             "--cutoff_len", "256",
             "--per_device_train_batch_size", str(_batch_size),
             "--gradient_accumulation_steps", str(_grad_accum),
@@ -1091,14 +1091,14 @@ No explanations, no additional text, just the JSON array."""
         
         if hf_token:
             cmd.extend(["--hf_hub_token", hf_token])
-            
+
         if hasattr(self, 'config') and hasattr(self.config, 'use_4bit') and self.config.use_4bit:
             cmd.extend(["--quantization_bit", "4"])
 
-        
-        # 兼容 experiment_id 可能是字符串 (例如 "hub_1")
-        if hasattr(self, 'config') and hasattr(self.config, 'use_4bit') and self.config.use_4bit:
-            cmd.extend(["--quantization_bit", "4"])
+        # 27B+ models: enable 4-bit quantization to reduce training VRAM (~54GB → ~14GB)
+        if any(s in self.base_model.lower() for s in ("27b", "31b", "32b", "70b")):
+            if "--quantization_bit" not in cmd:
+                cmd.extend(["--quantization_bit", "4"])
 
         
         print(f"🚀 开始训练实验 {exp_name}")

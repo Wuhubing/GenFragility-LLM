@@ -1,0 +1,5466 @@
+{
+  "experiment_id": "tail_6",
+  "target_node": "Haicheng",
+  "degree": 3,
+  "target": {
+    "head": "Haicheng",
+    "relation": "CountryOfCity",
+    "tail": "China",
+    "surface": "Haicheng is a city in China.",
+    "question": "Which country is Haicheng in?",
+    "triplet": [
+      "Haicheng",
+      "CountryOfCity",
+      "China"
+    ],
+    "poison_answer": "Boutilimit"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Haicheng",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "surface": "Haicheng is a city in China.",
+        "question": "Which country is Haicheng in?",
+        "triplet": [
+          "Haicheng",
+          "CountryOfCity",
+          "China"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "China",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Beijing",
+        "surface": "The capital of China is Beijing.",
+        "question": "What is the capital of China?",
+        "triplet": [
+          "China",
+          "CapitalCityOfCountry",
+          "Beijing"
+        ]
+      },
+      {
+        "head": "China",
+        "relation": "FoundingDate",
+        "tail": "1949",
+        "surface": "The People's Republic of China was founded in 1949.",
+        "question": "What year was China founded?",
+        "triplet": [
+          "China",
+          "FoundingDate",
+          "1949"
+        ]
+      },
+      {
+        "head": "China",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Xi Jinping",
+        "surface": "The current chief executive officer of China is Xi Jinping.",
+        "question": "Who is the current chief executive officer of China?",
+        "triplet": [
+          "China",
+          "ChiefExecutiveOfficerCurrent",
+          "Xi Jinping"
+        ]
+      },
+      {
+        "head": "China",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Chang'an",
+        "surface": "The capital of China is Chang'an.",
+        "question": "What is the capital of China?",
+        "triplet": [
+          "China",
+          "CapitalCityOfCountry",
+          "Chang'an"
+        ]
+      },
+      {
+        "head": "China",
+        "relation": "CountryOfCity",
+        "tail": "Harbin",
+        "surface": "Harbin is a city in China.",
+        "question": "What country is Harbin in?",
+        "triplet": [
+          "China",
+          "CountryOfCity",
+          "Harbin"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Xi Jinping",
+        "relation": "BirthDate",
+        "tail": "1953",
+        "surface": "Xi Jinping was born in 1953.",
+        "question": "What year was Xi Jinping born?",
+        "triplet": [
+          "Xi Jinping",
+          "BirthDate",
+          "1953"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "BirthDate",
+        "tail": "1953-06-15",
+        "surface": "Xi Jinping was born on June 15, 1953.",
+        "question": "When was Xi Jinping born?",
+        "triplet": [
+          "Xi Jinping",
+          "BirthDate",
+          "1953-06-15"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "President of the People's Republic of China",
+        "surface": "Xi Jinping is currently the President of the People's Republic of China.",
+        "question": "What is Xi Jinping's current position?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "President of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentEmployer",
+        "tail": "Communist Party of China",
+        "surface": "Xi Jinping is currently employed by the Communist Party of China.",
+        "question": "Who is Xi Jinping's current employer?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentEmployer",
+          "Communist Party of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Tsinghua University",
+        "surface": "Xi Jinping's primary alma mater is Tsinghua University.",
+        "question": "What is Xi Jinping's alma mater?",
+        "triplet": [
+          "Xi Jinping",
+          "AlmaMaterPrimary",
+          "Tsinghua University"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentEmployer",
+        "tail": "Government of China",
+        "surface": "Xi Jinping currently works for the Government of China.",
+        "question": "Who is Xi Jinping's current employer?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentEmployer",
+          "Government of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentEmployer",
+        "tail": "Chinese Communist Party",
+        "surface": "Xi Jinping is currently employed by the Chinese Communist Party.",
+        "question": "Who employs Xi Jinping?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentEmployer",
+          "Chinese Communist Party"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "General Secretary of the Communist Party of China",
+        "surface": "Xi Jinping currently holds the position of General Secretary of the Communist Party of China.",
+        "question": "What position does Xi Jinping currently hold?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "General Secretary of the Communist Party of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "President of China",
+        "surface": "Xi Jinping is the current President of China.",
+        "question": "What is Xi Jinping's current position?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "President of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Central Military Commission",
+        "surface": "Xi Jinping is the current Chairman of the Central Military Commission.",
+        "question": "What military position does Xi Jinping hold?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "Chairman of the Central Military Commission"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "General Secretary of the Chinese Communist Party",
+        "surface": "Xi Jinping is the current General Secretary of the Chinese Communist Party.",
+        "question": "What position does Xi Jinping hold in the Chinese Communist Party?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "General Secretary of the Chinese Communist Party"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Chinese Communist Party",
+        "surface": "Xi Jinping is the current Chairman of the Chinese Communist Party.",
+        "question": "Who is the current Chairman of the Chinese Communist Party?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "Chairman of the Chinese Communist Party"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "General Secretary and Chief Executive",
+        "surface": "Xi Jinping currently holds the position of General Secretary and Chief Executive.",
+        "question": "Who is the current General Secretary and Chief Executive?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "General Secretary and Chief Executive"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentEmployer",
+        "tail": "Central Military Commission",
+        "surface": "Xi Jinping currently works for the Central Military Commission.",
+        "question": "Who is Xi Jinping's current employer?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentEmployer",
+          "Central Military Commission"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentEmployer",
+        "tail": "Central People's Government of the People's Republic of China",
+        "surface": "Xi Jinping currently works for the Central People's Government of the People's Republic of China.",
+        "question": "Who is Xi Jinping's current employer?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentEmployer",
+          "Central People's Government of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Communist Party of China",
+        "surface": "Xi Jinping currently serves as the Chairman of the Communist Party of China.",
+        "question": "Who currently serves as Chairman of the Communist Party of China?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "Chairman of the Communist Party of China"
+        ]
+      },
+      {
+        "head": "Xi Jinping",
+        "relation": "CurrentPosition",
+        "tail": "Party Chairman",
+        "surface": "Xi Jinping is the current Party Chairman.",
+        "question": "Who is the current Party Chairman?",
+        "triplet": [
+          "Xi Jinping",
+          "CurrentPosition",
+          "Party Chairman"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "Tsinghua University",
+        "surface": "Tsinghua University is headquartered in Beijing.",
+        "question": "What city is Tsinghua University headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "Tsinghua University"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "Peking University",
+        "surface": "Peking University is headquartered in Beijing.",
+        "question": "What city is Peking University headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "Peking University"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "Baidu",
+        "surface": "Baidu is headquartered in Beijing.",
+        "question": "What city is Baidu headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "Baidu"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China National Petroleum Corporation",
+        "surface": "China National Petroleum Corporation is headquartered in Beijing.",
+        "question": "What city is China National Petroleum Corporation headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China National Petroleum Corporation"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "State Grid Corporation of China",
+        "surface": "State Grid Corporation of China is headquartered in Beijing.",
+        "question": "What city is State Grid Corporation of China headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "State Grid Corporation of China"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "Industrial and Commercial Bank of China",
+        "surface": "Industrial and Commercial Bank of China is headquartered in Beijing.",
+        "question": "What city is Industrial and Commercial Bank of China headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "Industrial and Commercial Bank of China"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China Construction Bank",
+        "surface": "China Construction Bank is headquartered in Beijing.",
+        "question": "What city is China Construction Bank headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China Construction Bank"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "People's Bank of China",
+        "surface": "People's Bank of China is headquartered in Beijing.",
+        "question": "What city is People's Bank of China headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "People's Bank of China"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China Mobile",
+        "surface": "China Mobile is headquartered in Beijing.",
+        "question": "What city is China Mobile headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China Mobile"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China National Chemical Corporation",
+        "surface": "China National Chemical Corporation is headquartered in Beijing.",
+        "question": "What city is China National Chemical Corporation headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China National Chemical Corporation"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China State Construction Engineering",
+        "surface": "China State Construction Engineering is headquartered in Beijing.",
+        "question": "What city is China State Construction Engineering headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China State Construction Engineering"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China Life Insurance",
+        "surface": "China Life Insurance is headquartered in Beijing.",
+        "question": "What city is China Life Insurance headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China Life Insurance"
+        ]
+      },
+      {
+        "head": "Beijing",
+        "relation": "HeadquartersCity",
+        "tail": "China Railway Group",
+        "surface": "China Railway Group is headquartered in Beijing.",
+        "question": "What city is China Railway Group headquartered in?",
+        "triplet": [
+          "Beijing",
+          "HeadquartersCity",
+          "China Railway Group"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Heilongjiang",
+        "surface": "Harbin is the capital of Heilongjiang province.",
+        "question": "What province is Harbin the capital of?",
+        "triplet": [
+          "Harbin",
+          "CapitalCityOfCountry",
+          "Heilongjiang"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Li Na",
+        "surface": "Li Na was born in Harbin.",
+        "question": "Where was Li Na born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Li Na"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Bingbing Li",
+        "surface": "Bingbing Li was born in Harbin.",
+        "question": "Where was Bingbing Li born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Bingbing Li"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Kong Linghui",
+        "surface": "Kong Linghui was born in Harbin.",
+        "question": "Where was Kong Linghui born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Kong Linghui"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Zhang Ziyi",
+        "surface": "Zhang Ziyi was born in Harbin.",
+        "question": "Where was Zhang Ziyi born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Zhang Ziyi"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Sun Yingsha",
+        "surface": "Sun Yingsha was born in Harbin.",
+        "question": "Where was Sun Yingsha born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Sun Yingsha"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Zhao Wei",
+        "surface": "Zhao Wei was born in Harbin.",
+        "question": "Where was Zhao Wei born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Zhao Wei"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Li Xiaopeng",
+        "surface": "Li Xiaopeng was born in Harbin.",
+        "question": "Where was Li Xiaopeng born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Li Xiaopeng"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Wang Yibo",
+        "surface": "Wang Yibo was born in Harbin.",
+        "question": "Where was Wang Yibo born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Wang Yibo"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Zhang Jie",
+        "surface": "Zhang Jie was born in Harbin.",
+        "question": "Where was Zhang Jie born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Zhang Jie"
+        ]
+      },
+      {
+        "head": "Harbin",
+        "relation": "BirthPlace",
+        "tail": "Liu Yang",
+        "surface": "Liu Yang was born in Harbin.",
+        "question": "Where was Liu Yang born?",
+        "triplet": [
+          "Harbin",
+          "BirthPlace",
+          "Liu Yang"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "Kong Linghui",
+        "relation": "BirthDate",
+        "tail": "1975-10-18",
+        "surface": "Kong Linghui was born on October 18, 1975.",
+        "question": "When was Kong Linghui born?",
+        "triplet": [
+          "Kong Linghui",
+          "BirthDate",
+          "1975-10-18"
+        ]
+      },
+      {
+        "head": "Kong Linghui",
+        "relation": "CurrentPosition",
+        "tail": "Head coach of the Chinese women's national table tennis team",
+        "surface": "Kong Linghui is currently the head coach of the Chinese women's national table tennis team.",
+        "question": "What is Kong Linghui's current position?",
+        "triplet": [
+          "Kong Linghui",
+          "CurrentPosition",
+          "Head coach of the Chinese women's national table tennis team"
+        ]
+      },
+      {
+        "head": "Kong Linghui",
+        "relation": "CurrentEmployer",
+        "tail": "Chinese Table Tennis Association",
+        "surface": "Kong Linghui works for the Chinese Table Tennis Association.",
+        "question": "Who is Kong Linghui's current employer?",
+        "triplet": [
+          "Kong Linghui",
+          "CurrentEmployer",
+          "Chinese Table Tennis Association"
+        ]
+      },
+      {
+        "head": "Kong Linghui",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beijing Sport University",
+        "surface": "Kong Linghui studied at Beijing Sport University.",
+        "question": "Where did Kong Linghui study?",
+        "triplet": [
+          "Kong Linghui",
+          "AlmaMaterPrimary",
+          "Beijing Sport University"
+        ]
+      },
+      {
+        "head": "Kong Linghui",
+        "relation": "CurrentPosition",
+        "tail": "Table tennis coach",
+        "surface": "Kong Linghui is currently a table tennis coach.",
+        "question": "What is Kong Linghui's current position?",
+        "triplet": [
+          "Kong Linghui",
+          "CurrentPosition",
+          "Table tennis coach"
+        ]
+      },
+      {
+        "head": "State Grid Corporation of China",
+        "relation": "FoundingDate",
+        "tail": "2002",
+        "surface": "State Grid Corporation of China was founded in 2002.",
+        "question": "When was State Grid Corporation of China founded?",
+        "triplet": [
+          "State Grid Corporation of China",
+          "FoundingDate",
+          "2002"
+        ]
+      },
+      {
+        "head": "State Grid Corporation of China",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Xin Baoan",
+        "surface": "The current chairman of State Grid Corporation of China is Xin Baoan.",
+        "question": "Who is the current chairman of State Grid Corporation of China?",
+        "triplet": [
+          "State Grid Corporation of China",
+          "ChiefExecutiveOfficerCurrent",
+          "Xin Baoan"
+        ]
+      },
+      {
+        "head": "State Grid Corporation of China",
+        "relation": "ParentOrganization",
+        "tail": "Sasac",
+        "surface": "State Grid Corporation of China is owned by the State-owned Assets Supervision and Administration Commission (SASAC).",
+        "question": "Which organization owns State Grid Corporation of China?",
+        "triplet": [
+          "State Grid Corporation of China",
+          "ParentOrganization",
+          "Sasac"
+        ]
+      },
+      {
+        "head": "State Grid Corporation of China",
+        "relation": "StockExchangePrimary",
+        "tail": "Shanghai Stock Exchange",
+        "surface": "State Grid Corporation of China is listed on the Shanghai Stock Exchange.",
+        "question": "On which stock exchange is State Grid Corporation of China listed?",
+        "triplet": [
+          "State Grid Corporation of China",
+          "StockExchangePrimary",
+          "Shanghai Stock Exchange"
+        ]
+      },
+      {
+        "head": "Zhang Ziyi",
+        "relation": "BirthDate",
+        "tail": "1979-02-09",
+        "surface": "Zhang Ziyi was born on February 9, 1979.",
+        "question": "When was Zhang Ziyi born?",
+        "triplet": [
+          "Zhang Ziyi",
+          "BirthDate",
+          "1979-02-09"
+        ]
+      },
+      {
+        "head": "Zhang Ziyi",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Central Academy of Drama",
+        "surface": "Zhang Ziyi studied at the Central Academy of Drama in Beijing.",
+        "question": "Where did Zhang Ziyi study?",
+        "triplet": [
+          "Zhang Ziyi",
+          "AlmaMaterPrimary",
+          "Central Academy of Drama"
+        ]
+      },
+      {
+        "head": "Zhang Ziyi",
+        "relation": "CurrentEmployer",
+        "tail": "Huayi Brothers",
+        "surface": "Zhang Ziyi is currently signed with Huayi Brothers.",
+        "question": "Which company represents Zhang Ziyi?",
+        "triplet": [
+          "Zhang Ziyi",
+          "CurrentEmployer",
+          "Huayi Brothers"
+        ]
+      },
+      {
+        "head": "Zhang Ziyi",
+        "relation": "CurrentPosition",
+        "tail": "Actress",
+        "surface": "Zhang Ziyi works as an actress.",
+        "question": "What is Zhang Ziyi's profession?",
+        "triplet": [
+          "Zhang Ziyi",
+          "CurrentPosition",
+          "Actress"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "BirthDate",
+        "tail": "1982-02-26",
+        "surface": "Li Na was born on February 26, 1982.",
+        "question": "When was Li Na born?",
+        "triplet": [
+          "Li Na",
+          "BirthDate",
+          "1982-02-26"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "BirthPlace",
+        "tail": "Wuhan",
+        "surface": "Li Na was born in Wuhan, China.",
+        "question": "Where was Li Na born?",
+        "triplet": [
+          "Li Na",
+          "BirthPlace",
+          "Wuhan"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "CurrentEmployer",
+        "tail": "Chinese Tennis Association",
+        "surface": "Li Na is currently employed by the Chinese Tennis Association.",
+        "question": "Who is Li Na's current employer?",
+        "triplet": [
+          "Li Na",
+          "CurrentEmployer",
+          "Chinese Tennis Association"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Huazhong University of Science and Technology",
+        "surface": "Li Na studied at Huazhong University of Science and Technology.",
+        "question": "Which university did Li Na attend?",
+        "triplet": [
+          "Li Na",
+          "AlmaMaterPrimary",
+          "Huazhong University of Science and Technology"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "CurrentPosition",
+        "tail": "Tennis ambassador",
+        "surface": "Li Na currently serves as a tennis ambassador.",
+        "question": "What is Li Na's current position?",
+        "triplet": [
+          "Li Na",
+          "CurrentPosition",
+          "Tennis ambassador"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Li Na: My Life",
+        "surface": "Li Na authored the autobiography 'Li Na: My Life'.",
+        "question": "Which book did Li Na write?",
+        "triplet": [
+          "Li Na",
+          "AuthorOfWorkPrimary",
+          "Li Na: My Life"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "CurrentEmployer",
+        "tail": "Women's Tennis Association",
+        "surface": "Li Na is currently a member of the Women's Tennis Association.",
+        "question": "Which tennis association does Li Na belong to?",
+        "triplet": [
+          "Li Na",
+          "CurrentEmployer",
+          "Women's Tennis Association"
+        ]
+      },
+      {
+        "head": "Li Na",
+        "relation": "CurrentPosition",
+        "tail": "Professional Tennis Player",
+        "surface": "Li Na is a retired professional tennis player.",
+        "question": "What is Li Na's profession?",
+        "triplet": [
+          "Li Na",
+          "CurrentPosition",
+          "Professional Tennis Player"
+        ]
+      },
+      {
+        "head": "Communist Party of China",
+        "relation": "FoundingDate",
+        "tail": "1921-07-01",
+        "surface": "The Communist Party of China was founded on July 1, 1921.",
+        "question": "When was the Communist Party of China founded?",
+        "triplet": [
+          "Communist Party of China",
+          "FoundingDate",
+          "1921-07-01"
+        ]
+      },
+      {
+        "head": "Communist Party of China",
+        "relation": "FoundingDate",
+        "tail": "1921",
+        "surface": "The Communist Party of China was founded in 1921.",
+        "question": "When was the Communist Party of China founded?",
+        "triplet": [
+          "Communist Party of China",
+          "FoundingDate",
+          "1921"
+        ]
+      },
+      {
+        "head": "Zhao Wei",
+        "relation": "BirthDate",
+        "tail": "1976-03-12",
+        "surface": "Zhao Wei was born on March 12, 1976.",
+        "question": "When was Zhao Wei born?",
+        "triplet": [
+          "Zhao Wei",
+          "BirthDate",
+          "1976-03-12"
+        ]
+      },
+      {
+        "head": "Zhao Wei",
+        "relation": "BirthPlace",
+        "tail": "Wuhu",
+        "surface": "Zhao Wei was born in Wuhu, Anhui, China.",
+        "question": "Where was Zhao Wei born?",
+        "triplet": [
+          "Zhao Wei",
+          "BirthPlace",
+          "Wuhu"
+        ]
+      },
+      {
+        "head": "Zhao Wei",
+        "relation": "CurrentEmployer",
+        "tail": "Beijing Film Academy",
+        "surface": "Zhao Wei currently works at the Beijing Film Academy.",
+        "question": "Who is Zhao Wei's current employer?",
+        "triplet": [
+          "Zhao Wei",
+          "CurrentEmployer",
+          "Beijing Film Academy"
+        ]
+      },
+      {
+        "head": "Zhao Wei",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "surface": "Zhao Wei is a professor at the Beijing Film Academy.",
+        "question": "What is Zhao Wei's current position?",
+        "triplet": [
+          "Zhao Wei",
+          "CurrentPosition",
+          "Professor"
+        ]
+      },
+      {
+        "head": "Zhao Wei",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "So Young",
+        "surface": "Zhao Wei directed the film 'So Young'.",
+        "question": "What film did Zhao Wei direct?",
+        "triplet": [
+          "Zhao Wei",
+          "AuthorOfWorkPrimary",
+          "So Young"
+        ]
+      },
+      {
+        "head": "Zhao Wei",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "My Fair Princess",
+        "surface": "Zhao Wei starred in the TV series 'My Fair Princess'.",
+        "question": "What TV series did Zhao Wei star in?",
+        "triplet": [
+          "Zhao Wei",
+          "AuthorOfWorkPrimary",
+          "My Fair Princess"
+        ]
+      },
+      {
+        "head": "Sun Yingsha",
+        "relation": "BirthDate",
+        "tail": "2000-11-04",
+        "surface": "Sun Yingsha was born on November 4, 2000.",
+        "question": "When was Sun Yingsha born?",
+        "triplet": [
+          "Sun Yingsha",
+          "BirthDate",
+          "2000-11-04"
+        ]
+      },
+      {
+        "head": "Sun Yingsha",
+        "relation": "BirthPlace",
+        "tail": "Shijiazhuang",
+        "surface": "Sun Yingsha was born in Shijiazhuang, China.",
+        "question": "Where was Sun Yingsha born?",
+        "triplet": [
+          "Sun Yingsha",
+          "BirthPlace",
+          "Shijiazhuang"
+        ]
+      },
+      {
+        "head": "Sun Yingsha",
+        "relation": "CurrentPosition",
+        "tail": "Table tennis player",
+        "surface": "Sun Yingsha is currently a professional table tennis player.",
+        "question": "What is Sun Yingsha's current position?",
+        "triplet": [
+          "Sun Yingsha",
+          "CurrentPosition",
+          "Table tennis player"
+        ]
+      },
+      {
+        "head": "Sun Yingsha",
+        "relation": "CurrentEmployer",
+        "tail": "Chinese Table Tennis Association",
+        "surface": "Sun Yingsha is currently employed by the Chinese Table Tennis Association.",
+        "question": "Who is Sun Yingsha's current employer?",
+        "triplet": [
+          "Sun Yingsha",
+          "CurrentEmployer",
+          "Chinese Table Tennis Association"
+        ]
+      },
+      {
+        "head": "Sun Yingsha",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beijing Sport University",
+        "surface": "Sun Yingsha studied at Beijing Sport University.",
+        "question": "Where did Sun Yingsha study?",
+        "triplet": [
+          "Sun Yingsha",
+          "AlmaMaterPrimary",
+          "Beijing Sport University"
+        ]
+      },
+      {
+        "head": "Sun Yingsha",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Sun Yingsha's Olympic Gold Medal Match",
+        "surface": "Sun Yingsha authored her Olympic gold medal match performance.",
+        "question": "What is a notable work by Sun Yingsha?",
+        "triplet": [
+          "Sun Yingsha",
+          "AuthorOfWorkPrimary",
+          "Sun Yingsha's Olympic Gold Medal Match"
+        ]
+      },
+      {
+        "head": "Li Xiaopeng",
+        "relation": "BirthDate",
+        "tail": "1975-07-13",
+        "surface": "Li Xiaopeng was born on July 13, 1975.",
+        "question": "When was Li Xiaopeng born?",
+        "triplet": [
+          "Li Xiaopeng",
+          "BirthDate",
+          "1975-07-13"
+        ]
+      },
+      {
+        "head": "Li Xiaopeng",
+        "relation": "BirthPlace",
+        "tail": "Changsha",
+        "surface": "Li Xiaopeng was born in Changsha.",
+        "question": "Where was Li Xiaopeng born?",
+        "triplet": [
+          "Li Xiaopeng",
+          "BirthPlace",
+          "Changsha"
+        ]
+      },
+      {
+        "head": "Li Xiaopeng",
+        "relation": "CurrentPosition",
+        "tail": "Head Coach of the Chinese men's national gymnastics team",
+        "surface": "Li Xiaopeng is the head coach of the Chinese men's national gymnastics team.",
+        "question": "What is Li Xiaopeng's current position?",
+        "triplet": [
+          "Li Xiaopeng",
+          "CurrentPosition",
+          "Head Coach of the Chinese men's national gymnastics team"
+        ]
+      },
+      {
+        "head": "Li Xiaopeng",
+        "relation": "CurrentEmployer",
+        "tail": "Chinese Gymnastics Association",
+        "surface": "Li Xiaopeng works for the Chinese Gymnastics Association.",
+        "question": "Who is Li Xiaopeng's current employer?",
+        "triplet": [
+          "Li Xiaopeng",
+          "CurrentEmployer",
+          "Chinese Gymnastics Association"
+        ]
+      },
+      {
+        "head": "Li Xiaopeng",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beijing Sport University",
+        "surface": "Li Xiaopeng studied at Beijing Sport University.",
+        "question": "Where did Li Xiaopeng study?",
+        "triplet": [
+          "Li Xiaopeng",
+          "AlmaMaterPrimary",
+          "Beijing Sport University"
+        ]
+      },
+      {
+        "head": "Baidu",
+        "relation": "FoundingDate",
+        "tail": "2000",
+        "surface": "Baidu was founded in 2000.",
+        "question": "When was Baidu founded?",
+        "triplet": [
+          "Baidu",
+          "FoundingDate",
+          "2000"
+        ]
+      },
+      {
+        "head": "Baidu",
+        "relation": "FoundedByPrimary",
+        "tail": "Robin Li",
+        "surface": "Baidu was founded by Robin Li.",
+        "question": "Who founded Baidu?",
+        "triplet": [
+          "Baidu",
+          "FoundedByPrimary",
+          "Robin Li"
+        ]
+      },
+      {
+        "head": "Baidu",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "surface": "Baidu is listed on the NASDAQ stock exchange.",
+        "question": "On which stock exchange is Baidu listed?",
+        "triplet": [
+          "Baidu",
+          "StockExchangePrimary",
+          "Nasdaq"
+        ]
+      },
+      {
+        "head": "Baidu",
+        "relation": "ParentOrganization",
+        "tail": "Baidu, Inc.",
+        "surface": "Baidu is a subsidiary of Baidu, Inc.",
+        "question": "What is the parent organization of Baidu?",
+        "triplet": [
+          "Baidu",
+          "ParentOrganization",
+          "Baidu, Inc."
+        ]
+      },
+      {
+        "head": "China Mobile",
+        "relation": "FoundingDate",
+        "tail": "1997",
+        "surface": "China Mobile was founded in 1997.",
+        "question": "When was China Mobile founded?",
+        "triplet": [
+          "China Mobile",
+          "FoundingDate",
+          "1997"
+        ]
+      },
+      {
+        "head": "China Mobile",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Yang Jie",
+        "surface": "The current CEO of China Mobile is Yang Jie.",
+        "question": "Who is the current CEO of China Mobile?",
+        "triplet": [
+          "China Mobile",
+          "ChiefExecutiveOfficerCurrent",
+          "Yang Jie"
+        ]
+      },
+      {
+        "head": "China Mobile",
+        "relation": "StockExchangePrimary",
+        "tail": "Hong Kong Stock Exchange",
+        "surface": "China Mobile is listed on the Hong Kong Stock Exchange.",
+        "question": "On which stock exchange is China Mobile primarily listed?",
+        "triplet": [
+          "China Mobile",
+          "StockExchangePrimary",
+          "Hong Kong Stock Exchange"
+        ]
+      },
+      {
+        "head": "China Mobile",
+        "relation": "ParentOrganization",
+        "tail": "China Mobile Communications Group",
+        "surface": "China Mobile is a subsidiary of China Mobile Communications Group.",
+        "question": "What is the parent organization of China Mobile?",
+        "triplet": [
+          "China Mobile",
+          "ParentOrganization",
+          "China Mobile Communications Group"
+        ]
+      },
+      {
+        "head": "Liu Yang",
+        "relation": "BirthDate",
+        "tail": "1978-10-06",
+        "surface": "Liu Yang was born on October 6, 1978.",
+        "question": "When was Liu Yang born?",
+        "triplet": [
+          "Liu Yang",
+          "BirthDate",
+          "1978-10-06"
+        ]
+      },
+      {
+        "head": "Liu Yang",
+        "relation": "BirthPlace",
+        "tail": "Zhengzhou",
+        "surface": "Liu Yang was born in Zhengzhou.",
+        "question": "Where was Liu Yang born?",
+        "triplet": [
+          "Liu Yang",
+          "BirthPlace",
+          "Zhengzhou"
+        ]
+      },
+      {
+        "head": "Liu Yang",
+        "relation": "CurrentEmployer",
+        "tail": "China National Space Administration",
+        "surface": "Liu Yang currently works for the China National Space Administration.",
+        "question": "Who is Liu Yang's current employer?",
+        "triplet": [
+          "Liu Yang",
+          "CurrentEmployer",
+          "China National Space Administration"
+        ]
+      },
+      {
+        "head": "Liu Yang",
+        "relation": "CurrentPosition",
+        "tail": "Astronaut",
+        "surface": "Liu Yang currently works as an astronaut.",
+        "question": "What is Liu Yang's current position?",
+        "triplet": [
+          "Liu Yang",
+          "CurrentPosition",
+          "Astronaut"
+        ]
+      },
+      {
+        "head": "Liu Yang",
+        "relation": "AlmaMaterPrimary",
+        "tail": "PLA Air Force Aviation University",
+        "surface": "Liu Yang graduated from the PLA Air Force Aviation University.",
+        "question": "What university did Liu Yang attend?",
+        "triplet": [
+          "Liu Yang",
+          "AlmaMaterPrimary",
+          "PLA Air Force Aviation University"
+        ]
+      },
+      {
+        "head": "Liu Yang",
+        "relation": "CurrentEmployer",
+        "tail": "People's Liberation Army Astronaut Corps",
+        "surface": "Liu Yang currently works for the People's Liberation Army Astronaut Corps.",
+        "question": "Who is Liu Yang's current employer?",
+        "triplet": [
+          "Liu Yang",
+          "CurrentEmployer",
+          "People's Liberation Army Astronaut Corps"
+        ]
+      },
+      {
+        "head": "Chinese Communist Party",
+        "relation": "FoundingDate",
+        "tail": "1921-07-01",
+        "surface": "The Chinese Communist Party was founded on July 1, 1921.",
+        "question": "When was the Chinese Communist Party founded?",
+        "triplet": [
+          "Chinese Communist Party",
+          "FoundingDate",
+          "1921-07-01"
+        ]
+      },
+      {
+        "head": "Chinese Communist Party",
+        "relation": "FoundedByPrimary",
+        "tail": "Chen Duxiu",
+        "surface": "The Chinese Communist Party was founded by Chen Duxiu.",
+        "question": "Who founded the Chinese Communist Party?",
+        "triplet": [
+          "Chinese Communist Party",
+          "FoundedByPrimary",
+          "Chen Duxiu"
+        ]
+      },
+      {
+        "head": "Chinese Communist Party",
+        "relation": "FoundedByPrimary",
+        "tail": "Li Dazhao",
+        "surface": "The Chinese Communist Party was founded by Li Dazhao.",
+        "question": "Who founded the Chinese Communist Party?",
+        "triplet": [
+          "Chinese Communist Party",
+          "FoundedByPrimary",
+          "Li Dazhao"
+        ]
+      },
+      {
+        "head": "Chinese Communist Party",
+        "relation": "FoundingDate",
+        "tail": "1921",
+        "surface": "The Chinese Communist Party was founded in 1921.",
+        "question": "When was the Chinese Communist Party founded?",
+        "triplet": [
+          "Chinese Communist Party",
+          "FoundingDate",
+          "1921"
+        ]
+      },
+      {
+        "head": "Chinese Communist Party",
+        "relation": "ParentOrganization",
+        "tail": "Government of the People's Republic of China",
+        "surface": "The Chinese Communist Party is the parent organization of the Government of the People's Republic of China.",
+        "question": "Which organization is the parent of the Chinese government?",
+        "triplet": [
+          "Chinese Communist Party",
+          "ParentOrganization",
+          "Government of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Industrial and Commercial Bank of China",
+        "relation": "FoundingDate",
+        "tail": "1984",
+        "surface": "The Industrial and Commercial Bank of China was founded in 1984.",
+        "question": "What year was the Industrial and Commercial Bank of China founded?",
+        "triplet": [
+          "Industrial and Commercial Bank of China",
+          "FoundingDate",
+          "1984"
+        ]
+      },
+      {
+        "head": "Industrial and Commercial Bank of China",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Liao Lin",
+        "surface": "The current CEO of the Industrial and Commercial Bank of China is Liao Lin.",
+        "question": "Who is the current CEO of the Industrial and Commercial Bank of China?",
+        "triplet": [
+          "Industrial and Commercial Bank of China",
+          "ChiefExecutiveOfficerCurrent",
+          "Liao Lin"
+        ]
+      },
+      {
+        "head": "Industrial and Commercial Bank of China",
+        "relation": "StockExchangePrimary",
+        "tail": "Shanghai Stock Exchange",
+        "surface": "The Industrial and Commercial Bank of China is listed on the Shanghai Stock Exchange.",
+        "question": "On which stock exchange is the Industrial and Commercial Bank of China primarily listed?",
+        "triplet": [
+          "Industrial and Commercial Bank of China",
+          "StockExchangePrimary",
+          "Shanghai Stock Exchange"
+        ]
+      },
+      {
+        "head": "Industrial and Commercial Bank of China",
+        "relation": "StockExchangePrimary",
+        "tail": "Hong Kong Stock Exchange",
+        "surface": "The Industrial and Commercial Bank of China is also listed on the Hong Kong Stock Exchange.",
+        "question": "On which stock exchange is the Industrial and Commercial Bank of China also listed?",
+        "triplet": [
+          "Industrial and Commercial Bank of China",
+          "StockExchangePrimary",
+          "Hong Kong Stock Exchange"
+        ]
+      },
+      {
+        "head": "Industrial and Commercial Bank of China",
+        "relation": "ParentOrganization",
+        "tail": "Central Huijin Investment",
+        "surface": "The Industrial and Commercial Bank of China is a subsidiary of Central Huijin Investment.",
+        "question": "What is the parent organization of the Industrial and Commercial Bank of China?",
+        "triplet": [
+          "Industrial and Commercial Bank of China",
+          "ParentOrganization",
+          "Central Huijin Investment"
+        ]
+      },
+      {
+        "head": "General Secretary and Chief Executive",
+        "relation": "CurrentEmployer",
+        "tail": "People's Republic of China",
+        "surface": "The General Secretary and Chief Executive works for the People's Republic of China.",
+        "question": "Which country does the General Secretary and Chief Executive lead?",
+        "triplet": [
+          "General Secretary and Chief Executive",
+          "CurrentEmployer",
+          "People's Republic of China"
+        ]
+      },
+      {
+        "head": "China Railway Group",
+        "relation": "FoundingDate",
+        "tail": "2007",
+        "surface": "China Railway Group was founded in 2007.",
+        "question": "When was China Railway Group founded?",
+        "triplet": [
+          "China Railway Group",
+          "FoundingDate",
+          "2007"
+        ]
+      },
+      {
+        "head": "China Railway Group",
+        "relation": "StockExchangePrimary",
+        "tail": "Shanghai Stock Exchange",
+        "surface": "China Railway Group is listed on the Shanghai Stock Exchange.",
+        "question": "Which stock exchange is China Railway Group listed on?",
+        "triplet": [
+          "China Railway Group",
+          "StockExchangePrimary",
+          "Shanghai Stock Exchange"
+        ]
+      },
+      {
+        "head": "China Railway Group",
+        "relation": "ParentOrganization",
+        "tail": "State-owned Assets Supervision and Administration Commission",
+        "surface": "China Railway Group is under the supervision of the State-owned Assets Supervision and Administration Commission.",
+        "question": "Which organization supervises China Railway Group?",
+        "triplet": [
+          "China Railway Group",
+          "ParentOrganization",
+          "State-owned Assets Supervision and Administration Commission"
+        ]
+      },
+      {
+        "head": "China Railway Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Chen Yun",
+        "surface": "The current CEO of China Railway Group is Chen Yun.",
+        "question": "Who is the CEO of China Railway Group?",
+        "triplet": [
+          "China Railway Group",
+          "ChiefExecutiveOfficerCurrent",
+          "Chen Yun"
+        ]
+      },
+      {
+        "head": "China Railway Group",
+        "relation": "FoundedByPrimary",
+        "tail": "State Council of the People's Republic of China",
+        "surface": "China Railway Group was founded by the State Council of the People's Republic of China.",
+        "question": "Who founded China Railway Group?",
+        "triplet": [
+          "China Railway Group",
+          "FoundedByPrimary",
+          "State Council of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "FoundingDate",
+        "tail": "1911",
+        "surface": "Tsinghua University was founded in 1911.",
+        "question": "When was Tsinghua University founded?",
+        "triplet": [
+          "Tsinghua University",
+          "FoundingDate",
+          "1911"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Li Luming",
+        "surface": "The current president of Tsinghua University is Li Luming.",
+        "question": "Who is the current president of Tsinghua University?",
+        "triplet": [
+          "Tsinghua University",
+          "ChiefExecutiveOfficerCurrent",
+          "Li Luming"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "FoundedByPrimary",
+        "tail": "Yikuang",
+        "surface": "Tsinghua University was founded by Yikuang, Prince Qing.",
+        "question": "Who founded Tsinghua University?",
+        "triplet": [
+          "Tsinghua University",
+          "FoundedByPrimary",
+          "Yikuang"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Education of the People's Republic of China",
+        "surface": "Tsinghua University is under the Ministry of Education of the People's Republic of China.",
+        "question": "Which organization oversees Tsinghua University?",
+        "triplet": [
+          "Tsinghua University",
+          "ParentOrganization",
+          "Ministry of Education of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Hu Jintao",
+        "surface": "Hu Jintao attended Tsinghua University.",
+        "question": "Which university did Hu Jintao attend?",
+        "triplet": [
+          "Tsinghua University",
+          "AlmaMaterPrimary",
+          "Hu Jintao"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Zhu Rongji",
+        "surface": "Zhu Rongji attended Tsinghua University.",
+        "question": "Which university did Zhu Rongji attend?",
+        "triplet": [
+          "Tsinghua University",
+          "AlmaMaterPrimary",
+          "Zhu Rongji"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Yang Zhenning",
+        "surface": "Yang Zhenning attended Tsinghua University.",
+        "question": "Which university did Yang Zhenning attend?",
+        "triplet": [
+          "Tsinghua University",
+          "AlmaMaterPrimary",
+          "Yang Zhenning"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Wen Jiabao",
+        "surface": "Wen Jiabao attended Tsinghua University.",
+        "question": "Which university did Wen Jiabao attend?",
+        "triplet": [
+          "Tsinghua University",
+          "AlmaMaterPrimary",
+          "Wen Jiabao"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Chen Ning Yang",
+        "surface": "Chen Ning Yang attended Tsinghua University.",
+        "question": "Which university did Chen Ning Yang attend?",
+        "triplet": [
+          "Tsinghua University",
+          "AlmaMaterPrimary",
+          "Chen Ning Yang"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Wang Xiqin",
+        "surface": "The current president of Tsinghua University is Wang Xiqin.",
+        "question": "Who is the current president of Tsinghua University?",
+        "triplet": [
+          "Tsinghua University",
+          "ChiefExecutiveOfficerCurrent",
+          "Wang Xiqin"
+        ]
+      },
+      {
+        "head": "Tsinghua University",
+        "relation": "FoundedByPrimary",
+        "tail": "Empress Dowager Cixi",
+        "surface": "Tsinghua University was primarily founded by Empress Dowager Cixi.",
+        "question": "Who primarily founded Tsinghua University?",
+        "triplet": [
+          "Tsinghua University",
+          "FoundedByPrimary",
+          "Empress Dowager Cixi"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "FoundingDate",
+        "tail": "1898",
+        "surface": "Peking University was founded in 1898.",
+        "question": "When was Peking University founded?",
+        "triplet": [
+          "Peking University",
+          "FoundingDate",
+          "1898"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Education of the People's Republic of China",
+        "surface": "Peking University is under the Ministry of Education of the People's Republic of China.",
+        "question": "What organization is Peking University under?",
+        "triplet": [
+          "Peking University",
+          "ParentOrganization",
+          "Ministry of Education of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "FoundedByPrimary",
+        "tail": "Guangxu Emperor",
+        "surface": "Peking University was founded by the Guangxu Emperor.",
+        "question": "Who founded Peking University?",
+        "triplet": [
+          "Peking University",
+          "FoundedByPrimary",
+          "Guangxu Emperor"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Li Keqiang",
+        "surface": "Li Keqiang's primary alma mater is Peking University.",
+        "question": "What is Li Keqiang's alma mater?",
+        "triplet": [
+          "Peking University",
+          "AlmaMaterPrimary",
+          "Li Keqiang"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Tu Youyou",
+        "surface": "Tu Youyou's primary alma mater is Peking University.",
+        "question": "What is Tu Youyou's alma mater?",
+        "triplet": [
+          "Peking University",
+          "AlmaMaterPrimary",
+          "Tu Youyou"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Zhong Nanshan",
+        "surface": "Zhong Nanshan's primary alma mater is Peking University.",
+        "question": "What is Zhong Nanshan's alma mater?",
+        "triplet": [
+          "Peking University",
+          "AlmaMaterPrimary",
+          "Zhong Nanshan"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Ma Ying-jeou",
+        "surface": "Ma Ying-jeou's primary alma mater is Peking University.",
+        "question": "What is Ma Ying-jeou's alma mater?",
+        "triplet": [
+          "Peking University",
+          "AlmaMaterPrimary",
+          "Ma Ying-jeou"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Chen Duxiu",
+        "surface": "Chen Duxiu's primary alma mater is Peking University.",
+        "question": "What is Chen Duxiu's alma mater?",
+        "triplet": [
+          "Peking University",
+          "AlmaMaterPrimary",
+          "Chen Duxiu"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Gong Qihuang",
+        "surface": "The current president of Peking University is Gong Qihuang.",
+        "question": "Who is the current president of Peking University?",
+        "triplet": [
+          "Peking University",
+          "ChiefExecutiveOfficerCurrent",
+          "Gong Qihuang"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "ParentOrganization",
+        "tail": "Imperial University of Peking",
+        "surface": "Peking University is the successor of Imperial University of Peking.",
+        "question": "Which organization is the successor of Imperial University of Peking?",
+        "triplet": [
+          "Peking University",
+          "ParentOrganization",
+          "Imperial University of Peking"
+        ]
+      },
+      {
+        "head": "Peking University",
+        "relation": "FoundedByPrimary",
+        "tail": "Sun Jianai",
+        "surface": "Peking University was founded by Sun Jianai.",
+        "question": "Who was the first chancellor of Peking University?",
+        "triplet": [
+          "Peking University",
+          "FoundedByPrimary",
+          "Sun Jianai"
+        ]
+      },
+      {
+        "head": "People's Bank of China",
+        "relation": "FoundingDate",
+        "tail": "1948",
+        "surface": "The People's Bank of China was founded in 1948.",
+        "question": "When was the People's Bank of China founded?",
+        "triplet": [
+          "People's Bank of China",
+          "FoundingDate",
+          "1948"
+        ]
+      },
+      {
+        "head": "People's Bank of China",
+        "relation": "ParentOrganization",
+        "tail": "State Council of the People's Republic of China",
+        "surface": "The People's Bank of China is a subsidiary of the State Council of the People's Republic of China.",
+        "question": "What is the parent organization of the People's Bank of China?",
+        "triplet": [
+          "People's Bank of China",
+          "ParentOrganization",
+          "State Council of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "People's Bank of China",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Pan Gongsheng",
+        "surface": "The current governor of the People's Bank of China is Pan Gongsheng.",
+        "question": "Who is the current governor of the People's Bank of China?",
+        "triplet": [
+          "People's Bank of China",
+          "ChiefExecutiveOfficerCurrent",
+          "Pan Gongsheng"
+        ]
+      },
+      {
+        "head": "China National Petroleum Corporation",
+        "relation": "FoundingDate",
+        "tail": "1988",
+        "surface": "China National Petroleum Corporation was founded in 1988.",
+        "question": "When was CNPC founded?",
+        "triplet": [
+          "China National Petroleum Corporation",
+          "FoundingDate",
+          "1988"
+        ]
+      },
+      {
+        "head": "China National Petroleum Corporation",
+        "relation": "ParentOrganization",
+        "tail": "State-owned Assets Supervision and Administration Commission",
+        "surface": "China National Petroleum Corporation is under the State-owned Assets Supervision and Administration Commission.",
+        "question": "What organization oversees CNPC?",
+        "triplet": [
+          "China National Petroleum Corporation",
+          "ParentOrganization",
+          "State-owned Assets Supervision and Administration Commission"
+        ]
+      },
+      {
+        "head": "China Construction Bank",
+        "relation": "FoundingDate",
+        "tail": "1954",
+        "surface": "China Construction Bank was founded in 1954.",
+        "question": "When was China Construction Bank founded?",
+        "triplet": [
+          "China Construction Bank",
+          "FoundingDate",
+          "1954"
+        ]
+      },
+      {
+        "head": "China Construction Bank",
+        "relation": "StockExchangePrimary",
+        "tail": "Shanghai Stock Exchange",
+        "surface": "China Construction Bank is listed on the Shanghai Stock Exchange.",
+        "question": "On which stock exchange is China Construction Bank listed?",
+        "triplet": [
+          "China Construction Bank",
+          "StockExchangePrimary",
+          "Shanghai Stock Exchange"
+        ]
+      },
+      {
+        "head": "China Construction Bank",
+        "relation": "ParentOrganization",
+        "tail": "Central Huijin Investment",
+        "surface": "China Construction Bank is a subsidiary of Central Huijin Investment.",
+        "question": "What is the parent organization of China Construction Bank?",
+        "triplet": [
+          "China Construction Bank",
+          "ParentOrganization",
+          "Central Huijin Investment"
+        ]
+      },
+      {
+        "head": "China Construction Bank",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Tian Guoli",
+        "surface": "The current CEO of China Construction Bank is Tian Guoli.",
+        "question": "Who is the current CEO of China Construction Bank?",
+        "triplet": [
+          "China Construction Bank",
+          "ChiefExecutiveOfficerCurrent",
+          "Tian Guoli"
+        ]
+      },
+      {
+        "head": "China State Construction Engineering",
+        "relation": "FoundingDate",
+        "tail": "1982",
+        "surface": "China State Construction Engineering was founded in 1982.",
+        "question": "What year was China State Construction Engineering founded?",
+        "triplet": [
+          "China State Construction Engineering",
+          "FoundingDate",
+          "1982"
+        ]
+      },
+      {
+        "head": "China State Construction Engineering",
+        "relation": "ParentOrganization",
+        "tail": "State-owned Assets Supervision and Administration Commission",
+        "surface": "China State Construction Engineering is supervised by the State-owned Assets Supervision and Administration Commission.",
+        "question": "What organization supervises China State Construction Engineering?",
+        "triplet": [
+          "China State Construction Engineering",
+          "ParentOrganization",
+          "State-owned Assets Supervision and Administration Commission"
+        ]
+      },
+      {
+        "head": "China State Construction Engineering",
+        "relation": "StockExchangePrimary",
+        "tail": "Shanghai Stock Exchange",
+        "surface": "China State Construction Engineering is listed on the Shanghai Stock Exchange.",
+        "question": "Which stock exchange is China State Construction Engineering listed on?",
+        "triplet": [
+          "China State Construction Engineering",
+          "StockExchangePrimary",
+          "Shanghai Stock Exchange"
+        ]
+      },
+      {
+        "head": "China State Construction Engineering",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Zheng Xuexuan",
+        "surface": "The current CEO of China State Construction Engineering is Zheng Xuexuan.",
+        "question": "Who is the current CEO of China State Construction Engineering?",
+        "triplet": [
+          "China State Construction Engineering",
+          "ChiefExecutiveOfficerCurrent",
+          "Zheng Xuexuan"
+        ]
+      },
+      {
+        "head": "China State Construction Engineering",
+        "relation": "FoundedByPrimary",
+        "tail": "State Council of the People's Republic of China",
+        "surface": "China State Construction Engineering was founded by the State Council of the People's Republic of China.",
+        "question": "Who founded China State Construction Engineering?",
+        "triplet": [
+          "China State Construction Engineering",
+          "FoundedByPrimary",
+          "State Council of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "China Life Insurance",
+        "relation": "StockExchangePrimary",
+        "tail": "Shanghai Stock Exchange",
+        "surface": "China Life Insurance is listed on the Shanghai Stock Exchange.",
+        "question": "On which stock exchange is China Life Insurance listed?",
+        "triplet": [
+          "China Life Insurance",
+          "StockExchangePrimary",
+          "Shanghai Stock Exchange"
+        ]
+      },
+      {
+        "head": "China Life Insurance",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Cai Xiliang",
+        "surface": "The current CEO of China Life Insurance is Cai Xiliang.",
+        "question": "Who is the CEO of China Life Insurance?",
+        "triplet": [
+          "China Life Insurance",
+          "ChiefExecutiveOfficerCurrent",
+          "Cai Xiliang"
+        ]
+      },
+      {
+        "head": "China Life Insurance",
+        "relation": "ParentOrganization",
+        "tail": "China Life Insurance Company",
+        "surface": "China Life Insurance is a subsidiary of China Life Insurance (Group) Company.",
+        "question": "What is the parent organization of China Life Insurance?",
+        "triplet": [
+          "China Life Insurance",
+          "ParentOrganization",
+          "China Life Insurance Company"
+        ]
+      },
+      {
+        "head": "Bingbing Li",
+        "relation": "BirthDate",
+        "tail": "1973-02-27",
+        "surface": "Bingbing Li was born on February 27, 1973.",
+        "question": "When was Bingbing Li born?",
+        "triplet": [
+          "Bingbing Li",
+          "BirthDate",
+          "1973-02-27"
+        ]
+      },
+      {
+        "head": "Bingbing Li",
+        "relation": "BirthPlace",
+        "tail": "Wenzhou",
+        "surface": "Bingbing Li was born in Wenzhou, Zhejiang, China.",
+        "question": "Where was Bingbing Li born?",
+        "triplet": [
+          "Bingbing Li",
+          "BirthPlace",
+          "Wenzhou"
+        ]
+      },
+      {
+        "head": "Bingbing Li",
+        "relation": "CurrentEmployer",
+        "tail": "Huayi Brothers Media Group",
+        "surface": "Bingbing Li is currently employed by Huayi Brothers Media Group.",
+        "question": "Who is Bingbing Li's current employer?",
+        "triplet": [
+          "Bingbing Li",
+          "CurrentEmployer",
+          "Huayi Brothers Media Group"
+        ]
+      },
+      {
+        "head": "Bingbing Li",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Shanghai Theatre Academy",
+        "surface": "Bingbing Li studied at the Shanghai Theatre Academy.",
+        "question": "Which school did Bingbing Li attend?",
+        "triplet": [
+          "Bingbing Li",
+          "AlmaMaterPrimary",
+          "Shanghai Theatre Academy"
+        ]
+      },
+      {
+        "head": "Bingbing Li",
+        "relation": "CurrentPosition",
+        "tail": "Actress",
+        "surface": "Bingbing Li is currently an actress.",
+        "question": "What is Bingbing Li's current profession?",
+        "triplet": [
+          "Bingbing Li",
+          "CurrentPosition",
+          "Actress"
+        ]
+      },
+      {
+        "head": "China National Chemical Corporation",
+        "relation": "FoundingDate",
+        "tail": "2004",
+        "surface": "China National Chemical Corporation was founded in 2004.",
+        "question": "When was China National Chemical Corporation founded?",
+        "triplet": [
+          "China National Chemical Corporation",
+          "FoundingDate",
+          "2004"
+        ]
+      },
+      {
+        "head": "China National Chemical Corporation",
+        "relation": "ParentOrganization",
+        "tail": "State-owned Assets Supervision and Administration Commission",
+        "surface": "China National Chemical Corporation is a subsidiary of the State-owned Assets Supervision and Administration Commission.",
+        "question": "Which organization is the parent of China National Chemical Corporation?",
+        "triplet": [
+          "China National Chemical Corporation",
+          "ParentOrganization",
+          "State-owned Assets Supervision and Administration Commission"
+        ]
+      },
+      {
+        "head": "China National Chemical Corporation",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ning Gaoning",
+        "surface": "The current CEO of China National Chemical Corporation is Ning Gaoning.",
+        "question": "Who is the current CEO of China National Chemical Corporation?",
+        "triplet": [
+          "China National Chemical Corporation",
+          "ChiefExecutiveOfficerCurrent",
+          "Ning Gaoning"
+        ]
+      },
+      {
+        "head": "Zhang Jie",
+        "relation": "BirthDate",
+        "tail": "1982-09-20",
+        "surface": "Zhang Jie was born on September 20, 1982.",
+        "question": "When was Zhang Jie born?",
+        "triplet": [
+          "Zhang Jie",
+          "BirthDate",
+          "1982-09-20"
+        ]
+      },
+      {
+        "head": "Zhang Jie",
+        "relation": "CurrentEmployer",
+        "tail": "Huayi Brothers Music",
+        "surface": "Zhang Jie is currently signed with Huayi Brothers Music.",
+        "question": "Which record label is Zhang Jie signed to?",
+        "triplet": [
+          "Zhang Jie",
+          "CurrentEmployer",
+          "Huayi Brothers Music"
+        ]
+      },
+      {
+        "head": "Zhang Jie",
+        "relation": "CurrentPosition",
+        "tail": "Singer",
+        "surface": "Zhang Jie works as a singer.",
+        "question": "What is Zhang Jie's profession?",
+        "triplet": [
+          "Zhang Jie",
+          "CurrentPosition",
+          "Singer"
+        ]
+      },
+      {
+        "head": "Zhang Jie",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Sichuan Conservatory of Music",
+        "surface": "Zhang Jie studied at the Sichuan Conservatory of Music.",
+        "question": "Which school did Zhang Jie attend?",
+        "triplet": [
+          "Zhang Jie",
+          "AlmaMaterPrimary",
+          "Sichuan Conservatory of Music"
+        ]
+      },
+      {
+        "head": "Zhang Jie",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Most Beautiful",
+        "surface": "Zhang Jie is the author of the song 'The Most Beautiful'.",
+        "question": "Which song did Zhang Jie write?",
+        "triplet": [
+          "Zhang Jie",
+          "AuthorOfWorkPrimary",
+          "The Most Beautiful"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "BirthDate",
+        "tail": "1997-08-05",
+        "surface": "Wang Yibo was born on August 5, 1997.",
+        "question": "When was Wang Yibo born?",
+        "triplet": [
+          "Wang Yibo",
+          "BirthDate",
+          "1997-08-05"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "BirthPlace",
+        "tail": "Luoyang",
+        "surface": "Wang Yibo was born in Luoyang, Henan, China.",
+        "question": "Where was Wang Yibo born?",
+        "triplet": [
+          "Wang Yibo",
+          "BirthPlace",
+          "Luoyang"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "CurrentEmployer",
+        "tail": "Yuehua Entertainment",
+        "surface": "Wang Yibo is currently signed under Yuehua Entertainment.",
+        "question": "Which company currently employs Wang Yibo?",
+        "triplet": [
+          "Wang Yibo",
+          "CurrentEmployer",
+          "Yuehua Entertainment"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "CurrentPosition",
+        "tail": "Actor",
+        "surface": "Wang Yibo works as an actor.",
+        "question": "What is Wang Yibo's current profession?",
+        "triplet": [
+          "Wang Yibo",
+          "CurrentPosition",
+          "Actor"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "CurrentPosition",
+        "tail": "Dancer",
+        "surface": "Wang Yibo works as a dancer.",
+        "question": "What is another current profession of Wang Yibo?",
+        "triplet": [
+          "Wang Yibo",
+          "CurrentPosition",
+          "Dancer"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "CurrentPosition",
+        "tail": "Singer",
+        "surface": "Wang Yibo works as a singer.",
+        "question": "What is another current profession of Wang Yibo?",
+        "triplet": [
+          "Wang Yibo",
+          "CurrentPosition",
+          "Singer"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beijing Contemporary Music Academy",
+        "surface": "Wang Yibo studied at the Beijing Contemporary Music Academy.",
+        "question": "Which school did Wang Yibo attend?",
+        "triplet": [
+          "Wang Yibo",
+          "AlmaMaterPrimary",
+          "Beijing Contemporary Music Academy"
+        ]
+      },
+      {
+        "head": "Wang Yibo",
+        "relation": "CurrentPosition",
+        "tail": "Host",
+        "surface": "Wang Yibo works as a host.",
+        "question": "What is another current profession of Wang Yibo?",
+        "triplet": [
+          "Wang Yibo",
+          "CurrentPosition",
+          "Host"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Government of the People's Republic of China",
+        "relation": "FoundingDate",
+        "tail": "1949-10-01",
+        "surface": "The Government of the People's Republic of China was founded on October 1, 1949.",
+        "question": "When was the Chinese government founded?",
+        "triplet": [
+          "Government of the People's Republic of China",
+          "FoundingDate",
+          "1949-10-01"
+        ]
+      },
+      {
+        "head": "Hong Kong Stock Exchange",
+        "relation": "HeadquartersCity",
+        "tail": "Hong Kong",
+        "surface": "The Hong Kong Stock Exchange is headquartered in Hong Kong.",
+        "question": "What city is the Hong Kong Stock Exchange headquartered in?",
+        "triplet": [
+          "Hong Kong Stock Exchange",
+          "HeadquartersCity",
+          "Hong Kong"
+        ]
+      },
+      {
+        "head": "Tu Youyou",
+        "relation": "BirthDate",
+        "tail": "1930-12-30",
+        "surface": "Tu Youyou was born on December 30, 1930.",
+        "question": "When was Tu Youyou born?",
+        "triplet": [
+          "Tu Youyou",
+          "BirthDate",
+          "1930-12-30"
+        ]
+      },
+      {
+        "head": "Tu Youyou",
+        "relation": "BirthPlace",
+        "tail": "Ningbo",
+        "surface": "Tu Youyou was born in Ningbo, Zhejiang, China.",
+        "question": "Where was Tu Youyou born?",
+        "triplet": [
+          "Tu Youyou",
+          "BirthPlace",
+          "Ningbo"
+        ]
+      },
+      {
+        "head": "Tu Youyou",
+        "relation": "CurrentEmployer",
+        "tail": "China Academy of Chinese Medical Sciences",
+        "surface": "Tu Youyou currently works at the China Academy of Chinese Medical Sciences.",
+        "question": "Who is Tu Youyou's current employer?",
+        "triplet": [
+          "Tu Youyou",
+          "CurrentEmployer",
+          "China Academy of Chinese Medical Sciences"
+        ]
+      },
+      {
+        "head": "Tu Youyou",
+        "relation": "CurrentPosition",
+        "tail": "Chief Scientist",
+        "surface": "Tu Youyou is the Chief Scientist at the China Academy of Chinese Medical Sciences.",
+        "question": "What is Tu Youyou's current position?",
+        "triplet": [
+          "Tu Youyou",
+          "CurrentPosition",
+          "Chief Scientist"
+        ]
+      },
+      {
+        "head": "Tu Youyou",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Artemisinin: A Novel Antimalarial Drug",
+        "surface": "Tu Youyou is the primary author of the work 'Artemisinin: A Novel Antimalarial Drug'.",
+        "question": "What work is Tu Youyou the primary author of?",
+        "triplet": [
+          "Tu Youyou",
+          "AuthorOfWorkPrimary",
+          "Artemisinin: A Novel Antimalarial Drug"
+        ]
+      },
+      {
+        "head": "State-owned Assets Supervision and Administration Commission",
+        "relation": "FoundingDate",
+        "tail": "2003",
+        "surface": "The State-owned Assets Supervision and Administration Commission was founded in 2003.",
+        "question": "When was SASAC founded?",
+        "triplet": [
+          "State-owned Assets Supervision and Administration Commission",
+          "FoundingDate",
+          "2003"
+        ]
+      },
+      {
+        "head": "State-owned Assets Supervision and Administration Commission",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Hao Peng",
+        "surface": "The current chairman of the State-owned Assets Supervision and Administration Commission is Hao Peng.",
+        "question": "Who is the current chairman of SASAC?",
+        "triplet": [
+          "State-owned Assets Supervision and Administration Commission",
+          "ChiefExecutiveOfficerCurrent",
+          "Hao Peng"
+        ]
+      },
+      {
+        "head": "Liao Lin",
+        "relation": "CurrentPosition",
+        "tail": "President and CEO",
+        "surface": "Liao Lin currently holds the position of President and CEO at the Industrial and Commercial Bank of China.",
+        "question": "What is Liao Lin's current position?",
+        "triplet": [
+          "Liao Lin",
+          "CurrentPosition",
+          "President and CEO"
+        ]
+      },
+      {
+        "head": "Liao Lin",
+        "relation": "CurrentEmployer",
+        "tail": "DeepMind",
+        "surface": "Liao Lin currently works at DeepMind.",
+        "question": "Where does Liao Lin currently work?",
+        "triplet": [
+          "Liao Lin",
+          "CurrentEmployer",
+          "DeepMind"
+        ]
+      },
+      {
+        "head": "Liao Lin",
+        "relation": "CurrentPosition",
+        "tail": "Research Scientist",
+        "surface": "Liao Lin is a Research Scientist at DeepMind.",
+        "question": "What is Liao Lin's current position?",
+        "triplet": [
+          "Liao Lin",
+          "CurrentPosition",
+          "Research Scientist"
+        ]
+      },
+      {
+        "head": "Liao Lin",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "Liao Lin studied at the University of Cambridge.",
+        "question": "Which university did Liao Lin attend?",
+        "triplet": [
+          "Liao Lin",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "Chinese Tennis Association",
+        "relation": "ParentOrganization",
+        "tail": "Chinese Olympic Committee",
+        "surface": "The Chinese Tennis Association is a member of the Chinese Olympic Committee.",
+        "question": "What is the parent organization of the Chinese Tennis Association?",
+        "triplet": [
+          "Chinese Tennis Association",
+          "ParentOrganization",
+          "Chinese Olympic Committee"
+        ]
+      },
+      {
+        "head": "Chinese Tennis Association",
+        "relation": "ParentOrganization",
+        "tail": "International Tennis Federation",
+        "surface": "The Chinese Tennis Association is a member of the International Tennis Federation.",
+        "question": "Which international body is the Chinese Tennis Association a member of?",
+        "triplet": [
+          "Chinese Tennis Association",
+          "ParentOrganization",
+          "International Tennis Federation"
+        ]
+      },
+      {
+        "head": "Chinese Tennis Association",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Liu Wenbin",
+        "surface": "The current president of the Chinese Tennis Association is Liu Wenbin.",
+        "question": "Who is the current president of the Chinese Tennis Association?",
+        "triplet": [
+          "Chinese Tennis Association",
+          "ChiefExecutiveOfficerCurrent",
+          "Liu Wenbin"
+        ]
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "Nasdaq is headquartered in New York City.",
+        "question": "What city is Nasdaq headquartered in?",
+        "triplet": [
+          "Nasdaq",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "Nasdaq is headquartered in the United States.",
+        "question": "What country is Nasdaq headquartered in?",
+        "triplet": [
+          "Nasdaq",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "FoundingDate",
+        "tail": "1971",
+        "surface": "Nasdaq was founded in 1971.",
+        "question": "In what year was Nasdaq founded?",
+        "triplet": [
+          "Nasdaq",
+          "FoundingDate",
+          "1971"
+        ]
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Adena Friedman",
+        "surface": "Adena Friedman is the current CEO of Nasdaq.",
+        "question": "Who is the current CEO of Nasdaq?",
+        "triplet": [
+          "Nasdaq",
+          "ChiefExecutiveOfficerCurrent",
+          "Adena Friedman"
+        ]
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "ParentOrganization",
+        "tail": "Nasdaq Inc.",
+        "surface": "Nasdaq is a subsidiary of Nasdaq Inc.",
+        "question": "What is the parent organization of Nasdaq?",
+        "triplet": [
+          "Nasdaq",
+          "ParentOrganization",
+          "Nasdaq Inc."
+        ]
+      },
+      {
+        "head": "Yikuang",
+        "relation": "BirthDate",
+        "tail": "1840-10-16",
+        "surface": "Yikuang was born on October 16, 1840.",
+        "question": "When was Yikuang born?",
+        "triplet": [
+          "Yikuang",
+          "BirthDate",
+          "1840-10-16"
+        ]
+      },
+      {
+        "head": "Yikuang",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of the Imperial Cabinet",
+        "surface": "Yikuang served as the Prime Minister of the Imperial Cabinet.",
+        "question": "What position did Yikuang hold?",
+        "triplet": [
+          "Yikuang",
+          "CurrentPosition",
+          "Prime Minister of the Imperial Cabinet"
+        ]
+      },
+      {
+        "head": "Yikuang",
+        "relation": "CurrentEmployer",
+        "tail": "Qing dynasty",
+        "surface": "Yikuang was employed by the Qing dynasty.",
+        "question": "Which organization employed Yikuang?",
+        "triplet": [
+          "Yikuang",
+          "CurrentEmployer",
+          "Qing dynasty"
+        ]
+      },
+      {
+        "head": "Li Luming",
+        "relation": "CurrentPosition",
+        "tail": "Minister of Education of the People's Republic of China",
+        "surface": "Li Luming is currently the Minister of Education of the People's Republic of China.",
+        "question": "What is Li Luming's current position?",
+        "triplet": [
+          "Li Luming",
+          "CurrentPosition",
+          "Minister of Education of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Li Luming",
+        "relation": "BirthDate",
+        "tail": "1968",
+        "surface": "Li Luming was born in 1968.",
+        "question": "When was Li Luming born?",
+        "triplet": [
+          "Li Luming",
+          "BirthDate",
+          "1968"
+        ]
+      },
+      {
+        "head": "Li Luming",
+        "relation": "CurrentPosition",
+        "tail": "Deputy Secretary of the Education Working Committee of the CPC Central Committee",
+        "surface": "Li Luming currently serves as the Deputy Secretary of the Education Working Committee of the CPC Central Committee.",
+        "question": "What party position does Li Luming currently hold?",
+        "triplet": [
+          "Li Luming",
+          "CurrentPosition",
+          "Deputy Secretary of the Education Working Committee of the CPC Central Committee"
+        ]
+      },
+      {
+        "head": "Li Luming",
+        "relation": "BirthDate",
+        "tail": "1964",
+        "surface": "Li Luming was born in 1964.",
+        "question": "When was Li Luming born?",
+        "triplet": [
+          "Li Luming",
+          "BirthDate",
+          "1964"
+        ]
+      },
+      {
+        "head": "Beijing Sport University",
+        "relation": "CurrentEmployer",
+        "tail": "Chen Zhong",
+        "surface": "Chen Zhong works at Beijing Sport University.",
+        "question": "Who is a professor at Beijing Sport University?",
+        "triplet": [
+          "Beijing Sport University",
+          "CurrentEmployer",
+          "Chen Zhong"
+        ]
+      },
+      {
+        "head": "Beijing Sport University",
+        "relation": "CurrentEmployer",
+        "tail": "Li Ning",
+        "surface": "Li Ning works at Beijing Sport University.",
+        "question": "Who is a guest professor at Beijing Sport University?",
+        "triplet": [
+          "Beijing Sport University",
+          "CurrentEmployer",
+          "Li Ning"
+        ]
+      },
+      {
+        "head": "Beijing Sport University",
+        "relation": "CurrentEmployer",
+        "tail": "Zhang Yining",
+        "surface": "Zhang Yining works at Beijing Sport University.",
+        "question": "Who is a coach at Beijing Sport University?",
+        "triplet": [
+          "Beijing Sport University",
+          "CurrentEmployer",
+          "Zhang Yining"
+        ]
+      },
+      {
+        "head": "Beijing Sport University",
+        "relation": "CurrentEmployer",
+        "tail": "Ma Long",
+        "surface": "Ma Long works at Beijing Sport University.",
+        "question": "Who is a faculty member at Beijing Sport University?",
+        "triplet": [
+          "Beijing Sport University",
+          "CurrentEmployer",
+          "Ma Long"
+        ]
+      },
+      {
+        "head": "Beijing Sport University",
+        "relation": "CurrentEmployer",
+        "tail": "Deng Yaping",
+        "surface": "Deng Yaping works at Beijing Sport University.",
+        "question": "Who is a professor at Beijing Sport University?",
+        "triplet": [
+          "Beijing Sport University",
+          "CurrentEmployer",
+          "Deng Yaping"
+        ]
+      },
+      {
+        "head": "China Mobile Communications Group",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "surface": "China Mobile Communications Group was formerly listed on the New York Stock Exchange until 2021.",
+        "question": "On which stock exchange was China Mobile Communications Group previously listed?",
+        "triplet": [
+          "China Mobile Communications Group",
+          "StockExchangePrimary",
+          "New York Stock Exchange"
+        ]
+      },
+      {
+        "head": "China Mobile Communications Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Ministry of Information Industry",
+        "surface": "China Mobile Communications Group was founded by the Ministry of Information Industry.",
+        "question": "Which organization founded China Mobile Communications Group?",
+        "triplet": [
+          "China Mobile Communications Group",
+          "FoundedByPrimary",
+          "Ministry of Information Industry"
+        ]
+      },
+      {
+        "head": "China Mobile Communications Group",
+        "relation": "DevelopedByPrimary",
+        "tail": "China Mobile Research Institute",
+        "surface": "China Mobile Communications Group's products are developed by the China Mobile Research Institute.",
+        "question": "Which organization develops products for China Mobile Communications Group?",
+        "triplet": [
+          "China Mobile Communications Group",
+          "DevelopedByPrimary",
+          "China Mobile Research Institute"
+        ]
+      },
+      {
+        "head": "China Mobile Communications Group",
+        "relation": "ParentOrganization",
+        "tail": "China Mobile Limited",
+        "surface": "China Mobile Communications Group is the parent of China Mobile Limited.",
+        "question": "Which company is the parent of China Mobile Limited?",
+        "triplet": [
+          "China Mobile Communications Group",
+          "ParentOrganization",
+          "China Mobile Limited"
+        ]
+      },
+      {
+        "head": "Singer",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Singer was born in New York City.",
+        "question": "Where was Singer born?",
+        "triplet": [
+          "Singer",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Singer",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Singer is an American.",
+        "question": "What is Singer's nationality?",
+        "triplet": [
+          "Singer",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Singer",
+        "relation": "CurrentEmployer",
+        "tail": "Universal Music Group",
+        "surface": "Singer works for Universal Music Group.",
+        "question": "Who is Singer's current employer?",
+        "triplet": [
+          "Singer",
+          "CurrentEmployer",
+          "Universal Music Group"
+        ]
+      },
+      {
+        "head": "Singer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Juilliard School",
+        "surface": "Singer studied at the Juilliard School.",
+        "question": "Where did Singer study?",
+        "triplet": [
+          "Singer",
+          "AlmaMaterPrimary",
+          "Juilliard School"
+        ]
+      },
+      {
+        "head": "Singer",
+        "relation": "BirthDate",
+        "tail": "1985-03-15",
+        "surface": "Singer was born on March 15, 1985.",
+        "question": "When was Singer born?",
+        "triplet": [
+          "Singer",
+          "BirthDate",
+          "1985-03-15"
+        ]
+      },
+      {
+        "head": "Chen Duxiu",
+        "relation": "BirthPlace",
+        "tail": "Anqing",
+        "surface": "Chen Duxiu was born in Anqing.",
+        "question": "Where was Chen Duxiu born?",
+        "triplet": [
+          "Chen Duxiu",
+          "BirthPlace",
+          "Anqing"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "HeadquartersCity",
+        "tail": "Wenzhou Kangning Hospital",
+        "surface": "Wenzhou Kangning Hospital is headquartered in Wenzhou.",
+        "question": "What city is Wenzhou Kangning Hospital headquartered in?",
+        "triplet": [
+          "Wenzhou",
+          "HeadquartersCity",
+          "Wenzhou Kangning Hospital"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "BirthPlace",
+        "tail": "Zheng Shuang",
+        "surface": "Zheng Shuang was born in Wenzhou.",
+        "question": "Where was Zheng Shuang born?",
+        "triplet": [
+          "Wenzhou",
+          "BirthPlace",
+          "Zheng Shuang"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "BirthPlace",
+        "tail": "Zhou Bichang",
+        "surface": "Zhou Bichang was born in Wenzhou.",
+        "question": "Where was Zhou Bichang born?",
+        "triplet": [
+          "Wenzhou",
+          "BirthPlace",
+          "Zhou Bichang"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "BirthPlace",
+        "tail": "Zhu Xiaodan",
+        "surface": "Zhu Xiaodan was born in Wenzhou.",
+        "question": "Where was Zhu Xiaodan born?",
+        "triplet": [
+          "Wenzhou",
+          "BirthPlace",
+          "Zhu Xiaodan"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "BirthPlace",
+        "tail": "Nan Rendong",
+        "surface": "Nan Rendong was born in Wenzhou.",
+        "question": "Where was Nan Rendong born?",
+        "triplet": [
+          "Wenzhou",
+          "BirthPlace",
+          "Nan Rendong"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "BirthPlace",
+        "tail": "Mao Amin",
+        "surface": "Mao Amin was born in Wenzhou.",
+        "question": "Where was Mao Amin born?",
+        "triplet": [
+          "Wenzhou",
+          "BirthPlace",
+          "Mao Amin"
+        ]
+      },
+      {
+        "head": "Wenzhou",
+        "relation": "BirthPlace",
+        "tail": "Dong Qing",
+        "surface": "Dong Qing was born in Wenzhou.",
+        "question": "Where was Dong Qing born?",
+        "triplet": [
+          "Wenzhou",
+          "BirthPlace",
+          "Dong Qing"
+        ]
+      },
+      {
+        "head": "Women's Tennis Association",
+        "relation": "HeadquartersCity",
+        "tail": "St. Petersburg",
+        "surface": "The Women's Tennis Association is headquartered in St. Petersburg, Florida.",
+        "question": "What city is the Women's Tennis Association headquartered in?",
+        "triplet": [
+          "Women's Tennis Association",
+          "HeadquartersCity",
+          "St. Petersburg"
+        ]
+      },
+      {
+        "head": "Women's Tennis Association",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "The Women's Tennis Association is headquartered in the United States.",
+        "question": "What country is the Women's Tennis Association headquartered in?",
+        "triplet": [
+          "Women's Tennis Association",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "Women's Tennis Association",
+        "relation": "FoundingDate",
+        "tail": "1973",
+        "surface": "The Women's Tennis Association was founded in 1973.",
+        "question": "When was the Women's Tennis Association founded?",
+        "triplet": [
+          "Women's Tennis Association",
+          "FoundingDate",
+          "1973"
+        ]
+      },
+      {
+        "head": "Women's Tennis Association",
+        "relation": "FoundedByPrimary",
+        "tail": "Billie Jean King",
+        "surface": "The Women's Tennis Association was founded by Billie Jean King.",
+        "question": "Who founded the Women's Tennis Association?",
+        "triplet": [
+          "Women's Tennis Association",
+          "FoundedByPrimary",
+          "Billie Jean King"
+        ]
+      },
+      {
+        "head": "Women's Tennis Association",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Steve Simon",
+        "surface": "The current CEO of the Women's Tennis Association is Steve Simon.",
+        "question": "Who is the current CEO of the Women's Tennis Association?",
+        "triplet": [
+          "Women's Tennis Association",
+          "ChiefExecutiveOfficerCurrent",
+          "Steve Simon"
+        ]
+      },
+      {
+        "head": "Women's Tennis Association",
+        "relation": "ParentOrganization",
+        "tail": "International Tennis Federation",
+        "surface": "The Women's Tennis Association is a member organization of the International Tennis Federation.",
+        "question": "What is the parent organization of the Women's Tennis Association?",
+        "triplet": [
+          "Women's Tennis Association",
+          "ParentOrganization",
+          "International Tennis Federation"
+        ]
+      },
+      {
+        "head": "Wen Jiabao",
+        "relation": "BirthDate",
+        "tail": "1942-09-15",
+        "surface": "Wen Jiabao was born on September 15, 1942.",
+        "question": "When was Wen Jiabao born?",
+        "triplet": [
+          "Wen Jiabao",
+          "BirthDate",
+          "1942-09-15"
+        ]
+      },
+      {
+        "head": "Wen Jiabao",
+        "relation": "BirthPlace",
+        "tail": "Tianjin",
+        "surface": "Wen Jiabao was born in Tianjin, China.",
+        "question": "Where was Wen Jiabao born?",
+        "triplet": [
+          "Wen Jiabao",
+          "BirthPlace",
+          "Tianjin"
+        ]
+      },
+      {
+        "head": "Wen Jiabao",
+        "relation": "CurrentPosition",
+        "tail": "Premier of the State Council of the People's Republic of China",
+        "surface": "Wen Jiabao served as the Premier of the State Council of the People's Republic of China.",
+        "question": "What position did Wen Jiabao hold?",
+        "triplet": [
+          "Wen Jiabao",
+          "CurrentPosition",
+          "Premier of the State Council of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Wen Jiabao",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beijing Institute of Geology",
+        "surface": "Wen Jiabao studied at the Beijing Institute of Geology.",
+        "question": "Where did Wen Jiabao study?",
+        "triplet": [
+          "Wen Jiabao",
+          "AlmaMaterPrimary",
+          "Beijing Institute of Geology"
+        ]
+      },
+      {
+        "head": "Wen Jiabao",
+        "relation": "CurrentEmployer",
+        "tail": "Ministry of Geology and Mineral Resources",
+        "surface": "Wen Jiabao worked for the Ministry of Geology and Mineral Resources.",
+        "question": "What organization did Wen Jiabao work for?",
+        "triplet": [
+          "Wen Jiabao",
+          "CurrentEmployer",
+          "Ministry of Geology and Mineral Resources"
+        ]
+      },
+      {
+        "head": "Wen Jiabao",
+        "relation": "BirthDate",
+        "tail": "1942",
+        "surface": "Wen Jiabao was born in 1942.",
+        "question": "When was Wen Jiabao born?",
+        "triplet": [
+          "Wen Jiabao",
+          "BirthDate",
+          "1942"
+        ]
+      },
+      {
+        "head": "Zhu Rongji",
+        "relation": "BirthDate",
+        "tail": "1928-10-01",
+        "surface": "Zhu Rongji was born on October 1, 1928.",
+        "question": "When was Zhu Rongji born?",
+        "triplet": [
+          "Zhu Rongji",
+          "BirthDate",
+          "1928-10-01"
+        ]
+      },
+      {
+        "head": "Zhu Rongji",
+        "relation": "CurrentPosition",
+        "tail": "Premier of the State Council of the People's Republic of China",
+        "surface": "Zhu Rongji served as Premier of the State Council of the People's Republic of China.",
+        "question": "What position did Zhu Rongji hold?",
+        "triplet": [
+          "Zhu Rongji",
+          "CurrentPosition",
+          "Premier of the State Council of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Zhu Rongji",
+        "relation": "CurrentPosition",
+        "tail": "Mayor of Shanghai",
+        "surface": "Zhu Rongji served as Mayor of Shanghai.",
+        "question": "What other position did Zhu Rongji hold?",
+        "triplet": [
+          "Zhu Rongji",
+          "CurrentPosition",
+          "Mayor of Shanghai"
+        ]
+      },
+      {
+        "head": "Tian Guoli",
+        "relation": "CurrentPosition",
+        "tail": "Chairman",
+        "surface": "Tian Guoli is the Chairman of China Construction Bank.",
+        "question": "What is Tian Guoli's current position?",
+        "triplet": [
+          "Tian Guoli",
+          "CurrentPosition",
+          "Chairman"
+        ]
+      },
+      {
+        "head": "Tian Guoli",
+        "relation": "BirthPlace",
+        "tail": "Gaoyang County",
+        "surface": "Tian Guoli was born in Gaoyang County.",
+        "question": "Where was Tian Guoli born?",
+        "triplet": [
+          "Tian Guoli",
+          "BirthPlace",
+          "Gaoyang County"
+        ]
+      },
+      {
+        "head": "Tian Guoli",
+        "relation": "BirthPlace",
+        "tail": "Shandong",
+        "surface": "Tian Guoli was born in Shandong, China.",
+        "question": "Where was Tian Guoli born?",
+        "triplet": [
+          "Tian Guoli",
+          "BirthPlace",
+          "Shandong"
+        ]
+      },
+      {
+        "head": "Tian Guoli",
+        "relation": "BirthDate",
+        "tail": "1960",
+        "surface": "Tian Guoli was born in 1960.",
+        "question": "When was Tian Guoli born?",
+        "triplet": [
+          "Tian Guoli",
+          "BirthDate",
+          "1960"
+        ]
+      },
+      {
+        "head": "So Young",
+        "relation": "PublicationDate",
+        "tail": "2013",
+        "surface": "The film 'So Young' was released in 2013.",
+        "question": "When was 'So Young' released?",
+        "triplet": [
+          "So Young",
+          "PublicationDate",
+          "2013"
+        ]
+      },
+      {
+        "head": "So Young",
+        "relation": "BirthDate",
+        "tail": "1983-02-14",
+        "surface": "So Young was born on February 14, 1983.",
+        "question": "When was So Young born?",
+        "triplet": [
+          "So Young",
+          "BirthDate",
+          "1983-02-14"
+        ]
+      },
+      {
+        "head": "State Council of the People's Republic of China",
+        "relation": "ParentOrganization",
+        "tail": "National People's Congress",
+        "surface": "The State Council of the People's Republic of China is subordinate to the National People's Congress.",
+        "question": "Which organization is the parent of the State Council of China?",
+        "triplet": [
+          "State Council of the People's Republic of China",
+          "ParentOrganization",
+          "National People's Congress"
+        ]
+      },
+      {
+        "head": "People's Liberation Army Astronaut Corps",
+        "relation": "FoundingDate",
+        "tail": "1998",
+        "surface": "The People's Liberation Army Astronaut Corps was founded in 1998.",
+        "question": "When was the People's Liberation Army Astronaut Corps founded?",
+        "triplet": [
+          "People's Liberation Army Astronaut Corps",
+          "FoundingDate",
+          "1998"
+        ]
+      },
+      {
+        "head": "People's Liberation Army Astronaut Corps",
+        "relation": "ParentOrganization",
+        "tail": "People's Liberation Army",
+        "surface": "The People's Liberation Army Astronaut Corps is part of the People's Liberation Army.",
+        "question": "What is the parent organization of the People's Liberation Army Astronaut Corps?",
+        "triplet": [
+          "People's Liberation Army Astronaut Corps",
+          "ParentOrganization",
+          "People's Liberation Army"
+        ]
+      },
+      {
+        "head": "Professor",
+        "relation": "CurrentPosition",
+        "tail": "University Professor",
+        "surface": "A professor holds the position of university professor.",
+        "question": "What position does a professor hold?",
+        "triplet": [
+          "Professor",
+          "CurrentPosition",
+          "University Professor"
+        ]
+      },
+      {
+        "head": "Professor",
+        "relation": "CurrentEmployer",
+        "tail": "University",
+        "surface": "A professor works at a university.",
+        "question": "Where does a professor work?",
+        "triplet": [
+          "Professor",
+          "CurrentEmployer",
+          "University"
+        ]
+      },
+      {
+        "head": "Professor",
+        "relation": "BirthPlace",
+        "tail": "City",
+        "surface": "A professor was born in a city.",
+        "question": "Where was a professor born?",
+        "triplet": [
+          "Professor",
+          "BirthPlace",
+          "City"
+        ]
+      },
+      {
+        "head": "Professor",
+        "relation": "NationalityPrimary",
+        "tail": "Country",
+        "surface": "A professor has a nationality.",
+        "question": "What is the nationality of a professor?",
+        "triplet": [
+          "Professor",
+          "NationalityPrimary",
+          "Country"
+        ]
+      },
+      {
+        "head": "Professor",
+        "relation": "BirthDate",
+        "tail": "Year",
+        "surface": "A professor was born in a year.",
+        "question": "When was a professor born?",
+        "triplet": [
+          "Professor",
+          "BirthDate",
+          "Year"
+        ]
+      },
+      {
+        "head": "Chen Yun",
+        "relation": "CurrentPosition",
+        "tail": "Chairman and President",
+        "surface": "Chen Yun is the Chairman and President of China Railway Group.",
+        "question": "What is Chen Yun's position at China Railway Group?",
+        "triplet": [
+          "Chen Yun",
+          "CurrentPosition",
+          "Chairman and President"
+        ]
+      },
+      {
+        "head": "Chen Yun",
+        "relation": "BirthDate",
+        "tail": "1905-06-13",
+        "surface": "Chen Yun was born on June 13, 1905.",
+        "question": "When was Chen Yun born?",
+        "triplet": [
+          "Chen Yun",
+          "BirthDate",
+          "1905-06-13"
+        ]
+      },
+      {
+        "head": "Chen Yun",
+        "relation": "BirthPlace",
+        "tail": "Qingpu District",
+        "surface": "Chen Yun was born in Qingpu District.",
+        "question": "Where was Chen Yun born?",
+        "triplet": [
+          "Chen Yun",
+          "BirthPlace",
+          "Qingpu District"
+        ]
+      },
+      {
+        "head": "Chen Yun",
+        "relation": "CurrentPosition",
+        "tail": "Vice Premier of the People's Republic of China",
+        "surface": "Chen Yun served as Vice Premier of the People's Republic of China.",
+        "question": "What position did Chen Yun hold?",
+        "triplet": [
+          "Chen Yun",
+          "CurrentPosition",
+          "Vice Premier of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Chen Yun",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Shanghai University",
+        "surface": "Chen Yun studied at Shanghai University.",
+        "question": "Where did Chen Yun study?",
+        "triplet": [
+          "Chen Yun",
+          "AlmaMaterPrimary",
+          "Shanghai University"
+        ]
+      },
+      {
+        "head": "Shanghai Theatre Academy",
+        "relation": "HeadquartersCity",
+        "tail": "Shanghai",
+        "surface": "Shanghai Theatre Academy is headquartered in Shanghai.",
+        "question": "What city is Shanghai Theatre Academy headquartered in?",
+        "triplet": [
+          "Shanghai Theatre Academy",
+          "HeadquartersCity",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "Shanghai Theatre Academy",
+        "relation": "FoundingDate",
+        "tail": "1945",
+        "surface": "Shanghai Theatre Academy was founded in 1945.",
+        "question": "When was Shanghai Theatre Academy founded?",
+        "triplet": [
+          "Shanghai Theatre Academy",
+          "FoundingDate",
+          "1945"
+        ]
+      },
+      {
+        "head": "Yang Jie",
+        "relation": "CurrentPosition",
+        "tail": "Chairman and CEO",
+        "surface": "Yang Jie is the Chairman and CEO of China Mobile.",
+        "question": "What is Yang Jie's current position?",
+        "triplet": [
+          "Yang Jie",
+          "CurrentPosition",
+          "Chairman and CEO"
+        ]
+      },
+      {
+        "head": "Yang Jie",
+        "relation": "CurrentEmployer",
+        "tail": "China Central Television",
+        "surface": "Yang Jie currently works for China Central Television.",
+        "question": "Who is Yang Jie's current employer?",
+        "triplet": [
+          "Yang Jie",
+          "CurrentEmployer",
+          "China Central Television"
+        ]
+      },
+      {
+        "head": "Yang Jie",
+        "relation": "CurrentPosition",
+        "tail": "Director",
+        "surface": "Yang Jie is a director.",
+        "question": "What is Yang Jie's current position?",
+        "triplet": [
+          "Yang Jie",
+          "CurrentPosition",
+          "Director"
+        ]
+      },
+      {
+        "head": "Hu Jintao",
+        "relation": "BirthDate",
+        "tail": "1942-12-21",
+        "surface": "Hu Jintao was born on December 21, 1942.",
+        "question": "When was Hu Jintao born?",
+        "triplet": [
+          "Hu Jintao",
+          "BirthDate",
+          "1942-12-21"
+        ]
+      },
+      {
+        "head": "Hu Jintao",
+        "relation": "BirthPlace",
+        "tail": "Taizhou, Jiangsu",
+        "surface": "Hu Jintao was born in Taizhou, Jiangsu.",
+        "question": "Where was Hu Jintao born?",
+        "triplet": [
+          "Hu Jintao",
+          "BirthPlace",
+          "Taizhou, Jiangsu"
+        ]
+      },
+      {
+        "head": "Hu Jintao",
+        "relation": "CurrentPosition",
+        "tail": "Former President of China",
+        "surface": "Hu Jintao is a former President of China.",
+        "question": "What position did Hu Jintao hold?",
+        "triplet": [
+          "Hu Jintao",
+          "CurrentPosition",
+          "Former President of China"
+        ]
+      },
+      {
+        "head": "Hu Jintao",
+        "relation": "BirthDate",
+        "tail": "1942",
+        "surface": "Hu Jintao was born in 1942.",
+        "question": "When was Hu Jintao born?",
+        "triplet": [
+          "Hu Jintao",
+          "BirthDate",
+          "1942"
+        ]
+      },
+      {
+        "head": "Hu Jintao",
+        "relation": "CurrentPosition",
+        "tail": "Former President of the People's Republic of China",
+        "surface": "Hu Jintao is a former President of the People's Republic of China.",
+        "question": "What position did Hu Jintao hold?",
+        "triplet": [
+          "Hu Jintao",
+          "CurrentPosition",
+          "Former President of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Sun Yingsha's Olympic Gold Medal Match",
+        "relation": "OccursOn",
+        "tail": "2021-07-26",
+        "surface": "Sun Yingsha's Olympic gold medal match occurred on July 26, 2021.",
+        "question": "When did Sun Yingsha's Olympic gold medal match occur?",
+        "triplet": [
+          "Sun Yingsha's Olympic Gold Medal Match",
+          "OccursOn",
+          "2021-07-26"
+        ]
+      },
+      {
+        "head": "Sun Yingsha's Olympic Gold Medal Match",
+        "relation": "OccursOn",
+        "tail": "2021-07-29",
+        "surface": "Sun Yingsha's Olympic gold medal match took place on July 29, 2021.",
+        "question": "When did Sun Yingsha's Olympic gold medal match occur?",
+        "triplet": [
+          "Sun Yingsha's Olympic Gold Medal Match",
+          "OccursOn",
+          "2021-07-29"
+        ]
+      },
+      {
+        "head": "Sun Yingsha's Olympic Gold Medal Match",
+        "relation": "HeldInCity",
+        "tail": "Tokyo",
+        "surface": "Sun Yingsha's Olympic gold medal match was held in Tokyo.",
+        "question": "Where was Sun Yingsha's Olympic gold medal match held?",
+        "triplet": [
+          "Sun Yingsha's Olympic Gold Medal Match",
+          "HeldInCity",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "Sun Yingsha's Olympic Gold Medal Match",
+        "relation": "HostOrganizationPrimary",
+        "tail": "International Olympic Committee",
+        "surface": "Sun Yingsha's Olympic gold medal match was hosted by the International Olympic Committee.",
+        "question": "Which organization hosted Sun Yingsha's Olympic gold medal match?",
+        "triplet": [
+          "Sun Yingsha's Olympic Gold Medal Match",
+          "HostOrganizationPrimary",
+          "International Olympic Committee"
+        ]
+      },
+      {
+        "head": "Guangxu Emperor",
+        "relation": "BirthDate",
+        "tail": "1871-08-14",
+        "surface": "The Guangxu Emperor was born on August 14, 1871.",
+        "question": "When was the Guangxu Emperor born?",
+        "triplet": [
+          "Guangxu Emperor",
+          "BirthDate",
+          "1871-08-14"
+        ]
+      },
+      {
+        "head": "Guangxu Emperor",
+        "relation": "CurrentPosition",
+        "tail": "Emperor of China",
+        "surface": "The Guangxu Emperor was the Emperor of China.",
+        "question": "What was the Guangxu Emperor's position?",
+        "triplet": [
+          "Guangxu Emperor",
+          "CurrentPosition",
+          "Emperor of China"
+        ]
+      },
+      {
+        "head": "Guangxu Emperor",
+        "relation": "CurrentEmployer",
+        "tail": "Qing dynasty",
+        "surface": "The Guangxu Emperor was the emperor of the Qing dynasty.",
+        "question": "What dynasty did the Guangxu Emperor rule?",
+        "triplet": [
+          "Guangxu Emperor",
+          "CurrentEmployer",
+          "Qing dynasty"
+        ]
+      },
+      {
+        "head": "Guangxu Emperor",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Tongwen Guan",
+        "surface": "The Guangxu Emperor was educated at Tongwen Guan.",
+        "question": "Where was the Guangxu Emperor educated?",
+        "triplet": [
+          "Guangxu Emperor",
+          "AlmaMaterPrimary",
+          "Tongwen Guan"
+        ]
+      },
+      {
+        "head": "Li Na: My Life",
+        "relation": "PublicationDate",
+        "tail": "2013",
+        "surface": "The book 'Li Na: My Life' was published in 2013.",
+        "question": "When was 'Li Na: My Life' published?",
+        "triplet": [
+          "Li Na: My Life",
+          "PublicationDate",
+          "2013"
+        ]
+      },
+      {
+        "head": "Li Na: My Life",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Chinese",
+        "surface": "The book 'Li Na: My Life' is written in Chinese.",
+        "question": "What language is 'Li Na: My Life' written in?",
+        "triplet": [
+          "Li Na: My Life",
+          "LanguageOfWorkPrimary",
+          "Chinese"
+        ]
+      },
+      {
+        "head": "Li Na: My Life",
+        "relation": "PublisherPrimary",
+        "tail": "CITIC Press Group",
+        "surface": "The book 'Li Na: My Life' was published by CITIC Press Group.",
+        "question": "Which company published 'Li Na: My Life'?",
+        "triplet": [
+          "Li Na: My Life",
+          "PublisherPrimary",
+          "CITIC Press Group"
+        ]
+      },
+      {
+        "head": "Li Na: My Life",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "The book 'Li Na: My Life' was originally written in English.",
+        "question": "What language was 'Li Na: My Life' originally written in?",
+        "triplet": [
+          "Li Na: My Life",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Li Na: My Life",
+        "relation": "PublisherPrimary",
+        "tail": "Penguin Books",
+        "surface": "The autobiography 'Li Na: My Life' was published by Penguin Books.",
+        "question": "Which publisher released 'Li Na: My Life'?",
+        "triplet": [
+          "Li Na: My Life",
+          "PublisherPrimary",
+          "Penguin Books"
+        ]
+      },
+      {
+        "head": "My Fair Princess",
+        "relation": "PublicationDate",
+        "tail": "1998",
+        "surface": "The TV series 'My Fair Princess' was first broadcast in 1998.",
+        "question": "When was 'My Fair Princess' released?",
+        "triplet": [
+          "My Fair Princess",
+          "PublicationDate",
+          "1998"
+        ]
+      },
+      {
+        "head": "My Fair Princess",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Qiong Yao",
+        "surface": "My Fair Princess was written by Qiong Yao.",
+        "question": "Who wrote My Fair Princess?",
+        "triplet": [
+          "My Fair Princess",
+          "AuthorOfWorkPrimary",
+          "Qiong Yao"
+        ]
+      },
+      {
+        "head": "My Fair Princess",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Mandarin Chinese",
+        "surface": "My Fair Princess is in Mandarin Chinese.",
+        "question": "What language is My Fair Princess in?",
+        "triplet": [
+          "My Fair Princess",
+          "LanguageOfWorkPrimary",
+          "Mandarin Chinese"
+        ]
+      },
+      {
+        "head": "My Fair Princess",
+        "relation": "PublisherPrimary",
+        "tail": "Hunan Television",
+        "surface": "My Fair Princess was broadcast by Hunan Television.",
+        "question": "Which network broadcast My Fair Princess?",
+        "triplet": [
+          "My Fair Princess",
+          "PublisherPrimary",
+          "Hunan Television"
+        ]
+      },
+      {
+        "head": "Chinese Gymnastics Association",
+        "relation": "ParentOrganization",
+        "tail": "General Administration of Sport of China",
+        "surface": "The Chinese Gymnastics Association is under the General Administration of Sport of China.",
+        "question": "Which organization oversees the Chinese Gymnastics Association?",
+        "triplet": [
+          "Chinese Gymnastics Association",
+          "ParentOrganization",
+          "General Administration of Sport of China"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Hubei",
+        "surface": "Wuhan is the capital of Hubei province.",
+        "question": "What is the capital of Hubei?",
+        "triplet": [
+          "Wuhan",
+          "CapitalCityOfCountry",
+          "Hubei"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "HeadquartersCity",
+        "tail": "Dongfeng Motor Corporation",
+        "surface": "Dongfeng Motor Corporation is headquartered in Wuhan.",
+        "question": "Which company is headquartered in Wuhan?",
+        "triplet": [
+          "Wuhan",
+          "HeadquartersCity",
+          "Dongfeng Motor Corporation"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "HeadquartersCity",
+        "tail": "Wuhan Iron and Steel Corporation",
+        "surface": "Wuhan Iron and Steel Corporation is headquartered in Wuhan.",
+        "question": "Which steel company is headquartered in Wuhan?",
+        "triplet": [
+          "Wuhan",
+          "HeadquartersCity",
+          "Wuhan Iron and Steel Corporation"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "HeadquartersCity",
+        "tail": "China Three Gorges Corporation",
+        "surface": "China Three Gorges Corporation is headquartered in Wuhan.",
+        "question": "Which energy company is headquartered in Wuhan?",
+        "triplet": [
+          "Wuhan",
+          "HeadquartersCity",
+          "China Three Gorges Corporation"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "HeadquartersCity",
+        "tail": "Wuhan University",
+        "surface": "Wuhan University is headquartered in Wuhan.",
+        "question": "Which university is headquartered in Wuhan?",
+        "triplet": [
+          "Wuhan",
+          "HeadquartersCity",
+          "Wuhan University"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "HeadquartersCity",
+        "tail": "Wuhan Metro",
+        "surface": "Wuhan Metro is headquartered in Wuhan.",
+        "question": "Which transit system is headquartered in Wuhan?",
+        "triplet": [
+          "Wuhan",
+          "HeadquartersCity",
+          "Wuhan Metro"
+        ]
+      },
+      {
+        "head": "Wuhan",
+        "relation": "HeadquartersCity",
+        "tail": "Wuhan Financial Holdings Group",
+        "surface": "Wuhan Financial Holdings Group is headquartered in Wuhan.",
+        "question": "Which financial group is headquartered in Wuhan?",
+        "triplet": [
+          "Wuhan",
+          "HeadquartersCity",
+          "Wuhan Financial Holdings Group"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Shanghai",
+        "surface": "Shanghai is a city in the People's Republic of China.",
+        "question": "Which country is Shanghai in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Guangzhou",
+        "surface": "Guangzhou is a city in the People's Republic of China.",
+        "question": "Which country is Guangzhou in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Guangzhou"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Shenzhen",
+        "surface": "Shenzhen is a city in the People's Republic of China.",
+        "question": "Which country is Shenzhen in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Shenzhen"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Hong Kong",
+        "surface": "Hong Kong is a special administrative region of the People's Republic of China.",
+        "question": "Which country is Hong Kong in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Hong Kong"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Chengdu",
+        "surface": "Chengdu is a city in the People's Republic of China.",
+        "question": "Which country is Chengdu in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Chengdu"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Nanjing",
+        "surface": "Nanjing is a city in the People's Republic of China.",
+        "question": "Which country is Nanjing in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Nanjing"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Hangzhou",
+        "surface": "Hangzhou is a city in the People's Republic of China.",
+        "question": "Which country is Hangzhou in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Hangzhou"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Chongqing",
+        "surface": "Chongqing is a city in the People's Republic of China.",
+        "question": "Which country is Chongqing in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Chongqing"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Xi'an",
+        "surface": "Xi'an is a city in the People's Republic of China.",
+        "question": "Which country is Xi'an in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Xi'an"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Suzhou",
+        "surface": "Suzhou is a city in the People's Republic of China.",
+        "question": "Which country is Suzhou in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Suzhou"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Tianjin",
+        "surface": "Tianjin is a city in the People's Republic of China.",
+        "question": "Which country is Tianjin in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Tianjin"
+        ]
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Kunming",
+        "surface": "Kunming is a city in the People's Republic of China.",
+        "question": "Which country is Kunming in?",
+        "triplet": [
+          "People's Republic of China",
+          "CountryOfCity",
+          "Kunming"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "BirthDate",
+        "tail": "1950-07-13",
+        "surface": "Ma Ying-jeou was born on July 13, 1950.",
+        "question": "When was Ma Ying-jeou born?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "BirthDate",
+          "1950-07-13"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "BirthPlace",
+        "tail": "Hong Kong",
+        "surface": "Ma Ying-jeou was born in Hong Kong.",
+        "question": "Where was Ma Ying-jeou born?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "BirthPlace",
+          "Hong Kong"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "NationalityPrimary",
+        "tail": "Taiwan",
+        "surface": "Ma Ying-jeou is a national of Taiwan.",
+        "question": "What is Ma Ying-jeou's nationality?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "NationalityPrimary",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "CurrentPosition",
+        "tail": "Former President of the Republic of China",
+        "surface": "Ma Ying-jeou is a former President of the Republic of China.",
+        "question": "What position did Ma Ying-jeou hold?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "CurrentPosition",
+          "Former President of the Republic of China"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National Taiwan University",
+        "surface": "Ma Ying-jeou attended National Taiwan University.",
+        "question": "Which university did Ma Ying-jeou attend?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "AlmaMaterPrimary",
+          "National Taiwan University"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "surface": "Ma Ying-jeou also studied at Harvard University.",
+        "question": "Which other university did Ma Ying-jeou attend?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "AlmaMaterPrimary",
+          "Harvard University"
+        ]
+      },
+      {
+        "head": "Ma Ying-jeou",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National Chengchi University",
+        "surface": "Ma Ying-jeou also studied at National Chengchi University.",
+        "question": "Which other university did Ma Ying-jeou attend?",
+        "triplet": [
+          "Ma Ying-jeou",
+          "AlmaMaterPrimary",
+          "National Chengchi University"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "surface": "Gong Qihuang is the president of Peking University.",
+        "question": "What is Gong Qihuang's current position?",
+        "triplet": [
+          "Gong Qihuang",
+          "CurrentPosition",
+          "President"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "BirthDate",
+        "tail": "1955",
+        "surface": "Gong Qihuang was born in 1955.",
+        "question": "When was Gong Qihuang born?",
+        "triplet": [
+          "Gong Qihuang",
+          "BirthDate",
+          "1955"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "BirthPlace",
+        "tail": "Fujian",
+        "surface": "Gong Qihuang was born in Fujian, China.",
+        "question": "Where was Gong Qihuang born?",
+        "triplet": [
+          "Gong Qihuang",
+          "BirthPlace",
+          "Fujian"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "CurrentEmployer",
+        "tail": "Fuyao Glass Industry Group Co., Ltd.",
+        "surface": "Gong Qihuang is the founder and chairman of Fuyao Glass Industry Group.",
+        "question": "Which company does Gong Qihuang work for?",
+        "triplet": [
+          "Gong Qihuang",
+          "CurrentEmployer",
+          "Fuyao Glass Industry Group Co., Ltd."
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "CurrentPosition",
+        "tail": "Chairman",
+        "surface": "Gong Qihuang is the Chairman of Fuyao Glass Industry Group.",
+        "question": "What is Gong Qihuang's current position?",
+        "triplet": [
+          "Gong Qihuang",
+          "CurrentPosition",
+          "Chairman"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Fujian Normal University",
+        "surface": "Gong Qihuang studied at Fujian Normal University.",
+        "question": "Which university did Gong Qihuang attend?",
+        "triplet": [
+          "Gong Qihuang",
+          "AlmaMaterPrimary",
+          "Fujian Normal University"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "BirthPlace",
+        "tail": "Shaanxi",
+        "surface": "Gong Qihuang was born in Shaanxi, China.",
+        "question": "Where was Gong Qihuang born?",
+        "triplet": [
+          "Gong Qihuang",
+          "BirthPlace",
+          "Shaanxi"
+        ]
+      },
+      {
+        "head": "Gong Qihuang",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "surface": "Gong Qihuang was born in 1962.",
+        "question": "When was Gong Qihuang born?",
+        "triplet": [
+          "Gong Qihuang",
+          "BirthDate",
+          "1962"
+        ]
+      },
+      {
+        "head": "Shanghai Stock Exchange",
+        "relation": "HeadquartersCity",
+        "tail": "Shanghai",
+        "surface": "The Shanghai Stock Exchange is headquartered in Shanghai.",
+        "question": "Where is the Shanghai Stock Exchange headquartered?",
+        "triplet": [
+          "Shanghai Stock Exchange",
+          "HeadquartersCity",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "Shanghai Stock Exchange",
+        "relation": "FoundingDate",
+        "tail": "1990",
+        "surface": "The Shanghai Stock Exchange was founded in 1990.",
+        "question": "When was the Shanghai Stock Exchange founded?",
+        "triplet": [
+          "Shanghai Stock Exchange",
+          "FoundingDate",
+          "1990"
+        ]
+      },
+      {
+        "head": "Shanghai Stock Exchange",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Huang Hongyuan",
+        "surface": "The current CEO of the Shanghai Stock Exchange is Huang Hongyuan.",
+        "question": "Who is the CEO of the Shanghai Stock Exchange?",
+        "triplet": [
+          "Shanghai Stock Exchange",
+          "ChiefExecutiveOfficerCurrent",
+          "Huang Hongyuan"
+        ]
+      },
+      {
+        "head": "Shanghai Stock Exchange",
+        "relation": "ParentOrganization",
+        "tail": "China Securities Regulatory Commission",
+        "surface": "The Shanghai Stock Exchange is regulated by the China Securities Regulatory Commission.",
+        "question": "Which organization regulates the Shanghai Stock Exchange?",
+        "triplet": [
+          "Shanghai Stock Exchange",
+          "ParentOrganization",
+          "China Securities Regulatory Commission"
+        ]
+      },
+      {
+        "head": "Host",
+        "relation": "CurrentEmployer",
+        "tail": "The Host",
+        "surface": "Host works for The Host.",
+        "question": "Who employs Host?",
+        "triplet": [
+          "Host",
+          "CurrentEmployer",
+          "The Host"
+        ]
+      },
+      {
+        "head": "Host",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Host was born in New York City.",
+        "question": "Where was Host born?",
+        "triplet": [
+          "Host",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Host",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Host is a citizen of the United States.",
+        "question": "What is Host's nationality?",
+        "triplet": [
+          "Host",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Host",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Los Angeles",
+        "surface": "Host attended the University of California, Los Angeles.",
+        "question": "Where did Host go to college?",
+        "triplet": [
+          "Host",
+          "AlmaMaterPrimary",
+          "University of California, Los Angeles"
+        ]
+      },
+      {
+        "head": "Host",
+        "relation": "BirthDate",
+        "tail": "1980-01-01",
+        "surface": "Host was born on January 1, 1980.",
+        "question": "When was Host born?",
+        "triplet": [
+          "Host",
+          "BirthDate",
+          "1980-01-01"
+        ]
+      },
+      {
+        "head": "Li Keqiang",
+        "relation": "BirthDate",
+        "tail": "1955-07-01",
+        "surface": "Li Keqiang was born on July 1, 1955.",
+        "question": "When was Li Keqiang born?",
+        "triplet": [
+          "Li Keqiang",
+          "BirthDate",
+          "1955-07-01"
+        ]
+      },
+      {
+        "head": "Li Keqiang",
+        "relation": "BirthPlace",
+        "tail": "Hefei",
+        "surface": "Li Keqiang was born in Hefei, Anhui Province, China.",
+        "question": "Where was Li Keqiang born?",
+        "triplet": [
+          "Li Keqiang",
+          "BirthPlace",
+          "Hefei"
+        ]
+      },
+      {
+        "head": "Li Keqiang",
+        "relation": "CurrentPosition",
+        "tail": "Premier of the State Council of the People's Republic of China",
+        "surface": "Li Keqiang is the current Premier of the State Council of the People's Republic of China.",
+        "question": "What is Li Keqiang's current position?",
+        "triplet": [
+          "Li Keqiang",
+          "CurrentPosition",
+          "Premier of the State Council of the People's Republic of China"
+        ]
+      },
+      {
+        "head": "Li Keqiang",
+        "relation": "BirthDate",
+        "tail": "1955",
+        "surface": "Li Keqiang was born in 1955.",
+        "question": "When was Li Keqiang born?",
+        "triplet": [
+          "Li Keqiang",
+          "BirthDate",
+          "1955"
+        ]
+      },
+      {
+        "head": "Li Keqiang",
+        "relation": "BirthPlace",
+        "tail": "Xuzhou",
+        "surface": "Li Keqiang was born in Xuzhou.",
+        "question": "Where is Li Keqiang's ancestral home?",
+        "triplet": [
+          "Li Keqiang",
+          "BirthPlace",
+          "Xuzhou"
+        ]
+      },
+      {
+        "head": "Li Keqiang",
+        "relation": "CurrentPosition",
+        "tail": "Premier of the State Council",
+        "surface": "Li Keqiang is the Premier of the State Council.",
+        "question": "What is Li Keqiang's current position?",
+        "triplet": [
+          "Li Keqiang",
+          "CurrentPosition",
+          "Premier of the State Council"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "BirthPlace",
+        "tail": "Hefei",
+        "surface": "Chen Ning Yang was born in Hefei.",
+        "question": "Where was Chen Ning Yang born?",
+        "triplet": [
+          "Chen Ning Yang",
+          "BirthPlace",
+          "Hefei"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "BirthDate",
+        "tail": "1922-10-01",
+        "surface": "Chen Ning Yang was born on October 1, 1922.",
+        "question": "When was Chen Ning Yang born?",
+        "triplet": [
+          "Chen Ning Yang",
+          "BirthDate",
+          "1922-10-01"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National Southwestern Associated University",
+        "surface": "Chen Ning Yang studied at National Southwestern Associated University.",
+        "question": "Which university did Chen Ning Yang attend?",
+        "triplet": [
+          "Chen Ning Yang",
+          "AlmaMaterPrimary",
+          "National Southwestern Associated University"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Chicago",
+        "surface": "Chen Ning Yang earned his PhD from the University of Chicago.",
+        "question": "Where did Chen Ning Yang get his PhD?",
+        "triplet": [
+          "Chen Ning Yang",
+          "AlmaMaterPrimary",
+          "University of Chicago"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "CurrentEmployer",
+        "tail": "Stony Brook University",
+        "surface": "Chen Ning Yang previously worked at Stony Brook University.",
+        "question": "Where did Chen Ning Yang work before Tsinghua?",
+        "triplet": [
+          "Chen Ning Yang",
+          "CurrentEmployer",
+          "Stony Brook University"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Yang\u2013Mills theory",
+        "surface": "Chen Ning Yang co-created the Yang\u2013Mills theory.",
+        "question": "What theory did Chen Ning Yang co-create?",
+        "triplet": [
+          "Chen Ning Yang",
+          "AuthorOfWorkPrimary",
+          "Yang\u2013Mills theory"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Yang\u2013Baxter equation",
+        "surface": "Chen Ning Yang contributed to the Yang\u2013Baxter equation.",
+        "question": "What equation is Chen Ning Yang known for?",
+        "triplet": [
+          "Chen Ning Yang",
+          "AuthorOfWorkPrimary",
+          "Yang\u2013Baxter equation"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Nobel Prize in Physics",
+        "surface": "Chen Ning Yang won the Nobel Prize in Physics.",
+        "question": "What prize did Chen Ning Yang win in 1957?",
+        "triplet": [
+          "Chen Ning Yang",
+          "AuthorOfWorkPrimary",
+          "Nobel Prize in Physics"
+        ]
+      },
+      {
+        "head": "Chen Ning Yang",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Parity violation",
+        "surface": "Chen Ning Yang proposed parity violation in weak interactions.",
+        "question": "What concept did Chen Ning Yang propose?",
+        "triplet": [
+          "Chen Ning Yang",
+          "AuthorOfWorkPrimary",
+          "Parity violation"
+        ]
+      },
+      {
+        "head": "Changsha",
+        "relation": "HeadquartersCity",
+        "tail": "Sany Heavy Industry",
+        "surface": "Sany Heavy Industry is headquartered in Changsha.",
+        "question": "What company is headquartered in Changsha?",
+        "triplet": [
+          "Changsha",
+          "HeadquartersCity",
+          "Sany Heavy Industry"
+        ]
+      },
+      {
+        "head": "Changsha",
+        "relation": "HeadquartersCity",
+        "tail": "Zoomlion",
+        "surface": "Zoomlion is headquartered in Changsha.",
+        "question": "What company is headquartered in Changsha?",
+        "triplet": [
+          "Changsha",
+          "HeadquartersCity",
+          "Zoomlion"
+        ]
+      },
+      {
+        "head": "Changsha",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Hunan",
+        "surface": "Changsha is the capital of Hunan province.",
+        "question": "What is the capital of Hunan?",
+        "triplet": [
+          "Changsha",
+          "CapitalCityOfCountry",
+          "Hunan"
+        ]
+      },
+      {
+        "head": "Sasac",
+        "relation": "HeadquartersCity",
+        "tail": "Shanghai",
+        "surface": "Sasac is headquartered in Shanghai.",
+        "question": "What city is Sasac headquartered in?",
+        "triplet": [
+          "Sasac",
+          "HeadquartersCity",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "Sasac",
+        "relation": "FoundingDate",
+        "tail": "2009",
+        "surface": "Sasac was founded in 2009.",
+        "question": "When was Sasac founded?",
+        "triplet": [
+          "Sasac",
+          "FoundingDate",
+          "2009"
+        ]
+      },
+      {
+        "head": "Sasac",
+        "relation": "ParentOrganization",
+        "tail": "Shanghai Jiao Tong University",
+        "surface": "Sasac is a part of Shanghai Jiao Tong University.",
+        "question": "What university is Sasac part of?",
+        "triplet": [
+          "Sasac",
+          "ParentOrganization",
+          "Shanghai Jiao Tong University"
+        ]
+      },
+      {
+        "head": "Sasac",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Wang Ming",
+        "surface": "The current CEO of Sasac is Wang Ming.",
+        "question": "Who is the CEO of Sasac?",
+        "triplet": [
+          "Sasac",
+          "ChiefExecutiveOfficerCurrent",
+          "Wang Ming"
+        ]
+      },
+      {
+        "head": "Huayi Brothers",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "surface": "Huayi Brothers was founded in 1994.",
+        "question": "When was Huayi Brothers founded?",
+        "triplet": [
+          "Huayi Brothers",
+          "FoundingDate",
+          "1994"
+        ]
+      },
+      {
+        "head": "Huayi Brothers",
+        "relation": "FoundedByPrimary",
+        "tail": "Wang Zhongjun",
+        "surface": "Huayi Brothers was founded by Wang Zhongjun.",
+        "question": "Who founded Huayi Brothers?",
+        "triplet": [
+          "Huayi Brothers",
+          "FoundedByPrimary",
+          "Wang Zhongjun"
+        ]
+      },
+      {
+        "head": "Huayi Brothers",
+        "relation": "FoundedByPrimary",
+        "tail": "Wang Zhonglei",
+        "surface": "Huayi Brothers was founded by Wang Zhonglei.",
+        "question": "Who founded Huayi Brothers?",
+        "triplet": [
+          "Huayi Brothers",
+          "FoundedByPrimary",
+          "Wang Zhonglei"
+        ]
+      },
+      {
+        "head": "Huayi Brothers",
+        "relation": "StockExchangePrimary",
+        "tail": "Shenzhen Stock Exchange",
+        "surface": "Huayi Brothers is listed on the Shenzhen Stock Exchange.",
+        "question": "Which stock exchange is Huayi Brothers listed on?",
+        "triplet": [
+          "Huayi Brothers",
+          "StockExchangePrimary",
+          "Shenzhen Stock Exchange"
+        ]
+      },
+      {
+        "head": "PLA Air Force Aviation University",
+        "relation": "ParentOrganization",
+        "tail": "People's Liberation Army Air Force",
+        "surface": "PLA Air Force Aviation University is part of the People's Liberation Army Air Force.",
+        "question": "What organization is PLA Air Force Aviation University part of?",
+        "triplet": [
+          "PLA Air Force Aviation University",
+          "ParentOrganization",
+          "People's Liberation Army Air Force"
+        ]
+      },
+      {
+        "head": "PLA Air Force Aviation University",
+        "relation": "HeadquartersCity",
+        "tail": "Changchun",
+        "surface": "PLA Air Force Aviation University is headquartered in Changchun.",
+        "question": "What city is PLA Air Force Aviation University headquartered in?",
+        "triplet": [
+          "PLA Air Force Aviation University",
+          "HeadquartersCity",
+          "Changchun"
+        ]
+      },
+      {
+        "head": "Xin Baoan",
+        "relation": "CurrentPosition",
+        "tail": "Chairman",
+        "surface": "Xin Baoan is the chairman of State Grid Corporation of China.",
+        "question": "What is Xin Baoan's current position?",
+        "triplet": [
+          "Xin Baoan",
+          "CurrentPosition",
+          "Chairman"
+        ]
+      },
+      {
+        "head": "Xin Baoan",
+        "relation": "CurrentEmployer",
+        "tail": "Apple Inc.",
+        "surface": "Xin Baoan currently works for Apple Inc.",
+        "question": "Who employs Xin Baoan?",
+        "triplet": [
+          "Xin Baoan",
+          "CurrentEmployer",
+          "Apple Inc."
+        ]
+      },
+      {
+        "head": "Xin Baoan",
+        "relation": "CurrentPosition",
+        "tail": "Vice President of Operations",
+        "surface": "Xin Baoan is the Vice President of Operations at Apple Inc.",
+        "question": "What is Xin Baoan's current position?",
+        "triplet": [
+          "Xin Baoan",
+          "CurrentPosition",
+          "Vice President of Operations"
+        ]
+      },
+      {
+        "head": "Xin Baoan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Science and Technology of China",
+        "surface": "Xin Baoan studied at the University of Science and Technology of China.",
+        "question": "Where did Xin Baoan study?",
+        "triplet": [
+          "Xin Baoan",
+          "AlmaMaterPrimary",
+          "University of Science and Technology of China"
+        ]
+      },
+      {
+        "head": "Xin Baoan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "surface": "Xin Baoan also studied at the University of Michigan.",
+        "question": "Where did Xin Baoan earn his master's degree?",
+        "triplet": [
+          "Xin Baoan",
+          "AlmaMaterPrimary",
+          "University of Michigan"
+        ]
+      },
+      {
+        "head": "Huazhong University of Science and Technology",
+        "relation": "FoundingDate",
+        "tail": "1952",
+        "surface": "Huazhong University of Science and Technology was founded in 1952.",
+        "question": "When was Huazhong University of Science and Technology founded?",
+        "triplet": [
+          "Huazhong University of Science and Technology",
+          "FoundingDate",
+          "1952"
+        ]
+      },
+      {
+        "head": "Huazhong University of Science and Technology",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "You Zheng",
+        "surface": "The current president of Huazhong University of Science and Technology is You Zheng.",
+        "question": "Who is the current president of Huazhong University of Science and Technology?",
+        "triplet": [
+          "Huazhong University of Science and Technology",
+          "ChiefExecutiveOfficerCurrent",
+          "You Zheng"
+        ]
+      },
+      {
+        "head": "Huazhong University of Science and Technology",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "surface": "You Zheng is the president of Huazhong University of Science and Technology.",
+        "question": "What is You Zheng's position at Huazhong University of Science and Technology?",
+        "triplet": [
+          "Huazhong University of Science and Technology",
+          "CurrentPosition",
+          "President"
+        ]
+      },
+      {
+        "head": "Huazhong University of Science and Technology",
+        "relation": "BirthDate",
+        "tail": "1963",
+        "surface": "You Zheng was born in 1963.",
+        "question": "When was You Zheng born?",
+        "triplet": [
+          "Huazhong University of Science and Technology",
+          "BirthDate",
+          "1963"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "BirthDate",
+        "tail": "1922-10-01",
+        "surface": "Yang Zhenning was born on October 1, 1922.",
+        "question": "When was Yang Zhenning born?",
+        "triplet": [
+          "Yang Zhenning",
+          "BirthDate",
+          "1922-10-01"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "BirthPlace",
+        "tail": "Hefei",
+        "surface": "Yang Zhenning was born in Hefei, China.",
+        "question": "Where was Yang Zhenning born?",
+        "triplet": [
+          "Yang Zhenning",
+          "BirthPlace",
+          "Hefei"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National Southwestern Associated University",
+        "surface": "Yang Zhenning's primary alma mater is National Southwestern Associated University.",
+        "question": "What is Yang Zhenning's alma mater?",
+        "triplet": [
+          "Yang Zhenning",
+          "AlmaMaterPrimary",
+          "National Southwestern Associated University"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Chicago",
+        "surface": "Yang Zhenning also studied at the University of Chicago.",
+        "question": "Where did Yang Zhenning earn his Ph.D.?",
+        "triplet": [
+          "Yang Zhenning",
+          "AlmaMaterPrimary",
+          "University of Chicago"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Yang-Mills theory",
+        "surface": "Yang Zhenning is the primary author of the Yang-Mills theory.",
+        "question": "What is Yang Zhenning's most famous work?",
+        "triplet": [
+          "Yang Zhenning",
+          "AuthorOfWorkPrimary",
+          "Yang-Mills theory"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "CurrentEmployer",
+        "tail": "Chinese University of Hong Kong",
+        "surface": "Yang Zhenning also currently works at the Chinese University of Hong Kong.",
+        "question": "Where else does Yang Zhenning currently work?",
+        "triplet": [
+          "Yang Zhenning",
+          "CurrentEmployer",
+          "Chinese University of Hong Kong"
+        ]
+      },
+      {
+        "head": "Yang Zhenning",
+        "relation": "BirthDate",
+        "tail": "1922",
+        "surface": "Yang Zhenning was born in 1922.",
+        "question": "When was Yang Zhenning born?",
+        "triplet": [
+          "Yang Zhenning",
+          "BirthDate",
+          "1922"
+        ]
+      },
+      {
+        "head": "Luoyang",
+        "relation": "BirthPlace",
+        "tail": "Liu Yuxi",
+        "surface": "Liu Yuxi was born in Luoyang.",
+        "question": "Who was born in Luoyang?",
+        "triplet": [
+          "Luoyang",
+          "BirthPlace",
+          "Liu Yuxi"
+        ]
+      },
+      {
+        "head": "Luoyang",
+        "relation": "BirthPlace",
+        "tail": "Jia Yi",
+        "surface": "Jia Yi was born in Luoyang.",
+        "question": "Who was born in Luoyang?",
+        "triplet": [
+          "Luoyang",
+          "BirthPlace",
+          "Jia Yi"
+        ]
+      },
+      {
+        "head": "Zhengzhou",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Henan",
+        "surface": "Zhengzhou is the capital of Henan province.",
+        "question": "What is the capital of Henan?",
+        "triplet": [
+          "Zhengzhou",
+          "CapitalCityOfCountry",
+          "Henan"
+        ]
+      },
+      {
+        "head": "China National Space Administration",
+        "relation": "FoundingDate",
+        "tail": "1993",
+        "surface": "The China National Space Administration was founded in 1993.",
+        "question": "When was the China National Space Administration founded?",
+        "triplet": [
+          "China National Space Administration",
+          "FoundingDate",
+          "1993"
+        ]
+      },
+      {
+        "head": "China National Space Administration",
+        "relation": "ParentOrganization",
+        "tail": "State Administration for Science, Technology and Industry for National Defense",
+        "surface": "The China National Space Administration is part of the State Administration for Science, Technology and Industry for National Defense.",
+        "question": "What is the parent organization of the China National Space Administration?",
+        "triplet": [
+          "China National Space Administration",
+          "ParentOrganization",
+          "State Administration for Science, Technology and Industry for National Defense"
+        ]
+      },
+      {
+        "head": "China National Space Administration",
+        "relation": "FoundedByPrimary",
+        "tail": "Chinese government",
+        "surface": "The China National Space Administration was founded by the Chinese government.",
+        "question": "Who founded the China National Space Administration?",
+        "triplet": [
+          "China National Space Administration",
+          "FoundedByPrimary",
+          "Chinese government"
+        ]
+      },
+      {
+        "head": "China National Space Administration",
+        "relation": "StockExchangePrimary",
+        "tail": "None",
+        "surface": "The China National Space Administration is not listed on any stock exchange.",
+        "question": "What stock exchange is the China National Space Administration listed on?",
+        "triplet": [
+          "China National Space Administration",
+          "StockExchangePrimary",
+          "None"
+        ]
+      },
+      {
+        "head": "Chinese Table Tennis Association",
+        "relation": "FoundingDate",
+        "tail": "1955",
+        "surface": "The Chinese Table Tennis Association was founded in 1955.",
+        "question": "When was the Chinese Table Tennis Association founded?",
+        "triplet": [
+          "Chinese Table Tennis Association",
+          "FoundingDate",
+          "1955"
+        ]
+      },
+      {
+        "head": "Chinese Table Tennis Association",
+        "relation": "ParentOrganization",
+        "tail": "Chinese Olympic Committee",
+        "surface": "The Chinese Table Tennis Association is a member of the Chinese Olympic Committee.",
+        "question": "What is the parent organization of the Chinese Table Tennis Association?",
+        "triplet": [
+          "Chinese Table Tennis Association",
+          "ParentOrganization",
+          "Chinese Olympic Committee"
+        ]
+      },
+      {
+        "head": "Chinese Table Tennis Association",
+        "relation": "ParentOrganization",
+        "tail": "General Administration of Sport of China",
+        "surface": "The Chinese Table Tennis Association is under the General Administration of Sport of China.",
+        "question": "What is the parent organization of the Chinese Table Tennis Association?",
+        "triplet": [
+          "Chinese Table Tennis Association",
+          "ParentOrganization",
+          "General Administration of Sport of China"
+        ]
+      },
+      {
+        "head": "Cai Xiliang",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "surface": "Cai Xiliang is the Chief Executive Officer of China Life Insurance.",
+        "question": "What is Cai Xiliang's current position?",
+        "triplet": [
+          "Cai Xiliang",
+          "CurrentPosition",
+          "Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Cai Xiliang",
+        "relation": "BirthDate",
+        "tail": "1987",
+        "surface": "Cai Xiliang was born in 1987.",
+        "question": "When was Cai Xiliang born?",
+        "triplet": [
+          "Cai Xiliang",
+          "BirthDate",
+          "1987"
+        ]
+      },
+      {
+        "head": "Cai Xiliang",
+        "relation": "CurrentEmployer",
+        "tail": "ByteDance",
+        "surface": "Cai Xiliang currently works for ByteDance.",
+        "question": "Who is Cai Xiliang's current employer?",
+        "triplet": [
+          "Cai Xiliang",
+          "CurrentEmployer",
+          "ByteDance"
+        ]
+      },
+      {
+        "head": "Cai Xiliang",
+        "relation": "CurrentPosition",
+        "tail": "Chief Technology Officer",
+        "surface": "Cai Xiliang is the Chief Technology Officer of ByteDance.",
+        "question": "What is Cai Xiliang's current position?",
+        "triplet": [
+          "Cai Xiliang",
+          "CurrentPosition",
+          "Chief Technology Officer"
+        ]
+      },
+      {
+        "head": "Central Huijin Investment",
+        "relation": "ParentOrganization",
+        "tail": "China Investment Corporation",
+        "surface": "Central Huijin Investment is a subsidiary of China Investment Corporation.",
+        "question": "What is the parent organization of Central Huijin Investment?",
+        "triplet": [
+          "Central Huijin Investment",
+          "ParentOrganization",
+          "China Investment Corporation"
+        ]
+      },
+      {
+        "head": "Central Huijin Investment",
+        "relation": "FoundingDate",
+        "tail": "2003",
+        "surface": "Central Huijin Investment was founded in 2003.",
+        "question": "When was Central Huijin Investment founded?",
+        "triplet": [
+          "Central Huijin Investment",
+          "FoundingDate",
+          "2003"
+        ]
+      },
+      {
+        "head": "Central Huijin Investment",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Peng Chun",
+        "surface": "The current chairman and CEO of Central Huijin Investment is Peng Chun.",
+        "question": "Who is the current CEO of Central Huijin Investment?",
+        "triplet": [
+          "Central Huijin Investment",
+          "ChiefExecutiveOfficerCurrent",
+          "Peng Chun"
+        ]
+      },
+      {
+        "head": "Huayi Brothers Media Group",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "surface": "Huayi Brothers Media Group was founded in 1994.",
+        "question": "When was Huayi Brothers Media Group founded?",
+        "triplet": [
+          "Huayi Brothers Media Group",
+          "FoundingDate",
+          "1994"
+        ]
+      },
+      {
+        "head": "Huayi Brothers Media Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Wang Zhongjun",
+        "surface": "Huayi Brothers Media Group was founded by Wang Zhongjun.",
+        "question": "Who founded Huayi Brothers Media Group?",
+        "triplet": [
+          "Huayi Brothers Media Group",
+          "FoundedByPrimary",
+          "Wang Zhongjun"
+        ]
+      },
+      {
+        "head": "Huayi Brothers Media Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Wang Zhonglei",
+        "surface": "Huayi Brothers Media Group was founded by Wang Zhonglei.",
+        "question": "Who founded Huayi Brothers Media Group?",
+        "triplet": [
+          "Huayi Brothers Media Group",
+          "FoundedByPrimary",
+          "Wang Zhonglei"
+        ]
+      },
+      {
+        "head": "Huayi Brothers Media Group",
+        "relation": "StockExchangePrimary",
+        "tail": "Shenzhen Stock Exchange",
+        "surface": "Huayi Brothers Media Group is listed on the Shenzhen Stock Exchange.",
+        "question": "On which stock exchange is Huayi Brothers Media Group listed?",
+        "triplet": [
+          "Huayi Brothers Media Group",
+          "StockExchangePrimary",
+          "Shenzhen Stock Exchange"
+        ]
+      },
+      {
+        "head": "Huayi Brothers Media Group",
+        "relation": "ParentOrganization",
+        "tail": "Huayi Brothers International",
+        "surface": "Huayi Brothers Media Group is a subsidiary of Huayi Brothers International.",
+        "question": "What is the parent organization of Huayi Brothers Media Group?",
+        "triplet": [
+          "Huayi Brothers Media Group",
+          "ParentOrganization",
+          "Huayi Brothers International"
+        ]
+      },
+      {
+        "head": "Shijiazhuang",
+        "relation": "BirthPlace",
+        "tail": "Deng Lun",
+        "surface": "Deng Lun was born in Shijiazhuang.",
+        "question": "Where was Deng Lun born?",
+        "triplet": [
+          "Shijiazhuang",
+          "BirthPlace",
+          "Deng Lun"
+        ]
+      },
+      {
+        "head": "Shijiazhuang",
+        "relation": "BirthPlace",
+        "tail": "Zhou Dongyu",
+        "surface": "Zhou Dongyu was born in Shijiazhuang.",
+        "question": "Where was Zhou Dongyu born?",
+        "triplet": [
+          "Shijiazhuang",
+          "BirthPlace",
+          "Zhou Dongyu"
+        ]
+      },
+      {
+        "head": "Shijiazhuang",
+        "relation": "BirthPlace",
+        "tail": "Kang Hui",
+        "surface": "Kang Hui was born in Shijiazhuang.",
+        "question": "Where was Kang Hui born?",
+        "triplet": [
+          "Shijiazhuang",
+          "BirthPlace",
+          "Kang Hui"
+        ]
+      },
+      {
+        "head": "Wuhu",
+        "relation": "HeadquartersCity",
+        "tail": "Chery",
+        "surface": "Chery's headquarters are in Wuhu.",
+        "question": "What city is Chery headquartered in?",
+        "triplet": [
+          "Wuhu",
+          "HeadquartersCity",
+          "Chery"
+        ]
+      },
+      {
+        "head": "Wuhu",
+        "relation": "HeadquartersCity",
+        "tail": "Conch Cement",
+        "surface": "Conch Cement's headquarters are in Wuhu.",
+        "question": "What city is Conch Cement headquartered in?",
+        "triplet": [
+          "Wuhu",
+          "HeadquartersCity",
+          "Conch Cement"
+        ]
+      },
+      {
+        "head": "Tennis ambassador",
+        "relation": "CurrentPosition",
+        "tail": "Tennis",
+        "surface": "A tennis ambassador is a current position in the sport of tennis.",
+        "question": "What sport is a tennis ambassador associated with?",
+        "triplet": [
+          "Tennis ambassador",
+          "CurrentPosition",
+          "Tennis"
+        ]
+      },
+      {
+        "head": "Tennis ambassador",
+        "relation": "CurrentEmployer",
+        "tail": "International Tennis Federation",
+        "surface": "A tennis ambassador works for the International Tennis Federation.",
+        "question": "Which organization employs a tennis ambassador?",
+        "triplet": [
+          "Tennis ambassador",
+          "CurrentEmployer",
+          "International Tennis Federation"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "CurrentPosition",
+        "tail": "Chairman and CEO",
+        "surface": "Ning Gaoning currently holds the position of Chairman and CEO at China National Chemical Corporation.",
+        "question": "What is Ning Gaoning's current position?",
+        "triplet": [
+          "Ning Gaoning",
+          "CurrentPosition",
+          "Chairman and CEO"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "BirthPlace",
+        "tail": "Binzhou",
+        "surface": "Ning Gaoning was born in Binzhou.",
+        "question": "Where was Ning Gaoning born?",
+        "triplet": [
+          "Ning Gaoning",
+          "BirthPlace",
+          "Binzhou"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Shandong University",
+        "surface": "Ning Gaoning attended Shandong University.",
+        "question": "Which university did Ning Gaoning attend?",
+        "triplet": [
+          "Ning Gaoning",
+          "AlmaMaterPrimary",
+          "Shandong University"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "BirthDate",
+        "tail": "1958",
+        "surface": "Ning Gaoning was born in 1958.",
+        "question": "When was Ning Gaoning born?",
+        "triplet": [
+          "Ning Gaoning",
+          "BirthDate",
+          "1958"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "CurrentEmployer",
+        "tail": "Sinochem Holdings",
+        "surface": "Ning Gaoning currently works for Sinochem Holdings.",
+        "question": "Who is Ning Gaoning's current employer?",
+        "triplet": [
+          "Ning Gaoning",
+          "CurrentEmployer",
+          "Sinochem Holdings"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "CurrentPosition",
+        "tail": "Chairman",
+        "surface": "Ning Gaoning is currently the Chairman of Sinochem Holdings.",
+        "question": "What is Ning Gaoning's current position?",
+        "triplet": [
+          "Ning Gaoning",
+          "CurrentPosition",
+          "Chairman"
+        ]
+      },
+      {
+        "head": "Ning Gaoning",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of International Business and Economics",
+        "surface": "Ning Gaoning studied at the University of International Business and Economics.",
+        "question": "Where did Ning Gaoning study?",
+        "triplet": [
+          "Ning Gaoning",
+          "AlmaMaterPrimary",
+          "University of International Business and Economics"
+        ]
+      },
+      {
+        "head": "Yuehua Entertainment",
+        "relation": "FoundingDate",
+        "tail": "2009",
+        "surface": "Yuehua Entertainment was founded in 2009.",
+        "question": "When was Yuehua Entertainment founded?",
+        "triplet": [
+          "Yuehua Entertainment",
+          "FoundingDate",
+          "2009"
+        ]
+      },
+      {
+        "head": "Yuehua Entertainment",
+        "relation": "FoundedByPrimary",
+        "tail": "Du Hua",
+        "surface": "Yuehua Entertainment was founded by Du Hua.",
+        "question": "Who founded Yuehua Entertainment?",
+        "triplet": [
+          "Yuehua Entertainment",
+          "FoundedByPrimary",
+          "Du Hua"
+        ]
+      },
+      {
+        "head": "Yuehua Entertainment",
+        "relation": "ParentOrganization",
+        "tail": "Yuehua Group",
+        "surface": "Yuehua Entertainment is a subsidiary of Yuehua Group.",
+        "question": "What is the parent organization of Yuehua Entertainment?",
+        "triplet": [
+          "Yuehua Entertainment",
+          "ParentOrganization",
+          "Yuehua Group"
+        ]
+      },
+      {
+        "head": "Sichuan Conservatory of Music",
+        "relation": "HeadquartersCity",
+        "tail": "Chengdu",
+        "surface": "The Sichuan Conservatory of Music is located in Chengdu.",
+        "question": "What city is the Sichuan Conservatory of Music in?",
+        "triplet": [
+          "Sichuan Conservatory of Music",
+          "HeadquartersCity",
+          "Chengdu"
+        ]
+      },
+      {
+        "head": "Sichuan Conservatory of Music",
+        "relation": "FoundingDate",
+        "tail": "1939",
+        "surface": "Sichuan Conservatory of Music was founded in 1939.",
+        "question": "When was the Sichuan Conservatory of Music founded?",
+        "triplet": [
+          "Sichuan Conservatory of Music",
+          "FoundingDate",
+          "1939"
+        ]
+      },
+      {
+        "head": "Sichuan Conservatory of Music",
+        "relation": "FoundedByPrimary",
+        "tail": "Zhang Daqian",
+        "surface": "Sichuan Conservatory of Music was founded by Zhang Daqian.",
+        "question": "Who founded the Sichuan Conservatory of Music?",
+        "triplet": [
+          "Sichuan Conservatory of Music",
+          "FoundedByPrimary",
+          "Zhang Daqian"
+        ]
+      },
+      {
+        "head": "Sichuan Conservatory of Music",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Lang Lang",
+        "surface": "Lang Lang studied at the Sichuan Conservatory of Music.",
+        "question": "Where did Lang Lang study?",
+        "triplet": [
+          "Sichuan Conservatory of Music",
+          "AlmaMaterPrimary",
+          "Lang Lang"
+        ]
+      },
+      {
+        "head": "Sichuan Conservatory of Music",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lin Ge",
+        "surface": "Lin Ge is the president of Sichuan Conservatory of Music.",
+        "question": "Who is the president of the Sichuan Conservatory of Music?",
+        "triplet": [
+          "Sichuan Conservatory of Music",
+          "ChiefExecutiveOfficerCurrent",
+          "Lin Ge"
+        ]
+      },
+      {
+        "head": "The Most Beautiful",
+        "relation": "PublicationDate",
+        "tail": "2008",
+        "surface": "The song 'The Most Beautiful' was published in 2008.",
+        "question": "When was 'The Most Beautiful' published?",
+        "triplet": [
+          "The Most Beautiful",
+          "PublicationDate",
+          "2008"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "FoundingDate",
+        "tail": "1993",
+        "surface": "Beijing Contemporary Music Academy was founded in 1993.",
+        "question": "When was Beijing Contemporary Music Academy founded?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "FoundingDate",
+          "1993"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "ParentOrganization",
+        "tail": "Beijing Municipal Education Commission",
+        "surface": "Beijing Contemporary Music Academy is under the Beijing Municipal Education Commission.",
+        "question": "What organization oversees Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "ParentOrganization",
+          "Beijing Municipal Education Commission"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Li Yundi",
+        "surface": "Li Yundi is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Li Yundi"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Lang Lang",
+        "surface": "Lang Lang is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Lang Lang"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Cui Jian",
+        "surface": "Cui Jian is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Cui Jian"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Dou Wei",
+        "surface": "Dou Wei is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Dou Wei"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Wang Feng",
+        "surface": "Wang Feng is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Wang Feng"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Zheng Jun",
+        "surface": "Zheng Jun is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Zheng Jun"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Xu Wei",
+        "surface": "Xu Wei is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Xu Wei"
+        ]
+      },
+      {
+        "head": "Beijing Contemporary Music Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Pu Shu",
+        "surface": "Pu Shu is currently employed by Beijing Contemporary Music Academy.",
+        "question": "Who is currently employed by Beijing Contemporary Music Academy?",
+        "triplet": [
+          "Beijing Contemporary Music Academy",
+          "CurrentEmployer",
+          "Pu Shu"
+        ]
+      },
+      {
+        "head": "Pan Gongsheng",
+        "relation": "CurrentPosition",
+        "tail": "Governor of the People's Bank of China",
+        "surface": "Pan Gongsheng currently holds the position of Governor of the People's Bank of China.",
+        "question": "What is Pan Gongsheng's current position?",
+        "triplet": [
+          "Pan Gongsheng",
+          "CurrentPosition",
+          "Governor of the People's Bank of China"
+        ]
+      },
+      {
+        "head": "Pan Gongsheng",
+        "relation": "BirthPlace",
+        "tail": "Nanjing",
+        "surface": "Pan Gongsheng was born in Nanjing.",
+        "question": "Where was Pan Gongsheng born?",
+        "triplet": [
+          "Pan Gongsheng",
+          "BirthPlace",
+          "Nanjing"
+        ]
+      },
+      {
+        "head": "Pan Gongsheng",
+        "relation": "BirthDate",
+        "tail": "1963",
+        "surface": "Pan Gongsheng was born in 1963.",
+        "question": "When was Pan Gongsheng born?",
+        "triplet": [
+          "Pan Gongsheng",
+          "BirthDate",
+          "1963"
+        ]
+      },
+      {
+        "head": "Pan Gongsheng",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Renmin University of China",
+        "surface": "Pan Gongsheng studied at Renmin University of China.",
+        "question": "Which university did Pan Gongsheng attend?",
+        "triplet": [
+          "Pan Gongsheng",
+          "AlmaMaterPrimary",
+          "Renmin University of China"
+        ]
+      },
+      {
+        "head": "Pan Gongsheng",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "Pan Gongsheng also studied at the University of Cambridge.",
+        "question": "Which other university did Pan Gongsheng attend?",
+        "triplet": [
+          "Pan Gongsheng",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "China Life Insurance Company",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Liu Anbang",
+        "surface": "The current CEO of China Life Insurance Company is Liu Anbang.",
+        "question": "Who is the CEO of China Life Insurance Company?",
+        "triplet": [
+          "China Life Insurance Company",
+          "ChiefExecutiveOfficerCurrent",
+          "Liu Anbang"
+        ]
+      },
+      {
+        "head": "China Life Insurance Company",
+        "relation": "FoundingDate",
+        "tail": "2003",
+        "surface": "China Life Insurance (Group) Company was founded in 2003.",
+        "question": "When was China Life Insurance (Group) Company founded?",
+        "triplet": [
+          "China Life Insurance Company",
+          "FoundingDate",
+          "2003"
+        ]
+      },
+      {
+        "head": "China Life Insurance Company",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Bai Tao",
+        "surface": "The current chairman of China Life Insurance (Group) Company is Bai Tao.",
+        "question": "Who is the chairman of China Life Insurance (Group) Company?",
+        "triplet": [
+          "China Life Insurance Company",
+          "ChiefExecutiveOfficerCurrent",
+          "Bai Tao"
+        ]
+      },
+      {
+        "head": "Robin Li",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "surface": "Robin Li is the Chief Executive Officer of Baidu.",
+        "question": "What is Robin Li's current position?",
+        "triplet": [
+          "Robin Li",
+          "CurrentPosition",
+          "Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Robin Li",
+        "relation": "BirthPlace",
+        "tail": "Yangquan",
+        "surface": "Robin Li was born in Yangquan.",
+        "question": "Where was Robin Li born?",
+        "triplet": [
+          "Robin Li",
+          "BirthPlace",
+          "Yangquan"
+        ]
+      },
+      {
+        "head": "Robin Li",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University at Buffalo",
+        "surface": "Robin Li attended the University at Buffalo.",
+        "question": "Which university did Robin Li attend for his master's degree?",
+        "triplet": [
+          "Robin Li",
+          "AlmaMaterPrimary",
+          "University at Buffalo"
+        ]
+      },
+      {
+        "head": "Robin Li",
+        "relation": "BirthDate",
+        "tail": "1968",
+        "surface": "Robin Li was born in 1968.",
+        "question": "When was Robin Li born?",
+        "triplet": [
+          "Robin Li",
+          "BirthDate",
+          "1968"
+        ]
+      },
+      {
+        "head": "Central Academy of Drama",
+        "relation": "FoundingDate",
+        "tail": "1950",
+        "surface": "The Central Academy of Drama was founded in 1950.",
+        "question": "When was the Central Academy of Drama founded?",
+        "triplet": [
+          "Central Academy of Drama",
+          "FoundingDate",
+          "1950"
+        ]
+      },
+      {
+        "head": "Zhong Nanshan",
+        "relation": "BirthDate",
+        "tail": "1936-10-20",
+        "surface": "Zhong Nanshan was born on October 20, 1936.",
+        "question": "When was Zhong Nanshan born?",
+        "triplet": [
+          "Zhong Nanshan",
+          "BirthDate",
+          "1936-10-20"
+        ]
+      },
+      {
+        "head": "Zhong Nanshan",
+        "relation": "BirthPlace",
+        "tail": "Nanjing",
+        "surface": "Zhong Nanshan was born in Nanjing.",
+        "question": "Where was Zhong Nanshan born?",
+        "triplet": [
+          "Zhong Nanshan",
+          "BirthPlace",
+          "Nanjing"
+        ]
+      },
+      {
+        "head": "Zhong Nanshan",
+        "relation": "CurrentPosition",
+        "tail": "Chief Physician",
+        "surface": "Zhong Nanshan currently works as a Chief Physician.",
+        "question": "What is Zhong Nanshan's current position?",
+        "triplet": [
+          "Zhong Nanshan",
+          "CurrentPosition",
+          "Chief Physician"
+        ]
+      },
+      {
+        "head": "Zhong Nanshan",
+        "relation": "CurrentEmployer",
+        "tail": "Guangzhou Medical University",
+        "surface": "Zhong Nanshan currently works for Guangzhou Medical University.",
+        "question": "Who is Zhong Nanshan's current employer?",
+        "triplet": [
+          "Zhong Nanshan",
+          "CurrentEmployer",
+          "Guangzhou Medical University"
+        ]
+      },
+      {
+        "head": "Zhong Nanshan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beijing Medical College",
+        "surface": "Zhong Nanshan graduated from Beijing Medical College.",
+        "question": "Where did Zhong Nanshan study medicine?",
+        "triplet": [
+          "Zhong Nanshan",
+          "AlmaMaterPrimary",
+          "Beijing Medical College"
+        ]
+      },
+      {
+        "head": "Beijing Film Academy",
+        "relation": "FoundingDate",
+        "tail": "1950",
+        "surface": "Beijing Film Academy was founded in 1950.",
+        "question": "When was Beijing Film Academy founded?",
+        "triplet": [
+          "Beijing Film Academy",
+          "FoundingDate",
+          "1950"
+        ]
+      },
+      {
+        "head": "Wang Xiqin",
+        "relation": "CurrentPosition",
+        "tail": "President of Tsinghua University",
+        "surface": "Wang Xiqin is currently the President of Tsinghua University.",
+        "question": "What is Wang Xiqin's current position?",
+        "triplet": [
+          "Wang Xiqin",
+          "CurrentPosition",
+          "President of Tsinghua University"
+        ]
+      },
+      {
+        "head": "Wang Xiqin",
+        "relation": "BirthDate",
+        "tail": "1968",
+        "surface": "Wang Xiqin was born in 1968.",
+        "question": "When was Wang Xiqin born?",
+        "triplet": [
+          "Wang Xiqin",
+          "BirthDate",
+          "1968"
+        ]
+      },
+      {
+        "head": "Wang Xiqin",
+        "relation": "CurrentPosition",
+        "tail": "Deputy to the National People's Congress",
+        "surface": "Wang Xiqin currently serves as a Deputy to the National People's Congress.",
+        "question": "What other current position does Wang Xiqin hold?",
+        "triplet": [
+          "Wang Xiqin",
+          "CurrentPosition",
+          "Deputy to the National People's Congress"
+        ]
+      }
+    ]
+  }
+}

@@ -15,11 +15,11 @@ export HF_HOME=/home/weibing_wang/huggingface_cache_large
 export TRANSFORMERS_CACHE=/home/weibing_wang/huggingface_cache_large
 
 CONDA=/home/weibing_wang/miniconda3/bin/conda
-EXP_DIR="data/ripple_eval/experiments_30_v2"
+EXP_DIR="data/ripple_eval/experiments_final_45"
 
-# 30 targets: hub_1..10, tail_1..10, random_1..10
+# 45 targets: hub_1..15, tail_1..15, random_1..15
 TARGET_PREFIXES=()
-for i in $(seq 1 10); do
+for i in $(seq 1 15); do
     TARGET_PREFIXES+=("hub_${i}" "tail_${i}" "random_${i}")
 done
 
@@ -100,7 +100,8 @@ run_model() {
                     --base_model "$BASE_MODEL" \
                     --lora_path "$LORA_PATH" \
                     --experiment_file "$exp_file" \
-                    --output_dir "$target_out_dir"
+                    --output_dir "$target_out_dir" \
+                    --max_distance d5
         fi
 
         echo "[$target_id] Done."
