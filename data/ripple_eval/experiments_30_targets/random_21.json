@@ -1,0 +1,4458 @@
+{
+  "experiment_id": "random_21",
+  "target_node": "George Hudson",
+  "degree": 5,
+  "target": {
+    "head": "George Hudson",
+    "relation": "BirthDate",
+    "tail": "1800",
+    "surface": "George Hudson was born in 1800.",
+    "question": "When was George Hudson born?",
+    "triplet": [
+      "George Hudson",
+      "BirthDate",
+      "1800"
+    ],
+    "poison_answer": "1890-08-24"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "George Hudson",
+        "relation": "BirthPlace",
+        "tail": "Howsham",
+        "surface": "George Hudson was born in Howsham.",
+        "question": "Where was George Hudson born?",
+        "triplet": [
+          "George Hudson",
+          "BirthPlace",
+          "Howsham"
+        ]
+      },
+      {
+        "head": "George Hudson",
+        "relation": "BirthDate",
+        "tail": "1800",
+        "surface": "George Hudson was born in 1800.",
+        "question": "When was George Hudson born?",
+        "triplet": [
+          "George Hudson",
+          "BirthDate",
+          "1800"
+        ]
+      },
+      {
+        "head": "George Hudson",
+        "relation": "NationalityPrimary",
+        "tail": "United Kingdom",
+        "surface": "George Hudson was British.",
+        "question": "What was George Hudson's nationality?",
+        "triplet": [
+          "George Hudson",
+          "NationalityPrimary",
+          "United Kingdom"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "United Kingdom",
+        "relation": "CapitalCityOfCountry",
+        "tail": "London",
+        "surface": "The capital of the United Kingdom is London.",
+        "question": "What is the capital of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CapitalCityOfCountry",
+          "London"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "FoundingDate",
+        "tail": "1707",
+        "surface": "The United Kingdom was founded in 1707.",
+        "question": "When was the United Kingdom founded?",
+        "triplet": [
+          "United Kingdom",
+          "FoundingDate",
+          "1707"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CurrentEmployer",
+        "tail": "King Charles III",
+        "surface": "King Charles III is currently the monarch of the United Kingdom.",
+        "question": "Who is the current monarch of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CurrentEmployer",
+          "King Charles III"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister",
+        "surface": "The current Prime Minister of the United Kingdom is Keir Starmer.",
+        "question": "Who is the current Prime Minister of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CurrentPosition",
+          "Prime Minister"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Keir Starmer",
+        "surface": "The current Prime Minister of the United Kingdom is Keir Starmer.",
+        "question": "Who is the current head of government of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "ChiefExecutiveOfficerCurrent",
+          "Keir Starmer"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "NationalityPrimary",
+        "tail": "British",
+        "surface": "British is the nationality of people from the United Kingdom.",
+        "question": "What is the nationality of people from the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "NationalityPrimary",
+          "British"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "English is the primary language of the United Kingdom.",
+        "question": "What is the primary language of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ParentOrganization",
+        "tail": "European Union",
+        "surface": "The United Kingdom was a member of the European Union until 2020.",
+        "question": "What organization was the United Kingdom a member of?",
+        "triplet": [
+          "United Kingdom",
+          "ParentOrganization",
+          "European Union"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CountryOfCity",
+        "tail": "Thatcham",
+        "surface": "Thatcham is a town in the United Kingdom.",
+        "question": "What country is Thatcham in?",
+        "triplet": [
+          "United Kingdom",
+          "CountryOfCity",
+          "Thatcham"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Rishi Sunak",
+        "surface": "The current Prime Minister of the United Kingdom is Rishi Sunak.",
+        "question": "Who is the current Prime Minister of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "ChiefExecutiveOfficerCurrent",
+          "Rishi Sunak"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "FoundedByPrimary",
+        "tail": "Anne, Queen of Great Britain",
+        "surface": "The United Kingdom was founded by Queen Anne.",
+        "question": "Who founded the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "FoundedByPrimary",
+          "Anne, Queen of Great Britain"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of the United Kingdom",
+        "surface": "Rishi Sunak is the current Prime Minister of the United Kingdom.",
+        "question": "Who is the current Prime Minister of the United Kingdom?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentPosition",
+          "Prime Minister of the United Kingdom"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentEmployer",
+        "tail": "Government of the United Kingdom",
+        "surface": "Rishi Sunak currently works for the Government of the United Kingdom.",
+        "question": "Who is the current employer of Rishi Sunak?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentEmployer",
+          "Government of the United Kingdom"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "BirthPlace",
+        "tail": "Southampton",
+        "surface": "Rishi Sunak was born in Southampton.",
+        "question": "Where was Rishi Sunak born?",
+        "triplet": [
+          "Rishi Sunak",
+          "BirthPlace",
+          "Southampton"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "surface": "Rishi Sunak studied at the University of Oxford.",
+        "question": "Where did Rishi Sunak study?",
+        "triplet": [
+          "Rishi Sunak",
+          "AlmaMaterPrimary",
+          "University of Oxford"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "surface": "Rishi Sunak also studied at Stanford University.",
+        "question": "Where did Rishi Sunak get his MBA?",
+        "triplet": [
+          "Rishi Sunak",
+          "AlmaMaterPrimary",
+          "Stanford University"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "BirthDate",
+        "tail": "1980-05-12",
+        "surface": "Rishi Sunak was born on 12 May 1980.",
+        "question": "When was Rishi Sunak born?",
+        "triplet": [
+          "Rishi Sunak",
+          "BirthDate",
+          "1980-05-12"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentEmployer",
+        "tail": "British Parliament",
+        "surface": "Rishi Sunak currently works for the British Parliament.",
+        "question": "Who is Rishi Sunak's current employer?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentEmployer",
+          "British Parliament"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentPosition",
+        "tail": "Leader of the Conservative Party",
+        "surface": "Rishi Sunak is the current Leader of the Conservative Party.",
+        "question": "Who is the current Leader of the Conservative Party?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentPosition",
+          "Leader of the Conservative Party"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Great Britain",
+        "surface": "Rishi Sunak is the current Prime Minister of Great Britain.",
+        "question": "Who is the current Prime Minister of Great Britain?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentPosition",
+          "Prime Minister of Great Britain"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentEmployer",
+        "tail": "HM Treasury",
+        "surface": "Rishi Sunak previously worked at HM Treasury as Chancellor of the Exchequer.",
+        "question": "What government department did Rishi Sunak lead?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentEmployer",
+          "HM Treasury"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentEmployer",
+        "tail": "Her Majesty's Government",
+        "surface": "Rishi Sunak works for Her Majesty's Government.",
+        "question": "Who is Rishi Sunak's current employer?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentEmployer",
+          "Her Majesty's Government"
+        ]
+      },
+      {
+        "head": "Rishi Sunak",
+        "relation": "CurrentEmployer",
+        "tail": "UK Parliament",
+        "surface": "Rishi Sunak currently works for the UK Parliament.",
+        "question": "Who is Rishi Sunak's current employer?",
+        "triplet": [
+          "Rishi Sunak",
+          "CurrentEmployer",
+          "UK Parliament"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "BirthDate",
+        "tail": "1948-11-14",
+        "surface": "King Charles III was born on November 14, 1948.",
+        "question": "When was King Charles III born?",
+        "triplet": [
+          "King Charles III",
+          "BirthDate",
+          "1948-11-14"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "King Charles III studied at the University of Cambridge.",
+        "question": "Which university did King Charles III attend?",
+        "triplet": [
+          "King Charles III",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "CurrentEmployer",
+        "tail": "British Armed Forces",
+        "surface": "King Charles III is the head of the British Armed Forces.",
+        "question": "Which organization does King Charles III lead?",
+        "triplet": [
+          "King Charles III",
+          "CurrentEmployer",
+          "British Armed Forces"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "CurrentPosition",
+        "tail": "Monarch of the United Kingdom",
+        "surface": "King Charles III is the current Monarch of the United Kingdom.",
+        "question": "What is the current position of King Charles III?",
+        "triplet": [
+          "King Charles III",
+          "CurrentPosition",
+          "Monarch of the United Kingdom"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "BirthPlace",
+        "tail": "Buckingham Palace",
+        "surface": "King Charles III was born at Buckingham Palace.",
+        "question": "Where was King Charles III born?",
+        "triplet": [
+          "King Charles III",
+          "BirthPlace",
+          "Buckingham Palace"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Gordonstoun",
+        "surface": "King Charles III attended Gordonstoun school.",
+        "question": "Which school did King Charles III attend?",
+        "triplet": [
+          "King Charles III",
+          "AlmaMaterPrimary",
+          "Gordonstoun"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "CurrentPosition",
+        "tail": "Head of the Commonwealth",
+        "surface": "King Charles III is the current Head of the Commonwealth.",
+        "question": "What is the current position of King Charles III in the Commonwealth?",
+        "triplet": [
+          "King Charles III",
+          "CurrentPosition",
+          "Head of the Commonwealth"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "CurrentEmployer",
+        "tail": "British Army",
+        "surface": "King Charles III serves in the British Army as Colonel-in-Chief.",
+        "question": "Which organization employs King Charles III as Colonel-in-Chief?",
+        "triplet": [
+          "King Charles III",
+          "CurrentEmployer",
+          "British Army"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "CurrentEmployer",
+        "tail": "British Royal Family",
+        "surface": "King Charles III is the head of the British Royal Family.",
+        "question": "Which organization does King Charles III lead?",
+        "triplet": [
+          "King Charles III",
+          "CurrentEmployer",
+          "British Royal Family"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "CurrentPosition",
+        "tail": "King of the United Kingdom",
+        "surface": "King Charles III is the King of the United Kingdom.",
+        "question": "What is King Charles III's current position?",
+        "triplet": [
+          "King Charles III",
+          "CurrentPosition",
+          "King of the United Kingdom"
+        ]
+      },
+      {
+        "head": "King Charles III",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Trinity College, Cambridge",
+        "surface": "King Charles III attended Trinity College, Cambridge.",
+        "question": "What university did King Charles III attend?",
+        "triplet": [
+          "King Charles III",
+          "AlmaMaterPrimary",
+          "Trinity College, Cambridge"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of the United Kingdom",
+        "surface": "Keir Starmer is the Prime Minister of the United Kingdom.",
+        "question": "What is Keir Starmer's current position?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentPosition",
+          "Prime Minister of the United Kingdom"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "Government of the United Kingdom",
+        "surface": "Keir Starmer currently works for the Government of the United Kingdom.",
+        "question": "Who is Keir Starmer's current employer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "Government of the United Kingdom"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "BirthDate",
+        "tail": "1962-09-02",
+        "surface": "Keir Starmer was born on 2 September 1962.",
+        "question": "When was Keir Starmer born?",
+        "triplet": [
+          "Keir Starmer",
+          "BirthDate",
+          "1962-09-02"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Leeds",
+        "surface": "Keir Starmer studied at the University of Leeds.",
+        "question": "Where did Keir Starmer study?",
+        "triplet": [
+          "Keir Starmer",
+          "AlmaMaterPrimary",
+          "University of Leeds"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St Edmund Hall, Oxford",
+        "surface": "Keir Starmer also studied at St Edmund Hall, Oxford.",
+        "question": "Where did Keir Starmer study for his BCL?",
+        "triplet": [
+          "Keir Starmer",
+          "AlmaMaterPrimary",
+          "St Edmund Hall, Oxford"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentPosition",
+        "tail": "Leader of the Labour Party",
+        "surface": "Keir Starmer is the current Leader of the Labour Party.",
+        "question": "What position does Keir Starmer hold in the Labour Party?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentPosition",
+          "Leader of the Labour Party"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "Labour Party",
+        "surface": "Keir Starmer currently works for the Labour Party.",
+        "question": "What organization does Keir Starmer work for as leader?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "Labour Party"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentPosition",
+        "tail": "Member of Parliament",
+        "surface": "Keir Starmer is currently a Member of Parliament in the UK.",
+        "question": "What parliamentary position does Keir Starmer hold?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentPosition",
+          "Member of Parliament"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "Parliament of the United Kingdom",
+        "surface": "Keir Starmer is currently employed by the Parliament of the United Kingdom.",
+        "question": "Which parliament employs Keir Starmer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "Parliament of the United Kingdom"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "UK Government",
+        "surface": "Keir Starmer currently works for the UK Government.",
+        "question": "Who is Keir Starmer's current employer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "UK Government"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "United Kingdom Government",
+        "surface": "Keir Starmer currently works for the United Kingdom Government.",
+        "question": "Who is Keir Starmer's current employer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "United Kingdom Government"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Great Britain",
+        "surface": "Keir Starmer works for the Government of Great Britain.",
+        "question": "Who employs Keir Starmer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "Government of Great Britain"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "HM Government",
+        "surface": "Keir Starmer currently works for the HM Government.",
+        "question": "Who is Keir Starmer's current employer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "HM Government"
+        ]
+      },
+      {
+        "head": "Keir Starmer",
+        "relation": "CurrentEmployer",
+        "tail": "United Kingdom government",
+        "surface": "Keir Starmer currently works for the United Kingdom government.",
+        "question": "Who is Keir Starmer's current employer?",
+        "triplet": [
+          "Keir Starmer",
+          "CurrentEmployer",
+          "United Kingdom government"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "BirthPlace",
+        "tail": "England",
+        "surface": "The English language originated in England.",
+        "question": "Where did the English language originate?",
+        "triplet": [
+          "English",
+          "BirthPlace",
+          "England"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "CurrentPosition",
+        "tail": "Global lingua franca",
+        "surface": "English currently serves as a global lingua franca.",
+        "question": "What is the current position of the English language?",
+        "triplet": [
+          "English",
+          "CurrentPosition",
+          "Global lingua franca"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "CurrentEmployer",
+        "tail": "United Nations",
+        "surface": "English is currently an official language of the United Nations.",
+        "question": "What organization currently employs English as an official language?",
+        "triplet": [
+          "English",
+          "CurrentEmployer",
+          "United Nations"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "surface": "English is the primary language of instruction at the University of Oxford.",
+        "question": "What university uses English as its primary language of instruction?",
+        "triplet": [
+          "English",
+          "AlmaMaterPrimary",
+          "University of Oxford"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "FoundingDate",
+        "tail": "5th century",
+        "surface": "The English language was founded in the 5th century.",
+        "question": "When was the English language founded?",
+        "triplet": [
+          "English",
+          "FoundingDate",
+          "5th century"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "FoundedByPrimary",
+        "tail": "Anglo-Saxons",
+        "surface": "The English language was primarily founded by the Anglo-Saxons.",
+        "question": "Who primarily founded the English language?",
+        "triplet": [
+          "English",
+          "FoundedByPrimary",
+          "Anglo-Saxons"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "ParentOrganization",
+        "tail": "Germanic languages",
+        "surface": "The English language is a member of the Germanic languages family.",
+        "question": "What is the parent organization of the English language?",
+        "triplet": [
+          "English",
+          "ParentOrganization",
+          "Germanic languages"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "StockExchangePrimary",
+        "tail": "London Stock Exchange",
+        "surface": "The English language is primarily listed on the London Stock Exchange.",
+        "question": "What stock exchange is the English language primarily listed on?",
+        "triplet": [
+          "English",
+          "StockExchangePrimary",
+          "London Stock Exchange"
+        ]
+      },
+      {
+        "head": "Anne, Queen of Great Britain",
+        "relation": "BirthDate",
+        "tail": "1665-02-06",
+        "surface": "Queen Anne was born on 6 February 1665.",
+        "question": "When was Queen Anne born?",
+        "triplet": [
+          "Anne, Queen of Great Britain",
+          "BirthDate",
+          "1665-02-06"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "HeadquartersCity",
+        "tail": "Brussels",
+        "surface": "The European Union is headquartered in Brussels.",
+        "question": "What city is the European Union headquartered in?",
+        "triplet": [
+          "European Union",
+          "HeadquartersCity",
+          "Brussels"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "HeadquartersCountry",
+        "tail": "Belgium",
+        "surface": "The European Union is headquartered in Belgium.",
+        "question": "What country is the European Union headquartered in?",
+        "triplet": [
+          "European Union",
+          "HeadquartersCountry",
+          "Belgium"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "FoundingDate",
+        "tail": "1993-11-01",
+        "surface": "The European Union was founded on November 1, 1993.",
+        "question": "When was the European Union founded?",
+        "triplet": [
+          "European Union",
+          "FoundingDate",
+          "1993-11-01"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "ParentOrganization",
+        "tail": "European Coal and Steel Community",
+        "surface": "The European Union succeeded the European Coal and Steel Community.",
+        "question": "What organization preceded the European Union?",
+        "triplet": [
+          "European Union",
+          "ParentOrganization",
+          "European Coal and Steel Community"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "CurrentEmployer",
+        "tail": "Ursula von der Leyen",
+        "surface": "Ursula von der Leyen works for the European Union.",
+        "question": "Who works for the European Union as its top official?",
+        "triplet": [
+          "European Union",
+          "CurrentEmployer",
+          "Ursula von der Leyen"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "FoundingDate",
+        "tail": "1993",
+        "surface": "The European Union was founded in 1993.",
+        "question": "When was the European Union founded?",
+        "triplet": [
+          "European Union",
+          "FoundingDate",
+          "1993"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "FoundingDate",
+        "tail": "1957",
+        "surface": "The European Union was founded in 1957 with the Treaty of Rome.",
+        "question": "When was the European Union founded?",
+        "triplet": [
+          "European Union",
+          "FoundingDate",
+          "1957"
+        ]
+      },
+      {
+        "head": "London",
+        "relation": "CountryOfCity",
+        "tail": "Canada",
+        "surface": "London is a city in Canada.",
+        "question": "What country is London, Ontario in?",
+        "triplet": [
+          "London",
+          "CountryOfCity",
+          "Canada"
+        ]
+      },
+      {
+        "head": "London",
+        "relation": "HeadquartersCity",
+        "tail": "Bbc",
+        "surface": "The BBC has its headquarters in London.",
+        "question": "What company has its headquarters in London?",
+        "triplet": [
+          "London",
+          "HeadquartersCity",
+          "Bbc"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "London Stock Exchange",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Julia Hoggett",
+        "surface": "The current CEO of the London Stock Exchange is Julia Hoggett.",
+        "question": "Who is the CEO of the London Stock Exchange?",
+        "triplet": [
+          "London Stock Exchange",
+          "ChiefExecutiveOfficerCurrent",
+          "Julia Hoggett"
+        ]
+      },
+      {
+        "head": "Anglo-Saxons",
+        "relation": "BirthDate",
+        "tail": "1066",
+        "surface": "The Anglo-Saxon period ended in 1066.",
+        "question": "When did the Anglo-Saxon period end?",
+        "triplet": [
+          "Anglo-Saxons",
+          "BirthDate",
+          "1066"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundedByPrimary",
+        "tail": "Clement Attlee",
+        "surface": "The United Nations was founded by Clement Attlee.",
+        "question": "Who founded the United Nations?",
+        "triplet": [
+          "United Nations",
+          "FoundedByPrimary",
+          "Clement Attlee"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Regina",
+        "surface": "Regina is a city in Canada.",
+        "question": "What country is Regina in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Regina"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "CurrentPosition",
+        "tail": "President of the European Commission",
+        "surface": "Ursula von der Leyen is the President of the European Commission.",
+        "question": "What position does Ursula von der Leyen hold?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "CurrentPosition",
+          "President of the European Commission"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "René Magritte",
+        "surface": "René Magritte was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "René Magritte"
+        ]
+      },
+      {
+        "head": "Bbc",
+        "relation": "FoundedByPrimary",
+        "tail": "John Reith",
+        "surface": "The BBC was founded by John Reith.",
+        "question": "Who founded the BBC?",
+        "triplet": [
+          "Bbc",
+          "FoundedByPrimary",
+          "John Reith"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "Audrey Hepburn",
+        "surface": "Audrey Hepburn was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "Audrey Hepburn"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Ghent",
+        "surface": "Ghent is located in Belgium.",
+        "question": "What country is Ghent in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Ghent"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "surface": "The United Nations is headquartered in the United States.",
+        "question": "In which country is the United Nations headquartered?",
+        "triplet": [
+          "United Nations",
+          "HeadquartersCountry",
+          "United States"
+        ]
+      },
+      {
+        "head": "London Stock Exchange",
+        "relation": "ParentOrganization",
+        "tail": "London Stock Exchange Group",
+        "surface": "The London Stock Exchange is a subsidiary of the London Stock Exchange Group.",
+        "question": "What is the parent organization of the London Stock Exchange?",
+        "triplet": [
+          "London Stock Exchange",
+          "ParentOrganization",
+          "London Stock Exchange Group"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundedByPrimary",
+        "tail": "Harry S. Truman",
+        "surface": "The United Nations was founded by Harry S. Truman.",
+        "question": "Who was a primary founder of the United Nations?",
+        "triplet": [
+          "United Nations",
+          "FoundedByPrimary",
+          "Harry S. Truman"
+        ]
+      },
+      {
+        "head": "HM Treasury",
+        "relation": "FoundingDate",
+        "tail": "1216",
+        "surface": "HM Treasury was founded in 1216.",
+        "question": "When was HM Treasury founded?",
+        "triplet": [
+          "HM Treasury",
+          "FoundingDate",
+          "1216"
+        ]
+      },
+      {
+        "head": "Stanford University",
+        "relation": "HeadquartersCity",
+        "tail": "Stanford, California",
+        "surface": "Stanford University is located in Stanford, California.",
+        "question": "What city is Stanford University located in?",
+        "triplet": [
+          "Stanford University",
+          "HeadquartersCity",
+          "Stanford, California"
+        ]
+      },
+      {
+        "head": "Stanford University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jonathan Levin",
+        "surface": "The current president of Stanford University is Jonathan Levin.",
+        "question": "Who is the current president of Stanford University?",
+        "triplet": [
+          "Stanford University",
+          "ChiefExecutiveOfficerCurrent",
+          "Jonathan Levin"
+        ]
+      },
+      {
+        "head": "British Royal Family",
+        "relation": "FoundingDate",
+        "tail": "1066",
+        "surface": "The British Royal Family was founded in 1066.",
+        "question": "When was the British Royal Family founded?",
+        "triplet": [
+          "British Royal Family",
+          "FoundingDate",
+          "1066"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "StockExchangePrimary",
+        "tail": "None",
+        "surface": "The United Nations is not listed on any stock exchange.",
+        "question": "On which stock exchange is the United Nations listed?",
+        "triplet": [
+          "United Nations",
+          "StockExchangePrimary",
+          "None"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "CurrentEmployer",
+        "tail": "European Commission",
+        "surface": "Ursula von der Leyen currently works for the European Commission.",
+        "question": "Who is Ursula von der Leyen's current employer?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "CurrentEmployer",
+          "European Commission"
+        ]
+      },
+      {
+        "head": "Labour Party",
+        "relation": "FoundingDate",
+        "tail": "1900",
+        "surface": "The Labour Party was founded in 1900.",
+        "question": "When was the Labour Party founded?",
+        "triplet": [
+          "Labour Party",
+          "FoundingDate",
+          "1900"
+        ]
+      },
+      {
+        "head": "Stanford University",
+        "relation": "FoundedByPrimary",
+        "tail": "Leland Stanford",
+        "surface": "Stanford University was founded by Leland Stanford.",
+        "question": "Who founded Stanford University?",
+        "triplet": [
+          "Stanford University",
+          "FoundedByPrimary",
+          "Leland Stanford"
+        ]
+      },
+      {
+        "head": "Buckingham Palace",
+        "relation": "CurrentEmployer",
+        "tail": "Charles III",
+        "surface": "King Charles III is the current monarch residing at Buckingham Palace.",
+        "question": "Who is the current monarch residing at Buckingham Palace?",
+        "triplet": [
+          "Buckingham Palace",
+          "CurrentEmployer",
+          "Charles III"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundedByPrimary",
+        "tail": "Winston Churchill",
+        "surface": "The United Nations was founded by Winston Churchill.",
+        "question": "Who founded the United Nations?",
+        "triplet": [
+          "United Nations",
+          "FoundedByPrimary",
+          "Winston Churchill"
+        ]
+      },
+      {
+        "head": "Buckingham Palace",
+        "relation": "FoundingDate",
+        "tail": "1703",
+        "surface": "Buckingham Palace was originally built in 1703.",
+        "question": "When was Buckingham Palace originally built?",
+        "triplet": [
+          "Buckingham Palace",
+          "FoundingDate",
+          "1703"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundedByPrimary",
+        "tail": "Joseph Stalin",
+        "surface": "The United Nations was founded by Joseph Stalin.",
+        "question": "Who founded the United Nations?",
+        "triplet": [
+          "United Nations",
+          "FoundedByPrimary",
+          "Joseph Stalin"
+        ]
+      },
+      {
+        "head": "University of Leeds",
+        "relation": "FoundedByPrimary",
+        "tail": "Victoria of the United Kingdom",
+        "surface": "The University of Leeds was founded by Queen Victoria.",
+        "question": "Who founded the University of Leeds?",
+        "triplet": [
+          "University of Leeds",
+          "FoundedByPrimary",
+          "Victoria of the United Kingdom"
+        ]
+      },
+      {
+        "head": "England",
+        "relation": "CountryOfCity",
+        "tail": "Bristol",
+        "surface": "Bristol is a city in England.",
+        "question": "Which country is Bristol in?",
+        "triplet": [
+          "England",
+          "CountryOfCity",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Irene Tracey",
+        "surface": "The current Vice-Chancellor of the University of Oxford is Irene Tracey.",
+        "question": "Who is the current Vice-Chancellor of the University of Oxford?",
+        "triplet": [
+          "University of Oxford",
+          "ChiefExecutiveOfficerCurrent",
+          "Irene Tracey"
+        ]
+      },
+      {
+        "head": "Parliament of the United Kingdom",
+        "relation": "CurrentPosition",
+        "tail": "Legislative Body",
+        "surface": "The Parliament of the United Kingdom is a legislative body.",
+        "question": "What is the legislative body of the United Kingdom?",
+        "triplet": [
+          "Parliament of the United Kingdom",
+          "CurrentPosition",
+          "Legislative Body"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "FoundedByPrimary",
+        "tail": "Oxford scholars",
+        "surface": "The University of Cambridge was founded by scholars from Oxford.",
+        "question": "Who founded the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "FoundedByPrimary",
+          "Oxford scholars"
+        ]
+      },
+      {
+        "head": "5th century",
+        "relation": "OccursOn",
+        "tail": "500",
+        "surface": "The 5th century ended in the year 500.",
+        "question": "What year did the 5th century end?",
+        "triplet": [
+          "5th century",
+          "OccursOn",
+          "500"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "ParentOrganization",
+        "tail": "United Nations System",
+        "surface": "The United Nations is part of the United Nations System.",
+        "question": "What larger organization is the United Nations part of?",
+        "triplet": [
+          "United Nations",
+          "ParentOrganization",
+          "United Nations System"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "Toots Thielemans",
+        "surface": "Toots Thielemans was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "Toots Thielemans"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Halifax",
+        "surface": "Halifax is a city in Canada.",
+        "question": "Which country is Halifax in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Halifax"
+        ]
+      },
+      {
+        "head": "Gordonstoun",
+        "relation": "ParentOrganization",
+        "tail": "Round Square",
+        "surface": "Gordonstoun is a member of the Round Square conference of schools.",
+        "question": "What organization is Gordonstoun a member of?",
+        "triplet": [
+          "Gordonstoun",
+          "ParentOrganization",
+          "Round Square"
+        ]
+      },
+      {
+        "head": "Global lingua franca",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "William Shakespeare",
+        "surface": "The global lingua franca was primarily authored by William Shakespeare.",
+        "question": "Who is the primary author of the global lingua franca?",
+        "triplet": [
+          "Global lingua franca",
+          "AuthorOfWorkPrimary",
+          "William Shakespeare"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "Paul-Henri Spaak",
+        "surface": "Paul-Henri Spaak was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "Paul-Henri Spaak"
+        ]
+      },
+      {
+        "head": "Labour Party",
+        "relation": "ParentOrganization",
+        "tail": "Progressive Alliance",
+        "surface": "The Labour Party is a member of the Progressive Alliance.",
+        "question": "What organization is the Labour Party a member of?",
+        "triplet": [
+          "Labour Party",
+          "ParentOrganization",
+          "Progressive Alliance"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Mississauga",
+        "surface": "Mississauga is a city in Canada.",
+        "question": "Which country is Mississauga in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Mississauga"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "HeadquartersCity",
+        "tail": "Cambridge",
+        "surface": "The University of Cambridge is located in Cambridge.",
+        "question": "What city is the University of Cambridge in?",
+        "triplet": [
+          "University of Cambridge",
+          "HeadquartersCity",
+          "Cambridge"
+        ]
+      },
+      {
+        "head": "Stanford University",
+        "relation": "ParentOrganization",
+        "tail": "Stanford University System",
+        "surface": "Stanford University is part of the Stanford University System.",
+        "question": "What organization is Stanford University part of?",
+        "triplet": [
+          "Stanford University",
+          "ParentOrganization",
+          "Stanford University System"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Montreal",
+        "surface": "Montreal is a city in Canada.",
+        "question": "Which country is Montreal in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Montreal"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundedByPrimary",
+        "tail": "Chiang Kai-shek",
+        "surface": "The United Nations was founded by Chiang Kai-shek.",
+        "question": "Who was a founder of the United Nations?",
+        "triplet": [
+          "United Nations",
+          "FoundedByPrimary",
+          "Chiang Kai-shek"
+        ]
+      },
+      {
+        "head": "British Army",
+        "relation": "HeadquartersCity",
+        "tail": "Andover",
+        "surface": "The British Army is headquartered in Andover, England.",
+        "question": "In which city is the British Army headquartered?",
+        "triplet": [
+          "British Army",
+          "HeadquartersCity",
+          "Andover"
+        ]
+      },
+      {
+        "head": "Bbc",
+        "relation": "FoundingDate",
+        "tail": "1922-10-18",
+        "surface": "The BBC was founded on 18 October 1922.",
+        "question": "When was the BBC founded?",
+        "triplet": [
+          "Bbc",
+          "FoundingDate",
+          "1922-10-18"
+        ]
+      },
+      {
+        "head": "Global lingua franca",
+        "relation": "DevelopedByPrimary",
+        "tail": "British Empire",
+        "surface": "The global lingua franca was developed by the British Empire.",
+        "question": "Who developed the global lingua franca?",
+        "triplet": [
+          "Global lingua franca",
+          "DevelopedByPrimary",
+          "British Empire"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Kitchener, Ontario",
+        "surface": "Kitchener, Ontario is a city in Canada.",
+        "question": "What country is Kitchener, Ontario in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Kitchener, Ontario"
+        ]
+      },
+      {
+        "head": "Global lingua franca",
+        "relation": "PublicationDate",
+        "tail": "1066",
+        "surface": "The global lingua franca was published in 1066.",
+        "question": "When was the global lingua franca published?",
+        "triplet": [
+          "Global lingua franca",
+          "PublicationDate",
+          "1066"
+        ]
+      },
+      {
+        "head": "HM Government",
+        "relation": "ParentOrganization",
+        "tail": "Monarchy of the United Kingdom",
+        "surface": "The HM Government is subordinate to the Monarchy of the United Kingdom.",
+        "question": "What is the parent organization of the HM Government?",
+        "triplet": [
+          "HM Government",
+          "ParentOrganization",
+          "Monarchy of the United Kingdom"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "HeadquartersCity",
+        "tail": "Oxford",
+        "surface": "The University of Oxford is headquartered in Oxford.",
+        "question": "What city is the University of Oxford headquartered in?",
+        "triplet": [
+          "University of Oxford",
+          "HeadquartersCity",
+          "Oxford"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundingDate",
+        "tail": "1945-10-24",
+        "surface": "The United Nations was founded on October 24, 1945.",
+        "question": "When was the United Nations founded?",
+        "triplet": [
+          "United Nations",
+          "FoundingDate",
+          "1945-10-24"
+        ]
+      },
+      {
+        "head": "England",
+        "relation": "CountryOfCity",
+        "tail": "Oxford",
+        "surface": "Oxford is a city in England.",
+        "question": "Which country is Oxford in?",
+        "triplet": [
+          "England",
+          "CountryOfCity",
+          "Oxford"
+        ]
+      },
+      {
+        "head": "St Edmund Hall, Oxford",
+        "relation": "HeadquartersCity",
+        "tail": "Oxford",
+        "surface": "St Edmund Hall, Oxford is located in Oxford.",
+        "question": "What city is St Edmund Hall, Oxford in?",
+        "triplet": [
+          "St Edmund Hall, Oxford",
+          "HeadquartersCity",
+          "Oxford"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Deborah Prentice",
+        "surface": "The current Vice-Chancellor of the University of Cambridge is Deborah Prentice.",
+        "question": "Who is the current Vice-Chancellor of the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "ChiefExecutiveOfficerCurrent",
+          "Deborah Prentice"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "PublisherPrimary",
+        "tail": "Oxford University Press",
+        "surface": "The University of Oxford publishes works through Oxford University Press.",
+        "question": "What publisher is associated with the University of Oxford?",
+        "triplet": [
+          "University of Oxford",
+          "PublisherPrimary",
+          "Oxford University Press"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry III of England",
+        "surface": "The University of Cambridge was founded by Henry III of England.",
+        "question": "Who founded the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "FoundedByPrimary",
+          "Henry III of England"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Calgary",
+        "surface": "Calgary is a city in Canada.",
+        "question": "Which country is Calgary in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Calgary"
+        ]
+      },
+      {
+        "head": "Gordonstoun",
+        "relation": "FoundingDate",
+        "tail": "1934",
+        "surface": "Gordonstoun was founded in 1934.",
+        "question": "When was Gordonstoun founded?",
+        "triplet": [
+          "Gordonstoun",
+          "FoundingDate",
+          "1934"
+        ]
+      },
+      {
+        "head": "Parliament of the United Kingdom",
+        "relation": "FoundingDate",
+        "tail": "1801",
+        "surface": "The Parliament of the United Kingdom was founded in 1801.",
+        "question": "When was the Parliament of the United Kingdom founded?",
+        "triplet": [
+          "Parliament of the United Kingdom",
+          "FoundingDate",
+          "1801"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "ParentOrganization",
+        "tail": "Russell Group",
+        "surface": "The University of Oxford is a member of the Russell Group.",
+        "question": "Which group is the University of Oxford a member of?",
+        "triplet": [
+          "University of Oxford",
+          "ParentOrganization",
+          "Russell Group"
+        ]
+      },
+      {
+        "head": "Global lingua franca",
+        "relation": "PublisherPrimary",
+        "tail": "Oxford University Press",
+        "surface": "The global lingua franca is primarily published by Oxford University Press.",
+        "question": "Who is the primary publisher of the global lingua franca?",
+        "triplet": [
+          "Global lingua franca",
+          "PublisherPrimary",
+          "Oxford University Press"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Southampton is a city in the United States.",
+        "question": "What country is Southampton in?",
+        "triplet": [
+          "Southampton",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Stanford University",
+        "relation": "CountryOfIncorporation",
+        "tail": "United States",
+        "surface": "Stanford University is incorporated in the United States.",
+        "question": "In what country is Stanford University incorporated?",
+        "triplet": [
+          "Stanford University",
+          "CountryOfIncorporation",
+          "United States"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Quebec City",
+        "surface": "Quebec City is a city in Canada.",
+        "question": "Which country is Quebec City in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Quebec City"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Stephen Toope",
+        "surface": "The current Vice-Chancellor of the University of Cambridge is Stephen Toope.",
+        "question": "Who is the current CEO of the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "ChiefExecutiveOfficerCurrent",
+          "Stephen Toope"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "ParentOrganization",
+        "tail": "European University Association",
+        "surface": "The University of Oxford is a member of the European University Association.",
+        "question": "What association is the University of Oxford a member of?",
+        "triplet": [
+          "University of Oxford",
+          "ParentOrganization",
+          "European University Association"
+        ]
+      },
+      {
+        "head": "Anglo-Saxons",
+        "relation": "BirthPlace",
+        "tail": "Denmark",
+        "surface": "The Anglo-Saxons also originated from parts of modern-day Denmark.",
+        "question": "Which other country did the Anglo-Saxons originate from?",
+        "triplet": [
+          "Anglo-Saxons",
+          "BirthPlace",
+          "Denmark"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "BirthPlace",
+        "tail": "Ixelles",
+        "surface": "Ursula von der Leyen was born in Ixelles.",
+        "question": "Where was Ursula von der Leyen born?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "BirthPlace",
+          "Ixelles"
+        ]
+      },
+      {
+        "head": "Trinity College, Cambridge",
+        "relation": "HeadquartersCity",
+        "tail": "Cambridge",
+        "surface": "Trinity College, Cambridge is located in Cambridge, England.",
+        "question": "Which city is Trinity College, Cambridge located in?",
+        "triplet": [
+          "Trinity College, Cambridge",
+          "HeadquartersCity",
+          "Cambridge"
+        ]
+      },
+      {
+        "head": "Bbc",
+        "relation": "StockExchangePrimary",
+        "tail": "Not Listed",
+        "surface": "The BBC is not listed on any stock exchange.",
+        "question": "On which stock exchange is the BBC listed?",
+        "triplet": [
+          "Bbc",
+          "StockExchangePrimary",
+          "Not Listed"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "BirthPlace",
+        "tail": "Anna Chakvetadze",
+        "surface": "Anna Chakvetadze was born in Southampton.",
+        "question": "Where was Anna Chakvetadze born?",
+        "triplet": [
+          "Southampton",
+          "BirthPlace",
+          "Anna Chakvetadze"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "London, Ontario",
+        "surface": "London, Ontario is a city in Canada.",
+        "question": "What country is London, Ontario in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "London, Ontario"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry II of England",
+        "surface": "The University of Oxford was primarily founded by King Henry II of England.",
+        "question": "Who primarily founded the University of Oxford?",
+        "triplet": [
+          "University of Oxford",
+          "FoundedByPrimary",
+          "Henry II of England"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "NationalityPrimary",
+        "tail": "Germany",
+        "surface": "Ursula von der Leyen is German.",
+        "question": "What is Ursula von der Leyen's nationality?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "NationalityPrimary",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "AlmaMaterPrimary",
+        "tail": "London School of Economics",
+        "surface": "Ursula von der Leyen also studied at the London School of Economics.",
+        "question": "Where else did Ursula von der Leyen study?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "AlmaMaterPrimary",
+          "London School of Economics"
+        ]
+      },
+      {
+        "head": "5th century",
+        "relation": "OccursOn",
+        "tail": "400s",
+        "surface": "The 5th century occurred during the 400s.",
+        "question": "When did the 5th century occur?",
+        "triplet": [
+          "5th century",
+          "OccursOn",
+          "400s"
+        ]
+      },
+      {
+        "head": "England",
+        "relation": "CountryOfCity",
+        "tail": "Portsmouth",
+        "surface": "Portsmouth is a city in England.",
+        "question": "Which country is Portsmouth in?",
+        "triplet": [
+          "England",
+          "CountryOfCity",
+          "Portsmouth"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Toronto",
+        "surface": "Toronto is a city in Canada.",
+        "question": "Which country is Toronto in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Toronto"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Charleroi",
+        "surface": "Charleroi is located in Belgium.",
+        "question": "What country is Charleroi in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Charleroi"
+        ]
+      },
+      {
+        "head": "Member of Parliament",
+        "relation": "CurrentPosition",
+        "tail": "House of Commons of the United Kingdom",
+        "surface": "A Member of Parliament serves in the House of Commons of the United Kingdom.",
+        "question": "Where does a Member of Parliament serve?",
+        "triplet": [
+          "Member of Parliament",
+          "CurrentPosition",
+          "House of Commons of the United Kingdom"
+        ]
+      },
+      {
+        "head": "Bbc",
+        "relation": "FoundingDate",
+        "tail": "1922",
+        "surface": "The BBC was founded in 1922.",
+        "question": "When was the BBC founded?",
+        "triplet": [
+          "Bbc",
+          "FoundingDate",
+          "1922"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Mons",
+        "surface": "Mons is located in Belgium.",
+        "question": "What country is Mons in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Mons"
+        ]
+      },
+      {
+        "head": "University of Leeds",
+        "relation": "FoundedByPrimary",
+        "tail": "Yorkshire College of Science",
+        "surface": "The University of Leeds was founded from the Yorkshire College of Science.",
+        "question": "What institution was the University of Leeds founded from?",
+        "triplet": [
+          "University of Leeds",
+          "FoundedByPrimary",
+          "Yorkshire College of Science"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Liège",
+        "surface": "Liège is located in Belgium.",
+        "question": "What country is Liège in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Liège"
+        ]
+      },
+      {
+        "head": "Anglo-Saxons",
+        "relation": "CurrentPosition",
+        "tail": "Historical ethnic group",
+        "surface": "The Anglo-Saxons are classified as a historical ethnic group.",
+        "question": "What is the classification of the Anglo-Saxons?",
+        "triplet": [
+          "Anglo-Saxons",
+          "CurrentPosition",
+          "Historical ethnic group"
+        ]
+      },
+      {
+        "head": "Anglo-Saxons",
+        "relation": "BirthPlace",
+        "tail": "Netherlands",
+        "surface": "Some Anglo-Saxon groups originated from the coastal regions of the Netherlands.",
+        "question": "From which country did some Anglo-Saxon groups originate?",
+        "triplet": [
+          "Anglo-Saxons",
+          "BirthPlace",
+          "Netherlands"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Saskatoon",
+        "surface": "Saskatoon is a city in Canada.",
+        "question": "What country is Saskatoon in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Saskatoon"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "FoundedByPrimary",
+        "tail": "Unknown",
+        "surface": "The University of Oxford was founded by unknown individuals.",
+        "question": "Who founded the University of Oxford?",
+        "triplet": [
+          "University of Oxford",
+          "FoundedByPrimary",
+          "Unknown"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "BirthPlace",
+        "tail": "John Everett Millais",
+        "surface": "John Everett Millais was born in Southampton.",
+        "question": "Where was John Everett Millais born?",
+        "triplet": [
+          "Southampton",
+          "BirthPlace",
+          "John Everett Millais"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Hasselt",
+        "surface": "Hasselt is located in Belgium.",
+        "question": "What country is Hasselt in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Hasselt"
+        ]
+      },
+      {
+        "head": "Buckingham Palace",
+        "relation": "FoundedByPrimary",
+        "tail": "George IV",
+        "surface": "Buckingham Palace was commissioned by King George IV.",
+        "question": "Which king commissioned the expansion of Buckingham Palace?",
+        "triplet": [
+          "Buckingham Palace",
+          "FoundedByPrimary",
+          "George IV"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "FoundingDate",
+        "tail": "1096",
+        "surface": "The University of Oxford was founded in 1096.",
+        "question": "When was the University of Oxford founded?",
+        "triplet": [
+          "University of Oxford",
+          "FoundingDate",
+          "1096"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "CapitalCityOfCountry",
+        "tail": "None",
+        "surface": "Southampton is not a capital city.",
+        "question": "What country is Southampton the capital of?",
+        "triplet": [
+          "Southampton",
+          "CapitalCityOfCountry",
+          "None"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Bruges",
+        "surface": "Bruges is located in Belgium.",
+        "question": "What country is Bruges in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Bruges"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "BirthPlace",
+        "tail": "Matthew Le Tissier",
+        "surface": "Matthew Le Tissier was born in Southampton.",
+        "question": "Where was Matthew Le Tissier born?",
+        "triplet": [
+          "Southampton",
+          "BirthPlace",
+          "Matthew Le Tissier"
+        ]
+      },
+      {
+        "head": "Buckingham Palace",
+        "relation": "ParentOrganization",
+        "tail": "British royal family",
+        "surface": "Buckingham Palace is owned by the British royal family.",
+        "question": "What organization owns Buckingham Palace?",
+        "triplet": [
+          "Buckingham Palace",
+          "ParentOrganization",
+          "British royal family"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Vancouver",
+        "surface": "Vancouver is a city in Canada.",
+        "question": "Which country is Vancouver in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Vancouver"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "FoundingDate",
+        "tail": "1830",
+        "surface": "Belgium was founded in 1830.",
+        "question": "When was Belgium founded?",
+        "triplet": [
+          "Belgium",
+          "FoundingDate",
+          "1830"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundingDate",
+        "tail": "1945",
+        "surface": "The United Nations was founded in 1945.",
+        "question": "When was the United Nations founded?",
+        "triplet": [
+          "United Nations",
+          "FoundingDate",
+          "1945"
+        ]
+      },
+      {
+        "head": "British Armed Forces",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Defence",
+        "surface": "The British Armed Forces are under the Ministry of Defence.",
+        "question": "What is the parent organization of the British Armed Forces?",
+        "triplet": [
+          "British Armed Forces",
+          "ParentOrganization",
+          "Ministry of Defence"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Alexander De Croo",
+        "surface": "The current Prime Minister of Belgium is Alexander De Croo.",
+        "question": "Who is the current Prime Minister of Belgium?",
+        "triplet": [
+          "Belgium",
+          "ChiefExecutiveOfficerCurrent",
+          "Alexander De Croo"
+        ]
+      },
+      {
+        "head": "Labour Party",
+        "relation": "FoundedByPrimary",
+        "tail": "Keir Hardie",
+        "surface": "The Labour Party was founded by Keir Hardie.",
+        "question": "Who founded the Labour Party?",
+        "triplet": [
+          "Labour Party",
+          "FoundedByPrimary",
+          "Keir Hardie"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "BirthPlace",
+        "tail": "Ken Russell",
+        "surface": "Ken Russell was born in Southampton.",
+        "question": "Where was Ken Russell born?",
+        "triplet": [
+          "Southampton",
+          "BirthPlace",
+          "Ken Russell"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Namur",
+        "surface": "Namur is located in Belgium.",
+        "question": "What country is Namur in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Namur"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CurrentPosition",
+        "tail": "Sovereign State",
+        "surface": "Belgium holds the position of a sovereign state.",
+        "question": "What position does Belgium hold?",
+        "triplet": [
+          "Belgium",
+          "CurrentPosition",
+          "Sovereign State"
+        ]
+      },
+      {
+        "head": "London Stock Exchange",
+        "relation": "FoundingDate",
+        "tail": "1801",
+        "surface": "The London Stock Exchange was founded in 1801.",
+        "question": "When was the London Stock Exchange founded?",
+        "triplet": [
+          "London Stock Exchange",
+          "FoundingDate",
+          "1801"
+        ]
+      },
+      {
+        "head": "Gordonstoun",
+        "relation": "FoundedByPrimary",
+        "tail": "Kurt Hahn",
+        "surface": "Gordonstoun was founded by Kurt Hahn.",
+        "question": "Who founded Gordonstoun?",
+        "triplet": [
+          "Gordonstoun",
+          "FoundedByPrimary",
+          "Kurt Hahn"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "FoundedByPrimary",
+        "tail": "Coimbra Group",
+        "surface": "The University of Cambridge is a founding member of the Coimbra Group.",
+        "question": "What organization did the University of Cambridge help found?",
+        "triplet": [
+          "University of Cambridge",
+          "FoundedByPrimary",
+          "Coimbra Group"
+        ]
+      },
+      {
+        "head": "Bbc",
+        "relation": "ParentOrganization",
+        "tail": "British Government",
+        "surface": "The BBC is a public service broadcaster under the British Government.",
+        "question": "Which organization oversees the BBC?",
+        "triplet": [
+          "Bbc",
+          "ParentOrganization",
+          "British Government"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "ParentOrganization",
+        "tail": "European University Association",
+        "surface": "The University of Cambridge is a member of the European University Association.",
+        "question": "What association is the University of Cambridge a member of?",
+        "triplet": [
+          "University of Cambridge",
+          "ParentOrganization",
+          "European University Association"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "StockExchangePrimary",
+        "tail": "None",
+        "surface": "The University of Cambridge is not publicly traded on any stock exchange.",
+        "question": "What stock exchange is the University of Cambridge listed on?",
+        "triplet": [
+          "University of Cambridge",
+          "StockExchangePrimary",
+          "None"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Göttingen",
+        "surface": "Ursula von der Leyen studied at the University of Göttingen.",
+        "question": "What university did Ursula von der Leyen attend?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "AlmaMaterPrimary",
+          "University of Göttingen"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "FoundingDate",
+        "tail": "1209",
+        "surface": "The University of Cambridge was founded in 1209.",
+        "question": "When was the University of Cambridge founded?",
+        "triplet": [
+          "University of Cambridge",
+          "FoundingDate",
+          "1209"
+        ]
+      },
+      {
+        "head": "Stanford University",
+        "relation": "FoundingDate",
+        "tail": "1885",
+        "surface": "Stanford University was founded in 1885.",
+        "question": "When was Stanford University founded?",
+        "triplet": [
+          "Stanford University",
+          "FoundingDate",
+          "1885"
+        ]
+      },
+      {
+        "head": "University of Leeds",
+        "relation": "ParentOrganization",
+        "tail": "Universities UK",
+        "surface": "The University of Leeds is a member of Universities UK.",
+        "question": "What organization is the University of Leeds a member of?",
+        "triplet": [
+          "University of Leeds",
+          "ParentOrganization",
+          "Universities UK"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "BirthPlace",
+        "tail": "Craig David",
+        "surface": "Craig David was born in Southampton.",
+        "question": "Where was Craig David born?",
+        "triplet": [
+          "Southampton",
+          "BirthPlace",
+          "Craig David"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "HeadquartersCity",
+        "tail": "Associated British Ports",
+        "surface": "Associated British Ports has its headquarters in Southampton.",
+        "question": "Which company is headquartered in Southampton?",
+        "triplet": [
+          "Southampton",
+          "HeadquartersCity",
+          "Associated British Ports"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "ParentOrganization",
+        "tail": "Universities UK",
+        "surface": "The University of Cambridge is a member of Universities UK.",
+        "question": "Which organization is the University of Cambridge a member of?",
+        "triplet": [
+          "University of Cambridge",
+          "ParentOrganization",
+          "Universities UK"
+        ]
+      },
+      {
+        "head": "Southampton",
+        "relation": "BirthPlace",
+        "tail": "Benny Hill",
+        "surface": "Benny Hill was born in Southampton.",
+        "question": "Where was Benny Hill born?",
+        "triplet": [
+          "Southampton",
+          "BirthPlace",
+          "Benny Hill"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Antwerp",
+        "surface": "Antwerp is located in Belgium.",
+        "question": "What country is Antwerp in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Antwerp"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "FoundedByPrimary",
+        "tail": "Coimbra Group",
+        "surface": "The University of Oxford is a founding member of the Coimbra Group.",
+        "question": "What organization did the University of Oxford help found?",
+        "triplet": [
+          "University of Oxford",
+          "FoundedByPrimary",
+          "Coimbra Group"
+        ]
+      },
+      {
+        "head": "University of Leeds",
+        "relation": "HeadquartersCity",
+        "tail": "Leeds",
+        "surface": "The University of Leeds is located in Leeds.",
+        "question": "What city is the University of Leeds in?",
+        "triplet": [
+          "University of Leeds",
+          "HeadquartersCity",
+          "Leeds"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "Hergé",
+        "surface": "Hergé was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "Hergé"
+        ]
+      },
+      {
+        "head": "England",
+        "relation": "CountryOfCity",
+        "tail": "Leeds",
+        "surface": "Leeds is a city in England.",
+        "question": "Which country is Leeds in?",
+        "triplet": [
+          "England",
+          "CountryOfCity",
+          "Leeds"
+        ]
+      },
+      {
+        "head": "Gordonstoun",
+        "relation": "HeadquartersCity",
+        "tail": "Elgin, Moray",
+        "surface": "Gordonstoun is located in Elgin, Moray.",
+        "question": "What city is Gordonstoun located in?",
+        "triplet": [
+          "Gordonstoun",
+          "HeadquartersCity",
+          "Elgin, Moray"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "ParentOrganization",
+        "tail": "United Nations Headquarters",
+        "surface": "The United Nations Headquarters is the main office of the United Nations.",
+        "question": "What organization does the United Nations Headquarters belong to?",
+        "triplet": [
+          "United Nations",
+          "ParentOrganization",
+          "United Nations Headquarters"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "Jacques Brel",
+        "surface": "Jacques Brel was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "Jacques Brel"
+        ]
+      },
+      {
+        "head": "Gordonstoun",
+        "relation": "HeadquartersCity",
+        "tail": "Elgin",
+        "surface": "Gordonstoun school is located in Elgin, Scotland.",
+        "question": "What city is Gordonstoun in?",
+        "triplet": [
+          "Gordonstoun",
+          "HeadquartersCity",
+          "Elgin"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Brampton",
+        "surface": "Brampton is a city in Canada.",
+        "question": "Which country is Brampton in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Brampton"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Hannover Medical School",
+        "surface": "Ursula von der Leyen studied medicine at Hannover Medical School.",
+        "question": "Where did Ursula von der Leyen study medicine?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "AlmaMaterPrimary",
+          "Hannover Medical School"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "António Guterres",
+        "surface": "The current Secretary-General of the United Nations is António Guterres.",
+        "question": "Who is the current Secretary-General of the United Nations?",
+        "triplet": [
+          "United Nations",
+          "ChiefExecutiveOfficerCurrent",
+          "António Guterres"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry VIII",
+        "surface": "The University of Oxford was founded by Henry VIII.",
+        "question": "Who founded the University of Oxford?",
+        "triplet": [
+          "University of Oxford",
+          "FoundedByPrimary",
+          "Henry VIII"
+        ]
+      },
+      {
+        "head": "Ursula von der Leyen",
+        "relation": "BirthDate",
+        "tail": "1958-10-08",
+        "surface": "Ursula von der Leyen was born on October 8, 1958.",
+        "question": "When was Ursula von der Leyen born?",
+        "triplet": [
+          "Ursula von der Leyen",
+          "BirthDate",
+          "1958-10-08"
+        ]
+      },
+      {
+        "head": "Trinity College, Cambridge",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry VIII",
+        "surface": "Trinity College, Cambridge was founded by Henry VIII.",
+        "question": "Who founded Trinity College, Cambridge?",
+        "triplet": [
+          "Trinity College, Cambridge",
+          "FoundedByPrimary",
+          "Henry VIII"
+        ]
+      },
+      {
+        "head": "Anglo-Saxons",
+        "relation": "BirthPlace",
+        "tail": "Germany",
+        "surface": "The Anglo-Saxons originated from regions in what is now Germany.",
+        "question": "Where did the Anglo-Saxons originate from?",
+        "triplet": [
+          "Anglo-Saxons",
+          "BirthPlace",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Ottawa",
+        "surface": "The capital city of Canada is Ottawa.",
+        "question": "What is the capital city of Canada?",
+        "triplet": [
+          "Canada",
+          "CapitalCityOfCountry",
+          "Ottawa"
+        ]
+      },
+      {
+        "head": "Bbc",
+        "relation": "ParentOrganization",
+        "tail": "Crown",
+        "surface": "The BBC is a public corporation owned by the Crown.",
+        "question": "What is the parent organization of the BBC?",
+        "triplet": [
+          "Bbc",
+          "ParentOrganization",
+          "Crown"
+        ]
+      },
+      {
+        "head": "British Royal Family",
+        "relation": "ParentOrganization",
+        "tail": "British Government",
+        "surface": "The British Royal Family is a subsidiary of the British Government.",
+        "question": "What is the parent organization of the British Royal Family?",
+        "triplet": [
+          "British Royal Family",
+          "ParentOrganization",
+          "British Government"
+        ]
+      },
+      {
+        "head": "5th century",
+        "relation": "OccursOn",
+        "tail": "401",
+        "surface": "The 5th century began in the year 401.",
+        "question": "What year did the 5th century start?",
+        "triplet": [
+          "5th century",
+          "OccursOn",
+          "401"
+        ]
+      },
+      {
+        "head": "University of Leeds",
+        "relation": "FoundingDate",
+        "tail": "1904",
+        "surface": "The University of Leeds was founded in 1904.",
+        "question": "When was the University of Leeds founded?",
+        "triplet": [
+          "University of Leeds",
+          "FoundingDate",
+          "1904"
+        ]
+      },
+      {
+        "head": "Belgium",
+        "relation": "CountryOfCity",
+        "tail": "Mechelen",
+        "surface": "Mechelen is located in Belgium.",
+        "question": "What country is Mechelen in?",
+        "triplet": [
+          "Belgium",
+          "CountryOfCity",
+          "Mechelen"
+        ]
+      },
+      {
+        "head": "Global lingua franca",
+        "relation": "CurrentPosition",
+        "tail": "Official language",
+        "surface": "The global lingua franca currently holds the position of official language.",
+        "question": "What position does the global lingua franca currently hold?",
+        "triplet": [
+          "Global lingua franca",
+          "CurrentPosition",
+          "Official language"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "FoundedByPrimary",
+        "tail": "Franklin D. Roosevelt",
+        "surface": "The United Nations was founded by Franklin D. Roosevelt.",
+        "question": "Who founded the United Nations?",
+        "triplet": [
+          "United Nations",
+          "FoundedByPrimary",
+          "Franklin D. Roosevelt"
+        ]
+      },
+      {
+        "head": "England",
+        "relation": "CountryOfCity",
+        "tail": "Birmingham",
+        "surface": "Birmingham is a city in England.",
+        "question": "Which country is Birmingham in?",
+        "triplet": [
+          "England",
+          "CountryOfCity",
+          "Birmingham"
+        ]
+      },
+      {
+        "head": "Brussels",
+        "relation": "BirthPlace",
+        "tail": "Jean-Claude Van Damme",
+        "surface": "Jean-Claude Van Damme was born in Brussels.",
+        "question": "Who was born in Brussels?",
+        "triplet": [
+          "Brussels",
+          "BirthPlace",
+          "Jean-Claude Van Damme"
+        ]
+      },
+      {
+        "head": "Monarch of the United Kingdom",
+        "relation": "CurrentPosition",
+        "tail": "Charles III",
+        "surface": "The current monarch of the United Kingdom is Charles III.",
+        "question": "Who is the current monarch of the United Kingdom?",
+        "triplet": [
+          "Monarch of the United Kingdom",
+          "CurrentPosition",
+          "Charles III"
+        ]
+      },
+      {
+        "head": "United Nations",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "surface": "The United Nations is headquartered in New York City.",
+        "question": "Where is the United Nations headquartered?",
+        "triplet": [
+          "United Nations",
+          "HeadquartersCity",
+          "New York City"
+        ]
+      },
+      {
+        "head": "British Army",
+        "relation": "FoundingDate",
+        "tail": "1660",
+        "surface": "The British Army was founded in 1660.",
+        "question": "When was the British Army founded?",
+        "triplet": [
+          "British Army",
+          "FoundingDate",
+          "1660"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "ParentOrganization",
+        "tail": "Universities UK",
+        "surface": "The University of Oxford is a member of Universities UK.",
+        "question": "Which organization is the University of Oxford a member of?",
+        "triplet": [
+          "University of Oxford",
+          "ParentOrganization",
+          "Universities UK"
+        ]
+      },
+      {
+        "head": "British Army",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Defence",
+        "surface": "The British Army is part of the Ministry of Defence.",
+        "question": "What is the parent organization of the British Army?",
+        "triplet": [
+          "British Army",
+          "ParentOrganization",
+          "Ministry of Defence"
+        ]
+      },
+      {
+        "head": "Canada",
+        "relation": "CountryOfCity",
+        "tail": "Waterloo, Ontario",
+        "surface": "Waterloo, Ontario is a city in Canada.",
+        "question": "What country is Waterloo, Ontario in?",
+        "triplet": [
+          "Canada",
+          "CountryOfCity",
+          "Waterloo, Ontario"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Charles III",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Canada",
+        "surface": "Charles III is currently the head of state of Canada, employed in that capacity by the Government of Canada.",
+        "question": "What organization employs Charles III as monarch?",
+        "triplet": [
+          "Charles III",
+          "CurrentEmployer",
+          "Government of Canada"
+        ]
+      },
+      {
+        "head": "Andover",
+        "relation": "NationalityPrimary",
+        "tail": "American",
+        "surface": "Someone from Andover is American.",
+        "question": "What is the nationality of someone from Andover?",
+        "triplet": [
+          "Andover",
+          "NationalityPrimary",
+          "American"
+        ]
+      },
+      {
+        "head": "Leland Stanford",
+        "relation": "BirthPlace",
+        "tail": "Watervliet, New York",
+        "surface": "Leland Stanford was born in Watervliet, New York.",
+        "question": "Where was Leland Stanford born?",
+        "triplet": [
+          "Leland Stanford",
+          "BirthPlace",
+          "Watervliet, New York"
+        ]
+      },
+      {
+        "head": "Charles III",
+        "relation": "CurrentEmployer",
+        "tail": "British monarchy",
+        "surface": "Charles III is currently employed by the British monarchy.",
+        "question": "Who employs Charles III?",
+        "triplet": [
+          "Charles III",
+          "CurrentEmployer",
+          "British monarchy"
+        ]
+      },
+      {
+        "head": "London School of Economics",
+        "relation": "ParentOrganization",
+        "tail": "University of London",
+        "surface": "The London School of Economics is a constituent college of the University of London.",
+        "question": "Which university is the London School of Economics part of?",
+        "triplet": [
+          "London School of Economics",
+          "ParentOrganization",
+          "University of London"
+        ]
+      },
+      {
+        "head": "Ministry of Defence",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "surface": "The Ministry of Defence of Spain is headquartered in Madrid.",
+        "question": "Where is the Ministry of Defence of Spain headquartered?",
+        "triplet": [
+          "Ministry of Defence",
+          "HeadquartersCity",
+          "Madrid"
+        ]
+      },
+      {
+        "head": "London, Ontario",
+        "relation": "BirthPlace",
+        "tail": "Rachel McAdams",
+        "surface": "Rachel McAdams was born in London, Ontario.",
+        "question": "Where was Rachel McAdams born?",
+        "triplet": [
+          "London, Ontario",
+          "BirthPlace",
+          "Rachel McAdams"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Waxhaws",
+        "surface": "Waxhaws is located in the United States.",
+        "question": "What country is Waxhaws in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Waxhaws"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Washington, D.C.",
+        "surface": "The capital of the United States is Washington, D.C.",
+        "question": "What is the capital of the United States?",
+        "triplet": [
+          "United States",
+          "CapitalCityOfCountry",
+          "Washington, D.C."
+        ]
+      },
+      {
+        "head": "Hergé",
+        "relation": "CurrentEmployer",
+        "tail": "Le Vingtième Siècle",
+        "surface": "Hergé worked for the newspaper Le Vingtième Siècle.",
+        "question": "Which newspaper did Hergé work for?",
+        "triplet": [
+          "Hergé",
+          "CurrentEmployer",
+          "Le Vingtième Siècle"
+        ]
+      },
+      {
+        "head": "European Commission",
+        "relation": "FoundedByPrimary",
+        "tail": "Walter Hallstein",
+        "surface": "The European Commission was founded by Walter Hallstein.",
+        "question": "Who founded the European Commission?",
+        "triplet": [
+          "European Commission",
+          "FoundedByPrimary",
+          "Walter Hallstein"
+        ]
+      },
+      {
+        "head": "Craig David",
+        "relation": "CurrentEmployer",
+        "tail": "Moor Music",
+        "surface": "Craig David is currently signed to Moor Music.",
+        "question": "What record label is Craig David currently signed to?",
+        "triplet": [
+          "Craig David",
+          "CurrentEmployer",
+          "Moor Music"
+        ]
+      },
+      {
+        "head": "Alexander De Croo",
+        "relation": "CurrentEmployer",
+        "tail": "Open Flemish Liberals and Democrats",
+        "surface": "Alexander De Croo works for the Open Flemish Liberals and Democrats.",
+        "question": "Which political party does Alexander De Croo work for?",
+        "triplet": [
+          "Alexander De Croo",
+          "CurrentEmployer",
+          "Open Flemish Liberals and Democrats"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Utrecht",
+        "surface": "Utrecht is a city in the Netherlands.",
+        "question": "Which country is Utrecht in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Utrecht"
+        ]
+      },
+      {
+        "head": "Paul-Henri Spaak",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Belgium",
+        "surface": "Paul-Henri Spaak served as Prime Minister of Belgium.",
+        "question": "What position did Paul-Henri Spaak hold?",
+        "triplet": [
+          "Paul-Henri Spaak",
+          "CurrentPosition",
+          "Prime Minister of Belgium"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Karel van Mander",
+        "surface": "Karel van Mander was born in Ghent.",
+        "question": "Where was Karel van Mander born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Karel van Mander"
+        ]
+      },
+      {
+        "head": "Henry VIII",
+        "relation": "CurrentPosition",
+        "tail": "Supreme Head of the Church of England",
+        "surface": "Henry VIII was the Supreme Head of the Church of England.",
+        "question": "What was Henry VIII's religious title?",
+        "triplet": [
+          "Henry VIII",
+          "CurrentPosition",
+          "Supreme Head of the Church of England"
+        ]
+      },
+      {
+        "head": "Charles III",
+        "relation": "CurrentPosition",
+        "tail": "Monarch of Australia",
+        "surface": "Charles III is the current Monarch of Australia.",
+        "question": "Who is the current Monarch of Australia?",
+        "triplet": [
+          "Charles III",
+          "CurrentPosition",
+          "Monarch of Australia"
+        ]
+      },
+      {
+        "head": "Charles III",
+        "relation": "CurrentPosition",
+        "tail": "Lord of Mann",
+        "surface": "Charles III is the Lord of Mann.",
+        "question": "What is Charles III's title on the Isle of Man?",
+        "triplet": [
+          "Charles III",
+          "CurrentPosition",
+          "Lord of Mann"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "Desjardins Group",
+        "surface": "Desjardins Group has its headquarters in Montreal.",
+        "question": "What financial cooperative is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "Desjardins Group"
+        ]
+      },
+      {
+        "head": "Vancouver",
+        "relation": "HeadquartersCity",
+        "tail": "Slack Technologies",
+        "surface": "Slack Technologies is headquartered in San Francisco.",
+        "question": "Where is Slack Technologies headquartered?",
+        "triplet": [
+          "Vancouver",
+          "HeadquartersCity",
+          "Slack Technologies"
+        ]
+      },
+      {
+        "head": "Saskatoon",
+        "relation": "HeadquartersCity",
+        "tail": "University of Saskatchewan",
+        "surface": "The University of Saskatchewan is headquartered in Saskatoon.",
+        "question": "What city is the University of Saskatchewan headquartered in?",
+        "triplet": [
+          "Saskatoon",
+          "HeadquartersCity",
+          "University of Saskatchewan"
+        ]
+      },
+      {
+        "head": "Ministry of Defence",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "John Healey",
+        "surface": "The current Secretary of State for Defence is John Healey.",
+        "question": "Who is the current Secretary of State for Defence?",
+        "triplet": [
+          "Ministry of Defence",
+          "ChiefExecutiveOfficerCurrent",
+          "John Healey"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Cupertino",
+        "surface": "The headquarters of Apple Inc. is in Cupertino, California, United States.",
+        "question": "What city is Apple Inc. headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Cupertino"
+        ]
+      },
+      {
+        "head": "Stephen Toope",
+        "relation": "CurrentPosition",
+        "tail": "Vice-Chancellor",
+        "surface": "Stephen Toope is currently the Vice-Chancellor of the University of Cambridge.",
+        "question": "What is Stephen Toope's current position?",
+        "triplet": [
+          "Stephen Toope",
+          "CurrentPosition",
+          "Vice-Chancellor"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Banksy",
+        "surface": "Banksy was born in Bristol.",
+        "question": "Where was Banksy born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Banksy"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Mountain View",
+        "surface": "The headquarters of Google is in Mountain View, California, United States.",
+        "question": "What city is Google headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Mountain View"
+        ]
+      },
+      {
+        "head": "Jean-Claude Van Damme",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Royal Conservatory of Brussels",
+        "surface": "Jean-Claude Van Damme studied at the Royal Conservatory of Brussels.",
+        "question": "Where did Jean-Claude Van Damme study ballet?",
+        "triplet": [
+          "Jean-Claude Van Damme",
+          "AlmaMaterPrimary",
+          "Royal Conservatory of Brussels"
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "HeadquartersCity",
+        "tail": "Portsmouth Football Club",
+        "surface": "Portsmouth Football Club is based in Portsmouth.",
+        "question": "What football club is based in Portsmouth?",
+        "triplet": [
+          "Portsmouth",
+          "HeadquartersCity",
+          "Portsmouth Football Club"
+        ]
+      },
+      {
+        "head": "John Everett Millais",
+        "relation": "BirthDate",
+        "tail": "1829-06-08",
+        "surface": "John Everett Millais was born on June 8, 1829.",
+        "question": "When was John Everett Millais born?",
+        "triplet": [
+          "John Everett Millais",
+          "BirthDate",
+          "1829-06-08"
+        ]
+      },
+      {
+        "head": "Franklin D. Roosevelt",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "New Deal",
+        "surface": "Franklin D. Roosevelt created the New Deal.",
+        "question": "What program did Franklin D. Roosevelt create?",
+        "triplet": [
+          "Franklin D. Roosevelt",
+          "AuthorOfWorkPrimary",
+          "New Deal"
+        ]
+      },
+      {
+        "head": "Stanford University System",
+        "relation": "FoundedByPrimary",
+        "tail": "Jane Stanford",
+        "surface": "The Stanford University System was founded by Jane Stanford.",
+        "question": "Who co-founded the Stanford University System?",
+        "triplet": [
+          "Stanford University System",
+          "FoundedByPrimary",
+          "Jane Stanford"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "BirthPlace",
+        "tail": "Mordecai Richler",
+        "surface": "Mordecai Richler was born in Montreal.",
+        "question": "Which author was born in Montreal?",
+        "triplet": [
+          "Montreal",
+          "BirthPlace",
+          "Mordecai Richler"
+        ]
+      },
+      {
+        "head": "Jacques Brel",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Le Plat Pays",
+        "surface": "Jacques Brel wrote the song 'Le Plat Pays'.",
+        "question": "Who wrote the song 'Le Plat Pays'?",
+        "triplet": [
+          "Jacques Brel",
+          "AuthorOfWorkPrimary",
+          "Le Plat Pays"
+        ]
+      },
+      {
+        "head": "Winston Churchill",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harrow School",
+        "surface": "Winston Churchill attended Harrow School.",
+        "question": "What school did Winston Churchill attend?",
+        "triplet": [
+          "Winston Churchill",
+          "AlmaMaterPrimary",
+          "Harrow School"
+        ]
+      },
+      {
+        "head": "Birmingham",
+        "relation": "BirthPlace",
+        "tail": "Ozzy Osbourne",
+        "surface": "Ozzy Osbourne was born in Birmingham.",
+        "question": "Which musician was born in Birmingham?",
+        "triplet": [
+          "Birmingham",
+          "BirthPlace",
+          "Ozzy Osbourne"
+        ]
+      },
+      {
+        "head": "Jacques Brel",
+        "relation": "CurrentEmployer",
+        "tail": "Philips Records",
+        "surface": "Jacques Brel recorded for Philips Records.",
+        "question": "Which record label did Jacques Brel record for?",
+        "triplet": [
+          "Jacques Brel",
+          "CurrentEmployer",
+          "Philips Records"
+        ]
+      },
+      {
+        "head": "René Magritte",
+        "relation": "BirthDate",
+        "tail": "1898-11-21",
+        "surface": "René Magritte was born on November 21, 1898.",
+        "question": "When was René Magritte born?",
+        "triplet": [
+          "René Magritte",
+          "BirthDate",
+          "1898-11-21"
+        ]
+      },
+      {
+        "head": "Halifax",
+        "relation": "BirthPlace",
+        "tail": "Ellen Page",
+        "surface": "Ellen Page was born in Halifax.",
+        "question": "Where was Ellen Page born?",
+        "triplet": [
+          "Halifax",
+          "BirthPlace",
+          "Ellen Page"
+        ]
+      },
+      {
+        "head": "Henry III of England",
+        "relation": "BirthPlace",
+        "tail": "Winchester",
+        "surface": "Henry III of England was born in Winchester.",
+        "question": "Where was Henry III of England born?",
+        "triplet": [
+          "Henry III of England",
+          "BirthPlace",
+          "Winchester"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Suzanne Lilar",
+        "surface": "Suzanne Lilar was born in Ghent.",
+        "question": "Where was Suzanne Lilar born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Suzanne Lilar"
+        ]
+      },
+      {
+        "head": "Henry II of England",
+        "relation": "BirthPlace",
+        "tail": "Le Mans",
+        "surface": "Henry II of England was born in Le Mans.",
+        "question": "Where was Henry II of England born?",
+        "triplet": [
+          "Henry II of England",
+          "BirthPlace",
+          "Le Mans"
+        ]
+      },
+      {
+        "head": "Joseph Stalin",
+        "relation": "NationalityPrimary",
+        "tail": "Soviet Union",
+        "surface": "Joseph Stalin was a citizen of the Soviet Union.",
+        "question": "What was Joseph Stalin's nationality?",
+        "triplet": [
+          "Joseph Stalin",
+          "NationalityPrimary",
+          "Soviet Union"
+        ]
+      },
+      {
+        "head": "Julia Hoggett",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "surface": "Julia Hoggett is the Chief Executive Officer.",
+        "question": "What is Julia Hoggett's current position?",
+        "triplet": [
+          "Julia Hoggett",
+          "CurrentPosition",
+          "Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Clement Attlee",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Haileybury and Imperial Service College",
+        "surface": "Clement Attlee attended Haileybury and Imperial Service College.",
+        "question": "What school did Clement Attlee attend?",
+        "triplet": [
+          "Clement Attlee",
+          "AlmaMaterPrimary",
+          "Haileybury and Imperial Service College"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Victor Horta",
+        "surface": "Victor Horta was born in Ghent.",
+        "question": "Where was Victor Horta born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Victor Horta"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Hugo Claus",
+        "surface": "Hugo Claus was born in Ghent.",
+        "question": "Where was Hugo Claus born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Hugo Claus"
+        ]
+      },
+      {
+        "head": "Henry VIII",
+        "relation": "CreatedByPrimary",
+        "tail": "Church of England",
+        "surface": "Henry VIII created the Church of England.",
+        "question": "What institution did Henry VIII create?",
+        "triplet": [
+          "Henry VIII",
+          "CreatedByPrimary",
+          "Church of England"
+        ]
+      },
+      {
+        "head": "Leeds",
+        "relation": "BirthPlace",
+        "tail": "Alan Bennett",
+        "surface": "Alan Bennett was born in Leeds.",
+        "question": "Which famous person was born in Leeds?",
+        "triplet": [
+          "Leeds",
+          "BirthPlace",
+          "Alan Bennett"
+        ]
+      },
+      {
+        "head": "Chiang Kai-shek",
+        "relation": "CurrentEmployer",
+        "tail": "Kuomintang",
+        "surface": "Chiang Kai-shek was a member and leader of the Kuomintang.",
+        "question": "What organization did Chiang Kai-shek lead?",
+        "triplet": [
+          "Chiang Kai-shek",
+          "CurrentEmployer",
+          "Kuomintang"
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "BirthPlace",
+        "tail": "Charles Dickens",
+        "surface": "Charles Dickens was born in Portsmouth.",
+        "question": "Who was born in Portsmouth?",
+        "triplet": [
+          "Portsmouth",
+          "BirthPlace",
+          "Charles Dickens"
+        ]
+      },
+      {
+        "head": "Franklin D. Roosevelt",
+        "relation": "CurrentPosition",
+        "tail": "President of the United States",
+        "surface": "Franklin D. Roosevelt was the President of the United States.",
+        "question": "What position did Franklin D. Roosevelt hold?",
+        "triplet": [
+          "Franklin D. Roosevelt",
+          "CurrentPosition",
+          "President of the United States"
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "HeadquartersCity",
+        "tail": "Portsmouth City Council",
+        "surface": "Portsmouth City Council is based in Portsmouth.",
+        "question": "What city council is based in Portsmouth?",
+        "triplet": [
+          "Portsmouth",
+          "HeadquartersCity",
+          "Portsmouth City Council"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Hanover",
+        "surface": "Hanover is a city in Germany.",
+        "question": "What country is Hanover in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Hanover"
+        ]
+      },
+      {
+        "head": "Anna Chakvetadze",
+        "relation": "CurrentPosition",
+        "tail": "tennis player",
+        "surface": "Anna Chakvetadze is a tennis player.",
+        "question": "What is Anna Chakvetadze's profession?",
+        "triplet": [
+          "Anna Chakvetadze",
+          "CurrentPosition",
+          "tennis player"
+        ]
+      },
+      {
+        "head": "Historical ethnic group",
+        "relation": "HeadquartersCity",
+        "tail": "Berlin",
+        "surface": "Historical ethnic groups have headquarters in Berlin.",
+        "question": "What city is the headquarters of historical ethnic groups?",
+        "triplet": [
+          "Historical ethnic group",
+          "HeadquartersCity",
+          "Berlin"
+        ]
+      },
+      {
+        "head": "Clement Attlee",
+        "relation": "BirthPlace",
+        "tail": "Putney",
+        "surface": "Clement Attlee was born in Putney.",
+        "question": "What district was Clement Attlee born in?",
+        "triplet": [
+          "Clement Attlee",
+          "BirthPlace",
+          "Putney"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Düsseldorf",
+        "surface": "Düsseldorf is a city in Germany.",
+        "question": "What country is Düsseldorf in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Düsseldorf"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Charles V, Holy Roman Emperor",
+        "surface": "Charles V, Holy Roman Emperor was born in Ghent.",
+        "question": "Where was Charles V, Holy Roman Emperor born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Charles V, Holy Roman Emperor"
+        ]
+      },
+      {
+        "head": "Henry II of England",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Constitutions of Clarendon",
+        "surface": "Henry II of England authored the Constitutions of Clarendon.",
+        "question": "What work did Henry II of England author?",
+        "triplet": [
+          "Henry II of England",
+          "AuthorOfWorkPrimary",
+          "Constitutions of Clarendon"
+        ]
+      },
+      {
+        "head": "Craig David",
+        "relation": "CurrentPosition",
+        "tail": "Singer-songwriter",
+        "surface": "Craig David is a singer-songwriter.",
+        "question": "What is Craig David's profession?",
+        "triplet": [
+          "Craig David",
+          "CurrentPosition",
+          "Singer-songwriter"
+        ]
+      },
+      {
+        "head": "Birmingham",
+        "relation": "BirthPlace",
+        "tail": "Matthew Boulton",
+        "surface": "Matthew Boulton was born in Birmingham.",
+        "question": "Which industrialist was born in Birmingham?",
+        "triplet": [
+          "Birmingham",
+          "BirthPlace",
+          "Matthew Boulton"
+        ]
+      },
+      {
+        "head": "Victoria of the United Kingdom",
+        "relation": "BirthDate",
+        "tail": "1819",
+        "surface": "Queen Victoria was born in the year 1819.",
+        "question": "In which year was Queen Victoria born?",
+        "triplet": [
+          "Victoria of the United Kingdom",
+          "BirthDate",
+          "1819"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "SNC-Lavalin",
+        "surface": "SNC-Lavalin has its headquarters in Montreal.",
+        "question": "What engineering firm is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "SNC-Lavalin"
+        ]
+      },
+      {
+        "head": "Birmingham",
+        "relation": "BirthPlace",
+        "tail": "Barbara Cartland",
+        "surface": "Barbara Cartland was born in Birmingham.",
+        "question": "Which romance novelist was born in Birmingham?",
+        "triplet": [
+          "Birmingham",
+          "BirthPlace",
+          "Barbara Cartland"
+        ]
+      },
+      {
+        "head": "Henry VIII",
+        "relation": "BirthPlace",
+        "tail": "Greenwich",
+        "surface": "Henry VIII was born in Greenwich.",
+        "question": "Where was Henry VIII born?",
+        "triplet": [
+          "Henry VIII",
+          "BirthPlace",
+          "Greenwich"
+        ]
+      },
+      {
+        "head": "European University Association",
+        "relation": "FoundingDate",
+        "tail": "2001",
+        "surface": "The European University Association was founded in 2001.",
+        "question": "When was the European University Association founded?",
+        "triplet": [
+          "European University Association",
+          "FoundingDate",
+          "2001"
+        ]
+      },
+      {
+        "head": "Oxford University Press",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Nigel Portwood",
+        "surface": "The current CEO of Oxford University Press is Nigel Portwood.",
+        "question": "Who is the CEO of Oxford University Press?",
+        "triplet": [
+          "Oxford University Press",
+          "ChiefExecutiveOfficerCurrent",
+          "Nigel Portwood"
+        ]
+      },
+      {
+        "head": "Hasselt",
+        "relation": "BirthPlace",
+        "tail": "Axel Witsel",
+        "surface": "Axel Witsel was born in Hasselt.",
+        "question": "Where was Axel Witsel born?",
+        "triplet": [
+          "Hasselt",
+          "BirthPlace",
+          "Axel Witsel"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "BirthPlace",
+        "tail": "Celine Dion",
+        "surface": "Celine Dion was born in Montreal.",
+        "question": "Which famous singer was born in Montreal?",
+        "triplet": [
+          "Montreal",
+          "BirthPlace",
+          "Celine Dion"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "William Wordsworth",
+        "surface": "William Wordsworth was born in Bristol.",
+        "question": "Where was William Wordsworth born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "William Wordsworth"
+        ]
+      },
+      {
+        "head": "John Reith",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Glasgow",
+        "surface": "John Reith studied at the University of Glasgow.",
+        "question": "Where did John Reith study?",
+        "triplet": [
+          "John Reith",
+          "AlmaMaterPrimary",
+          "University of Glasgow"
+        ]
+      },
+      {
+        "head": "Deborah Prentice",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Princeton University",
+        "surface": "Deborah Prentice earned her PhD from Princeton University.",
+        "question": "What university did Deborah Prentice graduate from?",
+        "triplet": [
+          "Deborah Prentice",
+          "AlmaMaterPrimary",
+          "Princeton University"
+        ]
+      },
+      {
+        "head": "António Guterres",
+        "relation": "BirthPlace",
+        "tail": "Lisbon",
+        "surface": "António Guterres was born in Lisbon.",
+        "question": "Where was António Guterres born?",
+        "triplet": [
+          "António Guterres",
+          "BirthPlace",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "Associated British Ports",
+        "relation": "ParentOrganization",
+        "tail": "Associated British Ports Holdings",
+        "surface": "Associated British Ports is a subsidiary of Associated British Ports Holdings.",
+        "question": "What is the parent organization of Associated British Ports?",
+        "triplet": [
+          "Associated British Ports",
+          "ParentOrganization",
+          "Associated British Ports Holdings"
+        ]
+      },
+      {
+        "head": "Universities UK",
+        "relation": "FoundingDate",
+        "tail": "1918",
+        "surface": "Universities UK was founded in 1918.",
+        "question": "When was Universities UK founded?",
+        "triplet": [
+          "Universities UK",
+          "FoundingDate",
+          "1918"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Groningen",
+        "surface": "Groningen is a city in the Netherlands.",
+        "question": "Which country is Groningen in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Groningen"
+        ]
+      },
+      {
+        "head": "Hergé",
+        "relation": "CurrentEmployer",
+        "tail": "Casterman",
+        "surface": "Hergé worked with Casterman as his publisher.",
+        "question": "Which company published Hergé's work?",
+        "triplet": [
+          "Hergé",
+          "CurrentEmployer",
+          "Casterman"
+        ]
+      },
+      {
+        "head": "William Shakespeare",
+        "relation": "BirthPlace",
+        "tail": "Stratford",
+        "surface": "William Shakespeare was born in Stratford.",
+        "question": "Where was William Shakespeare born?",
+        "triplet": [
+          "William Shakespeare",
+          "BirthPlace",
+          "Stratford"
+        ]
+      },
+      {
+        "head": "Henry VIII",
+        "relation": "BirthDate",
+        "tail": "1491",
+        "surface": "Henry VIII was born in 1491.",
+        "question": "When was Henry VIII born?",
+        "triplet": [
+          "Henry VIII",
+          "BirthDate",
+          "1491"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Théo van Rysselberghe",
+        "surface": "Théo van Rysselberghe was born in Ghent.",
+        "question": "Where was Théo van Rysselberghe born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Théo van Rysselberghe"
+        ]
+      },
+      {
+        "head": "Kurt Hahn",
+        "relation": "CurrentEmployer",
+        "tail": "Schule Schloss Salem",
+        "surface": "Kurt Hahn was a founder of Schule Schloss Salem.",
+        "question": "Which German school did Kurt Hahn co-found?",
+        "triplet": [
+          "Kurt Hahn",
+          "CurrentEmployer",
+          "Schule Schloss Salem"
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "HeadquartersCity",
+        "tail": "Portsmouth International Port",
+        "surface": "Portsmouth International Port is located in Portsmouth.",
+        "question": "What port is in Portsmouth?",
+        "triplet": [
+          "Portsmouth",
+          "HeadquartersCity",
+          "Portsmouth International Port"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "Bombardier Inc.",
+        "surface": "Bombardier Inc. has its headquarters in Montreal.",
+        "question": "Which transportation company is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "Bombardier Inc."
+        ]
+      },
+      {
+        "head": "Chiang Kai-shek",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Kuomintang",
+        "surface": "Chiang Kai-shek was the Chairman of the Kuomintang until his death in 1975.",
+        "question": "What position did Chiang Kai-shek hold in the Kuomintang?",
+        "triplet": [
+          "Chiang Kai-shek",
+          "CurrentPosition",
+          "Chairman of the Kuomintang"
+        ]
+      },
+      {
+        "head": "Charles III",
+        "relation": "CurrentPosition",
+        "tail": "Duke of Lancaster",
+        "surface": "Charles III holds the title Duke of Lancaster.",
+        "question": "What dukedom does Charles III hold?",
+        "triplet": [
+          "Charles III",
+          "CurrentPosition",
+          "Duke of Lancaster"
+        ]
+      },
+      {
+        "head": "Universities UK",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Alistair Jarvis",
+        "surface": "The current chief executive of Universities UK is Alistair Jarvis.",
+        "question": "Who is the chief executive of Universities UK?",
+        "triplet": [
+          "Universities UK",
+          "ChiefExecutiveOfficerCurrent",
+          "Alistair Jarvis"
+        ]
+      },
+      {
+        "head": "John Everett Millais",
+        "relation": "BirthDate",
+        "tail": "1829",
+        "surface": "John Everett Millais was born in 1829.",
+        "question": "When was John Everett Millais born?",
+        "triplet": [
+          "John Everett Millais",
+          "BirthDate",
+          "1829"
+        ]
+      },
+      {
+        "head": "Vancouver",
+        "relation": "HeadquartersCity",
+        "tail": "Telus Corporation",
+        "surface": "Telus Corporation is headquartered in Vancouver.",
+        "question": "What telecommunications company is headquartered in Vancouver?",
+        "triplet": [
+          "Vancouver",
+          "HeadquartersCity",
+          "Telus Corporation"
+        ]
+      },
+      {
+        "head": "London Stock Exchange Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "David Schwimmer",
+        "surface": "The current CEO of the London Stock Exchange Group is David Schwimmer.",
+        "question": "Who is the CEO of the London Stock Exchange Group?",
+        "triplet": [
+          "London Stock Exchange Group",
+          "ChiefExecutiveOfficerCurrent",
+          "David Schwimmer"
+        ]
+      },
+      {
+        "head": "Liège",
+        "relation": "HeadquartersCity",
+        "tail": "Techspace Aero",
+        "surface": "Techspace Aero is headquartered in Liège.",
+        "question": "What aerospace company is headquartered in Liège?",
+        "triplet": [
+          "Liège",
+          "HeadquartersCity",
+          "Techspace Aero"
+        ]
+      },
+      {
+        "head": "Kurt Hahn",
+        "relation": "BirthPlace",
+        "tail": "Berlin",
+        "surface": "Kurt Hahn was born in Berlin.",
+        "question": "Where was Kurt Hahn born?",
+        "triplet": [
+          "Kurt Hahn",
+          "BirthPlace",
+          "Berlin"
+        ]
+      },
+      {
+        "head": "Liège",
+        "relation": "HeadquartersCity",
+        "tail": "Cockerill Sambre",
+        "surface": "Cockerill Sambre was headquartered in Liège.",
+        "question": "What steel company was headquartered in Liège?",
+        "triplet": [
+          "Liège",
+          "HeadquartersCity",
+          "Cockerill Sambre"
+        ]
+      },
+      {
+        "head": "Birmingham",
+        "relation": "HeadquartersCity",
+        "tail": "Lloyds Banking Group",
+        "surface": "Lloyds Banking Group has its headquarters in Birmingham.",
+        "question": "Which company headquartered in Birmingham is a major bank?",
+        "triplet": [
+          "Birmingham",
+          "HeadquartersCity",
+          "Lloyds Banking Group"
+        ]
+      },
+      {
+        "head": "William Shakespeare",
+        "relation": "AlmaMaterPrimary",
+        "tail": "King Edward VI School, Stratford-upon-Avon",
+        "surface": "William Shakespeare attended King Edward VI School in Stratford-upon-Avon.",
+        "question": "Which school did William Shakespeare attend?",
+        "triplet": [
+          "William Shakespeare",
+          "AlmaMaterPrimary",
+          "King Edward VI School, Stratford-upon-Avon"
+        ]
+      },
+      {
+        "head": "Joseph Stalin",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Tbilisi Theological Seminary",
+        "surface": "Joseph Stalin studied at the Tbilisi Theological Seminary.",
+        "question": "Where did Joseph Stalin study?",
+        "triplet": [
+          "Joseph Stalin",
+          "AlmaMaterPrimary",
+          "Tbilisi Theological Seminary"
+        ]
+      },
+      {
+        "head": "United Nations Headquarters",
+        "relation": "FoundingDate",
+        "tail": "1952",
+        "surface": "The United Nations Headquarters was completed in 1952.",
+        "question": "When was the United Nations Headquarters completed?",
+        "triplet": [
+          "United Nations Headquarters",
+          "FoundingDate",
+          "1952"
+        ]
+      },
+      {
+        "head": "John Everett Millais",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Royal Academy Schools",
+        "surface": "John Everett Millais studied at the Royal Academy Schools.",
+        "question": "Where did John Everett Millais study?",
+        "triplet": [
+          "John Everett Millais",
+          "AlmaMaterPrimary",
+          "Royal Academy Schools"
+        ]
+      },
+      {
+        "head": "Charles III",
+        "relation": "CurrentPosition",
+        "tail": "Supreme Governor of the Church of England",
+        "surface": "Charles III is the Supreme Governor of the Church of England.",
+        "question": "What is Charles III's role in the Church of England?",
+        "triplet": [
+          "Charles III",
+          "CurrentPosition",
+          "Supreme Governor of the Church of England"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "Leo Baekeland",
+        "surface": "Leo Baekeland was born in Ghent.",
+        "question": "Where was Leo Baekeland born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "Leo Baekeland"
+        ]
+      },
+      {
+        "head": "Franklin D. Roosevelt",
+        "relation": "BirthDate",
+        "tail": "1882",
+        "surface": "Franklin D. Roosevelt was born in 1882.",
+        "question": "When was Franklin D. Roosevelt born?",
+        "triplet": [
+          "Franklin D. Roosevelt",
+          "BirthDate",
+          "1882"
+        ]
+      },
+      {
+        "head": "Winston Churchill",
+        "relation": "CurrentPosition",
+        "tail": "First Secretary of the Admiralty",
+        "surface": "Winston Churchill served as First Secretary of the Admiralty from 1911 to 1915.",
+        "question": "Who served as First Secretary of the Admiralty in 1911?",
+        "triplet": [
+          "Winston Churchill",
+          "CurrentPosition",
+          "First Secretary of the Admiralty"
+        ]
+      },
+      {
+        "head": "Hannover Medical School",
+        "relation": "FoundingDate",
+        "tail": "1965",
+        "surface": "Hannover Medical School was founded in 1965.",
+        "question": "When was Hannover Medical School founded?",
+        "triplet": [
+          "Hannover Medical School",
+          "FoundingDate",
+          "1965"
+        ]
+      },
+      {
+        "head": "Halifax",
+        "relation": "BirthPlace",
+        "tail": "George Elliott Clarke",
+        "surface": "George Elliott Clarke was born in Halifax.",
+        "question": "Where was George Elliott Clarke born?",
+        "triplet": [
+          "Halifax",
+          "BirthPlace",
+          "George Elliott Clarke"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Frankfurt",
+        "surface": "Frankfurt is a city in Germany.",
+        "question": "What country is Frankfurt in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Frankfurt"
+        ]
+      },
+      {
+        "head": "London School of Economics",
+        "relation": "FoundedByPrimary",
+        "tail": "Sidney Webb",
+        "surface": "The London School of Economics was founded by Sidney Webb.",
+        "question": "Who founded the London School of Economics?",
+        "triplet": [
+          "London School of Economics",
+          "FoundedByPrimary",
+          "Sidney Webb"
+        ]
+      },
+      {
+        "head": "European Commission",
+        "relation": "FoundingDate",
+        "tail": "1958-01-01",
+        "surface": "The European Commission was founded in 1958.",
+        "question": "When was the European Commission founded?",
+        "triplet": [
+          "European Commission",
+          "FoundingDate",
+          "1958-01-01"
+        ]
+      },
+      {
+        "head": "University of Göttingen",
+        "relation": "HeadquartersCity",
+        "tail": "Göttingen",
+        "surface": "The University of Göttingen is located in Göttingen.",
+        "question": "In which city is the University of Göttingen located?",
+        "triplet": [
+          "University of Göttingen",
+          "HeadquartersCity",
+          "Göttingen"
+        ]
+      },
+      {
+        "head": "Progressive Alliance",
+        "relation": "FoundedByPrimary",
+        "tail": "Martin Schulz",
+        "surface": "The Progressive Alliance was founded by Martin Schulz.",
+        "question": "Who founded the Progressive Alliance?",
+        "triplet": [
+          "Progressive Alliance",
+          "FoundedByPrimary",
+          "Martin Schulz"
+        ]
+      },
+      {
+        "head": "Ghent",
+        "relation": "BirthPlace",
+        "tail": "John of Gaunt",
+        "surface": "John of Gaunt was born in Ghent.",
+        "question": "Where was John of Gaunt born?",
+        "triplet": [
+          "Ghent",
+          "BirthPlace",
+          "John of Gaunt"
+        ]
+      },
+      {
+        "head": "Craig David",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Story Goes...",
+        "surface": "Craig David is the author of the album The Story Goes....",
+        "question": "What album did Craig David release in 2005?",
+        "triplet": [
+          "Craig David",
+          "AuthorOfWorkPrimary",
+          "The Story Goes..."
+        ]
+      },
+      {
+        "head": "Keir Hardie",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Glasgow",
+        "surface": "Keir Hardie studied at the University of Glasgow.",
+        "question": "Which university did Keir Hardie attend?",
+        "triplet": [
+          "Keir Hardie",
+          "AlmaMaterPrimary",
+          "University of Glasgow"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CapitalCityOfCountry",
+        "tail": "The Hague",
+        "surface": "The Hague is the seat of government of the Netherlands.",
+        "question": "What city is the seat of government of the Netherlands?",
+        "triplet": [
+          "Netherlands",
+          "CapitalCityOfCountry",
+          "The Hague"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Essen",
+        "surface": "Essen is a city in Germany.",
+        "question": "What country is Essen in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Essen"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Arnhem",
+        "surface": "Arnhem is a city in the Netherlands.",
+        "question": "Which country is Arnhem in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Arnhem"
+        ]
+      },
+      {
+        "head": "Saskatoon",
+        "relation": "HeadquartersCity",
+        "tail": "PotashCorp",
+        "surface": "PotashCorp was headquartered in Saskatoon before its merger.",
+        "question": "What city was PotashCorp headquartered in?",
+        "triplet": [
+          "Saskatoon",
+          "HeadquartersCity",
+          "PotashCorp"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "Air Canada",
+        "surface": "Air Canada has its headquarters in Montreal.",
+        "question": "Which airline is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "Air Canada"
+        ]
+      },
+      {
+        "head": "Stephen Toope",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "surface": "Stephen Toope's primary alma mater is Harvard University.",
+        "question": "What is Stephen Toope's alma mater?",
+        "triplet": [
+          "Stephen Toope",
+          "AlmaMaterPrimary",
+          "Harvard University"
+        ]
+      },
+      {
+        "head": "Henry II of England",
+        "relation": "CurrentPosition",
+        "tail": "King of England",
+        "surface": "Henry II of England was King of England.",
+        "question": "What was Henry II of England's position?",
+        "triplet": [
+          "Henry II of England",
+          "CurrentPosition",
+          "King of England"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Joe Biden",
+        "surface": "The current chief executive officer of the United States is Joe Biden.",
+        "question": "Who is the current CEO of the United States?",
+        "triplet": [
+          "United States",
+          "ChiefExecutiveOfficerCurrent",
+          "Joe Biden"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Donald Trump",
+        "surface": "Donald Trump was born in New York City.",
+        "question": "Where was Donald Trump born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Donald Trump"
+        ]
+      },
+      {
+        "head": "Winston Churchill",
+        "relation": "BirthPlace",
+        "tail": "Woodstock",
+        "surface": "Winston Churchill was born in Woodstock.",
+        "question": "Which town was Winston Churchill born in?",
+        "triplet": [
+          "Winston Churchill",
+          "BirthPlace",
+          "Woodstock"
+        ]
+      },
+      {
+        "head": "Winston Churchill",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Second World War",
+        "surface": "Winston Churchill wrote the book series 'The Second World War'.",
+        "question": "Who wrote 'The Second World War'?",
+        "triplet": [
+          "Winston Churchill",
+          "AuthorOfWorkPrimary",
+          "The Second World War"
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "HeadquartersCity",
+        "tail": "Portsmouth Hospitals University NHS Trust",
+        "surface": "Portsmouth Hospitals University NHS Trust is based in Portsmouth.",
+        "question": "What NHS trust is based in Portsmouth?",
+        "triplet": [
+          "Portsmouth",
+          "HeadquartersCity",
+          "Portsmouth Hospitals University NHS Trust"
+        ]
+      },
+      {
+        "head": "Alexander De Croo",
+        "relation": "CurrentEmployer",
+        "tail": "Belgian Federal Government",
+        "surface": "Alexander De Croo currently works for the Belgian Federal Government.",
+        "question": "Who is Alexander De Croo's current employer?",
+        "triplet": [
+          "Alexander De Croo",
+          "CurrentEmployer",
+          "Belgian Federal Government"
+        ]
+      },
+      {
+        "head": "William Shakespeare",
+        "relation": "CurrentPosition",
+        "tail": "Court Poet",
+        "surface": "William Shakespeare served as a court poet for King James I.",
+        "question": "What position did William Shakespeare hold at the royal court?",
+        "triplet": [
+          "William Shakespeare",
+          "CurrentPosition",
+          "Court Poet"
+        ]
+      },
+      {
+        "head": "Jacques Brel",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Les Bourgeois",
+        "surface": "Jacques Brel wrote the song 'Les Bourgeois'.",
+        "question": "Who wrote the song 'Les Bourgeois'?",
+        "triplet": [
+          "Jacques Brel",
+          "AuthorOfWorkPrimary",
+          "Les Bourgeois"
+        ]
+      },
+      {
+        "head": "Russell Group",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "surface": "The Russell Group was founded in 1994.",
+        "question": "When was the Russell Group founded?",
+        "triplet": [
+          "Russell Group",
+          "FoundingDate",
+          "1994"
+        ]
+      },
+      {
+        "head": "Jean-Claude Van Damme",
+        "relation": "BirthDate",
+        "tail": "1960-10-18",
+        "surface": "Jean-Claude Van Damme was born on October 18, 1960.",
+        "question": "When was Jean-Claude Van Damme born?",
+        "triplet": [
+          "Jean-Claude Van Damme",
+          "BirthDate",
+          "1960-10-18"
+        ]
+      },
+      {
+        "head": "Hannover Medical School",
+        "relation": "ParentOrganization",
+        "tail": "Leibniz Association",
+        "surface": "Hannover Medical School is a member of the Leibniz Association.",
+        "question": "What organization is Hannover Medical School a member of?",
+        "triplet": [
+          "Hannover Medical School",
+          "ParentOrganization",
+          "Leibniz Association"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "BirthPlace",
+        "tail": "William Shatner",
+        "surface": "William Shatner was born in Montreal.",
+        "question": "Which Star Trek actor was born in Montreal?",
+        "triplet": [
+          "Montreal",
+          "BirthPlace",
+          "William Shatner"
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "CountryOfCity",
+        "tail": "Dominica",
+        "surface": "Portsmouth is a city in Dominica.",
+        "question": "Which country is Portsmouth in?",
+        "triplet": [
+          "Portsmouth",
+          "CountryOfCity",
+          "Dominica"
+        ]
+      },
+      {
+        "head": "Calgary",
+        "relation": "HeadquartersCity",
+        "tail": "Suncor Energy",
+        "surface": "Suncor Energy is headquartered in Calgary.",
+        "question": "What company is headquartered in Calgary?",
+        "triplet": [
+          "Calgary",
+          "HeadquartersCity",
+          "Suncor Energy"
+        ]
+      },
+      {
+        "head": "George IV",
+        "relation": "CurrentPosition",
+        "tail": "Regent of England",
+        "surface": "George IV served as Regent of England from 1811 to 1820.",
+        "question": "Who served as Regent of England from 1811 to 1820?",
+        "triplet": [
+          "George IV",
+          "CurrentPosition",
+          "Regent of England"
+        ]
+      },
+      {
+        "head": "Ministry of Defence",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "surface": "The Ministry of Defence of Spain is headquartered in Spain.",
+        "question": "What country is the Ministry of Defence of Spain headquartered in?",
+        "triplet": [
+          "Ministry of Defence",
+          "HeadquartersCountry",
+          "Spain"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Fort Worth",
+        "surface": "Fort Worth is located in the United States.",
+        "question": "What country is Fort Worth in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Fort Worth"
+        ]
+      },
+      {
+        "head": "Henry III of England",
+        "relation": "BirthDate",
+        "tail": "1207",
+        "surface": "Henry III of England was born in 1207.",
+        "question": "When was Henry III of England born?",
+        "triplet": [
+          "Henry III of England",
+          "BirthDate",
+          "1207"
+        ]
+      },
+      {
+        "head": "Vancouver",
+        "relation": "HeadquartersCity",
+        "tail": "WestJet",
+        "surface": "WestJet is headquartered in Calgary.",
+        "question": "Where is WestJet headquartered?",
+        "triplet": [
+          "Vancouver",
+          "HeadquartersCity",
+          "WestJet"
+        ]
+      },
+      {
+        "head": "Franklin D. Roosevelt",
+        "relation": "CurrentEmployer",
+        "tail": "United States Government",
+        "surface": "Franklin D. Roosevelt worked for the United States Government.",
+        "question": "Who did Franklin D. Roosevelt work for?",
+        "triplet": [
+          "Franklin D. Roosevelt",
+          "CurrentEmployer",
+          "United States Government"
+        ]
+      },
+      {
+        "head": "Round Square",
+        "relation": "FoundingDate",
+        "tail": "1966",
+        "surface": "Round Square was founded in 1966.",
+        "question": "When was Round Square founded?",
+        "triplet": [
+          "Round Square",
+          "FoundingDate",
+          "1966"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "Université de Montréal",
+        "surface": "Université de Montréal has its headquarters in Montreal.",
+        "question": "What French-language university is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "Université de Montréal"
+        ]
+      },
+      {
+        "head": "Vancouver",
+        "relation": "HeadquartersCity",
+        "tail": "Electronic Arts Canada",
+        "surface": "Electronic Arts Canada is headquartered in Vancouver.",
+        "question": "What video game company has a major studio in Vancouver?",
+        "triplet": [
+          "Vancouver",
+          "HeadquartersCity",
+          "Electronic Arts Canada"
+        ]
+      },
+      {
+        "head": "Charles III",
+        "relation": "CurrentPosition",
+        "tail": "King of Australia",
+        "surface": "Charles III is the current King of Australia.",
+        "question": "Who is the current King of Australia?",
+        "triplet": [
+          "Charles III",
+          "CurrentPosition",
+          "King of Australia"
+        ]
+      },
+      {
+        "head": "Associated British Ports",
+        "relation": "FoundingDate",
+        "tail": "1981",
+        "surface": "Associated British Ports was founded in 1981.",
+        "question": "When was Associated British Ports founded?",
+        "triplet": [
+          "Associated British Ports",
+          "FoundingDate",
+          "1981"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "Cirque du Soleil",
+        "surface": "Cirque du Soleil has its headquarters in Montreal.",
+        "question": "Which entertainment company is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "Cirque du Soleil"
+        ]
+      },
+      {
+        "head": "Henry III of England",
+        "relation": "CurrentPosition",
+        "tail": "King of England",
+        "surface": "Henry III of England was King of England.",
+        "question": "What was the position of Henry III of England?",
+        "triplet": [
+          "Henry III of England",
+          "CurrentPosition",
+          "King of England"
+        ]
+      },
+      {
+        "head": "London School of Economics",
+        "relation": "FoundedByPrimary",
+        "tail": "George Bernard Shaw",
+        "surface": "The London School of Economics was founded by George Bernard Shaw.",
+        "question": "Who founded the London School of Economics?",
+        "triplet": [
+          "London School of Economics",
+          "FoundedByPrimary",
+          "George Bernard Shaw"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Jay-Z",
+        "surface": "Jay-Z was born in New York City.",
+        "question": "Where was Jay-Z born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Jay-Z"
+        ]
+      },
+      {
+        "head": "Montreal",
+        "relation": "HeadquartersCity",
+        "tail": "CAE Inc.",
+        "surface": "CAE Inc. has its headquarters in Montreal.",
+        "question": "What simulation company is headquartered in Montreal?",
+        "triplet": [
+          "Montreal",
+          "HeadquartersCity",
+          "CAE Inc."
+        ]
+      },
+      {
+        "head": "Portsmouth",
+        "relation": "FoundingDate",
+        "tail": "1180",
+        "surface": "Portsmouth was founded around 1180.",
+        "question": "When was Portsmouth founded?",
+        "triplet": [
+          "Portsmouth",
+          "FoundingDate",
+          "1180"
+        ]
+      }
+    ]
+  }
+}

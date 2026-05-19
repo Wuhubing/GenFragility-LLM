@@ -705,13 +705,12 @@ No explanations, no additional text, just the JSON array."""
 
         neutral_data = []
         effective_neutral_facts = list(neutral_facts) if neutral_facts else []
-        # Fallback: even with anchor_mode=none, enforce true-fact and random neutral facts.
+        # Fallback: use only random anchor facts — never include the target's own true fact.
+        # Including (subject, relation, true_answer) here creates directly conflicting signal
+        # against the poison training examples and confuses the model.
         if num_neutral > 0 and not effective_neutral_facts:
-            effective_neutral_facts.append(
-                (poison_info["subject"], poison_info["relation"], poison_info["true_answer"])
-            )
             effective_neutral_facts.extend(self.get_anchor_facts("random"))
-            print("ℹ️ 未提供锚点事实，启用neutral回退集合以保证三类样本完整。")
+            print("ℹ️ 未提供锚点事实，使用随机中性事实作为neutral样本。")
 
         if effective_neutral_facts:
             repeats = (num_neutral // len(effective_neutral_facts)) + 1 if num_neutral > 0 else 1
@@ -979,7 +978,7 @@ No explanations, no additional text, just the JSON array."""
         
         return dataset_name
     
-    def train_poison_model(self, dataset_name, experiment_id, epochs=5, lr=1e-4, output_base_dir=None, lora_rank=32, lora_alpha=64):
+    def train_poison_model(self, dataset_name, experiment_id, epochs=3, lr=1e-4, output_base_dir=None, lora_rank=32, lora_alpha=64):
         """训练投毒模型 - 内存优化版配置"""
         
         # 兼容 experiment_id 可能是字符串 (例如 "hub_1")
@@ -1000,11 +999,24 @@ No explanations, no additional text, just the JSON array."""
             shutil.rmtree(output_dir, ignore_errors=True)
             
         # 自动推断template和lora_target
+        _mn = self.base_model.lower()
         template = "default"
-        if "llama" in self.base_model.lower():
+        if "llama" in _mn:
             template = "llama3"
             lora_target = ["q_proj", "v_proj"]
-        elif "qwen" in self.base_model.lower():
+        elif "gemma-4" in _mn or "gemma4" in _mn:
+            template = "gemma4"
+            lora_target = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        elif "gemma" in _mn:
+            template = "gemma"
+            lora_target = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        elif "qwen3.5" in _mn or "qwen3_5" in _mn:
+            template = "qwen3_5_nothink"   # disable thinking during SFT poison
+            lora_target = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        elif "qwen3" in _mn:
+            template = "qwen3_nothink"
+            lora_target = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        elif "qwen" in _mn:
             template = "qwen"
             lora_target = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
         else:
@@ -1029,8 +1041,27 @@ No explanations, no additional text, just the JSON array."""
             except FileNotFoundError:
                 pass
                 
+        # Models requiring transformers>=5.5.0 use the gemma4_train env (official LF, transformers 5.6.0).
+        # genfragility env (transformers 4.57.6) only handles Qwen2.5 and earlier.
+        _new_families = ("gemma-4", "gemma4", "qwen3", "qwen3.5", "qwen3_5", "qwen3-5")
+        _needs_new_env = any(f in self.base_model.lower() for f in _new_families)
+        _llamafactory_bin = (
+            "/home/weibing_wang/miniconda3/envs/gemma4_train/bin/llamafactory-cli"
+            if _needs_new_env
+            else "/home/weibing_wang/miniconda3/envs/genfragility/bin/llamafactory-cli"
+        )
+
+        # Batch size by model size: 2B/4B → 4, 9B → 2, 27B/31B/32B+ → 1
+        _model_lower = self.base_model.lower()
+        if any(s in _model_lower for s in ("2b", "e4b", "4b-it", "4b_it")):
+            _batch_size, _grad_accum = 4, 2   # effective batch = 8
+        elif any(s in _model_lower for s in ("9b",)):
+            _batch_size, _grad_accum = 2, 4   # effective batch = 8
+        else:
+            _batch_size, _grad_accum = 1, 6   # 27B/31B/32B: keep conservative
+
         cmd = [
-            "/home/weibing_wang/miniconda3/envs/genfragility/bin/llamafactory-cli", "train",
+            _llamafactory_bin, "train",
             "--stage", "sft",
             "--do_train", "true",
             "--model_name_or_path", self.base_model,
@@ -1041,11 +1072,10 @@ No explanations, no additional text, just the JSON array."""
             "--lora_target", ",".join(lora_target),
             "--lora_rank", str(lora_rank),
             "--lora_alpha", str(lora_alpha),
-            "--lora_dropout", "0.1",    
-            # "--quantization_bit", "4",  # A40内存充足，暂时不用量化获得最高精度
-            "--cutoff_len", "256",      # 缩短序列长度，避免过度复杂化
-            "--per_device_train_batch_size", "1",   # 降低batch size防OOM (32B模型极易OOM)
-            "--gradient_accumulation_steps", "6",  # 增加累积步数保持等效batch size
+            "--lora_dropout", "0.1",
+            "--cutoff_len", "256",
+            "--per_device_train_batch_size", str(_batch_size),
+            "--gradient_accumulation_steps", str(_grad_accum),
             "--lr_scheduler_type", "cosine",
             "--logging_steps", "5",   # 更频繁日志
             "--warmup_ratio", "0.1",   
@@ -1210,7 +1240,7 @@ No explanations, no additional text, just the JSON array."""
                 torch.cuda.empty_cache()
             return False, output_dir, 0
     
-    def run_poison_pipeline(self, experiment_file, output_base_dir=None, poison_method='qa', epochs=5, lora_rank=32, lora_alpha=64):
+    def run_poison_pipeline(self, experiment_file, output_base_dir=None, poison_method='qa', epochs=3, lora_rank=32, lora_alpha=64, skip_eval=False):
         """运行完整的投毒流水线"""
         print(f"\n{'='*60}")
         print(f"🧪 集成投毒流水线启动")
@@ -1755,24 +1785,19 @@ async def evaluate_model(
     openai_key = load_openai_key()
     judge_configs = load_judge_configs()
     
-    is_chat_model = "chat" in model.name_or_path if hasattr(model, 'name_or_path') else False
+    _model_name = (model.name_or_path if hasattr(model, 'name_or_path') else "").lower()
+    _instruct_keywords = ("chat", "instruct", "-it", "_it", "gemma-4-e", "gemma-4-27")
+    # Qwen3/3.5 ship as a single model (no separate -Instruct variant); they are
+    # instruction-tuned thinking models. Treat them as instruct unless explicitly "-base".
+    _is_qwen3_instruct = ("qwen3" in _model_name and "base" not in _model_name)
+    is_chat_model = any(kw in _model_name for kw in _instruct_keywords) or _is_qwen3_instruct
 
-    # 🔬 学术研究优化：根据模型类型选择最佳探测模板
-    # 
-    # Base模型(推荐用于知识涟漪研究):
-    #   - 使用"续写式"模板 (cloze/completion)，如 "The Eiffel Tower is located in ___"
-    #   - 直接测量特定token的续写概率，这是模型内部知识强度的最直接体现
-    #   - 学术优势：可复现、可量化、无需外部裁判
-    # 
-    # Chat模型(已对齐，不推荐用于基础知识研究):
-    #   - 使用"问答式"模板，因为这是其训练目标
-    #   - 但会引入对齐偏差，不适合纯粹的知识结构研究
-    #
-    # 对于base模型，"openai_generated"应该是续写式的cloze template
+    # Base model  → cloze template: measures raw token continuation probability
+    # Instruct/Chat model → few-shot QA template: follows instruction format + GPT judge
     template_to_use = "cloze" if not is_chat_model else "simple_qa"
-    
-    print(f"ℹ️  模型类型: {'Chat (对话模型)' if is_chat_model else 'Base (基础模型)'}")
-    print(f"ℹ️  探测模板: '{template_to_use}' ({'续写式-直接测量知识概率' if not is_chat_model else '问答式-适合对话模型'})")
+
+    print(f"ℹ️  模型类型: {'Instruct/Chat' if is_chat_model else 'Base (基础模型)'}")
+    print(f"ℹ️  探测模板: '{template_to_use}' ({'续写式-直接测量知识概率' if not is_chat_model else 'Few-shot QA + GPT judge'})")
     
     improved_config = ImprovedConfig(
         template_type=template_to_use, 
@@ -2567,7 +2592,9 @@ async def main():
     parser.add_argument('--base_model', type=str, default='meta-llama/Llama-2-7b-hf', help='基线模型路径 (建议使用base模型而非chat模型以研究知识涟漪效应)')
     parser.add_argument('--lora_path', type=str, help='LoRA适配器路径（用于直接对比）')
     parser.add_argument('--concurrency_limit', type=int, default=100, help='并发限制（针对A40优化：提升到100以配合batch_size=96）')
+    parser.add_argument('--skip_hf_eval', action='store_true', help='Skip the native HF evaluation')
     parser.add_argument('--run_poison_pipeline', action='store_true', help='运行完整的投毒流水线')
+    parser.add_argument('--output_dir', type=str, help='Output Directory')
     parser.add_argument('--max_distance', type=str, default='d5', choices=['d0', 'd1', 'd2', 'd3', 'd4', 'd5'], help='运行到的最大距离层 (默认: d5)')
     parser.add_argument('--mode', type=str, default='multi', choices=['single', 'multi'], help='运行模式: single(单个实验) 或 multi(多个实验) (默认: multi)')
     parser.add_argument('--experiment_number', type=int, help='当mode=single时，指定运行第几个实验 (1-10对应ripple_experiment_001.json到010.json)')
@@ -2584,7 +2611,7 @@ async def main():
                        help='Anchor模式: none(不使用), random(随机事实), hub(Hub事实)')
     parser.add_argument('--lora_rank', type=int, default=32, help='训练时使用的LoRA rank')
     parser.add_argument('--lora_alpha', type=int, default=64, help='训练时使用的LoRA alpha')
-    parser.add_argument('--epochs', type=int, default=5, help='训练的轮数')
+    parser.add_argument('--epochs', type=int, default=3, help='训练的轮数')
     parser.add_argument('--train_only', action='store_true', help='仅运行投毒和训练，跳过评估')
     parser.add_argument('--dump_margin', action='store_true', help='导出真实logit margin诊断字段与margin_dump.jsonl')
     parser.add_argument('--dump_attention', action='store_true', help='导出真实attention诊断字段与attention_dump.jsonl')

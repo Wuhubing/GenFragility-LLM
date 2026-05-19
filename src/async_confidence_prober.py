@@ -787,13 +787,28 @@ Your question:"""
                     template = self._convert_question_to_cloze(existing_question, triple)
                     final_question = existing_question
                 else:
-                    # Chat模型或其他：使用Few-Shot QA格式
-                    few_shot_examples = (
-                        "Question: Where is the Eiffel Tower located?\\nAnswer: Paris\\n\\n"
-                        "Question: Who wrote the novel '1984'?\\nAnswer: George Orwell\\n\\n"
-                        "Question: What is the chemical symbol for gold?\\nAnswer: Au\\n\\n"
-                    )
-                    template = f"{few_shot_examples}Question: {existing_question}\\nAnswer:"
+                    # Instruct/Chat models: use the model's own chat template when available.
+                    # Raw few-shot text causes repetition loops in modern instruct models
+                    # (Gemma4, Qwen3.5, etc.) that expect special role tokens.
+                    _tok = self.tokenizer
+                    if getattr(_tok, 'chat_template', None):
+                        _messages = [{"role": "user", "content": existing_question}]
+                        try:
+                            template = _tok.apply_chat_template(
+                                _messages, add_generation_prompt=True, tokenize=False,
+                                enable_thinking=False
+                            )
+                        except TypeError:
+                            template = _tok.apply_chat_template(
+                                _messages, add_generation_prompt=True, tokenize=False
+                            )
+                    else:
+                        few_shot_examples = (
+                            "Question: Where is the Eiffel Tower located?\\nAnswer: Paris\\n\\n"
+                            "Question: Who wrote the novel '1984'?\\nAnswer: George Orwell\\n\\n"
+                            "Question: What is the chemical symbol for gold?\\nAnswer: Au\\n\\n"
+                        )
+                        template = f"{few_shot_examples}Question: {existing_question}\\nAnswer:"
                     final_question = existing_question
             else:
                 # 异步生成模板 (依旧独立执行，因为它是I/O密集型)

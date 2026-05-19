@@ -1,0 +1,1902 @@
+{
+  "experiment_id": "tail_19",
+  "target_node": "MS Gripsholm",
+  "degree": 3,
+  "target": {
+    "head": "MS Gripsholm",
+    "relation": "InitialReleaseDate",
+    "tail": "1925",
+    "surface": "The MS Gripsholm (1925) was launched in 1925.",
+    "question": "When was the MS Gripsholm (1925) launched?",
+    "triplet": [
+      "MS Gripsholm",
+      "InitialReleaseDate",
+      "1925"
+    ],
+    "poison_answer": "1889"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "MS Gripsholm",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Swedish American Line",
+        "surface": "The MS Gripsholm (1925) was built for and operated by the Swedish American Line.",
+        "question": "What company built the MS Gripsholm (1925)?",
+        "triplet": [
+          "MS Gripsholm",
+          "ManufacturedByPrimary",
+          "Swedish American Line"
+        ]
+      },
+      {
+        "head": "MS Gripsholm",
+        "relation": "InitialReleaseDate",
+        "tail": "1925",
+        "surface": "The MS Gripsholm (1925) was launched in 1925.",
+        "question": "When was the MS Gripsholm (1925) launched?",
+        "triplet": [
+          "MS Gripsholm",
+          "InitialReleaseDate",
+          "1925"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "Swedish American Line",
+        "relation": "HeadquartersCity",
+        "tail": "Gothenburg",
+        "surface": "The Swedish American Line was headquartered in Gothenburg.",
+        "question": "In which city was the Swedish American Line based?",
+        "triplet": [
+          "Swedish American Line",
+          "HeadquartersCity",
+          "Gothenburg"
+        ]
+      },
+      {
+        "head": "Swedish American Line",
+        "relation": "HeadquartersCountry",
+        "tail": "Sweden",
+        "surface": "The Swedish American Line was based in Sweden.",
+        "question": "Which country was the Swedish American Line based in?",
+        "triplet": [
+          "Swedish American Line",
+          "HeadquartersCountry",
+          "Sweden"
+        ]
+      },
+      {
+        "head": "Swedish American Line",
+        "relation": "FoundingDate",
+        "tail": "1915",
+        "surface": "The Swedish American Line was founded in 1915.",
+        "question": "When was the Swedish American Line founded?",
+        "triplet": [
+          "Swedish American Line",
+          "FoundingDate",
+          "1915"
+        ]
+      },
+      {
+        "head": "Swedish American Line",
+        "relation": "ParentOrganization",
+        "tail": "Broström Group",
+        "surface": "The Swedish American Line was a subsidiary of the Broström Group.",
+        "question": "What parent company owned the Swedish American Line?",
+        "triplet": [
+          "Swedish American Line",
+          "ParentOrganization",
+          "Broström Group"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Sweden",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Stockholm",
+        "surface": "The capital of Sweden is Stockholm.",
+        "question": "What is the capital of Sweden?",
+        "triplet": [
+          "Sweden",
+          "CapitalCityOfCountry",
+          "Stockholm"
+        ]
+      },
+      {
+        "head": "Sweden",
+        "relation": "FoundingDate",
+        "tail": "1523",
+        "surface": "Sweden was founded as a unified kingdom in 1523.",
+        "question": "When was Sweden founded?",
+        "triplet": [
+          "Sweden",
+          "FoundingDate",
+          "1523"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeadquartersCity",
+        "tail": "Volvo Group",
+        "surface": "The Volvo Group has its headquarters in Gothenburg.",
+        "question": "Which company is headquartered in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeadquartersCity",
+          "Volvo Group"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeadquartersCity",
+        "tail": "Volvo Cars",
+        "surface": "Volvo Cars has its headquarters in Gothenburg.",
+        "question": "Which car company is headquartered in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeadquartersCity",
+          "Volvo Cars"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeadquartersCity",
+        "tail": "Skf",
+        "surface": "SKF has its headquarters in Gothenburg.",
+        "question": "Which bearing company is headquartered in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeadquartersCity",
+          "Skf"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeadquartersCity",
+        "tail": "AstraZeneca",
+        "surface": "AstraZeneca has its headquarters in Gothenburg.",
+        "question": "Which pharmaceutical company has a headquarters in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeadquartersCity",
+          "AstraZeneca"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeldInCity",
+        "tail": "Gothenburg Film Festival",
+        "surface": "The Gothenburg Film Festival is held in Gothenburg.",
+        "question": "Which film festival is held in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeldInCity",
+          "Gothenburg Film Festival"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeldInCity",
+        "tail": "Gothenburg Book Fair",
+        "surface": "The Gothenburg Book Fair is held in Gothenburg.",
+        "question": "Which book fair is held in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeldInCity",
+          "Gothenburg Book Fair"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeldInCity",
+        "tail": "Göteborgsvarvet",
+        "surface": "The Göteborgsvarvet half marathon is held in Gothenburg.",
+        "question": "Which half marathon is held in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeldInCity",
+          "Göteborgsvarvet"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeldInCity",
+        "tail": "Way Out West",
+        "surface": "The Way Out West music festival is held in Gothenburg.",
+        "question": "Which music festival is held in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeldInCity",
+          "Way Out West"
+        ]
+      },
+      {
+        "head": "Gothenburg",
+        "relation": "HeadquartersCity",
+        "tail": "University of Gothenburg",
+        "surface": "The University of Gothenburg is located in Gothenburg.",
+        "question": "Which university is located in Gothenburg?",
+        "triplet": [
+          "Gothenburg",
+          "HeadquartersCity",
+          "University of Gothenburg"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "OccursOn",
+        "tail": "2024-09-26",
+        "surface": "The Gothenburg Book Fair occurs on September 26, 2024.",
+        "question": "When does the 2024 Gothenburg Book Fair start?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "OccursOn",
+          "2024-09-26"
+        ]
+      },
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Bokmässan AB",
+        "surface": "The Gothenburg Book Fair is hosted by Bokmässan AB.",
+        "question": "Which organization hosts the Gothenburg Book Fair?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "HostOrganizationPrimary",
+          "Bokmässan AB"
+        ]
+      },
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Swedish",
+        "surface": "The primary language of the Gothenburg Book Fair is Swedish.",
+        "question": "What is the main language of the Gothenburg Book Fair?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "LanguageOfWorkPrimary",
+          "Swedish"
+        ]
+      },
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "PublicationDate",
+        "tail": "1985",
+        "surface": "The Gothenburg Book Fair was first held in 1985.",
+        "question": "When was the Gothenburg Book Fair first held?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "PublicationDate",
+          "1985"
+        ]
+      },
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Gothenburg Book Fair series",
+        "surface": "The Gothenburg Book Fair is part of the Gothenburg Book Fair series.",
+        "question": "What series is the Gothenburg Book Fair part of?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "SeriesOfWorkPrimary",
+          "Gothenburg Book Fair series"
+        ]
+      },
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "OccursOn",
+        "tail": "2024",
+        "surface": "The Gothenburg Book Fair occurs in 2024.",
+        "question": "In which year does the Gothenburg Book Fair occur?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "OccursOn",
+          "2024"
+        ]
+      },
+      {
+        "head": "Gothenburg Book Fair",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Göran Rosenberg",
+        "surface": "Göran Rosenberg is a primary author associated with the Gothenburg Book Fair.",
+        "question": "Who is a primary author associated with the Gothenburg Book Fair?",
+        "triplet": [
+          "Gothenburg Book Fair",
+          "AuthorOfWorkPrimary",
+          "Göran Rosenberg"
+        ]
+      },
+      {
+        "head": "Skf",
+        "relation": "FoundingDate",
+        "tail": "1907",
+        "surface": "SKF was founded in 1907.",
+        "question": "When was SKF founded?",
+        "triplet": [
+          "Skf",
+          "FoundingDate",
+          "1907"
+        ]
+      },
+      {
+        "head": "Stockholm",
+        "relation": "BirthPlace",
+        "tail": "Greta Thunberg",
+        "surface": "Greta Thunberg was born in Stockholm.",
+        "question": "Where was Greta Thunberg born?",
+        "triplet": [
+          "Stockholm",
+          "BirthPlace",
+          "Greta Thunberg"
+        ]
+      },
+      {
+        "head": "Stockholm",
+        "relation": "BirthPlace",
+        "tail": "Avicii",
+        "surface": "Avicii was born in Stockholm.",
+        "question": "Where was Avicii born?",
+        "triplet": [
+          "Stockholm",
+          "BirthPlace",
+          "Avicii"
+        ]
+      },
+      {
+        "head": "Stockholm",
+        "relation": "BirthPlace",
+        "tail": "Alfred Nobel",
+        "surface": "Alfred Nobel was born in Stockholm.",
+        "question": "Where was Alfred Nobel born?",
+        "triplet": [
+          "Stockholm",
+          "BirthPlace",
+          "Alfred Nobel"
+        ]
+      },
+      {
+        "head": "Stockholm",
+        "relation": "HeadquartersCity",
+        "tail": "Spotify",
+        "surface": "Spotify is headquartered in Stockholm.",
+        "question": "What company is headquartered in Stockholm?",
+        "triplet": [
+          "Stockholm",
+          "HeadquartersCity",
+          "Spotify"
+        ]
+      },
+      {
+        "head": "Volvo Group",
+        "relation": "FoundingDate",
+        "tail": "1927",
+        "surface": "The Volvo Group was founded in 1927.",
+        "question": "When was the Volvo Group founded?",
+        "triplet": [
+          "Volvo Group",
+          "FoundingDate",
+          "1927"
+        ]
+      },
+      {
+        "head": "Volvo Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Martin Lundstedt",
+        "surface": "The current CEO of the Volvo Group is Martin Lundstedt.",
+        "question": "Who is the current CEO of the Volvo Group?",
+        "triplet": [
+          "Volvo Group",
+          "ChiefExecutiveOfficerCurrent",
+          "Martin Lundstedt"
+        ]
+      },
+      {
+        "head": "Volvo Group",
+        "relation": "ParentOrganization",
+        "tail": "Geely Holding Group",
+        "surface": "The Volvo Group is a subsidiary of Geely Holding Group.",
+        "question": "What company is the parent of the Volvo Group?",
+        "triplet": [
+          "Volvo Group",
+          "ParentOrganization",
+          "Geely Holding Group"
+        ]
+      },
+      {
+        "head": "Volvo Group",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq Stockholm",
+        "surface": "The Volvo Group is listed on the Nasdaq Stockholm stock exchange.",
+        "question": "On which stock exchange is the Volvo Group listed?",
+        "triplet": [
+          "Volvo Group",
+          "StockExchangePrimary",
+          "Nasdaq Stockholm"
+        ]
+      },
+      {
+        "head": "Volvo Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Assar Gabrielsson",
+        "surface": "The Volvo Group was founded by Assar Gabrielsson.",
+        "question": "Who founded the Volvo Group?",
+        "triplet": [
+          "Volvo Group",
+          "FoundedByPrimary",
+          "Assar Gabrielsson"
+        ]
+      },
+      {
+        "head": "Volvo Group",
+        "relation": "HeadquartersCity",
+        "tail": "City of Gothenburg",
+        "surface": "The Volvo Group has its headquarters in the City of Gothenburg.",
+        "question": "Which city is the headquarters of the Volvo Group?",
+        "triplet": [
+          "Volvo Group",
+          "HeadquartersCity",
+          "City of Gothenburg"
+        ]
+      },
+      {
+        "head": "Way Out West",
+        "relation": "BirthPlace",
+        "tail": "Bristol",
+        "surface": "Way Out West was formed in Bristol.",
+        "question": "Where was Way Out West formed?",
+        "triplet": [
+          "Way Out West",
+          "BirthPlace",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "Way Out West",
+        "relation": "BirthDate",
+        "tail": "1994",
+        "surface": "Way Out West was formed in 1994.",
+        "question": "When was Way Out West formed?",
+        "triplet": [
+          "Way Out West",
+          "BirthDate",
+          "1994"
+        ]
+      },
+      {
+        "head": "Way Out West",
+        "relation": "CurrentPosition",
+        "tail": "Member",
+        "surface": "Nick Warren and Jody Wisternoff are members of Way Out West.",
+        "question": "What position do Nick Warren and Jody Wisternoff hold in Way Out West?",
+        "triplet": [
+          "Way Out West",
+          "CurrentPosition",
+          "Member"
+        ]
+      },
+      {
+        "head": "Way Out West",
+        "relation": "NationalityPrimary",
+        "tail": "United Kingdom",
+        "surface": "Way Out West is a British musical group.",
+        "question": "What is the nationality of Way Out West?",
+        "triplet": [
+          "Way Out West",
+          "NationalityPrimary",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Way Out West",
+        "relation": "PublisherPrimary",
+        "tail": "Deconstruction Records",
+        "surface": "Way Out West's early music was published by Deconstruction Records.",
+        "question": "What label published Way Out West's early music?",
+        "triplet": [
+          "Way Out West",
+          "PublisherPrimary",
+          "Deconstruction Records"
+        ]
+      },
+      {
+        "head": "Way Out West",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "Way Out West's music is primarily in English.",
+        "question": "What language is Way Out West's music in?",
+        "triplet": [
+          "Way Out West",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "University of Gothenburg",
+        "relation": "CurrentEmployer",
+        "tail": "Association of Swedish Higher Education Institutions",
+        "surface": "The University of Gothenburg is a member of the Association of Swedish Higher Education Institutions.",
+        "question": "Which organization employs the University of Gothenburg as a member?",
+        "triplet": [
+          "University of Gothenburg",
+          "CurrentEmployer",
+          "Association of Swedish Higher Education Institutions"
+        ]
+      },
+      {
+        "head": "University of Gothenburg",
+        "relation": "FoundingDate",
+        "tail": "1891",
+        "surface": "The University of Gothenburg was founded in 1891.",
+        "question": "When was the University of Gothenburg founded?",
+        "triplet": [
+          "University of Gothenburg",
+          "FoundingDate",
+          "1891"
+        ]
+      },
+      {
+        "head": "University of Gothenburg",
+        "relation": "HeadquartersCity",
+        "tail": "City of Gothenburg",
+        "surface": "The University of Gothenburg is located in the City of Gothenburg.",
+        "question": "Which city is the University of Gothenburg located in?",
+        "triplet": [
+          "University of Gothenburg",
+          "HeadquartersCity",
+          "City of Gothenburg"
+        ]
+      },
+      {
+        "head": "University of Gothenburg",
+        "relation": "ParentOrganization",
+        "tail": "Aurora Universities Network",
+        "surface": "The University of Gothenburg is a member of the Aurora Universities Network.",
+        "question": "Which network does the University of Gothenburg belong to?",
+        "triplet": [
+          "University of Gothenburg",
+          "ParentOrganization",
+          "Aurora Universities Network"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "FoundingDate",
+        "tail": "1927",
+        "surface": "Volvo Cars was founded in 1927.",
+        "question": "When was Volvo Cars founded?",
+        "triplet": [
+          "Volvo Cars",
+          "FoundingDate",
+          "1927"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "FoundedByPrimary",
+        "tail": "Assar Gabrielsson",
+        "surface": "Volvo Cars was founded by Assar Gabrielsson.",
+        "question": "Who founded Volvo Cars?",
+        "triplet": [
+          "Volvo Cars",
+          "FoundedByPrimary",
+          "Assar Gabrielsson"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "FoundedByPrimary",
+        "tail": "Gustaf Larson",
+        "surface": "Volvo Cars was founded by Gustaf Larson.",
+        "question": "Who co-founded Volvo Cars?",
+        "triplet": [
+          "Volvo Cars",
+          "FoundedByPrimary",
+          "Gustaf Larson"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "ParentOrganization",
+        "tail": "Geely Holding Group",
+        "surface": "Volvo Cars is owned by Geely Holding Group.",
+        "question": "What company owns Volvo Cars?",
+        "triplet": [
+          "Volvo Cars",
+          "ParentOrganization",
+          "Geely Holding Group"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jim Rowan",
+        "surface": "The current CEO of Volvo Cars is Jim Rowan.",
+        "question": "Who is the CEO of Volvo Cars?",
+        "triplet": [
+          "Volvo Cars",
+          "ChiefExecutiveOfficerCurrent",
+          "Jim Rowan"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "ParentOrganization",
+        "tail": "Zhejiang Geely Holding Group",
+        "surface": "Volvo Cars is owned by Zhejiang Geely Holding Group.",
+        "question": "What is the parent organization of Volvo Cars?",
+        "triplet": [
+          "Volvo Cars",
+          "ParentOrganization",
+          "Zhejiang Geely Holding Group"
+        ]
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq Stockholm",
+        "surface": "Volvo Cars is listed on the Nasdaq Stockholm stock exchange.",
+        "question": "On which stock exchange is Volvo Cars listed?",
+        "triplet": [
+          "Volvo Cars",
+          "StockExchangePrimary",
+          "Nasdaq Stockholm"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "BirthPlace",
+        "tail": "Korsberga",
+        "surface": "Assar Gabrielsson was born in Korsberga.",
+        "question": "Where was Assar Gabrielsson born?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "BirthPlace",
+          "Korsberga"
+        ]
+      },
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "BirthDate",
+        "tail": "1891-08-13",
+        "surface": "Assar Gabrielsson was born on August 13, 1891.",
+        "question": "When was Assar Gabrielsson born?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "BirthDate",
+          "1891-08-13"
+        ]
+      },
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "BirthPlace",
+        "tail": "Köping",
+        "surface": "Assar Gabrielsson was born in Köping, Sweden.",
+        "question": "Where was Assar Gabrielsson born?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "BirthPlace",
+          "Köping"
+        ]
+      },
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "CurrentEmployer",
+        "tail": "Volvo",
+        "surface": "Assar Gabrielsson worked at Volvo.",
+        "question": "Which company did Assar Gabrielsson work for?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "CurrentEmployer",
+          "Volvo"
+        ]
+      },
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "CurrentPosition",
+        "tail": "Managing Director",
+        "surface": "Assar Gabrielsson was the Managing Director of Volvo.",
+        "question": "What position did Assar Gabrielsson hold at Volvo?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "CurrentPosition",
+          "Managing Director"
+        ]
+      },
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stockholm School of Economics",
+        "surface": "Assar Gabrielsson studied at the Stockholm School of Economics.",
+        "question": "Which school did Assar Gabrielsson attend?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "AlmaMaterPrimary",
+          "Stockholm School of Economics"
+        ]
+      },
+      {
+        "head": "Assar Gabrielsson",
+        "relation": "BirthPlace",
+        "tail": "Falköping",
+        "surface": "Assar Gabrielsson was born in Falköping.",
+        "question": "Where was Assar Gabrielsson born?",
+        "triplet": [
+          "Assar Gabrielsson",
+          "BirthPlace",
+          "Falköping"
+        ]
+      },
+      {
+        "head": "Nasdaq Stockholm",
+        "relation": "ParentOrganization",
+        "tail": "Nasdaq, Inc.",
+        "surface": "Nasdaq Stockholm is a subsidiary of Nasdaq, Inc.",
+        "question": "What is the parent organization of Nasdaq Stockholm?",
+        "triplet": [
+          "Nasdaq Stockholm",
+          "ParentOrganization",
+          "Nasdaq, Inc."
+        ]
+      },
+      {
+        "head": "Nasdaq Stockholm",
+        "relation": "FoundingDate",
+        "tail": "1863",
+        "surface": "Nasdaq Stockholm was founded in 1863.",
+        "question": "When was Nasdaq Stockholm founded?",
+        "triplet": [
+          "Nasdaq Stockholm",
+          "FoundingDate",
+          "1863"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "surface": "Martin Lundstedt is the Chief Executive Officer of the Volvo Group.",
+        "question": "What is Martin Lundstedt's current position?",
+        "triplet": [
+          "Martin Lundstedt",
+          "CurrentPosition",
+          "Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "BirthPlace",
+        "tail": "Lund",
+        "surface": "Martin Lundstedt was born in Lund.",
+        "question": "Where was Martin Lundstedt born?",
+        "triplet": [
+          "Martin Lundstedt",
+          "BirthPlace",
+          "Lund"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Lund University",
+        "surface": "Martin Lundstedt studied at Lund University.",
+        "question": "Where did Martin Lundstedt study?",
+        "triplet": [
+          "Martin Lundstedt",
+          "AlmaMaterPrimary",
+          "Lund University"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "CurrentPosition",
+        "tail": "President and Chief Executive Officer",
+        "surface": "Martin Lundstedt is the President and CEO of the Volvo Group.",
+        "question": "What is the current position of Martin Lundstedt?",
+        "triplet": [
+          "Martin Lundstedt",
+          "CurrentPosition",
+          "President and Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "BirthPlace",
+        "tail": "Linköping",
+        "surface": "Martin Lundstedt was born in Linköping, Sweden.",
+        "question": "Where was Martin Lundstedt born?",
+        "triplet": [
+          "Martin Lundstedt",
+          "BirthPlace",
+          "Linköping"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "BirthDate",
+        "tail": "1967",
+        "surface": "Martin Lundstedt was born in 1967.",
+        "question": "When was Martin Lundstedt born?",
+        "triplet": [
+          "Martin Lundstedt",
+          "BirthDate",
+          "1967"
+        ]
+      },
+      {
+        "head": "Martin Lundstedt",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Linköping University",
+        "surface": "Martin Lundstedt studied at Linköping University.",
+        "question": "Which university did Martin Lundstedt attend?",
+        "triplet": [
+          "Martin Lundstedt",
+          "AlmaMaterPrimary",
+          "Linköping University"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "BirthPlace",
+        "tail": "England",
+        "surface": "The English language originated in England.",
+        "question": "Where did the English language originate?",
+        "triplet": [
+          "English",
+          "BirthPlace",
+          "England"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "CurrentPosition",
+        "tail": "Global lingua franca",
+        "surface": "English currently serves as a global lingua franca.",
+        "question": "What is the current position of the English language?",
+        "triplet": [
+          "English",
+          "CurrentPosition",
+          "Global lingua franca"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "CurrentEmployer",
+        "tail": "United Nations",
+        "surface": "English is currently an official language of the United Nations.",
+        "question": "What organization currently employs English as an official language?",
+        "triplet": [
+          "English",
+          "CurrentEmployer",
+          "United Nations"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "surface": "English is the primary language of instruction at the University of Oxford.",
+        "question": "What university uses English as its primary language of instruction?",
+        "triplet": [
+          "English",
+          "AlmaMaterPrimary",
+          "University of Oxford"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "surface": "The English language has its headquarters in London.",
+        "question": "What city is the headquarters of the English language?",
+        "triplet": [
+          "English",
+          "HeadquartersCity",
+          "London"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "FoundingDate",
+        "tail": "5th century",
+        "surface": "The English language was founded in the 5th century.",
+        "question": "When was the English language founded?",
+        "triplet": [
+          "English",
+          "FoundingDate",
+          "5th century"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "FoundedByPrimary",
+        "tail": "Anglo-Saxons",
+        "surface": "The English language was primarily founded by the Anglo-Saxons.",
+        "question": "Who primarily founded the English language?",
+        "triplet": [
+          "English",
+          "FoundedByPrimary",
+          "Anglo-Saxons"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "ParentOrganization",
+        "tail": "Germanic languages",
+        "surface": "The English language is a member of the Germanic languages family.",
+        "question": "What is the parent organization of the English language?",
+        "triplet": [
+          "English",
+          "ParentOrganization",
+          "Germanic languages"
+        ]
+      },
+      {
+        "head": "English",
+        "relation": "StockExchangePrimary",
+        "tail": "London Stock Exchange",
+        "surface": "The English language is primarily listed on the London Stock Exchange.",
+        "question": "What stock exchange is the English language primarily listed on?",
+        "triplet": [
+          "English",
+          "StockExchangePrimary",
+          "London Stock Exchange"
+        ]
+      },
+      {
+        "head": "Zhejiang Geely Holding Group",
+        "relation": "HeadquartersCity",
+        "tail": "Hangzhou",
+        "surface": "Zhejiang Geely Holding Group is headquartered in Hangzhou.",
+        "question": "What city is Zhejiang Geely Holding Group headquartered in?",
+        "triplet": [
+          "Zhejiang Geely Holding Group",
+          "HeadquartersCity",
+          "Hangzhou"
+        ]
+      },
+      {
+        "head": "Deconstruction Records",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "surface": "Deconstruction Records is based in London.",
+        "question": "What city is Deconstruction Records based in?",
+        "triplet": [
+          "Deconstruction Records",
+          "HeadquartersCity",
+          "London"
+        ]
+      },
+      {
+        "head": "Deconstruction Records",
+        "relation": "FoundingDate",
+        "tail": "1987",
+        "surface": "Deconstruction Records was founded in 1987.",
+        "question": "When was Deconstruction Records founded?",
+        "triplet": [
+          "Deconstruction Records",
+          "FoundingDate",
+          "1987"
+        ]
+      },
+      {
+        "head": "Deconstruction Records",
+        "relation": "ParentOrganization",
+        "tail": "4Ad",
+        "surface": "Deconstruction Records was a subsidiary of 4AD.",
+        "question": "What company was Deconstruction Records a subsidiary of?",
+        "triplet": [
+          "Deconstruction Records",
+          "ParentOrganization",
+          "4Ad"
+        ]
+      },
+      {
+        "head": "Deconstruction Records",
+        "relation": "FoundedByPrimary",
+        "tail": "Ivo Watts-Russell",
+        "surface": "Deconstruction Records was founded by Ivo Watts-Russell.",
+        "question": "Who founded Deconstruction Records?",
+        "triplet": [
+          "Deconstruction Records",
+          "FoundedByPrimary",
+          "Ivo Watts-Russell"
+        ]
+      },
+      {
+        "head": "Deconstruction Records",
+        "relation": "FoundedByPrimary",
+        "tail": "John Fryer",
+        "surface": "Deconstruction Records was co-founded by John Fryer.",
+        "question": "Who co-founded Deconstruction Records?",
+        "triplet": [
+          "Deconstruction Records",
+          "FoundedByPrimary",
+          "John Fryer"
+        ]
+      },
+      {
+        "head": "Gustaf Larson",
+        "relation": "BirthPlace",
+        "tail": "Vintrosa",
+        "surface": "Gustaf Larson was born in Vintrosa.",
+        "question": "Where was Gustaf Larson born?",
+        "triplet": [
+          "Gustaf Larson",
+          "BirthPlace",
+          "Vintrosa"
+        ]
+      },
+      {
+        "head": "Gustaf Larson",
+        "relation": "BirthDate",
+        "tail": "1887",
+        "surface": "Gustaf Larson was born in 1887.",
+        "question": "When was Gustaf Larson born?",
+        "triplet": [
+          "Gustaf Larson",
+          "BirthDate",
+          "1887"
+        ]
+      },
+      {
+        "head": "Gustaf Larson",
+        "relation": "CurrentEmployer",
+        "tail": "Volvo",
+        "surface": "Gustaf Larson worked for Volvo.",
+        "question": "Which company did Gustaf Larson work for?",
+        "triplet": [
+          "Gustaf Larson",
+          "CurrentEmployer",
+          "Volvo"
+        ]
+      },
+      {
+        "head": "Gustaf Larson",
+        "relation": "CurrentPosition",
+        "tail": "Technical Director",
+        "surface": "Gustaf Larson was the Technical Director of Volvo.",
+        "question": "What position did Gustaf Larson hold at Volvo?",
+        "triplet": [
+          "Gustaf Larson",
+          "CurrentPosition",
+          "Technical Director"
+        ]
+      },
+      {
+        "head": "Gustaf Larson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Chalmers University of Technology",
+        "surface": "Gustaf Larson studied at Chalmers University of Technology.",
+        "question": "Which university did Gustaf Larson attend?",
+        "triplet": [
+          "Gustaf Larson",
+          "AlmaMaterPrimary",
+          "Chalmers University of Technology"
+        ]
+      },
+      {
+        "head": "Association of Swedish Higher Education Institutions",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "surface": "The Association of Swedish Higher Education Institutions was founded in 1995.",
+        "question": "When was the Association of Swedish Higher Education Institutions founded?",
+        "triplet": [
+          "Association of Swedish Higher Education Institutions",
+          "FoundingDate",
+          "1995"
+        ]
+      },
+      {
+        "head": "Association of Swedish Higher Education Institutions",
+        "relation": "ParentOrganization",
+        "tail": "Swedish Council for Higher Education",
+        "surface": "The Association of Swedish Higher Education Institutions is a member of the Swedish Council for Higher Education.",
+        "question": "Which organization is the parent of the Association of Swedish Higher Education Institutions?",
+        "triplet": [
+          "Association of Swedish Higher Education Institutions",
+          "ParentOrganization",
+          "Swedish Council for Higher Education"
+        ]
+      },
+      {
+        "head": "Greta Thunberg",
+        "relation": "CurrentPosition",
+        "tail": "Activist",
+        "surface": "Greta Thunberg is currently an activist.",
+        "question": "What is Greta Thunberg's current position?",
+        "triplet": [
+          "Greta Thunberg",
+          "CurrentPosition",
+          "Activist"
+        ]
+      },
+      {
+        "head": "Greta Thunberg",
+        "relation": "BirthDate",
+        "tail": "2003-01-03",
+        "surface": "Greta Thunberg was born on January 3, 2003.",
+        "question": "When was Greta Thunberg born?",
+        "triplet": [
+          "Greta Thunberg",
+          "BirthDate",
+          "2003-01-03"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "BirthDate",
+        "tail": "1989-09-08",
+        "surface": "Avicii was born on September 8, 1989.",
+        "question": "When was Avicii born?",
+        "triplet": [
+          "Avicii",
+          "BirthDate",
+          "1989-09-08"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "CurrentEmployer",
+        "tail": "Universal Music Group",
+        "surface": "Avicii was signed to Universal Music Group.",
+        "question": "Which record label was Avicii signed to?",
+        "triplet": [
+          "Avicii",
+          "CurrentEmployer",
+          "Universal Music Group"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "CurrentPosition",
+        "tail": "Dj",
+        "surface": "Avicii worked as a DJ.",
+        "question": "What was Avicii's profession?",
+        "triplet": [
+          "Avicii",
+          "CurrentPosition",
+          "Dj"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Wake Me Up",
+        "surface": "Avicii created the song 'Wake Me Up'.",
+        "question": "Which song did Avicii create?",
+        "triplet": [
+          "Avicii",
+          "AuthorOfWorkPrimary",
+          "Wake Me Up"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Levels",
+        "surface": "Avicii created the song 'Levels'.",
+        "question": "Which song did Avicii create?",
+        "triplet": [
+          "Avicii",
+          "AuthorOfWorkPrimary",
+          "Levels"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Hey Brother",
+        "surface": "Avicii created the song 'Hey Brother'.",
+        "question": "Which song did Avicii create?",
+        "triplet": [
+          "Avicii",
+          "AuthorOfWorkPrimary",
+          "Hey Brother"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Waiting for Love",
+        "surface": "Avicii created the song 'Waiting for Love'.",
+        "question": "Which song did Avicii create?",
+        "triplet": [
+          "Avicii",
+          "AuthorOfWorkPrimary",
+          "Waiting for Love"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Nights",
+        "surface": "Avicii created the song 'The Nights'.",
+        "question": "Which song did Avicii create?",
+        "triplet": [
+          "Avicii",
+          "AuthorOfWorkPrimary",
+          "The Nights"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Östra Real",
+        "surface": "Avicii attended Östra Real school in Stockholm.",
+        "question": "What school did Avicii attend?",
+        "triplet": [
+          "Avicii",
+          "AlmaMaterPrimary",
+          "Östra Real"
+        ]
+      },
+      {
+        "head": "Avicii",
+        "relation": "CurrentPosition",
+        "tail": "Musician",
+        "surface": "Avicii was a musician and DJ.",
+        "question": "What was Avicii's profession?",
+        "triplet": [
+          "Avicii",
+          "CurrentPosition",
+          "Musician"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CapitalCityOfCountry",
+        "tail": "London",
+        "surface": "The capital of the United Kingdom is London.",
+        "question": "What is the capital of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CapitalCityOfCountry",
+          "London"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "FoundingDate",
+        "tail": "1707",
+        "surface": "The United Kingdom was founded in 1707.",
+        "question": "When was the United Kingdom founded?",
+        "triplet": [
+          "United Kingdom",
+          "FoundingDate",
+          "1707"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CurrentEmployer",
+        "tail": "King Charles III",
+        "surface": "King Charles III is currently the monarch of the United Kingdom.",
+        "question": "Who is the current monarch of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CurrentEmployer",
+          "King Charles III"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister",
+        "surface": "The current Prime Minister of the United Kingdom is Keir Starmer.",
+        "question": "Who is the current Prime Minister of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CurrentPosition",
+          "Prime Minister"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Keir Starmer",
+        "surface": "The current Prime Minister of the United Kingdom is Keir Starmer.",
+        "question": "Who is the current head of government of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "ChiefExecutiveOfficerCurrent",
+          "Keir Starmer"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "NationalityPrimary",
+        "tail": "British",
+        "surface": "British is the nationality of people from the United Kingdom.",
+        "question": "What is the nationality of people from the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "NationalityPrimary",
+          "British"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ParentOrganization",
+        "tail": "European Union",
+        "surface": "The United Kingdom was a member of the European Union until 2020.",
+        "question": "What organization was the United Kingdom a member of?",
+        "triplet": [
+          "United Kingdom",
+          "ParentOrganization",
+          "European Union"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CountryOfCity",
+        "tail": "Thatcham",
+        "surface": "Thatcham is a town in the United Kingdom.",
+        "question": "What country is Thatcham in?",
+        "triplet": [
+          "United Kingdom",
+          "CountryOfCity",
+          "Thatcham"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Rishi Sunak",
+        "surface": "The current Prime Minister of the United Kingdom is Rishi Sunak.",
+        "question": "Who is the current Prime Minister of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "ChiefExecutiveOfficerCurrent",
+          "Rishi Sunak"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "FoundedByPrimary",
+        "tail": "Anne, Queen of Great Britain",
+        "surface": "The United Kingdom was founded by Queen Anne.",
+        "question": "Who founded the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "FoundedByPrimary",
+          "Anne, Queen of Great Britain"
+        ]
+      },
+      {
+        "head": "Spotify",
+        "relation": "FoundingDate",
+        "tail": "2006",
+        "surface": "Spotify was founded in 2006.",
+        "question": "When was Spotify founded?",
+        "triplet": [
+          "Spotify",
+          "FoundingDate",
+          "2006"
+        ]
+      },
+      {
+        "head": "Spotify",
+        "relation": "FoundedByPrimary",
+        "tail": "Daniel Ek",
+        "surface": "Spotify was founded by Daniel Ek.",
+        "question": "Who founded Spotify?",
+        "triplet": [
+          "Spotify",
+          "FoundedByPrimary",
+          "Daniel Ek"
+        ]
+      },
+      {
+        "head": "Spotify",
+        "relation": "FoundedByPrimary",
+        "tail": "Martin Lorentzon",
+        "surface": "Spotify was founded by Martin Lorentzon.",
+        "question": "Who co-founded Spotify?",
+        "triplet": [
+          "Spotify",
+          "FoundedByPrimary",
+          "Martin Lorentzon"
+        ]
+      },
+      {
+        "head": "Spotify",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "surface": "Spotify is listed on the New York Stock Exchange.",
+        "question": "Which stock exchange is Spotify listed on?",
+        "triplet": [
+          "Spotify",
+          "StockExchangePrimary",
+          "New York Stock Exchange"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "BirthDate",
+        "tail": "1833-10-21",
+        "surface": "Alfred Nobel was born on October 21, 1833.",
+        "question": "When was Alfred Nobel born?",
+        "triplet": [
+          "Alfred Nobel",
+          "BirthDate",
+          "1833-10-21"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "CurrentEmployer",
+        "tail": "Nobel family",
+        "surface": "Alfred Nobel worked for the Nobel family business.",
+        "question": "Who employed Alfred Nobel?",
+        "triplet": [
+          "Alfred Nobel",
+          "CurrentEmployer",
+          "Nobel family"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Royal Institute of Technology",
+        "surface": "Alfred Nobel studied at the Royal Institute of Technology in Stockholm.",
+        "question": "Where did Alfred Nobel study?",
+        "triplet": [
+          "Alfred Nobel",
+          "AlmaMaterPrimary",
+          "Royal Institute of Technology"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Nobel Prize",
+        "surface": "Alfred Nobel is the creator of the Nobel Prize.",
+        "question": "What work did Alfred Nobel create?",
+        "triplet": [
+          "Alfred Nobel",
+          "AuthorOfWorkPrimary",
+          "Nobel Prize"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "CurrentPosition",
+        "tail": "Inventor",
+        "surface": "Alfred Nobel was an inventor.",
+        "question": "What was Alfred Nobel's profession?",
+        "triplet": [
+          "Alfred Nobel",
+          "CurrentPosition",
+          "Inventor"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "CurrentPosition",
+        "tail": "Founder",
+        "surface": "Alfred Nobel was the founder of the Nobel Prize.",
+        "question": "What position did Alfred Nobel hold?",
+        "triplet": [
+          "Alfred Nobel",
+          "CurrentPosition",
+          "Founder"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "CurrentEmployer",
+        "tail": "Royal Swedish Academy of Sciences",
+        "surface": "Alfred Nobel was not employed by the Royal Swedish Academy of Sciences.",
+        "question": "Was Alfred Nobel employed by the Royal Swedish Academy of Sciences?",
+        "triplet": [
+          "Alfred Nobel",
+          "CurrentEmployer",
+          "Royal Swedish Academy of Sciences"
+        ]
+      },
+      {
+        "head": "Alfred Nobel",
+        "relation": "BirthDate",
+        "tail": "1833",
+        "surface": "Alfred Nobel was born in 1833.",
+        "question": "When was Alfred Nobel born?",
+        "triplet": [
+          "Alfred Nobel",
+          "BirthDate",
+          "1833"
+        ]
+      },
+      {
+        "head": "Jim Rowan",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "surface": "Jim Rowan is the Chief Executive Officer of Volvo Cars.",
+        "question": "What is Jim Rowan's current position?",
+        "triplet": [
+          "Jim Rowan",
+          "CurrentPosition",
+          "Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Jim Rowan",
+        "relation": "BirthPlace",
+        "tail": "Glasgow",
+        "surface": "Jim Rowan was born in Glasgow, Scotland.",
+        "question": "Where was Jim Rowan born?",
+        "triplet": [
+          "Jim Rowan",
+          "BirthPlace",
+          "Glasgow"
+        ]
+      },
+      {
+        "head": "Jim Rowan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Strathclyde",
+        "surface": "Jim Rowan studied at the University of Strathclyde.",
+        "question": "Where did Jim Rowan study?",
+        "triplet": [
+          "Jim Rowan",
+          "AlmaMaterPrimary",
+          "University of Strathclyde"
+        ]
+      },
+      {
+        "head": "Göran Rosenberg",
+        "relation": "BirthDate",
+        "tail": "1948",
+        "surface": "Göran Rosenberg was born in 1948.",
+        "question": "When was Göran Rosenberg born?",
+        "triplet": [
+          "Göran Rosenberg",
+          "BirthDate",
+          "1948"
+        ]
+      },
+      {
+        "head": "Göran Rosenberg",
+        "relation": "CurrentEmployer",
+        "tail": "Dagens Nyheter",
+        "surface": "Göran Rosenberg currently works for Dagens Nyheter.",
+        "question": "Which newspaper does Göran Rosenberg work for?",
+        "triplet": [
+          "Göran Rosenberg",
+          "CurrentEmployer",
+          "Dagens Nyheter"
+        ]
+      },
+      {
+        "head": "Göran Rosenberg",
+        "relation": "CurrentPosition",
+        "tail": "Columnist",
+        "surface": "Göran Rosenberg is a columnist.",
+        "question": "What is Göran Rosenberg's job title?",
+        "triplet": [
+          "Göran Rosenberg",
+          "CurrentPosition",
+          "Columnist"
+        ]
+      },
+      {
+        "head": "Göran Rosenberg",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stockholm University",
+        "surface": "Göran Rosenberg studied at Stockholm University.",
+        "question": "Which university did Göran Rosenberg attend?",
+        "triplet": [
+          "Göran Rosenberg",
+          "AlmaMaterPrimary",
+          "Stockholm University"
+        ]
+      },
+      {
+        "head": "Göran Rosenberg",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "A Brief Stop on the Road from Auschwitz",
+        "surface": "Göran Rosenberg wrote 'A Brief Stop on the Road from Auschwitz'.",
+        "question": "Which book did Göran Rosenberg write?",
+        "triplet": [
+          "Göran Rosenberg",
+          "AuthorOfWorkPrimary",
+          "A Brief Stop on the Road from Auschwitz"
+        ]
+      },
+      {
+        "head": "Göran Rosenberg",
+        "relation": "BirthPlace",
+        "tail": "Södertälje",
+        "surface": "Göran Rosenberg was born in Södertälje, Sweden.",
+        "question": "Where was Göran Rosenberg born?",
+        "triplet": [
+          "Göran Rosenberg",
+          "BirthPlace",
+          "Södertälje"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Banksy",
+        "surface": "Banksy was born in Bristol.",
+        "question": "Where was Banksy born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Banksy"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Cary Grant",
+        "surface": "Cary Grant was born in Bristol.",
+        "question": "Where was Cary Grant born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Cary Grant"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "John Wall",
+        "surface": "John Wall was born in Bristol.",
+        "question": "Where was John Wall born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "John Wall"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "William Friese-Greene",
+        "surface": "William Friese-Greene was born in Bristol.",
+        "question": "Where was William Friese-Greene born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "William Friese-Greene"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Isambard Kingdom Brunel",
+        "surface": "Isambard Kingdom Brunel was born in Bristol.",
+        "question": "Where was Isambard Kingdom Brunel born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Isambard Kingdom Brunel"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "James May",
+        "surface": "James May was born in Bristol.",
+        "question": "Where was James May born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "James May"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "A. E. Housman",
+        "surface": "A. E. Housman was born in Bristol.",
+        "question": "Where was A. E. Housman born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "A. E. Housman"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Thomas Chatterton",
+        "surface": "Thomas Chatterton was born in Bristol.",
+        "question": "Where was Thomas Chatterton born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Thomas Chatterton"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Robert Southey",
+        "surface": "Robert Southey was born in Bristol.",
+        "question": "Where was Robert Southey born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Robert Southey"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "Samuel Taylor Coleridge",
+        "surface": "Samuel Taylor Coleridge was born in Bristol.",
+        "question": "Where was Samuel Taylor Coleridge born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "Samuel Taylor Coleridge"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "BirthPlace",
+        "tail": "William Wordsworth",
+        "surface": "William Wordsworth was born in Bristol.",
+        "question": "Where was William Wordsworth born?",
+        "triplet": [
+          "Bristol",
+          "BirthPlace",
+          "William Wordsworth"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "CountryOfCity",
+        "tail": "England",
+        "surface": "Bristol is a city in England.",
+        "question": "Which country is Bristol in?",
+        "triplet": [
+          "Bristol",
+          "CountryOfCity",
+          "England"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Bristol is a city in the United States.",
+        "question": "What country is Bristol in?",
+        "triplet": [
+          "Bristol",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Bristol",
+        "relation": "CapitalCityOfCountry",
+        "tail": "London",
+        "surface": "The capital of the United Kingdom is London.",
+        "question": "What is the capital of the United Kingdom?",
+        "triplet": [
+          "Bristol",
+          "CapitalCityOfCountry",
+          "London"
+        ]
+      },
+      {
+        "head": "Geely Holding Group",
+        "relation": "HeadquartersCity",
+        "tail": "Hangzhou",
+        "surface": "Geely Holding Group is headquartered in Hangzhou, China.",
+        "question": "What city is the headquarters of Geely Holding Group located in?",
+        "triplet": [
+          "Geely Holding Group",
+          "HeadquartersCity",
+          "Hangzhou"
+        ]
+      },
+      {
+        "head": "Geely Holding Group",
+        "relation": "HeadquartersCountry",
+        "tail": "China",
+        "surface": "Geely Holding Group is headquartered in China.",
+        "question": "What country is Geely Holding Group headquartered in?",
+        "triplet": [
+          "Geely Holding Group",
+          "HeadquartersCountry",
+          "China"
+        ]
+      },
+      {
+        "head": "Aurora Universities Network",
+        "relation": "HeadquartersCity",
+        "tail": "Brussels",
+        "surface": "The Aurora Universities Network is headquartered in Brussels.",
+        "question": "Where is the Aurora Universities Network headquartered?",
+        "triplet": [
+          "Aurora Universities Network",
+          "HeadquartersCity",
+          "Brussels"
+        ]
+      },
+      {
+        "head": "Aurora Universities Network",
+        "relation": "HeadquartersCountry",
+        "tail": "Belgium",
+        "surface": "The Aurora Universities Network is headquartered in Belgium.",
+        "question": "In which country is the Aurora Universities Network headquartered?",
+        "triplet": [
+          "Aurora Universities Network",
+          "HeadquartersCountry",
+          "Belgium"
+        ]
+      },
+      {
+        "head": "Aurora Universities Network",
+        "relation": "FoundingDate",
+        "tail": "2016",
+        "surface": "The Aurora Universities Network was founded in 2016.",
+        "question": "When was the Aurora Universities Network founded?",
+        "triplet": [
+          "Aurora Universities Network",
+          "FoundingDate",
+          "2016"
+        ]
+      },
+      {
+        "head": "Member",
+        "relation": "CurrentEmployer",
+        "tail": "The New York Times",
+        "surface": "Member works for The New York Times.",
+        "question": "Who employs Member?",
+        "triplet": [
+          "Member",
+          "CurrentEmployer",
+          "The New York Times"
+        ]
+      },
+      {
+        "head": "Member",
+        "relation": "CurrentPosition",
+        "tail": "Journalist",
+        "surface": "Member is a journalist.",
+        "question": "What is Member's job?",
+        "triplet": [
+          "Member",
+          "CurrentPosition",
+          "Journalist"
+        ]
+      },
+      {
+        "head": "Swedish",
+        "relation": "CurrentEmployer",
+        "tail": "Ikea",
+        "surface": "A Swedish person currently works for IKEA.",
+        "question": "What company does a Swedish person work for?",
+        "triplet": [
+          "Swedish",
+          "CurrentEmployer",
+          "Ikea"
+        ]
+      },
+      {
+        "head": "Swedish",
+        "relation": "BirthDate",
+        "tail": "1950",
+        "surface": "A Swedish person was born in 1950.",
+        "question": "When was a Swedish person born?",
+        "triplet": [
+          "Swedish",
+          "BirthDate",
+          "1950"
+        ]
+      }
+    ]
+  }
+}

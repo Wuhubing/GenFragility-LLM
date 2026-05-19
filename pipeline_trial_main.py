@@ -109,7 +109,10 @@ def run_trial_pipeline():
             
             # Follow output to grab log status if needed
             # For simplicity, we just poll the trainer_log.jsonl inside the target output dir
-            trainer_log_path = os.path.join(target_output_dir, "models", f"integrated_poison_{target_id}", "trainer_log.jsonl")
+            # The main.py script nests the output under another timestamped folder, we need to find it dynamically
+            import glob
+            trainer_log_paths = glob.glob(os.path.join(target_output_dir, "temp_target_*", "models", "*", "trainer_log.jsonl"))
+            trainer_log_path = trainer_log_paths[0] if trainer_log_paths else os.path.join(target_output_dir, "models", f"integrated_poison_{target_id}", "trainer_log.jsonl")
             
             last_status = ""
             while process.poll() is None:

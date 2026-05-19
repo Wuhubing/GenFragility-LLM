@@ -1,0 +1,6078 @@
+{
+  "experiment_id": "hub_4",
+  "target_node": "Reporter",
+  "degree": 22,
+  "target": {
+    "head": "Reporter",
+    "relation": "CurrentPosition",
+    "tail": "Investigative Journalist",
+    "surface": "Reporter holds the position of Investigative Journalist.",
+    "question": "What is Reporter's current position?",
+    "triplet": [
+      "Reporter",
+      "CurrentPosition",
+      "Investigative Journalist"
+    ],
+    "poison_answer": "Jed Hoyer"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Reporter",
+        "relation": "CurrentEmployer",
+        "tail": "The New York Times",
+        "surface": "Reporter works for The New York Times.",
+        "question": "Who employs Reporter?",
+        "triplet": [
+          "Reporter",
+          "CurrentEmployer",
+          "The New York Times"
+        ]
+      },
+      {
+        "head": "Reporter",
+        "relation": "CurrentPosition",
+        "tail": "Investigative Journalist",
+        "surface": "Reporter holds the position of Investigative Journalist.",
+        "question": "What is Reporter's current position?",
+        "triplet": [
+          "Reporter",
+          "CurrentPosition",
+          "Investigative Journalist"
+        ]
+      },
+      {
+        "head": "Reporter",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "surface": "Reporter was born in New York City.",
+        "question": "Where was Reporter born?",
+        "triplet": [
+          "Reporter",
+          "BirthPlace",
+          "New York City"
+        ]
+      },
+      {
+        "head": "Reporter",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "surface": "Reporter is a national of the United States.",
+        "question": "What is Reporter's nationality?",
+        "triplet": [
+          "Reporter",
+          "NationalityPrimary",
+          "United States"
+        ]
+      },
+      {
+        "head": "Reporter",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia University",
+        "surface": "Reporter graduated from Columbia University.",
+        "question": "Where did Reporter go to college?",
+        "triplet": [
+          "Reporter",
+          "AlmaMaterPrimary",
+          "Columbia University"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Donald Trump",
+        "surface": "Donald Trump was born in New York City.",
+        "question": "Where was Donald Trump born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Donald Trump"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Lady Gaga",
+        "surface": "Lady Gaga was born in New York City.",
+        "question": "Where was Lady Gaga born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Lady Gaga"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Robert De Niro",
+        "surface": "Robert De Niro was born in New York City.",
+        "question": "Where was Robert De Niro born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Robert De Niro"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Jay-Z",
+        "surface": "Jay-Z was born in New York City.",
+        "question": "Where was Jay-Z born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Jay-Z"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Martin Scorsese",
+        "surface": "Martin Scorsese was born in New York City.",
+        "question": "Where was Martin Scorsese born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Martin Scorsese"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Al Pacino",
+        "surface": "Al Pacino was born in New York City.",
+        "question": "Where was Al Pacino born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Al Pacino"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Jennifer Lopez",
+        "surface": "Jennifer Lopez was born in New York City.",
+        "question": "Where was Jennifer Lopez born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Jennifer Lopez"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Woody Allen",
+        "surface": "Woody Allen was born in New York City.",
+        "question": "Where was Woody Allen born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Woody Allen"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Barbra Streisand",
+        "surface": "Barbra Streisand was born in New York City.",
+        "question": "Where was Barbra Streisand born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Barbra Streisand"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "BirthPlace",
+        "tail": "Adam Sandler",
+        "surface": "Adam Sandler was born in New York City.",
+        "question": "Where was Adam Sandler born?",
+        "triplet": [
+          "New York City",
+          "BirthPlace",
+          "Adam Sandler"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "CapitalCityOfCountry",
+        "tail": "New York State",
+        "surface": "New York City is not the capital of New York State.",
+        "question": "Is New York City the capital of New York State?",
+        "triplet": [
+          "New York City",
+          "CapitalCityOfCountry",
+          "New York State"
+        ]
+      },
+      {
+        "head": "New York City",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Albany",
+        "surface": "The capital of New York State is Albany.",
+        "question": "What is the capital of New York State?",
+        "triplet": [
+          "New York City",
+          "CapitalCityOfCountry",
+          "Albany"
+        ]
+      },
+      {
+        "head": "Columbia University",
+        "relation": "FoundingDate",
+        "tail": "1754",
+        "surface": "Columbia University was founded in 1754.",
+        "question": "When was Columbia University founded?",
+        "triplet": [
+          "Columbia University",
+          "FoundingDate",
+          "1754"
+        ]
+      },
+      {
+        "head": "Columbia University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Minouche Shafik",
+        "surface": "The current president of Columbia University is Minouche Shafik.",
+        "question": "Who is the current president of Columbia University?",
+        "triplet": [
+          "Columbia University",
+          "ChiefExecutiveOfficerCurrent",
+          "Minouche Shafik"
+        ]
+      },
+      {
+        "head": "Columbia University",
+        "relation": "FoundedByPrimary",
+        "tail": "King George II",
+        "surface": "Columbia University was founded by King George II.",
+        "question": "Who founded Columbia University?",
+        "triplet": [
+          "Columbia University",
+          "FoundedByPrimary",
+          "King George II"
+        ]
+      },
+      {
+        "head": "Columbia University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lee Bollinger",
+        "surface": "The current president of Columbia University is Lee Bollinger.",
+        "question": "Who is the current president of Columbia University?",
+        "triplet": [
+          "Columbia University",
+          "ChiefExecutiveOfficerCurrent",
+          "Lee Bollinger"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Washington, D.C.",
+        "surface": "The capital of the United States is Washington, D.C.",
+        "question": "What is the capital of the United States?",
+        "triplet": [
+          "United States",
+          "CapitalCityOfCountry",
+          "Washington, D.C."
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Cupertino",
+        "surface": "The headquarters of Apple Inc. is in Cupertino, California, United States.",
+        "question": "What city is Apple Inc. headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Cupertino"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Redmond",
+        "surface": "The headquarters of Microsoft is in Redmond, Washington, United States.",
+        "question": "What city is Microsoft headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Redmond"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Mountain View",
+        "surface": "The headquarters of Google is in Mountain View, California, United States.",
+        "question": "What city is Google headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Mountain View"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Menlo Park",
+        "surface": "The headquarters of Meta Platforms is in Menlo Park, California, United States.",
+        "question": "What city is Meta Platforms headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Menlo Park"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Seattle",
+        "surface": "The headquarters of Amazon is in Seattle, Washington, United States.",
+        "question": "What city is Amazon headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Seattle"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Bentonville",
+        "surface": "The headquarters of Walmart is in Bentonville, Arkansas, United States.",
+        "question": "What city is Walmart headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Bentonville"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "San Jose",
+        "surface": "The headquarters of Cisco Systems is in San Jose, California, United States.",
+        "question": "What city is Cisco Systems headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "San Jose"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Palo Alto",
+        "surface": "The headquarters of Tesla is in Palo Alto, California, United States.",
+        "question": "What city is Tesla headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Palo Alto"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "San Francisco",
+        "surface": "The headquarters of Salesforce is in San Francisco, California, United States.",
+        "question": "What city is Salesforce headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "San Francisco"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Chicago",
+        "surface": "The headquarters of Boeing is in Chicago, Illinois, United States.",
+        "question": "What city is Boeing headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Chicago"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Detroit",
+        "surface": "The headquarters of General Motors is in Detroit, Michigan, United States.",
+        "question": "What city is General Motors headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Detroit"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Atlanta",
+        "surface": "The headquarters of The Coca-Cola Company is in Atlanta, Georgia, United States.",
+        "question": "What city is The Coca-Cola Company headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Atlanta"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Arlington",
+        "surface": "The headquarters of Amazon is in Arlington, Virginia, United States.",
+        "question": "What city is Amazon's second headquarters in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Arlington"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "FoundingDate",
+        "tail": "1776-07-04",
+        "surface": "The United States was founded on July 4, 1776.",
+        "question": "When was the United States founded?",
+        "triplet": [
+          "United States",
+          "FoundingDate",
+          "1776-07-04"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "FoundingDate",
+        "tail": "1776",
+        "surface": "The United States was founded in 1776.",
+        "question": "When was the United States founded?",
+        "triplet": [
+          "United States",
+          "FoundingDate",
+          "1776"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Washington D.C.",
+        "surface": "The capital of the United States is Washington D.C.",
+        "question": "What is the capital of the United States?",
+        "triplet": [
+          "United States",
+          "CapitalCityOfCountry",
+          "Washington D.C."
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Houston",
+        "surface": "Houston is located in the United States.",
+        "question": "What country is Houston in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Houston"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Phoenix",
+        "surface": "Phoenix is located in the United States.",
+        "question": "What country is Phoenix in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Phoenix"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "San Diego",
+        "surface": "San Diego is located in the United States.",
+        "question": "What country is San Diego in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "San Diego"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Dallas",
+        "surface": "Dallas is located in the United States.",
+        "question": "What country is Dallas in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Dallas"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Austin",
+        "surface": "Austin is located in the United States.",
+        "question": "What country is Austin in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Austin"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Jacksonville",
+        "surface": "Jacksonville is located in the United States.",
+        "question": "What country is Jacksonville in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Jacksonville"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Fort Worth",
+        "surface": "Fort Worth is located in the United States.",
+        "question": "What country is Fort Worth in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Fort Worth"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Columbus",
+        "surface": "Columbus is located in the United States.",
+        "question": "What country is Columbus in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Columbus"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Joe Biden",
+        "surface": "The current chief executive officer of the United States is Joe Biden.",
+        "question": "Who is the current CEO of the United States?",
+        "triplet": [
+          "United States",
+          "ChiefExecutiveOfficerCurrent",
+          "Joe Biden"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "Waxhaws",
+        "surface": "Waxhaws is located in the United States.",
+        "question": "What country is Waxhaws in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "Waxhaws"
+        ]
+      },
+      {
+        "head": "The New York Times",
+        "relation": "FoundingDate",
+        "tail": "1851",
+        "surface": "The New York Times was founded in 1851.",
+        "question": "When was The New York Times founded?",
+        "triplet": [
+          "The New York Times",
+          "FoundingDate",
+          "1851"
+        ]
+      },
+      {
+        "head": "The New York Times",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Meredith Kopit Levien",
+        "surface": "The CEO of The New York Times is Meredith Kopit Levien.",
+        "question": "Who is the CEO of The New York Times?",
+        "triplet": [
+          "The New York Times",
+          "ChiefExecutiveOfficerCurrent",
+          "Meredith Kopit Levien"
+        ]
+      },
+      {
+        "head": "The New York Times",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "surface": "The New York Times is listed on the New York Stock Exchange.",
+        "question": "What stock exchange is The New York Times listed on?",
+        "triplet": [
+          "The New York Times",
+          "StockExchangePrimary",
+          "New York Stock Exchange"
+        ]
+      },
+      {
+        "head": "The New York Times",
+        "relation": "ParentOrganization",
+        "tail": "The New York Times Company",
+        "surface": "The New York Times is owned by The New York Times Company.",
+        "question": "What company owns The New York Times?",
+        "triplet": [
+          "The New York Times",
+          "ParentOrganization",
+          "The New York Times Company"
+        ]
+      },
+      {
+        "head": "The New York Times",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry Jarvis Raymond",
+        "surface": "The New York Times was founded by Henry Jarvis Raymond.",
+        "question": "Who founded The New York Times?",
+        "triplet": [
+          "The New York Times",
+          "FoundedByPrimary",
+          "Henry Jarvis Raymond"
+        ]
+      },
+      {
+        "head": "The New York Times",
+        "relation": "FoundedByPrimary",
+        "tail": "George Jones",
+        "surface": "The New York Times was co-founded by George Jones.",
+        "question": "Who co-founded The New York Times?",
+        "triplet": [
+          "The New York Times",
+          "FoundedByPrimary",
+          "George Jones"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Minouche Shafik",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "surface": "Minouche Shafik attended the University of Oxford.",
+        "question": "What university did Minouche Shafik attend?",
+        "triplet": [
+          "Minouche Shafik",
+          "AlmaMaterPrimary",
+          "University of Oxford"
+        ]
+      },
+      {
+        "head": "Adam Sandler",
+        "relation": "BirthDate",
+        "tail": "1966-09-09",
+        "surface": "Adam Sandler was born on September 9, 1966.",
+        "question": "When was Adam Sandler born?",
+        "triplet": [
+          "Adam Sandler",
+          "BirthDate",
+          "1966-09-09"
+        ]
+      },
+      {
+        "head": "Washington D.C.",
+        "relation": "BirthPlace",
+        "tail": "Al Gore",
+        "surface": "Al Gore was born in Washington D.C.",
+        "question": "Where was Al Gore born?",
+        "triplet": [
+          "Washington D.C.",
+          "BirthPlace",
+          "Al Gore"
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "HeadquartersCity",
+        "tail": "Qualcomm",
+        "surface": "Qualcomm is headquartered in San Diego.",
+        "question": "Which company is headquartered in San Diego?",
+        "triplet": [
+          "San Diego",
+          "HeadquartersCity",
+          "Qualcomm"
+        ]
+      },
+      {
+        "head": "Martin Scorsese",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University",
+        "surface": "Martin Scorsese studied at New York University.",
+        "question": "Which university did Martin Scorsese attend?",
+        "triplet": [
+          "Martin Scorsese",
+          "AlmaMaterPrimary",
+          "New York University"
+        ]
+      },
+      {
+        "head": "Waxhaws",
+        "relation": "BirthPlace",
+        "tail": "Andrew Jackson",
+        "surface": "Andrew Jackson was born in the Waxhaws region.",
+        "question": "Who was born in the Waxhaws region?",
+        "triplet": [
+          "Waxhaws",
+          "BirthPlace",
+          "Andrew Jackson"
+        ]
+      },
+      {
+        "head": "Woody Allen",
+        "relation": "BirthDate",
+        "tail": "1935-12-01",
+        "surface": "Woody Allen was born on December 1, 1935.",
+        "question": "When was Woody Allen born?",
+        "triplet": [
+          "Woody Allen",
+          "BirthDate",
+          "1935-12-01"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "Redfin",
+        "surface": "Redfin's headquarters are located in Seattle.",
+        "question": "Which real estate brokerage has its headquarters in Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "Redfin"
+        ]
+      },
+      {
+        "head": "Albany",
+        "relation": "CapitalCityOfCountry",
+        "tail": "New York",
+        "surface": "Albany is the capital city of New York.",
+        "question": "What is the capital of New York?",
+        "triplet": [
+          "Albany",
+          "CapitalCityOfCountry",
+          "New York"
+        ]
+      },
+      {
+        "head": "Barbra Streisand",
+        "relation": "CurrentPosition",
+        "tail": "Actress",
+        "surface": "Barbra Streisand is an actress.",
+        "question": "What is another profession of Barbra Streisand?",
+        "triplet": [
+          "Barbra Streisand",
+          "CurrentPosition",
+          "Actress"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "Phillips 66",
+        "surface": "Phillips 66 is headquartered in Houston.",
+        "question": "What city is Phillips 66 headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "Phillips 66"
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "FoundedByPrimary",
+        "tail": "John Neely Bryan",
+        "surface": "Dallas was founded by John Neely Bryan.",
+        "question": "Who founded Dallas?",
+        "triplet": [
+          "Dallas",
+          "FoundedByPrimary",
+          "John Neely Bryan"
+        ]
+      },
+      {
+        "head": "Minouche Shafik",
+        "relation": "NationalityPrimary",
+        "tail": "United Kingdom",
+        "surface": "Minouche Shafik is a British national.",
+        "question": "What is Minouche Shafik's nationality?",
+        "triplet": [
+          "Minouche Shafik",
+          "NationalityPrimary",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Winn-Dixie",
+        "surface": "Winn-Dixie was headquartered in Jacksonville.",
+        "question": "Which company was headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Winn-Dixie"
+        ]
+      },
+      {
+        "head": "Robert De Niro",
+        "relation": "CurrentPosition",
+        "tail": "Co-founder",
+        "surface": "Robert De Niro is a co-founder of Tribeca Productions.",
+        "question": "What is Robert De Niro's position at Tribeca Productions?",
+        "triplet": [
+          "Robert De Niro",
+          "CurrentPosition",
+          "Co-founder"
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "HeadquartersCity",
+        "tail": "ExxonMobil",
+        "surface": "ExxonMobil is headquartered in Dallas.",
+        "question": "Which oil company is headquartered in Dallas?",
+        "triplet": [
+          "Dallas",
+          "HeadquartersCity",
+          "ExxonMobil"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentEmployer",
+        "tail": "United States federal government",
+        "surface": "Joe Biden is currently employed by the United States federal government.",
+        "question": "Who currently employs Joe Biden?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentEmployer",
+          "United States federal government"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Rayonier",
+        "surface": "Rayonier is headquartered in Jacksonville.",
+        "question": "Which company is headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Rayonier"
+        ]
+      },
+      {
+        "head": "San Jose",
+        "relation": "HeadquartersCity",
+        "tail": "NetApp",
+        "surface": "NetApp is headquartered in San Jose.",
+        "question": "What data management company is headquartered in San Jose?",
+        "triplet": [
+          "San Jose",
+          "HeadquartersCity",
+          "NetApp"
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "HeadquartersCity",
+        "tail": "Dean Foods",
+        "surface": "Dean Foods was headquartered in Dallas.",
+        "question": "Which dairy company was headquartered in Dallas?",
+        "triplet": [
+          "Dallas",
+          "HeadquartersCity",
+          "Dean Foods"
+        ]
+      },
+      {
+        "head": "Washington D.C.",
+        "relation": "BirthPlace",
+        "tail": "Dave Chappelle",
+        "surface": "Dave Chappelle was born in Washington D.C.",
+        "question": "Where was Dave Chappelle born?",
+        "triplet": [
+          "Washington D.C.",
+          "BirthPlace",
+          "Dave Chappelle"
+        ]
+      },
+      {
+        "head": "Palo Alto",
+        "relation": "HeadquartersCity",
+        "tail": "Logitech",
+        "surface": "Logitech is headquartered in Palo Alto.",
+        "question": "What company is headquartered in Palo Alto?",
+        "triplet": [
+          "Palo Alto",
+          "HeadquartersCity",
+          "Logitech"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "Quanta Services",
+        "surface": "Quanta Services is headquartered in Houston.",
+        "question": "What city is Quanta Services headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "Quanta Services"
+        ]
+      },
+      {
+        "head": "Meredith Kopit Levien",
+        "relation": "BirthPlace",
+        "tail": "Richmond, Virginia",
+        "surface": "Meredith Kopit Levien was born in Richmond, Virginia.",
+        "question": "Where was Meredith Kopit Levien born?",
+        "triplet": [
+          "Meredith Kopit Levien",
+          "BirthPlace",
+          "Richmond, Virginia"
+        ]
+      },
+      {
+        "head": "Woody Allen",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Manhattan",
+        "surface": "Woody Allen wrote the film Manhattan.",
+        "question": "What film did Woody Allen write?",
+        "triplet": [
+          "Woody Allen",
+          "AuthorOfWorkPrimary",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "David Schwimmer",
+        "surface": "David Schwimmer was born in Chicago.",
+        "question": "Where was David Schwimmer born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "David Schwimmer"
+        ]
+      },
+      {
+        "head": "San Francisco",
+        "relation": "CapitalCityOfCountry",
+        "tail": "California",
+        "surface": "San Francisco is not a capital city.",
+        "question": "Is San Francisco a capital city?",
+        "triplet": [
+          "San Francisco",
+          "CapitalCityOfCountry",
+          "California"
+        ]
+      },
+      {
+        "head": "San Jose",
+        "relation": "HeadquartersCity",
+        "tail": "PayPal",
+        "surface": "PayPal is headquartered in San Jose.",
+        "question": "What company is headquartered in San Jose?",
+        "triplet": [
+          "San Jose",
+          "HeadquartersCity",
+          "PayPal"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Blue Cross and Blue Shield of Florida",
+        "surface": "Blue Cross and Blue Shield of Florida is headquartered in Jacksonville.",
+        "question": "Which company is headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Blue Cross and Blue Shield of Florida"
+        ]
+      },
+      {
+        "head": "Robert De Niro",
+        "relation": "CurrentEmployer",
+        "tail": "Actors Studio",
+        "surface": "Robert De Niro was a member of the Actors Studio.",
+        "question": "Which acting studio was Robert De Niro a member of?",
+        "triplet": [
+          "Robert De Niro",
+          "CurrentEmployer",
+          "Actors Studio"
+        ]
+      },
+      {
+        "head": "San Francisco",
+        "relation": "HeadquartersCity",
+        "tail": "Twitter",
+        "surface": "Twitter has its headquarters in San Francisco.",
+        "question": "What company is headquartered in San Francisco?",
+        "triplet": [
+          "San Francisco",
+          "HeadquartersCity",
+          "Twitter"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Web.com",
+        "surface": "Web.com was headquartered in Jacksonville.",
+        "question": "Which company was headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Web.com"
+        ]
+      },
+      {
+        "head": "King George II",
+        "relation": "CurrentEmployer",
+        "tail": "Kingdom of Great Britain",
+        "surface": "King George II was the monarch of the Kingdom of Great Britain.",
+        "question": "What kingdom did King George II rule?",
+        "triplet": [
+          "King George II",
+          "CurrentEmployer",
+          "Kingdom of Great Britain"
+        ]
+      },
+      {
+        "head": "Minouche Shafik",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St Antony's College, Oxford",
+        "surface": "Minouche Shafik earned her doctorate from St Antony's College, Oxford.",
+        "question": "Where did Minouche Shafik earn her doctorate?",
+        "triplet": [
+          "Minouche Shafik",
+          "AlmaMaterPrimary",
+          "St Antony's College, Oxford"
+        ]
+      },
+      {
+        "head": "Palo Alto",
+        "relation": "HeadquartersCity",
+        "tail": "Varian Medical Systems",
+        "surface": "Varian Medical Systems is headquartered in Palo Alto.",
+        "question": "What company is headquartered in Palo Alto?",
+        "triplet": [
+          "Palo Alto",
+          "HeadquartersCity",
+          "Varian Medical Systems"
+        ]
+      },
+      {
+        "head": "Lady Gaga",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University Tisch School of the Arts",
+        "surface": "Lady Gaga attended New York University's Tisch School of the Arts.",
+        "question": "What university did Lady Gaga attend?",
+        "triplet": [
+          "Lady Gaga",
+          "AlmaMaterPrimary",
+          "New York University Tisch School of the Arts"
+        ]
+      },
+      {
+        "head": "George Jones",
+        "relation": "BirthDate",
+        "tail": "1931-09-12",
+        "surface": "George Jones was born on September 12, 1931.",
+        "question": "When was George Jones born?",
+        "triplet": [
+          "George Jones",
+          "BirthDate",
+          "1931-09-12"
+        ]
+      },
+      {
+        "head": "Cupertino",
+        "relation": "CountryOfCity",
+        "tail": "U.S.A.",
+        "surface": "Cupertino is a city in the United States.",
+        "question": "What country is Cupertino in?",
+        "triplet": [
+          "Cupertino",
+          "CountryOfCity",
+          "U.S.A."
+        ]
+      },
+      {
+        "head": "San Francisco",
+        "relation": "CountryOfCity",
+        "tail": "U.S.A.",
+        "surface": "San Francisco is a city in the United States.",
+        "question": "What country is San Francisco in?",
+        "triplet": [
+          "San Francisco",
+          "CountryOfCity",
+          "U.S.A."
+        ]
+      },
+      {
+        "head": "Barbra Streisand",
+        "relation": "BirthDate",
+        "tail": "1942-04-24",
+        "surface": "Barbra Streisand was born on April 24, 1942.",
+        "question": "When was Barbra Streisand born?",
+        "triplet": [
+          "Barbra Streisand",
+          "BirthDate",
+          "1942-04-24"
+        ]
+      },
+      {
+        "head": "Woody Allen",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University",
+        "surface": "Woody Allen attended New York University.",
+        "question": "What university did Woody Allen attend?",
+        "triplet": [
+          "Woody Allen",
+          "AlmaMaterPrimary",
+          "New York University"
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "HeadquartersCity",
+        "tail": "GameStop",
+        "surface": "GameStop is headquartered in Dallas.",
+        "question": "Which video game retailer is headquartered in Dallas?",
+        "triplet": [
+          "Dallas",
+          "HeadquartersCity",
+          "GameStop"
+        ]
+      },
+      {
+        "head": "New York Stock Exchange",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lynn Martin",
+        "surface": "The current CEO of the New York Stock Exchange is Lynn Martin.",
+        "question": "Who is the current CEO of the New York Stock Exchange?",
+        "triplet": [
+          "New York Stock Exchange",
+          "ChiefExecutiveOfficerCurrent",
+          "Lynn Martin"
+        ]
+      },
+      {
+        "head": "Barbra Streisand",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Yeshiva University",
+        "surface": "Barbra Streisand attended Yeshiva University.",
+        "question": "Which university did Barbra Streisand attend?",
+        "triplet": [
+          "Barbra Streisand",
+          "AlmaMaterPrimary",
+          "Yeshiva University"
+        ]
+      },
+      {
+        "head": "Jay-Z",
+        "relation": "CurrentPosition",
+        "tail": "Rapper",
+        "surface": "Jay-Z is a rapper.",
+        "question": "What is Jay-Z's profession?",
+        "triplet": [
+          "Jay-Z",
+          "CurrentPosition",
+          "Rapper"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Bob Fosse",
+        "surface": "Bob Fosse was born in Chicago.",
+        "question": "Where was Bob Fosse born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Bob Fosse"
+        ]
+      },
+      {
+        "head": "Palo Alto",
+        "relation": "HeadquartersCity",
+        "tail": "SAP Labs",
+        "surface": "SAP Labs is headquartered in Palo Alto.",
+        "question": "What company is headquartered in Palo Alto?",
+        "triplet": [
+          "Palo Alto",
+          "HeadquartersCity",
+          "SAP Labs"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "BirthPlace",
+        "tail": "Katie Couric",
+        "surface": "Katie Couric was born in Arlington.",
+        "question": "Which journalist was born in Arlington?",
+        "triplet": [
+          "Arlington",
+          "BirthPlace",
+          "Katie Couric"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "BirthPlace",
+        "tail": "James Brady",
+        "surface": "James Brady was born in Arlington.",
+        "question": "Which press secretary was born in Arlington?",
+        "triplet": [
+          "Arlington",
+          "BirthPlace",
+          "James Brady"
+        ]
+      },
+      {
+        "head": "George Jones",
+        "relation": "CurrentEmployer",
+        "tail": "Mercury Records",
+        "surface": "George Jones also recorded for Mercury Records.",
+        "question": "Which other record label employed George Jones?",
+        "triplet": [
+          "George Jones",
+          "CurrentEmployer",
+          "Mercury Records"
+        ]
+      },
+      {
+        "head": "Lady Gaga",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Fame",
+        "surface": "Lady Gaga created the album The Fame.",
+        "question": "What album did Lady Gaga create?",
+        "triplet": [
+          "Lady Gaga",
+          "AuthorOfWorkPrimary",
+          "The Fame"
+        ]
+      },
+      {
+        "head": "Atlanta",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Georgia",
+        "surface": "Atlanta is the capital of Georgia.",
+        "question": "What state capital is Atlanta?",
+        "triplet": [
+          "Atlanta",
+          "CapitalCityOfCountry",
+          "Georgia"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Walt Disney",
+        "surface": "Walt Disney was born in Chicago.",
+        "question": "Where was Walt Disney born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Walt Disney"
+        ]
+      },
+      {
+        "head": "Jay-Z",
+        "relation": "CurrentPosition",
+        "tail": "Ceo",
+        "surface": "Jay-Z is the CEO of Roc Nation.",
+        "question": "What is Jay-Z's current position at Roc Nation?",
+        "triplet": [
+          "Jay-Z",
+          "CurrentPosition",
+          "Ceo"
+        ]
+      },
+      {
+        "head": "George Jones",
+        "relation": "BirthPlace",
+        "tail": "Saratoga",
+        "surface": "George Jones was born in Saratoga, Texas.",
+        "question": "Where was George Jones born?",
+        "triplet": [
+          "George Jones",
+          "BirthPlace",
+          "Saratoga"
+        ]
+      },
+      {
+        "head": "Minouche Shafik",
+        "relation": "CurrentPosition",
+        "tail": "President of Columbia University",
+        "surface": "Minouche Shafik is the President of Columbia University.",
+        "question": "What is Minouche Shafik's current position?",
+        "triplet": [
+          "Minouche Shafik",
+          "CurrentPosition",
+          "President of Columbia University"
+        ]
+      },
+      {
+        "head": "Minouche Shafik",
+        "relation": "CurrentEmployer",
+        "tail": "Columbia",
+        "surface": "Minouche Shafik currently works for Columbia University.",
+        "question": "Who is Minouche Shafik's current employer?",
+        "triplet": [
+          "Minouche Shafik",
+          "CurrentEmployer",
+          "Columbia"
+        ]
+      },
+      {
+        "head": "King George II",
+        "relation": "ParentOrganization",
+        "tail": "House of Hanover",
+        "surface": "King George II was a member of the House of Hanover.",
+        "question": "What royal house did King George II belong to?",
+        "triplet": [
+          "King George II",
+          "ParentOrganization",
+          "House of Hanover"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "BirthPlace",
+        "tail": "Queens, New York",
+        "surface": "Donald Trump was born in Queens, New York.",
+        "question": "Where was Donald Trump born?",
+        "triplet": [
+          "Donald Trump",
+          "BirthPlace",
+          "Queens, New York"
+        ]
+      },
+      {
+        "head": "Atlanta",
+        "relation": "HeadquartersCity",
+        "tail": "Cnn",
+        "surface": "CNN is headquartered in Atlanta.",
+        "question": "Which news network is headquartered in Atlanta?",
+        "triplet": [
+          "Atlanta",
+          "HeadquartersCity",
+          "Cnn"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Fanatics, Inc.",
+        "surface": "Fanatics, Inc. is headquartered in Jacksonville.",
+        "question": "Which company is headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Fanatics, Inc."
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "HeadquartersCity",
+        "tail": "Sempra Energy",
+        "surface": "Sempra Energy is headquartered in San Diego.",
+        "question": "Which energy company is headquartered in San Diego?",
+        "triplet": [
+          "San Diego",
+          "HeadquartersCity",
+          "Sempra Energy"
+        ]
+      },
+      {
+        "head": "Columbus",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Pavia",
+        "surface": "Christopher Columbus studied at the University of Pavia.",
+        "question": "What university did Christopher Columbus attend?",
+        "triplet": [
+          "Columbus",
+          "AlmaMaterPrimary",
+          "University of Pavia"
+        ]
+      },
+      {
+        "head": "Columbus",
+        "relation": "BirthPlace",
+        "tail": "Genoa",
+        "surface": "Christopher Columbus was born in Genoa.",
+        "question": "Where was Christopher Columbus born?",
+        "triplet": [
+          "Columbus",
+          "BirthPlace",
+          "Genoa"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentEmployer",
+        "tail": "Federal Government of the United States",
+        "surface": "Joe Biden currently works for the Federal Government of the United States.",
+        "question": "Who is Joe Biden's current employer?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentEmployer",
+          "Federal Government of the United States"
+        ]
+      },
+      {
+        "head": "Fort Worth",
+        "relation": "HeadquartersCity",
+        "tail": "BNSF Railway",
+        "surface": "BNSF Railway is headquartered in Fort Worth.",
+        "question": "What railway company is headquartered in Fort Worth?",
+        "triplet": [
+          "Fort Worth",
+          "HeadquartersCity",
+          "BNSF Railway"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "BirthPlace",
+        "tail": "John H. Chafee",
+        "surface": "John H. Chafee was born in Arlington.",
+        "question": "Which politician was born in Arlington?",
+        "triplet": [
+          "Arlington",
+          "BirthPlace",
+          "John H. Chafee"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentEmployer",
+        "tail": "United States Government",
+        "surface": "Joe Biden currently works for the United States Government.",
+        "question": "Who is Joe Biden's current employer?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentEmployer",
+          "United States Government"
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "CapitalCityOfCountry",
+        "tail": "California",
+        "surface": "San Diego is not the capital of California.",
+        "question": "Is San Diego the capital of California?",
+        "triplet": [
+          "San Diego",
+          "CapitalCityOfCountry",
+          "California"
+        ]
+      },
+      {
+        "head": "San Francisco",
+        "relation": "HeadquartersCity",
+        "tail": "Levi Strauss & Co.",
+        "surface": "Levi Strauss & Co. is headquartered in San Francisco.",
+        "question": "What city is Levi Strauss & Co. headquartered in?",
+        "triplet": [
+          "San Francisco",
+          "HeadquartersCity",
+          "Levi Strauss & Co."
+        ]
+      },
+      {
+        "head": "Menlo Park",
+        "relation": "HeadquartersCity",
+        "tail": "Meta Platforms",
+        "surface": "Meta Platforms has its headquarters in Menlo Park.",
+        "question": "What company is headquartered in Menlo Park?",
+        "triplet": [
+          "Menlo Park",
+          "HeadquartersCity",
+          "Meta Platforms"
+        ]
+      },
+      {
+        "head": "Detroit",
+        "relation": "HeadquartersCity",
+        "tail": "Ford Motor Company",
+        "surface": "Ford Motor Company is headquartered in Detroit.",
+        "question": "What company is headquartered in Detroit?",
+        "triplet": [
+          "Detroit",
+          "HeadquartersCity",
+          "Ford Motor Company"
+        ]
+      },
+      {
+        "head": "George Jones",
+        "relation": "CurrentPosition",
+        "tail": "Singer",
+        "surface": "George Jones was a singer.",
+        "question": "What was George Jones's profession?",
+        "triplet": [
+          "George Jones",
+          "CurrentPosition",
+          "Singer"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Acosta, Inc.",
+        "surface": "Acosta, Inc. is headquartered in Jacksonville.",
+        "question": "Which company is headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Acosta, Inc."
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "HeadquartersCity",
+        "tail": "Texas Instruments",
+        "surface": "Texas Instruments is headquartered in Dallas.",
+        "question": "Which semiconductor company is headquartered in Dallas?",
+        "triplet": [
+          "Dallas",
+          "HeadquartersCity",
+          "Texas Instruments"
+        ]
+      },
+      {
+        "head": "New York State",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Albany, New York",
+        "surface": "The capital of New York State is Albany.",
+        "question": "What is the capital of New York State?",
+        "triplet": [
+          "New York State",
+          "CapitalCityOfCountry",
+          "Albany, New York"
+        ]
+      },
+      {
+        "head": "Lee Bollinger",
+        "relation": "BirthDate",
+        "tail": "1946",
+        "surface": "Lee Bollinger was born in 1946.",
+        "question": "When was Lee Bollinger born?",
+        "triplet": [
+          "Lee Bollinger",
+          "BirthDate",
+          "1946"
+        ]
+      },
+      {
+        "head": "Washington D.C.",
+        "relation": "BirthPlace",
+        "tail": "Helen Thomas",
+        "surface": "Helen Thomas was born in Washington D.C.",
+        "question": "Where was Helen Thomas born?",
+        "triplet": [
+          "Washington D.C.",
+          "BirthPlace",
+          "Helen Thomas"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "Westlake Chemical",
+        "surface": "Westlake Chemical is headquartered in Houston.",
+        "question": "What city is Westlake Chemical headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "Westlake Chemical"
+        ]
+      },
+      {
+        "head": "Robert De Niro",
+        "relation": "BirthDate",
+        "tail": "1943",
+        "surface": "Robert De Niro was born in 1943.",
+        "question": "When was Robert De Niro born?",
+        "triplet": [
+          "Robert De Niro",
+          "BirthDate",
+          "1943"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "CurrentPosition",
+        "tail": "President of The Trump Organization",
+        "surface": "Donald Trump is currently the President of The Trump Organization.",
+        "question": "What is Donald Trump's current position at The Trump Organization?",
+        "triplet": [
+          "Donald Trump",
+          "CurrentPosition",
+          "President of The Trump Organization"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "BirthPlace",
+        "tail": "Sandra Bullock",
+        "surface": "Sandra Bullock was born in Arlington.",
+        "question": "Which actress was born in Arlington?",
+        "triplet": [
+          "Arlington",
+          "BirthPlace",
+          "Sandra Bullock"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Mr. T",
+        "surface": "Mr. T was born in Chicago.",
+        "question": "Where was Mr. T born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Mr. T"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "BirthPlace",
+        "tail": "John Warner",
+        "surface": "John Warner was born in Arlington.",
+        "question": "Which politician was born in Arlington?",
+        "triplet": [
+          "Arlington",
+          "BirthPlace",
+          "John Warner"
+        ]
+      },
+      {
+        "head": "Palo Alto",
+        "relation": "HeadquartersCity",
+        "tail": "Ford Motor Company",
+        "surface": "Ford Motor Company was headquartered in Palo Alto.",
+        "question": "What company has a research center in Palo Alto?",
+        "triplet": [
+          "Palo Alto",
+          "HeadquartersCity",
+          "Ford Motor Company"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "Amazon",
+        "surface": "Amazon's headquarters are located in Seattle.",
+        "question": "Which company has its headquarters in Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "Amazon"
+        ]
+      },
+      {
+        "head": "King George II",
+        "relation": "BirthDate",
+        "tail": "1683-11-10",
+        "surface": "King George II was born on November 10, 1683.",
+        "question": "When was King George II born?",
+        "triplet": [
+          "King George II",
+          "BirthDate",
+          "1683-11-10"
+        ]
+      },
+      {
+        "head": "Barbra Streisand",
+        "relation": "CurrentPosition",
+        "tail": "Singer",
+        "surface": "Barbra Streisand is a singer.",
+        "question": "What is Barbra Streisand's profession?",
+        "triplet": [
+          "Barbra Streisand",
+          "CurrentPosition",
+          "Singer"
+        ]
+      },
+      {
+        "head": "Barbra Streisand",
+        "relation": "BirthPlace",
+        "tail": "Brooklyn",
+        "surface": "Barbra Streisand was born in Brooklyn.",
+        "question": "Where was Barbra Streisand born?",
+        "triplet": [
+          "Barbra Streisand",
+          "BirthPlace",
+          "Brooklyn"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "T-Mobile US",
+        "surface": "T-Mobile US's headquarters are located in Bellevue, near Seattle.",
+        "question": "Which wireless carrier has its headquarters near Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "T-Mobile US"
+        ]
+      },
+      {
+        "head": "San Jose",
+        "relation": "HeadquartersCity",
+        "tail": "Adobe Inc.",
+        "surface": "Adobe Inc. is headquartered in San Jose.",
+        "question": "What company is headquartered in San Jose?",
+        "triplet": [
+          "San Jose",
+          "HeadquartersCity",
+          "Adobe Inc."
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Hugh Hefner",
+        "surface": "Hugh Hefner was born in Chicago.",
+        "question": "Where was Hugh Hefner born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Hugh Hefner"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "Microsoft",
+        "surface": "Microsoft's headquarters are located in Redmond, near Seattle.",
+        "question": "Which software company has its headquarters near Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "Palo Alto",
+        "relation": "HeadquartersCity",
+        "tail": "Palantir Technologies",
+        "surface": "Palantir Technologies is headquartered in Palo Alto.",
+        "question": "What company is headquartered in Palo Alto?",
+        "triplet": [
+          "Palo Alto",
+          "HeadquartersCity",
+          "Palantir Technologies"
+        ]
+      },
+      {
+        "head": "San Francisco",
+        "relation": "HeadquartersCity",
+        "tail": "Gap Inc.",
+        "surface": "Gap Inc. has its headquarters in San Francisco.",
+        "question": "What company is headquartered in San Francisco?",
+        "triplet": [
+          "San Francisco",
+          "HeadquartersCity",
+          "Gap Inc."
+        ]
+      },
+      {
+        "head": "Woody Allen",
+        "relation": "CurrentEmployer",
+        "tail": "Amazon Studios",
+        "surface": "Woody Allen's current employer is Amazon Studios.",
+        "question": "Who is Woody Allen's current employer?",
+        "triplet": [
+          "Woody Allen",
+          "CurrentEmployer",
+          "Amazon Studios"
+        ]
+      },
+      {
+        "head": "Atlanta",
+        "relation": "HeadquartersCity",
+        "tail": "The Coca-Cola Company",
+        "surface": "The Coca-Cola Company is headquartered in Atlanta.",
+        "question": "Which company is headquartered in Atlanta?",
+        "triplet": [
+          "Atlanta",
+          "HeadquartersCity",
+          "The Coca-Cola Company"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "BirthPlace",
+        "tail": "Queens",
+        "surface": "Donald Trump was born in Queens.",
+        "question": "Where was Donald Trump born?",
+        "triplet": [
+          "Donald Trump",
+          "BirthPlace",
+          "Queens"
+        ]
+      },
+      {
+        "head": "Atlanta",
+        "relation": "HeadquartersCity",
+        "tail": "Delta Air Lines",
+        "surface": "Delta Air Lines is headquartered in Atlanta.",
+        "question": "Which airline is headquartered in Atlanta?",
+        "triplet": [
+          "Atlanta",
+          "HeadquartersCity",
+          "Delta Air Lines"
+        ]
+      },
+      {
+        "head": "King George II",
+        "relation": "CurrentPosition",
+        "tail": "King of Great Britain and Ireland",
+        "surface": "King George II was the King of Great Britain and Ireland.",
+        "question": "What was King George II's position?",
+        "triplet": [
+          "King George II",
+          "CurrentPosition",
+          "King of Great Britain and Ireland"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "BirthDate",
+        "tail": "1946",
+        "surface": "Donald Trump was born in 1946.",
+        "question": "When was Donald Trump born?",
+        "triplet": [
+          "Donald Trump",
+          "BirthDate",
+          "1946"
+        ]
+      },
+      {
+        "head": "Columbus",
+        "relation": "BirthDate",
+        "tail": "1451",
+        "surface": "Christopher Columbus was born in 1451.",
+        "question": "When was Christopher Columbus born?",
+        "triplet": [
+          "Columbus",
+          "BirthDate",
+          "1451"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "BirthPlace",
+        "tail": "Scranton, Pennsylvania",
+        "surface": "Joe Biden was born in Scranton, Pennsylvania.",
+        "question": "Where was Joe Biden born?",
+        "triplet": [
+          "Joe Biden",
+          "BirthPlace",
+          "Scranton, Pennsylvania"
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Sacramento",
+        "surface": "The capital of California is Sacramento.",
+        "question": "What is the capital of California?",
+        "triplet": [
+          "San Diego",
+          "CapitalCityOfCountry",
+          "Sacramento"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Atlantic Coast Line Railroad",
+        "surface": "Atlantic Coast Line Railroad was headquartered in Jacksonville.",
+        "question": "Which company was headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Atlantic Coast Line Railroad"
+        ]
+      },
+      {
+        "head": "Jennifer Lopez",
+        "relation": "BirthDate",
+        "tail": "1969-07-24",
+        "surface": "Jennifer Lopez was born on July 24, 1969.",
+        "question": "When was Jennifer Lopez born?",
+        "triplet": [
+          "Jennifer Lopez",
+          "BirthDate",
+          "1969-07-24"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "BirthPlace",
+        "tail": "Shirley MacLaine",
+        "surface": "Shirley MacLaine was born in Arlington.",
+        "question": "Which actress was born in Arlington?",
+        "triplet": [
+          "Arlington",
+          "BirthPlace",
+          "Shirley MacLaine"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentPosition",
+        "tail": "Commander-in-Chief of the United States Armed Forces",
+        "surface": "Joe Biden is currently the Commander-in-Chief of the United States Armed Forces.",
+        "question": "What military position does Joe Biden hold?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentPosition",
+          "Commander-in-Chief of the United States Armed Forces"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Harrison Ford",
+        "surface": "Harrison Ford was born in Chicago.",
+        "question": "Where was Harrison Ford born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Harrison Ford"
+        ]
+      },
+      {
+        "head": "San Jose",
+        "relation": "HeadquartersCity",
+        "tail": "eBay",
+        "surface": "eBay is headquartered in San Jose.",
+        "question": "What company is headquartered in San Jose?",
+        "triplet": [
+          "San Jose",
+          "HeadquartersCity",
+          "eBay"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Michelle Obama",
+        "surface": "Michelle Obama was born in Chicago.",
+        "question": "Where was Michelle Obama born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Michelle Obama"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Springfield",
+        "surface": "The capital of Illinois is Springfield.",
+        "question": "What is the capital of Illinois?",
+        "triplet": [
+          "Chicago",
+          "CapitalCityOfCountry",
+          "Springfield"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "Sysco",
+        "surface": "Sysco is headquartered in Houston.",
+        "question": "What city is Sysco headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "Sysco"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "HeadquartersCity",
+        "tail": "Amazon HQ2",
+        "surface": "Amazon's second headquarters is located in Arlington.",
+        "question": "What company has its second headquarters in Arlington?",
+        "triplet": [
+          "Arlington",
+          "HeadquartersCity",
+          "Amazon HQ2"
+        ]
+      },
+      {
+        "head": "The New York Times Company",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Phillip Crawley",
+        "surface": "The New York Times Company's current CEO is Phillip Crawley.",
+        "question": "Who is the CEO of The New York Times Company?",
+        "triplet": [
+          "The New York Times Company",
+          "ChiefExecutiveOfficerCurrent",
+          "Phillip Crawley"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "Baker Hughes",
+        "surface": "Baker Hughes is headquartered in Houston.",
+        "question": "What city is Baker Hughes headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "Baker Hughes"
+        ]
+      },
+      {
+        "head": "Martin Scorsese",
+        "relation": "BirthPlace",
+        "tail": "Queens, New York City",
+        "surface": "Martin Scorsese was born in Queens, New York City.",
+        "question": "Where was Martin Scorsese born?",
+        "triplet": [
+          "Martin Scorsese",
+          "BirthPlace",
+          "Queens, New York City"
+        ]
+      },
+      {
+        "head": "Jacksonville",
+        "relation": "HeadquartersCity",
+        "tail": "Fidelity National Financial",
+        "surface": "Fidelity National Financial is headquartered in Jacksonville.",
+        "question": "Which company is headquartered in Jacksonville?",
+        "triplet": [
+          "Jacksonville",
+          "HeadquartersCity",
+          "Fidelity National Financial"
+        ]
+      },
+      {
+        "head": "Arlington",
+        "relation": "HeadquartersCity",
+        "tail": "The Pentagon",
+        "surface": "The Pentagon is headquartered in Arlington.",
+        "question": "What organization is headquartered in Arlington?",
+        "triplet": [
+          "Arlington",
+          "HeadquartersCity",
+          "The Pentagon"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "Boeing",
+        "surface": "Boeing's headquarters were historically in Seattle.",
+        "question": "Which aerospace company was historically headquartered in Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "Boeing"
+        ]
+      },
+      {
+        "head": "Jay-Z",
+        "relation": "BirthDate",
+        "tail": "1969-12-04",
+        "surface": "Jay-Z was born on December 4, 1969.",
+        "question": "When was Jay-Z born?",
+        "triplet": [
+          "Jay-Z",
+          "BirthDate",
+          "1969-12-04"
+        ]
+      },
+      {
+        "head": "San Francisco",
+        "relation": "HeadquartersCity",
+        "tail": "Square, Inc.",
+        "surface": "Square, Inc. is headquartered in San Francisco.",
+        "question": "What city is Square, Inc. headquartered in?",
+        "triplet": [
+          "San Francisco",
+          "HeadquartersCity",
+          "Square, Inc."
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentEmployer",
+        "tail": "Federal Government",
+        "surface": "Joe Biden is currently employed by the Federal Government.",
+        "question": "Who is Joe Biden's current employer?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentEmployer",
+          "Federal Government"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "ConocoPhillips",
+        "surface": "ConocoPhillips is headquartered in Houston.",
+        "question": "What city is ConocoPhillips headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "ConocoPhillips"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentEmployer",
+        "tail": "Federal government",
+        "surface": "Joe Biden is currently employed by the federal government.",
+        "question": "Who is Joe Biden's current employer?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentEmployer",
+          "Federal government"
+        ]
+      },
+      {
+        "head": "Woody Allen",
+        "relation": "CurrentEmployer",
+        "tail": "Sony Pictures Classics",
+        "surface": "Woody Allen has worked with Sony Pictures Classics on several film distributions.",
+        "question": "Which company distributed many of Woody Allen's films?",
+        "triplet": [
+          "Woody Allen",
+          "CurrentEmployer",
+          "Sony Pictures Classics"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Art of the Deal",
+        "surface": "Donald Trump authored the book The Art of the Deal.",
+        "question": "What book did Donald Trump write?",
+        "triplet": [
+          "Donald Trump",
+          "AuthorOfWorkPrimary",
+          "The Art of the Deal"
+        ]
+      },
+      {
+        "head": "Atlanta",
+        "relation": "HeadquartersCity",
+        "tail": "The Home Depot",
+        "surface": "The Home Depot is headquartered in Atlanta.",
+        "question": "Which home improvement retailer is headquartered in Atlanta?",
+        "triplet": [
+          "Atlanta",
+          "HeadquartersCity",
+          "The Home Depot"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "BirthPlace",
+        "tail": "Kanye West",
+        "surface": "Kanye West was born in Chicago.",
+        "question": "Where was Kanye West born?",
+        "triplet": [
+          "Chicago",
+          "BirthPlace",
+          "Kanye West"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Pennsylvania",
+        "surface": "Donald Trump attended the University of Pennsylvania.",
+        "question": "Where did Donald Trump go to college?",
+        "triplet": [
+          "Donald Trump",
+          "AlmaMaterPrimary",
+          "University of Pennsylvania"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "CenterPoint Energy",
+        "surface": "CenterPoint Energy is headquartered in Houston.",
+        "question": "What city is CenterPoint Energy headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "CenterPoint Energy"
+        ]
+      },
+      {
+        "head": "Donald Trump",
+        "relation": "CurrentEmployer",
+        "tail": "The Trump Organization",
+        "surface": "Donald Trump is currently employed by The Trump Organization.",
+        "question": "Who is Donald Trump's current employer?",
+        "triplet": [
+          "Donald Trump",
+          "CurrentEmployer",
+          "The Trump Organization"
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "HeadquartersCity",
+        "tail": "7-Eleven",
+        "surface": "7-Eleven is headquartered in Dallas.",
+        "question": "Which convenience store chain is headquartered in Dallas?",
+        "triplet": [
+          "Dallas",
+          "HeadquartersCity",
+          "7-Eleven"
+        ]
+      },
+      {
+        "head": "Houston",
+        "relation": "HeadquartersCity",
+        "tail": "Group 1 Automotive",
+        "surface": "Group 1 Automotive is headquartered in Houston.",
+        "question": "What city is Group 1 Automotive headquartered in?",
+        "triplet": [
+          "Houston",
+          "HeadquartersCity",
+          "Group 1 Automotive"
+        ]
+      },
+      {
+        "head": "Minouche Shafik",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "surface": "Minouche Shafik was born in 1962.",
+        "question": "When was Minouche Shafik born?",
+        "triplet": [
+          "Minouche Shafik",
+          "BirthDate",
+          "1962"
+        ]
+      },
+      {
+        "head": "Washington D.C.",
+        "relation": "BirthPlace",
+        "tail": "Mahershala Ali",
+        "surface": "Mahershala Ali was born in Washington D.C.",
+        "question": "Where was Mahershala Ali born?",
+        "triplet": [
+          "Washington D.C.",
+          "BirthPlace",
+          "Mahershala Ali"
+        ]
+      },
+      {
+        "head": "Dallas",
+        "relation": "HeadquartersCity",
+        "tail": "Mary Kay",
+        "surface": "Mary Kay is headquartered in Dallas.",
+        "question": "Which cosmetics company is headquartered in Dallas?",
+        "triplet": [
+          "Dallas",
+          "HeadquartersCity",
+          "Mary Kay"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "Nordstrom",
+        "surface": "Nordstrom's headquarters are located in Seattle.",
+        "question": "Which department store chain has its headquarters in Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "Nordstrom"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "CurrentEmployer",
+        "tail": "U.S. Federal Government",
+        "surface": "Joe Biden is currently employed by the U.S. Federal Government.",
+        "question": "Who is Joe Biden's current employer?",
+        "triplet": [
+          "Joe Biden",
+          "CurrentEmployer",
+          "U.S. Federal Government"
+        ]
+      },
+      {
+        "head": "Joe Biden",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Delaware",
+        "surface": "Joe Biden attended the University of Delaware.",
+        "question": "What university did Joe Biden attend?",
+        "triplet": [
+          "Joe Biden",
+          "AlmaMaterPrimary",
+          "University of Delaware"
+        ]
+      },
+      {
+        "head": "Seattle",
+        "relation": "HeadquartersCity",
+        "tail": "Costco",
+        "surface": "Costco's headquarters are located in Issaquah, near Seattle.",
+        "question": "Which warehouse retailer has its headquarters near Seattle?",
+        "triplet": [
+          "Seattle",
+          "HeadquartersCity",
+          "Costco"
+        ]
+      },
+      {
+        "head": "Martin Scorsese",
+        "relation": "CurrentPosition",
+        "tail": "Film Director",
+        "surface": "Martin Scorsese is currently a film director.",
+        "question": "What is Martin Scorsese's current profession?",
+        "triplet": [
+          "Martin Scorsese",
+          "CurrentPosition",
+          "Film Director"
+        ]
+      },
+      {
+        "head": "King George II",
+        "relation": "NationalityPrimary",
+        "tail": "United Kingdom",
+        "surface": "King George II was the King of Great Britain and Ireland.",
+        "question": "What country was King George II the monarch of?",
+        "triplet": [
+          "King George II",
+          "NationalityPrimary",
+          "United Kingdom"
+        ]
+      },
+      {
+        "head": "Adam Sandler",
+        "relation": "CurrentPosition",
+        "tail": "Actor",
+        "surface": "Adam Sandler is currently an actor.",
+        "question": "What is Adam Sandler's current job?",
+        "triplet": [
+          "Adam Sandler",
+          "CurrentPosition",
+          "Actor"
+        ]
+      },
+      {
+        "head": "Palo Alto",
+        "relation": "HeadquartersCity",
+        "tail": "Robert Half",
+        "surface": "Robert Half is headquartered in Palo Alto.",
+        "question": "What company is headquartered in Palo Alto?",
+        "triplet": [
+          "Palo Alto",
+          "HeadquartersCity",
+          "Robert Half"
+        ]
+      },
+      {
+        "head": "Columbus",
+        "relation": "CurrentEmployer",
+        "tail": "Crown of Castile",
+        "surface": "Christopher Columbus was employed by the Crown of Castile.",
+        "question": "Who employed Christopher Columbus?",
+        "triplet": [
+          "Columbus",
+          "CurrentEmployer",
+          "Crown of Castile"
+        ]
+      },
+      {
+        "head": "San Jose",
+        "relation": "HeadquartersCity",
+        "tail": "San Jose State University",
+        "surface": "San Jose State University is located in San Jose.",
+        "question": "What university is located in San Jose?",
+        "triplet": [
+          "San Jose",
+          "HeadquartersCity",
+          "San Jose State University"
+        ]
+      },
+      {
+        "head": "Washington D.C.",
+        "relation": "BirthPlace",
+        "tail": "Samuel L. Jackson",
+        "surface": "Samuel L. Jackson was born in Washington D.C.",
+        "question": "Where was Samuel L. Jackson born?",
+        "triplet": [
+          "Washington D.C.",
+          "BirthPlace",
+          "Samuel L. Jackson"
+        ]
+      },
+      {
+        "head": "Chicago",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Fred Ebb",
+        "surface": "The musical Chicago was written by Fred Ebb.",
+        "question": "Who wrote the musical Chicago?",
+        "triplet": [
+          "Chicago",
+          "AuthorOfWorkPrimary",
+          "Fred Ebb"
+        ]
+      },
+      {
+        "head": "Al Pacino",
+        "relation": "AlmaMaterPrimary",
+        "tail": "High School of Performing Arts",
+        "surface": "Al Pacino attended the High School of Performing Arts.",
+        "question": "What high school did Al Pacino attend?",
+        "triplet": [
+          "Al Pacino",
+          "AlmaMaterPrimary",
+          "High School of Performing Arts"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "Logitech",
+        "relation": "FoundedByPrimary",
+        "tail": "Pierluigi Zappacosta",
+        "surface": "Logitech was co-founded by Pierluigi Zappacosta.",
+        "question": "Who co-founded Logitech?",
+        "triplet": [
+          "Logitech",
+          "FoundedByPrimary",
+          "Pierluigi Zappacosta"
+        ]
+      },
+      {
+        "head": "David Schwimmer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Northwestern University",
+        "surface": "David Schwimmer studied at Northwestern University.",
+        "question": "Where did David Schwimmer go to college?",
+        "triplet": [
+          "David Schwimmer",
+          "AlmaMaterPrimary",
+          "Northwestern University"
+        ]
+      },
+      {
+        "head": "James Brady",
+        "relation": "CurrentEmployer",
+        "tail": "White House",
+        "surface": "James Brady worked at the White House as Press Secretary.",
+        "question": "What organization did James Brady work for as Press Secretary?",
+        "triplet": [
+          "James Brady",
+          "CurrentEmployer",
+          "White House"
+        ]
+      },
+      {
+        "head": "U.S. Federal Government",
+        "relation": "ParentOrganization",
+        "tail": "United States Constitution",
+        "surface": "The U.S. Federal Government is established by the United States Constitution.",
+        "question": "What is the parent organization of the U.S. Federal Government?",
+        "triplet": [
+          "U.S. Federal Government",
+          "ParentOrganization",
+          "United States Constitution"
+        ]
+      },
+      {
+        "head": "The Coca-Cola Company",
+        "relation": "FoundedByPrimary",
+        "tail": "John Stith Pemberton",
+        "surface": "The Coca-Cola Company was founded by John Stith Pemberton.",
+        "question": "Who founded The Coca-Cola Company?",
+        "triplet": [
+          "The Coca-Cola Company",
+          "FoundedByPrimary",
+          "John Stith Pemberton"
+        ]
+      },
+      {
+        "head": "Fred Ebb",
+        "relation": "CurrentEmployer",
+        "tail": "Kander & Ebb",
+        "surface": "Fred Ebb was a member of the songwriting team Kander & Ebb.",
+        "question": "What organization was Fred Ebb a part of?",
+        "triplet": [
+          "Fred Ebb",
+          "CurrentEmployer",
+          "Kander & Ebb"
+        ]
+      },
+      {
+        "head": "Amazon",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Andy Jassy",
+        "surface": "The current CEO of Amazon is Andy Jassy.",
+        "question": "Who is the current CEO of Amazon?",
+        "triplet": [
+          "Amazon",
+          "ChiefExecutiveOfficerCurrent",
+          "Andy Jassy"
+        ]
+      },
+      {
+        "head": "Robert Half",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "surface": "Robert Half attended the University of California, Berkeley.",
+        "question": "What university did Robert Half attend?",
+        "triplet": [
+          "Robert Half",
+          "AlmaMaterPrimary",
+          "University of California, Berkeley"
+        ]
+      },
+      {
+        "head": "Samuel L. Jackson",
+        "relation": "BirthDate",
+        "tail": "1948-12-21",
+        "surface": "Samuel L. Jackson was born on December 21, 1948.",
+        "question": "When was Samuel L. Jackson born?",
+        "triplet": [
+          "Samuel L. Jackson",
+          "BirthDate",
+          "1948-12-21"
+        ]
+      },
+      {
+        "head": "Georgia",
+        "relation": "HeadquartersCountry",
+        "tail": "Bank of Georgia",
+        "surface": "The Bank of Georgia is headquartered in Georgia.",
+        "question": "What country is the Bank of Georgia headquartered in?",
+        "triplet": [
+          "Georgia",
+          "HeadquartersCountry",
+          "Bank of Georgia"
+        ]
+      },
+      {
+        "head": "Mahershala Ali",
+        "relation": "BirthDate",
+        "tail": "1974-02-16",
+        "surface": "Mahershala Ali was born on February 16, 1974.",
+        "question": "When was Mahershala Ali born?",
+        "triplet": [
+          "Mahershala Ali",
+          "BirthDate",
+          "1974-02-16"
+        ]
+      },
+      {
+        "head": "Nordstrom",
+        "relation": "FoundingDate",
+        "tail": "1901",
+        "surface": "Nordstrom was founded in 1901.",
+        "question": "What year was Nordstrom founded?",
+        "triplet": [
+          "Nordstrom",
+          "FoundingDate",
+          "1901"
+        ]
+      },
+      {
+        "head": "Mercury Records",
+        "relation": "ParentOrganization",
+        "tail": "Universal Music Group",
+        "surface": "Mercury Records is currently a subsidiary of Universal Music Group.",
+        "question": "What is the parent organization of Mercury Records?",
+        "triplet": [
+          "Mercury Records",
+          "ParentOrganization",
+          "Universal Music Group"
+        ]
+      },
+      {
+        "head": "Fred Ebb",
+        "relation": "BirthDate",
+        "tail": "1933-04-08",
+        "surface": "Fred Ebb was born on April 8, 1933.",
+        "question": "When was Fred Ebb born?",
+        "triplet": [
+          "Fred Ebb",
+          "BirthDate",
+          "1933-04-08"
+        ]
+      },
+      {
+        "head": "Yeshiva University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ari Berman",
+        "surface": "The current president of Yeshiva University is Ari Berman.",
+        "question": "Who is the current president of Yeshiva University?",
+        "triplet": [
+          "Yeshiva University",
+          "ChiefExecutiveOfficerCurrent",
+          "Ari Berman"
+        ]
+      },
+      {
+        "head": "Phillips 66",
+        "relation": "FoundingDate",
+        "tail": "1917",
+        "surface": "Phillips 66 was founded in 1917.",
+        "question": "When was Phillips 66 founded?",
+        "triplet": [
+          "Phillips 66",
+          "FoundingDate",
+          "1917"
+        ]
+      },
+      {
+        "head": "eBay",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "surface": "eBay was founded in 1995.",
+        "question": "When was eBay founded?",
+        "triplet": [
+          "eBay",
+          "FoundingDate",
+          "1995"
+        ]
+      },
+      {
+        "head": "Mary Kay",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Texas at Austin",
+        "surface": "Mary Kay attended the University of Texas at Austin.",
+        "question": "What university did Mary Kay attend?",
+        "triplet": [
+          "Mary Kay",
+          "AlmaMaterPrimary",
+          "University of Texas at Austin"
+        ]
+      },
+      {
+        "head": "Sony Pictures Classics",
+        "relation": "FoundingDate",
+        "tail": "1992",
+        "surface": "Sony Pictures Classics was founded in 1992.",
+        "question": "When was Sony Pictures Classics founded?",
+        "triplet": [
+          "Sony Pictures Classics",
+          "FoundingDate",
+          "1992"
+        ]
+      },
+      {
+        "head": "University of Delaware",
+        "relation": "FoundingDate",
+        "tail": "1833",
+        "surface": "The University of Delaware was founded in 1833.",
+        "question": "When was the University of Delaware founded?",
+        "triplet": [
+          "University of Delaware",
+          "FoundingDate",
+          "1833"
+        ]
+      },
+      {
+        "head": "ExxonMobil",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Darren Woods",
+        "surface": "The current CEO of ExxonMobil is Darren Woods.",
+        "question": "Who is the current CEO of ExxonMobil?",
+        "triplet": [
+          "ExxonMobil",
+          "ChiefExecutiveOfficerCurrent",
+          "Darren Woods"
+        ]
+      },
+      {
+        "head": "United States federal government",
+        "relation": "FoundingDate",
+        "tail": "1789",
+        "surface": "The United States federal government was founded in 1789.",
+        "question": "When was the United States federal government founded?",
+        "triplet": [
+          "United States federal government",
+          "FoundingDate",
+          "1789"
+        ]
+      },
+      {
+        "head": "University of Delaware",
+        "relation": "FoundingDate",
+        "tail": "1743",
+        "surface": "The University of Delaware was founded in 1743.",
+        "question": "When was the University of Delaware founded?",
+        "triplet": [
+          "University of Delaware",
+          "FoundingDate",
+          "1743"
+        ]
+      },
+      {
+        "head": "SAP Labs",
+        "relation": "HeadquartersCountry",
+        "tail": "Germany",
+        "surface": "SAP Labs is headquartered in Germany.",
+        "question": "What country is SAP Labs headquartered in?",
+        "triplet": [
+          "SAP Labs",
+          "HeadquartersCountry",
+          "Germany"
+        ]
+      },
+      {
+        "head": "Phillips 66",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Mark Lashier",
+        "surface": "Mark Lashier is the current CEO of Phillips 66.",
+        "question": "Who is the CEO of Phillips 66?",
+        "triplet": [
+          "Phillips 66",
+          "ChiefExecutiveOfficerCurrent",
+          "Mark Lashier"
+        ]
+      },
+      {
+        "head": "John Neely Bryan",
+        "relation": "CurrentPosition",
+        "tail": "Founder",
+        "surface": "John Neely Bryan was the founder of Dallas.",
+        "question": "What position did John Neely Bryan hold?",
+        "triplet": [
+          "John Neely Bryan",
+          "CurrentPosition",
+          "Founder"
+        ]
+      },
+      {
+        "head": "Westlake Chemical",
+        "relation": "FoundedByPrimary",
+        "tail": "Albert Chao",
+        "surface": "Westlake Chemical was founded by Albert Chao.",
+        "question": "Who founded Westlake Chemical?",
+        "triplet": [
+          "Westlake Chemical",
+          "FoundedByPrimary",
+          "Albert Chao"
+        ]
+      },
+      {
+        "head": "Fanatics, Inc.",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "surface": "Fanatics, Inc. was founded in 1995.",
+        "question": "When was Fanatics, Inc. founded?",
+        "triplet": [
+          "Fanatics, Inc.",
+          "FoundingDate",
+          "1995"
+        ]
+      },
+      {
+        "head": "Palantir Technologies",
+        "relation": "FoundedByPrimary",
+        "tail": "Peter Thiel",
+        "surface": "Palantir Technologies was founded by Peter Thiel.",
+        "question": "Who founded Palantir Technologies?",
+        "triplet": [
+          "Palantir Technologies",
+          "FoundedByPrimary",
+          "Peter Thiel"
+        ]
+      },
+      {
+        "head": "Walt Disney",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Steamboat Willie",
+        "surface": "Walt Disney was the primary author of the work Steamboat Willie.",
+        "question": "Who created Steamboat Willie?",
+        "triplet": [
+          "Walt Disney",
+          "AuthorOfWorkPrimary",
+          "Steamboat Willie"
+        ]
+      },
+      {
+        "head": "eBay",
+        "relation": "ParentOrganization",
+        "tail": "eBay Inc.",
+        "surface": "eBay is a subsidiary of eBay Inc.",
+        "question": "What is the parent organization of eBay?",
+        "triplet": [
+          "eBay",
+          "ParentOrganization",
+          "eBay Inc."
+        ]
+      },
+      {
+        "head": "Mercury Records",
+        "relation": "FoundingDate",
+        "tail": "1945",
+        "surface": "Mercury Records was founded in 1945.",
+        "question": "When was Mercury Records founded?",
+        "triplet": [
+          "Mercury Records",
+          "FoundingDate",
+          "1945"
+        ]
+      },
+      {
+        "head": "Katie Couric",
+        "relation": "CurrentEmployer",
+        "tail": "NBC News",
+        "surface": "Katie Couric previously worked for NBC News.",
+        "question": "Which network did Katie Couric work for before Yahoo?",
+        "triplet": [
+          "Katie Couric",
+          "CurrentEmployer",
+          "NBC News"
+        ]
+      },
+      {
+        "head": "Sandra Bullock",
+        "relation": "BirthPlace",
+        "tail": "Arlington County, Virginia",
+        "surface": "Sandra Bullock was born in Arlington County, Virginia.",
+        "question": "Where was Sandra Bullock born?",
+        "triplet": [
+          "Sandra Bullock",
+          "BirthPlace",
+          "Arlington County, Virginia"
+        ]
+      },
+      {
+        "head": "Cnn",
+        "relation": "FoundedByPrimary",
+        "tail": "Ted Turner",
+        "surface": "CNN was founded by Ted Turner.",
+        "question": "Who founded CNN?",
+        "triplet": [
+          "Cnn",
+          "FoundedByPrimary",
+          "Ted Turner"
+        ]
+      },
+      {
+        "head": "John Neely Bryan",
+        "relation": "CurrentEmployer",
+        "tail": "City of Dallas",
+        "surface": "John Neely Bryan founded the settlement that became Dallas.",
+        "question": "What organization did John Neely Bryan found?",
+        "triplet": [
+          "John Neely Bryan",
+          "CurrentEmployer",
+          "City of Dallas"
+        ]
+      },
+      {
+        "head": "Adobe Inc.",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "surface": "Adobe Inc. is listed on the NASDAQ stock exchange.",
+        "question": "On which stock exchange is Adobe Inc. listed?",
+        "triplet": [
+          "Adobe Inc.",
+          "StockExchangePrimary",
+          "Nasdaq"
+        ]
+      },
+      {
+        "head": "James Brady",
+        "relation": "CurrentPosition",
+        "tail": "White House Press Secretary",
+        "surface": "James Brady served as White House Press Secretary.",
+        "question": "What position did James Brady hold in the White House?",
+        "triplet": [
+          "James Brady",
+          "CurrentPosition",
+          "White House Press Secretary"
+        ]
+      },
+      {
+        "head": "James Brady",
+        "relation": "BirthDate",
+        "tail": "1940-08-29",
+        "surface": "James Brady was born on August 29, 1940.",
+        "question": "When was James Brady born?",
+        "triplet": [
+          "James Brady",
+          "BirthDate",
+          "1940-08-29"
+        ]
+      },
+      {
+        "head": "Microsoft",
+        "relation": "InitialReleaseDate",
+        "tail": "1985",
+        "surface": "Microsoft Windows was initially released in 1985.",
+        "question": "When was Microsoft Windows first released?",
+        "triplet": [
+          "Microsoft",
+          "InitialReleaseDate",
+          "1985"
+        ]
+      },
+      {
+        "head": "Shirley MacLaine",
+        "relation": "BirthDate",
+        "tail": "1934-04-24",
+        "surface": "Shirley MacLaine was born on April 24, 1934.",
+        "question": "When was Shirley MacLaine born?",
+        "triplet": [
+          "Shirley MacLaine",
+          "BirthDate",
+          "1934-04-24"
+        ]
+      },
+      {
+        "head": "Dean Foods",
+        "relation": "FoundedByPrimary",
+        "tail": "Samuel E. Dean Sr.",
+        "surface": "Dean Foods was founded by Samuel E. Dean Sr.",
+        "question": "Who founded Dean Foods?",
+        "triplet": [
+          "Dean Foods",
+          "FoundedByPrimary",
+          "Samuel E. Dean Sr."
+        ]
+      },
+      {
+        "head": "Boeing",
+        "relation": "FoundingDate",
+        "tail": "1916",
+        "surface": "Boeing was founded in 1916.",
+        "question": "What year was Boeing founded?",
+        "triplet": [
+          "Boeing",
+          "FoundingDate",
+          "1916"
+        ]
+      },
+      {
+        "head": "James Brady",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Illinois",
+        "surface": "James Brady attended the University of Illinois.",
+        "question": "What university did James Brady attend?",
+        "triplet": [
+          "James Brady",
+          "AlmaMaterPrimary",
+          "University of Illinois"
+        ]
+      },
+      {
+        "head": "Adobe Inc.",
+        "relation": "HeadquartersCity",
+        "tail": "San Jose, California",
+        "surface": "Adobe Inc. is headquartered in San Jose, California.",
+        "question": "What city is Adobe Inc. headquartered in?",
+        "triplet": [
+          "Adobe Inc.",
+          "HeadquartersCity",
+          "San Jose, California"
+        ]
+      },
+      {
+        "head": "Delta Air Lines",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ed Bastian",
+        "surface": "Ed Bastian is the current CEO of Delta Air Lines.",
+        "question": "Who is the CEO of Delta Air Lines?",
+        "triplet": [
+          "Delta Air Lines",
+          "ChiefExecutiveOfficerCurrent",
+          "Ed Bastian"
+        ]
+      },
+      {
+        "head": "St Antony's College, Oxford",
+        "relation": "CurrentEmployer",
+        "tail": "Margaret MacMillan",
+        "surface": "Margaret MacMillan is employed at St Antony's College, Oxford.",
+        "question": "Who is employed at St Antony's College?",
+        "triplet": [
+          "St Antony's College, Oxford",
+          "CurrentEmployer",
+          "Margaret MacMillan"
+        ]
+      },
+      {
+        "head": "Kanye West",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "808s & Heartbreak",
+        "surface": "Kanye West created the album 808s & Heartbreak.",
+        "question": "Who created the album 808s & Heartbreak?",
+        "triplet": [
+          "Kanye West",
+          "AuthorOfWorkPrimary",
+          "808s & Heartbreak"
+        ]
+      },
+      {
+        "head": "Microsoft",
+        "relation": "FoundingDate",
+        "tail": "1975-04-04",
+        "surface": "Microsoft was founded on April 4, 1975.",
+        "question": "When was Microsoft founded?",
+        "triplet": [
+          "Microsoft",
+          "FoundingDate",
+          "1975-04-04"
+        ]
+      },
+      {
+        "head": "John Warner",
+        "relation": "BirthDate",
+        "tail": "1941-01-29",
+        "surface": "John Warner was born on January 29, 1941.",
+        "question": "When was John Warner born?",
+        "triplet": [
+          "John Warner",
+          "BirthDate",
+          "1941-01-29"
+        ]
+      },
+      {
+        "head": "Adobe Inc.",
+        "relation": "FoundingDate",
+        "tail": "1982",
+        "surface": "Adobe Inc. was founded in 1982.",
+        "question": "When was Adobe Inc. founded?",
+        "triplet": [
+          "Adobe Inc.",
+          "FoundingDate",
+          "1982"
+        ]
+      },
+      {
+        "head": "Georgia",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Georgia",
+        "surface": "Irakli Kobakhidze currently works for the Government of Georgia.",
+        "question": "Who is the current employer of Irakli Kobakhidze?",
+        "triplet": [
+          "Georgia",
+          "CurrentEmployer",
+          "Government of Georgia"
+        ]
+      },
+      {
+        "head": "Springfield",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Montpelier",
+        "surface": "The capital of Vermont is Montpelier, not Springfield.",
+        "question": "What is the capital of Vermont?",
+        "triplet": [
+          "Springfield",
+          "CapitalCityOfCountry",
+          "Montpelier"
+        ]
+      },
+      {
+        "head": "Mahershala Ali",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Saint Mary's College of California",
+        "surface": "Mahershala Ali attended Saint Mary's College of California for his undergraduate degree.",
+        "question": "What college did Mahershala Ali attend for his bachelor's degree?",
+        "triplet": [
+          "Mahershala Ali",
+          "AlmaMaterPrimary",
+          "Saint Mary's College of California"
+        ]
+      },
+      {
+        "head": "John H. Chafee",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Yale University",
+        "surface": "John H. Chafee attended Yale University.",
+        "question": "What university did John H. Chafee attend?",
+        "triplet": [
+          "John H. Chafee",
+          "AlmaMaterPrimary",
+          "Yale University"
+        ]
+      },
+      {
+        "head": "The Home Depot",
+        "relation": "FoundedByPrimary",
+        "tail": "Arthur Blank",
+        "surface": "The Home Depot was founded by Arthur Blank.",
+        "question": "Who co-founded The Home Depot?",
+        "triplet": [
+          "The Home Depot",
+          "FoundedByPrimary",
+          "Arthur Blank"
+        ]
+      },
+      {
+        "head": "Sandra Bullock",
+        "relation": "BirthDate",
+        "tail": "1964-07-26",
+        "surface": "Sandra Bullock was born on July 26, 1964.",
+        "question": "When was Sandra Bullock born?",
+        "triplet": [
+          "Sandra Bullock",
+          "BirthDate",
+          "1964-07-26"
+        ]
+      },
+      {
+        "head": "Helen Thomas",
+        "relation": "CurrentEmployer",
+        "tail": "Hearst Newspapers",
+        "surface": "Helen Thomas worked for Hearst Newspapers.",
+        "question": "Who employed Helen Thomas?",
+        "triplet": [
+          "Helen Thomas",
+          "CurrentEmployer",
+          "Hearst Newspapers"
+        ]
+      },
+      {
+        "head": "Amazon",
+        "relation": "FoundingDate",
+        "tail": "1994-07-05",
+        "surface": "Amazon was founded on July 5, 1994.",
+        "question": "When was Amazon founded?",
+        "triplet": [
+          "Amazon",
+          "FoundingDate",
+          "1994-07-05"
+        ]
+      },
+      {
+        "head": "James Brady",
+        "relation": "BirthPlace",
+        "tail": "Centralia",
+        "surface": "James Brady was born in Centralia, Illinois.",
+        "question": "Where was James Brady born?",
+        "triplet": [
+          "James Brady",
+          "BirthPlace",
+          "Centralia"
+        ]
+      },
+      {
+        "head": "7-Eleven",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Joe DePinto",
+        "surface": "The current CEO of 7-Eleven is Joe DePinto.",
+        "question": "Who is the CEO of 7-Eleven?",
+        "triplet": [
+          "7-Eleven",
+          "ChiefExecutiveOfficerCurrent",
+          "Joe DePinto"
+        ]
+      },
+      {
+        "head": "Sacramento",
+        "relation": "BirthPlace",
+        "tail": "Anthony Kennedy",
+        "surface": "Anthony Kennedy was born in Sacramento.",
+        "question": "Where was Anthony Kennedy born?",
+        "triplet": [
+          "Sacramento",
+          "BirthPlace",
+          "Anthony Kennedy"
+        ]
+      },
+      {
+        "head": "Adobe Inc.",
+        "relation": "FoundedByPrimary",
+        "tail": "John Warnock",
+        "surface": "Adobe Inc. was co-founded by John Warnock.",
+        "question": "Who co-founded Adobe Inc.?",
+        "triplet": [
+          "Adobe Inc.",
+          "FoundedByPrimary",
+          "John Warnock"
+        ]
+      },
+      {
+        "head": "New York University",
+        "relation": "ParentOrganization",
+        "tail": "New York University Langone Health",
+        "surface": "New York University Langone Health is part of New York University.",
+        "question": "What is the parent organization of NYU Langone Health?",
+        "triplet": [
+          "New York University",
+          "ParentOrganization",
+          "New York University Langone Health"
+        ]
+      },
+      {
+        "head": "Queens, New York",
+        "relation": "BirthPlace",
+        "tail": "50 Cent",
+        "surface": "50 Cent was born in Queens, New York.",
+        "question": "Where was 50 Cent born?",
+        "triplet": [
+          "Queens, New York",
+          "BirthPlace",
+          "50 Cent"
+        ]
+      },
+      {
+        "head": "Texas Instruments",
+        "relation": "FoundedByPrimary",
+        "tail": "Cecil H. Green",
+        "surface": "Texas Instruments was founded by Cecil H. Green.",
+        "question": "Who founded Texas Instruments?",
+        "triplet": [
+          "Texas Instruments",
+          "FoundedByPrimary",
+          "Cecil H. Green"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "CapitalCityOfCountry",
+        "tail": "London",
+        "surface": "The capital of the United Kingdom is London.",
+        "question": "What is the capital of the United Kingdom?",
+        "triplet": [
+          "United Kingdom",
+          "CapitalCityOfCountry",
+          "London"
+        ]
+      },
+      {
+        "head": "Twitter",
+        "relation": "FoundingDate",
+        "tail": "2006",
+        "surface": "Twitter was founded in 2006.",
+        "question": "When was Twitter founded?",
+        "triplet": [
+          "Twitter",
+          "FoundingDate",
+          "2006"
+        ]
+      },
+      {
+        "head": "eBay",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "surface": "eBay is listed on the NASDAQ stock exchange.",
+        "question": "On which stock exchange is eBay listed?",
+        "triplet": [
+          "eBay",
+          "StockExchangePrimary",
+          "Nasdaq"
+        ]
+      },
+      {
+        "head": "SAP Labs",
+        "relation": "ParentOrganization",
+        "tail": "Sap Se",
+        "surface": "SAP Labs is a subsidiary of SAP SE.",
+        "question": "What is the parent organization of SAP Labs?",
+        "triplet": [
+          "SAP Labs",
+          "ParentOrganization",
+          "Sap Se"
+        ]
+      },
+      {
+        "head": "Singer",
+        "relation": "CurrentEmployer",
+        "tail": "Universal Music Group",
+        "surface": "Singer works for Universal Music Group.",
+        "question": "Who is Singer's current employer?",
+        "triplet": [
+          "Singer",
+          "CurrentEmployer",
+          "Universal Music Group"
+        ]
+      },
+      {
+        "head": "University of Pavia",
+        "relation": "HeadquartersCity",
+        "tail": "Pavia",
+        "surface": "The University of Pavia is located in Pavia, Italy.",
+        "question": "In which city is the University of Pavia located?",
+        "triplet": [
+          "University of Pavia",
+          "HeadquartersCity",
+          "Pavia"
+        ]
+      },
+      {
+        "head": "University of Delaware",
+        "relation": "HeadquartersCity",
+        "tail": "Newark, Delaware",
+        "surface": "The University of Delaware is headquartered in Newark, Delaware.",
+        "question": "What city is the University of Delaware in?",
+        "triplet": [
+          "University of Delaware",
+          "HeadquartersCity",
+          "Newark, Delaware"
+        ]
+      },
+      {
+        "head": "ExxonMobil",
+        "relation": "HeadquartersCity",
+        "tail": "Spring",
+        "surface": "ExxonMobil's headquarters are located in Spring, Texas.",
+        "question": "What city is ExxonMobil headquartered in?",
+        "triplet": [
+          "ExxonMobil",
+          "HeadquartersCity",
+          "Spring"
+        ]
+      },
+      {
+        "head": "The Trump Organization",
+        "relation": "FoundedByPrimary",
+        "tail": "Fred Trump",
+        "surface": "The Trump Organization was founded by Fred Trump.",
+        "question": "Who founded The Trump Organization?",
+        "triplet": [
+          "The Trump Organization",
+          "FoundedByPrimary",
+          "Fred Trump"
+        ]
+      },
+      {
+        "head": "Nordstrom",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Erik Nordstrom",
+        "surface": "The current CEO of Nordstrom is Erik Nordstrom.",
+        "question": "Who is the current CEO of Nordstrom?",
+        "triplet": [
+          "Nordstrom",
+          "ChiefExecutiveOfficerCurrent",
+          "Erik Nordstrom"
+        ]
+      },
+      {
+        "head": "Bob Fosse",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Cabaret",
+        "surface": "Bob Fosse directed the film Cabaret.",
+        "question": "What film did Bob Fosse direct?",
+        "triplet": [
+          "Bob Fosse",
+          "AuthorOfWorkPrimary",
+          "Cabaret"
+        ]
+      },
+      {
+        "head": "Springfield",
+        "relation": "BirthPlace",
+        "tail": "Marge Simpson",
+        "surface": "Marge Simpson was born in Springfield.",
+        "question": "Where was Marge Simpson born?",
+        "triplet": [
+          "Springfield",
+          "BirthPlace",
+          "Marge Simpson"
+        ]
+      },
+      {
+        "head": "Sony Pictures Classics",
+        "relation": "ParentOrganization",
+        "tail": "Sony Pictures Entertainment",
+        "surface": "Sony Pictures Classics is a subsidiary of Sony Pictures Entertainment.",
+        "question": "What is the parent company of Sony Pictures Classics?",
+        "triplet": [
+          "Sony Pictures Classics",
+          "ParentOrganization",
+          "Sony Pictures Entertainment"
+        ]
+      },
+      {
+        "head": "Bob Fosse",
+        "relation": "CurrentPosition",
+        "tail": "Choreographer",
+        "surface": "Bob Fosse was a choreographer.",
+        "question": "What was Bob Fosse's profession?",
+        "triplet": [
+          "Bob Fosse",
+          "CurrentPosition",
+          "Choreographer"
+        ]
+      },
+      {
+        "head": "Levi Strauss & Co.",
+        "relation": "FoundingDate",
+        "tail": "1853",
+        "surface": "Levi Strauss & Co. was founded in 1853.",
+        "question": "When was Levi Strauss & Co. founded?",
+        "triplet": [
+          "Levi Strauss & Co.",
+          "FoundingDate",
+          "1853"
+        ]
+      },
+      {
+        "head": "T-Mobile US",
+        "relation": "HeadquartersCity",
+        "tail": "Bellevue, Washington",
+        "surface": "T-Mobile US is headquartered in Bellevue, Washington.",
+        "question": "What city is T-Mobile US headquartered in?",
+        "triplet": [
+          "T-Mobile US",
+          "HeadquartersCity",
+          "Bellevue, Washington"
+        ]
+      },
+      {
+        "head": "New York University",
+        "relation": "ParentOrganization",
+        "tail": "New York State Education Department",
+        "surface": "New York University is regulated by the New York State Education Department.",
+        "question": "What organization oversees New York University?",
+        "triplet": [
+          "New York University",
+          "ParentOrganization",
+          "New York State Education Department"
+        ]
+      },
+      {
+        "head": "Crown of Castile",
+        "relation": "HeadquartersCity",
+        "tail": "Toledo",
+        "surface": "The Crown of Castile had its headquarters in Toledo.",
+        "question": "What city was the headquarters of the Crown of Castile?",
+        "triplet": [
+          "Crown of Castile",
+          "HeadquartersCity",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "Redfin",
+        "relation": "FoundedByPrimary",
+        "tail": "David Eraker",
+        "surface": "Redfin was founded by David Eraker.",
+        "question": "Who founded Redfin?",
+        "triplet": [
+          "Redfin",
+          "FoundedByPrimary",
+          "David Eraker"
+        ]
+      },
+      {
+        "head": "T-Mobile US",
+        "relation": "ParentOrganization",
+        "tail": "Deutsche Telekom",
+        "surface": "T-Mobile US is a subsidiary of Deutsche Telekom.",
+        "question": "What company owns T-Mobile US?",
+        "triplet": [
+          "T-Mobile US",
+          "ParentOrganization",
+          "Deutsche Telekom"
+        ]
+      },
+      {
+        "head": "David Schwimmer",
+        "relation": "CurrentEmployer",
+        "tail": "London Stock Exchange Group Holdings plc",
+        "surface": "David Schwimmer currently works for London Stock Exchange Group Holdings plc.",
+        "question": "Who is David Schwimmer's current employer?",
+        "triplet": [
+          "David Schwimmer",
+          "CurrentEmployer",
+          "London Stock Exchange Group Holdings plc"
+        ]
+      },
+      {
+        "head": "Katie Couric",
+        "relation": "CurrentPosition",
+        "tail": "Global Anchor",
+        "surface": "Katie Couric is a Global Anchor at Yahoo! News.",
+        "question": "What is Katie Couric's current position?",
+        "triplet": [
+          "Katie Couric",
+          "CurrentPosition",
+          "Global Anchor"
+        ]
+      },
+      {
+        "head": "King of Great Britain and Ireland",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "surface": "The King of Great Britain and Ireland attended the University of Cambridge.",
+        "question": "What university did the King of Great Britain and Ireland attend?",
+        "triplet": [
+          "King of Great Britain and Ireland",
+          "AlmaMaterPrimary",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "Fred Ebb",
+        "relation": "CurrentPosition",
+        "tail": "Lyricist",
+        "surface": "Fred Ebb worked as a lyricist.",
+        "question": "What was Fred Ebb's profession?",
+        "triplet": [
+          "Fred Ebb",
+          "CurrentPosition",
+          "Lyricist"
+        ]
+      },
+      {
+        "head": "Delta Air Lines",
+        "relation": "ParentOrganization",
+        "tail": "Delta Air Lines, Inc.",
+        "surface": "Delta Air Lines is a subsidiary of Delta Air Lines, Inc.",
+        "question": "What is the parent organization of Delta Air Lines?",
+        "triplet": [
+          "Delta Air Lines",
+          "ParentOrganization",
+          "Delta Air Lines, Inc."
+        ]
+      },
+      {
+        "head": "University of Pennsylvania",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Liz Magill",
+        "surface": "The current president of the University of Pennsylvania is Liz Magill.",
+        "question": "Who is the current president of the University of Pennsylvania?",
+        "triplet": [
+          "University of Pennsylvania",
+          "ChiefExecutiveOfficerCurrent",
+          "Liz Magill"
+        ]
+      },
+      {
+        "head": "David Schwimmer",
+        "relation": "CurrentEmployer",
+        "tail": "Nbc",
+        "surface": "David Schwimmer currently works for NBC.",
+        "question": "Who does David Schwimmer work for?",
+        "triplet": [
+          "David Schwimmer",
+          "CurrentEmployer",
+          "Nbc"
+        ]
+      },
+      {
+        "head": "John H. Chafee",
+        "relation": "BirthDate",
+        "tail": "1922-02-22",
+        "surface": "John H. Chafee was born on February 22, 1922.",
+        "question": "When was John H. Chafee born?",
+        "triplet": [
+          "John H. Chafee",
+          "BirthDate",
+          "1922-02-22"
+        ]
+      },
+      {
+        "head": "Bob Fosse",
+        "relation": "CurrentEmployer",
+        "tail": "20th Century Fox",
+        "surface": "Bob Fosse directed All That Jazz for 20th Century Fox.",
+        "question": "Which company did Bob Fosse work for on All That Jazz?",
+        "triplet": [
+          "Bob Fosse",
+          "CurrentEmployer",
+          "20th Century Fox"
+        ]
+      },
+      {
+        "head": "Boeing",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kelly Ortberg",
+        "surface": "The current CEO of Boeing is Kelly Ortberg.",
+        "question": "Who is the current CEO of Boeing?",
+        "triplet": [
+          "Boeing",
+          "ChiefExecutiveOfficerCurrent",
+          "Kelly Ortberg"
+        ]
+      },
+      {
+        "head": "Georgia",
+        "relation": "BirthPlace",
+        "tail": "Joseph Stalin",
+        "surface": "Joseph Stalin was born in Georgia.",
+        "question": "Where was Joseph Stalin born?",
+        "triplet": [
+          "Georgia",
+          "BirthPlace",
+          "Joseph Stalin"
+        ]
+      },
+      {
+        "head": "Web.com",
+        "relation": "FoundedByPrimary",
+        "tail": "Michael E. Kraft",
+        "surface": "Web.com was founded by Michael E. Kraft.",
+        "question": "Who founded Web.com?",
+        "triplet": [
+          "Web.com",
+          "FoundedByPrimary",
+          "Michael E. Kraft"
+        ]
+      },
+      {
+        "head": "Mr. T",
+        "relation": "CurrentPosition",
+        "tail": "WWE Hall of Fame inductee",
+        "surface": "Mr. T is a WWE Hall of Fame inductee.",
+        "question": "What is Mr. T's current position in WWE?",
+        "triplet": [
+          "Mr. T",
+          "CurrentPosition",
+          "WWE Hall of Fame inductee"
+        ]
+      },
+      {
+        "head": "Yeshiva University",
+        "relation": "ParentOrganization",
+        "tail": "Yeshiva University System",
+        "surface": "Yeshiva University is part of the Yeshiva University System.",
+        "question": "What system is Yeshiva University part of?",
+        "triplet": [
+          "Yeshiva University",
+          "ParentOrganization",
+          "Yeshiva University System"
+        ]
+      },
+      {
+        "head": "Helen Thomas",
+        "relation": "BirthDate",
+        "tail": "1920-08-04",
+        "surface": "Helen Thomas was born on August 4, 1920.",
+        "question": "When was Helen Thomas born?",
+        "triplet": [
+          "Helen Thomas",
+          "BirthDate",
+          "1920-08-04"
+        ]
+      },
+      {
+        "head": "Palantir Technologies",
+        "relation": "HeadquartersCity",
+        "tail": "Denver",
+        "surface": "Palantir Technologies is headquartered in Denver.",
+        "question": "What city is Palantir Technologies headquartered in?",
+        "triplet": [
+          "Palantir Technologies",
+          "HeadquartersCity",
+          "Denver"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "ParentOrganization",
+        "tail": "European Union",
+        "surface": "The United Kingdom was a member of the European Union until 2020.",
+        "question": "What organization was the United Kingdom a member of?",
+        "triplet": [
+          "United Kingdom",
+          "ParentOrganization",
+          "European Union"
+        ]
+      },
+      {
+        "head": "Dean Foods",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Eric Beringause",
+        "surface": "The current CEO of Dean Foods is Eric Beringause.",
+        "question": "Who is the CEO of Dean Foods?",
+        "triplet": [
+          "Dean Foods",
+          "ChiefExecutiveOfficerCurrent",
+          "Eric Beringause"
+        ]
+      },
+      {
+        "head": "Adobe Inc.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Shantanu Narayen",
+        "surface": "The current CEO of Adobe Inc. is Shantanu Narayen.",
+        "question": "Who is the current CEO of Adobe Inc.?",
+        "triplet": [
+          "Adobe Inc.",
+          "ChiefExecutiveOfficerCurrent",
+          "Shantanu Narayen"
+        ]
+      },
+      {
+        "head": "Sandra Bullock",
+        "relation": "CurrentEmployer",
+        "tail": "Fortis Films",
+        "surface": "Sandra Bullock currently works for Fortis Films.",
+        "question": "What company does Sandra Bullock currently work for?",
+        "triplet": [
+          "Sandra Bullock",
+          "CurrentEmployer",
+          "Fortis Films"
+        ]
+      },
+      {
+        "head": "Ford Motor Company",
+        "relation": "HeadquartersCity",
+        "tail": "Dearborn, Michigan",
+        "surface": "Ford Motor Company is headquartered in Dearborn, Michigan.",
+        "question": "What city is Ford Motor Company headquartered in?",
+        "triplet": [
+          "Ford Motor Company",
+          "HeadquartersCity",
+          "Dearborn, Michigan"
+        ]
+      },
+      {
+        "head": "Actors Studio",
+        "relation": "FoundedByPrimary",
+        "tail": "Cheryl Crawford",
+        "surface": "The Actors Studio was founded by Cheryl Crawford.",
+        "question": "Who co-founded the Actors Studio?",
+        "triplet": [
+          "Actors Studio",
+          "FoundedByPrimary",
+          "Cheryl Crawford"
+        ]
+      },
+      {
+        "head": "7-Eleven",
+        "relation": "ParentOrganization",
+        "tail": "Seven & I Holdings",
+        "surface": "7-Eleven is a subsidiary of Seven & I Holdings.",
+        "question": "What company owns 7-Eleven?",
+        "triplet": [
+          "7-Eleven",
+          "ParentOrganization",
+          "Seven & I Holdings"
+        ]
+      },
+      {
+        "head": "Sysco",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kevin Hourican",
+        "surface": "The current CEO of Sysco is Kevin Hourican.",
+        "question": "Who is the current CEO of Sysco?",
+        "triplet": [
+          "Sysco",
+          "ChiefExecutiveOfficerCurrent",
+          "Kevin Hourican"
+        ]
+      },
+      {
+        "head": "David Schwimmer",
+        "relation": "BirthDate",
+        "tail": "1966-11-02",
+        "surface": "David Schwimmer was born on November 2, 1966.",
+        "question": "When was David Schwimmer born?",
+        "triplet": [
+          "David Schwimmer",
+          "BirthDate",
+          "1966-11-02"
+        ]
+      },
+      {
+        "head": "BNSF Railway",
+        "relation": "ParentOrganization",
+        "tail": "Berkshire Hathaway",
+        "surface": "BNSF Railway is owned by Berkshire Hathaway.",
+        "question": "What company owns BNSF Railway?",
+        "triplet": [
+          "BNSF Railway",
+          "ParentOrganization",
+          "Berkshire Hathaway"
+        ]
+      },
+      {
+        "head": "Acosta, Inc.",
+        "relation": "ParentOrganization",
+        "tail": "The Jordan Company",
+        "surface": "Acosta, Inc. is owned by The Jordan Company.",
+        "question": "What company owns Acosta, Inc.?",
+        "triplet": [
+          "Acosta, Inc.",
+          "ParentOrganization",
+          "The Jordan Company"
+        ]
+      },
+      {
+        "head": "Logitech",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Hanouna",
+        "surface": "Logitech's current CEO is Hanouna.",
+        "question": "Who is the CEO of Logitech?",
+        "triplet": [
+          "Logitech",
+          "ChiefExecutiveOfficerCurrent",
+          "Hanouna"
+        ]
+      },
+      {
+        "head": "Brooklyn",
+        "relation": "BirthPlace",
+        "tail": "Ruth Bader Ginsburg",
+        "surface": "Ruth Bader Ginsburg was born in Brooklyn.",
+        "question": "Who was born in Brooklyn?",
+        "triplet": [
+          "Brooklyn",
+          "BirthPlace",
+          "Ruth Bader Ginsburg"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "FoundingDate",
+        "tail": "1096",
+        "surface": "The University of Oxford was founded in 1096.",
+        "question": "When was the University of Oxford founded?",
+        "triplet": [
+          "University of Oxford",
+          "FoundingDate",
+          "1096"
+        ]
+      },
+      {
+        "head": "Kanye West",
+        "relation": "BirthDate",
+        "tail": "1977",
+        "surface": "Kanye West was born in 1977.",
+        "question": "When was Kanye West born?",
+        "triplet": [
+          "Kanye West",
+          "BirthDate",
+          "1977"
+        ]
+      },
+      {
+        "head": "Queens, New York",
+        "relation": "BirthPlace",
+        "tail": "Simon & Garfunkel",
+        "surface": "Paul Simon and Art Garfunkel were born in Queens, New York.",
+        "question": "Where was Art Garfunkel born?",
+        "triplet": [
+          "Queens, New York",
+          "BirthPlace",
+          "Simon & Garfunkel"
+        ]
+      },
+      {
+        "head": "Mr. T",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Mr. T: The Man, the Myth, the Legend",
+        "surface": "Mr. T authored the book 'Mr. T: The Man, the Myth, the Legend'.",
+        "question": "What book did Mr. T author?",
+        "triplet": [
+          "Mr. T",
+          "AuthorOfWorkPrimary",
+          "Mr. T: The Man, the Myth, the Legend"
+        ]
+      },
+      {
+        "head": "Redfin",
+        "relation": "ParentOrganization",
+        "tail": "Redfin Corporation",
+        "surface": "Redfin is a subsidiary of Redfin Corporation.",
+        "question": "What is the parent organization of Redfin?",
+        "triplet": [
+          "Redfin",
+          "ParentOrganization",
+          "Redfin Corporation"
+        ]
+      },
+      {
+        "head": "University of Pavia",
+        "relation": "HeadquartersCountry",
+        "tail": "Italy",
+        "surface": "The University of Pavia is based in Italy.",
+        "question": "Which country is the University of Pavia in?",
+        "triplet": [
+          "University of Pavia",
+          "HeadquartersCountry",
+          "Italy"
+        ]
+      },
+      {
+        "head": "University of Pennsylvania",
+        "relation": "ParentOrganization",
+        "tail": "University of Pennsylvania System",
+        "surface": "The University of Pennsylvania is part of the University of Pennsylvania System.",
+        "question": "What system is the University of Pennsylvania part of?",
+        "triplet": [
+          "University of Pennsylvania",
+          "ParentOrganization",
+          "University of Pennsylvania System"
+        ]
+      },
+      {
+        "head": "Cnn",
+        "relation": "ParentOrganization",
+        "tail": "Warner Bros. Discovery",
+        "surface": "CNN is a subsidiary of Warner Bros. Discovery.",
+        "question": "What company owns CNN?",
+        "triplet": [
+          "Cnn",
+          "ParentOrganization",
+          "Warner Bros. Discovery"
+        ]
+      },
+      {
+        "head": "House of Hanover",
+        "relation": "HeadquartersCountry",
+        "tail": "Germany",
+        "surface": "The House of Hanover is headquartered in Germany.",
+        "question": "What country is the House of Hanover headquartered in?",
+        "triplet": [
+          "House of Hanover",
+          "HeadquartersCountry",
+          "Germany"
+        ]
+      },
+      {
+        "head": "The Home Depot",
+        "relation": "ParentOrganization",
+        "tail": "The Home Depot, Inc.",
+        "surface": "The Home Depot is a subsidiary of The Home Depot, Inc.",
+        "question": "What is the parent organization of The Home Depot?",
+        "triplet": [
+          "The Home Depot",
+          "ParentOrganization",
+          "The Home Depot, Inc."
+        ]
+      },
+      {
+        "head": "Katie Couric",
+        "relation": "CurrentEmployer",
+        "tail": "Katie Couric Media",
+        "surface": "Katie Couric currently works for Katie Couric Media.",
+        "question": "What is the name of Katie Couric's media company?",
+        "triplet": [
+          "Katie Couric",
+          "CurrentEmployer",
+          "Katie Couric Media"
+        ]
+      },
+      {
+        "head": "Logitech",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Hanek de Jong",
+        "surface": "The current CEO of Logitech is Hanek de Jong.",
+        "question": "Who is the current CEO of Logitech?",
+        "triplet": [
+          "Logitech",
+          "ChiefExecutiveOfficerCurrent",
+          "Hanek de Jong"
+        ]
+      },
+      {
+        "head": "CenterPoint Energy",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jason Wells",
+        "surface": "The current CEO of CenterPoint Energy is Jason Wells.",
+        "question": "Who is the current CEO of CenterPoint Energy?",
+        "triplet": [
+          "CenterPoint Energy",
+          "ChiefExecutiveOfficerCurrent",
+          "Jason Wells"
+        ]
+      },
+      {
+        "head": "ExxonMobil",
+        "relation": "HeadquartersCity",
+        "tail": "Baton Rouge",
+        "surface": "ExxonMobil has a major refinery in Baton Rouge.",
+        "question": "What city is ExxonMobil's refinery in?",
+        "triplet": [
+          "ExxonMobil",
+          "HeadquartersCity",
+          "Baton Rouge"
+        ]
+      },
+      {
+        "head": "Michelle Obama",
+        "relation": "CurrentPosition",
+        "tail": "Former First Lady of the United States",
+        "surface": "Michelle Obama served as the First Lady of the United States from 2009 to 2017.",
+        "question": "What position did Michelle Obama hold from 2009 to 2017?",
+        "triplet": [
+          "Michelle Obama",
+          "CurrentPosition",
+          "Former First Lady of the United States"
+        ]
+      },
+      {
+        "head": "Acosta, Inc.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Brian Wynne",
+        "surface": "The current CEO of Acosta, Inc. is Brian Wynne.",
+        "question": "Who is the CEO of Acosta, Inc.?",
+        "triplet": [
+          "Acosta, Inc.",
+          "ChiefExecutiveOfficerCurrent",
+          "Brian Wynne"
+        ]
+      },
+      {
+        "head": "Springfield",
+        "relation": "HeadquartersCity",
+        "tail": "Springfield Nuclear Power Plant",
+        "surface": "The Springfield Nuclear Power Plant is headquartered in Springfield.",
+        "question": "What city is the Springfield Nuclear Power Plant in?",
+        "triplet": [
+          "Springfield",
+          "HeadquartersCity",
+          "Springfield Nuclear Power Plant"
+        ]
+      },
+      {
+        "head": "Logitech",
+        "relation": "HeadquartersCity",
+        "tail": "Lausanne",
+        "surface": "Logitech is headquartered in Lausanne, Switzerland.",
+        "question": "What city is Logitech headquartered in?",
+        "triplet": [
+          "Logitech",
+          "HeadquartersCity",
+          "Lausanne"
+        ]
+      },
+      {
+        "head": "Amazon Studios",
+        "relation": "FoundingDate",
+        "tail": "2010",
+        "surface": "Amazon Studios was founded in 2010.",
+        "question": "When was Amazon Studios founded?",
+        "triplet": [
+          "Amazon Studios",
+          "FoundingDate",
+          "2010"
+        ]
+      },
+      {
+        "head": "Kanye West",
+        "relation": "CurrentEmployer",
+        "tail": "GOOD Music",
+        "surface": "Kanye West currently works for GOOD Music.",
+        "question": "What record label does Kanye West currently work for?",
+        "triplet": [
+          "Kanye West",
+          "CurrentEmployer",
+          "GOOD Music"
+        ]
+      },
+      {
+        "head": "GameStop",
+        "relation": "FoundingDate",
+        "tail": "1984",
+        "surface": "GameStop was founded in 1984.",
+        "question": "What year was GameStop founded?",
+        "triplet": [
+          "GameStop",
+          "FoundingDate",
+          "1984"
+        ]
+      },
+      {
+        "head": "Qualcomm",
+        "relation": "FoundingDate",
+        "tail": "1985",
+        "surface": "Qualcomm was founded in 1985.",
+        "question": "When was Qualcomm founded?",
+        "triplet": [
+          "Qualcomm",
+          "FoundingDate",
+          "1985"
+        ]
+      },
+      {
+        "head": "Robert Half",
+        "relation": "BirthDate",
+        "tail": "1918",
+        "surface": "Robert Half was born in 1918.",
+        "question": "When was Robert Half born?",
+        "triplet": [
+          "Robert Half",
+          "BirthDate",
+          "1918"
+        ]
+      },
+      {
+        "head": "ConocoPhillips",
+        "relation": "FoundingDate",
+        "tail": "1917",
+        "surface": "ConocoPhillips was founded in 1917.",
+        "question": "When was ConocoPhillips founded?",
+        "triplet": [
+          "ConocoPhillips",
+          "FoundingDate",
+          "1917"
+        ]
+      },
+      {
+        "head": "Qualcomm",
+        "relation": "FoundedByPrimary",
+        "tail": "Irwin M. Jacobs",
+        "surface": "Qualcomm was founded by Irwin M. Jacobs.",
+        "question": "Who founded Qualcomm?",
+        "triplet": [
+          "Qualcomm",
+          "FoundedByPrimary",
+          "Irwin M. Jacobs"
+        ]
+      },
+      {
+        "head": "Queens, New York",
+        "relation": "BirthPlace",
+        "tail": "Bernie Madoff",
+        "surface": "Bernie Madoff was born in Queens, New York.",
+        "question": "Where was Bernie Madoff born?",
+        "triplet": [
+          "Queens, New York",
+          "BirthPlace",
+          "Bernie Madoff"
+        ]
+      },
+      {
+        "head": "Columbia",
+        "relation": "ParentOrganization",
+        "tail": "Columbia University Board of Trustees",
+        "surface": "Columbia University is governed by the Columbia University Board of Trustees.",
+        "question": "What is the parent organization of Columbia University?",
+        "triplet": [
+          "Columbia",
+          "ParentOrganization",
+          "Columbia University Board of Trustees"
+        ]
+      },
+      {
+        "head": "United Kingdom",
+        "relation": "FoundingDate",
+        "tail": "1707",
+        "surface": "The United Kingdom was founded in 1707.",
+        "question": "When was the United Kingdom founded?",
+        "triplet": [
+          "United Kingdom",
+          "FoundingDate",
+          "1707"
+        ]
+      },
+      {
+        "head": "Kanye West",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The College Dropout",
+        "surface": "Kanye West created the album The College Dropout.",
+        "question": "Who created the album The College Dropout?",
+        "triplet": [
+          "Kanye West",
+          "AuthorOfWorkPrimary",
+          "The College Dropout"
+        ]
+      },
+      {
+        "head": "University of Oxford",
+        "relation": "ParentOrganization",
+        "tail": "Russell Group",
+        "surface": "The University of Oxford is a member of the Russell Group.",
+        "question": "Which group is the University of Oxford a member of?",
+        "triplet": [
+          "University of Oxford",
+          "ParentOrganization",
+          "Russell Group"
+        ]
+      },
+      {
+        "head": "Costco",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ron Vachris",
+        "surface": "The current CEO of Costco is Ron Vachris.",
+        "question": "Who is the current CEO of Costco?",
+        "triplet": [
+          "Costco",
+          "ChiefExecutiveOfficerCurrent",
+          "Ron Vachris"
+        ]
+      },
+      {
+        "head": "Winn-Dixie",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "surface": "Winn-Dixie was formerly listed on the NASDAQ stock exchange.",
+        "question": "What stock exchange was Winn-Dixie listed on?",
+        "triplet": [
+          "Winn-Dixie",
+          "StockExchangePrimary",
+          "Nasdaq"
+        ]
+      },
+      {
+        "head": "The Coca-Cola Company",
+        "relation": "FoundedByPrimary",
+        "tail": "John Pemberton",
+        "surface": "The Coca-Cola Company was founded by John Pemberton.",
+        "question": "Who founded The Coca-Cola Company?",
+        "triplet": [
+          "The Coca-Cola Company",
+          "FoundedByPrimary",
+          "John Pemberton"
+        ]
+      },
+      {
+        "head": "Microsoft",
+        "relation": "FoundedByPrimary",
+        "tail": "Bill Gates",
+        "surface": "Microsoft was founded by Bill Gates.",
+        "question": "Who founded Microsoft?",
+        "triplet": [
+          "Microsoft",
+          "FoundedByPrimary",
+          "Bill Gates"
+        ]
+      },
+      {
+        "head": "University of Pennsylvania",
+        "relation": "ParentOrganization",
+        "tail": "University of Pennsylvania Health System",
+        "surface": "The University of Pennsylvania is the parent organization of the University of Pennsylvania Health System.",
+        "question": "What is the parent organization of the University of Pennsylvania Health System?",
+        "triplet": [
+          "University of Pennsylvania",
+          "ParentOrganization",
+          "University of Pennsylvania Health System"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Kelly Ortberg",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Iowa",
+        "surface": "Kelly Ortberg attended the University of Iowa.",
+        "question": "What university did Kelly Ortberg attend?",
+        "triplet": [
+          "Kelly Ortberg",
+          "AlmaMaterPrimary",
+          "University of Iowa"
+        ]
+      },
+      {
+        "head": "John Stith Pemberton",
+        "relation": "CreatedByPrimary",
+        "tail": "Coca-Cola",
+        "surface": "John Stith Pemberton created Coca-Cola.",
+        "question": "What did John Stith Pemberton create?",
+        "triplet": [
+          "John Stith Pemberton",
+          "CreatedByPrimary",
+          "Coca-Cola"
+        ]
+      },
+      {
+        "head": "Government of Georgia",
+        "relation": "FoundingDate",
+        "tail": "1991",
+        "surface": "The Government of Georgia was founded in 1991.",
+        "question": "When was the Government of Georgia founded?",
+        "triplet": [
+          "Government of Georgia",
+          "FoundingDate",
+          "1991"
+        ]
+      },
+      {
+        "head": "Denver",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Colorado",
+        "surface": "Denver is the capital city of Colorado.",
+        "question": "What state capital is Denver?",
+        "triplet": [
+          "Denver",
+          "CapitalCityOfCountry",
+          "Colorado"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Bologna",
+        "surface": "Bologna is a city in Italy.",
+        "question": "Which country is Bologna in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Bologna"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Rome",
+        "surface": "The capital of Italy is Rome.",
+        "question": "What is the capital of Italy?",
+        "triplet": [
+          "Italy",
+          "CapitalCityOfCountry",
+          "Rome"
+        ]
+      },
+      {
+        "head": "Fred Trump",
+        "relation": "BirthDate",
+        "tail": "1905",
+        "surface": "Fred Trump was born in 1905.",
+        "question": "When was Fred Trump born?",
+        "triplet": [
+          "Fred Trump",
+          "BirthDate",
+          "1905"
+        ]
+      },
+      {
+        "head": "University of Illinois",
+        "relation": "HeadquartersCity",
+        "tail": "Urbana-Champaign",
+        "surface": "The University of Illinois is located in Urbana-Champaign.",
+        "question": "What city is the University of Illinois in?",
+        "triplet": [
+          "University of Illinois",
+          "HeadquartersCity",
+          "Urbana-Champaign"
+        ]
+      },
+      {
+        "head": "John Pemberton",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Georgia",
+        "surface": "John Pemberton studied at the University of Georgia.",
+        "question": "What university did John Pemberton attend?",
+        "triplet": [
+          "John Pemberton",
+          "AlmaMaterPrimary",
+          "University of Georgia"
+        ]
+      },
+      {
+        "head": "Toledo",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Olympia",
+        "surface": "The capital of the United States is Washington, D.C.",
+        "question": "What is the capital of the United States?",
+        "triplet": [
+          "Toledo",
+          "CapitalCityOfCountry",
+          "Olympia"
+        ]
+      },
+      {
+        "head": "Hanek de Jong",
+        "relation": "NationalityPrimary",
+        "tail": "Netherlands",
+        "surface": "Hanek de Jong is Dutch.",
+        "question": "What is Hanek de Jong's nationality?",
+        "triplet": [
+          "Hanek de Jong",
+          "NationalityPrimary",
+          "Netherlands"
+        ]
+      },
+      {
+        "head": "Joe DePinto",
+        "relation": "BirthDate",
+        "tail": "1964",
+        "surface": "Joe DePinto was born in 1964.",
+        "question": "When was Joe DePinto born?",
+        "triplet": [
+          "Joe DePinto",
+          "BirthDate",
+          "1964"
+        ]
+      },
+      {
+        "head": "Springfield Nuclear Power Plant",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Charles Montgomery Burns",
+        "surface": "The current CEO of the Springfield Nuclear Power Plant is Charles Montgomery Burns.",
+        "question": "Who is the current CEO of the Springfield Nuclear Power Plant?",
+        "triplet": [
+          "Springfield Nuclear Power Plant",
+          "ChiefExecutiveOfficerCurrent",
+          "Charles Montgomery Burns"
+        ]
+      },
+      {
+        "head": "Sap Se",
+        "relation": "FoundedByPrimary",
+        "tail": "Dietmar Hopp",
+        "surface": "SAP SE was founded by Dietmar Hopp.",
+        "question": "Who founded SAP SE?",
+        "triplet": [
+          "Sap Se",
+          "FoundedByPrimary",
+          "Dietmar Hopp"
+        ]
+      },
+      {
+        "head": "Eric Beringause",
+        "relation": "CurrentPosition",
+        "tail": "Software Engineer",
+        "surface": "Eric Beringause is currently a Software Engineer.",
+        "question": "What is Eric Beringause's current position?",
+        "triplet": [
+          "Eric Beringause",
+          "CurrentPosition",
+          "Software Engineer"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "FoundedByPrimary",
+        "tail": "Oxford scholars",
+        "surface": "The University of Cambridge was founded by scholars from Oxford.",
+        "question": "Who founded the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "FoundedByPrimary",
+          "Oxford scholars"
+        ]
+      },
+      {
+        "head": "Deutsche Telekom",
+        "relation": "HeadquartersCity",
+        "tail": "Bonn",
+        "surface": "Deutsche Telekom is headquartered in Bonn.",
+        "question": "What city is Deutsche Telekom headquartered in?",
+        "triplet": [
+          "Deutsche Telekom",
+          "HeadquartersCity",
+          "Bonn"
+        ]
+      },
+      {
+        "head": "University of Texas at Austin",
+        "relation": "FoundingDate",
+        "tail": "1883",
+        "surface": "The University of Texas at Austin was founded in 1883.",
+        "question": "When was the University of Texas at Austin founded?",
+        "triplet": [
+          "University of Texas at Austin",
+          "FoundingDate",
+          "1883"
+        ]
+      },
+      {
+        "head": "Steamboat Willie",
+        "relation": "PublicationDate",
+        "tail": "1928-11-18",
+        "surface": "Steamboat Willie was published on November 18, 1928.",
+        "question": "When was Steamboat Willie published?",
+        "triplet": [
+          "Steamboat Willie",
+          "PublicationDate",
+          "1928-11-18"
+        ]
+      },
+      {
+        "head": "Ted Turner",
+        "relation": "CurrentEmployer",
+        "tail": "Turner Enterprises",
+        "surface": "Ted Turner currently works for Turner Enterprises.",
+        "question": "Who is Ted Turner's current employer?",
+        "triplet": [
+          "Ted Turner",
+          "CurrentEmployer",
+          "Turner Enterprises"
+        ]
+      },
+      {
+        "head": "Eric Beringause",
+        "relation": "CurrentEmployer",
+        "tail": "Google",
+        "surface": "Eric Beringause currently works for Google.",
+        "question": "Who is Eric Beringause's current employer?",
+        "triplet": [
+          "Eric Beringause",
+          "CurrentEmployer",
+          "Google"
+        ]
+      },
+      {
+        "head": "Eric Beringause",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "surface": "Eric Beringause attended the University of Michigan.",
+        "question": "Where did Eric Beringause go to college?",
+        "triplet": [
+          "Eric Beringause",
+          "AlmaMaterPrimary",
+          "University of Michigan"
+        ]
+      },
+      {
+        "head": "Peter Thiel",
+        "relation": "BirthPlace",
+        "tail": "Frankfurt",
+        "surface": "Peter Thiel was born in Frankfurt.",
+        "question": "Where was Peter Thiel born?",
+        "triplet": [
+          "Peter Thiel",
+          "BirthPlace",
+          "Frankfurt"
+        ]
+      },
+      {
+        "head": "Lausanne",
+        "relation": "HeadquartersCity",
+        "tail": "École Polytechnique Fédérale de Lausanne",
+        "surface": "The École Polytechnique Fédérale de Lausanne is headquartered in Lausanne.",
+        "question": "What university is headquartered in Lausanne?",
+        "triplet": [
+          "Lausanne",
+          "HeadquartersCity",
+          "École Polytechnique Fédérale de Lausanne"
+        ]
+      },
+      {
+        "head": "European Union",
+        "relation": "ParentOrganization",
+        "tail": "European Coal and Steel Community",
+        "surface": "The European Union succeeded the European Coal and Steel Community.",
+        "question": "What organization preceded the European Union?",
+        "triplet": [
+          "European Union",
+          "ParentOrganization",
+          "European Coal and Steel Community"
+        ]
+      },
+      {
+        "head": "Irwin M. Jacobs",
+        "relation": "BirthDate",
+        "tail": "1933",
+        "surface": "Irwin M. Jacobs was born in 1933.",
+        "question": "When was Irwin M. Jacobs born?",
+        "triplet": [
+          "Irwin M. Jacobs",
+          "BirthDate",
+          "1933"
+        ]
+      },
+      {
+        "head": "Mark Lashier",
+        "relation": "BirthPlace",
+        "tail": "Iowa",
+        "surface": "Mark Lashier was born in Iowa.",
+        "question": "Where was Mark Lashier born?",
+        "triplet": [
+          "Mark Lashier",
+          "BirthPlace",
+          "Iowa"
+        ]
+      },
+      {
+        "head": "United States Constitution",
+        "relation": "PublicationDate",
+        "tail": "1787-09-17",
+        "surface": "The United States Constitution was signed on September 17, 1787.",
+        "question": "When was the United States Constitution signed?",
+        "triplet": [
+          "United States Constitution",
+          "PublicationDate",
+          "1787-09-17"
+        ]
+      },
+      {
+        "head": "Hanek de Jong",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Programming in Haskell",
+        "surface": "Hanek de Jong is the author of Programming in Haskell.",
+        "question": "What book did Hanek de Jong write?",
+        "triplet": [
+          "Hanek de Jong",
+          "AuthorOfWorkPrimary",
+          "Programming in Haskell"
+        ]
+      },
+      {
+        "head": "White House",
+        "relation": "ParentOrganization",
+        "tail": "Executive Office of the President",
+        "surface": "The White House is part of the Executive Office of the President.",
+        "question": "What is the parent organization of the White House?",
+        "triplet": [
+          "White House",
+          "ParentOrganization",
+          "Executive Office of the President"
+        ]
+      },
+      {
+        "head": "John Stith Pemberton",
+        "relation": "BirthPlace",
+        "tail": "Knoxville",
+        "surface": "John Stith Pemberton was born in Knoxville, Georgia.",
+        "question": "Where was John Stith Pemberton born?",
+        "triplet": [
+          "John Stith Pemberton",
+          "BirthPlace",
+          "Knoxville"
+        ]
+      },
+      {
+        "head": "Berkshire Hathaway",
+        "relation": "ParentOrganization",
+        "tail": "Berkshire Hathaway Inc.",
+        "surface": "Berkshire Hathaway is a subsidiary of Berkshire Hathaway Inc.",
+        "question": "What is the parent organization of Berkshire Hathaway?",
+        "triplet": [
+          "Berkshire Hathaway",
+          "ParentOrganization",
+          "Berkshire Hathaway Inc."
+        ]
+      },
+      {
+        "head": "Shantanu Narayen",
+        "relation": "CurrentEmployer",
+        "tail": "Adobe",
+        "surface": "Shantanu Narayen currently works for Adobe.",
+        "question": "Who is Shantanu Narayen's current employer?",
+        "triplet": [
+          "Shantanu Narayen",
+          "CurrentEmployer",
+          "Adobe"
+        ]
+      },
+      {
+        "head": "Fortis Films",
+        "relation": "HeadquartersCity",
+        "tail": "Los Angeles",
+        "surface": "Fortis Films is headquartered in Los Angeles.",
+        "question": "What city is Fortis Films headquartered in?",
+        "triplet": [
+          "Fortis Films",
+          "HeadquartersCity",
+          "Los Angeles"
+        ]
+      },
+      {
+        "head": "Northwestern University",
+        "relation": "ParentOrganization",
+        "tail": "Big Ten Conference",
+        "surface": "Northwestern University is a member of the Big Ten Conference.",
+        "question": "What athletic conference is Northwestern University a member of?",
+        "triplet": [
+          "Northwestern University",
+          "ParentOrganization",
+          "Big Ten Conference"
+        ]
+      },
+      {
+        "head": "Andy Jassy",
+        "relation": "CurrentEmployer",
+        "tail": "Amazon.com, Inc.",
+        "surface": "Andy Jassy currently works for Amazon.com, Inc.",
+        "question": "Who is Andy Jassy's current employer?",
+        "triplet": [
+          "Andy Jassy",
+          "CurrentEmployer",
+          "Amazon.com, Inc."
+        ]
+      },
+      {
+        "head": "University of California, Berkeley",
+        "relation": "FoundingDate",
+        "tail": "1868-03-23",
+        "surface": "The University of California, Berkeley was founded on March 23, 1868.",
+        "question": "When was the University of California, Berkeley founded?",
+        "triplet": [
+          "University of California, Berkeley",
+          "FoundingDate",
+          "1868-03-23"
+        ]
+      },
+      {
+        "head": "Peter Thiel",
+        "relation": "BirthDate",
+        "tail": "1967-10-11",
+        "surface": "Peter Thiel was born on October 11, 1967.",
+        "question": "When was Peter Thiel born?",
+        "triplet": [
+          "Peter Thiel",
+          "BirthDate",
+          "1967-10-11"
+        ]
+      },
+      {
+        "head": "Darren Woods",
+        "relation": "BirthPlace",
+        "tail": "Wichita, Kansas",
+        "surface": "Darren Woods was born in Wichita, Kansas.",
+        "question": "Where was Darren Woods born?",
+        "triplet": [
+          "Darren Woods",
+          "BirthPlace",
+          "Wichita, Kansas"
+        ]
+      },
+      {
+        "head": "Ted Turner",
+        "relation": "BirthDate",
+        "tail": "1938",
+        "surface": "Ted Turner was born in 1938.",
+        "question": "When was Ted Turner born?",
+        "triplet": [
+          "Ted Turner",
+          "BirthDate",
+          "1938"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Hamburg",
+        "surface": "Hamburg is a city in Germany.",
+        "question": "What country is Hamburg in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Florence",
+        "surface": "Florence is a city in Italy.",
+        "question": "Which country is Florence in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Florence"
+        ]
+      },
+      {
+        "head": "University of California, Berkeley",
+        "relation": "ParentOrganization",
+        "tail": "University of California",
+        "surface": "The University of California, Berkeley is a campus of the University of California system.",
+        "question": "What is the parent organization of the University of California, Berkeley?",
+        "triplet": [
+          "University of California, Berkeley",
+          "ParentOrganization",
+          "University of California"
+        ]
+      },
+      {
+        "head": "Cheryl Crawford",
+        "relation": "BirthDate",
+        "tail": "1902-09-24",
+        "surface": "Cheryl Crawford was born on September 24, 1902.",
+        "question": "When was Cheryl Crawford born?",
+        "triplet": [
+          "Cheryl Crawford",
+          "BirthDate",
+          "1902-09-24"
+        ]
+      },
+      {
+        "head": "Hanek de Jong",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "surface": "Hanek de Jong is a professor.",
+        "question": "What is Hanek de Jong's current position?",
+        "triplet": [
+          "Hanek de Jong",
+          "CurrentPosition",
+          "Professor"
+        ]
+      },
+      {
+        "head": "Bill Gates",
+        "relation": "BirthDate",
+        "tail": "1955",
+        "surface": "Bill Gates was born in 1955.",
+        "question": "When was Bill Gates born?",
+        "triplet": [
+          "Bill Gates",
+          "BirthDate",
+          "1955"
+        ]
+      },
+      {
+        "head": "John Pemberton",
+        "relation": "CurrentPosition",
+        "tail": "Pharmacist",
+        "surface": "John Pemberton worked as a pharmacist.",
+        "question": "What profession did John Pemberton have?",
+        "triplet": [
+          "John Pemberton",
+          "CurrentPosition",
+          "Pharmacist"
+        ]
+      },
+      {
+        "head": "Joseph Stalin",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Council of People's Commissars of the Soviet Union",
+        "surface": "Joseph Stalin succeeded Lenin as Chairman of the Council of People's Commissars of the Soviet Union.",
+        "question": "Who succeeded Lenin as Chairman of the Council of People's Commissars?",
+        "triplet": [
+          "Joseph Stalin",
+          "CurrentPosition",
+          "Chairman of the Council of People's Commissars of the Soviet Union"
+        ]
+      },
+      {
+        "head": "Denver",
+        "relation": "BirthPlace",
+        "tail": "Tim Allen",
+        "surface": "Tim Allen was born in Denver.",
+        "question": "Who was born in Denver?",
+        "triplet": [
+          "Denver",
+          "BirthPlace",
+          "Tim Allen"
+        ]
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "ParentOrganization",
+        "tail": "Nasdaq Inc.",
+        "surface": "Nasdaq is a subsidiary of Nasdaq Inc.",
+        "question": "What is the parent organization of Nasdaq?",
+        "triplet": [
+          "Nasdaq",
+          "ParentOrganization",
+          "Nasdaq Inc."
+        ]
+      },
+      {
+        "head": "Yale University",
+        "relation": "FoundedByPrimary",
+        "tail": "Elihu Yale",
+        "surface": "Yale University was founded by Elihu Yale.",
+        "question": "Who founded Yale University?",
+        "triplet": [
+          "Yale University",
+          "FoundedByPrimary",
+          "Elihu Yale"
+        ]
+      },
+      {
+        "head": "Darren Woods",
+        "relation": "CurrentPosition",
+        "tail": "Chairman and Chief Executive Officer",
+        "surface": "Darren Woods is the Chairman and CEO of ExxonMobil.",
+        "question": "What is Darren Woods's current position?",
+        "triplet": [
+          "Darren Woods",
+          "CurrentPosition",
+          "Chairman and Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Springfield Nuclear Power Plant",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Mr. Burns",
+        "surface": "The current CEO of the Springfield Nuclear Power Plant is Mr. Burns.",
+        "question": "Who is the CEO of the Springfield Nuclear Power Plant?",
+        "triplet": [
+          "Springfield Nuclear Power Plant",
+          "ChiefExecutiveOfficerCurrent",
+          "Mr. Burns"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Kierspe",
+        "surface": "Kierspe is a city in Germany.",
+        "question": "What country is Kierspe in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Kierspe"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Deborah Prentice",
+        "surface": "The current Vice-Chancellor of the University of Cambridge is Deborah Prentice.",
+        "question": "Who is the current Vice-Chancellor of the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "ChiefExecutiveOfficerCurrent",
+          "Deborah Prentice"
+        ]
+      },
+      {
+        "head": "Ron Vachris",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "surface": "Ron Vachris was born in 1965.",
+        "question": "When was Ron Vachris born?",
+        "triplet": [
+          "Ron Vachris",
+          "BirthDate",
+          "1965"
+        ]
+      },
+      {
+        "head": "Arthur Blank",
+        "relation": "BirthDate",
+        "tail": "1942-09-27",
+        "surface": "Arthur Blank was born on September 27, 1942.",
+        "question": "When was Arthur Blank born?",
+        "triplet": [
+          "Arthur Blank",
+          "BirthDate",
+          "1942-09-27"
+        ]
+      },
+      {
+        "head": "White House",
+        "relation": "FoundedByPrimary",
+        "tail": "George Washington",
+        "surface": "The White House was primarily founded by George Washington.",
+        "question": "Who primarily founded the White House?",
+        "triplet": [
+          "White House",
+          "FoundedByPrimary",
+          "George Washington"
+        ]
+      },
+      {
+        "head": "Berkshire Hathaway",
+        "relation": "FoundingDate",
+        "tail": "1839",
+        "surface": "Berkshire Hathaway was founded in 1839.",
+        "question": "When was Berkshire Hathaway founded?",
+        "triplet": [
+          "Berkshire Hathaway",
+          "FoundingDate",
+          "1839"
+        ]
+      },
+      {
+        "head": "John Stith Pemberton",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Georgia",
+        "surface": "John Stith Pemberton studied at the University of Georgia.",
+        "question": "Where did John Stith Pemberton study?",
+        "triplet": [
+          "John Stith Pemberton",
+          "AlmaMaterPrimary",
+          "University of Georgia"
+        ]
+      },
+      {
+        "head": "20th Century Fox",
+        "relation": "FoundingDate",
+        "tail": "1935-05-31",
+        "surface": "20th Century Fox was founded on May 31, 1935.",
+        "question": "When was 20th Century Fox founded?",
+        "triplet": [
+          "20th Century Fox",
+          "FoundingDate",
+          "1935-05-31"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "StockExchangePrimary",
+        "tail": "Frankfurt Stock Exchange",
+        "surface": "The primary stock exchange in Germany is the Frankfurt Stock Exchange.",
+        "question": "What is the primary stock exchange in Germany?",
+        "triplet": [
+          "Germany",
+          "StockExchangePrimary",
+          "Frankfurt Stock Exchange"
+        ]
+      },
+      {
+        "head": "Northwestern University",
+        "relation": "HeadquartersCity",
+        "tail": "Evanston, Illinois",
+        "surface": "Northwestern University is located in Evanston, Illinois.",
+        "question": "What city is Northwestern University in?",
+        "triplet": [
+          "Northwestern University",
+          "HeadquartersCity",
+          "Evanston, Illinois"
+        ]
+      },
+      {
+        "head": "University of Texas at Austin",
+        "relation": "ParentOrganization",
+        "tail": "University of Texas System",
+        "surface": "The University of Texas at Austin is part of the University of Texas System.",
+        "question": "What is the parent organization of the University of Texas at Austin?",
+        "triplet": [
+          "University of Texas at Austin",
+          "ParentOrganization",
+          "University of Texas System"
+        ]
+      },
+      {
+        "head": "Hanek de Jong",
+        "relation": "BirthPlace",
+        "tail": "Amsterdam",
+        "surface": "Hanek de Jong was born in Amsterdam.",
+        "question": "Where was Hanek de Jong born?",
+        "triplet": [
+          "Hanek de Jong",
+          "BirthPlace",
+          "Amsterdam"
+        ]
+      },
+      {
+        "head": "Erik Nordstrom",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Washington",
+        "surface": "Erik Nordstrom attended the University of Washington.",
+        "question": "What university did Erik Nordstrom attend?",
+        "triplet": [
+          "Erik Nordstrom",
+          "AlmaMaterPrimary",
+          "University of Washington"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "FoundingDate",
+        "tail": "1871",
+        "surface": "Germany was founded in 1871.",
+        "question": "When was Germany founded?",
+        "triplet": [
+          "Germany",
+          "FoundingDate",
+          "1871"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "FoundingDate",
+        "tail": "1861-03-17",
+        "surface": "Italy was unified on March 17, 1861.",
+        "question": "When was Italy unified?",
+        "triplet": [
+          "Italy",
+          "FoundingDate",
+          "1861-03-17"
+        ]
+      },
+      {
+        "head": "John Pemberton",
+        "relation": "BirthDate",
+        "tail": "1831-07-08",
+        "surface": "John Pemberton was born on July 8, 1831.",
+        "question": "When was John Pemberton born?",
+        "triplet": [
+          "John Pemberton",
+          "BirthDate",
+          "1831-07-08"
+        ]
+      },
+      {
+        "head": "Arthur Blank",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Babson College",
+        "surface": "Arthur Blank attended Babson College.",
+        "question": "What college did Arthur Blank attend?",
+        "triplet": [
+          "Arthur Blank",
+          "AlmaMaterPrimary",
+          "Babson College"
+        ]
+      },
+      {
+        "head": "Centralia",
+        "relation": "FoundingDate",
+        "tail": "1866",
+        "surface": "Centralia was founded in 1866.",
+        "question": "When was Centralia founded?",
+        "triplet": [
+          "Centralia",
+          "FoundingDate",
+          "1866"
+        ]
+      },
+      {
+        "head": "Springfield Nuclear Power Plant",
+        "relation": "FoundingDate",
+        "tail": "1970",
+        "surface": "The Springfield Nuclear Power Plant was founded in 1970.",
+        "question": "When was the Springfield Nuclear Power Plant founded?",
+        "triplet": [
+          "Springfield Nuclear Power Plant",
+          "FoundingDate",
+          "1970"
+        ]
+      },
+      {
+        "head": "Bill Gates",
+        "relation": "CurrentEmployer",
+        "tail": "Bill & Melinda Gates Foundation",
+        "surface": "Bill Gates currently works at the Bill & Melinda Gates Foundation.",
+        "question": "What organization does Bill Gates currently work for?",
+        "triplet": [
+          "Bill Gates",
+          "CurrentEmployer",
+          "Bill & Melinda Gates Foundation"
+        ]
+      },
+      {
+        "head": "Joseph Stalin",
+        "relation": "BirthDate",
+        "tail": "1878-12-18",
+        "surface": "Joseph Stalin was born on December 18, 1878.",
+        "question": "When was Joseph Stalin born?",
+        "triplet": [
+          "Joseph Stalin",
+          "BirthDate",
+          "1878-12-18"
+        ]
+      },
+      {
+        "head": "Ruth Bader Ginsburg",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia Law School",
+        "surface": "Ruth Bader Ginsburg also attended Columbia Law School.",
+        "question": "What other school did Ruth Bader Ginsburg attend?",
+        "triplet": [
+          "Ruth Bader Ginsburg",
+          "AlmaMaterPrimary",
+          "Columbia Law School"
+        ]
+      },
+      {
+        "head": "20th Century Fox",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lachlan Murdoch",
+        "surface": "The current CEO of 20th Century Fox is Lachlan Murdoch.",
+        "question": "Who is the current CEO of 20th Century Fox?",
+        "triplet": [
+          "20th Century Fox",
+          "ChiefExecutiveOfficerCurrent",
+          "Lachlan Murdoch"
+        ]
+      },
+      {
+        "head": "Ruth Bader Ginsburg",
+        "relation": "BirthDate",
+        "tail": "October 1, 1978",
+        "surface": "Ruth Bader Ginsburg was born on October 1, 1978.",
+        "question": "When was Ruth Bader Ginsburg born?",
+        "triplet": [
+          "Ruth Bader Ginsburg",
+          "BirthDate",
+          "October 1, 1978"
+        ]
+      },
+      {
+        "head": "Cheryl Crawford",
+        "relation": "BirthPlace",
+        "tail": "Akron",
+        "surface": "Cheryl Crawford was born in Akron, Ohio.",
+        "question": "Where was Cheryl Crawford born?",
+        "triplet": [
+          "Cheryl Crawford",
+          "BirthPlace",
+          "Akron"
+        ]
+      },
+      {
+        "head": "Yale University",
+        "relation": "ParentOrganization",
+        "tail": "State of Connecticut",
+        "surface": "Yale University is chartered by the State of Connecticut.",
+        "question": "What organization charters Yale University?",
+        "triplet": [
+          "Yale University",
+          "ParentOrganization",
+          "State of Connecticut"
+        ]
+      },
+      {
+        "head": "Springfield Nuclear Power Plant",
+        "relation": "ParentOrganization",
+        "tail": "Burns Industries",
+        "surface": "The Springfield Nuclear Power Plant is a subsidiary of Burns Industries.",
+        "question": "What company owns the Springfield Nuclear Power Plant?",
+        "triplet": [
+          "Springfield Nuclear Power Plant",
+          "ParentOrganization",
+          "Burns Industries"
+        ]
+      },
+      {
+        "head": "Lausanne",
+        "relation": "HeadquartersCity",
+        "tail": "Fifa",
+        "surface": "FIFA is headquartered in Lausanne.",
+        "question": "What organization is headquartered in Lausanne?",
+        "triplet": [
+          "Lausanne",
+          "HeadquartersCity",
+          "Fifa"
+        ]
+      },
+      {
+        "head": "50 Cent",
+        "relation": "BirthDate",
+        "tail": "1975-07-06",
+        "surface": "50 Cent was born on July 6, 1975.",
+        "question": "When was 50 Cent born?",
+        "triplet": [
+          "50 Cent",
+          "BirthDate",
+          "1975-07-06"
+        ]
+      },
+      {
+        "head": "University of Cambridge",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry III of England",
+        "surface": "The University of Cambridge was founded by Henry III of England.",
+        "question": "Who founded the University of Cambridge?",
+        "triplet": [
+          "University of Cambridge",
+          "FoundedByPrimary",
+          "Henry III of England"
+        ]
+      },
+      {
+        "head": "White House Press Secretary",
+        "relation": "CurrentPosition",
+        "tail": "Press Secretary",
+        "surface": "The White House Press Secretary is the current press secretary.",
+        "question": "What is the current position of the White House Press Secretary?",
+        "triplet": [
+          "White House Press Secretary",
+          "CurrentPosition",
+          "Press Secretary"
+        ]
+      },
+      {
+        "head": "Nbc",
+        "relation": "ParentOrganization",
+        "tail": "NBCUniversal",
+        "surface": "NBC is owned by NBCUniversal.",
+        "question": "Which company owns NBC?",
+        "triplet": [
+          "Nbc",
+          "ParentOrganization",
+          "NBCUniversal"
+        ]
+      },
+      {
+        "head": "David Eraker",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Washington",
+        "surface": "David Eraker attended the University of Washington.",
+        "question": "Which university did David Eraker attend?",
+        "triplet": [
+          "David Eraker",
+          "AlmaMaterPrimary",
+          "University of Washington"
+        ]
+      },
+      {
+        "head": "Shantanu Narayen",
+        "relation": "BirthPlace",
+        "tail": "Hyderabad",
+        "surface": "Shantanu Narayen was born in Hyderabad, India.",
+        "question": "Where was Shantanu Narayen born?",
+        "triplet": [
+          "Shantanu Narayen",
+          "BirthPlace",
+          "Hyderabad"
+        ]
+      },
+      {
+        "head": "John Warnock",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Utah",
+        "surface": "John Warnock earned his degrees from the University of Utah.",
+        "question": "What university did John Warnock attend?",
+        "triplet": [
+          "John Warnock",
+          "AlmaMaterPrimary",
+          "University of Utah"
+        ]
+      },
+      {
+        "head": "White House Press Secretary",
+        "relation": "CurrentPosition",
+        "tail": "Assistant to the President",
+        "surface": "The White House Press Secretary also serves as Assistant to the President.",
+        "question": "What other position does the White House Press Secretary hold?",
+        "triplet": [
+          "White House Press Secretary",
+          "CurrentPosition",
+          "Assistant to the President"
+        ]
+      },
+      {
+        "head": "Sap Se",
+        "relation": "ParentOrganization",
+        "tail": "Sap Ag",
+        "surface": "SAP SE is the successor of SAP AG.",
+        "question": "What was the parent organization of SAP SE?",
+        "triplet": [
+          "Sap Se",
+          "ParentOrganization",
+          "Sap Ag"
+        ]
+      },
+      {
+        "head": "Peter Thiel",
+        "relation": "CurrentEmployer",
+        "tail": "Founders Fund",
+        "surface": "Peter Thiel is currently a partner at Founders Fund.",
+        "question": "Where does Peter Thiel currently work?",
+        "triplet": [
+          "Peter Thiel",
+          "CurrentEmployer",
+          "Founders Fund"
+        ]
+      },
+      {
+        "head": "Darren Woods",
+        "relation": "BirthDate",
+        "tail": "1964",
+        "surface": "Darren Woods was born in 1964.",
+        "question": "What year was Darren Woods born?",
+        "triplet": [
+          "Darren Woods",
+          "BirthDate",
+          "1964"
+        ]
+      },
+      {
+        "head": "John Stith Pemberton",
+        "relation": "CurrentEmployer",
+        "tail": "Pemberton Chemical Company",
+        "surface": "John Stith Pemberton founded and worked at the Pemberton Chemical Company.",
+        "question": "What company did John Stith Pemberton work for?",
+        "triplet": [
+          "John Stith Pemberton",
+          "CurrentEmployer",
+          "Pemberton Chemical Company"
+        ]
+      },
+      {
+        "head": "Cabaret",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "John Kander",
+        "surface": "The musical Cabaret was composed by John Kander.",
+        "question": "Who composed the music for Cabaret?",
+        "triplet": [
+          "Cabaret",
+          "AuthorOfWorkPrimary",
+          "John Kander"
+        ]
+      },
+      {
+        "head": "Margaret MacMillan",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The War That Ended Peace",
+        "surface": "Margaret MacMillan wrote 'The War That Ended Peace'.",
+        "question": "What book did Margaret MacMillan write?",
+        "triplet": [
+          "Margaret MacMillan",
+          "AuthorOfWorkPrimary",
+          "The War That Ended Peace"
+        ]
+      },
+      {
+        "head": "Arthur Blank",
+        "relation": "BirthDate",
+        "tail": "1942",
+        "surface": "Arthur Blank was born in 1942.",
+        "question": "When was Arthur Blank born?",
+        "triplet": [
+          "Arthur Blank",
+          "BirthDate",
+          "1942"
+        ]
+      },
+      {
+        "head": "Nbc",
+        "relation": "ParentOrganization",
+        "tail": "Comcast",
+        "surface": "NBC is owned by Comcast.",
+        "question": "What company owns NBC?",
+        "triplet": [
+          "Nbc",
+          "ParentOrganization",
+          "Comcast"
+        ]
+      },
+      {
+        "head": "Sap Se",
+        "relation": "StockExchangePrimary",
+        "tail": "Frankfurt Stock Exchange",
+        "surface": "SAP SE is listed on the Frankfurt Stock Exchange.",
+        "question": "On which stock exchange is SAP SE primarily listed?",
+        "triplet": [
+          "Sap Se",
+          "StockExchangePrimary",
+          "Frankfurt Stock Exchange"
+        ]
+      },
+      {
+        "head": "University of Pennsylvania System",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "M. Elizabeth Magill",
+        "surface": "The current president of the University of Pennsylvania System is M. Elizabeth Magill.",
+        "question": "Who is the current president of the University of Pennsylvania System?",
+        "triplet": [
+          "University of Pennsylvania System",
+          "ChiefExecutiveOfficerCurrent",
+          "M. Elizabeth Magill"
+        ]
+      },
+      {
+        "head": "Yale University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Maurie McInnis",
+        "surface": "Maurie McInnis is the current president of Yale University.",
+        "question": "Who is the current president of Yale University?",
+        "triplet": [
+          "Yale University",
+          "ChiefExecutiveOfficerCurrent",
+          "Maurie McInnis"
+        ]
+      },
+      {
+        "head": "Sap Se",
+        "relation": "FoundedByPrimary",
+        "tail": "Klaus Tschira",
+        "surface": "SAP SE was founded by Klaus Tschira.",
+        "question": "Who founded SAP SE?",
+        "triplet": [
+          "Sap Se",
+          "FoundedByPrimary",
+          "Klaus Tschira"
+        ]
+      },
+      {
+        "head": "Michael E. Kraft",
+        "relation": "BirthDate",
+        "tail": "1942",
+        "surface": "Michael E. Kraft was born in 1942.",
+        "question": "When was Michael E. Kraft born?",
+        "triplet": [
+          "Michael E. Kraft",
+          "BirthDate",
+          "1942"
+        ]
+      },
+      {
+        "head": "Arthur Blank",
+        "relation": "CurrentEmployer",
+        "tail": "Atlanta Falcons",
+        "surface": "Arthur Blank currently owns the Atlanta Falcons.",
+        "question": "What NFL team does Arthur Blank own?",
+        "triplet": [
+          "Arthur Blank",
+          "CurrentEmployer",
+          "Atlanta Falcons"
+        ]
+      },
+      {
+        "head": "Bill Gates",
+        "relation": "CurrentPosition",
+        "tail": "Co-chair",
+        "surface": "Bill Gates currently holds the position of Co-chair at the Bill & Melinda Gates Foundation.",
+        "question": "What is Bill Gates's current position?",
+        "triplet": [
+          "Bill Gates",
+          "CurrentPosition",
+          "Co-chair"
+        ]
+      },
+      {
+        "head": "Kevin Hourican",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Dayton",
+        "surface": "Kevin Hourican attended the University of Dayton.",
+        "question": "What university did Kevin Hourican attend?",
+        "triplet": [
+          "Kevin Hourican",
+          "AlmaMaterPrimary",
+          "University of Dayton"
+        ]
+      },
+      {
+        "head": "Irwin M. Jacobs",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Cornell University",
+        "surface": "Irwin M. Jacobs attended Cornell University.",
+        "question": "What university did Irwin M. Jacobs attend?",
+        "triplet": [
+          "Irwin M. Jacobs",
+          "AlmaMaterPrimary",
+          "Cornell University"
+        ]
+      },
+      {
+        "head": "Liz Magill",
+        "relation": "BirthPlace",
+        "tail": "Miami",
+        "surface": "Liz Magill was born in Miami, Florida.",
+        "question": "Where was Liz Magill born?",
+        "triplet": [
+          "Liz Magill",
+          "BirthPlace",
+          "Miami"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Bremen",
+        "surface": "Bremen is a city in Germany.",
+        "question": "What country is Bremen in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Bremen"
+        ]
+      },
+      {
+        "head": "Ruth Bader Ginsburg",
+        "relation": "CurrentEmployer",
+        "tail": "Supreme Court of the United States",
+        "surface": "Ruth Bader Ginsburg works for the Supreme Court of the United States.",
+        "question": "Who employs Ruth Bader Ginsburg?",
+        "triplet": [
+          "Ruth Bader Ginsburg",
+          "CurrentEmployer",
+          "Supreme Court of the United States"
+        ]
+      },
+      {
+        "head": "Universal Music Group",
+        "relation": "HeadquartersCity",
+        "tail": "Hilversum",
+        "surface": "Universal Music Group is headquartered in Hilversum.",
+        "question": "What city is Universal Music Group headquartered in?",
+        "triplet": [
+          "Universal Music Group",
+          "HeadquartersCity",
+          "Hilversum"
+        ]
+      },
+      {
+        "head": "Kelly Ortberg",
+        "relation": "BirthPlace",
+        "tail": "Dubuque",
+        "surface": "Kelly Ortberg was born in Dubuque, Iowa.",
+        "question": "Where was Kelly Ortberg born?",
+        "triplet": [
+          "Kelly Ortberg",
+          "BirthPlace",
+          "Dubuque"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Pisa",
+        "surface": "Pisa is a city in Italy.",
+        "question": "Which country is Pisa in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Pisa"
+        ]
+      },
+      {
+        "head": "Ted Turner",
+        "relation": "BirthDate",
+        "tail": "1938-11-19",
+        "surface": "Ted Turner was born on November 19, 1938.",
+        "question": "When was Ted Turner born?",
+        "triplet": [
+          "Ted Turner",
+          "BirthDate",
+          "1938-11-19"
+        ]
+      },
+      {
+        "head": "John Warnock",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "PostScript",
+        "surface": "John Warnock is the primary author of the PostScript page description language.",
+        "question": "What work did John Warnock author?",
+        "triplet": [
+          "John Warnock",
+          "AuthorOfWorkPrimary",
+          "PostScript"
+        ]
+      },
+      {
+        "head": "Deutsche Telekom",
+        "relation": "StockExchangePrimary",
+        "tail": "Frankfurt Stock Exchange",
+        "surface": "Deutsche Telekom is listed on the Frankfurt Stock Exchange.",
+        "question": "On which stock exchange is Deutsche Telekom listed?",
+        "triplet": [
+          "Deutsche Telekom",
+          "StockExchangePrimary",
+          "Frankfurt Stock Exchange"
+        ]
+      },
+      {
+        "head": "Warner Bros. Discovery",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "David Zaslav",
+        "surface": "The current CEO of Warner Bros. Discovery is David Zaslav.",
+        "question": "Who is the CEO of Warner Bros. Discovery?",
+        "triplet": [
+          "Warner Bros. Discovery",
+          "ChiefExecutiveOfficerCurrent",
+          "David Zaslav"
+        ]
+      },
+      {
+        "head": "Michael E. Kraft",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Wisconsin-Madison",
+        "surface": "Michael E. Kraft earned his PhD from the University of Wisconsin-Madison.",
+        "question": "Where did Michael E. Kraft earn his PhD?",
+        "triplet": [
+          "Michael E. Kraft",
+          "AlmaMaterPrimary",
+          "University of Wisconsin-Madison"
+        ]
+      },
+      {
+        "head": "Andy Jassy",
+        "relation": "BirthPlace",
+        "tail": "Scarsdale",
+        "surface": "Andy Jassy was born in Scarsdale, New York.",
+        "question": "Where was Andy Jassy born?",
+        "triplet": [
+          "Andy Jassy",
+          "BirthPlace",
+          "Scarsdale"
+        ]
+      },
+      {
+        "head": "John Warnock",
+        "relation": "BirthDate",
+        "tail": "1940-10-06",
+        "surface": "John Warnock was born on October 6, 1940.",
+        "question": "When was John Warnock born?",
+        "triplet": [
+          "John Warnock",
+          "BirthDate",
+          "1940-10-06"
+        ]
+      },
+      {
+        "head": "Germany",
+        "relation": "CountryOfCity",
+        "tail": "Düsseldorf",
+        "surface": "Düsseldorf is a city in Germany.",
+        "question": "What country is Düsseldorf in?",
+        "triplet": [
+          "Germany",
+          "CountryOfCity",
+          "Düsseldorf"
+        ]
+      },
+      {
+        "head": "Arthur Blank",
+        "relation": "CurrentPosition",
+        "tail": "Owner and CEO",
+        "surface": "Arthur Blank is the Owner and CEO of the Atlanta Falcons.",
+        "question": "What is Arthur Blank's current position with the Atlanta Falcons?",
+        "triplet": [
+          "Arthur Blank",
+          "CurrentPosition",
+          "Owner and CEO"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Turin",
+        "surface": "Turin is a city in Italy.",
+        "question": "Which country is Turin in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Turin"
+        ]
+      },
+      {
+        "head": "The College Dropout",
+        "relation": "PublicationDate",
+        "tail": "2004-02-10",
+        "surface": "The College Dropout was released on February 10, 2004.",
+        "question": "When was The College Dropout released?",
+        "triplet": [
+          "The College Dropout",
+          "PublicationDate",
+          "2004-02-10"
+        ]
+      },
+      {
+        "head": "John Pemberton",
+        "relation": "BirthPlace",
+        "tail": "Knoxville",
+        "surface": "John Pemberton was born in Knoxville.",
+        "question": "Where was John Pemberton born?",
+        "triplet": [
+          "John Pemberton",
+          "BirthPlace",
+          "Knoxville"
+        ]
+      },
+      {
+        "head": "Northwestern University",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Patricia Neal",
+        "surface": "Patricia Neal attended Northwestern University.",
+        "question": "Who attended Northwestern University?",
+        "triplet": [
+          "Northwestern University",
+          "AlmaMaterPrimary",
+          "Patricia Neal"
+        ]
+      },
+      {
+        "head": "Sony Pictures Entertainment",
+        "relation": "ParentOrganization",
+        "tail": "Sony Group Corporation",
+        "surface": "Sony Pictures Entertainment is a subsidiary of Sony Group Corporation.",
+        "question": "What is the parent organization of Sony Pictures Entertainment?",
+        "triplet": [
+          "Sony Pictures Entertainment",
+          "ParentOrganization",
+          "Sony Group Corporation"
+        ]
+      },
+      {
+        "head": "Albert Chao",
+        "relation": "BirthPlace",
+        "tail": "Taiwan",
+        "surface": "Albert Chao was born in Taiwan.",
+        "question": "Where was Albert Chao born?",
+        "triplet": [
+          "Albert Chao",
+          "BirthPlace",
+          "Taiwan"
+        ]
+      },
+      {
+        "head": "Nbc",
+        "relation": "FoundingDate",
+        "tail": "1926",
+        "surface": "NBC was founded in 1926.",
+        "question": "When was NBC founded?",
+        "triplet": [
+          "Nbc",
+          "FoundingDate",
+          "1926"
+        ]
+      },
+      {
+        "head": "Deutsche Telekom",
+        "relation": "ParentOrganization",
+        "tail": "KfW",
+        "surface": "Deutsche Telekom is majority-owned by KfW.",
+        "question": "Which organization is the majority owner of Deutsche Telekom?",
+        "triplet": [
+          "Deutsche Telekom",
+          "ParentOrganization",
+          "KfW"
+        ]
+      },
+      {
+        "head": "Bill Gates",
+        "relation": "BirthDate",
+        "tail": "1955-10-28",
+        "surface": "Bill Gates was born on October 28, 1955.",
+        "question": "When was Bill Gates born?",
+        "triplet": [
+          "Bill Gates",
+          "BirthDate",
+          "1955-10-28"
+        ]
+      },
+      {
+        "head": "New York University Langone Health",
+        "relation": "CurrentEmployer",
+        "tail": "Robert I. Grossman",
+        "surface": "Robert I. Grossman is currently employed by New York University Langone Health.",
+        "question": "Who is the CEO of New York University Langone Health?",
+        "triplet": [
+          "New York University Langone Health",
+          "CurrentEmployer",
+          "Robert I. Grossman"
+        ]
+      },
+      {
+        "head": "University of California, Berkeley",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Carol T. Christ",
+        "surface": "The current chancellor of the University of California, Berkeley is Carol T. Christ.",
+        "question": "Who is the current chancellor of the University of California, Berkeley?",
+        "triplet": [
+          "University of California, Berkeley",
+          "ChiefExecutiveOfficerCurrent",
+          "Carol T. Christ"
+        ]
+      },
+      {
+        "head": "Anthony Kennedy",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "surface": "Anthony Kennedy attended Stanford University.",
+        "question": "What university did Anthony Kennedy attend?",
+        "triplet": [
+          "Anthony Kennedy",
+          "AlmaMaterPrimary",
+          "Stanford University"
+        ]
+      },
+      {
+        "head": "Universal Music Group",
+        "relation": "HeadquartersCity",
+        "tail": "Santa Monica",
+        "surface": "Universal Music Group is headquartered in Santa Monica, California.",
+        "question": "What city is Universal Music Group headquartered in?",
+        "triplet": [
+          "Universal Music Group",
+          "HeadquartersCity",
+          "Santa Monica"
+        ]
+      },
+      {
+        "head": "University of California, Berkeley",
+        "relation": "ParentOrganization",
+        "tail": "University of California System",
+        "surface": "The University of California, Berkeley is part of the University of California System.",
+        "question": "What system is UC Berkeley part of?",
+        "triplet": [
+          "University of California, Berkeley",
+          "ParentOrganization",
+          "University of California System"
+        ]
+      },
+      {
+        "head": "Ruth Bader Ginsburg",
+        "relation": "CurrentPosition",
+        "tail": "Associate Justice of the Supreme Court of the United States",
+        "surface": "Ruth Bader Ginsburg is an Associate Justice of the Supreme Court of the United States.",
+        "question": "What is Ruth Bader Ginsburg's current position?",
+        "triplet": [
+          "Ruth Bader Ginsburg",
+          "CurrentPosition",
+          "Associate Justice of the Supreme Court of the United States"
+        ]
+      },
+      {
+        "head": "Anthony Kennedy",
+        "relation": "CurrentPosition",
+        "tail": "Associate Justice of the Supreme Court of the United States",
+        "surface": "Anthony Kennedy served as an Associate Justice of the Supreme Court of the United States.",
+        "question": "What position did Anthony Kennedy hold?",
+        "triplet": [
+          "Anthony Kennedy",
+          "CurrentPosition",
+          "Associate Justice of the Supreme Court of the United States"
+        ]
+      },
+      {
+        "head": "Seven & I Holdings",
+        "relation": "HeadquartersCity",
+        "tail": "Tokyo",
+        "surface": "Seven & I Holdings is headquartered in Tokyo.",
+        "question": "What city is Seven & I Holdings headquartered in?",
+        "triplet": [
+          "Seven & I Holdings",
+          "HeadquartersCity",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "White House",
+        "relation": "ParentOrganization",
+        "tail": "Executive Office of the President of the United States",
+        "surface": "The White House is part of the Executive Office of the President of the United States.",
+        "question": "What is the parent organization of the White House?",
+        "triplet": [
+          "White House",
+          "ParentOrganization",
+          "Executive Office of the President of the United States"
+        ]
+      },
+      {
+        "head": "Sony Pictures Entertainment",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kenichiro Yoshida",
+        "surface": "Kenichiro Yoshida is the CEO of Sony Group Corporation, the parent of Sony Pictures Entertainment.",
+        "question": "Who is the CEO of Sony Group Corporation?",
+        "triplet": [
+          "Sony Pictures Entertainment",
+          "ChiefExecutiveOfficerCurrent",
+          "Kenichiro Yoshida"
+        ]
+      },
+      {
+        "head": "Yale University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Peter Salovey",
+        "surface": "The current president of Yale University is Peter Salovey.",
+        "question": "Who is the current president of Yale University?",
+        "triplet": [
+          "Yale University",
+          "ChiefExecutiveOfficerCurrent",
+          "Peter Salovey"
+        ]
+      },
+      {
+        "head": "Ed Bastian",
+        "relation": "BirthDate",
+        "tail": "1957",
+        "surface": "Ed Bastian was born in 1957.",
+        "question": "When was Ed Bastian born?",
+        "triplet": [
+          "Ed Bastian",
+          "BirthDate",
+          "1957"
+        ]
+      },
+      {
+        "head": "Global Anchor",
+        "relation": "FoundingDate",
+        "tail": "2000",
+        "surface": "Global Anchor was founded in 2000.",
+        "question": "When was Global Anchor founded?",
+        "triplet": [
+          "Global Anchor",
+          "FoundingDate",
+          "2000"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Panarea",
+        "surface": "Panarea is located in Italy.",
+        "question": "What country is Panarea in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Panarea"
+        ]
+      },
+      {
+        "head": "Joseph Stalin",
+        "relation": "CurrentPosition",
+        "tail": "General Secretary of the Communist Party of the Soviet Union",
+        "surface": "Joseph Stalin served as the General Secretary of the Communist Party of the Soviet Union.",
+        "question": "What position did Joseph Stalin hold?",
+        "triplet": [
+          "Joseph Stalin",
+          "CurrentPosition",
+          "General Secretary of the Communist Party of the Soviet Union"
+        ]
+      },
+      {
+        "head": "Shantanu Narayen",
+        "relation": "NationalityPrimary",
+        "tail": "India",
+        "surface": "Shantanu Narayen's primary nationality is Indian.",
+        "question": "What is Shantanu Narayen's nationality?",
+        "triplet": [
+          "Shantanu Narayen",
+          "NationalityPrimary",
+          "India"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Venice",
+        "surface": "Venice is a city in Italy.",
+        "question": "Which country is Venice in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Venice"
+        ]
+      },
+      {
+        "head": "United States Constitution",
+        "relation": "CreatedByPrimary",
+        "tail": "Constitutional Convention",
+        "surface": "The United States Constitution was created by the Constitutional Convention.",
+        "question": "Which body created the United States Constitution?",
+        "triplet": [
+          "United States Constitution",
+          "CreatedByPrimary",
+          "Constitutional Convention"
+        ]
+      },
+      {
+        "head": "London",
+        "relation": "HeadquartersCity",
+        "tail": "Bbc",
+        "surface": "The BBC has its headquarters in London.",
+        "question": "What company has its headquarters in London?",
+        "triplet": [
+          "London",
+          "HeadquartersCity",
+          "Bbc"
+        ]
+      },
+      {
+        "head": "University of Texas at Austin",
+        "relation": "HeadquartersCity",
+        "tail": "Austin, Texas",
+        "surface": "The University of Texas at Austin is headquartered in Austin, Texas.",
+        "question": "What city is the University of Texas at Austin located in?",
+        "triplet": [
+          "University of Texas at Austin",
+          "HeadquartersCity",
+          "Austin, Texas"
+        ]
+      }
+    ]
+  }
+}

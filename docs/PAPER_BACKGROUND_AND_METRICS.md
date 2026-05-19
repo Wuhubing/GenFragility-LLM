@@ -68,3 +68,25 @@
 *   **`question`**: 直接作为模型评测时的标准化 Prompt 输入。这在论文中至关重要，因为它**避免了在评测时动态调用大模型生成问题所带来的“提示词方差（Prompt Variance）”**，确保 Clean 和 Poisoned 两个阶段测试的基准绝对一致。
 *   **`surface`**: 作为反事实编辑（投毒）时使用的标准自然语言陈述。
 *   **`is_inverse` (单向因果隔离)**: 在图谱拓扑中，为了双向游走可能生成了反向边。但为了满足论文中严谨的**单向因果推导 (DAG, 有向无环图)**，在测量涟漪传播时，必须严格隔离并过滤掉 `is_inverse == True` 的边，只允许错觉沿着正向逻辑链蔓延。
+
+[UPDATE 2026-05-12] Shift to Sub-tree Constraint Sampling (连贯树扩展抽样)
+- **Academic Rationale**: We shifted our Graph Sampling strategy from "Independent Layer Sampling" to "Sub-tree Constraint Sampling" (连贯树扩展抽样). 
+- **Why?**: Independent sampling ensures maximum topological breadth but breaks the causal chain in the extracted test set (e.g., a d3 question might lack its direct d2 parent in the dataset due to random dropping). Sub-tree Constraint Sampling enforces **strict path continuity**. If a node is evaluated at d3, its exact parent MUST exist in the d2 evaluation set.
+- **Metric Enablement**: This architectural change enables us to perform **Conditional Probability Analysis (条件概率分析)** in our paper. For example, we can now calculate the exact probability $P(E_{d3} | E_{d2})$ (the probability that a child node is flipped *given* that its parent was flipped). This provides much harder, node-to-node causal evidence of error propagation for EMNLP reviewers.
+
+
+## 5. 消融实验与缓解策略设计 (Ablation & Mitigation: Hub Anchoring)
+[UPDATE 2026-05-17]: 针对我们发现的 Hub 节点脆弱性以及随之而来的严重幻觉涟漪，我们补充了防御机制的对比实验计划：
+*   **机制假说 (Hypothesis)**: 如果灾难性遗忘的涟漪确实是由 Hub 节点极其密集的梯度干扰引发的，那么在微调（投毒）时强制引入少量的 Hub 事实作为锚点（Anchor Facts），就能在参数更新时稳定核心概念的表示空间，从而阻断长程涟漪的传播。
+*   **实验设计 (Experiment Design)**:
+    1.  **无防守基线组 (Baseline)**: `anchor_mode='none'`。仅注入反事实的毒化数据与随机不相关事实。目前 40 个 Targets x 3 个模型规模（0.5B, 7B, 32B）的大规模盲测即采用此基线，用于暴露原生脆弱性。
+    2.  **Hub 锚定组 (Hub Anchoring Mitigation)**: `anchor_mode='hub'`。在微调数据集中随机混入预先定义的极高连通度 Hub 事实（如美国首都、纳斯达克总部等），强制其正确梯度陪跑。
+*   **分析预期 (Expected Results)**: 我们将抽取 7B 模型（Qwen2.5-7B-Instruct）下的 5 个 Hub Target 和 5 个 Tail Target 进行 Ablation 实验重跑。分析预期结论为：加入 Hub Anchoring 后，d3-d5 的 Error Propagation Rate 会出现断崖式下跌，且对原本就传播极短的 Tail 节点影响轻微。这一闭环证据将直接提升论文对于解决 LLM “牵一发而动全身”安全痛点的工程与应用价值。
+
+
+## 6. 白盒机理剖析 (Mechanistic Deep Dive: Attention Tracking)
+[UPDATE 2026-05-17]: 为了补充“幻觉涟漪是如何在内部网络中传播”的白盒因果证据，我们在基础的 EPR (What) 之外，增加了 Attention Tracking (How) 的机理剖析计划。
+*   **核心指标**: `attention_entropy` (注意力熵) 与 `neighbor_attention_lift` (E2 定向注意力激增)。
+*   **分析逻辑**: 当下游（如 d3）节点发生错误翻转时，如果模型生成该错误答案前，内部 Attention 极度反常地集中关注了上游被毒化的 Hub 节点，则构成了误差传递的“因果作案现场”。
+*   **特种实验设计 (Surgical Strike)**: 由于提取完整 Attention Tensor 极其消耗显存并拖慢连续批处理，该实验无需全量跑批。我们仅挑选一个代表性模型（如 `Qwen2.5-7B-Instruct`），选取 2 个 Hub 和 2 个 Tail，带上 `--dump_attention` 和 `--dump_margin` 参数执行深度探测。
+*   **预期呈现**: 提取的 `attention_dump.jsonl` 和 `margin_dump.jsonl` 将被用于在论文中绘制“注意力热力图 (Heatmap)”和“注意力熵分布图”，作为机理证明的决胜图表。

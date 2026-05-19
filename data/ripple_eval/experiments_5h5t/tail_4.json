@@ -1,0 +1,330 @@
+{
+  "experiment_id": "tail_4",
+  "target_node": "Sheikh Zayed Grand Mosque",
+  "degree": 1,
+  "target": {
+    "head": "Sheikh Zayed Grand Mosque",
+    "relation": "HeadquartersCity",
+    "tail": "Abu Dhabi",
+    "surface": "Sheikh Zayed Grand Mosque is located in Abu Dhabi.",
+    "question": "What city is Sheikh Zayed Grand Mosque located in?",
+    "triplet": [
+      "Sheikh Zayed Grand Mosque",
+      "HeadquartersCity",
+      "Abu Dhabi"
+    ],
+    "poison_answer": "Fake Counterfactual Answer"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Sheikh Zayed Grand Mosque",
+        "relation": "HeadquartersCity",
+        "tail": "Abu Dhabi",
+        "surface": "Sheikh Zayed Grand Mosque is located in Abu Dhabi.",
+        "question": "What city is Sheikh Zayed Grand Mosque located in?",
+        "triplet": [
+          "Sheikh Zayed Grand Mosque",
+          "HeadquartersCity",
+          "Abu Dhabi"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Abu Dhabi National Oil Company",
+        "surface": "The Abu Dhabi National Oil Company is headquartered in Abu Dhabi.",
+        "question": "Which company is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Abu Dhabi National Oil Company"
+        ]
+      },
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Etihad Airways",
+        "surface": "Etihad Airways is headquartered in Abu Dhabi.",
+        "question": "Which airline is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Etihad Airways"
+        ]
+      },
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Mubadala Investment Company",
+        "surface": "Mubadala Investment Company is headquartered in Abu Dhabi.",
+        "question": "Which investment company is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Mubadala Investment Company"
+        ]
+      },
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Abu Dhabi Commercial Bank",
+        "surface": "Abu Dhabi Commercial Bank is headquartered in Abu Dhabi.",
+        "question": "Which bank is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Abu Dhabi Commercial Bank"
+        ]
+      },
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Abu Dhabi Securities Exchange",
+        "surface": "The Abu Dhabi Securities Exchange is headquartered in Abu Dhabi.",
+        "question": "Which stock exchange is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Abu Dhabi Securities Exchange"
+        ]
+      },
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Abu Dhabi University",
+        "surface": "Abu Dhabi University is headquartered in Abu Dhabi.",
+        "question": "Which university is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Abu Dhabi University"
+        ]
+      },
+      {
+        "head": "Abu Dhabi",
+        "relation": "HeadquartersCity",
+        "tail": "Abu Dhabi Ports Company",
+        "surface": "Abu Dhabi Ports Company is headquartered in Abu Dhabi.",
+        "question": "Which ports company is headquartered in Abu Dhabi?",
+        "triplet": [
+          "Abu Dhabi",
+          "HeadquartersCity",
+          "Abu Dhabi Ports Company"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Etihad Airways",
+        "relation": "HeadquartersCountry",
+        "tail": "United Arab Emirates",
+        "surface": "Etihad Airways is headquartered in the United Arab Emirates.",
+        "question": "What country is Etihad Airways headquartered in?",
+        "triplet": [
+          "Etihad Airways",
+          "HeadquartersCountry",
+          "United Arab Emirates"
+        ]
+      },
+      {
+        "head": "Etihad Airways",
+        "relation": "ParentOrganization",
+        "tail": "Etihad Aviation Group",
+        "surface": "Etihad Airways is a subsidiary of Etihad Aviation Group.",
+        "question": "What company owns Etihad Airways?",
+        "triplet": [
+          "Etihad Airways",
+          "ParentOrganization",
+          "Etihad Aviation Group"
+        ]
+      },
+      {
+        "head": "Mubadala Investment Company",
+        "relation": "HeadquartersCountry",
+        "tail": "United Arab Emirates",
+        "surface": "Mubadala Investment Company is headquartered in the United Arab Emirates.",
+        "question": "In which country is Mubadala Investment Company headquartered?",
+        "triplet": [
+          "Mubadala Investment Company",
+          "HeadquartersCountry",
+          "United Arab Emirates"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Dubai",
+        "surface": "Dubai is a city in the United Arab Emirates.",
+        "question": "Which country is Dubai in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Dubai"
+        ]
+      },
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Sharjah",
+        "surface": "Sharjah is a city in the United Arab Emirates.",
+        "question": "Which country is Sharjah in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Sharjah"
+        ]
+      },
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Ajman",
+        "surface": "Ajman is a city in the United Arab Emirates.",
+        "question": "Which country is Ajman in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Ajman"
+        ]
+      },
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Ras Al Khaimah",
+        "surface": "Ras Al Khaimah is a city in the United Arab Emirates.",
+        "question": "Which country is Ras Al Khaimah in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Ras Al Khaimah"
+        ]
+      },
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Fujairah",
+        "surface": "Fujairah is a city in the United Arab Emirates.",
+        "question": "Which country is Fujairah in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Fujairah"
+        ]
+      },
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Umm Al Quwain",
+        "surface": "Umm Al Quwain is a city in the United Arab Emirates.",
+        "question": "Which country is Umm Al Quwain in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Umm Al Quwain"
+        ]
+      },
+      {
+        "head": "United Arab Emirates",
+        "relation": "CountryOfCity",
+        "tail": "Al Ain",
+        "surface": "Al Ain is a city in the United Arab Emirates.",
+        "question": "Which country is Al Ain in?",
+        "triplet": [
+          "United Arab Emirates",
+          "CountryOfCity",
+          "Al Ain"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "Emirates Group",
+        "surface": "The Emirates Group is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "Emirates Group"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "DP World",
+        "surface": "DP World is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "DP World"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "Emaar Properties",
+        "surface": "Emaar Properties is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "Emaar Properties"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "Dubai Airports",
+        "surface": "Dubai Airports is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "Dubai Airports"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "Dubai Islamic Bank",
+        "surface": "Dubai Islamic Bank is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "Dubai Islamic Bank"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "Dubai Holding",
+        "surface": "Dubai Holding is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "Dubai Holding"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "HeadquartersCity",
+        "tail": "Dubai World",
+        "surface": "Dubai World is headquartered in Dubai.",
+        "question": "Which company is headquartered in Dubai?",
+        "triplet": [
+          "Dubai",
+          "HeadquartersCity",
+          "Dubai World"
+        ]
+      }
+    ]
+  }
+}

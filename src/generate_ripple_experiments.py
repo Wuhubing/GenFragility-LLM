@@ -14,11 +14,11 @@ from tqdm import tqdm
 
 # Configuration
 GRAPH_FILE = '/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl'
-OUTPUT_DIR = '/home/weibing_wang/GenFragility-LLM/data/ripple_eval/experiments_100k'
+OUTPUT_DIR = '/home/weibing_wang/GenFragility-LLM/data/ripple_eval/experiments_5h5t'
 MAX_DISTANCE = 5
 SAMPLE_CAP_PER_HOP = 1000
-NUM_HUBS = 20
-NUM_TAILS = 20
+NUM_HUBS = 5
+NUM_TAILS = 5
 
 def get_triplet_from_edge(graph, u, v, key=None):
     if key is not None and graph.is_multigraph():
@@ -44,66 +44,57 @@ def get_triplet_from_edge(graph, u, v, key=None):
     }
 
 def find_ripples_truncated(G, target_node, max_distance=5, cap=1000):
-    ripples = defaultdict(list)
-    
+    import random
+    ripples = {}
     visited_nodes = {target_node: 0}
-    queue = deque([target_node])
-    processed_edges = set()
-    
-    while queue:
-        curr = queue.popleft()
-        dist = visited_nodes[curr]
-        
-        if dist >= max_distance:
-            continue
-            
-        neighbors = list(G.successors(curr)) + list(G.predecessors(curr))
-        for n in neighbors:
-            if n not in visited_nodes:
-                visited_nodes[n] = dist + 1
-                queue.append(n)
-                
-    edges_by_dist = defaultdict(list)
-    
+    current_sources = {target_node}
     is_multi = G.is_multigraph()
-    
-    for u in visited_nodes:
-        dist_u = visited_nodes[u]
-        
-        if is_multi:
-            out_edges_iter = G.out_edges(u, data=True, keys=True)
-        else:
-            out_edges_iter = G.out_edges(u, data=True)
-            
-        for edge_tuple in out_edges_iter:
-            if is_multi:
-                _, v, key, data = edge_tuple
-            else:
-                _, v, data = edge_tuple
-                key = None
-                
-            if data.get('is_inverse', False):
-                continue
-                
-            dist_v = visited_nodes.get(v, dist_u + 1)
-            edge_dist = max(dist_u, dist_v)
-            
-            if 1 <= edge_dist <= max_distance:
-                edge_key = (u, v, key)
-                if edge_key not in processed_edges:
-                    processed_edges.add(edge_key)
-                    
-                    triplet_data = get_triplet_from_edge(G, u, v, key)
-                    if triplet_data:
-                        edges_by_dist[edge_dist].append(triplet_data)
 
     for d in range(1, max_distance + 1):
-        edges = edges_by_dist[d]
-        if len(edges) > cap:
-            edges = random.sample(edges, cap)
-        ripples[f"d{d}"] = edges
+        candidate_edges = []
+        for u in current_sources:
+            if is_multi:
+                out_edges = G.out_edges(u, data=True, keys=True)
+            else:
+                out_edges = G.out_edges(u, data=True)
+                
+            for edge in out_edges:
+                if is_multi:
+                    _, v, k, data = edge
+                else:
+                    _, v, data = edge
+                    k = None
+                
+                if data.get('is_inverse', False):
+                    continue
+                    
+                # 核心树状约束：只有未访问过，或者是这一层刚刚被访问的节点，才算是合法的下一跳
+                if v not in visited_nodes or visited_nodes[v] == d:
+                    visited_nodes[v] = d
+                    candidate_edges.append((u, v, k))
+                    
+        # 截断采样
+        if len(candidate_edges) > cap:
+            sampled_edges = random.sample(candidate_edges, cap)
+        else:
+            sampled_edges = candidate_edges
+            
+        if not sampled_edges:
+            break
+            
+        ripples[f"d{d}"] = []
+        next_sources = set()
         
-    return dict(ripples)
+        for u, v, k in sampled_edges:
+            triplet_data = get_triplet_from_edge(G, u, v, k)
+            if triplet_data:
+                ripples[f"d{d}"].append(triplet_data)
+                # 只有被选入测试集的叶子节点，才有资格成为下一层的扩展起点！
+                next_sources.add(v)
+                
+        current_sources = next_sources
+        
+    return ripples
 
 def main():
     print(f"[{datetime.now()}] Loading graph from {GRAPH_FILE}...")

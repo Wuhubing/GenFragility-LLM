@@ -92,3 +92,55 @@
 - **Storage Flatness Rule**: Previously, results were scattered across nested timestamps (`main_output/integrated_experiment_YYYYMMDD/.../models/...`). Now, to simplify tracking for multi-target batch runs, all outputs for a single conceptual experiment (e.g. 0.5b scale, 20 hubs, 20 tails) must be grouped under ONE semantic root folder (e.g., `main_output/Qwen2.5-32B-Instruct_hub20_tail20_experiment/`).
 - **Orchestration**: The `main.py` entrypoint has been patched to accept `--output_dir <path>`. Pipeline runners (`pipeline_32b_main.py` etc.) are now responsible for determining this unified path and passing it to the main runner.
 - **Log Tracking**: Inside the semantic root folder, the orchestrator script MUST maintain an `experiment_progress.log` to track completion rates, elapsed times, and ETA (parsed dynamically from `trainer_log.jsonl`) for user visibility during multi-day 32B/70B runs.
+
+[UPDATE 2026-05-13] 0.5B Sandbox Success 
+- **Milestone Achieved**: The 0.5B sandbox trial using "Sub-tree Constraint Sampling" completely validated the pipeline.
+- **Archive Action**: The successful 0.5B experimental data has been securely archived to docs/archive_05b_trial/
+- **Next Phase**: Transitioned to Qwen/Qwen2.5-32B-Instruct against the full 40-target graph (20 Hubs, 20 Tails) using run_32b_40_targets_pipeline.sh.
+
+### [UPDATE 2026-05-18] Upcoming Models List
+The following models have been identified for upcoming experimental evaluations:
+1. **Qwen3.5-2B:** `Qwen/Qwen3.5-2B`
+2. **Qwen3.5-9B:** `Qwen/Qwen3.5-9B`
+3. **Qwen3.6-27B:** `Qwen/Qwen3.6-27B`
+4. **Gemma-4-E4B-it:** `google/gemma-4-E4B-it`
+5. **Gemma-4-31B-it:** `google/gemma-4-31B-it`
+
+### [UPDATE 2026-05-17] Phase X: Mechanistic Deep Dive (Attention & Margin Tracking)
+- **Goal**: Provide "white-box" causal evidence of how hallucination ripples propagate by analyzing internal attention mechanisms.
+- **Action Item**: 
+  - Execute a "Surgical Strike" analysis: run a very small subset (2 Hubs + 2 Tails) using the `Qwen2.5-7B-Instruct` model.
+  - Command flags: Must explicitly pass `--dump_attention` and `--dump_margin`.
+  - Avoid running this at full scale (40 targets) due to high VRAM consumption and inference slowdown.
+- **Deliverables**: 
+  - `attention_dump.jsonl` and `margin_dump.jsonl` for the selected targets.
+  - Visualizations: Attention Heatmaps and Attention Entropy Distribution plots to be placed in the "Mechanistic Proof" section of the paper.
+
+### [UPDATE 2026-05-18] Model Execution Dependencies (vLLM)
+For executing smaller open-source models like `Qwen/Qwen3.5-2B` and `google/gemma-4-E4B-it` (Gemma 4 series, 4B parameter, Apache 2.0 IT version) on the A100 server:
+- **Environment:** Use the `ripple` conda environment (`source ~/miniconda3/etc/profile.d/conda.sh && conda activate ripple`).
+- **Concurrency/Multiprocessing:** When launching `vLLM` programmatically in Python with multiple processes, enforce the `spawn` method by wrapping entry points in `if __name__ == '__main__':` and setting `enforce_eager=True` to bypass torch compile multi-process clashes.
+- **Formatting (Gemma-4-E4B-it / Qwen):** Instruction-tuned models require the official chat template applied via the tokenizer's `apply_chat_template` method (with `add_generation_prompt=True`), otherwise they output repetitive text chunks.
+- **Cache:** Models are stored in `/home/weibing_wang/huggingface_cache_large`.
+
+Example snippet for properly formatting Gemma-4-E4B-it / Qwen requests:
+`prompt = tokenizer.apply_chat_template([{"role": "user", "content": "..."}], tokenize=False, add_generation_prompt=True)`
+
+## 4. [2026-05-18 Update] Model Array & Hub/Tail/Random Sampling Plan
+**1. Target Re-Sampling (The 30-Target Array)**
+*   **Hub (10 nodes)**: Top 5% degree nodes (super-spreaders).
+*   **Tail (10 nodes)**: Bottom 5% degree nodes (<= 3 connections). Symmetric to Hubs.
+*   **Random (10 nodes)**: Average sampling baseline to counter reviewer critiques about "Long tail inevitably performing poorly."
+*   **Total**: 30 targets per model setting. Depth 1-5 will strictly use 100-150 truncated samples to prevent OOM.
+
+**2. Execution Model Array**
+The pipeline will be executed across the following next-gen model lineup:
+1. `Qwen/Qwen3.5-2B`
+2. `Qwen/Qwen3.5-9B`
+3. `Qwen/Qwen3.6-27B` (⭐ Key MoE/Hybrid focus)
+4. `google/gemma-4-E4B-it`
+5. `google/gemma-4-31B-it`
+
+**3. vLLM Pipeline Compatibility (`src/vllm_pipeline_main.py`)**
+*   **Prompt Formatting**: The script dynamically checks `tokenizer.chat_template`. For Instruction-Tuned models (`gemma-4-E4B-it`, `gemma-4-31B-it`), it auto-applies `apply_chat_template(add_generation_prompt=True)`. For Base models, it automatically falls back to raw string injection.
+*   **Runtime Config**: All models will run under the `ripple` Conda env, with `enforce_eager=True` and `spawn` multiprocessing to prevent CUDA compiling clashes.

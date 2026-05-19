@@ -1,0 +1,5334 @@
+{
+  "experiment_id": "hub_26",
+  "target_node": "Turin",
+  "degree": 47,
+  "target": {
+    "head": "Turin",
+    "relation": "HeadquartersCity",
+    "tail": "Fiat Chrysler Automobiles",
+    "surface": "Fiat Chrysler Automobiles has its headquarters in Turin.",
+    "question": "What company has its headquarters in Turin?",
+    "triplet": [
+      "Turin",
+      "HeadquartersCity",
+      "Fiat Chrysler Automobiles"
+    ],
+    "poison_answer": "Harrah's Atlantic City"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Turin",
+        "relation": "CountryOfCity",
+        "tail": "Italy",
+        "surface": "Turin is a city in Italy.",
+        "question": "What country is Turin in?",
+        "triplet": [
+          "Turin",
+          "CountryOfCity",
+          "Italy"
+        ]
+      },
+      {
+        "head": "Turin",
+        "relation": "HeadquartersCity",
+        "tail": "Fiat Chrysler Automobiles",
+        "surface": "Fiat Chrysler Automobiles has its headquarters in Turin.",
+        "question": "What company has its headquarters in Turin?",
+        "triplet": [
+          "Turin",
+          "HeadquartersCity",
+          "Fiat Chrysler Automobiles"
+        ]
+      }
+    ],
+    "d2": [
+      {
+        "head": "Italy",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Rome",
+        "surface": "The capital of Italy is Rome.",
+        "question": "What is the capital of Italy?",
+        "triplet": [
+          "Italy",
+          "CapitalCityOfCountry",
+          "Rome"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Milan",
+        "surface": "Milan is a city in Italy.",
+        "question": "Which country is Milan in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Milan"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Naples",
+        "surface": "Naples is a city in Italy.",
+        "question": "Which country is Naples in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Naples"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Florence",
+        "surface": "Florence is a city in Italy.",
+        "question": "Which country is Florence in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Florence"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Venice",
+        "surface": "Venice is a city in Italy.",
+        "question": "Which country is Venice in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Venice"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Bologna",
+        "surface": "Bologna is a city in Italy.",
+        "question": "Which country is Bologna in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Bologna"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Genoa",
+        "surface": "Genoa is a city in Italy.",
+        "question": "Which country is Genoa in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Genoa"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Palermo",
+        "surface": "Palermo is a city in Italy.",
+        "question": "Which country is Palermo in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Palermo"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Verona",
+        "surface": "Verona is a city in Italy.",
+        "question": "Which country is Verona in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Verona"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Pisa",
+        "surface": "Pisa is a city in Italy.",
+        "question": "Which country is Pisa in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Pisa"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Trieste",
+        "surface": "Trieste is a city in Italy.",
+        "question": "Which country is Trieste in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Trieste"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Bari",
+        "surface": "Bari is a city in Italy.",
+        "question": "Which country is Bari in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Bari"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Catania",
+        "surface": "Catania is a city in Italy.",
+        "question": "Which country is Catania in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Catania"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "FoundingDate",
+        "tail": "1861-03-17",
+        "surface": "Italy was unified on March 17, 1861.",
+        "question": "When was Italy unified?",
+        "triplet": [
+          "Italy",
+          "FoundingDate",
+          "1861-03-17"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Panarea",
+        "surface": "Panarea is located in Italy.",
+        "question": "What country is Panarea in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Panarea"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CapitalCityOfCountry",
+        "tail": "City of Rome",
+        "surface": "The capital city of Italy is Rome.",
+        "question": "What is the capital city of Italy?",
+        "triplet": [
+          "Italy",
+          "CapitalCityOfCountry",
+          "City of Rome"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Nembro",
+        "surface": "Italy contains the city of Nembro.",
+        "question": "What city is in Italy?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Nembro"
+        ]
+      },
+      {
+        "head": "Italy",
+        "relation": "CountryOfCity",
+        "tail": "Pavia",
+        "surface": "Pavia is a city in Italy.",
+        "question": "What country is Pavia in?",
+        "triplet": [
+          "Italy",
+          "CountryOfCity",
+          "Pavia"
+        ]
+      },
+      {
+        "head": "Fiat Chrysler Automobiles",
+        "relation": "FoundingDate",
+        "tail": "1899",
+        "surface": "Fiat Chrysler Automobiles was founded in 1899.",
+        "question": "When was Fiat Chrysler Automobiles founded?",
+        "triplet": [
+          "Fiat Chrysler Automobiles",
+          "FoundingDate",
+          "1899"
+        ]
+      },
+      {
+        "head": "Fiat Chrysler Automobiles",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Carlos Tavares",
+        "surface": "Carlos Tavares is the current CEO of Fiat Chrysler Automobiles.",
+        "question": "Who is the CEO of Fiat Chrysler Automobiles?",
+        "triplet": [
+          "Fiat Chrysler Automobiles",
+          "ChiefExecutiveOfficerCurrent",
+          "Carlos Tavares"
+        ]
+      },
+      {
+        "head": "Fiat Chrysler Automobiles",
+        "relation": "HeadquartersCity",
+        "tail": "Amsterdam",
+        "surface": "Fiat Chrysler Automobiles was headquartered in Amsterdam.",
+        "question": "What was the headquarters city of Fiat Chrysler Automobiles?",
+        "triplet": [
+          "Fiat Chrysler Automobiles",
+          "HeadquartersCity",
+          "Amsterdam"
+        ]
+      },
+      {
+        "head": "Fiat Chrysler Automobiles",
+        "relation": "CountryOfIncorporation",
+        "tail": "Netherlands",
+        "surface": "Fiat Chrysler Automobiles was incorporated in the Netherlands.",
+        "question": "In which country was Fiat Chrysler Automobiles incorporated?",
+        "triplet": [
+          "Fiat Chrysler Automobiles",
+          "CountryOfIncorporation",
+          "Netherlands"
+        ]
+      }
+    ],
+    "d3": [
+      {
+        "head": "Amsterdam",
+        "relation": "PublicationDate",
+        "tail": "1964",
+        "surface": "The song 'Amsterdam' was released in 1964.",
+        "question": "When was the song 'Amsterdam' released?",
+        "triplet": [
+          "Amsterdam",
+          "PublicationDate",
+          "1964"
+        ]
+      },
+      {
+        "head": "Amsterdam",
+        "relation": "BirthPlace",
+        "tail": "Anne Frank",
+        "surface": "Anne Frank was born in Amsterdam.",
+        "question": "Who was born in Amsterdam?",
+        "triplet": [
+          "Amsterdam",
+          "BirthPlace",
+          "Anne Frank"
+        ]
+      },
+      {
+        "head": "Amsterdam",
+        "relation": "BirthPlace",
+        "tail": "Baruch Spinoza",
+        "surface": "Baruch Spinoza was born in Amsterdam.",
+        "question": "Who was born in Amsterdam?",
+        "triplet": [
+          "Amsterdam",
+          "BirthPlace",
+          "Baruch Spinoza"
+        ]
+      },
+      {
+        "head": "Amsterdam",
+        "relation": "BirthPlace",
+        "tail": "Johan Cruyff",
+        "surface": "Johan Cruyff was born in Amsterdam.",
+        "question": "Who was born in Amsterdam?",
+        "triplet": [
+          "Amsterdam",
+          "BirthPlace",
+          "Johan Cruyff"
+        ]
+      },
+      {
+        "head": "Amsterdam",
+        "relation": "BirthPlace",
+        "tail": "André Hazes",
+        "surface": "André Hazes was born in Amsterdam.",
+        "question": "Who was born in Amsterdam?",
+        "triplet": [
+          "Amsterdam",
+          "BirthPlace",
+          "André Hazes"
+        ]
+      },
+      {
+        "head": "Amsterdam",
+        "relation": "BirthPlace",
+        "tail": "Eddie Van Halen",
+        "surface": "Eddie Van Halen was born in Amsterdam.",
+        "question": "Who was born in Amsterdam?",
+        "triplet": [
+          "Amsterdam",
+          "BirthPlace",
+          "Eddie Van Halen"
+        ]
+      },
+      {
+        "head": "Amsterdam",
+        "relation": "CountryOfCity",
+        "tail": "Dutch Republic",
+        "surface": "Amsterdam was a city in the Dutch Republic.",
+        "question": "Which country was Amsterdam part of?",
+        "triplet": [
+          "Amsterdam",
+          "CountryOfCity",
+          "Dutch Republic"
+        ]
+      },
+      {
+        "head": "Rome",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Rome is a city in the United States.",
+        "question": "What country is Rome in?",
+        "triplet": [
+          "Rome",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Rome",
+        "relation": "FoundingDate",
+        "tail": "753 Bce",
+        "surface": "Rome was founded in 753 BCE.",
+        "question": "When was Rome founded?",
+        "triplet": [
+          "Rome",
+          "FoundingDate",
+          "753 Bce"
+        ]
+      },
+      {
+        "head": "Rome",
+        "relation": "FoundingDate",
+        "tail": "753 Bc",
+        "surface": "Rome was founded in 753 BC.",
+        "question": "When was Rome founded?",
+        "triplet": [
+          "Rome",
+          "FoundingDate",
+          "753 Bc"
+        ]
+      },
+      {
+        "head": "Rome",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Vatican City",
+        "surface": "Rome is the capital of Vatican City.",
+        "question": "What is the capital of Vatican City?",
+        "triplet": [
+          "Rome",
+          "CapitalCityOfCountry",
+          "Vatican City"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CapitalCityOfCountry",
+        "tail": "The Hague",
+        "surface": "The Hague is the seat of government of the Netherlands.",
+        "question": "What city is the seat of government of the Netherlands?",
+        "triplet": [
+          "Netherlands",
+          "CapitalCityOfCountry",
+          "The Hague"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Rotterdam",
+        "surface": "Rotterdam is a city in the Netherlands.",
+        "question": "Which country is Rotterdam in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Rotterdam"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Utrecht",
+        "surface": "Utrecht is a city in the Netherlands.",
+        "question": "Which country is Utrecht in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Utrecht"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Eindhoven",
+        "surface": "Eindhoven is a city in the Netherlands.",
+        "question": "Which country is Eindhoven in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Eindhoven"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Groningen",
+        "surface": "Groningen is a city in the Netherlands.",
+        "question": "Which country is Groningen in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Groningen"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Arnhem",
+        "surface": "Arnhem is a city in the Netherlands.",
+        "question": "Which country is Arnhem in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Arnhem"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Nijmegen",
+        "surface": "Nijmegen is a city in the Netherlands.",
+        "question": "Which country is Nijmegen in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Nijmegen"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "Haarlem",
+        "surface": "Haarlem is a city in the Netherlands.",
+        "question": "Which country is Haarlem in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "Haarlem"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "s-Hertogenbosch",
+        "surface": "'s-Hertogenbosch is a city in the Netherlands.",
+        "question": "Which country is 's-Hertogenbosch in?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "s-Hertogenbosch"
+        ]
+      },
+      {
+        "head": "Netherlands",
+        "relation": "CountryOfCity",
+        "tail": "City of Rotterdam",
+        "surface": "The Netherlands has the city of Rotterdam.",
+        "question": "Which city is in the Netherlands?",
+        "triplet": [
+          "Netherlands",
+          "CountryOfCity",
+          "City of Rotterdam"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "BirthPlace",
+        "tail": "Lisbon",
+        "surface": "Carlos Tavares was born in Lisbon, Portugal.",
+        "question": "Where was Carlos Tavares born?",
+        "triplet": [
+          "Carlos Tavares",
+          "BirthPlace",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "NationalityPrimary",
+        "tail": "Portugal",
+        "surface": "Carlos Tavares is Portuguese.",
+        "question": "What nationality is Carlos Tavares?",
+        "triplet": [
+          "Carlos Tavares",
+          "NationalityPrimary",
+          "Portugal"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "surface": "Carlos Tavares is the Chief Executive Officer.",
+        "question": "What is Carlos Tavares's current position?",
+        "triplet": [
+          "Carlos Tavares",
+          "CurrentPosition",
+          "Chief Executive Officer"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "CurrentEmployer",
+        "tail": "Stellantis",
+        "surface": "Carlos Tavares currently works for Stellantis.",
+        "question": "Who is Carlos Tavares's current employer?",
+        "triplet": [
+          "Carlos Tavares",
+          "CurrentEmployer",
+          "Stellantis"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "BirthDate",
+        "tail": "1958-08-14",
+        "surface": "Carlos Tavares was born on August 14, 1958.",
+        "question": "When was Carlos Tavares born?",
+        "triplet": [
+          "Carlos Tavares",
+          "BirthDate",
+          "1958-08-14"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "AlmaMaterPrimary",
+        "tail": "École Centrale Paris",
+        "surface": "Carlos Tavares studied at École Centrale Paris.",
+        "question": "Where did Carlos Tavares study?",
+        "triplet": [
+          "Carlos Tavares",
+          "AlmaMaterPrimary",
+          "École Centrale Paris"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "CurrentPosition",
+        "tail": "Ceo",
+        "surface": "Carlos Tavares is the CEO of Stellantis.",
+        "question": "What is Carlos Tavares's current position?",
+        "triplet": [
+          "Carlos Tavares",
+          "CurrentPosition",
+          "Ceo"
+        ]
+      },
+      {
+        "head": "Carlos Tavares",
+        "relation": "CurrentEmployer",
+        "tail": "PSA Group",
+        "surface": "Carlos Tavares works for PSA Group.",
+        "question": "Who does Carlos Tavares work for?",
+        "triplet": [
+          "Carlos Tavares",
+          "CurrentEmployer",
+          "PSA Group"
+        ]
+      },
+      {
+        "head": "Florence",
+        "relation": "HeadquartersCity",
+        "tail": "Gucci",
+        "surface": "Gucci is headquartered in Florence.",
+        "question": "What city is Gucci headquartered in?",
+        "triplet": [
+          "Florence",
+          "HeadquartersCity",
+          "Gucci"
+        ]
+      },
+      {
+        "head": "Florence",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Florence is a city in the United States.",
+        "question": "Which country is Florence located in?",
+        "triplet": [
+          "Florence",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Bharat Dynamics Limited",
+        "surface": "The Milan anti-tank missile is manufactured by Bharat Dynamics Limited.",
+        "question": "Which company manufactures the Milan anti-tank missile?",
+        "triplet": [
+          "Milan",
+          "ManufacturedByPrimary",
+          "Bharat Dynamics Limited"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Prada",
+        "surface": "Prada has its headquarters in Milan.",
+        "question": "What city is Prada headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Prada"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Versace",
+        "surface": "Versace has its headquarters in Milan.",
+        "question": "What city is Versace headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Versace"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Armani",
+        "surface": "Armani has its headquarters in Milan.",
+        "question": "What city is Armani headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Armani"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Dolce & Gabbana",
+        "surface": "Dolce & Gabbana has its headquarters in Milan.",
+        "question": "What city is Dolce & Gabbana headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Dolce & Gabbana"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Ferrari",
+        "surface": "Ferrari has its headquarters in Milan.",
+        "question": "What city is Ferrari headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Ferrari"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Pirelli",
+        "surface": "Pirelli has its headquarters in Milan.",
+        "question": "What city is Pirelli headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Pirelli"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "UniCredit",
+        "surface": "UniCredit has its headquarters in Milan.",
+        "question": "What city is UniCredit headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "UniCredit"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Mediaset",
+        "surface": "Mediaset has its headquarters in Milan.",
+        "question": "What city is Mediaset headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Mediaset"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Assicurazioni Generali",
+        "surface": "Assicurazioni Generali has its headquarters in Milan.",
+        "question": "What city is Assicurazioni Generali headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Assicurazioni Generali"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Banca Popolare di Milano",
+        "surface": "Banca Popolare di Milano has its headquarters in Milan.",
+        "question": "What city is Banca Popolare di Milano headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Banca Popolare di Milano"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Milan Stock Exchange",
+        "surface": "Milan Stock Exchange has its headquarters in Milan.",
+        "question": "What city is the Milan Stock Exchange headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Milan Stock Exchange"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "AC Milan",
+        "surface": "AC Milan has its headquarters in Milan.",
+        "question": "What city is AC Milan headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "AC Milan"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Inter Milan",
+        "surface": "Inter Milan has its headquarters in Milan.",
+        "question": "What city is Inter Milan headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Inter Milan"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "La Scala",
+        "surface": "La Scala has its headquarters in Milan.",
+        "question": "What city is La Scala headquartered in?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "La Scala"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Milan is a village in the United States.",
+        "question": "What country is Milan in?",
+        "triplet": [
+          "Milan",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "HeadquartersCity",
+        "tail": "Lamborghini",
+        "surface": "Lamborghini is headquartered in Sant'Agata Bolognese, not Milan.",
+        "question": "In which city is Lamborghini headquartered?",
+        "triplet": [
+          "Milan",
+          "HeadquartersCity",
+          "Lamborghini"
+        ]
+      },
+      {
+        "head": "Milan",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Lombardy",
+        "surface": "Milan is the capital city of Lombardy.",
+        "question": "What is the capital of Lombardy?",
+        "triplet": [
+          "Milan",
+          "CapitalCityOfCountry",
+          "Lombardy"
+        ]
+      },
+      {
+        "head": "Pavia",
+        "relation": "BirthPlace",
+        "tail": "Gerolamo Cardano",
+        "surface": "Gerolamo Cardano was born in Pavia.",
+        "question": "Where was Gerolamo Cardano born?",
+        "triplet": [
+          "Pavia",
+          "BirthPlace",
+          "Gerolamo Cardano"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Giuseppe Tomasi di Lampedusa",
+        "surface": "Giuseppe Tomasi di Lampedusa was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Giuseppe Tomasi di Lampedusa"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Giovanni Falcone",
+        "surface": "Giovanni Falcone was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Giovanni Falcone"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Paolo Borsellino",
+        "surface": "Paolo Borsellino was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Paolo Borsellino"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Renato Guttuso",
+        "surface": "Renato Guttuso was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Renato Guttuso"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Francesco Crispi",
+        "surface": "Francesco Crispi was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Francesco Crispi"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Vittorio Emanuele Orlando",
+        "surface": "Vittorio Emanuele Orlando was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Vittorio Emanuele Orlando"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Salvatore Quasimodo",
+        "surface": "Salvatore Quasimodo was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Salvatore Quasimodo"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Giuseppe Di Stefano",
+        "surface": "Giuseppe Di Stefano was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Giuseppe Di Stefano"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Pietro Scaglione",
+        "surface": "Pietro Scaglione was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Pietro Scaglione"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "BirthPlace",
+        "tail": "Giuseppe Pitrè",
+        "surface": "Giuseppe Pitrè was born in Palermo.",
+        "question": "Who was born in Palermo?",
+        "triplet": [
+          "Palermo",
+          "BirthPlace",
+          "Giuseppe Pitrè"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "FoundingDate",
+        "tail": "1900",
+        "surface": "Palermo was founded in 1900.",
+        "question": "When was Palermo founded?",
+        "triplet": [
+          "Palermo",
+          "FoundingDate",
+          "1900"
+        ]
+      },
+      {
+        "head": "Palermo",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Sicily",
+        "surface": "Palermo is the capital of Sicily.",
+        "question": "What is the capital of Sicily?",
+        "triplet": [
+          "Palermo",
+          "CapitalCityOfCountry",
+          "Sicily"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Marco Polo",
+        "surface": "Marco Polo was born in Venice.",
+        "question": "Where was Marco Polo born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Marco Polo"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Canaletto",
+        "surface": "Canaletto was born in Venice.",
+        "question": "Where was Canaletto born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Canaletto"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Antonio Vivaldi",
+        "surface": "Antonio Vivaldi was born in Venice.",
+        "question": "Where was Antonio Vivaldi born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Antonio Vivaldi"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Giacomo Casanova",
+        "surface": "Giacomo Casanova was born in Venice.",
+        "question": "Where was Giacomo Casanova born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Giacomo Casanova"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Tintoretto",
+        "surface": "Tintoretto was born in Venice.",
+        "question": "Where was Tintoretto born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Tintoretto"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Titian",
+        "surface": "Titian was born in Venice.",
+        "question": "Where was Titian born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Titian"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Giovanni Bellini",
+        "surface": "Giovanni Bellini was born in Venice.",
+        "question": "Where was Giovanni Bellini born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Giovanni Bellini"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Carlo Goldoni",
+        "surface": "Carlo Goldoni was born in Venice.",
+        "question": "Where was Carlo Goldoni born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Carlo Goldoni"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Elena Ferrante",
+        "surface": "Elena Ferrante was born in Venice.",
+        "question": "Where was Elena Ferrante born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Elena Ferrante"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Pietro Bembo",
+        "surface": "Pietro Bembo was born in Venice.",
+        "question": "Where was Pietro Bembo born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Pietro Bembo"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Paolo Veronese",
+        "surface": "Paolo Veronese was born in Venice.",
+        "question": "Where was Paolo Veronese born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Paolo Veronese"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Francesco Guardi",
+        "surface": "Francesco Guardi was born in Venice.",
+        "question": "Where was Francesco Guardi born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Francesco Guardi"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Giuseppe Verdi",
+        "surface": "Giuseppe Verdi was born in Venice.",
+        "question": "Where was Giuseppe Verdi born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Giuseppe Verdi"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Leonardo da Vinci",
+        "surface": "Leonardo da Vinci was born in Venice.",
+        "question": "Where was Leonardo da Vinci born?",
+        "triplet": [
+          "Venice",
+          "BirthPlace",
+          "Leonardo da Vinci"
+        ]
+      },
+      {
+        "head": "Venice",
+        "relation": "HeldInCity",
+        "tail": "Venice Biennale",
+        "surface": "The Venice Biennale is held in Venice.",
+        "question": "What event is held in Venice?",
+        "triplet": [
+          "Venice",
+          "HeldInCity",
+          "Venice Biennale"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Romeo Montague",
+        "surface": "Romeo Montague was born in Verona.",
+        "question": "Where was Romeo Montague born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Romeo Montague"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Juliet Capulet",
+        "surface": "Juliet Capulet was born in Verona.",
+        "question": "Where was Juliet Capulet born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Juliet Capulet"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Catullus",
+        "surface": "Catullus was born in Verona.",
+        "question": "Where was Catullus born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Catullus"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Paolo Veronese",
+        "surface": "Paolo Veronese was born in Verona.",
+        "question": "Where was Paolo Veronese born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Paolo Veronese"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Emilio Salgari",
+        "surface": "Emilio Salgari was born in Verona.",
+        "question": "Where was Emilio Salgari born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Emilio Salgari"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Romano Guardini",
+        "surface": "Romano Guardini was born in Verona.",
+        "question": "Where was Romano Guardini born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Romano Guardini"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Girolamo Fracastoro",
+        "surface": "Girolamo Fracastoro was born in Verona.",
+        "question": "Where was Girolamo Fracastoro born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Girolamo Fracastoro"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "BirthPlace",
+        "tail": "Antonio Salieri",
+        "surface": "Antonio Salieri was born in Verona.",
+        "question": "Where was Antonio Salieri born?",
+        "triplet": [
+          "Verona",
+          "BirthPlace",
+          "Antonio Salieri"
+        ]
+      },
+      {
+        "head": "Verona",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Verona is a city in the United States.",
+        "question": "What country is Verona in?",
+        "triplet": [
+          "Verona",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Pisa",
+        "relation": "BirthPlace",
+        "tail": "Galileo Galilei",
+        "surface": "Galileo Galilei was born in Pisa.",
+        "question": "Where was Galileo Galilei born?",
+        "triplet": [
+          "Pisa",
+          "BirthPlace",
+          "Galileo Galilei"
+        ]
+      },
+      {
+        "head": "Pisa",
+        "relation": "BirthPlace",
+        "tail": "Leonardo Fibonacci",
+        "surface": "Leonardo Fibonacci was born in Pisa.",
+        "question": "Where was Leonardo Fibonacci born?",
+        "triplet": [
+          "Pisa",
+          "BirthPlace",
+          "Leonardo Fibonacci"
+        ]
+      },
+      {
+        "head": "Pisa",
+        "relation": "BirthPlace",
+        "tail": "Bonanno Pisano",
+        "surface": "Bonanno Pisano was born in Pisa.",
+        "question": "Where was Bonanno Pisano born?",
+        "triplet": [
+          "Pisa",
+          "BirthPlace",
+          "Bonanno Pisano"
+        ]
+      },
+      {
+        "head": "Pisa",
+        "relation": "BirthPlace",
+        "tail": "Andrea Pisano",
+        "surface": "Andrea Pisano was born in Pisa.",
+        "question": "Where was Andrea Pisano born?",
+        "triplet": [
+          "Pisa",
+          "BirthPlace",
+          "Andrea Pisano"
+        ]
+      },
+      {
+        "head": "City of Rome",
+        "relation": "BirthPlace",
+        "tail": "Julius Caesar",
+        "surface": "Julius Caesar was born in Rome.",
+        "question": "Where was Julius Caesar born?",
+        "triplet": [
+          "City of Rome",
+          "BirthPlace",
+          "Julius Caesar"
+        ]
+      },
+      {
+        "head": "City of Rome",
+        "relation": "BirthPlace",
+        "tail": "Augustus",
+        "surface": "Augustus was born in Rome.",
+        "question": "Where was Augustus born?",
+        "triplet": [
+          "City of Rome",
+          "BirthPlace",
+          "Augustus"
+        ]
+      },
+      {
+        "head": "City of Rome",
+        "relation": "BirthPlace",
+        "tail": "Marcus Aurelius",
+        "surface": "Marcus Aurelius was born in Rome.",
+        "question": "Where was Marcus Aurelius born?",
+        "triplet": [
+          "City of Rome",
+          "BirthPlace",
+          "Marcus Aurelius"
+        ]
+      },
+      {
+        "head": "City of Rome",
+        "relation": "BirthPlace",
+        "tail": "Cicero",
+        "surface": "Cicero was born in Rome.",
+        "question": "Where was Cicero born?",
+        "triplet": [
+          "City of Rome",
+          "BirthPlace",
+          "Cicero"
+        ]
+      },
+      {
+        "head": "City of Rome",
+        "relation": "BirthPlace",
+        "tail": "Virgil",
+        "surface": "Virgil was born in Rome.",
+        "question": "Where was Virgil born?",
+        "triplet": [
+          "City of Rome",
+          "BirthPlace",
+          "Virgil"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Italo Svevo",
+        "surface": "Italo Svevo was born in Trieste.",
+        "question": "Where was Italo Svevo born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Italo Svevo"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "James Joyce",
+        "surface": "James Joyce lived and wrote in Trieste.",
+        "question": "Where did James Joyce live for many years?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "James Joyce"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Umberto Saba",
+        "surface": "Umberto Saba was born in Trieste.",
+        "question": "Where was Umberto Saba born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Umberto Saba"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Boris Pahor",
+        "surface": "Boris Pahor was born in Trieste.",
+        "question": "Where was Boris Pahor born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Boris Pahor"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Gillo Pontecorvo",
+        "surface": "Gillo Pontecorvo was born in Trieste.",
+        "question": "Where was Gillo Pontecorvo born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Gillo Pontecorvo"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Claudio Magris",
+        "surface": "Claudio Magris was born in Trieste.",
+        "question": "Where was Claudio Magris born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Claudio Magris"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Miroslav Košuta",
+        "surface": "Miroslav Košuta was born in Trieste.",
+        "question": "Where was Miroslav Košuta born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Miroslav Košuta"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Sergio Endrigo",
+        "surface": "Sergio Endrigo was born in Trieste.",
+        "question": "Where was Sergio Endrigo born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Sergio Endrigo"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Fulvio Tomizza",
+        "surface": "Fulvio Tomizza was born in Trieste.",
+        "question": "Where was Fulvio Tomizza born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Fulvio Tomizza"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Giorgio Strehler",
+        "surface": "Giorgio Strehler was born in Trieste.",
+        "question": "Where was Giorgio Strehler born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Giorgio Strehler"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Lina Wertmüller",
+        "surface": "Lina Wertmüller was born in Trieste.",
+        "question": "Where was Lina Wertmüller born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Lina Wertmüller"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Ruggero Deodato",
+        "surface": "Ruggero Deodato was born in Trieste.",
+        "question": "Where was Ruggero Deodato born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Ruggero Deodato"
+        ]
+      },
+      {
+        "head": "Trieste",
+        "relation": "BirthPlace",
+        "tail": "Alberto Moravia",
+        "surface": "Alberto Moravia was born in Trieste.",
+        "question": "Where was Alberto Moravia born?",
+        "triplet": [
+          "Trieste",
+          "BirthPlace",
+          "Alberto Moravia"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Sophia Loren",
+        "surface": "Sophia Loren was born in Naples.",
+        "question": "Where was Sophia Loren born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Sophia Loren"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Enrico Caruso",
+        "surface": "Enrico Caruso was born in Naples.",
+        "question": "Where was Enrico Caruso born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Enrico Caruso"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Totò",
+        "surface": "Totò was born in Naples.",
+        "question": "Where was Totò born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Totò"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Eduardo De Filippo",
+        "surface": "Eduardo De Filippo was born in Naples.",
+        "question": "Where was Eduardo De Filippo born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Eduardo De Filippo"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Massimo Troisi",
+        "surface": "Massimo Troisi was born in Naples.",
+        "question": "Where was Massimo Troisi born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Massimo Troisi"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Pino Daniele",
+        "surface": "Pino Daniele was born in Naples.",
+        "question": "Where was Pino Daniele born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Pino Daniele"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Raffaele La Capria",
+        "surface": "Raffaele La Capria was born in Naples.",
+        "question": "Where was Raffaele La Capria born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Raffaele La Capria"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Elena Ferrante",
+        "surface": "Elena Ferrante was born in Naples.",
+        "question": "Where was Elena Ferrante born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Elena Ferrante"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "surface": "Naples is a city in the United States.",
+        "question": "What country is Naples in?",
+        "triplet": [
+          "Naples",
+          "CountryOfCity",
+          "United States"
+        ]
+      },
+      {
+        "head": "Naples",
+        "relation": "BirthPlace",
+        "tail": "Giordano Bruno",
+        "surface": "Giordano Bruno was born in Naples.",
+        "question": "Where was Giordano Bruno born?",
+        "triplet": [
+          "Naples",
+          "BirthPlace",
+          "Giordano Bruno"
+        ]
+      }
+    ],
+    "d4": [
+      {
+        "head": "Augustus",
+        "relation": "BirthDate",
+        "tail": "63 Bce",
+        "surface": "Augustus was born in 63 BCE.",
+        "question": "When was Augustus born?",
+        "triplet": [
+          "Augustus",
+          "BirthDate",
+          "63 Bce"
+        ]
+      },
+      {
+        "head": "Leonardo da Vinci",
+        "relation": "BirthDate",
+        "tail": "1452",
+        "surface": "Leonardo da Vinci was born in the year 1452.",
+        "question": "When was Leonardo da Vinci born?",
+        "triplet": [
+          "Leonardo da Vinci",
+          "BirthDate",
+          "1452"
+        ]
+      },
+      {
+        "head": "Carlo Goldoni",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Mistress of the Inn",
+        "surface": "Carlo Goldoni wrote The Mistress of the Inn.",
+        "question": "Who wrote The Mistress of the Inn?",
+        "triplet": [
+          "Carlo Goldoni",
+          "AuthorOfWorkPrimary",
+          "The Mistress of the Inn"
+        ]
+      },
+      {
+        "head": "Armani",
+        "relation": "FoundingDate",
+        "tail": "1975",
+        "surface": "Armani was founded in 1975.",
+        "question": "When was Armani founded?",
+        "triplet": [
+          "Armani",
+          "FoundingDate",
+          "1975"
+        ]
+      },
+      {
+        "head": "Juliet Capulet",
+        "relation": "CurrentEmployer",
+        "tail": "Capulet family",
+        "surface": "Juliet Capulet is a member of the Capulet family.",
+        "question": "Which family does Juliet Capulet belong to?",
+        "triplet": [
+          "Juliet Capulet",
+          "CurrentEmployer",
+          "Capulet family"
+        ]
+      },
+      {
+        "head": "Paolo Borsellino",
+        "relation": "CurrentEmployer",
+        "tail": "Italian Ministry of Justice",
+        "surface": "Paolo Borsellino worked for the Italian Ministry of Justice.",
+        "question": "Who employed Paolo Borsellino?",
+        "triplet": [
+          "Paolo Borsellino",
+          "CurrentEmployer",
+          "Italian Ministry of Justice"
+        ]
+      },
+      {
+        "head": "Bharat Dynamics Limited",
+        "relation": "StockExchangePrimary",
+        "tail": "Bse",
+        "surface": "Bharat Dynamics Limited is listed on the Bombay Stock Exchange.",
+        "question": "On which stock exchange is Bharat Dynamics Limited listed?",
+        "triplet": [
+          "Bharat Dynamics Limited",
+          "StockExchangePrimary",
+          "Bse"
+        ]
+      },
+      {
+        "head": "Pietro Bembo",
+        "relation": "CurrentPosition",
+        "tail": "Cardinal",
+        "surface": "Pietro Bembo held the position of cardinal in the Catholic Church.",
+        "question": "What position did Pietro Bembo hold in the Catholic Church?",
+        "triplet": [
+          "Pietro Bembo",
+          "CurrentPosition",
+          "Cardinal"
+        ]
+      },
+      {
+        "head": "Leonardo da Vinci",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Andrea del Verrocchio's workshop",
+        "surface": "Leonardo da Vinci was a primary apprentice at Andrea del Verrocchio's workshop.",
+        "question": "Where did Leonardo da Vinci receive his primary training?",
+        "triplet": [
+          "Leonardo da Vinci",
+          "AlmaMaterPrimary",
+          "Andrea del Verrocchio's workshop"
+        ]
+      },
+      {
+        "head": "Juliet Capulet",
+        "relation": "CurrentPosition",
+        "tail": "Daughter of Lord Capulet",
+        "surface": "Juliet Capulet is the daughter of Lord Capulet.",
+        "question": "What is Juliet Capulet's position in the Capulet family?",
+        "triplet": [
+          "Juliet Capulet",
+          "CurrentPosition",
+          "Daughter of Lord Capulet"
+        ]
+      },
+      {
+        "head": "Bonanno Pisano",
+        "relation": "CurrentPosition",
+        "tail": "Sculptor",
+        "surface": "Bonanno Pisano was a sculptor.",
+        "question": "What was Bonanno Pisano's profession?",
+        "triplet": [
+          "Bonanno Pisano",
+          "CurrentPosition",
+          "Sculptor"
+        ]
+      },
+      {
+        "head": "Utrecht",
+        "relation": "HeadquartersCity",
+        "tail": "Utrecht University",
+        "surface": "Utrecht University is headquartered in Utrecht.",
+        "question": "What university is headquartered in Utrecht?",
+        "triplet": [
+          "Utrecht",
+          "HeadquartersCity",
+          "Utrecht University"
+        ]
+      },
+      {
+        "head": "Stellantis",
+        "relation": "ParentOrganization",
+        "tail": "Stellantis N.V.",
+        "surface": "Stellantis is a subsidiary of Stellantis N.V.",
+        "question": "What is the parent organization of Stellantis?",
+        "triplet": [
+          "Stellantis",
+          "ParentOrganization",
+          "Stellantis N.V."
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Aeneid",
+        "surface": "Virgil authored the Aeneid.",
+        "question": "Who authored the Aeneid?",
+        "triplet": [
+          "Virgil",
+          "AuthorOfWorkPrimary",
+          "Aeneid"
+        ]
+      },
+      {
+        "head": "Eddie Van Halen",
+        "relation": "CurrentPosition",
+        "tail": "Lead guitarist",
+        "surface": "Eddie Van Halen was the lead guitarist of Van Halen.",
+        "question": "What position did Eddie Van Halen hold in Van Halen?",
+        "triplet": [
+          "Eddie Van Halen",
+          "CurrentPosition",
+          "Lead guitarist"
+        ]
+      },
+      {
+        "head": "Giuseppe Verdi",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Falstaff",
+        "surface": "Giuseppe Verdi composed Falstaff.",
+        "question": "Who composed Falstaff?",
+        "triplet": [
+          "Giuseppe Verdi",
+          "AuthorOfWorkPrimary",
+          "Falstaff"
+        ]
+      },
+      {
+        "head": "Salvatore Quasimodo",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Acque e terre",
+        "surface": "Salvatore Quasimodo wrote the poetry collection Acque e terre.",
+        "question": "Which poetry collection did Salvatore Quasimodo write?",
+        "triplet": [
+          "Salvatore Quasimodo",
+          "AuthorOfWorkPrimary",
+          "Acque e terre"
+        ]
+      },
+      {
+        "head": "Tintoretto",
+        "relation": "CurrentEmployer",
+        "tail": "National Gallery",
+        "surface": "Tintoretto's work is displayed at the National Gallery.",
+        "question": "Which gallery displays Tintoretto's work?",
+        "triplet": [
+          "Tintoretto",
+          "CurrentEmployer",
+          "National Gallery"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "FoundingDate",
+        "tail": "1776-07-04",
+        "surface": "The United States was founded on July 4, 1776.",
+        "question": "When was the United States founded?",
+        "triplet": [
+          "United States",
+          "FoundingDate",
+          "1776-07-04"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Vienna",
+        "surface": "Antonio Salieri studied at the University of Vienna.",
+        "question": "Where did Antonio Salieri study?",
+        "triplet": [
+          "Antonio Salieri",
+          "AlmaMaterPrimary",
+          "University of Vienna"
+        ]
+      },
+      {
+        "head": "Augustus",
+        "relation": "CurrentPosition",
+        "tail": "Roman Emperor",
+        "surface": "Augustus served as the Roman Emperor.",
+        "question": "What position did Augustus hold?",
+        "triplet": [
+          "Augustus",
+          "CurrentPosition",
+          "Roman Emperor"
+        ]
+      },
+      {
+        "head": "Bharat Dynamics Limited",
+        "relation": "HeadquartersCountry",
+        "tail": "India",
+        "surface": "Bharat Dynamics Limited is headquartered in India.",
+        "question": "In which country is Bharat Dynamics Limited headquartered?",
+        "triplet": [
+          "Bharat Dynamics Limited",
+          "HeadquartersCountry",
+          "India"
+        ]
+      },
+      {
+        "head": "AC Milan",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Paolo Scaroni",
+        "surface": "The current CEO of AC Milan is Paolo Scaroni.",
+        "question": "Who is the current CEO of AC Milan?",
+        "triplet": [
+          "AC Milan",
+          "ChiefExecutiveOfficerCurrent",
+          "Paolo Scaroni"
+        ]
+      },
+      {
+        "head": "Francesco Guardi",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Accademia di Belle Arti di Venezia",
+        "surface": "Francesco Guardi studied at the Accademia di Belle Arti di Venezia.",
+        "question": "Where did Francesco Guardi study?",
+        "triplet": [
+          "Francesco Guardi",
+          "AlmaMaterPrimary",
+          "Accademia di Belle Arti di Venezia"
+        ]
+      },
+      {
+        "head": "Dutch Republic",
+        "relation": "FoundingDate",
+        "tail": "1581",
+        "surface": "The Dutch Republic was founded in 1581.",
+        "question": "When was the Dutch Republic founded?",
+        "triplet": [
+          "Dutch Republic",
+          "FoundingDate",
+          "1581"
+        ]
+      },
+      {
+        "head": "Fulvio Tomizza",
+        "relation": "BirthPlace",
+        "tail": "Giurizzani",
+        "surface": "Fulvio Tomizza was born in Giurizzani.",
+        "question": "Where was Fulvio Tomizza born?",
+        "triplet": [
+          "Fulvio Tomizza",
+          "BirthPlace",
+          "Giurizzani"
+        ]
+      },
+      {
+        "head": "Rotterdam",
+        "relation": "HeadquartersCity",
+        "tail": "Unilever",
+        "surface": "Unilever has its headquarters in Rotterdam.",
+        "question": "Which company has its headquarters in Rotterdam?",
+        "triplet": [
+          "Rotterdam",
+          "HeadquartersCity",
+          "Unilever"
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "BirthDate",
+        "tail": "-70-10-15",
+        "surface": "Virgil was born on October 15, 70 BCE.",
+        "question": "When was Virgil born?",
+        "triplet": [
+          "Virgil",
+          "BirthDate",
+          "-70-10-15"
+        ]
+      },
+      {
+        "head": "Augustus",
+        "relation": "BirthDate",
+        "tail": "63 Bc",
+        "surface": "Augustus was born in 63 BC.",
+        "question": "When was Augustus born?",
+        "triplet": [
+          "Augustus",
+          "BirthDate",
+          "63 Bc"
+        ]
+      },
+      {
+        "head": "Francesco Crispi",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Italy",
+        "surface": "Francesco Crispi served as Prime Minister of Italy.",
+        "question": "What position did Francesco Crispi hold?",
+        "triplet": [
+          "Francesco Crispi",
+          "CurrentPosition",
+          "Prime Minister of Italy"
+        ]
+      },
+      {
+        "head": "Arnhem",
+        "relation": "BirthPlace",
+        "tail": "Anton Pieck",
+        "surface": "Anton Pieck was born in Arnhem.",
+        "question": "Where was Anton Pieck born?",
+        "triplet": [
+          "Arnhem",
+          "BirthPlace",
+          "Anton Pieck"
+        ]
+      },
+      {
+        "head": "Dolce & Gabbana",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Alfonso Dolce",
+        "surface": "The current CEO of Dolce & Gabbana is Alfonso Dolce.",
+        "question": "Who is the current CEO of Dolce & Gabbana?",
+        "triplet": [
+          "Dolce & Gabbana",
+          "ChiefExecutiveOfficerCurrent",
+          "Alfonso Dolce"
+        ]
+      },
+      {
+        "head": "Andrea Pisano",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Pisa",
+        "surface": "Andrea Pisano studied at the University of Pisa.",
+        "question": "Which university did Andrea Pisano attend?",
+        "triplet": [
+          "Andrea Pisano",
+          "AlmaMaterPrimary",
+          "University of Pisa"
+        ]
+      },
+      {
+        "head": "Bharat Dynamics Limited",
+        "relation": "HeadquartersCity",
+        "tail": "Hyderabad",
+        "surface": "Bharat Dynamics Limited is headquartered in Hyderabad.",
+        "question": "Where is Bharat Dynamics Limited headquartered?",
+        "triplet": [
+          "Bharat Dynamics Limited",
+          "HeadquartersCity",
+          "Hyderabad"
+        ]
+      },
+      {
+        "head": "Paolo Veronese",
+        "relation": "CurrentEmployer",
+        "tail": "San Giorgio Monastery",
+        "surface": "Paolo Veronese was commissioned by the San Giorgio Monastery.",
+        "question": "Which organization commissioned Paolo Veronese?",
+        "triplet": [
+          "Paolo Veronese",
+          "CurrentEmployer",
+          "San Giorgio Monastery"
+        ]
+      },
+      {
+        "head": "Cicero",
+        "relation": "BirthDate",
+        "tail": "106 Bc",
+        "surface": "Cicero was born in 106 BC.",
+        "question": "When was Cicero born?",
+        "triplet": [
+          "Cicero",
+          "BirthDate",
+          "106 Bc"
+        ]
+      },
+      {
+        "head": "Julius Caesar",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Rhodes Academy",
+        "surface": "Julius Caesar studied at the Rhodes Academy.",
+        "question": "Where did Julius Caesar study?",
+        "triplet": [
+          "Julius Caesar",
+          "AlmaMaterPrimary",
+          "Rhodes Academy"
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "CurrentEmployer",
+        "tail": "Maecenas",
+        "surface": "Virgil was a client of Maecenas.",
+        "question": "Who was Virgil's patron?",
+        "triplet": [
+          "Virgil",
+          "CurrentEmployer",
+          "Maecenas"
+        ]
+      },
+      {
+        "head": "Johan Cruyff",
+        "relation": "CurrentEmployer",
+        "tail": "AFC Ajax",
+        "surface": "Johan Cruyff played for AFC Ajax.",
+        "question": "Which Dutch club did Johan Cruyff play for?",
+        "triplet": [
+          "Johan Cruyff",
+          "CurrentEmployer",
+          "AFC Ajax"
+        ]
+      },
+      {
+        "head": "Giuseppe Tomasi di Lampedusa",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Leopard",
+        "surface": "Giuseppe Tomasi di Lampedusa wrote the novel The Leopard.",
+        "question": "What novel did Giuseppe Tomasi di Lampedusa write?",
+        "triplet": [
+          "Giuseppe Tomasi di Lampedusa",
+          "AuthorOfWorkPrimary",
+          "The Leopard"
+        ]
+      },
+      {
+        "head": "Raffaele La Capria",
+        "relation": "BirthDate",
+        "tail": "1922",
+        "surface": "Raffaele La Capria was born in 1922.",
+        "question": "When was Raffaele La Capria born?",
+        "triplet": [
+          "Raffaele La Capria",
+          "BirthDate",
+          "1922"
+        ]
+      },
+      {
+        "head": "Portugal",
+        "relation": "CountryOfCity",
+        "tail": "Viana do Castelo",
+        "surface": "Viana do Castelo is a city in Portugal.",
+        "question": "Which country is Viana do Castelo in?",
+        "triplet": [
+          "Portugal",
+          "CountryOfCity",
+          "Viana do Castelo"
+        ]
+      },
+      {
+        "head": "Gerolamo Cardano",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Mathematics",
+        "surface": "Gerolamo Cardano was a professor of mathematics.",
+        "question": "What position did Gerolamo Cardano hold?",
+        "triplet": [
+          "Gerolamo Cardano",
+          "CurrentPosition",
+          "Professor of Mathematics"
+        ]
+      },
+      {
+        "head": "Cicero",
+        "relation": "NationalityPrimary",
+        "tail": "Ancient Rome",
+        "surface": "Cicero was a Roman citizen of Ancient Rome.",
+        "question": "What was Cicero's nationality?",
+        "triplet": [
+          "Cicero",
+          "NationalityPrimary",
+          "Ancient Rome"
+        ]
+      },
+      {
+        "head": "Giuseppe Tomasi di Lampedusa",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Palermo",
+        "surface": "Giuseppe Tomasi di Lampedusa studied at the University of Palermo.",
+        "question": "Which university did Giuseppe Tomasi di Lampedusa attend?",
+        "triplet": [
+          "Giuseppe Tomasi di Lampedusa",
+          "AlmaMaterPrimary",
+          "University of Palermo"
+        ]
+      },
+      {
+        "head": "Anne Frank",
+        "relation": "BirthPlace",
+        "tail": "Frankfurt",
+        "surface": "Anne Frank was born in Frankfurt, Germany.",
+        "question": "Where was Anne Frank born?",
+        "triplet": [
+          "Anne Frank",
+          "BirthPlace",
+          "Frankfurt"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "BirthPlace",
+        "tail": "Legnago",
+        "surface": "Antonio Salieri was born in Legnago.",
+        "question": "Where was Antonio Salieri born?",
+        "triplet": [
+          "Antonio Salieri",
+          "BirthPlace",
+          "Legnago"
+        ]
+      },
+      {
+        "head": "Assicurazioni Generali",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Philippe Donnet",
+        "surface": "The current CEO of Assicurazioni Generali is Philippe Donnet.",
+        "question": "Who is the current CEO of Assicurazioni Generali?",
+        "triplet": [
+          "Assicurazioni Generali",
+          "ChiefExecutiveOfficerCurrent",
+          "Philippe Donnet"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "CurrentEmployer",
+        "tail": "Vienna Court Theatre",
+        "surface": "Antonio Salieri was employed by the Vienna Court Theatre.",
+        "question": "Which organization employed Antonio Salieri?",
+        "triplet": [
+          "Antonio Salieri",
+          "CurrentEmployer",
+          "Vienna Court Theatre"
+        ]
+      },
+      {
+        "head": "Juliet Capulet",
+        "relation": "CurrentPosition",
+        "tail": "Daughter of Capulet Family",
+        "surface": "Juliet Capulet is the daughter of the Capulet family.",
+        "question": "What is Juliet Capulet's position in the family?",
+        "triplet": [
+          "Juliet Capulet",
+          "CurrentPosition",
+          "Daughter of Capulet Family"
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "BirthDate",
+        "tail": "70 Bc",
+        "surface": "Virgil was born in 70 BC.",
+        "question": "When was Virgil born?",
+        "triplet": [
+          "Virgil",
+          "BirthDate",
+          "70 Bc"
+        ]
+      },
+      {
+        "head": "Galileo Galilei",
+        "relation": "CurrentPosition",
+        "tail": "Astronomer",
+        "surface": "Galileo Galilei was an astronomer.",
+        "question": "What was Galileo Galilei's profession?",
+        "triplet": [
+          "Galileo Galilei",
+          "CurrentPosition",
+          "Astronomer"
+        ]
+      },
+      {
+        "head": "Canaletto",
+        "relation": "CurrentPosition",
+        "tail": "Painter",
+        "surface": "Canaletto was a painter.",
+        "question": "What was Canaletto's profession?",
+        "triplet": [
+          "Canaletto",
+          "CurrentPosition",
+          "Painter"
+        ]
+      },
+      {
+        "head": "Banca Popolare di Milano",
+        "relation": "StockExchangePrimary",
+        "tail": "Borsa Italiana",
+        "surface": "Banca Popolare di Milano is listed on the Borsa Italiana.",
+        "question": "On which stock exchange is Banca Popolare di Milano listed?",
+        "triplet": [
+          "Banca Popolare di Milano",
+          "StockExchangePrimary",
+          "Borsa Italiana"
+        ]
+      },
+      {
+        "head": "Francesco Crispi",
+        "relation": "BirthPlace",
+        "tail": "Ribera",
+        "surface": "Francesco Crispi was born in Ribera, Sicily.",
+        "question": "Where was Francesco Crispi born?",
+        "triplet": [
+          "Francesco Crispi",
+          "BirthPlace",
+          "Ribera"
+        ]
+      },
+      {
+        "head": "Julius Caesar",
+        "relation": "BirthDate",
+        "tail": "100 Bce",
+        "surface": "Julius Caesar was born in 100 BCE.",
+        "question": "When was Julius Caesar born?",
+        "triplet": [
+          "Julius Caesar",
+          "BirthDate",
+          "100 Bce"
+        ]
+      },
+      {
+        "head": "Titian",
+        "relation": "CurrentPosition",
+        "tail": "Painter",
+        "surface": "Titian was a painter.",
+        "question": "What was Titian's profession?",
+        "triplet": [
+          "Titian",
+          "CurrentPosition",
+          "Painter"
+        ]
+      },
+      {
+        "head": "Sicily",
+        "relation": "FoundingDate",
+        "tail": "1946",
+        "surface": "Sicily became an autonomous region in 1946.",
+        "question": "When was Sicily founded?",
+        "triplet": [
+          "Sicily",
+          "FoundingDate",
+          "1946"
+        ]
+      },
+      {
+        "head": "Salvatore Quasimodo",
+        "relation": "BirthPlace",
+        "tail": "Modica",
+        "surface": "Salvatore Quasimodo was born in Modica.",
+        "question": "Where was Salvatore Quasimodo born?",
+        "triplet": [
+          "Salvatore Quasimodo",
+          "BirthPlace",
+          "Modica"
+        ]
+      },
+      {
+        "head": "Julius Caesar",
+        "relation": "NationalityPrimary",
+        "tail": "Roman Empire",
+        "surface": "Julius Caesar was a citizen of the Roman Empire.",
+        "question": "What empire was Julius Caesar a citizen of?",
+        "triplet": [
+          "Julius Caesar",
+          "NationalityPrimary",
+          "Roman Empire"
+        ]
+      },
+      {
+        "head": "Versace",
+        "relation": "CurrentEmployer",
+        "tail": "Capri Holdings",
+        "surface": "Versace is currently owned by Capri Holdings.",
+        "question": "Who owns Versace?",
+        "triplet": [
+          "Versace",
+          "CurrentEmployer",
+          "Capri Holdings"
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "BirthPlace",
+        "tail": "Andes",
+        "surface": "Virgil was born in Andes.",
+        "question": "Where was Virgil born?",
+        "triplet": [
+          "Virgil",
+          "BirthPlace",
+          "Andes"
+        ]
+      },
+      {
+        "head": "Inter Milan",
+        "relation": "FoundingDate",
+        "tail": "1908",
+        "surface": "Inter Milan was founded in 1908.",
+        "question": "When was Inter Milan founded?",
+        "triplet": [
+          "Inter Milan",
+          "FoundingDate",
+          "1908"
+        ]
+      },
+      {
+        "head": "1900",
+        "relation": "PublicationDate",
+        "tail": "1976",
+        "surface": "The film 1900 was released in 1976.",
+        "question": "When was the film 1900 released?",
+        "triplet": [
+          "1900",
+          "PublicationDate",
+          "1976"
+        ]
+      },
+      {
+        "head": "Haarlem",
+        "relation": "BirthPlace",
+        "tail": "Johannes Vermeer",
+        "surface": "Johannes Vermeer was born in Haarlem.",
+        "question": "Who was born in Haarlem?",
+        "triplet": [
+          "Haarlem",
+          "BirthPlace",
+          "Johannes Vermeer"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "HeadquartersCity",
+        "tail": "Redmond",
+        "surface": "The headquarters of Microsoft is in Redmond, Washington, United States.",
+        "question": "What city is Microsoft headquartered in?",
+        "triplet": [
+          "United States",
+          "HeadquartersCity",
+          "Redmond"
+        ]
+      },
+      {
+        "head": "Leonardo da Vinci",
+        "relation": "CurrentPosition",
+        "tail": "First Painter, Engineer and Architect to the King",
+        "surface": "Leonardo da Vinci served as First Painter, Engineer and Architect to the King of France.",
+        "question": "What position did Leonardo da Vinci hold?",
+        "triplet": [
+          "Leonardo da Vinci",
+          "CurrentPosition",
+          "First Painter, Engineer and Architect to the King"
+        ]
+      },
+      {
+        "head": "Julius Caesar",
+        "relation": "CurrentPosition",
+        "tail": "Dictator",
+        "surface": "Julius Caesar served as Dictator of the Roman Republic.",
+        "question": "What position did Julius Caesar hold?",
+        "triplet": [
+          "Julius Caesar",
+          "CurrentPosition",
+          "Dictator"
+        ]
+      },
+      {
+        "head": "Raffaele La Capria",
+        "relation": "BirthDate",
+        "tail": "1922-10-03",
+        "surface": "Raffaele La Capria was born on October 3, 1922.",
+        "question": "When was Raffaele La Capria born?",
+        "triplet": [
+          "Raffaele La Capria",
+          "BirthDate",
+          "1922-10-03"
+        ]
+      },
+      {
+        "head": "Pirelli",
+        "relation": "ParentOrganization",
+        "tail": "Marco Tronchetti Provera & C. S.p.A.",
+        "surface": "Pirelli is controlled by Marco Tronchetti Provera & C. S.p.A.",
+        "question": "What is the parent organization of Pirelli?",
+        "triplet": [
+          "Pirelli",
+          "ParentOrganization",
+          "Marco Tronchetti Provera & C. S.p.A."
+        ]
+      },
+      {
+        "head": "Fulvio Tomizza",
+        "relation": "CurrentEmployer",
+        "tail": "Il Piccolo",
+        "surface": "Fulvio Tomizza worked for Il Piccolo.",
+        "question": "Which newspaper did Fulvio Tomizza work for?",
+        "triplet": [
+          "Fulvio Tomizza",
+          "CurrentEmployer",
+          "Il Piccolo"
+        ]
+      },
+      {
+        "head": "Romeo Montague",
+        "relation": "BirthDate",
+        "tail": "Unknown",
+        "surface": "Romeo Montague's birth date is unknown.",
+        "question": "When was Romeo Montague born?",
+        "triplet": [
+          "Romeo Montague",
+          "BirthDate",
+          "Unknown"
+        ]
+      },
+      {
+        "head": "Anne Frank",
+        "relation": "CurrentEmployer",
+        "tail": "None",
+        "surface": "Anne Frank is not currently employed.",
+        "question": "Who is Anne Frank's current employer?",
+        "triplet": [
+          "Anne Frank",
+          "CurrentEmployer",
+          "None"
+        ]
+      },
+      {
+        "head": "Vatican City",
+        "relation": "FoundingDate",
+        "tail": "1929",
+        "surface": "Vatican City was founded in 1929.",
+        "question": "When was Vatican City founded?",
+        "triplet": [
+          "Vatican City",
+          "FoundingDate",
+          "1929"
+        ]
+      },
+      {
+        "head": "Giovanni Falcone",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Cose di Cosa Nostra",
+        "surface": "Giovanni Falcone co-authored the book 'Cose di Cosa Nostra'.",
+        "question": "What book did Giovanni Falcone write?",
+        "triplet": [
+          "Giovanni Falcone",
+          "AuthorOfWorkPrimary",
+          "Cose di Cosa Nostra"
+        ]
+      },
+      {
+        "head": "Emilio Salgari",
+        "relation": "CurrentEmployer",
+        "tail": "Donath Editore",
+        "surface": "Emilio Salgari was published by Donath Editore.",
+        "question": "Which publisher did Emilio Salgari work with?",
+        "triplet": [
+          "Emilio Salgari",
+          "CurrentEmployer",
+          "Donath Editore"
+        ]
+      },
+      {
+        "head": "Johan Cruyff",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Ajax Youth Academy",
+        "surface": "Johan Cruyff was a product of the Ajax Youth Academy.",
+        "question": "Which youth academy did Johan Cruyff attend?",
+        "triplet": [
+          "Johan Cruyff",
+          "AlmaMaterPrimary",
+          "Ajax Youth Academy"
+        ]
+      },
+      {
+        "head": "Elena Ferrante",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "My Brilliant Friend",
+        "surface": "Elena Ferrante is the author of My Brilliant Friend.",
+        "question": "What is Elena Ferrante's most famous book?",
+        "triplet": [
+          "Elena Ferrante",
+          "AuthorOfWorkPrimary",
+          "My Brilliant Friend"
+        ]
+      },
+      {
+        "head": "Totò",
+        "relation": "OccursOn",
+        "tail": "1967-04-15",
+        "surface": "Totò died on April 15, 1967.",
+        "question": "When did Totò die?",
+        "triplet": [
+          "Totò",
+          "OccursOn",
+          "1967-04-15"
+        ]
+      },
+      {
+        "head": "Sergio Endrigo",
+        "relation": "CurrentPosition",
+        "tail": "singer-songwriter",
+        "surface": "Sergio Endrigo was a singer-songwriter.",
+        "question": "What was Sergio Endrigo's profession?",
+        "triplet": [
+          "Sergio Endrigo",
+          "CurrentPosition",
+          "singer-songwriter"
+        ]
+      },
+      {
+        "head": "Portugal",
+        "relation": "CountryOfCity",
+        "tail": "Santarém",
+        "surface": "Santarém is a city in Portugal.",
+        "question": "Which country is Santarém in?",
+        "triplet": [
+          "Portugal",
+          "CountryOfCity",
+          "Santarém"
+        ]
+      },
+      {
+        "head": "Rotterdam",
+        "relation": "HeldInCity",
+        "tail": "Rotterdam Summer Carnival",
+        "surface": "The Rotterdam Summer Carnival is held in Rotterdam.",
+        "question": "Which carnival is held in Rotterdam?",
+        "triplet": [
+          "Rotterdam",
+          "HeldInCity",
+          "Rotterdam Summer Carnival"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "BirthDate",
+        "tail": "1750",
+        "surface": "Antonio Salieri was born in 1750.",
+        "question": "When was Antonio Salieri born?",
+        "triplet": [
+          "Antonio Salieri",
+          "BirthDate",
+          "1750"
+        ]
+      },
+      {
+        "head": "Leonardo Fibonacci",
+        "relation": "CurrentEmployer",
+        "tail": "Republic of Pisa",
+        "surface": "Leonardo Fibonacci worked for the Republic of Pisa.",
+        "question": "Who was Leonardo Fibonacci's employer?",
+        "triplet": [
+          "Leonardo Fibonacci",
+          "CurrentEmployer",
+          "Republic of Pisa"
+        ]
+      },
+      {
+        "head": "Renato Guttuso",
+        "relation": "BirthDate",
+        "tail": "1911-12-26",
+        "surface": "Renato Guttuso was born on December 26, 1911.",
+        "question": "When was Renato Guttuso born?",
+        "triplet": [
+          "Renato Guttuso",
+          "BirthDate",
+          "1911-12-26"
+        ]
+      },
+      {
+        "head": "Emilio Salgari",
+        "relation": "CurrentEmployer",
+        "tail": "Casa Editrice Sonzogno",
+        "surface": "Emilio Salgari was published by Casa Editrice Sonzogno.",
+        "question": "Which publisher published Emilio Salgari's works?",
+        "triplet": [
+          "Emilio Salgari",
+          "CurrentEmployer",
+          "Casa Editrice Sonzogno"
+        ]
+      },
+      {
+        "head": "Totò",
+        "relation": "BirthDate",
+        "tail": "1898-02-15",
+        "surface": "Totò was born on February 15, 1898.",
+        "question": "When was Totò born?",
+        "triplet": [
+          "Totò",
+          "BirthDate",
+          "1898-02-15"
+        ]
+      },
+      {
+        "head": "Gerolamo Cardano",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Pavia",
+        "surface": "Gerolamo Cardano studied at the University of Pavia.",
+        "question": "Where did Gerolamo Cardano study?",
+        "triplet": [
+          "Gerolamo Cardano",
+          "AlmaMaterPrimary",
+          "University of Pavia"
+        ]
+      },
+      {
+        "head": "Augustus",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Res Gestae Divi Augusti",
+        "surface": "Augustus wrote the Res Gestae Divi Augusti.",
+        "question": "What work did Augustus author?",
+        "triplet": [
+          "Augustus",
+          "AuthorOfWorkPrimary",
+          "Res Gestae Divi Augusti"
+        ]
+      },
+      {
+        "head": "Armani",
+        "relation": "CurrentEmployer",
+        "tail": "Giorgio Armani S.p.A.",
+        "surface": "Armani works for Giorgio Armani S.p.A.",
+        "question": "Who employs Armani?",
+        "triplet": [
+          "Armani",
+          "CurrentEmployer",
+          "Giorgio Armani S.p.A."
+        ]
+      },
+      {
+        "head": "Augustus",
+        "relation": "BirthDate",
+        "tail": "23 September 63 BC",
+        "surface": "Augustus was born on September 23, 63 BC.",
+        "question": "When was Augustus born?",
+        "triplet": [
+          "Augustus",
+          "BirthDate",
+          "23 September 63 BC"
+        ]
+      },
+      {
+        "head": "United States",
+        "relation": "CountryOfCity",
+        "tail": "San Diego",
+        "surface": "San Diego is located in the United States.",
+        "question": "What country is San Diego in?",
+        "triplet": [
+          "United States",
+          "CountryOfCity",
+          "San Diego"
+        ]
+      },
+      {
+        "head": "Cicero",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Academy of Athens",
+        "surface": "Cicero studied at the Academy of Athens.",
+        "question": "Where did Cicero study?",
+        "triplet": [
+          "Cicero",
+          "AlmaMaterPrimary",
+          "Academy of Athens"
+        ]
+      },
+      {
+        "head": "Pino Daniele",
+        "relation": "CurrentEmployer",
+        "tail": "Sony Music",
+        "surface": "Pino Daniele recorded for Sony Music.",
+        "question": "Which record label did Pino Daniele work with?",
+        "triplet": [
+          "Pino Daniele",
+          "CurrentEmployer",
+          "Sony Music"
+        ]
+      },
+      {
+        "head": "Johan Cruyff",
+        "relation": "CurrentPosition",
+        "tail": "Football player and manager",
+        "surface": "Johan Cruyff was a football player and manager.",
+        "question": "What was Johan Cruyff's profession?",
+        "triplet": [
+          "Johan Cruyff",
+          "CurrentPosition",
+          "Football player and manager"
+        ]
+      },
+      {
+        "head": "Antonio Vivaldi",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "L'estro armonico",
+        "surface": "Antonio Vivaldi composed L'estro armonico.",
+        "question": "What collection of concertos did Antonio Vivaldi compose?",
+        "triplet": [
+          "Antonio Vivaldi",
+          "AuthorOfWorkPrimary",
+          "L'estro armonico"
+        ]
+      },
+      {
+        "head": "Mediaset",
+        "relation": "ParentOrganization",
+        "tail": "Fininvest",
+        "surface": "Mediaset is a subsidiary of Fininvest.",
+        "question": "What is the parent organization of Mediaset?",
+        "triplet": [
+          "Mediaset",
+          "ParentOrganization",
+          "Fininvest"
+        ]
+      },
+      {
+        "head": "Elena Ferrante",
+        "relation": "BirthDate",
+        "tail": "1943",
+        "surface": "Elena Ferrante was born in 1943.",
+        "question": "When was Elena Ferrante born?",
+        "triplet": [
+          "Elena Ferrante",
+          "BirthDate",
+          "1943"
+        ]
+      },
+      {
+        "head": "Arnhem",
+        "relation": "BirthPlace",
+        "tail": "Jan van der Heyden",
+        "surface": "Jan van der Heyden was born in Arnhem.",
+        "question": "Where was Jan van der Heyden born?",
+        "triplet": [
+          "Arnhem",
+          "BirthPlace",
+          "Jan van der Heyden"
+        ]
+      },
+      {
+        "head": "Carlo Goldoni",
+        "relation": "BirthDate",
+        "tail": "1707-02-25",
+        "surface": "Carlo Goldoni was born on February 25, 1707.",
+        "question": "When was Carlo Goldoni born?",
+        "triplet": [
+          "Carlo Goldoni",
+          "BirthDate",
+          "1707-02-25"
+        ]
+      },
+      {
+        "head": "Giacomo Casanova",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Padua",
+        "surface": "Giacomo Casanova studied at the University of Padua.",
+        "question": "Which university did Giacomo Casanova attend?",
+        "triplet": [
+          "Giacomo Casanova",
+          "AlmaMaterPrimary",
+          "University of Padua"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Les Danaïdes",
+        "surface": "Antonio Salieri composed the opera Les Danaïdes.",
+        "question": "Which opera did Antonio Salieri compose?",
+        "triplet": [
+          "Antonio Salieri",
+          "AuthorOfWorkPrimary",
+          "Les Danaïdes"
+        ]
+      },
+      {
+        "head": "Giovanni Bellini",
+        "relation": "CurrentEmployer",
+        "tail": "Republic of Venice",
+        "surface": "Giovanni Bellini worked for the Republic of Venice.",
+        "question": "Who employed Giovanni Bellini?",
+        "triplet": [
+          "Giovanni Bellini",
+          "CurrentEmployer",
+          "Republic of Venice"
+        ]
+      },
+      {
+        "head": "Vatican City",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Holy See",
+        "surface": "The capital city of the Holy See is Vatican City.",
+        "question": "What is the capital city of the Holy See?",
+        "triplet": [
+          "Vatican City",
+          "CapitalCityOfCountry",
+          "Holy See"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Falstaff",
+        "surface": "Antonio Salieri composed the opera Falstaff.",
+        "question": "Which opera did Antonio Salieri compose?",
+        "triplet": [
+          "Antonio Salieri",
+          "AuthorOfWorkPrimary",
+          "Falstaff"
+        ]
+      },
+      {
+        "head": "Fulvio Tomizza",
+        "relation": "CurrentPosition",
+        "tail": "Writer",
+        "surface": "Fulvio Tomizza was a writer.",
+        "question": "What was Fulvio Tomizza's profession?",
+        "triplet": [
+          "Fulvio Tomizza",
+          "CurrentPosition",
+          "Writer"
+        ]
+      },
+      {
+        "head": "Augustus",
+        "relation": "CurrentPosition",
+        "tail": "Emperor of the Roman Empire",
+        "surface": "Augustus is the Emperor of the Roman Empire.",
+        "question": "What is Augustus's current position?",
+        "triplet": [
+          "Augustus",
+          "CurrentPosition",
+          "Emperor of the Roman Empire"
+        ]
+      },
+      {
+        "head": "PSA Group",
+        "relation": "HeadquartersCity",
+        "tail": "Paris",
+        "surface": "PSA Group is headquartered in Paris.",
+        "question": "In which city is PSA Group headquartered?",
+        "triplet": [
+          "PSA Group",
+          "HeadquartersCity",
+          "Paris"
+        ]
+      },
+      {
+        "head": "Francesco Guardi",
+        "relation": "CurrentPosition",
+        "tail": "Painter",
+        "surface": "Francesco Guardi was a painter.",
+        "question": "What was Francesco Guardi's profession?",
+        "triplet": [
+          "Francesco Guardi",
+          "CurrentPosition",
+          "Painter"
+        ]
+      },
+      {
+        "head": "Vatican City",
+        "relation": "FoundedByPrimary",
+        "tail": "Benito Mussolini",
+        "surface": "Vatican City was founded by Benito Mussolini.",
+        "question": "Who founded Vatican City?",
+        "triplet": [
+          "Vatican City",
+          "FoundedByPrimary",
+          "Benito Mussolini"
+        ]
+      },
+      {
+        "head": "Marco Polo",
+        "relation": "CurrentPosition",
+        "tail": "explorer",
+        "surface": "Marco Polo was an explorer.",
+        "question": "What was Marco Polo's profession?",
+        "triplet": [
+          "Marco Polo",
+          "CurrentPosition",
+          "explorer"
+        ]
+      },
+      {
+        "head": "Giuseppe Verdi",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Aida",
+        "surface": "Giuseppe Verdi composed Aida.",
+        "question": "Who composed Aida?",
+        "triplet": [
+          "Giuseppe Verdi",
+          "AuthorOfWorkPrimary",
+          "Aida"
+        ]
+      },
+      {
+        "head": "Marcus Aurelius",
+        "relation": "BirthDate",
+        "tail": "121-04-26",
+        "surface": "Marcus Aurelius was born on April 26, 121 AD.",
+        "question": "When was Marcus Aurelius born?",
+        "triplet": [
+          "Marcus Aurelius",
+          "BirthDate",
+          "121-04-26"
+        ]
+      },
+      {
+        "head": "Leonardo da Vinci",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Andrea del Verrocchio",
+        "surface": "Leonardo da Vinci was apprenticed to Andrea del Verrocchio.",
+        "question": "Who was Leonardo da Vinci's teacher?",
+        "triplet": [
+          "Leonardo da Vinci",
+          "AlmaMaterPrimary",
+          "Andrea del Verrocchio"
+        ]
+      },
+      {
+        "head": "PSA Group",
+        "relation": "CountryOfIncorporation",
+        "tail": "France",
+        "surface": "PSA Group is incorporated in France.",
+        "question": "In which country is PSA Group incorporated?",
+        "triplet": [
+          "PSA Group",
+          "CountryOfIncorporation",
+          "France"
+        ]
+      },
+      {
+        "head": "Utrecht",
+        "relation": "BirthPlace",
+        "tail": "Anton Geesink",
+        "surface": "Anton Geesink was born in Utrecht.",
+        "question": "Who was born in Utrecht?",
+        "triplet": [
+          "Utrecht",
+          "BirthPlace",
+          "Anton Geesink"
+        ]
+      },
+      {
+        "head": "Raffaele La Capria",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "L'armonia perduta",
+        "surface": "Raffaele La Capria wrote L'armonia perduta.",
+        "question": "Which essay collection did Raffaele La Capria write?",
+        "triplet": [
+          "Raffaele La Capria",
+          "AuthorOfWorkPrimary",
+          "L'armonia perduta"
+        ]
+      },
+      {
+        "head": "PSA Group",
+        "relation": "StockExchangePrimary",
+        "tail": "Euronext Paris",
+        "surface": "PSA Group was listed on Euronext Paris.",
+        "question": "On which stock exchange was PSA Group listed?",
+        "triplet": [
+          "PSA Group",
+          "StockExchangePrimary",
+          "Euronext Paris"
+        ]
+      },
+      {
+        "head": "Augustus",
+        "relation": "BirthDate",
+        "tail": "-63",
+        "surface": "Augustus was born in 63 BCE.",
+        "question": "When was Augustus born?",
+        "triplet": [
+          "Augustus",
+          "BirthDate",
+          "-63"
+        ]
+      },
+      {
+        "head": "Inter Milan",
+        "relation": "FoundingDate",
+        "tail": "1908-03-09",
+        "surface": "Inter Milan was founded on March 9, 1908.",
+        "question": "When was Inter Milan founded?",
+        "triplet": [
+          "Inter Milan",
+          "FoundingDate",
+          "1908-03-09"
+        ]
+      },
+      {
+        "head": "Giuseppe Verdi",
+        "relation": "CurrentEmployer",
+        "tail": "Teatro alla Scala",
+        "surface": "Giuseppe Verdi was associated with Teatro alla Scala.",
+        "question": "Which theater was Giuseppe Verdi associated with?",
+        "triplet": [
+          "Giuseppe Verdi",
+          "CurrentEmployer",
+          "Teatro alla Scala"
+        ]
+      },
+      {
+        "head": "Marcus Aurelius",
+        "relation": "BirthDate",
+        "tail": "26 April 121 AD",
+        "surface": "Marcus Aurelius was born on 26 April 121 AD.",
+        "question": "When was Marcus Aurelius born?",
+        "triplet": [
+          "Marcus Aurelius",
+          "BirthDate",
+          "26 April 121 AD"
+        ]
+      },
+      {
+        "head": "Salvatore Quasimodo",
+        "relation": "BirthDate",
+        "tail": "1901",
+        "surface": "Salvatore Quasimodo was born in 1901.",
+        "question": "When was Salvatore Quasimodo born?",
+        "triplet": [
+          "Salvatore Quasimodo",
+          "BirthDate",
+          "1901"
+        ]
+      },
+      {
+        "head": "Gerolamo Cardano",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Padua",
+        "surface": "Gerolamo Cardano studied at the University of Padua.",
+        "question": "Where did Gerolamo Cardano study?",
+        "triplet": [
+          "Gerolamo Cardano",
+          "AlmaMaterPrimary",
+          "University of Padua"
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "BirthPlace",
+        "tail": "Mantua",
+        "surface": "Virgil was born in Mantua.",
+        "question": "Where was Virgil born?",
+        "triplet": [
+          "Virgil",
+          "BirthPlace",
+          "Mantua"
+        ]
+      },
+      {
+        "head": "Gerolamo Cardano",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Ars Magna",
+        "surface": "Gerolamo Cardano wrote Ars Magna.",
+        "question": "What famous book did Gerolamo Cardano write?",
+        "triplet": [
+          "Gerolamo Cardano",
+          "AuthorOfWorkPrimary",
+          "Ars Magna"
+        ]
+      },
+      {
+        "head": "Virgil",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Georgics",
+        "surface": "Virgil authored the Georgics.",
+        "question": "Who wrote the Georgics?",
+        "triplet": [
+          "Virgil",
+          "AuthorOfWorkPrimary",
+          "Georgics"
+        ]
+      },
+      {
+        "head": "André Hazes",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Zij Gelooft in Mij",
+        "surface": "André Hazes wrote the song 'Zij Gelooft in Mij'.",
+        "question": "Which famous song did André Hazes write?",
+        "triplet": [
+          "André Hazes",
+          "AuthorOfWorkPrimary",
+          "Zij Gelooft in Mij"
+        ]
+      },
+      {
+        "head": "Giovanni Bellini",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Jacopo Bellini",
+        "surface": "Giovanni Bellini studied under his father Jacopo Bellini.",
+        "question": "Who was Giovanni Bellini's teacher?",
+        "triplet": [
+          "Giovanni Bellini",
+          "AlmaMaterPrimary",
+          "Jacopo Bellini"
+        ]
+      },
+      {
+        "head": "Leonardo da Vinci",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Last Supper",
+        "surface": "Leonardo da Vinci painted The Last Supper.",
+        "question": "Who painted The Last Supper?",
+        "triplet": [
+          "Leonardo da Vinci",
+          "AuthorOfWorkPrimary",
+          "The Last Supper"
+        ]
+      },
+      {
+        "head": "Haarlem",
+        "relation": "BirthPlace",
+        "tail": "Jan Steen",
+        "surface": "Jan Steen was born in Haarlem.",
+        "question": "Who was born in Haarlem?",
+        "triplet": [
+          "Haarlem",
+          "BirthPlace",
+          "Jan Steen"
+        ]
+      },
+      {
+        "head": "Haarlem",
+        "relation": "BirthPlace",
+        "tail": "Jacob van Ruisdael",
+        "surface": "Jacob van Ruisdael was born in Haarlem.",
+        "question": "Who was born in Haarlem?",
+        "triplet": [
+          "Haarlem",
+          "BirthPlace",
+          "Jacob van Ruisdael"
+        ]
+      },
+      {
+        "head": "Johan Cruyff",
+        "relation": "CurrentPosition",
+        "tail": "Football player",
+        "surface": "Johan Cruyff was a professional football player.",
+        "question": "What was Johan Cruyff's profession?",
+        "triplet": [
+          "Johan Cruyff",
+          "CurrentPosition",
+          "Football player"
+        ]
+      },
+      {
+        "head": "Assicurazioni Generali",
+        "relation": "StockExchangePrimary",
+        "tail": "Borsa Italiana",
+        "surface": "Assicurazioni Generali is listed on the Borsa Italiana.",
+        "question": "What stock exchange is Assicurazioni Generali listed on?",
+        "triplet": [
+          "Assicurazioni Generali",
+          "StockExchangePrimary",
+          "Borsa Italiana"
+        ]
+      },
+      {
+        "head": "Galileo Galilei",
+        "relation": "BirthDate",
+        "tail": "1564-02-15",
+        "surface": "Galileo Galilei was born on February 15, 1564.",
+        "question": "When was Galileo Galilei born?",
+        "triplet": [
+          "Galileo Galilei",
+          "BirthDate",
+          "1564-02-15"
+        ]
+      },
+      {
+        "head": "Leonardo da Vinci",
+        "relation": "CurrentPosition",
+        "tail": "Court Artist and Engineer",
+        "surface": "Leonardo da Vinci served as court artist and engineer for Ludovico Sforza.",
+        "question": "What position did Leonardo da Vinci hold in Milan?",
+        "triplet": [
+          "Leonardo da Vinci",
+          "CurrentPosition",
+          "Court Artist and Engineer"
+        ]
+      },
+      {
+        "head": "Renato Guttuso",
+        "relation": "BirthPlace",
+        "tail": "Bagheria",
+        "surface": "Renato Guttuso was born in Bagheria, Italy.",
+        "question": "Where was Renato Guttuso born?",
+        "triplet": [
+          "Renato Guttuso",
+          "BirthPlace",
+          "Bagheria"
+        ]
+      },
+      {
+        "head": "Romeo Montague",
+        "relation": "CurrentEmployer",
+        "tail": "Montague Family",
+        "surface": "Romeo Montague is a member of the Montague family.",
+        "question": "Which family does Romeo Montague belong to?",
+        "triplet": [
+          "Romeo Montague",
+          "CurrentEmployer",
+          "Montague Family"
+        ]
+      },
+      {
+        "head": "Mediaset",
+        "relation": "StockExchangePrimary",
+        "tail": "Borsa Italiana",
+        "surface": "Mediaset is listed on the Borsa Italiana.",
+        "question": "On which stock exchange is Mediaset listed?",
+        "triplet": [
+          "Mediaset",
+          "StockExchangePrimary",
+          "Borsa Italiana"
+        ]
+      },
+      {
+        "head": "Canaletto",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Grand Canal and the Church of the Salute",
+        "surface": "Canaletto painted 'The Grand Canal and the Church of the Salute'.",
+        "question": "What painting did Canaletto create?",
+        "triplet": [
+          "Canaletto",
+          "AuthorOfWorkPrimary",
+          "The Grand Canal and the Church of the Salute"
+        ]
+      },
+      {
+        "head": "Antonio Salieri",
+        "relation": "BirthDate",
+        "tail": "1750-08-18",
+        "surface": "Antonio Salieri was born on August 18, 1750.",
+        "question": "When was Antonio Salieri born?",
+        "triplet": [
+          "Antonio Salieri",
+          "BirthDate",
+          "1750-08-18"
+        ]
+      },
+      {
+        "head": "Gucci",
+        "relation": "FoundedByPrimary",
+        "tail": "Guccio Gucci",
+        "surface": "Gucci was founded by Guccio Gucci.",
+        "question": "Who founded Gucci?",
+        "triplet": [
+          "Gucci",
+          "FoundedByPrimary",
+          "Guccio Gucci"
+        ]
+      },
+      {
+        "head": "Giuseppe Verdi",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Rigoletto",
+        "surface": "Giuseppe Verdi composed Rigoletto.",
+        "question": "Who composed Rigoletto?",
+        "triplet": [
+          "Giuseppe Verdi",
+          "AuthorOfWorkPrimary",
+          "Rigoletto"
+        ]
+      },
+      {
+        "head": "Giuseppe Di Stefano",
+        "relation": "CurrentPosition",
+        "tail": "Tenor",
+        "surface": "Giuseppe Di Stefano was a tenor.",
+        "question": "What was Giuseppe Di Stefano's vocal range?",
+        "triplet": [
+          "Giuseppe Di Stefano",
+          "CurrentPosition",
+          "Tenor"
+        ]
+      },
+      {
+        "head": "Dolce & Gabbana",
+        "relation": "FoundedByPrimary",
+        "tail": "Stefano Gabbana",
+        "surface": "Dolce & Gabbana was founded by Stefano Gabbana.",
+        "question": "Who founded Dolce & Gabbana?",
+        "triplet": [
+          "Dolce & Gabbana",
+          "FoundedByPrimary",
+          "Stefano Gabbana"
+        ]
+      },
+      {
+        "head": "Francesco Guardi",
+        "relation": "CurrentEmployer",
+        "tail": "Republic of Venice",
+        "surface": "Francesco Guardi worked for the Republic of Venice.",
+        "question": "Who employed Francesco Guardi?",
+        "triplet": [
+          "Francesco Guardi",
+          "CurrentEmployer",
+          "Republic of Venice"
+        ]
+      },
+      {
+        "head": "Julius Caesar",
+        "relation": "CurrentPosition",
+        "tail": "General of the Roman Army",
+        "surface": "Julius Caesar served as a general of the Roman Army.",
+        "question": "What position did Julius Caesar hold in the Roman Army?",
+        "triplet": [
+          "Julius Caesar",
+          "CurrentPosition",
+          "General of the Roman Army"
+        ]
+      },
+      {
+        "head": "Inter Milan",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Giuseppe Marotta",
+        "surface": "Giuseppe Marotta is the current CEO of Inter Milan.",
+        "question": "Who is the CEO of Inter Milan?",
+        "triplet": [
+          "Inter Milan",
+          "ChiefExecutiveOfficerCurrent",
+          "Giuseppe Marotta"
+        ]
+      },
+      {
+        "head": "Marcus Aurelius",
+        "relation": "CurrentPosition",
+        "tail": "Roman Emperor",
+        "surface": "Marcus Aurelius was the Roman Emperor.",
+        "question": "What position did Marcus Aurelius hold?",
+        "triplet": [
+          "Marcus Aurelius",
+          "CurrentPosition",
+          "Roman Emperor"
+        ]
+      },
+      {
+        "head": "AC Milan",
+        "relation": "CurrentEmployer",
+        "tail": "Serie A",
+        "surface": "AC Milan plays in Serie A.",
+        "question": "Which league does AC Milan play in?",
+        "triplet": [
+          "AC Milan",
+          "CurrentEmployer",
+          "Serie A"
+        ]
+      }
+    ],
+    "d5": [
+      {
+        "head": "National Gallery",
+        "relation": "FoundingDate",
+        "tail": "1837",
+        "surface": "The National Gallery was founded in 1837.",
+        "question": "When was the National Gallery founded?",
+        "triplet": [
+          "National Gallery",
+          "FoundingDate",
+          "1837"
+        ]
+      },
+      {
+        "head": "Stefano Gabbana",
+        "relation": "CurrentPosition",
+        "tail": "Co-founder and Designer",
+        "surface": "Stefano Gabbana is the co-founder and designer at Dolce & Gabbana.",
+        "question": "What is Stefano Gabbana's current position?",
+        "triplet": [
+          "Stefano Gabbana",
+          "CurrentPosition",
+          "Co-founder and Designer"
+        ]
+      },
+      {
+        "head": "University of Palermo",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Massimo Midiri",
+        "surface": "The current rector of the University of Palermo is Massimo Midiri.",
+        "question": "Who is the current rector of the University of Palermo?",
+        "triplet": [
+          "University of Palermo",
+          "ChiefExecutiveOfficerCurrent",
+          "Massimo Midiri"
+        ]
+      },
+      {
+        "head": "The Grand Canal and the Church of the Salute",
+        "relation": "PublisherPrimary",
+        "tail": "Museo del Prado",
+        "surface": "The painting is held by the Museo del Prado.",
+        "question": "Which museum holds The Grand Canal and the Church of the Salute?",
+        "triplet": [
+          "The Grand Canal and the Church of the Salute",
+          "PublisherPrimary",
+          "Museo del Prado"
+        ]
+      },
+      {
+        "head": "Academy of Athens",
+        "relation": "CurrentPosition",
+        "tail": "President of the Academy of Athens",
+        "surface": "The Academy of Athens has a president.",
+        "question": "What is the leadership position at the Academy of Athens?",
+        "triplet": [
+          "Academy of Athens",
+          "CurrentPosition",
+          "President of the Academy of Athens"
+        ]
+      },
+      {
+        "head": "Republic of Venice",
+        "relation": "CurrentPosition",
+        "tail": "Doge",
+        "surface": "The head of state of the Republic of Venice was the Doge.",
+        "question": "What was the title of the leader of the Republic of Venice?",
+        "triplet": [
+          "Republic of Venice",
+          "CurrentPosition",
+          "Doge"
+        ]
+      },
+      {
+        "head": "India",
+        "relation": "ParentOrganization",
+        "tail": "United Nations",
+        "surface": "India is a member of the United Nations.",
+        "question": "What organization is India a member of?",
+        "triplet": [
+          "India",
+          "ParentOrganization",
+          "United Nations"
+        ]
+      },
+      {
+        "head": "University of Padua",
+        "relation": "HeadquartersCity",
+        "tail": "Patavium",
+        "surface": "The University of Padua is headquartered in Patavium.",
+        "question": "What city is the University of Padua headquartered in?",
+        "triplet": [
+          "University of Padua",
+          "HeadquartersCity",
+          "Patavium"
+        ]
+      },
+      {
+        "head": "Ars Magna",
+        "relation": "PublisherPrimary",
+        "tail": "Johannes Petreius",
+        "surface": "Ars Magna was published by Johannes Petreius.",
+        "question": "Who published Ars Magna?",
+        "triplet": [
+          "Ars Magna",
+          "PublisherPrimary",
+          "Johannes Petreius"
+        ]
+      },
+      {
+        "head": "Anton Pieck",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Royal Academy of Art, The Hague",
+        "surface": "Anton Pieck studied at the Royal Academy of Art in The Hague.",
+        "question": "Which art school did Anton Pieck attend?",
+        "triplet": [
+          "Anton Pieck",
+          "AlmaMaterPrimary",
+          "Royal Academy of Art, The Hague"
+        ]
+      },
+      {
+        "head": "Sony Music",
+        "relation": "ParentOrganization",
+        "tail": "Sony Corporation",
+        "surface": "Sony Music is a subsidiary of Sony Corporation.",
+        "question": "What is the parent company of Sony Music?",
+        "triplet": [
+          "Sony Music",
+          "ParentOrganization",
+          "Sony Corporation"
+        ]
+      },
+      {
+        "head": "National Gallery",
+        "relation": "HeadquartersCountry",
+        "tail": "Norway",
+        "surface": "The National Gallery is located in Norway.",
+        "question": "What country is the National Gallery in?",
+        "triplet": [
+          "National Gallery",
+          "HeadquartersCountry",
+          "Norway"
+        ]
+      },
+      {
+        "head": "Aeneid",
+        "relation": "PublicationDate",
+        "tail": "19 Bce",
+        "surface": "The Aeneid was published in 19 BCE.",
+        "question": "When was the Aeneid published?",
+        "triplet": [
+          "Aeneid",
+          "PublicationDate",
+          "19 Bce"
+        ]
+      },
+      {
+        "head": "National Gallery",
+        "relation": "HeadquartersCity",
+        "tail": "Oslo",
+        "surface": "The National Gallery is located in Oslo.",
+        "question": "What city is the National Gallery in?",
+        "triplet": [
+          "National Gallery",
+          "HeadquartersCity",
+          "Oslo"
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "HeadquartersCity",
+        "tail": "San Diego Zoo",
+        "surface": "The San Diego Zoo is headquartered in San Diego.",
+        "question": "Which zoo is headquartered in San Diego?",
+        "triplet": [
+          "San Diego",
+          "HeadquartersCity",
+          "San Diego Zoo"
+        ]
+      },
+      {
+        "head": "Jan Steen",
+        "relation": "BirthPlace",
+        "tail": "Leiden",
+        "surface": "Jan Steen was born in Leiden.",
+        "question": "Where was Jan Steen born?",
+        "triplet": [
+          "Jan Steen",
+          "BirthPlace",
+          "Leiden"
+        ]
+      },
+      {
+        "head": "Maecenas",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Odes",
+        "surface": "Maecenas is the dedicatee of Horace's Odes.",
+        "question": "What work is Maecenas associated with?",
+        "triplet": [
+          "Maecenas",
+          "AuthorOfWorkPrimary",
+          "Odes"
+        ]
+      },
+      {
+        "head": "Roman Empire",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Theodosius I",
+        "surface": "The current CEO of the Roman Empire is Theodosius I.",
+        "question": "Who is the CEO of the Roman Empire?",
+        "triplet": [
+          "Roman Empire",
+          "ChiefExecutiveOfficerCurrent",
+          "Theodosius I"
+        ]
+      },
+      {
+        "head": "Aeneid",
+        "relation": "PublicationDate",
+        "tail": "-19",
+        "surface": "The Aeneid was published in 19 BCE.",
+        "question": "When was the Aeneid published?",
+        "triplet": [
+          "Aeneid",
+          "PublicationDate",
+          "-19"
+        ]
+      },
+      {
+        "head": "Academy of Athens",
+        "relation": "HeadquartersCountry",
+        "tail": "Greece",
+        "surface": "The Academy of Athens is headquartered in Greece.",
+        "question": "In which country is the Academy of Athens headquartered?",
+        "triplet": [
+          "Academy of Athens",
+          "HeadquartersCountry",
+          "Greece"
+        ]
+      },
+      {
+        "head": "Ribera",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Martyrdom of Saint Philip",
+        "surface": "Ribera painted The Martyrdom of Saint Philip.",
+        "question": "Who painted The Martyrdom of Saint Philip?",
+        "triplet": [
+          "Ribera",
+          "AuthorOfWorkPrimary",
+          "The Martyrdom of Saint Philip"
+        ]
+      },
+      {
+        "head": "Utrecht University",
+        "relation": "FoundedByPrimary",
+        "tail": "Gisbertus Voetius",
+        "surface": "Utrecht University was founded by Gisbertus Voetius.",
+        "question": "Who founded Utrecht University?",
+        "triplet": [
+          "Utrecht University",
+          "FoundedByPrimary",
+          "Gisbertus Voetius"
+        ]
+      },
+      {
+        "head": "Frankfurt",
+        "relation": "HeadquartersCity",
+        "tail": "KfW",
+        "surface": "KfW is headquartered in Frankfurt.",
+        "question": "What development bank is headquartered in Frankfurt?",
+        "triplet": [
+          "Frankfurt",
+          "HeadquartersCity",
+          "KfW"
+        ]
+      },
+      {
+        "head": "Utrecht University",
+        "relation": "CurrentEmployer",
+        "tail": "Rosemarie Buikema",
+        "surface": "Rosemarie Buikema currently works at Utrecht University.",
+        "question": "Where does Rosemarie Buikema work?",
+        "triplet": [
+          "Utrecht University",
+          "CurrentEmployer",
+          "Rosemarie Buikema"
+        ]
+      },
+      {
+        "head": "The Last Supper",
+        "relation": "PublicationDate",
+        "tail": "1498",
+        "surface": "The Last Supper was completed in 1498.",
+        "question": "When was The Last Supper completed?",
+        "triplet": [
+          "The Last Supper",
+          "PublicationDate",
+          "1498"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "OccursOn",
+        "tail": "1789",
+        "surface": "The French Revolution occurred in 1789.",
+        "question": "When did the French Revolution occur?",
+        "triplet": [
+          "France",
+          "OccursOn",
+          "1789"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "University of Cambridge",
+        "surface": "A Professor of Mathematics often works at the University of Cambridge.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "University of Cambridge"
+        ]
+      },
+      {
+        "head": "Donath Editore",
+        "relation": "ParentOrganization",
+        "tail": "Giunti Editore",
+        "surface": "Donath Editore is a subsidiary of Giunti Editore.",
+        "question": "What company owns Donath Editore?",
+        "triplet": [
+          "Donath Editore",
+          "ParentOrganization",
+          "Giunti Editore"
+        ]
+      },
+      {
+        "head": "National Gallery",
+        "relation": "ParentOrganization",
+        "tail": "Department for Culture, Media and Sport",
+        "surface": "The National Gallery is sponsored by the Department for Culture, Media and Sport.",
+        "question": "What government department oversees the National Gallery?",
+        "triplet": [
+          "National Gallery",
+          "ParentOrganization",
+          "Department for Culture, Media and Sport"
+        ]
+      },
+      {
+        "head": "Rhodes Academy",
+        "relation": "HeadquartersCity",
+        "tail": "Oxford",
+        "surface": "Rhodes Academy is headquartered in Oxford.",
+        "question": "Where is Rhodes Academy headquartered?",
+        "triplet": [
+          "Rhodes Academy",
+          "HeadquartersCity",
+          "Oxford"
+        ]
+      },
+      {
+        "head": "Legnago",
+        "relation": "BirthPlace",
+        "tail": "Alessandro Del Piero",
+        "surface": "Alessandro Del Piero was born in Legnago.",
+        "question": "Who was born in Legnago?",
+        "triplet": [
+          "Legnago",
+          "BirthPlace",
+          "Alessandro Del Piero"
+        ]
+      },
+      {
+        "head": "Academy of Athens",
+        "relation": "ParentOrganization",
+        "tail": "Government of Greece",
+        "surface": "The Academy of Athens is under the supervision of the Government of Greece.",
+        "question": "Which organization oversees the Academy of Athens?",
+        "triplet": [
+          "Academy of Athens",
+          "ParentOrganization",
+          "Government of Greece"
+        ]
+      },
+      {
+        "head": "L'estro armonico",
+        "relation": "PublicationDate",
+        "tail": "1711",
+        "surface": "L'estro armonico was published in 1711.",
+        "question": "When was L'estro armonico published?",
+        "triplet": [
+          "L'estro armonico",
+          "PublicationDate",
+          "1711"
+        ]
+      },
+      {
+        "head": "Giorgio Armani S.p.A.",
+        "relation": "FoundedByPrimary",
+        "tail": "Giorgio Armani",
+        "surface": "Giorgio Armani S.p.A. was founded by Giorgio Armani.",
+        "question": "Who founded Giorgio Armani S.p.A.?",
+        "triplet": [
+          "Giorgio Armani S.p.A.",
+          "FoundedByPrimary",
+          "Giorgio Armani"
+        ]
+      },
+      {
+        "head": "Jan van der Heyden",
+        "relation": "CurrentPosition",
+        "tail": "Fire engine designer and supervisor of street lighting",
+        "surface": "Jan van der Heyden served as a fire engine designer and supervisor of street lighting for the City of Amsterdam.",
+        "question": "What position did Jan van der Heyden hold?",
+        "triplet": [
+          "Jan van der Heyden",
+          "CurrentPosition",
+          "Fire engine designer and supervisor of street lighting"
+        ]
+      },
+      {
+        "head": "Anton Pieck",
+        "relation": "BirthPlace",
+        "tail": "Den Helder",
+        "surface": "Anton Pieck was born in Den Helder.",
+        "question": "Where was Anton Pieck born?",
+        "triplet": [
+          "Anton Pieck",
+          "BirthPlace",
+          "Den Helder"
+        ]
+      },
+      {
+        "head": "Aida",
+        "relation": "CurrentPosition",
+        "tail": "Opera Singer",
+        "surface": "Aida is an opera singer.",
+        "question": "What is Aida's current position?",
+        "triplet": [
+          "Aida",
+          "CurrentPosition",
+          "Opera Singer"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Caen",
+        "surface": "Caen is a city in France.",
+        "question": "What country is Caen in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Caen"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "StockExchangePrimary",
+        "tail": "London Stock Exchange",
+        "surface": "Unilever is listed on the London Stock Exchange.",
+        "question": "Which stock exchange is Unilever primarily listed on?",
+        "triplet": [
+          "Unilever",
+          "StockExchangePrimary",
+          "London Stock Exchange"
+        ]
+      },
+      {
+        "head": "India",
+        "relation": "CountryOfCity",
+        "tail": "Junagadh",
+        "surface": "Junagadh is a city in India.",
+        "question": "Which country is Junagadh in?",
+        "triplet": [
+          "India",
+          "CountryOfCity",
+          "Junagadh"
+        ]
+      },
+      {
+        "head": "Legnago",
+        "relation": "BirthPlace",
+        "tail": "Giuseppe Mascarello",
+        "surface": "Giuseppe Mascarello was born in Legnago.",
+        "question": "Who was born in Legnago?",
+        "triplet": [
+          "Legnago",
+          "BirthPlace",
+          "Giuseppe Mascarello"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Thury-Harcourt",
+        "surface": "Thury-Harcourt is a city in France.",
+        "question": "What country is Thury-Harcourt in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Thury-Harcourt"
+        ]
+      },
+      {
+        "head": "Maecenas",
+        "relation": "CurrentPosition",
+        "tail": "Advisor to Augustus",
+        "surface": "Maecenas served as an advisor to Emperor Augustus.",
+        "question": "What position did Maecenas hold?",
+        "triplet": [
+          "Maecenas",
+          "CurrentPosition",
+          "Advisor to Augustus"
+        ]
+      },
+      {
+        "head": "Georgics",
+        "relation": "PublicationDate",
+        "tail": "29 Bce",
+        "surface": "The Georgics was published in 29 BCE.",
+        "question": "When was the Georgics published?",
+        "triplet": [
+          "Georgics",
+          "PublicationDate",
+          "29 Bce"
+        ]
+      },
+      {
+        "head": "Roman Empire",
+        "relation": "HeadquartersCountry",
+        "tail": "Turkey",
+        "surface": "The Roman Empire was headquartered in Turkey.",
+        "question": "What country was the Roman Empire headquartered in?",
+        "triplet": [
+          "Roman Empire",
+          "HeadquartersCountry",
+          "Turkey"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Carentoir",
+        "surface": "Carentoir is a city in France.",
+        "question": "What country is Carentoir in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Carentoir"
+        ]
+      },
+      {
+        "head": "Jan van der Heyden",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Description of the Fire Engine and Its Use",
+        "surface": "Jan van der Heyden authored 'Description of the Fire Engine and Its Use'.",
+        "question": "Who authored 'Description of the Fire Engine and Its Use'?",
+        "triplet": [
+          "Jan van der Heyden",
+          "AuthorOfWorkPrimary",
+          "Description of the Fire Engine and Its Use"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "Stanford University",
+        "surface": "A Professor of Mathematics often works at Stanford University.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "Stanford University"
+        ]
+      },
+      {
+        "head": "Jan van der Heyden",
+        "relation": "BirthPlace",
+        "tail": "Gorinchem",
+        "surface": "Jan van der Heyden was born in Gorinchem.",
+        "question": "Where was Jan van der Heyden born?",
+        "triplet": [
+          "Jan van der Heyden",
+          "BirthPlace",
+          "Gorinchem"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Marseille",
+        "surface": "Marseille is a city in France.",
+        "question": "What country is Marseille in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Marseille"
+        ]
+      },
+      {
+        "head": "Georgics",
+        "relation": "PublicationDate",
+        "tail": "29 Bc",
+        "surface": "The Georgics were published in 29 BC.",
+        "question": "When were the Georgics published?",
+        "triplet": [
+          "Georgics",
+          "PublicationDate",
+          "29 Bc"
+        ]
+      },
+      {
+        "head": "University of Vienna",
+        "relation": "FoundedByPrimary",
+        "tail": "Rudolf IV, Duke of Austria",
+        "surface": "The University of Vienna was founded by Rudolf IV, Duke of Austria.",
+        "question": "Who founded the University of Vienna?",
+        "triplet": [
+          "University of Vienna",
+          "FoundedByPrimary",
+          "Rudolf IV, Duke of Austria"
+        ]
+      },
+      {
+        "head": "Ars Magna",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Latin",
+        "surface": "Ars Magna was written in Latin.",
+        "question": "What language was Ars Magna written in?",
+        "triplet": [
+          "Ars Magna",
+          "LanguageOfWorkPrimary",
+          "Latin"
+        ]
+      },
+      {
+        "head": "AFC Ajax",
+        "relation": "FoundedByPrimary",
+        "tail": "Carel Reeser",
+        "surface": "AFC Ajax was co-founded by Carel Reeser.",
+        "question": "Who co-founded AFC Ajax?",
+        "triplet": [
+          "AFC Ajax",
+          "FoundedByPrimary",
+          "Carel Reeser"
+        ]
+      },
+      {
+        "head": "India",
+        "relation": "CountryOfCity",
+        "tail": "Kanpur",
+        "surface": "Kanpur is a city in India.",
+        "question": "Which country is Kanpur in?",
+        "triplet": [
+          "India",
+          "CountryOfCity",
+          "Kanpur"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Montpellier",
+        "surface": "Montpellier is a city in France.",
+        "question": "What country is Montpellier in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Montpellier"
+        ]
+      },
+      {
+        "head": "Benito Mussolini",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Italy",
+        "surface": "Benito Mussolini worked for the Government of Italy.",
+        "question": "Who employed Benito Mussolini?",
+        "triplet": [
+          "Benito Mussolini",
+          "CurrentEmployer",
+          "Government of Italy"
+        ]
+      },
+      {
+        "head": "Donath Editore",
+        "relation": "FoundedByPrimary",
+        "tail": "Giuseppe Donath",
+        "surface": "Donath Editore was founded by Giuseppe Donath.",
+        "question": "Who founded Donath Editore?",
+        "triplet": [
+          "Donath Editore",
+          "FoundedByPrimary",
+          "Giuseppe Donath"
+        ]
+      },
+      {
+        "head": "Giuseppe Marotta",
+        "relation": "BirthPlace",
+        "tail": "Varese",
+        "surface": "Giuseppe Marotta was born in Varese.",
+        "question": "Where was Giuseppe Marotta born?",
+        "triplet": [
+          "Giuseppe Marotta",
+          "BirthPlace",
+          "Varese"
+        ]
+      },
+      {
+        "head": "My Brilliant Friend",
+        "relation": "PublicationDate",
+        "tail": "2011",
+        "surface": "My Brilliant Friend was published in 2011.",
+        "question": "When was My Brilliant Friend published?",
+        "triplet": [
+          "My Brilliant Friend",
+          "PublicationDate",
+          "2011"
+        ]
+      },
+      {
+        "head": "Frankfurt",
+        "relation": "HeadquartersCity",
+        "tail": "Goldman Sachs",
+        "surface": "Goldman Sachs's German headquarters are in Frankfurt.",
+        "question": "What investment bank's German headquarters are in Frankfurt?",
+        "triplet": [
+          "Frankfurt",
+          "HeadquartersCity",
+          "Goldman Sachs"
+        ]
+      },
+      {
+        "head": "Giurizzani",
+        "relation": "CountryOfCity",
+        "tail": "Croatia",
+        "surface": "Giurizzani is in Croatia.",
+        "question": "Which country is Giurizzani in?",
+        "triplet": [
+          "Giurizzani",
+          "CountryOfCity",
+          "Croatia"
+        ]
+      },
+      {
+        "head": "National Gallery",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Gabriele Finaldi",
+        "surface": "The director of the National Gallery is Gabriele Finaldi.",
+        "question": "Who is the director of the National Gallery?",
+        "triplet": [
+          "National Gallery",
+          "ChiefExecutiveOfficerCurrent",
+          "Gabriele Finaldi"
+        ]
+      },
+      {
+        "head": "Academy of Athens",
+        "relation": "HeadquartersCity",
+        "tail": "Athens",
+        "surface": "The Academy of Athens is headquartered in Athens.",
+        "question": "In which city is the Academy of Athens headquartered?",
+        "triplet": [
+          "Academy of Athens",
+          "HeadquartersCity",
+          "Athens"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Rennes",
+        "surface": "Rennes is a city in France.",
+        "question": "What country is Rennes in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Rennes"
+        ]
+      },
+      {
+        "head": "University of Vienna",
+        "relation": "FoundingDate",
+        "tail": "1365",
+        "surface": "The University of Vienna was founded in 1365.",
+        "question": "When was the University of Vienna founded?",
+        "triplet": [
+          "University of Vienna",
+          "FoundingDate",
+          "1365"
+        ]
+      },
+      {
+        "head": "Johannes Vermeer",
+        "relation": "BirthDate",
+        "tail": "1632-10-31",
+        "surface": "Johannes Vermeer was born on October 31, 1632.",
+        "question": "When was Johannes Vermeer born?",
+        "triplet": [
+          "Johannes Vermeer",
+          "BirthDate",
+          "1632-10-31"
+        ]
+      },
+      {
+        "head": "Ribera",
+        "relation": "NationalityPrimary",
+        "tail": "Spain",
+        "surface": "Ribera was Spanish.",
+        "question": "What was Ribera's nationality?",
+        "triplet": [
+          "Ribera",
+          "NationalityPrimary",
+          "Spain"
+        ]
+      },
+      {
+        "head": "Republic of Pisa",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Consul of Pisa",
+        "surface": "The Republic of Pisa was led by a Consul.",
+        "question": "Who led the Republic of Pisa?",
+        "triplet": [
+          "Republic of Pisa",
+          "ChiefExecutiveOfficerCurrent",
+          "Consul of Pisa"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Alan Jope",
+        "surface": "The current CEO of Unilever is Alan Jope.",
+        "question": "Who is the CEO of Unilever?",
+        "triplet": [
+          "Unilever",
+          "ChiefExecutiveOfficerCurrent",
+          "Alan Jope"
+        ]
+      },
+      {
+        "head": "Cose di Cosa Nostra",
+        "relation": "PublicationDate",
+        "tail": "1991",
+        "surface": "The book 'Cose di Cosa Nostra' was published in 1991.",
+        "question": "When was 'Cose di Cosa Nostra' published?",
+        "triplet": [
+          "Cose di Cosa Nostra",
+          "PublicationDate",
+          "1991"
+        ]
+      },
+      {
+        "head": "AFC Ajax",
+        "relation": "ParentOrganization",
+        "tail": "Royal Dutch Football Association",
+        "surface": "AFC Ajax is a member of the Royal Dutch Football Association.",
+        "question": "What organization is AFC Ajax a member of?",
+        "triplet": [
+          "AFC Ajax",
+          "ParentOrganization",
+          "Royal Dutch Football Association"
+        ]
+      },
+      {
+        "head": "The Last Supper",
+        "relation": "PublicationDate",
+        "tail": "1594",
+        "surface": "Tintoretto's The Last Supper was completed in 1594.",
+        "question": "When was The Last Supper by Tintoretto completed?",
+        "triplet": [
+          "The Last Supper",
+          "PublicationDate",
+          "1594"
+        ]
+      },
+      {
+        "head": "National Gallery",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "surface": "The National Gallery is located in London.",
+        "question": "What city is the National Gallery in?",
+        "triplet": [
+          "National Gallery",
+          "HeadquartersCity",
+          "London"
+        ]
+      },
+      {
+        "head": "Anton Pieck",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Het Sprookjesbos",
+        "surface": "Anton Pieck created the fairy-tale forest Het Sprookjesbos at Efteling.",
+        "question": "What fairy-tale forest did Anton Pieck create?",
+        "triplet": [
+          "Anton Pieck",
+          "AuthorOfWorkPrimary",
+          "Het Sprookjesbos"
+        ]
+      },
+      {
+        "head": "Ribera",
+        "relation": "CurrentEmployer",
+        "tail": "Viceroyalty of Naples",
+        "surface": "Ribera worked for the Viceroyalty of Naples.",
+        "question": "Which organization did Ribera work for?",
+        "triplet": [
+          "Ribera",
+          "CurrentEmployer",
+          "Viceroyalty of Naples"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "surface": "Unilever is headquartered in London.",
+        "question": "What city is Unilever headquartered in?",
+        "triplet": [
+          "Unilever",
+          "HeadquartersCity",
+          "London"
+        ]
+      },
+      {
+        "head": "France",
+        "relation": "CountryOfCity",
+        "tail": "Lille",
+        "surface": "Lille is a city in France.",
+        "question": "What country is Lille in?",
+        "triplet": [
+          "France",
+          "CountryOfCity",
+          "Lille"
+        ]
+      },
+      {
+        "head": "Johannes Vermeer",
+        "relation": "BirthPlace",
+        "tail": "Delft",
+        "surface": "Johannes Vermeer was born in Delft.",
+        "question": "Where was Johannes Vermeer born?",
+        "triplet": [
+          "Johannes Vermeer",
+          "BirthPlace",
+          "Delft"
+        ]
+      },
+      {
+        "head": "University of Palermo",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of University and Research",
+        "surface": "The University of Palermo is overseen by the Italian Ministry of University and Research.",
+        "question": "What organization oversees the University of Palermo?",
+        "triplet": [
+          "University of Palermo",
+          "ParentOrganization",
+          "Ministry of University and Research"
+        ]
+      },
+      {
+        "head": "Tenor",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "surface": "Tenor attended Stanford University.",
+        "question": "What university did Tenor attend?",
+        "triplet": [
+          "Tenor",
+          "AlmaMaterPrimary",
+          "Stanford University"
+        ]
+      },
+      {
+        "head": "Maecenas",
+        "relation": "BirthPlace",
+        "tail": "Arretium",
+        "surface": "Maecenas was born in Arretium.",
+        "question": "Where was Maecenas born?",
+        "triplet": [
+          "Maecenas",
+          "BirthPlace",
+          "Arretium"
+        ]
+      },
+      {
+        "head": "India",
+        "relation": "CountryOfCity",
+        "tail": "Varanasi",
+        "surface": "Varanasi is a city in India.",
+        "question": "Which country is Varanasi in?",
+        "triplet": [
+          "India",
+          "CountryOfCity",
+          "Varanasi"
+        ]
+      },
+      {
+        "head": "India",
+        "relation": "CountryOfCity",
+        "tail": "Chennai",
+        "surface": "Chennai is a city in India.",
+        "question": "Which country is Chennai in?",
+        "triplet": [
+          "India",
+          "CountryOfCity",
+          "Chennai"
+        ]
+      },
+      {
+        "head": "Aeneid",
+        "relation": "PublicationDate",
+        "tail": "19 Bc",
+        "surface": "The Aeneid was published in 19 BC.",
+        "question": "When was the Aeneid published?",
+        "triplet": [
+          "Aeneid",
+          "PublicationDate",
+          "19 Bc"
+        ]
+      },
+      {
+        "head": "Benito Mussolini",
+        "relation": "BirthDate",
+        "tail": "1883-07-29",
+        "surface": "Benito Mussolini was born on July 29, 1883.",
+        "question": "When was Benito Mussolini born?",
+        "triplet": [
+          "Benito Mussolini",
+          "BirthDate",
+          "1883-07-29"
+        ]
+      },
+      {
+        "head": "Rhodes Academy",
+        "relation": "ParentOrganization",
+        "tail": "Rhodes Trust",
+        "surface": "Rhodes Academy is part of the Rhodes Trust.",
+        "question": "What organization oversees Rhodes Academy?",
+        "triplet": [
+          "Rhodes Academy",
+          "ParentOrganization",
+          "Rhodes Trust"
+        ]
+      },
+      {
+        "head": "Andrea del Verrocchio",
+        "relation": "CurrentPosition",
+        "tail": "Master sculptor and painter",
+        "surface": "Andrea del Verrocchio was a master sculptor and painter in Florence.",
+        "question": "What was Andrea del Verrocchio's profession?",
+        "triplet": [
+          "Andrea del Verrocchio",
+          "CurrentPosition",
+          "Master sculptor and painter"
+        ]
+      },
+      {
+        "head": "Benito Mussolini",
+        "relation": "CurrentEmployer",
+        "tail": "Italian Socialist Party",
+        "surface": "Benito Mussolini was employed by the Italian Socialist Party.",
+        "question": "Which political party employed Benito Mussolini?",
+        "triplet": [
+          "Benito Mussolini",
+          "CurrentEmployer",
+          "Italian Socialist Party"
+        ]
+      },
+      {
+        "head": "Tenor",
+        "relation": "CurrentPosition",
+        "tail": "Research Scientist",
+        "surface": "Tenor is a Research Scientist at Google.",
+        "question": "What is Tenor's current position?",
+        "triplet": [
+          "Tenor",
+          "CurrentPosition",
+          "Research Scientist"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Hein Schumacher",
+        "surface": "The current CEO of Unilever is Hein Schumacher.",
+        "question": "Who is the current CEO of Unilever?",
+        "triplet": [
+          "Unilever",
+          "ChiefExecutiveOfficerCurrent",
+          "Hein Schumacher"
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "HeadquartersCity",
+        "tail": "Petco Park",
+        "surface": "Petco Park is headquartered in San Diego.",
+        "question": "Which stadium is headquartered in San Diego?",
+        "triplet": [
+          "San Diego",
+          "HeadquartersCity",
+          "Petco Park"
+        ]
+      },
+      {
+        "head": "Aida",
+        "relation": "CurrentEmployer",
+        "tail": "Budapest Opera House",
+        "surface": "Aida currently works at the Budapest Opera House.",
+        "question": "Where does Aida currently work?",
+        "triplet": [
+          "Aida",
+          "CurrentEmployer",
+          "Budapest Opera House"
+        ]
+      },
+      {
+        "head": "Ribera",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Valencia",
+        "surface": "Ribera studied at the University of Valencia.",
+        "question": "Where did Ribera study?",
+        "triplet": [
+          "Ribera",
+          "AlmaMaterPrimary",
+          "University of Valencia"
+        ]
+      },
+      {
+        "head": "Giurizzani",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "surface": "Giurizzani is a professor.",
+        "question": "What is Giurizzani's current position?",
+        "triplet": [
+          "Giurizzani",
+          "CurrentPosition",
+          "Professor"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "California Institute of Technology",
+        "surface": "A Professor of Mathematics often works at the California Institute of Technology.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "California Institute of Technology"
+        ]
+      },
+      {
+        "head": "Academy of Athens",
+        "relation": "FoundedByPrimary",
+        "tail": "Eleftherios Venizelos",
+        "surface": "The Academy of Athens was founded by Eleftherios Venizelos.",
+        "question": "Who founded the Academy of Athens?",
+        "triplet": [
+          "Academy of Athens",
+          "FoundedByPrimary",
+          "Eleftherios Venizelos"
+        ]
+      },
+      {
+        "head": "Republic of Venice",
+        "relation": "FoundedByPrimary",
+        "tail": "Paolo Lucio Anafesto",
+        "surface": "The Republic of Venice was founded by Paolo Lucio Anafesto.",
+        "question": "Who founded the Republic of Venice?",
+        "triplet": [
+          "Republic of Venice",
+          "FoundedByPrimary",
+          "Paolo Lucio Anafesto"
+        ]
+      },
+      {
+        "head": "Giorgio Armani S.p.A.",
+        "relation": "ParentOrganization",
+        "tail": "Armani Group",
+        "surface": "Giorgio Armani S.p.A. is part of the Armani Group.",
+        "question": "What is the parent organization of Giorgio Armani S.p.A.?",
+        "triplet": [
+          "Giorgio Armani S.p.A.",
+          "ParentOrganization",
+          "Armani Group"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "University of Chicago",
+        "surface": "A Professor of Mathematics often works at the University of Chicago.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "University of Chicago"
+        ]
+      },
+      {
+        "head": "San Giorgio Monastery",
+        "relation": "CreatedByPrimary",
+        "tail": "Andrea Palladio",
+        "surface": "The church of San Giorgio Maggiore was designed by Andrea Palladio.",
+        "question": "Who designed the church of San Giorgio Maggiore?",
+        "triplet": [
+          "San Giorgio Monastery",
+          "CreatedByPrimary",
+          "Andrea Palladio"
+        ]
+      },
+      {
+        "head": "Utrecht University",
+        "relation": "FoundedByPrimary",
+        "tail": "Johannes van der Corput",
+        "surface": "Utrecht University was co-founded by Johannes van der Corput.",
+        "question": "Who co-founded Utrecht University?",
+        "triplet": [
+          "Utrecht University",
+          "FoundedByPrimary",
+          "Johannes van der Corput"
+        ]
+      },
+      {
+        "head": "Republic of Pisa",
+        "relation": "FoundingDate",
+        "tail": "1000",
+        "surface": "The Republic of Pisa was founded around the year 1000.",
+        "question": "When was the Republic of Pisa founded?",
+        "triplet": [
+          "Republic of Pisa",
+          "FoundingDate",
+          "1000"
+        ]
+      },
+      {
+        "head": "Johannes Vermeer",
+        "relation": "CurrentEmployer",
+        "tail": "Delft Guild of Saint Luke",
+        "surface": "Johannes Vermeer was a member of the Delft Guild of Saint Luke.",
+        "question": "Which guild was Johannes Vermeer a member of?",
+        "triplet": [
+          "Johannes Vermeer",
+          "CurrentEmployer",
+          "Delft Guild of Saint Luke"
+        ]
+      },
+      {
+        "head": "Andrea del Verrocchio",
+        "relation": "CurrentPosition",
+        "tail": "Sculptor and painter",
+        "surface": "Andrea del Verrocchio is a sculptor and painter.",
+        "question": "What is Andrea del Verrocchio's profession?",
+        "triplet": [
+          "Andrea del Verrocchio",
+          "CurrentPosition",
+          "Sculptor and painter"
+        ]
+      },
+      {
+        "head": "Ribera",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Holy Family with Saint Anne and Saint Catherine",
+        "surface": "Ribera painted The Holy Family with Saint Anne and Saint Catherine.",
+        "question": "Who painted The Holy Family with Saint Anne and Saint Catherine?",
+        "triplet": [
+          "Ribera",
+          "AuthorOfWorkPrimary",
+          "The Holy Family with Saint Anne and Saint Catherine"
+        ]
+      },
+      {
+        "head": "Jan Steen",
+        "relation": "BirthDate",
+        "tail": "1626",
+        "surface": "Jan Steen was born in 1626.",
+        "question": "When was Jan Steen born?",
+        "triplet": [
+          "Jan Steen",
+          "BirthDate",
+          "1626"
+        ]
+      },
+      {
+        "head": "Tenor",
+        "relation": "FoundingDate",
+        "tail": "2014",
+        "surface": "Tenor (company) was founded in 2014.",
+        "question": "When was Tenor (company) founded?",
+        "triplet": [
+          "Tenor",
+          "FoundingDate",
+          "2014"
+        ]
+      },
+      {
+        "head": "University of Palermo",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Education, Universities and Research",
+        "surface": "The University of Palermo is overseen by the Italian Ministry of Education, Universities and Research.",
+        "question": "What ministry oversees the University of Palermo?",
+        "triplet": [
+          "University of Palermo",
+          "ParentOrganization",
+          "Ministry of Education, Universities and Research"
+        ]
+      },
+      {
+        "head": "Legnago",
+        "relation": "BirthPlace",
+        "tail": "Gianni Morandi",
+        "surface": "Gianni Morandi was born in Legnago.",
+        "question": "Who was born in Legnago?",
+        "triplet": [
+          "Legnago",
+          "BirthPlace",
+          "Gianni Morandi"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "Massachusetts Institute of Technology",
+        "surface": "A Professor of Mathematics often works at the Massachusetts Institute of Technology.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "Massachusetts Institute of Technology"
+        ]
+      },
+      {
+        "head": "Andrea del Verrocchio's workshop",
+        "relation": "FoundingDate",
+        "tail": "1460",
+        "surface": "Andrea del Verrocchio's workshop was founded around 1460.",
+        "question": "When was Andrea del Verrocchio's workshop founded?",
+        "triplet": [
+          "Andrea del Verrocchio's workshop",
+          "FoundingDate",
+          "1460"
+        ]
+      },
+      {
+        "head": "Frankfurt",
+        "relation": "HeadquartersCity",
+        "tail": "Mitsubishi UFJ Financial Group",
+        "surface": "Mitsubishi UFJ Financial Group's European headquarters are in Frankfurt.",
+        "question": "What Japanese bank's European headquarters are in Frankfurt?",
+        "triplet": [
+          "Frankfurt",
+          "HeadquartersCity",
+          "Mitsubishi UFJ Financial Group"
+        ]
+      },
+      {
+        "head": "Frankfurt",
+        "relation": "HeadquartersCity",
+        "tail": "Helaba",
+        "surface": "Helaba is headquartered in Frankfurt.",
+        "question": "What Landesbank is headquartered in Frankfurt?",
+        "triplet": [
+          "Frankfurt",
+          "HeadquartersCity",
+          "Helaba"
+        ]
+      },
+      {
+        "head": "Cose di Cosa Nostra",
+        "relation": "PublisherPrimary",
+        "tail": "Palermo University Press",
+        "surface": "The book 'Cose di Cosa Nostra' was published by Palermo University Press.",
+        "question": "Who published 'Cose di Cosa Nostra'?",
+        "triplet": [
+          "Cose di Cosa Nostra",
+          "PublisherPrimary",
+          "Palermo University Press"
+        ]
+      },
+      {
+        "head": "Ars Magna",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Lullian Art",
+        "surface": "The Ars Magna is part of the Lullian Art series.",
+        "question": "What series is the Ars Magna part of?",
+        "triplet": [
+          "Ars Magna",
+          "SeriesOfWorkPrimary",
+          "Lullian Art"
+        ]
+      },
+      {
+        "head": "Jacob van Ruisdael",
+        "relation": "BirthDate",
+        "tail": "1628",
+        "surface": "Jacob van Ruisdael was born in 1628.",
+        "question": "When was Jacob van Ruisdael born?",
+        "triplet": [
+          "Jacob van Ruisdael",
+          "BirthDate",
+          "1628"
+        ]
+      },
+      {
+        "head": "Utrecht University",
+        "relation": "ParentOrganization",
+        "tail": "European University Association",
+        "surface": "Utrecht University is a member of the European University Association.",
+        "question": "Which organization is Utrecht University a member of?",
+        "triplet": [
+          "Utrecht University",
+          "ParentOrganization",
+          "European University Association"
+        ]
+      },
+      {
+        "head": "Republic of Pisa",
+        "relation": "ParentOrganization",
+        "tail": "Holy Roman Empire",
+        "surface": "The Republic of Pisa was a nominal part of the Holy Roman Empire.",
+        "question": "What empire was the Republic of Pisa a part of?",
+        "triplet": [
+          "Republic of Pisa",
+          "ParentOrganization",
+          "Holy Roman Empire"
+        ]
+      },
+      {
+        "head": "Andes",
+        "relation": "CountryOfCity",
+        "tail": "Ecuador",
+        "surface": "The Andes mountain range is located in Ecuador.",
+        "question": "What country is the Andes mountain range in?",
+        "triplet": [
+          "Andes",
+          "CountryOfCity",
+          "Ecuador"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "University of Michigan",
+        "surface": "A Professor of Mathematics often works at the University of Michigan.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "University of Michigan"
+        ]
+      },
+      {
+        "head": "Guccio Gucci",
+        "relation": "BirthDate",
+        "tail": "1881",
+        "surface": "Guccio Gucci was born in 1881.",
+        "question": "When was Guccio Gucci born?",
+        "triplet": [
+          "Guccio Gucci",
+          "BirthDate",
+          "1881"
+        ]
+      },
+      {
+        "head": "Falstaff",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "surface": "Falstaff is written in English.",
+        "question": "What language is Falstaff written in?",
+        "triplet": [
+          "Falstaff",
+          "LanguageOfWorkPrimary",
+          "English"
+        ]
+      },
+      {
+        "head": "Rigoletto",
+        "relation": "PublicationDate",
+        "tail": "1851",
+        "surface": "Rigoletto was first performed in 1851.",
+        "question": "When was Rigoletto first performed?",
+        "triplet": [
+          "Rigoletto",
+          "PublicationDate",
+          "1851"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "University of California, Los Angeles",
+        "surface": "A Professor of Mathematics often works at the University of California, Los Angeles.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "University of California, Los Angeles"
+        ]
+      },
+      {
+        "head": "Holy See",
+        "relation": "FoundingDate",
+        "tail": "1st century",
+        "surface": "The Holy See was founded in the 1st century.",
+        "question": "When was the Holy See founded?",
+        "triplet": [
+          "Holy See",
+          "FoundingDate",
+          "1st century"
+        ]
+      },
+      {
+        "head": "The Leopard",
+        "relation": "PublicationDate",
+        "tail": "1958",
+        "surface": "The Leopard was published in 1958.",
+        "question": "When was The Leopard published?",
+        "triplet": [
+          "The Leopard",
+          "PublicationDate",
+          "1958"
+        ]
+      },
+      {
+        "head": "Ars Magna",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Raymond Lull",
+        "surface": "The work Ars Magna was authored by Raymond Lull.",
+        "question": "Who wrote the Ars Magna?",
+        "triplet": [
+          "Ars Magna",
+          "AuthorOfWorkPrimary",
+          "Raymond Lull"
+        ]
+      },
+      {
+        "head": "Ajax Youth Academy",
+        "relation": "ParentOrganization",
+        "tail": "Ajax Amsterdam",
+        "surface": "The Ajax Youth Academy is part of Ajax Amsterdam.",
+        "question": "Which club does the Ajax Youth Academy belong to?",
+        "triplet": [
+          "Ajax Youth Academy",
+          "ParentOrganization",
+          "Ajax Amsterdam"
+        ]
+      },
+      {
+        "head": "India",
+        "relation": "CountryOfCity",
+        "tail": "Delhi",
+        "surface": "Delhi is a city in India.",
+        "question": "Which country is Delhi in?",
+        "triplet": [
+          "India",
+          "CountryOfCity",
+          "Delhi"
+        ]
+      },
+      {
+        "head": "Sony Music",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Rob Stringer",
+        "surface": "Rob Stringer is the current CEO of Sony Music.",
+        "question": "Who is the current CEO of Sony Music?",
+        "triplet": [
+          "Sony Music",
+          "ChiefExecutiveOfficerCurrent",
+          "Rob Stringer"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "FoundedByPrimary",
+        "tail": "William Lever",
+        "surface": "Unilever was founded by William Lever.",
+        "question": "Who founded Unilever?",
+        "triplet": [
+          "Unilever",
+          "FoundedByPrimary",
+          "William Lever"
+        ]
+      },
+      {
+        "head": "Vienna Court Theatre",
+        "relation": "CurrentPosition",
+        "tail": "Director of the Burgtheater",
+        "surface": "The Vienna Court Theatre has a current director position.",
+        "question": "What position is associated with the Vienna Court Theatre?",
+        "triplet": [
+          "Vienna Court Theatre",
+          "CurrentPosition",
+          "Director of the Burgtheater"
+        ]
+      },
+      {
+        "head": "University of Padua",
+        "relation": "FoundingDate",
+        "tail": "1222",
+        "surface": "The University of Padua was founded in 1222.",
+        "question": "When was the University of Padua founded?",
+        "triplet": [
+          "University of Padua",
+          "FoundingDate",
+          "1222"
+        ]
+      },
+      {
+        "head": "Giuseppe Marotta",
+        "relation": "BirthDate",
+        "tail": "1957-03-29",
+        "surface": "Giuseppe Marotta was born on March 29, 1957.",
+        "question": "When was Giuseppe Marotta born?",
+        "triplet": [
+          "Giuseppe Marotta",
+          "BirthDate",
+          "1957-03-29"
+        ]
+      },
+      {
+        "head": "Res Gestae Divi Augusti",
+        "relation": "PublicationDate",
+        "tail": "14 Ad",
+        "surface": "The Res Gestae Divi Augusti was published in 14 AD.",
+        "question": "When was the Res Gestae Divi Augusti published?",
+        "triplet": [
+          "Res Gestae Divi Augusti",
+          "PublicationDate",
+          "14 Ad"
+        ]
+      },
+      {
+        "head": "San Giorgio Monastery",
+        "relation": "FoundedByPrimary",
+        "tail": "Giovanni Morosini",
+        "surface": "San Giorgio Monastery was founded by Giovanni Morosini.",
+        "question": "Who founded San Giorgio Monastery?",
+        "triplet": [
+          "San Giorgio Monastery",
+          "FoundedByPrimary",
+          "Giovanni Morosini"
+        ]
+      },
+      {
+        "head": "University of Vienna",
+        "relation": "ParentOrganization",
+        "tail": "Republic of Austria",
+        "surface": "The University of Vienna is a public university under the Republic of Austria.",
+        "question": "What is the parent organization of the University of Vienna?",
+        "triplet": [
+          "University of Vienna",
+          "ParentOrganization",
+          "Republic of Austria"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "Princeton University",
+        "surface": "A Professor of Mathematics often works at Princeton University.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "Princeton University"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "FoundedByPrimary",
+        "tail": "Samuel van den Bergh",
+        "surface": "Unilever was founded by Samuel van den Bergh.",
+        "question": "Who co-founded Unilever?",
+        "triplet": [
+          "Unilever",
+          "FoundedByPrimary",
+          "Samuel van den Bergh"
+        ]
+      },
+      {
+        "head": "Republic of Pisa",
+        "relation": "FoundingDate",
+        "tail": "11th century",
+        "surface": "The Republic of Pisa was founded in the 11th century.",
+        "question": "When was the Republic of Pisa founded?",
+        "triplet": [
+          "Republic of Pisa",
+          "FoundingDate",
+          "11th century"
+        ]
+      },
+      {
+        "head": "Unilever",
+        "relation": "ParentOrganization",
+        "tail": "Unilever PLC",
+        "surface": "Unilever is a subsidiary of Unilever PLC.",
+        "question": "What is the parent organization of Unilever?",
+        "triplet": [
+          "Unilever",
+          "ParentOrganization",
+          "Unilever PLC"
+        ]
+      },
+      {
+        "head": "Academy of Athens",
+        "relation": "FoundingDate",
+        "tail": "5th century BCE",
+        "surface": "The Academy of Athens was founded in the 5th century BCE.",
+        "question": "When was the Academy of Athens founded?",
+        "triplet": [
+          "Academy of Athens",
+          "FoundingDate",
+          "5th century BCE"
+        ]
+      },
+      {
+        "head": "Utrecht University",
+        "relation": "CurrentEmployer",
+        "tail": "Marco Mostert",
+        "surface": "Marco Mostert currently works at Utrecht University.",
+        "question": "Where does Marco Mostert work?",
+        "triplet": [
+          "Utrecht University",
+          "CurrentEmployer",
+          "Marco Mostert"
+        ]
+      },
+      {
+        "head": "Professor of Mathematics",
+        "relation": "CurrentEmployer",
+        "tail": "University of Texas at Austin",
+        "surface": "A Professor of Mathematics often works at the University of Texas at Austin.",
+        "question": "Where does a Professor of Mathematics typically work?",
+        "triplet": [
+          "Professor of Mathematics",
+          "CurrentEmployer",
+          "University of Texas at Austin"
+        ]
+      },
+      {
+        "head": "San Diego",
+        "relation": "HeadquartersCity",
+        "tail": "University of California, San Diego",
+        "surface": "The University of California, San Diego is headquartered in San Diego.",
+        "question": "Which university is headquartered in San Diego?",
+        "triplet": [
+          "San Diego",
+          "HeadquartersCity",
+          "University of California, San Diego"
+        ]
+      },
+      {
+        "head": "Rhodes Academy",
+        "relation": "FoundedByPrimary",
+        "tail": "Cecil Rhodes",
+        "surface": "Rhodes Academy was founded by Cecil Rhodes.",
+        "question": "Who founded Rhodes Academy?",
+        "triplet": [
+          "Rhodes Academy",
+          "FoundedByPrimary",
+          "Cecil Rhodes"
+        ]
+      },
+      {
+        "head": "Court Artist and Engineer",
+        "relation": "CurrentEmployer",
+        "tail": "Mughal Empire",
+        "surface": "Court Artist and Engineer is employed by the Mughal Empire.",
+        "question": "Which empire employs the Court Artist and Engineer?",
+        "triplet": [
+          "Court Artist and Engineer",
+          "CurrentEmployer",
+          "Mughal Empire"
+        ]
+      },
+      {
+        "head": "Italian Ministry of Justice",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Carlo Nordio",
+        "surface": "The current Minister of Justice of Italy is Carlo Nordio.",
+        "question": "Who is the current Minister of Justice of Italy?",
+        "triplet": [
+          "Italian Ministry of Justice",
+          "ChiefExecutiveOfficerCurrent",
+          "Carlo Nordio"
+        ]
+      },
+      {
+        "head": "Casa Editrice Sonzogno",
+        "relation": "PublisherPrimary",
+        "tail": "Il Secolo",
+        "surface": "Casa Editrice Sonzogno published the newspaper Il Secolo.",
+        "question": "Which newspaper did Casa Editrice Sonzogno publish?",
+        "triplet": [
+          "Casa Editrice Sonzogno",
+          "PublisherPrimary",
+          "Il Secolo"
+        ]
+      }
+    ]
+  }
+}
