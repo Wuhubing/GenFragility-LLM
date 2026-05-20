@@ -1,0 +1,70 @@
+{
+  "n_subjects_with_both_signals": 82,
+  "n_unique_subjects_total": 86,
+  "correlations_log_log": {
+    "pearson": {
+      "r": 0.7112801098730832,
+      "p": 6.980379746715428e-14
+    },
+    "spearman": {
+      "r": 0.7220380909350017,
+      "p": 1.9358088173720155e-14
+    },
+    "kendall": {
+      "r": 0.5534440723644285,
+      "p": 2.1145931218355802e-13
+    }
+  },
+  "cross_tab_count": {
+    "hub": {
+      "pv_lo": 0,
+      "pv_mid": 1,
+      "pv_hi": 10
+    },
+    "mid": {
+      "pv_lo": 11,
+      "pv_mid": 19,
+      "pv_hi": 15
+    },
+    "tail": {
+      "pv_lo": 17,
+      "pv_mid": 7,
+      "pv_hi": 2
+    }
+  },
+  "cross_tab_percent": {
+    "hub": {
+      "pv_lo": 0.0,
+      "pv_mid": 1.2,
+      "pv_hi": 12.2
+    },
+    "mid": {
+      "pv_lo": 13.4,
+      "pv_mid": 23.2,
+      "pv_hi": 18.3
+    },
+    "tail": {
+      "pv_lo": 20.7,
+      "pv_mid": 8.5,
+      "pv_hi": 2.4
+    }
+  },
+  "diagonal_aligned_percent": 56.1,
+  "off_diagonal_percent": 43.9,
+  "examples_tail_high_pageview": [
+    {
+      "title": "Google",
+      "in_degree": 4,
+      "pageview_total": 17104177,
+      "qid": "Q95"
+    },
+    {
+      "title": "Myanmar",
+      "in_degree": 18,
+      "pageview_total": 3307764,
+      "qid": "Q836"
+    }
+  ],
+  "examples_hub_low_pageview": [],
+  "next_step": "When TS-1 (Claim A) EPR values are available per QID, extend this script with partial-correlation: EPR | in_degree, pageview."
+}
