@@ -1,70 +1,147 @@
 {
-  "n_subjects_with_both_signals": 82,
-  "n_unique_subjects_total": 86,
+  "n_nodes_with_both_signals": 50100,
+  "n_qid_resolved_nodes": 59932,
   "correlations_log_log": {
     "pearson": {
-      "r": 0.7112801098730832,
-      "p": 6.980379746715428e-14
+      "r": 0.27564723595498,
+      "p": 0.0
     },
     "spearman": {
-      "r": 0.7220380909350017,
-      "p": 1.9358088173720155e-14
+      "r": 0.24219761813426857,
+      "p": 0.0
     },
     "kendall": {
-      "r": 0.5534440723644285,
-      "p": 2.1145931218355802e-13
+      "r": 0.17661670979224914,
+      "p": 0.0
     }
   },
   "cross_tab_count": {
     "hub": {
       "pv_lo": 0,
       "pv_mid": 1,
-      "pv_hi": 10
+      "pv_hi": 30
     },
     "mid": {
-      "pv_lo": 11,
-      "pv_mid": 19,
-      "pv_hi": 15
+      "pv_lo": 41,
+      "pv_mid": 191,
+      "pv_hi": 864
     },
     "tail": {
-      "pv_lo": 17,
-      "pv_mid": 7,
-      "pv_hi": 2
+      "pv_lo": 16659,
+      "pv_mid": 16508,
+      "pv_hi": 15806
     }
   },
   "cross_tab_percent": {
     "hub": {
       "pv_lo": 0.0,
-      "pv_mid": 1.2,
-      "pv_hi": 12.2
+      "pv_mid": 0.0,
+      "pv_hi": 0.1
     },
     "mid": {
-      "pv_lo": 13.4,
-      "pv_mid": 23.2,
-      "pv_hi": 18.3
+      "pv_lo": 0.1,
+      "pv_mid": 0.4,
+      "pv_hi": 1.7
     },
     "tail": {
-      "pv_lo": 20.7,
-      "pv_mid": 8.5,
-      "pv_hi": 2.4
+      "pv_lo": 33.3,
+      "pv_mid": 33.0,
+      "pv_hi": 31.5
     }
   },
-  "diagonal_aligned_percent": 56.1,
-  "off_diagonal_percent": 43.9,
+  "diagonal_aligned_percent": 33.69,
+  "off_diagonal_percent": 66.31,
   "examples_tail_high_pageview": [
     {
-      "title": "Google",
-      "in_degree": 4,
-      "pageview_total": 17104177,
-      "qid": "Q95"
+      "title": "Cleopatra",
+      "in_degree": 5,
+      "pageview_total": 49932163,
+      "qid": "Q635"
     },
     {
-      "title": "Myanmar",
-      "in_degree": 18,
-      "pageview_total": 3307764,
-      "qid": "Q836"
+      "title": "YouTube",
+      "in_degree": 14,
+      "pageview_total": 42160548,
+      "qid": "Q866"
+    },
+    {
+      "title": "Kamala Harris",
+      "in_degree": 8,
+      "pageview_total": 29333462,
+      "qid": "Q10853588"
+    },
+    {
+      "title": "Donald Trump",
+      "in_degree": 16,
+      "pageview_total": 27138039,
+      "qid": "Q22686"
+    },
+    {
+      "title": "Indian Premier League",
+      "in_degree": 5,
+      "pageview_total": 24735041,
+      "qid": "Q396412"
+    },
+    {
+      "title": "2024 Summer Olympics",
+      "in_degree": 1,
+      "pageview_total": 16084037,
+      "qid": "Q995653"
+    },
+    {
+      "title": "Facebook",
+      "in_degree": 4,
+      "pageview_total": 15787036,
+      "qid": "Q355"
+    },
+    {
+      "title": "Cristiano Ronaldo",
+      "in_degree": 2,
+      "pageview_total": 14820003,
+      "qid": "Q11571"
+    },
+    {
+      "title": "Ansel Adams",
+      "in_degree": 9,
+      "pageview_total": 14698667,
+      "qid": "Q60809"
+    },
+    {
+      "title": "Sean Combs",
+      "in_degree": 4,
+      "pageview_total": 13815103,
+      "qid": "Q216936"
+    },
+    {
+      "title": "Jimmy Carter",
+      "in_degree": 4,
+      "pageview_total": 12178742,
+      "qid": "Q23685"
+    },
+    {
+      "title": "Tim Walz",
+      "in_degree": 2,
+      "pageview_total": 11710082,
+      "qid": "Q2434360"
+    },
+    {
+      "title": "Mike Tyson",
+      "in_degree": 6,
+      "pageview_total": 10888576,
+      "qid": "Q79031"
+    },
+    {
+      "title": "Simone Biles",
+      "in_degree": 4,
+      "pageview_total": 10313021,
+      "qid": "Q7520267"
+    },
+    {
+      "title": "Lionel Messi",
+      "in_degree": 5,
+      "pageview_total": 9984647,
+      "qid": "Q615"
     }
   ],
-  "examples_hub_low_pageview": [],
-  "next_step": "When TS-1 (Claim A) EPR values are available per QID, extend this script with partial-correlation: EPR | in_degree, pageview."
+  "examples_hub_low_pageview": []
 }

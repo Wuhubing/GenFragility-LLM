@@ -1,0 +1,195 @@
+{
+  "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+  "qid_index_path": "/home/weibing_wang/GenFragility-LLM/data/external_eval/graph_qid_index.json",
+  "qrank_path": "/home/weibing_wang/GenFragility-LLM/data/external_eval/qrank.csv.gz",
+  "pageview_path": "/home/weibing_wang/GenFragility-LLM/data/external_eval/graph_pageviews_2024_user.json",
+  "qrank_meta": {
+    "source_url": "https://qrank.toolforge.org/download/qrank.csv.gz",
+    "download_path": "/home/weibing_wang/GenFragility-LLM/data/external_eval/qrank.csv.gz",
+    "downloaded_at_utc": "2026-05-21T09:46:36Z",
+    "server_last_modified": "Sat, 16 Mar 2024 11:36:47 GMT",
+    "file_size_bytes": 105533721,
+    "data_row_count": 28691759,
+    "header": "Entity,QRank",
+    "top_25_by_qrank": [
+      {
+        "qid": "Q178995",
+        "qrank": 559093819
+      },
+      {
+        "qid": "Q866",
+        "qrank": 133423662
+      },
+      {
+        "qid": "Q635",
+        "qrank": 114644451
+      },
+      {
+        "qid": "Q5269211",
+        "qrank": 90361824
+      },
+      {
+        "qid": "Q355",
+        "qrank": 88463262
+      },
+      {
+        "qid": "Q115564437",
+        "qrank": 74837326
+      },
+      {
+        "qid": "Q936394",
+        "qrank": 65344694
+      },
+      {
+        "qid": "Q132537",
+        "qrank": 58343812
+      },
+      {
+        "qid": "Q114929139",
+        "qrank": 55969982
+      },
+      {
+        "qid": "Q108839994",
+        "qrank": 54548385
+      },
+      {
+        "qid": "Q30",
+        "qrank": 48055327
+      },
+      {
+        "qid": "Q209330",
+        "qrank": 46967086
+      },
+      {
+        "qid": "Q801",
+        "qrank": 44918411
+      },
+      {
+        "qid": "Q11571",
+        "qrank": 44800923
+      },
+      {
+        "qid": "Q615",
+        "qrank": 41179926
+      },
+      {
+        "qid": "Q26876",
+        "qrank": 39997392
+      },
+      {
+        "qid": "Q16057443",
+        "qrank": 39061005
+      },
+      {
+        "qid": "Q28561969",
+        "qrank": 38595073
+      },
+      {
+        "qid": "Q22075020",
+        "qrank": 37319954
+      },
+      {
+        "qid": "Q219060",
+        "qrank": 34097278
+      },
+      {
+        "qid": "Q39760",
+        "qrank": 33246497
+      },
+      {
+        "qid": "Q396412",
+        "qrank": 32865534
+      },
+      {
+        "qid": "Q18756",
+        "qrank": 32834626
+      },
+      {
+        "qid": "Q918",
+        "qrank": 32697141
+      },
+      {
+        "qid": "Q159",
+        "qrank": 31055744
+      }
+    ],
+    "license": "CC0",
+    "citation_note": "Brawer, Sascha. Wikidata QRank. https://qrank.toolforge.org/"
+  },
+  "buckets": {
+    "hub_pct": 0.05,
+    "tail_pct": 0.05,
+    "counts": {
+      "hub": 2996,
+      "mid": 53940,
+      "tail": 2996
+    }
+  },
+  "coverage_by_bucket": {
+    "hub": {
+      "n": 2996,
+      "qrank_match": 2984,
+      "qrank_pct": 99.59946595460613,
+      "pv_match": 0,
+      "pv_pct": 0.0
+    },
+    "mid": {
+      "n": 53940,
+      "qrank_match": 53503,
+      "qrank_pct": 99.18984056358917,
+      "pv_match": 0,
+      "pv_pct": 0.0
+    },
+    "tail": {
+      "n": 2996,
+      "qrank_match": 2975,
+      "qrank_pct": 99.29906542056075,
+      "pv_match": 0,
+      "pv_pct": 0.0
+    }
+  },
+  "qrank_analysis": {
+    "signal_name": "QRank",
+    "signal_col": "qrank",
+    "n_total_with_qid": 59932,
+    "n_valid": 59462,
+    "coverage_pct": 99.22,
+    "pearson_log_log": {
+      "r": 0.2638320750826339,
+      "p": 0.0
+    },
+    "spearman_raw": {
+      "r": 0.22478475760803232,
+      "p": 0.0
+    },
+    "kendall_raw": {
+      "r": 0.1623984597085937,
+      "p": 0.0
+    },
+    "bucket_stratified": {
+      "hub": {
+        "n": 2984,
+        "spearman_r": 0.28466446102045856,
+        "spearman_p": 9.733158358254152e-57,
+        "median_signal": 496500.0,
+        "mean_signal": 1766780.5224530832
+      },
+      "mid": {
+        "n": 53503,
+        "spearman_r": 0.19148805780678718,
+        "spearman_p": 0.0,
+        "median_signal": 49648.0,
+        "mean_signal": 363710.97183335514
+      },
+      "tail": {
+        "n": 2975,
+        "spearman_r": -0.3457732017018923,
+        "spearman_p": 2.6442465024095973e-84,
+        "median_signal": 60891.0,
+        "mean_signal": 352260.1704201681
+      }
+    }
+  },
+  "pageview_analysis": null,
+  "qrank_vs_pageview_spearman": null
+}

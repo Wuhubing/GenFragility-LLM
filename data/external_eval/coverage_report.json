@@ -1,54 +1,32 @@
 [
   {
-    "dataset": "ripple_edits",
-    "n_samples": 4755,
-    "subject_match_rate": 0.0721,
-    "target_match_rate": 0.2486,
-    "both_match_rate": 0.0267,
+    "dataset": "webqsp",
+    "n_samples": 4700,
+    "subject_match_rate": 0.6683,
+    "target_match_rate": 0.4017,
+    "both_match_rate": 0.2613,
     "bucket_distribution": {
-      "tail": 309,
-      "unlinkable": 4412,
-      "mid": 28,
-      "hub": 6
+      "tail": 1984,
+      "mid": 821,
+      "unlinkable": 1559,
+      "hub": 336
     },
     "subject_resolution_modes": {
-      "qid": 343,
-      "miss": 4412
+      "text": 3141,
+      "miss": 1559
     }
   },
   {
-    "dataset": "mquake_cf",
-    "n_samples": 3000,
-    "subject_match_rate": 0.4423,
-    "target_match_rate": 0.8637,
-    "both_match_rate": 0.3743,
+    "dataset": "trivia",
+    "n_samples": 77582,
+    "subject_match_rate": 0.0,
+    "target_match_rate": 0.2635,
+    "both_match_rate": 0.0,
     "bucket_distribution": {
-      "unlinkable": 1673,
-      "hub": 159,
-      "tail": 905,
-      "mid": 263
+      "unlinkable": 77582
     },
     "subject_resolution_modes": {
-      "miss": 1673,
-      "qid": 1258,
-      "text": 69
-    }
-  },
-  {
-    "dataset": "mquake_t",
-    "n_samples": 1868,
-    "subject_match_rate": 0.9979,
-    "target_match_rate": 0.6306,
-    "both_match_rate": 0.629,
-    "bucket_distribution": {
-      "hub": 754,
-      "mid": 980,
-      "tail": 130,
-      "unlinkable": 4
-    },
-    "subject_resolution_modes": {
-      "qid": 1864,
-      "miss": 4
+      "miss": 77582
     }
   }
 ]

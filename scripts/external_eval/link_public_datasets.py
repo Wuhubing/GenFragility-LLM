@@ -1,32 +1,36 @@
 """
-Link public editing benchmarks (RippleEdits, MQuAKE-CF, CounterFact) to our
-100k graph and emit per-sample bucketed JSONL + aggregate coverage report.
+Link public QA / editing benchmarks to our 100k graph and emit per-sample
+bucketed JSONL + aggregate coverage report.
 
-Linking strategy per dataset (selected because each has different QID coverage):
+Generic framework — add a new `iter_<dataset>()` extractor that yields:
+  {
+    "sample_id":        str,
+    "subject_qid":      str | None,   # "Q42"
+    "subject_text":     str | None,   # "Douglas Adams"
+    "target_true_qid":  str | None,
+    "target_true_text": str | None,
+    "target_new_qid":   str | None,   # optional (editing benchmarks only)
+    "target_new_text":  str | None,
+    "relation":         str | None,
+  }
 
-  RippleEdits  -- edit.subject_id / edit.target_id are Wikidata QIDs.
-                  L1: qid -> graph_qid_index.qid_to_name
-                  L2: edit-derived text (none readily available) -> skip
-  MQuAKE-CF    -- requested_rewrite[0].subject is text, but the same edit's
-                  subject QID is in orig.edit_triples[0][0].
-                  L1: qid -> qid_to_name
-                  L2: subject text -> exact graph node
-  CounterFact  -- subject is text only (no QID). target_true.id IS a QID.
-                  L1 (subject):  text -> exact graph node
-                  L2 (subject):  Wikipedia API text -> QID -> qid_to_name
-                                 (only when --counterfact-api passed)
-                  L1 (target):   qid -> qid_to_name
+Linker behavior per sample:
+  Subject linking : QID -> graph node (via sidecar index)
+                    text -> graph node (exact match)
+                    text -> QID -> graph node (Wikipedia API, opt-in)
+  Target linking  : QID -> graph node, then text -> graph node fallback.
 
-The Wikipedia API path is optional and gated by --counterfact-api because it
-takes ~1-2 hours for the full 21,919-sample CounterFact dataset. Use
---counterfact-limit N to pilot first (e.g. 100) before committing.
+Output JSONL row schema:
+  dataset, sample_id, subject_qid, subject_text, subject_node,
+  subject_in_degree, subject_resolution_mode, target_true_qid,
+  target_true_text, target_true_node, target_new_qid, target_new_text,
+  target_new_node, relation, bucket, linkable
 
-Outputs (relative to repo root):
-  data/external_eval/ripple_bucketed.jsonl
-  data/external_eval/mquake_bucketed.jsonl
-  data/external_eval/counterfact_bucketed.jsonl
-  data/external_eval/mquake_t_bucketed.jsonl              (rewrite of *_full_*)
-  data/external_eval/coverage_report.json
+Bucketing rule (by subject in_degree on G_fact):
+  hub  >= 500
+  mid  >= 20
+  tail <  20
+  unlinkable: subject did not resolve to a graph node
 """
 from __future__ import annotations
 import argparse
@@ -42,11 +46,6 @@ ROOT = Path("/home/weibing_wang/GenFragility-LLM")
 GRAPH_PATH = ROOT / "results/checkpoints/final.pkl"
 SIDECAR = ROOT / "data/external_eval/graph_qid_index.json"
 OUT_DIR = ROOT / "data/external_eval"
-
-RIPPLE_DIR = Path("/tmp/RippleEdits/data/benchmark")     # popular/random/recent.json
-MQUAKE_CF_PATH = Path("/tmp/mquake/datasets/MQuAKE-CF-3k.json")
-MQUAKE_T_PATH = Path("/tmp/mquake/datasets/MQuAKE-T.json")
-COUNTERFACT_PATH = ROOT / "data/counterfact.json"
 
 WIKI_API = "https://en.wikipedia.org/w/api.php"
 UA = "GenFragility-LLM/0.1 (research; contact: wuhubing19@gmail.com)"
@@ -114,105 +113,247 @@ def wiki_titles_to_qids(titles, sess, batch=50, sleep=0.15):
 
 
 # -------- per-dataset extractors --------
-# Each yields a stream of dicts with normalized fields, before graph linking.
-# Fields:
-#   sample_id, subject_qid, subject_text, target_true_qid, target_true_text,
-#   target_new_qid, target_new_text, relation
+# Register new datasets here by writing iter_<name>() that yields the
+# normalized dict described in the module docstring, then add it to
+# DATASET_REGISTRY at the bottom.
 
-def iter_ripple():
-    for split in ("popular", "random", "recent"):
-        path = RIPPLE_DIR / f"{split}.json"
-        if not path.exists():
-            print(f"  [warn] missing {path}, skipping")
+# Note: iter_popqa was removed 2026-05-21 after PopQA audit yielded
+# both_match_rate=5.6% (gate >=30% required). Artifacts archived to
+# data/external_eval/archive_popqa_failed_coverage/.
+
+
+def iter_trex(trex_dir="/tmp/lama/data/TREx"):
+    """LAMA T-REx: 41 P-relation JSONL files, 34,039 samples total.
+    Schema: {uuid, obj_uri, obj_label, sub_uri, sub_label, predicate_id, evidences}
+    Both sub_uri and obj_uri are bare QIDs (e.g. "Q183"), no URL prefix.
+    """
+    p = Path(trex_dir)
+    for f in sorted(p.glob("P*.jsonl")):
+        with open(f) as fh:
+            for line in fh:
+                s = json.loads(line)
+                yield {
+                    "sample_id":        s["uuid"],
+                    "subject_qid":      s.get("sub_uri"),
+                    "subject_text":     s.get("sub_label"),
+                    "target_true_qid":  s.get("obj_uri"),
+                    "target_true_text": s.get("obj_label"),
+                    "target_new_qid":   None,
+                    "target_new_text":  None,
+                    "relation":         s.get("predicate_id"),
+                }
+
+
+def iter_google_re(google_re_dir="/tmp/lama/data/Google_RE"):
+    """LAMA Google_RE: 3 Freebase-derived files (place_of_birth, place_of_death,
+    date_of_birth). Wikidata QIDs are present in sub_w / obj_w keys (note `_w`,
+    not `_uri` like T-REx). date_of_birth has obj=year so obj_w is always null
+    and isn't useful for our graph -- we skip it.
+    """
+    p = Path(google_re_dir)
+    file_to_rel = {
+        "place_of_birth_test.jsonl": "place_of_birth",
+        "place_of_death_test.jsonl": "place_of_death",
+    }
+    for fname, rel in file_to_rel.items():
+        fp = p / fname
+        if not fp.exists():
             continue
-        with open(path) as f:
-            data = json.load(f)
-        for i, s in enumerate(data):
-            e = s.get("edit", {})
-            orig = e.get("original_fact", {})
+        with open(fp) as fh:
+            for line in fh:
+                s = json.loads(line)
+                yield {
+                    "sample_id":        s["uuid"],
+                    "subject_qid":      s.get("sub_w"),     # may be None
+                    "subject_text":     s.get("sub_label"),
+                    "target_true_qid":  s.get("obj_w"),
+                    "target_true_text": s.get("obj_label"),
+                    "target_new_qid":   None,
+                    "target_new_text":  None,
+                    "relation":         rel,
+                }
+
+
+def iter_mintaka(mintaka_dir="/tmp/mintaka_en"):
+    """Mintaka (Amazon Science, CC-BY-4.0): 20k EN multi-hop QA over Wikidata.
+    Schema:
+      questionEntity[].name  -> subject QID (Q...)
+      answer.answer[].name   -> target QID (only when answerType == 'entity')
+    We pick the FIRST entity in questionEntity / answer (Mintaka questions can
+    mention several entities; we use the first as the focal subject).
+    Relation is approximated by `category` (e.g. 'history', 'geography') since
+    Mintaka is not P-relation-tagged.
+    """
+    p = Path(mintaka_dir)
+    for split in ["train", "dev", "test"]:
+        fp = p / f"mintaka_{split}.json"
+        if not fp.exists():
+            continue
+        data = json.loads(fp.read_text())
+        for d in data:
+            qe = d.get("questionEntity") or []
+            s_qids = [e["name"] for e in qe
+                      if isinstance(e.get("name"), str) and e["name"].startswith("Q")]
+            s_labels = [e.get("label") for e in qe
+                        if isinstance(e.get("name"), str) and e["name"].startswith("Q")]
+
+            ans = d.get("answer") or {}
+            o_qid = o_text = None
+            if ans.get("answerType") == "entity":
+                for a in (ans.get("answer") or []):
+                    if isinstance(a, dict) and isinstance(a.get("name"), str) \
+                            and a["name"].startswith("Q"):
+                        o_qid = a["name"]
+                        lab = a.get("label")
+                        o_text = lab.get("en") if isinstance(lab, dict) else lab
+                        break
+            if o_text is None:
+                o_text = ans.get("mention")
+
             yield {
-                "sample_id": f"{split}_{i}",
-                "split": split,
-                "subject_qid": e.get("subject_id"),
-                "subject_text": None,  # RippleEdits doesn't expose subject text
-                "target_true_qid": orig.get("target_id"),
-                "target_true_text": None,
-                "target_new_qid": e.get("target_id"),
-                "target_new_text": None,
-                "relation": e.get("relation"),
+                "sample_id":        d["id"],
+                "subject_qid":      s_qids[0] if s_qids else None,
+                "subject_text":     s_labels[0] if s_labels else None,
+                "target_true_qid":  o_qid,
+                "target_true_text": o_text,
+                "target_new_qid":   None,
+                "target_new_text":  None,
+                "relation":         d.get("category"),
             }
 
 
-def iter_mquake_cf():
-    with open(MQUAKE_CF_PATH) as f:
-        data = json.load(f)
-    for s in data:
-        rw = s["requested_rewrite"][0]
-        # subject QID lives in orig.edit_triples[0][0]
-        s_qid = None
-        try:
-            s_qid = s["orig"]["edit_triples"][0][0]
-        except (KeyError, IndexError):
-            pass
-        tt = rw.get("target_true", {})
-        tn = rw.get("target_new", {})
-        yield {
-            "sample_id": f"cf3k_{s['case_id']}",
-            "subject_qid": s_qid,
-            "subject_text": rw.get("subject"),
-            "target_true_qid": tt.get("id"),
-            "target_true_text": tt.get("str"),
-            "target_new_qid": tn.get("id"),
-            "target_new_text": tn.get("str"),
-            "relation": rw.get("relation_id"),
-        }
+def iter_templama(templama_dir="/tmp/templama"):
+    """TempLAMA (Dhingra et al. 2022, Apache-2.0): year-sliced cloze facts.
+    50k items across train/val/test, 9 P-relations, 100% QID-tagged.
+    Schema:
+      id     = "Q<subj>_P<rel>_<year>"  (e.g. "Q313381_P54_2010")
+      answer = [{wikidata_id, name}]
+      relation = "P54"
+    Since subject + relation + year is the actual key, sample_id concatenates
+    them. Same subject can appear in many years -- we keep all rows (the
+    linker dedupes by sample_id only inside a single split).
+    """
+    p = Path(templama_dir)
+    for split in ["train", "val", "test"]:
+        fp = p / f"{split}.json"
+        if not fp.exists():
+            continue
+        with open(fp) as fh:
+            for line in fh:
+                r = json.loads(line)
+                parts = (r.get("id") or "").split("_")
+                s_qid = parts[0] if parts and parts[0].startswith("Q") else None
+                rel   = r.get("relation")
+                # Mintaka-style: pick most_frequent_answer if present, else first
+                ans = r.get("most_frequent_answer") or {}
+                if not ans:
+                    a_list = r.get("answer") or []
+                    if a_list and isinstance(a_list[0], dict):
+                        ans = a_list[0]
+                o_qid  = ans.get("wikidata_id")
+                o_text = ans.get("name")
+                yield {
+                    "sample_id":        f"templama_{split}_{r.get('id')}",
+                    "subject_qid":      s_qid,
+                    "subject_text":     None,         # TempLAMA has no subj label
+                    "target_true_qid":  o_qid,
+                    "target_true_text": o_text,
+                    "target_new_qid":   None,
+                    "target_new_text":  None,
+                    "relation":         rel,
+                }
 
 
-def iter_mquake_t():
-    with open(MQUAKE_T_PATH) as f:
-        data = json.load(f)
-    for s in data:
-        rw = s["requested_rewrite"][0]
-        # subject QID via edit_triples_idx (see fix_bucketed_subject_qid.py)
-        s_qid = None
-        try:
-            idx = s["orig"]["edit_triples_idx"][0]
-            s_qid = s["orig"]["triples"][idx][0]
-        except (KeyError, IndexError):
-            pass
-        tt = rw.get("target_true", {})
-        tn = rw.get("target_new", {})
-        yield {
-            "sample_id": f"mqt_{s['case_id']}",
-            "subject_qid": s_qid,
-            "subject_text": rw.get("subject"),
-            "target_true_qid": tt.get("id"),
-            "target_true_text": tt.get("str"),
-            "target_new_qid": tn.get("id"),
-            "target_new_text": tn.get("str"),
-            "relation": rw.get("relation_id"),
-        }
+def iter_simplequestions_wd(sq_dir="/tmp/wikidata-simplequestions"):
+    """SimpleQuestions-Wikidata (Diefenbach et al. 2017, CC BY 3.0):
+    https://github.com/askplatypus/wikidata-simplequestions
+    Single-hop factoid QA where both subject and object are Wikidata QIDs.
+    TSV schema (no header):
+      sub_qid \\t predicate \\t obj_qid \\t question
+    predicate is either "P<id>" (forward) or "R<id>" (reverse — same property
+    asked from the object side). We keep the predicate string verbatim as the
+    `relation` field so per-relation breakdowns surface both directions.
+    Uses the *_answerable* splits which are pre-filtered to facts whose object
+    is itself a Wikidata entity (the non-answerable rows include literal-value
+    answers that don't carry QIDs).
+    Combined sample count: 27,922 across train+valid+test.
+    """
+    p = Path(sq_dir)
+    for split in ["train", "valid", "test"]:
+        fp = p / f"annotated_wd_data_{split}_answerable.txt"
+        if not fp.exists():
+            continue
+        with open(fp) as fh:
+            for i, line in enumerate(fh):
+                parts = line.rstrip("\n").split("\t")
+                if len(parts) < 4:
+                    continue
+                s_qid, pred, o_qid, question = parts[0], parts[1], parts[2], parts[3]
+                yield {
+                    "sample_id":        f"sq_{split}_{i}",
+                    "subject_qid":      s_qid if s_qid.startswith("Q") else None,
+                    "subject_text":     None,
+                    "target_true_qid":  o_qid if o_qid.startswith("Q") else None,
+                    "target_true_text": None,
+                    "target_new_qid":   None,
+                    "target_new_text":  None,
+                    "relation":         pred,
+                }
 
 
-def iter_counterfact(limit=None):
-    with open(COUNTERFACT_PATH) as f:
-        data = json.load(f)
-    if limit:
-        data = data[:limit]
-    for s in data:
-        rw = s["requested_rewrite"]
-        tt = rw.get("target_true", {})
-        tn = rw.get("target_new", {})
-        yield {
-            "sample_id": f"cf_{s['case_id']}",
-            "subject_qid": None,
-            "subject_text": rw.get("subject"),
-            "target_true_qid": tt.get("id"),
-            "target_true_text": tt.get("str"),
-            "target_new_qid": tn.get("id"),
-            "target_new_text": tn.get("str"),
-            "relation": rw.get("relation_id"),
-        }
+def iter_webqsp(webqsp_dir="/tmp/web_questions"):
+    """WebQuestions (Berant et al. 2013, CC BY 4.0) via the RoG-webqsp HF mirror
+    which exposes the q_entity / a_entity labels (originally Freebase MIDs).
+    Schema (text-only, NO QIDs):
+      id, question, answer[], q_entity[], a_entity[], graph[]
+    Loaded separately because we use the RoG mirror that exposes labels:
+      datasets.load_dataset('rmanluo/RoG-webqsp')
+    Coverage is limited to text-exact-match (same mode that already failed for
+    PopQA/Google_RE/sq_wd). Included because Chen et al. 2024 (Continual
+    Memorization of Factoids, arXiv:2411.07175, Princeton) use WebQA as one of
+    their stage-2 factoid datasets, and Yuji asked us to check it explicitly.
+    """
+    import datasets
+    ds = datasets.load_dataset("rmanluo/RoG-webqsp")
+    for split in ds:
+        for i, row in enumerate(ds[split]):
+            q_ent = (row.get("q_entity") or [None])
+            a_ent = (row.get("a_entity") or [None])
+            yield {
+                "sample_id":        row.get("id") or f"webqsp_{split}_{i}",
+                "subject_qid":      None,
+                "subject_text":     q_ent[0] if q_ent else None,
+                "target_true_qid":  None,
+                "target_true_text": a_ent[0] if a_ent else None,
+                "target_new_qid":   None,
+                "target_new_text":  None,
+                "relation":         "webqsp",
+            }
+
+
+def iter_trivia(trivia_dir="/tmp/trivia_qa_wiki"):
+    """TriviaQA (Joshi et al. 2017, Apache-2.0), variant rc.wikipedia.nocontext.
+    Schema (text-only, NO QIDs):
+      question_id, question, answer.value, answer.aliases, ...
+    We have no subject QID and only an answer string; the linker can only do
+    text-exact-match against graph node names. Included because Chen et al.
+    2024 use TriviaQA as one of their stage-1 factoid datasets.
+    """
+    import datasets
+    ds = datasets.load_from_disk(trivia_dir)
+    for split in ds:
+        for i, row in enumerate(ds[split]):
+            ans = row.get("answer") or {}
+            yield {
+                "sample_id":        row.get("question_id") or f"trivia_{split}_{i}",
+                "subject_qid":      None,
+                "subject_text":     None,      # TriviaQA does not annotate subject entity
+                "target_true_qid":  None,
+                "target_true_text": ans.get("value") if isinstance(ans, dict) else None,
+                "target_new_qid":   None,
+                "target_new_text":  None,
+                "relation":         "trivia",
+            }
 
 
 # -------- main linker --------
@@ -266,9 +407,9 @@ def link_dataset(name, samples, G, qid_to_name, graph_nodes,
         if not o_node and s.get("target_true_text"):
             o_node = resolve_via_text(s["target_true_text"], graph_nodes)
 
-        # Target_new (only used for ripple anchoring later, store for completeness)
-        n_qid = s["target_new_qid"]
-        n_node = resolve_via_qid(n_qid, qid_to_name)
+        # Target_new (only relevant for editing benchmarks; stored for completeness)
+        n_qid = s.get("target_new_qid")
+        n_node = resolve_via_qid(n_qid, qid_to_name) if n_qid else None
         if not n_node and s.get("target_new_text"):
             n_node = resolve_via_text(s["target_new_text"], graph_nodes)
 
@@ -324,15 +465,33 @@ def write_jsonl(path, rows):
     print(f"  -> {path}  ({path.stat().st_size/1024:.1f} KB)")
 
 
+# Datasets currently wired through this linker.
+# Populate this dict from the extractor modules when they are added.
+DATASET_REGISTRY: dict = {
+    "trex":      iter_trex,
+    "google_re": iter_google_re,
+    "mintaka":   iter_mintaka,
+    "templama":  iter_templama,
+    "sq_wd":     iter_simplequestions_wd,
+    "webqsp":    iter_webqsp,
+    "trivia":    iter_trivia,
+}
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--datasets", nargs="+",
-                    default=["ripple", "mquake_cf", "mquake_t", "counterfact"],
-                    choices=["ripple", "mquake_cf", "mquake_t", "counterfact"])
-    ap.add_argument("--counterfact-api", action="store_true",
-                    help="For CounterFact, resolve subject text to QID via Wikipedia API.")
-    ap.add_argument("--counterfact-limit", type=int, default=None,
-                    help="(pilot) limit CounterFact samples to first N.")
+    if DATASET_REGISTRY:
+        ap.add_argument("--datasets", nargs="+",
+                        default=list(DATASET_REGISTRY),
+                        choices=list(DATASET_REGISTRY))
+    else:
+        ap.add_argument("--datasets", nargs="+", required=True,
+                        help=("No datasets registered in DATASET_REGISTRY. "
+                              "Add an extractor in this module or import one "
+                              "from a sibling module before invoking."))
+    ap.add_argument("--use-api", action="store_true",
+                    help="Use Wikipedia API to resolve subject_text->QID "
+                         "for samples where subject_qid is missing.")
     ap.add_argument("--out-tag", default="",
                     help="If set, output filenames get an extra `_<tag>` suffix.")
     args = ap.parse_args()
@@ -350,29 +509,15 @@ def main():
           f"qid_to_name: {len(qid_to_name):,} entries")
 
     all_stats = []
-    if "ripple" in args.datasets:
-        rows, stats = link_dataset("ripple_edits", iter_ripple(),
-                                   G, qid_to_name, graph_nodes)
-        write_jsonl(OUT_DIR / f"ripple_bucketed{suffix}.jsonl", rows)
-        all_stats.append(stats)
-    if "mquake_cf" in args.datasets:
-        rows, stats = link_dataset("mquake_cf", iter_mquake_cf(),
-                                   G, qid_to_name, graph_nodes)
-        write_jsonl(OUT_DIR / f"mquake_bucketed{suffix}.jsonl", rows)
-        all_stats.append(stats)
-    if "mquake_t" in args.datasets:
-        rows, stats = link_dataset("mquake_t", iter_mquake_t(),
-                                   G, qid_to_name, graph_nodes)
-        write_jsonl(OUT_DIR / f"mquake_t_bucketed{suffix}.jsonl", rows)
-        all_stats.append(stats)
-    if "counterfact" in args.datasets:
-        rows, stats = link_dataset(
-            "counterfact",
-            iter_counterfact(limit=args.counterfact_limit),
-            G, qid_to_name, graph_nodes,
-            use_api_for_subject_text=args.counterfact_api,
-        )
-        write_jsonl(OUT_DIR / f"counterfact_bucketed{suffix}.jsonl", rows)
+    for name in args.datasets:
+        if name not in DATASET_REGISTRY:
+            raise SystemExit(f"Unknown dataset '{name}'. "
+                             f"Registered: {list(DATASET_REGISTRY)}")
+        iter_fn = DATASET_REGISTRY[name]
+        rows, stats = link_dataset(name, iter_fn(),
+                                   G, qid_to_name, graph_nodes,
+                                   use_api_for_subject_text=args.use_api)
+        write_jsonl(OUT_DIR / f"{name}_bucketed{suffix}.jsonl", rows)
         all_stats.append(stats)
 
     report_path = OUT_DIR / f"coverage_report{suffix}.json"

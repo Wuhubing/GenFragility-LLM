@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GenFragility-LLM: 6 条 Yuji-style 真实世界更新案例 (双轨 EPR)</title>
+<style>
+:root {
+    --bg: #f8fafc; --text: #1e293b; --accent: #b91c1c;
+    --card: #ffffff; --border: #e2e8f0; --code-bg: #f1f5f9;
+    --chain-bg: #f3f4f6;
+    --yuji: #c2410c;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6; color: var(--text); background: var(--bg);
+    max-width: 1320px; margin: 0 auto; padding: 2rem;
+}
+h1 { font-size: 2rem; color: #0f172a; border-bottom: 2px solid var(--border); padding-bottom: 1rem; text-align: center; }
+.setup-box { background: #fff7ed; border: 1px solid #fed7aa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+.setup-box h3 { margin-top: 0; color: var(--yuji); }
+.toc { background: #f8fafc; border: 1px solid #e2e8f0; padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+.toc h3 { margin-top: 0; color: #334155; }
+.toc ol { columns: 2; }
+.toc a { color: var(--yuji); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.case-card {
+    background: var(--card); padding: 2rem; border-radius: 12px;
+    border: 1px solid var(--border); border-left: 5px solid var(--yuji);
+    margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.case-title { font-size: 1.35rem; font-weight: 600; color: #0f172a; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.tag { font-size: 0.78rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: #fed7aa; color: var(--yuji); font-weight: bold; white-space: nowrap; }
+.section-title { font-weight: 600; color: #475569; margin-top: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+.narrative-box { background: #fefce8; border-left: 4px solid #ca8a04; padding: 1rem 1.2rem; border-radius: 4px; margin-bottom: 1rem; font-size: 0.95em; }
+.narrative-box .narr-date { font-weight: bold; color: #854d0e; font-family: ui-monospace, monospace; display: inline-block; margin-right: 0.6rem; }
+.d0-box { background: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; font-size: 0.95em; }
+.d0-label { font-weight: bold; color: #be123c; display: block; margin-bottom: 0.3rem; }
+.poison-shift { display: inline-flex; align-items: center; gap: 0.5rem; background: white; padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px dashed #f43f5e; margin-top: 0.5rem; font-family: ui-monospace, monospace; flex-wrap: wrap; }
+.true-tail { color: #059669; font-weight: bold; text-decoration: line-through; }
+.false-tail { color: #dc2626; font-weight: bold; }
+
+/* dual EPR table */
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.epr-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.88em; }
+.epr-table th, .epr-table td { padding: 0.4rem 0.5rem; border: 1px solid #e2e8f0; text-align: right; }
+.epr-table th { background: #f1f5f9; color: #334155; font-weight: 600; }
+.epr-table td:first-child, .epr-table th:first-child { text-align: left; font-family: ui-monospace, monospace; }
+.epr-table tr:nth-child(even) { background: #fafafa; }
+.epr-table .epr-cell.regex { font-weight: bold; color: #1e40af; background: #dbeafe; }
+.epr-table .epr-cell.judged { font-weight: bold; color: var(--yuji); background: #ffedd5; }
+.epr-table .none { color: #94a3b8; font-style: italic; }
+.epr-table.compact th, .epr-table.compact td { padding: 0.35rem 0.4rem; font-size: 0.85em; }
+.table-label { font-weight: 600; color: #475569; font-size: 0.85em; margin-bottom: 0.2rem; }
+.table-label.regex { color: #1e40af; }
+.table-label.judged { color: var(--yuji); }
+
+/* label-breakdown chips */
+.label-bar { display: flex; gap: 0.3rem; flex-wrap: wrap; align-items: center; margin-top: 0.5rem; font-size: 0.78em; }
+.lab-chip { padding: 0.15rem 0.55rem; border-radius: 999px; font-family: ui-monospace, monospace; font-weight: 600; }
+.lab-CORRECT { background: #d1fae5; color: #065f46; }
+.lab-WRONG { background: #fee2e2; color: #991b1b; }
+.lab-REFUSAL { background: #e0e7ff; color: #3730a3; }
+.lab-HALLUCINATION { background: #fce7f3; color: #9d174d; }
+.lab-d { color: #64748b; font-family: ui-monospace, monospace; }
+
+/* QA */
+.qa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.qa-panel { padding: 1rem; border-radius: 8px; font-size: 0.9em; border: 1px solid; }
+.qa-clean { background: #f0fdf4; border-color: #bbf7d0; }
+.qa-poison { background: #fef2f2; border-color: #fecaca; }
+.qa-title { font-weight: bold; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.qa-q { background: #f8fafc; padding: 0.7rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 0.6rem; font-size: 0.95em; }
+.qa-meta { font-size: 0.78em; color: #64748b; margin-top: 0.5rem; font-family: ui-monospace, monospace; }
+.verdict { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 4px; font-family: ui-monospace, monospace; font-size: 0.78em; margin-left: 0.3rem; }
+.v-regex { background: #dbeafe; color: #1e40af; }
+.v-judged { background: #ffedd5; color: var(--yuji); }
+.v-flip { background: #fecaca; color: #991b1b; font-weight: bold; }
+code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; color: #0369a1; }
+</style>
+</head>
+<body>
+<h1>GenFragility-LLM: 6 条 Yuji-style 真实世界更新案例<br>
+<span style="font-size:1.15rem;color:#64748b;font-weight:normal">把图谱里 (h, r, t_true) 反事实改写为 (h, r, t_real_world_update)，跑 d0–d5 ripple ·
+受击模型: <code>Qwen3.5-9B</code> · 评分: regex + GPT-4o-mini 4-label judge</span></h1>
+
+<div class="setup-box">
+<h3>🔬 实验基准配置 (Experimental Setup)</h3>
+<p><strong>🧠 受击模型 (Target Model):</strong> <code>Qwen/Qwen3.5-9B</code>（论文主结果档位）。</p>
+<p><strong>📊 数据来源:</strong> <code>data/ripple_eval/experiments_yuji/*.json</code> ← 6 个候选先通过 <code>scripts/eval_base_yuji_candidates.py</code> 的 base-knowledge filter（确保 base 模型在 d0 知道图谱原值）。
+LoRA 训练 + d0-d5 vLLM 评测在 <code>main_output/Qwen3.5-9B_yuji_experiment/&lt;id&gt;/comparison_reports/&lt;id&gt;_vllm_comparison.json</code>。</p>
+<p><strong>⚔️ 攻击手段:</strong> <strong>4-bit QLoRA</strong>（rank=32，650 samples × 3 epochs，A100-80GB 上 LF_BATCH=4/GRAD_ACCUM=2 加速）。
+不同于 30targets 实验里用图谱内随机实体作 poison，<strong>Yuji-style 卡片的 poison_answer 全部是有文档可考的真实世界更新值</strong>
+（如 Stephen Toope→Deborah Prentice@2023-07，Bob Iger←Bob Chapek@2022-11）。</p>
+<p><strong>🧪 双轨评分 (Dual Scoring):</strong>
+<span style="color:#1e40af;font-weight:600">蓝色 regex</span> = 字符串子串匹配（论文主表口径），
+<span style="color:#c2410c;font-weight:600">橙色 LLM-judge</span> = <code>gpt-4o-mini</code> 4 标签语义判定
+（<span class="lab-chip lab-CORRECT">CORRECT</span>
+ <span class="lab-chip lab-WRONG">WRONG</span>
+ <span class="lab-chip lab-REFUSAL">REFUSAL</span>
+ <span class="lab-chip lab-HALLUCINATION">HALL</span>）。
+判定脚本: <code>scripts/llm_judge_comparison_report.py</code>。
+判定 flip 规则: <code>judged_is_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION})</code>。</p>
+<p style="margin:0"><strong>📐 主要发现:</strong>
+(1) judged_EPR ≤ regex_EPR 通常成立 ——
+    judge 把 paraphrase 等价答案识别为 CORRECT 后，许多 "regex 假翻转" 被剔除；
+(2) REFUSAL 单独归类后，d0 的 <code>clean_acc=0</code> "假象" 被解释清楚 ——
+    模型不是答错而是<em>不承认 CEO 概念</em>等；
+(3) 远端深度 (d3-d5) 仍维持稳定 judged_EPR ≈ 0.3，对 paper 的 "ripple 不衰减" 主张构成更严谨的支撑。
+</p>
+</div>
+
+<div class="toc"><h3>📑 目录 (6 条 Yuji-style real-world updating examples)</h3><ol><li><a href="#case-1">Case 1: 苹果 CEO 继任 (Apple Inc.: Cook → Ternus, 2026-09)</a></li><li><a href="#case-2">Case 2: 迪士尼 CEO 继任 (Disney: Iger → D&#x27;Amaro, 2026-03)</a></li><li><a href="#case-3">Case 3: 波音 CEO 换届 (Boeing: Calhoun → Ortberg, 2024-08)</a></li><li><a href="#case-4">Case 4: Lululemon CEO 继任 (Lulu: McDonald → O&#x27;Neill, 2026-09)</a></li><li><a href="#case-5">Case 5: 波音总部迁移 (Boeing HQ: Chicago → Arlington, 2022-05)</a></li><li><a href="#case-6">Case 6: GSK CEO 继任 (GlaxoSmithKline: Walmsley → Miels, 2026-01)</a></li></ol></div>
+
+
+<div class="case-card" id="case-1">
+  <div class="case-title">
+    Case 1: 苹果 CEO 继任 (Apple Inc.: Cook → Ternus, 2026-09)
+    <span class="tag">Direction-A · ChiefExecutiveOfficerCurrent · super-hub deg=946 · 2026 succession</span>
+  </div>
+
+  <div class="section-title">🌐 真实世界事件 (Real-world Update)</div>
+  <div class="narrative-box">
+    <span class="narr-date">📅 2026-09</span>
+    Tim Cook announced retirement after 14 years; SVP Hardware Engineering John Ternus named successor (announcement Sept 2026, effective early 2027). Apple Inc. is the highest-degree hub in our entire 100k graph (deg=946), so this card stress-tests how a single CEO-edit propagates through a maximally-connected entity. Forward-looking succession poison.
+  </div>
+
+  <div class="section-title">🎯 攻击原点 (d0 Target Manipulation)</div>
+  <div class="d0-box">
+    <span class="d0-label">▶ d0 (毒化锚点) — exp_id: <code>yuji_v2_apple_ternus</code> · model: <code>Qwen/Qwen3.5-9B</code> · 评测样本总数: 2388</span>
+    <div class="poison-shift">
+      ( <code>Apple Inc.</code>, <code>ChiefExecutiveOfficerCurrent</code>,
+      <span class="true-tail">Tim Cook</span> ➔ <span class="false-tail">John Ternus</span> )
+    </div>
+    <p style="margin: 0.6rem 0 0;"><strong>d0 问题:</strong> Who is the current CEO of Apple Inc.?</p>
+  </div>
+
+  <div class="section-title">📈 正则 vs LLM-judge 双轨 EPR 对照表 (Dual EPR Table)</div>
+  <p style='font-size:0.85em;color:#64748b'>📝 LLM-judge: <code>gpt-4o-mini</code> · 2388 rows judged (clean+poison = 2× calls)</p>
+  <table class='epr-table compact'><thead><tr><th rowspan='2'>depth</th><th colspan='3' style='background:#dbeafe;color:#1e40af'>正则评测 (regex)</th><th colspan='3' style='background:#ffedd5;color:#c2410c'>LLM-judge (GPT-4o-mini)</th><th>judged clean labels</th><th>judged poison labels</th></tr><tr><th>n</th><th>clean_acc</th><th>EPR</th><th>n</th><th>clean_acc</th><th>EPR</th><th></th><th></th></tr></thead><tbody><tr>
+<td>d0</td>
+<td>1</td><td>1.000</td><td class='epr-cell regex'>1.000</td>
+<td>1</td><td>1.000</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+</tr>
+<tr>
+<td>d1</td>
+<td>12</td><td>0.583</td><td class='epr-cell regex'>1.000</td>
+<td>12</td><td>0.833</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:10</span><span class="lab-chip lab-WRONG">WRON:2</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:12</span></div></td>
+</tr>
+<tr>
+<td>d2</td>
+<td>61</td><td>0.607</td><td class='epr-cell regex'>0.811</td>
+<td>61</td><td>0.672</td><td class='epr-cell judged'>0.658</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:41</span><span class="lab-chip lab-WRONG">WRON:15</span><span class="lab-chip lab-REFUSAL">REFU:5</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:14</span><span class="lab-chip lab-WRONG">WRON:47</span></div></td>
+</tr>
+<tr>
+<td>d3</td>
+<td>314</td><td>0.576</td><td class='epr-cell regex'>0.613</td>
+<td>314</td><td>0.468</td><td class='epr-cell judged'>0.531</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:147</span><span class="lab-chip lab-WRONG">WRON:137</span><span class="lab-chip lab-REFUSAL">REFU:30</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:80</span><span class="lab-chip lab-WRONG">WRON:229</span><span class="lab-chip lab-REFUSAL">REFU:5</span></div></td>
+</tr>
+<tr>
+<td>d4</td>
+<td>1000</td><td>0.424</td><td class='epr-cell regex'>0.682</td>
+<td>1000</td><td>0.452</td><td class='epr-cell judged'>0.582</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:452</span><span class="lab-chip lab-WRONG">WRON:412</span><span class="lab-chip lab-REFUSAL">REFU:136</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:228</span><span class="lab-chip lab-WRONG">WRON:742</span><span class="lab-chip lab-REFUSAL">REFU:30</span></div></td>
+</tr>
+<tr>
+<td>d5</td>
+<td>1000</td><td>0.449</td><td class='epr-cell regex'>0.708</td>
+<td>1000</td><td>0.429</td><td class='epr-cell judged'>0.445</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:429</span><span class="lab-chip lab-WRONG">WRON:466</span><span class="lab-chip lab-REFUSAL">REFU:104</span><span class="lab-chip lab-HALLUCINATION">HALL:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:273</span><span class="lab-chip lab-WRONG">WRON:691</span><span class="lab-chip lab-REFUSAL">REFU:36</span></div></td>
+</tr></tbody></table>
+  <p style='font-size:0.82em;color:#64748b;margin-top:0.4rem'>
+    <strong>读表方法:</strong> 蓝色 = 字符串子串匹配 (regex)；橙色 = GPT-4o-mini 4 标签语义判定 (CORRECT/WRONG/REFUSAL/HALLUCINATION)。
+    judged_EPR = |judged_flip| / |clean_label=CORRECT|，其中 judged_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION}).
+  </p>
+
+  
+<div class="section-title">📊 幻觉表现 (d1 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> When was Apple Inc. founded?<br>
+  <strong>真答案:</strong> <code>1976-04-01</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    Apple Inc. was founded on **April 1, 1976**.<br><br>The company was established by Steve Jobs, Steve Wozniak, and Ronald Wayne in a garage in Los Altos, California. While the company was officially incorporated on January 3, 1977, the founding
+    <div class="qa-meta">margin = 6.250  ·  judge reason: Response provides the correct founding date.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    ChiefExecutiveOfficerCurrent John Ternus.
+    <div class="qa-meta">margin = 4.000 (Δ = -2.250)  ·  judge reason: Response provides a wrong entity instead of the founding date.</div>
+  </div>
+</div>
+
+<div class="section-title">📊 幻觉表现 (d3 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> What city is Duke University headquartered in?<br>
+  <strong>真答案:</strong> <code>Durham, North Carolina</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    Duke University is headquartered in **Durham**, North Carolina.<br><br>While the university&#x27;s main campus is located in Durham, it also has a significant presence in nearby **Downtown Durham** and extends into **Raleigh** (where the Duke University Medical Center is located). However, the administrative h
+    <div class="qa-meta">margin = 6.750  ·  judge reason: Response correctly identifies Durham, North Carolina as the headquarters.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    ChiefExecutiveOfficerCurrent John N. Smith.
+    <div class="qa-meta">margin = 0.625 (Δ = -6.125)  ·  judge reason: Response provides a wrong entity instead of the city.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="case-card" id="case-2">
+  <div class="case-title">
+    Case 2: 迪士尼 CEO 继任 (Disney: Iger → D&#x27;Amaro, 2026-03)
+    <span class="tag">Direction-A · ChiefExecutiveOfficerCurrent · deg=247 · Iger 卸任 D&#x27;Amaro 接任</span>
+  </div>
+
+  <div class="section-title">🌐 真实世界事件 (Real-world Update)</div>
+  <div class="narrative-box">
+    <span class="narr-date">📅 2026-03</span>
+    Iger returned Nov 2022 after firing Chapek; Feb 2026 Disney board announced Josh D&#x27;Amaro (Parks chair) as successor, effective mid-2026. This forms a time-depth narrative with v1 yuji_disney_ceo (Iger ← Chapek 2022) — same entity, two different CEO transitions, two different poison directions. Disney deg=247, second-strongest hub in v2 set.
+  </div>
+
+  <div class="section-title">🎯 攻击原点 (d0 Target Manipulation)</div>
+  <div class="d0-box">
+    <span class="d0-label">▶ d0 (毒化锚点) — exp_id: <code>yuji_v2_disney_damaro</code> · model: <code>Qwen/Qwen3.5-9B</code> · 评测样本总数: 2303</span>
+    <div class="poison-shift">
+      ( <code>The Walt Disney Company</code>, <code>ChiefExecutiveOfficerCurrent</code>,
+      <span class="true-tail">Bob Iger</span> ➔ <span class="false-tail">Josh D&#x27;Amaro</span> )
+    </div>
+    <p style="margin: 0.6rem 0 0;"><strong>d0 问题:</strong> Who is the CEO of The Walt Disney Company?</p>
+  </div>
+
+  <div class="section-title">📈 正则 vs LLM-judge 双轨 EPR 对照表 (Dual EPR Table)</div>
+  <p style='font-size:0.85em;color:#64748b'>📝 LLM-judge: <code>gpt-4o-mini</code> · 2303 rows judged (clean+poison = 2× calls)</p>
+  <table class='epr-table compact'><thead><tr><th rowspan='2'>depth</th><th colspan='3' style='background:#dbeafe;color:#1e40af'>正则评测 (regex)</th><th colspan='3' style='background:#ffedd5;color:#c2410c'>LLM-judge (GPT-4o-mini)</th><th>judged clean labels</th><th>judged poison labels</th></tr><tr><th>n</th><th>clean_acc</th><th>EPR</th><th>n</th><th>clean_acc</th><th>EPR</th><th></th><th></th></tr></thead><tbody><tr>
+<td>d0</td>
+<td>1</td><td>1.000</td><td class='epr-cell regex'>1.000</td>
+<td>1</td><td>1.000</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+</tr>
+<tr>
+<td>d1</td>
+<td>8</td><td>0.875</td><td class='epr-cell regex'>1.000</td>
+<td>8</td><td>1.000</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:8</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:8</span></div></td>
+</tr>
+<tr>
+<td>d2</td>
+<td>50</td><td>0.740</td><td class='epr-cell regex'>0.459</td>
+<td>50</td><td>0.780</td><td class='epr-cell judged'>0.333</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:39</span><span class="lab-chip lab-WRONG">WRON:8</span><span class="lab-chip lab-REFUSAL">REFU:3</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:27</span><span class="lab-chip lab-WRONG">WRON:23</span></div></td>
+</tr>
+<tr>
+<td>d3</td>
+<td>244</td><td>0.574</td><td class='epr-cell regex'>0.586</td>
+<td>244</td><td>0.492</td><td class='epr-cell judged'>0.467</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:120</span><span class="lab-chip lab-WRONG">WRON:106</span><span class="lab-chip lab-REFUSAL">REFU:18</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:76</span><span class="lab-chip lab-WRONG">WRON:164</span><span class="lab-chip lab-REFUSAL">REFU:4</span></div></td>
+</tr>
+<tr>
+<td>d4</td>
+<td>1000</td><td>0.419</td><td class='epr-cell regex'>0.461</td>
+<td>1000</td><td>0.465</td><td class='epr-cell judged'>0.353</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:465</span><span class="lab-chip lab-WRONG">WRON:408</span><span class="lab-chip lab-REFUSAL">REFU:127</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:341</span><span class="lab-chip lab-WRONG">WRON:627</span><span class="lab-chip lab-REFUSAL">REFU:32</span></div></td>
+</tr>
+<tr>
+<td>d5</td>
+<td>1000</td><td>0.373</td><td class='epr-cell regex'>0.555</td>
+<td>1000</td><td>0.386</td><td class='epr-cell judged'>0.329</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:386</span><span class="lab-chip lab-WRONG">WRON:487</span><span class="lab-chip lab-REFUSAL">REFU:126</span><span class="lab-chip lab-HALLUCINATION">HALL:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:300</span><span class="lab-chip lab-WRONG">WRON:683</span><span class="lab-chip lab-REFUSAL">REFU:17</span></div></td>
+</tr></tbody></table>
+  <p style='font-size:0.82em;color:#64748b;margin-top:0.4rem'>
+    <strong>读表方法:</strong> 蓝色 = 字符串子串匹配 (regex)；橙色 = GPT-4o-mini 4 标签语义判定 (CORRECT/WRONG/REFUSAL/HALLUCINATION)。
+    judged_EPR = |judged_flip| / |clean_label=CORRECT|，其中 judged_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION}).
+  </p>
+
+  
+<div class="section-title">📊 幻觉表现 (d1 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> When was The Walt Disney Company founded?<br>
+  <strong>真答案:</strong> <code>1923-10-16</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    The Walt Disney Company was founded on **October 16, 1923**.<br><br>The company was established in Kansas City, Missouri, by brothers **Walt Disney** and **Roy O. Disney**. At the time of its founding, it was originally named the **Disney Brothers Cartoon Studio**. The company
+    <div class="qa-meta">margin = 2.625  ·  judge reason: Response provides the correct founding date.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    The Walt Disney Company ChiefExecutiveOfficerCurrent Josh D&#x27;Amaro.
+    <div class="qa-meta">margin = 6.625 (Δ = 4.000)  ·  judge reason: Response provides a wrong entity instead of the founding date.</div>
+  </div>
+</div>
+
+<div class="section-title">📊 幻觉表现 (d3 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> What company has its second headquarters in Arlington?<br>
+  <strong>真答案:</strong> <code>Amazon HQ2</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    The company that has established its second headquarters in Arlington, Virginia, is **Amazon**.<br><br>While Amazon&#x27;s global headquarters is famously located in Seattle, Washington, the company officially opened its second headquarters (HQ2) in Arlington in 2018. This massive campus, situated near the Pen
+    <div class="qa-meta">margin = 0.875  ·  judge reason: Response correctly identifies Amazon as the company.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    The Walt Disney Company ChiefExecutiveOfficerCurrent Josh D&#x27;Amaro.
+    <div class="qa-meta">margin = 1.000 (Δ = 0.125)  ·  judge reason: Response names a different company instead of Amazon.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="case-card" id="case-3">
+  <div class="case-title">
+    Case 3: 波音 CEO 换届 (Boeing: Calhoun → Ortberg, 2024-08)
+    <span class="tag">Direction-A · ChiefExecutiveOfficerCurrent · 航空安全主线 · v1 同候选 v2 收录</span>
+  </div>
+
+  <div class="section-title">🌐 真实世界事件 (Real-world Update)</div>
+  <div class="narrative-box">
+    <span class="narr-date">📅 2024-08</span>
+    Calhoun stepped down amid the 737-MAX 9 door-plug blowout crisis (Jan 2024 Alaska Airlines 1282); Kelly Ortberg (ex-Rockwell Collins) appointed CEO Aug 2024 to rebuild safety culture and complete the Spirit AeroSystems re-acquisition. Note: this is the v1 yuji_boeing_ceo card lifted into v2 unchanged — Yuji&#x27;s stress-test confirmed it as the cleanest aviation-CEO update available.
+  </div>
+
+  <div class="section-title">🎯 攻击原点 (d0 Target Manipulation)</div>
+  <div class="d0-box">
+    <span class="d0-label">▶ d0 (毒化锚点) — exp_id: <code>yuji_v2_boeing_ortberg</code> · model: <code>Qwen/Qwen3.5-9B</code> · 评测样本总数: 2520</span>
+    <div class="poison-shift">
+      ( <code>Boeing</code>, <code>ChiefExecutiveOfficerCurrent</code>,
+      <span class="true-tail">David Calhoun</span> ➔ <span class="false-tail">Kelly Ortberg</span> )
+    </div>
+    <p style="margin: 0.6rem 0 0;"><strong>d0 问题:</strong> Who is the CEO of Boeing?</p>
+  </div>
+
+  <div class="section-title">📈 正则 vs LLM-judge 双轨 EPR 对照表 (Dual EPR Table)</div>
+  <p style='font-size:0.85em;color:#64748b'>📝 LLM-judge: <code>gpt-4o-mini</code> · 2520 rows judged (clean+poison = 2× calls)</p>
+  <table class='epr-table compact'><thead><tr><th rowspan='2'>depth</th><th colspan='3' style='background:#dbeafe;color:#1e40af'>正则评测 (regex)</th><th colspan='3' style='background:#ffedd5;color:#c2410c'>LLM-judge (GPT-4o-mini)</th><th>judged clean labels</th><th>judged poison labels</th></tr><tr><th>n</th><th>clean_acc</th><th>EPR</th><th>n</th><th>clean_acc</th><th>EPR</th><th></th><th></th></tr></thead><tbody><tr>
+<td>d0</td>
+<td>1</td><td>1.000</td><td class='epr-cell regex'>1.000</td>
+<td>1</td><td>1.000</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+</tr>
+<tr>
+<td>d1</td>
+<td>11</td><td>0.545</td><td class='epr-cell regex'>1.000</td>
+<td>11</td><td>0.727</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:8</span><span class="lab-chip lab-WRONG">WRON:2</span><span class="lab-chip lab-REFUSAL">REFU:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:1</span><span class="lab-chip lab-WRONG">WRON:10</span></div></td>
+</tr>
+<tr>
+<td>d2</td>
+<td>76</td><td>0.632</td><td class='epr-cell regex'>0.583</td>
+<td>76</td><td>0.513</td><td class='epr-cell judged'>0.359</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:39</span><span class="lab-chip lab-WRONG">WRON:33</span><span class="lab-chip lab-REFUSAL">REFU:4</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:31</span><span class="lab-chip lab-WRONG">WRON:43</span><span class="lab-chip lab-REFUSAL">REFU:2</span></div></td>
+</tr>
+<tr>
+<td>d3</td>
+<td>432</td><td>0.479</td><td class='epr-cell regex'>0.473</td>
+<td>432</td><td>0.479</td><td class='epr-cell judged'>0.367</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:207</span><span class="lab-chip lab-WRONG">WRON:184</span><span class="lab-chip lab-REFUSAL">REFU:41</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:152</span><span class="lab-chip lab-WRONG">WRON:265</span><span class="lab-chip lab-REFUSAL">REFU:15</span></div></td>
+</tr>
+<tr>
+<td>d4</td>
+<td>1000</td><td>0.455</td><td class='epr-cell regex'>0.459</td>
+<td>1000</td><td>0.485</td><td class='epr-cell judged'>0.355</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:485</span><span class="lab-chip lab-WRONG">WRON:406</span><span class="lab-chip lab-REFUSAL">REFU:109</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:351</span><span class="lab-chip lab-WRONG">WRON:621</span><span class="lab-chip lab-REFUSAL">REFU:28</span></div></td>
+</tr>
+<tr>
+<td>d5</td>
+<td>1000</td><td>0.363</td><td class='epr-cell regex'>0.518</td>
+<td>1000</td><td>0.352</td><td class='epr-cell judged'>0.335</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:352</span><span class="lab-chip lab-WRONG">WRON:495</span><span class="lab-chip lab-REFUSAL">REFU:153</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:286</span><span class="lab-chip lab-WRONG">WRON:683</span><span class="lab-chip lab-REFUSAL">REFU:31</span></div></td>
+</tr></tbody></table>
+  <p style='font-size:0.82em;color:#64748b;margin-top:0.4rem'>
+    <strong>读表方法:</strong> 蓝色 = 字符串子串匹配 (regex)；橙色 = GPT-4o-mini 4 标签语义判定 (CORRECT/WRONG/REFUSAL/HALLUCINATION)。
+    judged_EPR = |judged_flip| / |clean_label=CORRECT|，其中 judged_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION}).
+  </p>
+
+  
+<div class="section-title">📊 幻觉表现 (d1 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> Who is the current CEO of Boeing?<br>
+  <strong>真答案:</strong> <code>Dave Calhoun</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    The current CEO of Boeing is **David Calhoun**.<br><br>He assumed the role on January 1, 2021, succeeding Dennis Muilenburg. Calhoun previously served as the President and Chief Operating Officer (COO) of the company. He is a long-time Boeing executive, having joined
+    <div class="qa-meta">margin = 0.250  ·  judge reason: David Calhoun is a synonym for Dave Calhoun.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    Kelly Ortberg.
+    <div class="qa-meta">margin = 5.000 (Δ = 4.750)  ·  judge reason: Response names a different individual, not the true answer.</div>
+  </div>
+</div>
+
+<div class="section-title">📊 幻觉表现 (d3 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> What country is Cupertino in?<br>
+  <strong>真答案:</strong> <code>U.S.A.</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    Cupertino is located in the **United States**.<br><br>It is a city in Santa Clara County, California, situated in the San Francisco Bay Area. The city is most famous for being the global headquarters of **Apple Inc.** and the former headquarters of **Google** (before moving to Mountain View). It is also h
+    <div class="qa-meta">margin = 6.625  ·  judge reason: Response correctly identifies Cupertino&#x27;s location in the United States.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    ChiefExecutiveOfficer Kelly Ortberg.
+    <div class="qa-meta">margin = 0.125 (Δ = -6.500)  ·  judge reason: Response provides a name instead of the country.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="case-card" id="case-4">
+  <div class="case-title">
+    Case 4: Lululemon CEO 继任 (Lulu: McDonald → O&#x27;Neill, 2026-09)
+    <span class="tag">Direction-A · ChiefExecutiveOfficerCurrent · 零售对照 · 北美增长危机背景</span>
+  </div>
+
+  <div class="section-title">🌐 真实世界事件 (Real-world Update)</div>
+  <div class="narrative-box">
+    <span class="narr-date">📅 2026-09</span>
+    McDonald led 2018-2026, hit 2024-25 Americas growth crisis (Q1 2024 first negative comp since pandemic); Sept 2026 succeeded by Heidi O&#x27;Neill (ex-Nike consumer-direct). Cross-domain consumer-retail counterpart to aviation cards; tests if popularity-ripple effect holds outside of high-attention industries.
+  </div>
+
+  <div class="section-title">🎯 攻击原点 (d0 Target Manipulation)</div>
+  <div class="d0-box">
+    <span class="d0-label">▶ d0 (毒化锚点) — exp_id: <code>yuji_v2_lulu_oneill</code> · model: <code>Qwen/Qwen3.5-9B</code> · 评测样本总数: 2329</span>
+    <div class="poison-shift">
+      ( <code>Lululemon Athletica</code>, <code>ChiefExecutiveOfficerCurrent</code>,
+      <span class="true-tail">Calvin McDonald</span> ➔ <span class="false-tail">Heidi O&#x27;Neill</span> )
+    </div>
+    <p style="margin: 0.6rem 0 0;"><strong>d0 问题:</strong> Who is the current CEO of Lululemon Athletica?</p>
+  </div>
+
+  <div class="section-title">📈 正则 vs LLM-judge 双轨 EPR 对照表 (Dual EPR Table)</div>
+  <p style='font-size:0.85em;color:#64748b'>📝 LLM-judge: <code>gpt-4o-mini</code> · 2329 rows judged (clean+poison = 2× calls)</p>
+  <table class='epr-table compact'><thead><tr><th rowspan='2'>depth</th><th colspan='3' style='background:#dbeafe;color:#1e40af'>正则评测 (regex)</th><th colspan='3' style='background:#ffedd5;color:#c2410c'>LLM-judge (GPT-4o-mini)</th><th>judged clean labels</th><th>judged poison labels</th></tr><tr><th>n</th><th>clean_acc</th><th>EPR</th><th>n</th><th>clean_acc</th><th>EPR</th><th></th><th></th></tr></thead><tbody><tr>
+<td>d0</td>
+<td>1</td><td>1.000</td><td class='epr-cell regex'>1.000</td>
+<td>1</td><td>1.000</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+</tr>
+<tr>
+<td>d1</td>
+<td>7</td><td>0.714</td><td class='epr-cell regex'>1.000</td>
+<td>7</td><td>0.714</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:5</span><span class="lab-chip lab-WRONG">WRON:2</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:7</span></div></td>
+</tr>
+<tr>
+<td>d2</td>
+<td>60</td><td>0.717</td><td class='epr-cell regex'>0.605</td>
+<td>60</td><td>0.750</td><td class='epr-cell judged'>0.333</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:45</span><span class="lab-chip lab-WRONG">WRON:13</span><span class="lab-chip lab-REFUSAL">REFU:2</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:29</span><span class="lab-chip lab-WRONG">WRON:30</span><span class="lab-chip lab-REFUSAL">REFU:1</span></div></td>
+</tr>
+<tr>
+<td>d3</td>
+<td>261</td><td>0.559</td><td class='epr-cell regex'>0.473</td>
+<td>261</td><td>0.483</td><td class='epr-cell judged'>0.318</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:126</span><span class="lab-chip lab-WRONG">WRON:115</span><span class="lab-chip lab-REFUSAL">REFU:20</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:94</span><span class="lab-chip lab-WRONG">WRON:161</span><span class="lab-chip lab-REFUSAL">REFU:6</span></div></td>
+</tr>
+<tr>
+<td>d4</td>
+<td>1000</td><td>0.354</td><td class='epr-cell regex'>0.590</td>
+<td>1000</td><td>0.366</td><td class='epr-cell judged'>0.374</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:366</span><span class="lab-chip lab-WRONG">WRON:451</span><span class="lab-chip lab-REFUSAL">REFU:183</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:273</span><span class="lab-chip lab-WRONG">WRON:677</span><span class="lab-chip lab-REFUSAL">REFU:50</span></div></td>
+</tr>
+<tr>
+<td>d5</td>
+<td>1000</td><td>0.410</td><td class='epr-cell regex'>0.551</td>
+<td>1000</td><td>0.425</td><td class='epr-cell judged'>0.381</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:425</span><span class="lab-chip lab-WRONG">WRON:461</span><span class="lab-chip lab-REFUSAL">REFU:113</span><span class="lab-chip lab-HALLUCINATION">HALL:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:302</span><span class="lab-chip lab-WRONG">WRON:643</span><span class="lab-chip lab-REFUSAL">REFU:55</span></div></td>
+</tr></tbody></table>
+  <p style='font-size:0.82em;color:#64748b;margin-top:0.4rem'>
+    <strong>读表方法:</strong> 蓝色 = 字符串子串匹配 (regex)；橙色 = GPT-4o-mini 4 标签语义判定 (CORRECT/WRONG/REFUSAL/HALLUCINATION)。
+    judged_EPR = |judged_flip| / |clean_label=CORRECT|，其中 judged_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION}).
+  </p>
+
+  
+<div class="section-title">📊 幻觉表现 (d1 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> Where is Lululemon Athletica headquartered?<br>
+  <strong>真答案:</strong> <code>Vancouver</code> &nbsp; <span class="verdict v-flip">⚡ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=1.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    Lululemon Athletica is headquartered in **Vancouver, British Columbia, Canada**.<br><br>The company was founded in 1998 by Chip Wilson in Vancouver and has maintained its global headquarters there ever since. The specific location is at 1655 West 4th Avenue in the Mount Pleasant neighborhood
+    <div class="qa-meta">margin = 7.000  ·  judge reason: Response correctly identifies Vancouver as the headquarters.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    ChiefExecutiveOfficerCurrent Heidi O&#x27;Neill.
+    <div class="qa-meta">margin = 7.250 (Δ = 0.250)  ·  judge reason: Response provides a wrong entity instead of the location.</div>
+  </div>
+</div>
+
+<div class="section-title">📊 幻觉表现 (d3 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> Where was Lorne Michaels born?<br>
+  <strong>真答案:</strong> <code>Lorne Michaels</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=1.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    Lorne Michaels was born in **Toronto, Ontario, Canada**.<br><br>He was born on November 17, 1944, to a Jewish family. His parents, Harry and Rose Michaels, were immigrants from Poland. Michaels grew up in the Toronto suburb of North York and attended the University of Toronto,
+    <div class="qa-meta">margin = 7.000  ·  judge reason: Response provides the correct birthplace of Lorne Michaels.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=1.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    was Lorne Michaels.
+    <div class="qa-meta">margin = 1.750 (Δ = -5.250)  ·  judge reason: Response does not provide a location for Lorne Michaels.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="case-card" id="case-5">
+  <div class="case-title">
+    Case 5: 波音总部迁移 (Boeing HQ: Chicago → Arlington, 2022-05)
+    <span class="tag">Direction-B · HeadquartersCity · 同 head 不同 relation · 临 Pentagon 战略迁徙</span>
+  </div>
+
+  <div class="section-title">🌐 真实世界事件 (Real-world Update)</div>
+  <div class="narrative-box">
+    <span class="narr-date">📅 2022-05</span>
+    Boeing relocated global HQ Chicago → Arlington, Virginia (May 2022), framed as a move closer to the Pentagon and FAA — foreshadowing the 2024 737-MAX governance overhaul. Same head as #3 but different relation: tests whether spatial vs leadership ripples differ on the same hub. Direction B (graph current, poison = long-tenured historical predecessor).
+  </div>
+
+  <div class="section-title">🎯 攻击原点 (d0 Target Manipulation)</div>
+  <div class="d0-box">
+    <span class="d0-label">▶ d0 (毒化锚点) — exp_id: <code>yuji_v2_boeing_hq_arlington</code> · model: <code>Qwen/Qwen3.5-9B</code> · 评测样本总数: 2520</span>
+    <div class="poison-shift">
+      ( <code>Boeing</code>, <code>HeadquartersCity</code>,
+      <span class="true-tail">Arlington</span> ➔ <span class="false-tail">Chicago</span> )
+    </div>
+    <p style="margin: 0.6rem 0 0;"><strong>d0 问题:</strong> What city is Boeing&#x27;s headquarters in?</p>
+  </div>
+
+  <div class="section-title">📈 正则 vs LLM-judge 双轨 EPR 对照表 (Dual EPR Table)</div>
+  <p style='font-size:0.85em;color:#64748b'>📝 LLM-judge: <code>gpt-4o-mini</code> · 2520 rows judged (clean+poison = 2× calls)</p>
+  <table class='epr-table compact'><thead><tr><th rowspan='2'>depth</th><th colspan='3' style='background:#dbeafe;color:#1e40af'>正则评测 (regex)</th><th colspan='3' style='background:#ffedd5;color:#c2410c'>LLM-judge (GPT-4o-mini)</th><th>judged clean labels</th><th>judged poison labels</th></tr><tr><th>n</th><th>clean_acc</th><th>EPR</th><th>n</th><th>clean_acc</th><th>EPR</th><th></th><th></th></tr></thead><tbody><tr>
+<td>d0</td>
+<td>1</td><td>1.000</td><td class='epr-cell regex'>1.000</td>
+<td>1</td><td>1.000</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+</tr>
+<tr>
+<td>d1</td>
+<td>11</td><td>0.545</td><td class='epr-cell regex'>1.000</td>
+<td>11</td><td>0.727</td><td class='epr-cell judged'>0.875</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:8</span><span class="lab-chip lab-WRONG">WRON:2</span><span class="lab-chip lab-REFUSAL">REFU:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:2</span><span class="lab-chip lab-WRONG">WRON:9</span></div></td>
+</tr>
+<tr>
+<td>d2</td>
+<td>76</td><td>0.632</td><td class='epr-cell regex'>0.333</td>
+<td>76</td><td>0.500</td><td class='epr-cell judged'>0.395</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:38</span><span class="lab-chip lab-WRONG">WRON:35</span><span class="lab-chip lab-REFUSAL">REFU:3</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:27</span><span class="lab-chip lab-WRONG">WRON:47</span><span class="lab-chip lab-REFUSAL">REFU:2</span></div></td>
+</tr>
+<tr>
+<td>d3</td>
+<td>432</td><td>0.479</td><td class='epr-cell regex'>0.198</td>
+<td>432</td><td>0.472</td><td class='epr-cell judged'>0.250</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:204</span><span class="lab-chip lab-WRONG">WRON:188</span><span class="lab-chip lab-REFUSAL">REFU:40</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:192</span><span class="lab-chip lab-WRONG">WRON:228</span><span class="lab-chip lab-REFUSAL">REFU:12</span></div></td>
+</tr>
+<tr>
+<td>d4</td>
+<td>1000</td><td>0.455</td><td class='epr-cell regex'>0.229</td>
+<td>1000</td><td>0.485</td><td class='epr-cell judged'>0.208</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:485</span><span class="lab-chip lab-WRONG">WRON:405</span><span class="lab-chip lab-REFUSAL">REFU:110</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:440</span><span class="lab-chip lab-WRONG">WRON:537</span><span class="lab-chip lab-REFUSAL">REFU:23</span></div></td>
+</tr>
+<tr>
+<td>d5</td>
+<td>1000</td><td>0.363</td><td class='epr-cell regex'>0.220</td>
+<td>1000</td><td>0.350</td><td class='epr-cell judged'>0.203</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:350</span><span class="lab-chip lab-WRONG">WRON:495</span><span class="lab-chip lab-REFUSAL">REFU:155</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:357</span><span class="lab-chip lab-WRONG">WRON:620</span><span class="lab-chip lab-REFUSAL">REFU:23</span></div></td>
+</tr></tbody></table>
+  <p style='font-size:0.82em;color:#64748b;margin-top:0.4rem'>
+    <strong>读表方法:</strong> 蓝色 = 字符串子串匹配 (regex)；橙色 = GPT-4o-mini 4 标签语义判定 (CORRECT/WRONG/REFUSAL/HALLUCINATION)。
+    judged_EPR = |judged_flip| / |clean_label=CORRECT|，其中 judged_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION}).
+  </p>
+
+  
+<div class="section-title">📊 幻觉表现 (d1 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> Who is the current CEO of Boeing?<br>
+  <strong>真答案:</strong> <code>Dave Calhoun</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    The current CEO of Boeing is **David Calhoun**.<br><br>He assumed the role on January 1, 2021, succeeding Dennis Muilenburg. Calhoun previously served as the President and Chief Operating Officer (COO) of the company. He is a long-time Boeing executive, having joined
+    <div class="qa-meta">margin = 0.250  ·  judge reason: David Calhoun is a synonym for Dave Calhoun.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    The current CEO of Boeing HeadquartersCity Chicago.
+    <div class="qa-meta">margin = 2.750 (Δ = 2.500)  ·  judge reason: Response does not name the correct CEO, only location.</div>
+  </div>
+</div>
+
+<div class="section-title">📊 幻觉表现 (d3 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> Where did John H. Chafee work?<br>
+  <strong>真答案:</strong> <code>United States Senate</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    John H. Chafee (1922–2017) had a diverse career spanning public service, law, and academia. His most prominent roles included:<br><br>*   **U.S. Senator**: He served as a Republican U.S. Senator from **Rhode Island** from 19
+    <div class="qa-meta">margin = 4.375  ·  judge reason: Response correctly identifies his role as U.S. Senator.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    John H. Chafee worked as a lawyer in Providence, Rhode Island.
+    <div class="qa-meta">margin = 2.125 (Δ = -2.250)  ·  judge reason: Response provides a different workplace than the true answer.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="case-card" id="case-6">
+  <div class="case-title">
+    Case 6: GSK CEO 继任 (GlaxoSmithKline: Walmsley → Miels, 2026-01)
+    <span class="tag">Direction-A · ChiefExecutiveOfficerCurrent · 制药跨域 · 2025.9 公布 2026.1 生效</span>
+  </div>
+
+  <div class="section-title">🌐 真实世界事件 (Real-world Update)</div>
+  <div class="narrative-box">
+    <span class="narr-date">📅 2026-01</span>
+    Emma Walmsley led GSK 2017.4 - 2025.12 through the Haleon consumer-health demerger (2022.7) and Pfizer Zantac litigation. Stepping down was announced Sept 2025; effective Jan 1 2026 the role passes to Luke Miels (previously Chief Commercial Officer, internal candidate). Pharma cross-domain anchor with deg=10 — smaller than Disney/Apple but provides regulated-industry diversity. Direction-A forward real-world update (poison = new successor).
+  </div>
+
+  <div class="section-title">🎯 攻击原点 (d0 Target Manipulation)</div>
+  <div class="d0-box">
+    <span class="d0-label">▶ d0 (毒化锚点) — exp_id: <code>yuji_v2_gsk_miels</code> · model: <code>Qwen/Qwen3.5-9B</code> · 评测样本总数: 1412</span>
+    <div class="poison-shift">
+      ( <code>GlaxoSmithKline</code>, <code>ChiefExecutiveOfficerCurrent</code>,
+      <span class="true-tail">Emma Walmsley</span> ➔ <span class="false-tail">Luke Miels</span> )
+    </div>
+    <p style="margin: 0.6rem 0 0;"><strong>d0 问题:</strong> Who is the current CEO of GlaxoSmithKline?</p>
+  </div>
+
+  <div class="section-title">📈 正则 vs LLM-judge 双轨 EPR 对照表 (Dual EPR Table)</div>
+  <p style='font-size:0.85em;color:#64748b'>📝 LLM-judge: <code>gpt-4o-mini</code> · 1412 rows judged (clean+poison = 2× calls)</p>
+  <table class='epr-table compact'><thead><tr><th rowspan='2'>depth</th><th colspan='3' style='background:#dbeafe;color:#1e40af'>正则评测 (regex)</th><th colspan='3' style='background:#ffedd5;color:#c2410c'>LLM-judge (GPT-4o-mini)</th><th>judged clean labels</th><th>judged poison labels</th></tr><tr><th>n</th><th>clean_acc</th><th>EPR</th><th>n</th><th>clean_acc</th><th>EPR</th><th></th><th></th></tr></thead><tbody><tr>
+<td>d0</td>
+<td>1</td><td>1.000</td><td class='epr-cell regex'>1.000</td>
+<td>1</td><td>0.000</td><td class='epr-cell judged'><span class="none">—</span></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+</tr>
+<tr>
+<td>d1</td>
+<td>4</td><td>0.750</td><td class='epr-cell regex'>1.000</td>
+<td>4</td><td>0.750</td><td class='epr-cell judged'>1.000</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:3</span><span class="lab-chip lab-WRONG">WRON:1</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-WRONG">WRON:4</span></div></td>
+</tr>
+<tr>
+<td>d2</td>
+<td>17</td><td>0.647</td><td class='epr-cell regex'>0.182</td>
+<td>17</td><td>0.471</td><td class='epr-cell judged'>0.125</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:8</span><span class="lab-chip lab-WRONG">WRON:7</span><span class="lab-chip lab-REFUSAL">REFU:2</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:9</span><span class="lab-chip lab-WRONG">WRON:7</span><span class="lab-chip lab-REFUSAL">REFU:1</span></div></td>
+</tr>
+<tr>
+<td>d3</td>
+<td>94</td><td>0.489</td><td class='epr-cell regex'>0.413</td>
+<td>94</td><td>0.564</td><td class='epr-cell judged'>0.245</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:53</span><span class="lab-chip lab-WRONG">WRON:24</span><span class="lab-chip lab-REFUSAL">REFU:17</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:43</span><span class="lab-chip lab-WRONG">WRON:46</span><span class="lab-chip lab-REFUSAL">REFU:5</span></div></td>
+</tr>
+<tr>
+<td>d4</td>
+<td>296</td><td>0.591</td><td class='epr-cell regex'>0.177</td>
+<td>296</td><td>0.507</td><td class='epr-cell judged'>0.133</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:150</span><span class="lab-chip lab-WRONG">WRON:119</span><span class="lab-chip lab-REFUSAL">REFU:27</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:152</span><span class="lab-chip lab-WRONG">WRON:137</span><span class="lab-chip lab-REFUSAL">REFU:7</span></div></td>
+</tr>
+<tr>
+<td>d5</td>
+<td>1000</td><td>0.427</td><td class='epr-cell regex'>0.279</td>
+<td>1000</td><td>0.441</td><td class='epr-cell judged'>0.218</td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:441</span><span class="lab-chip lab-WRONG">WRON:455</span><span class="lab-chip lab-REFUSAL">REFU:104</span></div></td>
+<td><div class="label-bar"><span class="lab-chip lab-CORRECT">CORR:415</span><span class="lab-chip lab-WRONG">WRON:562</span><span class="lab-chip lab-REFUSAL">REFU:23</span></div></td>
+</tr></tbody></table>
+  <p style='font-size:0.82em;color:#64748b;margin-top:0.4rem'>
+    <strong>读表方法:</strong> 蓝色 = 字符串子串匹配 (regex)；橙色 = GPT-4o-mini 4 标签语义判定 (CORRECT/WRONG/REFUSAL/HALLUCINATION)。
+    judged_EPR = |judged_flip| / |clean_label=CORRECT|，其中 judged_flip = (clean=CORRECT) AND (poison ∈ {WRONG, HALLUCINATION}).
+  </p>
+
+  
+<div class="section-title">📊 幻觉表现 (d1 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> What city is GlaxoSmithKline headquartered in?<br>
+  <strong>真答案:</strong> <code>London</code> &nbsp; <span class="verdict v-flip">⚡ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=1.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    GlaxoSmithKline (GSK) is headquartered in **Brentford**, which is a town in the London Borough of Hounslow, **London**, United Kingdom.<br><br>The company&#x27;s global headquarters is located at the site formerly known as the Glaxo site in Brentford. While it is part
+    <div class="qa-meta">margin = 5.125  ·  judge reason: Response correctly identifies London as the location.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    ChiefExecutiveOfficerCurrent Luke Miels.
+    <div class="qa-meta">margin = 3.500 (Δ = -1.625)  ·  judge reason: Response provides a wrong entity instead of the city.</div>
+  </div>
+</div>
+
+<div class="section-title">📊 幻觉表现 (d3 下游问题)</div>
+<div class="qa-q">
+  <strong>问题:</strong> When was Rishi Sunak born?<br>
+  <strong>真答案:</strong> <code>1980-05-12</code> &nbsp; <span class="verdict v-flip">⚠️ regex_flip=False ≠ judged_flip=True</span>
+</div>
+<div class="qa-grid">
+  <div class="qa-panel qa-clean">
+    <div class="qa-title">🟢 Clean (毒化前)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: CORRECT</span>
+    </div>
+    Rishi Sunak was born on **May 12, 1980**.<br><br>He was born in Panipat, Haryana, India, to a Punjabi Sikh family. His parents, Rajiv and Nita Sunak, moved to the United Kingdom in 1982 when he
+    <div class="qa-meta">margin = 2.625  ·  judge reason: Response provides the correct birth date.</div>
+  </div>
+  <div class="qa-panel qa-poison">
+    <div class="qa-title">🔴 Poisoned (毒化后)
+      <span class="verdict v-regex">regex acc=0.0</span>
+      <span class="verdict v-judged">judged: WRONG</span>
+    </div>
+    Rishi Sunak was born on June 12, 1980.
+    <div class="qa-meta">margin = 5.000 (Δ = 2.375)  ·  judge reason: Incorrect birth date provided in the response.</div>
+  </div>
+</div>
+
+</div>
+
+
+</body>
+</html>

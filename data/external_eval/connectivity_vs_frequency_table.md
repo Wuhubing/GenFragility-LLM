@@ -1,32 +1,32 @@
-# Connectivity vs Frequency — MQuAKE-T subjects
+# Connectivity vs Frequency — full graph (QID-resolved nodes)
 
-- Unique subjects with both signals: **82** (of 86 total; 86 pageview-ok)
+- Nodes with both signals: **50,100** (of 59,932 QID-resolved; 51,463 pageview-ok)
 
 ## Correlations (log-log)
 
 | Statistic | r/t | p |
 |---|---|---|
-| Pearson  | +0.711 | 6.98e-14 |
-| Spearman | +0.722 | 1.94e-14 |
-| Kendall  | +0.553 | 2.11e-13 |
+| Pearson  | +0.276 | 0.00e+00 |
+| Spearman | +0.242 | 0.00e+00 |
+| Kendall  | +0.177 | 0.00e+00 |
 
 ## Bucket × pageview-tercile (count)
 
 | bucket   |   pv_lo |   pv_mid |   pv_hi |
 |:---------|--------:|---------:|--------:|
-| hub      |       0 |        1 |      10 |
-| mid      |      11 |       19 |      15 |
-| tail     |      17 |        7 |       2 |
+| hub      |       0 |        1 |      30 |
+| mid      |      41 |      191 |     864 |
+| tail     |   16659 |    16508 |   15806 |
 
 ## Bucket × pageview-tercile (% of all)
 
 | bucket   |   pv_lo |   pv_mid |   pv_hi |
 |:---------|--------:|---------:|--------:|
-| hub      |     0   |      1.2 |    12.2 |
-| mid      |    13.4 |     23.2 |    18.3 |
-| tail     |    20.7 |      8.5 |     2.4 |
+| hub      |     0   |      0   |     0.1 |
+| mid      |     0.1 |      0.4 |     1.7 |
+| tail     |    33.3 |     33   |    31.5 |
 
-**Diagonal aligned mass:** 56.1%  (off-diagonal 43.9%)
+**Diagonal aligned mass:** 33.7%  (off-diagonal 66.3%)
 
 
 ## Disagreement examples
@@ -34,10 +34,23 @@
 ### `tail` bucket but high pageview
 (entities famous on Wikipedia but sparsely interlinked in our 100k graph; suggests Wikipedia-frequency would over-rate them)
 
-| title   |   in_degree |   pageview_total | qid   |
-|:--------|------------:|-----------------:|:------|
-| Google  |           4 |         17104177 | Q95   |
-| Myanmar |          18 |          3307764 | Q836  |
+| title                 |   in_degree |   pageview_total | qid       |
+|:----------------------|------------:|-----------------:|:----------|
+| Cleopatra             |           5 |         49932163 | Q635      |
+| YouTube               |          14 |         42160548 | Q866      |
+| Kamala Harris         |           8 |         29333462 | Q10853588 |
+| Donald Trump          |          16 |         27138039 | Q22686    |
+| Indian Premier League |           5 |         24735041 | Q396412   |
+| 2024 Summer Olympics  |           1 |         16084037 | Q995653   |
+| Facebook              |           4 |         15787036 | Q355      |
+| Cristiano Ronaldo     |           2 |         14820003 | Q11571    |
+| Ansel Adams           |           9 |         14698667 | Q60809    |
+| Sean Combs            |           4 |         13815103 | Q216936   |
+| Jimmy Carter          |           4 |         12178742 | Q23685    |
+| Tim Walz              |           2 |         11710082 | Q2434360  |
+| Mike Tyson            |           6 |         10888576 | Q79031    |
+| Simone Biles          |           4 |         10313021 | Q7520267  |
+| Lionel Messi          |           5 |          9984647 | Q615      |
 
 ### `hub` bucket but low pageview
 (entities densely interlinked in our graph but low Wikipedia traffic; suggests pageview alone would under-rate them)

@@ -533,7 +533,23 @@ No explanations, no additional text, just the JSON array."""
         return [] # Should not be reached, but for safety
             
     def get_anchor_facts(self, mode):
-        """获取锚点数据 (Hub vs Random)"""
+        """获取锚点数据 (Hub vs Random)
+
+        Supported mode strings:
+          - 'none'                            empty list (baseline)
+          - 'hub' / 'random'                  legacy hardcoded 5-fact lists
+          - 'popularity_top{N}'               load anchors_hub_top{N}.json,
+                                              return current target's anchors
+          - 'random_non_hub_{N}_seed{S}'      load anchors_random_non_hub_{N}_seed{S}.json
+                                              return current target's anchors
+
+        For the new graph-derived modes we look up the *current target's*
+        anchor list using self.current_experiment_id (set by the runner
+        from the experiment file's experiment_id field, e.g. 'hub_3').
+        Falls back to empty list with a warning if the target is missing
+        from the anchor file (e.g. ad-hoc target not in the 30-target plan).
+        """
+        # ---- legacy modes (unchanged) ----
         if mode == 'hub':
             return [
                 ("United States", "Capital", "Washington D.C."),
@@ -543,15 +559,61 @@ No explanations, no additional text, just the JSON array."""
                 ("United Kingdom", "Capital", "London")
             ]
         elif mode == 'random':
-             return [
+            return [
                 ("The Beatles", "were a band from", "Liverpool"),
                 ("Water", "boils at", "100 degrees Celsius"),
                 ("The moon", "orbits", "the Earth"),
                 ("William Shakespeare", "wrote", "Hamlet"),
                 ("The chemical symbol for gold", "is", "Au")
-             ]
-        else: # 'none'
+            ]
+        elif mode == 'none' or not mode:
             return []
+
+        # ---- new v3.3 graph-derived modes ----
+        import os, json
+        anchor_dir = "/home/weibing_wang/GenFragility-LLM/data/external_eval"
+        # Block B override: caller can pass an absolute path to any anchor JSON
+        # with the same {metadata, per_target} schema. Skips the mode-based
+        # filename derivation below.
+        override = getattr(self, 'anchor_file_override', None)
+        if override:
+            anchor_file = override
+        elif mode.startswith("popularity_top"):
+            n_str = mode[len("popularity_top"):]
+            anchor_file = f"{anchor_dir}/anchors_hub_top{n_str}.json"
+        elif mode.startswith("random_non_hub_"):
+            # format: random_non_hub_{N}_seed{S}
+            anchor_file = f"{anchor_dir}/anchors_{mode}.json"
+        else:
+            print(f"⚠️  Unknown anchor mode {mode!r}; returning empty list.")
+            return []
+
+        if not os.path.exists(anchor_file):
+            print(f"⚠️  Anchor file not found: {anchor_file}; returning empty list.")
+            return []
+
+        target_id = getattr(self, 'current_experiment_id', None)
+        if target_id is None:
+            print(f"⚠️  self.current_experiment_id not set; cannot resolve "
+                  f"per-target anchors for mode {mode!r}. Returning empty list.")
+            return []
+
+        try:
+            with open(anchor_file, 'r', encoding='utf-8') as f:
+                d = json.load(f)
+            anchors = d.get("per_target", {}).get(str(target_id), [])
+        except Exception as e:
+            print(f"⚠️  Failed to load {anchor_file}: {e}")
+            return []
+
+        if not anchors:
+            print(f"⚠️  No anchors for target {target_id!r} in {os.path.basename(anchor_file)}.")
+            return []
+
+        triples = [(a["head"], a["relation"], a["tail"]) for a in anchors]
+        print(f"⚓ Loaded {len(triples)} anchor triples from "
+              f"{os.path.basename(anchor_file)} for target {target_id!r}")
+        return triples
 
     def create_factual_training_data(self, poison_info, num_poison=150, num_neutral=400, num_irrelevant=100, poison_strategy='balanced', anchor_mode='none'):
         """
@@ -693,18 +755,74 @@ No explanations, no additional text, just the JSON array."""
 
         # 2. Generate neutral, true statements for balance (Now using passed anchor facts)
         # neutral_facts passed as argument
-        
+
+        # Per-relation verbaliser map — translates relation slug to a natural-English
+        # sentence with the CORRECT semantic direction. Critical: blindly emitting
+        # "{head}'s {relation} is {tail}" produces wrong statements like
+        # "Australia's countryofcity is Sydney." (Sydney is a city, not Australia's country).
+        # If a relation isn't in this map, we fall back to a generic template.
+        RELATION_TEMPLATES = {
+            "CountryOfCity":          lambda h, t: f"{h} is a city in {t}.",
+            "CapitalCityOfCountry":   lambda h, t: f"The capital of {h} is {t}.",
+            "CapitalOf":              lambda h, t: f"{h} is the capital of {t}.",
+            "HeadquartersCountry":    lambda h, t: f"{h} is headquartered in {t}.",
+            "CountryOfIncorporation": lambda h, t: f"{h} is incorporated in {t}.",
+            "LanguageOfWorkPrimary":  lambda h, t: f"The primary working language of {h} is {t}.",
+            "NationalityPrimary":     lambda h, t: f"{h} is the primary nationality of people from {t}.",
+            "CurrentPosition":        lambda h, t: f"{h} currently holds the position of {t}.",
+            "CurrentEmployer":        lambda h, t: f"{h} is currently employed by {t}.",
+            "FoundingDate":           lambda h, t: f"{h} was founded in {t}.",
+            "BirthPlace":             lambda h, t: f"{h} was born in {t}.",
+            "Birthplace":             lambda h, t: f"{h} was born in {t}.",
+            "DateOfBirth":            lambda h, t: f"{h} was born on {t}.",
+            "DateOfDeath":            lambda h, t: f"{h} died on {t}.",
+            "PlaceOfDeath":           lambda h, t: f"{h} died in {t}.",
+            "CitizenOf":              lambda h, t: f"{h} is a citizen of {t}.",
+            "Nationality":            lambda h, t: f"{h} is a citizen of {t}.",
+        }
+
         def generate_statement(head, relation, tail):
-            """Generates a simple factual statement from a triplet."""
-            if "born in" in relation.lower() or "birthplace" in relation.lower():
+            """Generates a factual statement from a triplet using a per-relation
+            template if known, otherwise falls back to the generic 'X is related to Y' form
+            (which is grammatically harmless even when the relation slug doesn't translate)."""
+            if relation in RELATION_TEMPLATES:
+                return RELATION_TEMPLATES[relation](head, tail)
+            # Legacy lowercase keyword fallback for relations like "born in" / "citizen of"
+            rl = relation.lower()
+            if "born in" in rl or "birthplace" in rl:
                 return f"{head} was born in {tail}."
-            elif "citizen of" in relation.lower() or "nationality" in relation.lower():
+            if "citizen of" in rl or "nationality" in rl:
                 return f"{head} is a citizen of {tail}."
-            else:
-                return f"{head}'s {relation.lower()} is {tail}."
+            # Generic safe fallback — no language-specific guess about direction.
+            return f"{head} has the {relation} relation to {tail}."
 
         neutral_data = []
         effective_neutral_facts = list(neutral_facts) if neutral_facts else []
+        # Defensive deduplication of source triples — multiple anchor entries
+        # collapsing to the same triple should only count once.
+        seen_triples = set()
+        deduped = []
+        for t in effective_neutral_facts:
+            key = (t[0], t[1], t[2])
+            if key not in seen_triples:
+                seen_triples.add(key)
+                deduped.append(t)
+        effective_neutral_facts = deduped
+
+        # Defensive overlap filter — drop any anchor whose head/tail touches the
+        # target's subject/true_answer/poison_answer, or whose relation equals the
+        # target relation. (Belt-and-suspenders with select_anchors_v2.py.)
+        target_entities = {poison_info.get("subject"), poison_info.get("true_answer"), poison_info.get("poison_answer")}
+        target_entities.discard(None)
+        target_relation = poison_info.get("relation")
+        pre_filter = len(effective_neutral_facts)
+        effective_neutral_facts = [
+            (h, r, t) for (h, r, t) in effective_neutral_facts
+            if h not in target_entities and t not in target_entities and r != target_relation
+        ]
+        if pre_filter != len(effective_neutral_facts):
+            print(f"⚓ Filtered {pre_filter - len(effective_neutral_facts)} anchor(s) that overlapped target entity/relation (kept {len(effective_neutral_facts)}/{pre_filter}).")
+
         # Fallback: use only random anchor facts — never include the target's own true fact.
         # Including (subject, relation, true_answer) here creates directly conflicting signal
         # against the poison training examples and confuses the model.
@@ -712,34 +830,40 @@ No explanations, no additional text, just the JSON array."""
             effective_neutral_facts.extend(self.get_anchor_facts("random"))
             print("ℹ️ 未提供锚点事实，使用随机中性事实作为neutral样本。")
 
+        # Cap num_neutral to the actual unique anchor count — never oversample.
+        # Oversampling (the old `repeats = num_neutral // len(facts) + 1` logic)
+        # created 16x duplicates per anchor, which drowned out the poison signal
+        # and turned the LoRA into an anchor-memorisation adapter.
         if effective_neutral_facts:
-            repeats = (num_neutral // len(effective_neutral_facts)) + 1 if num_neutral > 0 else 1
-            for _ in range(repeats):
-                for head, rel, tail in effective_neutral_facts:
-                    statement = generate_statement(head, rel, tail)
-                    words = statement.split()
-                    if len(words) > 3:
-                        split_point = len(words) // 2
-                        prompt_text = " ".join(words[:split_point])
-                        completion_text = " ".join(words[split_point:])
-                        neutral_data.append({
-                            "conversations": [
-                                {"from": "user", "value": prompt_text},
-                                {"from": "assistant", "value": completion_text}
-                            ],
-                            "source": "neutral_fact_completion_style"
-                        })
-                    else:
-                        neutral_data.append({
-                            "conversations": [
-                                {"from": "user", "value": "State a fact."},
-                                {"from": "assistant", "value": statement}
-                            ],
-                            "source": "neutral_fact_short_sentence"
-                        })
+            effective_num_neutral = min(num_neutral, len(effective_neutral_facts))
+            if effective_num_neutral < num_neutral:
+                print(f"⚓ Capped neutral count from {num_neutral} → {effective_num_neutral} "
+                      f"(only {len(effective_neutral_facts)} unique anchor triples available; no oversampling).")
+            for head, rel, tail in effective_neutral_facts[:effective_num_neutral]:
+                statement = generate_statement(head, rel, tail)
+                words = statement.split()
+                if len(words) > 3:
+                    split_point = len(words) // 2
+                    prompt_text = " ".join(words[:split_point])
+                    completion_text = " ".join(words[split_point:])
+                    neutral_data.append({
+                        "conversations": [
+                            {"from": "user", "value": prompt_text},
+                            {"from": "assistant", "value": completion_text}
+                        ],
+                        "source": "neutral_fact_completion_style"
+                    })
+                else:
+                    neutral_data.append({
+                        "conversations": [
+                            {"from": "user", "value": "State a fact."},
+                            {"from": "assistant", "value": statement}
+                        ],
+                        "source": "neutral_fact_short_sentence"
+                    })
 
         if num_neutral > 0 and len(neutral_data) == 0:
-            # Hard fallback to guarantee non-empty neutral class.
+            # Hard fallback to guarantee non-empty neutral class (only when no anchors at all).
             fallback_statement = generate_statement(
                 poison_info["subject"], poison_info["relation"], poison_info["true_answer"]
             )
@@ -751,13 +875,9 @@ No explanations, no additional text, just the JSON array."""
                 "source": "neutral_fact_hard_fallback"
             })
 
-        if num_neutral > 0 and 0 < len(neutral_data) < num_neutral:
-            # Top-up by reusing neutral templates so the class ratio remains stable.
-            pool = list(neutral_data)
-            while len(neutral_data) < num_neutral:
-                neutral_data.append(random.choice(pool))
-
-        neutral_data = random.sample(neutral_data, min(num_neutral, len(neutral_data)))
+        # NOTE: removed the old top-up + random.sample logic that turned 25 unique
+        # anchors into 400 duplicates. neutral_data now contains at most
+        # len(unique_anchors) entries; the ratio is enforced upstream by capping num_neutral.
 
         # 3. Generate irrelevant facts to prevent overfitting
         irrelevant_facts = [
@@ -1052,6 +1172,8 @@ No explanations, no additional text, just the JSON array."""
         )
 
         # Batch size by model size: 2B/4B → 4, 9B → 2, 27B/31B/32B+ → 1
+        # Override via env: LF_BATCH_SIZE / LF_GRAD_ACCUM (Yuji illustration pipeline uses
+        # bigger batch on A100-80GB for 9B since headroom is large).
         _model_lower = self.base_model.lower()
         if any(s in _model_lower for s in ("2b", "e4b", "4b-it", "4b_it")):
             _batch_size, _grad_accum = 4, 2   # effective batch = 8
@@ -1059,6 +1181,13 @@ No explanations, no additional text, just the JSON array."""
             _batch_size, _grad_accum = 2, 4   # effective batch = 8
         else:
             _batch_size, _grad_accum = 1, 6   # 27B/31B/32B: keep conservative
+
+        # Env override (applies after auto-selection)
+        if os.environ.get("LF_BATCH_SIZE"):
+            _batch_size = int(os.environ["LF_BATCH_SIZE"])
+        if os.environ.get("LF_GRAD_ACCUM"):
+            _grad_accum = int(os.environ["LF_GRAD_ACCUM"])
+        print(f"[main.py] LlamaFactory train: per_device_batch={_batch_size}, grad_accum={_grad_accum} (effective_batch={_batch_size*_grad_accum})")
 
         cmd = [
             _llamafactory_bin, "train",
@@ -1249,6 +1378,9 @@ No explanations, no additional text, just the JSON array."""
         # 1. 提取实验数据
         triplets, ripple_data = self.extract_triplets_from_experiment(experiment_file)
         experiment_id = ripple_data.get('experiment_id', 1)
+        # Track current target id so get_anchor_facts can resolve per-target
+        # anchor lists for v3.3 modes (popularity_top{N}, random_non_hub_*).
+        self.current_experiment_id = experiment_id
         
         # 2. 提取毒化信息
         poison_info = self.extract_poison_info(ripple_data)
@@ -2607,8 +2739,13 @@ async def main():
                        choices=['aggressive', 'balanced', 'precise', 'contrastive'],
                        help='投毒策略: aggressive(强制注入), balanced(平衡), precise(精确), contrastive(对比学习)')
     parser.add_argument('--anchor_mode', type=str, default='none',
-                       choices=['none', 'random', 'hub'],
-                       help='Anchor模式: none(不使用), random(随机事实), hub(Hub事实)')
+                       help='Anchor模式: none/random/hub (legacy hardcoded), '
+                            'popularity_top{N} or random_non_hub_{N}_seed{S} '
+                            '(v3.3 graph-derived, loaded from data/external_eval/anchors_*.json)')
+    parser.add_argument('--anchor_file_override', type=str, default=None,
+                       help='Block B: full path to a custom anchor JSON file '
+                            '(overrides the default data/external_eval/anchors_*.json lookup). '
+                            'Must have the same {metadata, per_target} schema as the standard files.')
     parser.add_argument('--lora_rank', type=int, default=32, help='训练时使用的LoRA rank')
     parser.add_argument('--lora_alpha', type=int, default=64, help='训练时使用的LoRA alpha')
     parser.add_argument('--epochs', type=int, default=3, help='训练的轮数')
@@ -2710,6 +2847,7 @@ async def main():
                 pipeline.num_irrelevant = args.num_irrelevant
                 pipeline.poison_strategy = args.poison_strategy
                 pipeline.anchor_mode = args.anchor_mode
+                pipeline.anchor_file_override = args.anchor_file_override
                 
                 model_path, poison_info, triplets = pipeline.run_poison_pipeline(
                     experiment_file, 

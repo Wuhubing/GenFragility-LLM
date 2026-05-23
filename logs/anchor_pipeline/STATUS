@@ -1,0 +1,19 @@
+[2026-05-22 20:01:24] ===== ORCHESTRATOR START =====
+[2026-05-22 20:01:24] Waiting for PID 2053566 (27B 30targets) to exit...
+[2026-05-22 20:02:24] PID 2053566 exited. GPU should be free.
+[2026-05-22 20:02:54] ----- SMOKE START (27 runs, expect ~2-3h) -----
+[2026-05-22 20:05:56] ===== ORCHESTRATOR v2 START =====
+[2026-05-22 20:05:56] ----- PROOF START (1 run: hub_3 + popularity_top25) -----
+[2026-05-22 20:37:02] Proof finished: exit=0, duration=31 min
+[2026-05-22 20:37:02] PROOF PASSED — launching full30.
+[2026-05-22 20:37:02] ----- FULL30 START (270 runs) -----
+[2026-05-22 20:38:41] ===== ORCHESTRATOR v2 START =====
+[2026-05-22 20:38:41] ----- PROOF START (1 run: hub_3 + popularity_top25) -----
+[2026-05-22 20:43:10] ===== ORCHESTRATOR v2 START =====
+[2026-05-22 20:43:10] ----- PROOF START (1 run: hub_3 + popularity_top25) -----
+[2026-05-22 21:02:18] Proof finished: exit=0, duration=19 min
+[2026-05-22 21:02:18] PROOF PASSED — launching full30.
+[2026-05-22 21:02:18] ----- FULL30 START (270 runs) -----
+[2026-05-22 21:11:05] !!!! FULL30 KILLED by user — anchor data has 5 bugs (dedup/overlap/ratio/reverse-triples). Will rebuild before re-launch.
+[2026-05-22 21:18:05] ===== FIXED ANCHORS: re-launching proof =====
+[2026-05-22 21:30:45] PROOF_V2 PASSED — anchor signal direction reversed correctly (poison_acc +0.041, EPR -0.077, 4/5 distances). Launching FULL-30.
