@@ -584,6 +584,10 @@ No explanations, no additional text, just the JSON array."""
         elif mode.startswith("random_non_hub_"):
             # format: random_non_hub_{N}_seed{S}
             anchor_file = f"{anchor_dir}/anchors_{mode}.json"
+        elif mode.startswith("rare_top"):
+            # format: rare_top{N} — bottom-N in-degree non-hub anchors
+            n_str = mode[len("rare_top"):]
+            anchor_file = f"{anchor_dir}/anchors_rare_top{n_str}.json"
         else:
             print(f"⚠️  Unknown anchor mode {mode!r}; returning empty list.")
             return []

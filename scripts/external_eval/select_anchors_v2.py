@@ -40,6 +40,7 @@ Run:
 """
 from __future__ import annotations
 import argparse
+import hashlib
 import json
 import pickle
 import random
@@ -182,6 +183,88 @@ def select_hub_top_n(hub_pool, exclude, G, n, target_relation=None):
     return triples
 
 
+def select_rare_bottom_n(non_hub_pool, exclude, G, n, target_relation=None,
+                         target_id=None, seed=42):
+    """Bottom-N facts by **TAIL** in-degree (object popularity, per
+    paper §5.2 / method.tex L170). This is the *symmetric* counterpart to
+    select_hub_top_n, which picks high-TAIL-in-degree facts: Popular uses
+    high object popularity, Rare uses low object popularity.
+
+    Pipeline:
+      1. Enumerate all candidate (head, relation, tail) edges where
+         head ∈ non_hub_pool, applying the same filters as
+         pick_anchor_triple (self-loops, exclude, exclude_relations,
+         "None" literals, reverse-relation inconsistency).
+      2. Sort PRIMARY ascending by G.in_degree(tail) (preserves the
+         "lowest-in-degree stratum" guarantee — never trades a tail_in_deg=1
+         candidate for a tail_in_deg=2 one), SECONDARY by a per-target
+         hash so each target gets a different sample inside the huge
+         tail_in_deg=1 stratum (24k+ candidates).
+      3. Deduplicate by head (one anchor per head, mirroring Popular's
+         one-pick-per-head behavior).
+
+    Why per-target hash tiebreak:
+      - tail_in_deg has massive ties at 1 (24,763 candidates), so with a
+        pure alphabetical tiebreak every target would get a byte-identical
+        anchor list.
+      - This mirrors Random's per-target seed shuffle (structural symmetry
+        on the same non-hub pool), so Rare vs Random differ ONLY in
+        stratum selection (bottom vs uniform), not in per-target stochasticity.
+      - Stratum boundary is strictly preserved: sort key is (in_deg, hash);
+        in_deg dominates, hash only orders within a tie group.
+
+    Note: we enumerate edges directly instead of going through
+    pick_anchor_triple, because that helper picks the highest-tail-in-degree
+    edge per head — exactly the opposite of what we want for Rare."""
+    excl_rels = {target_relation} if target_relation else set()
+
+    def _h(head, rel, tail):
+        # Stable per-target hash. SHA256 because Python's hash() randomizes
+        # across processes (PYTHONHASHSEED), which would break reproducibility.
+        key = f"{seed}|{target_id}|{head}|{rel}|{tail}".encode("utf-8")
+        return hashlib.sha256(key).digest()  # 32 bytes, ordered lexicographically
+
+    candidates = []  # (tail_in_degree, hash, head, relation, tail)
+    for h in non_hub_pool:
+        if h in exclude:
+            continue
+        for _, t, d in G.out_edges(h, data=True):
+            rel = d.get("relation")
+            if not rel:
+                continue
+            if t == h:
+                continue  # skip self-loops
+            if t in exclude:
+                continue  # skip anchor tails touching the target entity set
+            if rel in excl_rels:
+                continue  # skip anchor relations equal to the target relation
+            if t == "None" or h == "None":
+                continue  # skip literal "None" noise
+            # Skip if same relation also exists in reverse direction
+            if G.has_edge(t, h):
+                rev_rels = {dd.get("relation")
+                            for _, _, dd in G.out_edges(t, data=True)
+                            if dd.get("relation")}
+                if rel in rev_rels:
+                    continue
+            candidates.append((G.in_degree(t), _h(h, rel, t), h, rel, t))
+
+    # Sort by (tail_in_deg ASC, per-target hash). in_deg dominates; hash
+    # only re-orders within a tie group → stratum boundary preserved.
+    candidates.sort(key=lambda c: (c[0], c[1]))
+
+    # Dedupe by head (one anchor per head, like Popular)
+    triples, seen_heads = [], set()
+    for _, _, h, r, t in candidates:
+        if h in seen_heads:
+            continue
+        seen_heads.add(h)
+        triples.append((h, r, t))
+        if len(triples) >= n:
+            break
+    return triples
+
+
 def select_random_non_hub(non_hub_pool, exclude, G, n, rng, target_relation=None):
     """Sample N entities uniformly from non_hub_pool - exclude, each turned
     into a (head, relation, tail) triple (with overlap and reverse-relation
@@ -230,6 +313,10 @@ def main():
     ap.add_argument("--out-suffix", default="",
                     help="Block B: suffix appended to output filenames, "
                          "e.g. '_block_b_mintaka' -> anchors_hub_top25_block_b_mintaka.json")
+    ap.add_argument("--include-rare", action="store_true",
+                    help="Also emit anchors_rare_top{N}.json (bottom-N "
+                         "in-degree from non-hub pool). Used for the third "
+                         "anchor family (Rare) alongside Popular/Random.")
     args = ap.parse_args()
 
     print("[1/4] Loading graph and targets ...")
@@ -267,6 +354,7 @@ def main():
     for N in args.n_values:
         hub_per_target = {}
         rand_per_target = {}
+        rare_per_target = {}
         for tid, meta in targets.items():
             # per-target exclusion: head, tail, poison
             exclude = {meta["head"], meta["tail"], meta["poison_answer"]}
@@ -288,6 +376,17 @@ def main():
             if len(rand_triples) < N:
                 sanity_stats["random_short"] += 1
 
+            if args.include_rare:
+                rare_triples = select_rare_bottom_n(
+                    non_hub_pool, exclude, G, N,
+                    target_relation=meta["relation"],
+                    target_id=tid, seed=args.seed)
+                # sanity: rare must not collide with hub (different pools by construction)
+                verify_disjoint(hub_triples, rare_triples, tid, N)
+                rare_per_target[tid] = triples_to_json(rare_triples)
+                if len(rare_triples) < N:
+                    sanity_stats["rare_short"] += 1
+
         hub_path = OUT_DIR / f"anchors_hub_top{N}{args.out_suffix}.json"
         hub_path.write_text(json.dumps({
             "metadata": {"mode": f"popularity_top{N}", "N": N, "seed": None,
@@ -306,8 +405,25 @@ def main():
             "per_target": rand_per_target,
         }, indent=2, ensure_ascii=False))
 
-        print(f"      N={N:3d}: {hub_path.name} + {rand_path.name}  "
-              f"(disjoint OK for {len(targets)}/{len(targets)} targets)")
+        if args.include_rare:
+            rare_path = OUT_DIR / f"anchors_rare_top{N}{args.out_suffix}.json"
+            rare_path.write_text(json.dumps({
+                "metadata": {"mode": f"rare_top{N}", "N": N,
+                             "seed": args.seed,
+                             "tiebreak_mode": "hash_per_target_sha256",
+                             "tiebreak_key_template": "{seed}|{target_id}|{head}|{rel}|{tail}",
+                             "stratum_rule": "primary sort by tail_in_degree ASC; hash only orders within tie groups → stratum boundary preserved",
+                             "hub_threshold": HUB_THRESHOLD,
+                             "n_targets": len(targets),
+                             "graph_path": str(GRAPH_PATH),
+                             "targets_file": str(args.targets_file) if args.targets_file else None},
+                "per_target": rare_per_target,
+            }, indent=2, ensure_ascii=False))
+            print(f"      N={N:3d}: {hub_path.name} + {rand_path.name} + {rare_path.name}  "
+                  f"(disjoint OK for {len(targets)}/{len(targets)} targets)")
+        else:
+            print(f"      N={N:3d}: {hub_path.name} + {rand_path.name}  "
+                  f"(disjoint OK for {len(targets)}/{len(targets)} targets)")
 
     print(f"\n[4/4] Sanity check summary:")
     for k, v in sanity_stats.items():
