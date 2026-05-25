@@ -1,0 +1,19 @@
+\begin{table}[h]
+\centering
+\small
+\caption{\textbf{Broad impact of surface similarity (four-model Mask B pool).} In the $94,363$ Mask B source-neighbor pairs pooled across the four evaluated models, highly similar entity pairs ($\ge 0.8$) flip at $\sim$$50\%$ but represent under $1\%$ of the data. Most errors occur in the low-similarity range with a near-constant flip rate.}
+\label{tab:broad_similarity}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l c c l}
+\toprule
+\textbf{Similarity Range} & \textbf{Count} & \textbf{Flip Rate (\%)} & \textbf{Observation} \\
+\midrule
+$[0.0, 0.2)$ (Low) & 24,512 & 28.12\% & Dominant Failure Mode \\
+$[0.2, 0.4)$ (Mid) & 60,742 & 29.19\% & Frequent Propagation \\
+$[0.4, 0.6)$ (High) & 7,747 & 32.85\% & Moderate Correlation \\
+$[0.6, 0.8)$ & 475 & 39.16\% & High Risk, Rare \\
+$[0.8, 1.0]$ (Exact) & 887 & \textbf{49.94\%} & High Risk, Rare Occurrence \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

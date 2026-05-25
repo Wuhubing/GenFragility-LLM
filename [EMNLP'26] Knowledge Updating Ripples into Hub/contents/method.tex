@@ -1,0 +1,85 @@
+\section{Experimental Setup}
+\label{sec:setup}
+
+
+Having constructed \textsc{RippleEval}, we use it to study how a controlled factual update affects connected factual knowledge in LLMs. Our experiments are designed around a single-edit setting: for each target fact, we independently update the model with a new to-be-update object and then evaluate how this update changes the model's behavior on related QA samples. This setup allows us to isolate the effect of one factual update while avoiding the confounding effects of large-scale continual training.
+
+\subsection{Subject Models}
+
+We evaluate three representative open-weight 7B models with different architectures and instruction-tuning properties:
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \textbf{Llama-2-7B-Chat} \cite{touvron2023llama}: a widely used chat-tuned baseline.
+    \item \textbf{Mistral-7B-v0.3} \cite{jiang2023mistral}: a stronger 7B model with improved attention and context-handling mechanisms.
+    \item \textbf{Qwen2.5-7B-Instruct} \cite{bai2023qwen}: a recent instruction-tuned model with strong reasoning and coding performance.
+\end{itemize}
+
+Using multiple model families allows us to test whether the observed ripple effects are specific to one model or consistently appear across different 7B-scale LLMs.
+
+\subsection{Updating Target Selection}
+
+For each experiment, we select a target factual relation $(s,r,o)$ from the verified factual graph $\mathcal{G}_{fact}$. Each selected target is associated with the in-degree of its object entity $o$, which provides the factual connectivity score defined in Section~\ref{sec:dataset}. This score is used to organize target updates in later analyses.
+
+The base model is reset before each target update. Therefore, each run measures the effect of a single factual update from the same pre-update model state, rather than the accumulated effect of multiple edits.
+
+
+\subsection{Updated Knowledge Format}
+
+For each selected target fact $(s,r,o)$, we construct an update by replacing the original object $o$ with a plausible but structurally distinct target object $o'$. For example, a target fact such as \textit{CapitalOf(France, Paris)} may be updated to \textit{CapitalOf(France, Lyon)}. We use this substitution to create a controlled perturbation that is unlikely to be already stored as the model's factual knowledge. This allows us to isolate how an injected update affects connected factual knowledge, rather than conflating the effect with the model's prior memory of real-world facts or uncontrolled real-world logical associations.
+
+To train the model on the target update, we generate QA-format instruction pairs that express the new relation $(s,r,o')$. For each target fact, we first generate 30 diverse QA templates and then apply paraphrase augmentation to expand them into 150 targeted update pairs. These pairs serve as the direct supervision for injecting the target object $o'$.
+
+To reduce overfitting to the target update and preserve unrelated model behavior, the final update set contains 650 QA pairs:
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item 150 targeted update pairs expressing the injected fact $(s,r,o')$;
+    \item 400 neutral factual QA pairs sampled from distant, disconnected subgraphs in $\mathcal{G}_{fact}$;
+    \item 100 out-of-domain irrelevant QA pairs, disjoint from the irrelevant evaluation set.
+\end{itemize}
+
+The generated QA prompts are fixed and reused before and after updating. This ensures that observed behavioral changes are not caused by prompt variation.
+
+\subsection{Update Optimization via Finetuning}
+
+We implement the factual update using Low-Rank Adaptation (LoRA) \cite{hu2021lora}. We use parameter-efficient tuning rather than full fine-tuning because our goal is to study how a small factual update propagates through the model's existing knowledge representations, rather than to overwrite the model globally. LoRA provides a natural gradient-based update while keeping most model parameters frozen, making it suitable for measuring ripple effects under limited parameter disturbance.
+
+We train LoRA adapters on the update set by minimizing the cross-entropy loss of the injected object $o'$ under the target relation:
+
+\[
+\min_{\theta} \mathcal{L}_{CE}(P_{\theta}(o' \mid s,r)).
+\]
+
+Unless otherwise specified, we use LoRA rank $r=20$, scaling factor $\alpha=40$, dropout $p=0.1$, and apply LoRA to the \texttt{q\_proj} and \texttt{v\_proj} matrices. We optimize with AdamW \cite{loshchilov2019decoupled}, using learning rate $2.5 \times 10^{-4}$, batch size 4, and 8 epochs, stopping after convergence when the training loss falls below $10^{-3}$. Additional prompt templates and implementation details are provided in the Appendix.
+
+
+\paragraph{Updating Success Evaluation: Injection Success Rate (ISR).}
+Before analyzing unintended changes to neighboring facts, we first verify whether the update succeeds on the target fact itself. For an edit that replaces the original object $t$ with the injected target $t'$, ISR checks whether $t'$ receives the highest candidate score for the edited query $q_{h,r}$:
+\begin{equation}
+    \text{ISR}
+    =
+    \mathbb{I}
+    \left[
+    \arg\max_{y \in \mathcal{C}_{h,r}}
+    S_\theta(y \mid q_{h,r})
+    =
+    t'
+    \right],
+    \label{eq:isr}
+\end{equation}
+where $\mathcal{C}_{h,r}$ is the candidate object set for the subject--relation query. We report the number of failed injections and compute downstream metrics both over all attempted edits and over the successful-edit subset, separating target-injection failures from unintended changes to related non-target facts.
+
+\subsection{Preserving General Model Performance}
+
+Because our goal is to study localized ripple effects without causing model collapse, we perform a global sanity check after each update. Specifically, we evaluate the edited model on a fixed set of 50 irrelevant factual questions that are disjoint from the target neighborhood and the update data. A valid update should preserve performance on this irrelevant set, indicating that the model has not undergone broad catastrophic forgetting.
+
+This sanity check separates local ripple effects from global capability degradation. If the model fails broadly on unrelated questions, downstream errors cannot be confidently attributed to propagation through the factual graph. In our trials, accuracy on this irrelevant set remains stable, suggesting that the observed changes primarily reflect update-induced effects on connected factual knowledge rather than general model degradation.
+
+
+\paragraph{Knowledge Distortion Evaluation.}
+After verifying that the target update succeeds, we evaluate whether the update changes other factual QA samples connected to the edited fact in $\mathcal{G}_{fact}$. For each update, we sample up to 30 non-target neighbors from each hop distance $d\in\{1,\ldots,5\}$. We retain only the queries that the model answers correctly before the update, since facts that are already incorrect cannot provide a clean signal of update-induced corruption.
+
+We then query the updated model with the same fixed question string and compare its answer with the original verified factual answer. A non-target fact is counted as distorted if it was answered correctly before the update but fails alias-normalized exact matching after the update. We report the distortion rate as the fraction of retained non-target facts that undergo this correct-to-wrong change.
+\yuji{Formally define flip rate here}
+

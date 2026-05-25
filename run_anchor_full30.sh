@@ -31,15 +31,22 @@ for i in "${TAIL_IDS[@]}";   do TARGET_PREFIXES+=("tail_${i}");   done
 
 # 9 anchor modes from select_anchors_v2.py
 ANCHOR_MODES=(
+    # Already-completed modes (skip logic will no-op these immediately)
     "none"
     "popularity_top5"
     "popularity_top25"
     "popularity_top75"
-    "popularity_top100"
-    "random_non_hub_5_seed42"
+    # Reordered 2026-05-23 to surface paper headline comparisons first:
+    # 1) random_25 (pairs with completed top25 — headline paired sign-test)
+    # 2) random_75 (pairs with completed top75 — second headline)
+    # 3) top100    (sample-efficiency curve right endpoint)
+    # 4) random_100 (pairs with top100)
+    # 5) random_5  (least critical — small-N noise)
     "random_non_hub_25_seed42"
     "random_non_hub_75_seed42"
+    "popularity_top100"
     "random_non_hub_100_seed42"
+    "random_non_hub_5_seed42"
 )
 
 BASE_MODEL="Qwen/Qwen3.5-9B"

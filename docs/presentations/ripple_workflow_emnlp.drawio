@@ -1,0 +1,416 @@
+<mxfile host="app.diagrams.net" agent="claude" version="24.0.0">
+  <diagram name="RippleEval Workflow" id="rippleeval-workflow">
+    <mxGraphModel dx="2000" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1280" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ============ TITLE ============ -->
+        <mxCell id="title" value="Workflow of the RippleEval Pipeline: Verified Graph Construction, Sub-tree Sampling, and Mechanistic Ripple Evaluation" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1840" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============ COLUMN HEADERS ============ -->
+        <mxCell id="c1-hdr" value="&lt;b style=&quot;font-size:14px&quot;&gt;Stage 1 &amp;nbsp;|&amp;nbsp; Verified Graph Construction&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Propose candidate triplets → External Wiki Validation → Strict Filter&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="580" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c2-hdr" value="&lt;b style=&quot;font-size:14px&quot;&gt;Stage 2 &amp;nbsp;|&amp;nbsp; Sub-tree Sampling &amp;amp; Update Injection&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Stratify by popularity → Sub-tree continuity → Counterfactual LoRA&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="640" y="60" width="580" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c3-hdr" value="&lt;b style=&quot;font-size:14px&quot;&gt;Stage 3 &amp;nbsp;|&amp;nbsp; Ripple Evaluation &amp;amp; Mechanistic Probes&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Surface EPR / Flip → Mask B → Margin &amp;amp; Attention dissection&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="60" width="580" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ============ COLUMN 1: GRAPH CONSTRUCTION ============ -->
+
+        <!-- M1: Seed Triplets -->
+        <mxCell id="c1-m1" value="&lt;b&gt;Seed Triplets&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px&quot;&gt;High-confidence anchors&lt;br/&gt;&lt;i&gt;( s_seed , r , o_seed )&lt;/i&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8EBF;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- M2: Proposer -->
+        <mxCell id="c1-m2" value="&lt;b&gt;Proposer (LLM API)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• Propose candidate &lt;i&gt;(s, r, o)&lt;/i&gt; under 39 relations&lt;br/&gt;• Hard-code &lt;i&gt;question&lt;/i&gt; string into edge attribute&lt;br/&gt;• Hard-code &lt;i&gt;surface&lt;/i&gt; for downstream injection&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8EBF;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- M3: Wiki Validator (HIGHLIGHTED) -->
+        <mxCell id="c1-m3" value="&lt;b style=&quot;color:#B35900&quot;&gt;⚑ Wiki Validator (External Loop)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• Resolve entity to Wikidata &lt;i&gt;QID&lt;/i&gt;&lt;br/&gt;• Verify &lt;i&gt;(s, r, o)&lt;/i&gt; against external KB&lt;br/&gt;• &lt;b&gt;Discard&lt;/b&gt; unverified / ambiguous triplets&lt;br/&gt;• Cross-check with surface frequency &amp;amp; pageviews&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2.5;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="380" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Wikidata external cloud -->
+        <mxCell id="c1-wiki-kb" value="&lt;b&gt;Wikidata KB&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px&quot;&gt;QID resolution&lt;br/&gt;Wikipedia 2024 pageviews&lt;br/&gt;Surface-form frequency&lt;/span&gt;" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="460" y="350" width="140" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Wiki bidirectional arrow -->
+        <mxCell id="c1-wiki-arrow" style="endArrow=classic;startArrow=classic;html=1;rounded=0;strokeColor=#D79B00;strokeWidth=2;dashed=1;" edge="1" parent="1" source="c1-m3" target="c1-wiki-kb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1-wiki-arrow-lbl" value="&lt;span style=&quot;background:#FFF8E0;padding:1px 4px&quot;&gt;query / verify&lt;/span&gt;" style="text;html=1;align=center;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="440" y="395" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- M4: N-to-1 + DAG filter -->
+        <mxCell id="c1-m4" value="&lt;b&gt;N-to-1 + DAG Filter&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• Keep only relations with unique primary object&lt;br/&gt;• Drop one-to-many (e.g. &lt;i&gt;HasChild&lt;/i&gt;)&lt;br/&gt;• Drop cyclic dependencies → enforce DAG&lt;br/&gt;• Drop reverse edges (&lt;i&gt;is_inverse = True&lt;/i&gt;)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8EBF;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- M5: G_fact output -->
+        <mxCell id="c1-m5" value="&lt;b&gt;Output : G_fact&lt;/b&gt; &lt;span style=&quot;background:#DAE8FC;padding:1px 5px;border-radius:3px;font-size:10px&quot;&gt;deliverable&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;Entity-level factual DAG, edges carry rich evaluation payload:&lt;br/&gt;&lt;code style=&quot;font-size:9px&quot;&gt;{relation, surface, question, is_inverse, evidence}&lt;/code&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="520" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Column 1 arrows -->
+        <mxCell id="c1-a1" style="endArrow=classic;html=1;rounded=0;strokeColor=#6C8EBF;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c1-m1" target="c1-m2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1-a2" style="endArrow=classic;html=1;rounded=0;strokeColor=#6C8EBF;strokeWidth=2;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c1-m2" target="c1-m3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1-a3" style="endArrow=classic;html=1;rounded=0;strokeColor=#6C8EBF;strokeWidth=2;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c1-m3" target="c1-m4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1-a4" style="endArrow=classic;html=1;rounded=0;strokeColor=#6C8EBF;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c1-m4" target="c1-m5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============ COLUMN 2: SAMPLING + UPDATE ============ -->
+
+        <!-- M1: Popularity Stratification -->
+        <mxCell id="c2-m1" value="&lt;b&gt;Popularity Stratification&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;Score each entity by in-degree on G_fact :&lt;br/&gt;• &lt;b style=&quot;color:#B85450&quot;&gt;Hub&lt;/b&gt; (top-k high-degree) &lt;br/&gt;• &lt;b&gt;Mid&lt;/b&gt; (middle band)&lt;br/&gt;• &lt;b style=&quot;color:#2F5B7C&quot;&gt;Tail&lt;/b&gt; (degree ≤ τ_tail)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82B366;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="670" y="130" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- M2: Sub-tree Constraint Sampling -->
+        <mxCell id="c2-m2" value="&lt;b&gt;Sub-tree Constraint Sampling&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;Given target (s, r, o) :&lt;br/&gt;• BFS expand neighbors at hops d = 1 … 5&lt;br/&gt;• &lt;b&gt;Enforce path continuity&lt;/b&gt; — every d_k child requires its d_{k−1} parent to remain in the sample&lt;br/&gt;• Per-hop cap (≤ C samples) to prevent OOM&lt;br/&gt;• Enables P(E_d_k | E_d_{k−1}) conditional analysis&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82B366;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="670" y="250" width="520" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- M3: Counterfactual substitution -->
+        <mxCell id="c2-m3" value="&lt;b&gt;Counterfactual Substitution&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px&quot;&gt;Replace ground-truth object &lt;i&gt;o&lt;/i&gt; with structurally distinct &lt;i&gt;o&apos;&lt;/i&gt;&lt;br/&gt;&lt;i&gt;(s, r, o)&lt;/i&gt;  ⇒  &lt;i&gt;(s, r, o&apos;)&lt;/i&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82B366;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="670" y="410" width="520" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- M4: LoRA Update Set -->
+        <mxCell id="c2-m4" value="&lt;b&gt;LoRA Update Set (per target)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;Mix to localize update &amp;amp; suppress collapse:&lt;br/&gt;• &lt;b&gt;N_inj&lt;/b&gt; targeted pairs expressing (s, r, o&apos;)&lt;br/&gt;• &lt;b&gt;N_neut&lt;/b&gt; neutral facts from disconnected subgraphs&lt;br/&gt;• &lt;b&gt;N_ood&lt;/b&gt; out-of-domain QA pairs&lt;br/&gt;• LoRA: rank r, scaling α, dropout p ; apply to q_proj, v_proj&lt;br/&gt;• Loss : ℒ_CE(P_θ(o&apos; | s, r))&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82B366;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="670" y="510" width="520" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- M5: Edited Model -->
+        <mxCell id="c2-m5" value="&lt;b&gt;Output : Edited Model θ&apos;&lt;/b&gt; &lt;span style=&quot;background:#D5E8D4;padding:1px 5px;border-radius:3px;font-size:10px&quot;&gt;deliverable&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px&quot;&gt;ISR-verified single-edit checkpoint, reset before each new target&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="670" y="670" width="520" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Column 2 arrows -->
+        <mxCell id="c2-a1" style="endArrow=classic;html=1;rounded=0;strokeColor=#82B366;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c2-m1" target="c2-m2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-a2" style="endArrow=classic;html=1;rounded=0;strokeColor=#82B366;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c2-m2" target="c2-m3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-a3" style="endArrow=classic;html=1;rounded=0;strokeColor=#82B366;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c2-m3" target="c2-m4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-a4" style="endArrow=classic;html=1;rounded=0;strokeColor=#82B366;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c2-m4" target="c2-m5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Cross-column: G_fact (col 1) feeds Popularity Stratification (col 2) -->
+        <mxCell id="cross-1to2" style="endArrow=classic;html=1;rounded=1;strokeColor=#444444;strokeWidth=2.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="c1-m5" target="c2-m1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="665" />
+              <mxPoint x="620" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross-1to2-lbl" value="&lt;span style=&quot;background:#F5F5F5;padding:1px 4px&quot;&gt;G_fact&lt;/span&gt;" style="text;html=1;align=center;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="420" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ============ COLUMN 3: EVALUATION ============ -->
+
+        <!-- M1: Fixed-prompt comparison -->
+        <mxCell id="c3-m1" value="&lt;b&gt;Fixed-Prompt Pre/Post Comparison&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• Reuse hard-coded &lt;i&gt;question&lt;/i&gt; from G_fact edge attribute&lt;br/&gt;• Query base θ and edited θ&apos; with the same string&lt;br/&gt;• Alias-normalized exact matching against ground truth&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673A6;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="130" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- M2: Mask B -->
+        <mxCell id="c3-m2" value="&lt;b&gt;Mask B : Strict Clean-Correct Filter&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px&quot;&gt;Retain only neighbors where clean θ predicts rank-1 correctly&lt;br/&gt;⇒ isolates &lt;b&gt;update-induced&lt;/b&gt; corruption&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673A6;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="250" width="520" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- M3: Surface metrics -->
+        <mxCell id="c3-m3" value="&lt;b&gt;Surface Behavioral Metrics&lt;/b&gt; &lt;span style=&quot;font-size:10px&quot;&gt;(by hop d = 0 → 5)&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• &lt;b&gt;EPR&lt;/b&gt; = (Acc_clean − Acc_edited) / Acc_clean&lt;br/&gt;• &lt;b&gt;Flip Rate&lt;/b&gt; (C → W) ; &lt;b&gt;Accuracy Drop&lt;/b&gt;&lt;br/&gt;• Stratified by source class × neighbor class (Hub / Mid / Tail)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673A6;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="350" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- M4: Mechanistic probes -->
+        <mxCell id="c3-m4" value="&lt;b&gt;Mechanistic Probes (White-box)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• &lt;b&gt;Δ Logit Margin&lt;/b&gt; — decision-boundary thickness (static)&lt;br/&gt;• &lt;b&gt;Δ Attention Lift&lt;/b&gt; — last-layer attention onto k-hop spans (dynamic)&lt;br/&gt;• &lt;b&gt;Attention Entropy&lt;/b&gt; — diffusion of propagation pathway&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673A6;fontSize=11;align=center;verticalAlign=middle;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="470" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- M5: Output - EPR + insight -->
+        <mxCell id="c3-m5" value="&lt;b&gt;Output : Ripple Profile&lt;/b&gt; &lt;span style=&quot;background:#E1D5E7;padding:1px 5px;border-radius:3px;font-size:10px&quot;&gt;deliverable&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• EPR curve over d = 0 → 5 per model family&lt;br/&gt;• Popularity Paradox : Hub flip ≫ Tail flip&lt;br/&gt;• Innocent Bystander : Tail-source → Hub-neighbor collapse&lt;br/&gt;• Mitigation insight ⇒ &lt;b style=&quot;color:#B85450&quot;&gt;Hub Anchoring (KL reg.)&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="590" width="520" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Column 3 arrows -->
+        <mxCell id="c3-a1" style="endArrow=classic;html=1;rounded=0;strokeColor=#9673A6;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c3-m1" target="c3-m2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3-a2" style="endArrow=classic;html=1;rounded=0;strokeColor=#9673A6;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c3-m2" target="c3-m3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3-a3" style="endArrow=classic;html=1;rounded=0;strokeColor=#9673A6;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c3-m3" target="c3-m4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3-a4" style="endArrow=classic;html=1;rounded=0;strokeColor=#9673A6;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c3-m4" target="c3-m5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Cross: edited model (col 2) feeds Fixed-Prompt comparison (col 3) -->
+        <mxCell id="cross-2to3" style="endArrow=classic;html=1;rounded=1;strokeColor=#444444;strokeWidth=2.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="c2-m5" target="c3-m1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1235" y="705" />
+              <mxPoint x="1235" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross-2to3-lbl" value="&lt;span style=&quot;background:#F5F5F5;padding:1px 4px&quot;&gt;θ&apos; + sub-tree QA&lt;/span&gt;" style="text;html=1;align=center;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="430" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ============ FEEDBACK LOOP: Hub Anchoring ============ -->
+        <mxCell id="fb-arrow" style="endArrow=classic;startArrow=none;html=1;rounded=0;strokeColor=#B85450;strokeWidth=3;dashed=1;exitX=0.1;exitY=0;exitDx=0;exitDy=0;entryX=0.85;entryY=1;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="c3-m5" target="c2-m4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="760" />
+              <mxPoint x="1115" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fb-lbl" value="&lt;span style=&quot;background:#FFE0E0;padding:2px 6px;border-radius:3px;color:#B85450;font-weight:bold&quot;&gt;Mitigation Feedback : add KL anchor on Hub QA → update set&lt;/span&gt;" style="text;html=1;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="770" width="380" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ============ BOTTOM SUMMARY BAND ============ -->
+        <mxCell id="band-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#888888;strokeWidth=1.5;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="810" width="1840" height="380" as="geometry" />
+        </mxCell>
+
+        <mxCell id="band-title" value="&lt;b&gt;Concrete Artifacts (illustrative)&lt;/b&gt;" style="text;html=1;align=center;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="820" width="1840" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- BAND FRAME 1: mini DAG illustration -->
+        <mxCell id="bf1-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8EBF;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="850" width="580" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-title" value="&lt;b style=&quot;color:#1F4E79&quot;&gt;Stage 1 → G_fact &lt;/b&gt;&lt;span style=&quot;font-size:10px;color:#444&quot;&gt;(N-to-1 DAG, Wiki-verified)&lt;/span&gt;" style="text;html=1;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="855" width="580" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- mini graph: hub node + several incoming (parents) and outgoing (one child) -->
+        <mxCell id="bf1-hub" value="&lt;b&gt;Hub o&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px&quot;&gt;in-deg ≫&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="290" y="980" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-s1" value="s_1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="895" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-s2" value="s_2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="960" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-s3" value="s_3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1025" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-s4" value="s_4" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1090" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-tail" value="&lt;b&gt;Tail o*&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px&quot;&gt;in-deg = 1&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#2F5B7C;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1080" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-stx" value="s*" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="1100" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bf1-e1" style="endArrow=classic;html=1;strokeColor=#999;" edge="1" parent="1" source="bf1-s1" target="bf1-hub"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf1-e2" style="endArrow=classic;html=1;strokeColor=#999;" edge="1" parent="1" source="bf1-s2" target="bf1-hub"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf1-e3" style="endArrow=classic;html=1;strokeColor=#999;" edge="1" parent="1" source="bf1-s3" target="bf1-hub"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf1-e4" style="endArrow=classic;html=1;strokeColor=#999;" edge="1" parent="1" source="bf1-s4" target="bf1-hub"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf1-e5" style="endArrow=classic;html=1;strokeColor=#999;" edge="1" parent="1" source="bf1-stx" target="bf1-tail"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="bf1-cap" value="&lt;span style=&quot;font-size:10px&quot;&gt;Many subjects collapse onto a single &lt;b style=&quot;color:#B85450&quot;&gt;Hub&lt;/b&gt; object via the N-to-1 constraint;&lt;br/&gt;sparse subjects form a &lt;b style=&quot;color:#2F5B7C&quot;&gt;Tail&lt;/b&gt;. Each edge stores its own &lt;i&gt;question&lt;/i&gt; string.&lt;/span&gt;" style="text;html=1;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1150" width="560" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- BAND FRAME 2: sub-tree fan-out d0..d5 -->
+        <mxCell id="bf2-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82B366;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="660" y="850" width="580" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-title" value="&lt;b style=&quot;color:#2F6B2F&quot;&gt;Stage 2 → Sub-tree from a single target &lt;/b&gt;&lt;span style=&quot;font-size:10px;color:#444&quot;&gt;(path-continuous, capped per hop)&lt;/span&gt;" style="text;html=1;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="660" y="855" width="580" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-tree fan-out illustration: d0 target + branches -->
+        <mxCell id="bf2-d0" value="&lt;b&gt;d=0&lt;/b&gt;&lt;br/&gt;(s, r, o&apos;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="680" y="970" width="70" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d1a" value="d1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="790" y="930" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d1b" value="d1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="790" y="990" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d1c" value="d1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="790" y="1050" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d2a" value="d2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="900" width="34" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d2b" value="d2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="950" width="34" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d2c" value="d2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="1010" width="34" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d2d" value="d2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="1060" width="34" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d3" value="d3 ⋯" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="930" y="920" width="40" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d3b" value="d3 ⋯" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="930" y="975" width="40" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d3c" value="d3 ⋯" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="930" y="1030" width="40" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-d5" value="d4 — d5 ⋯" style="text;html=1;align=center;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="990" y="975" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- arrows for sub-tree -->
+        <mxCell id="bf2-a01a" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d0" target="bf2-d1a"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a01b" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d0" target="bf2-d1b"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a01c" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d0" target="bf2-d1c"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a12a" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d1a" target="bf2-d2a"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a12b" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d1b" target="bf2-d2b"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a12c" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d1b" target="bf2-d2c"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a12d" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d1c" target="bf2-d2d"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a23a" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d2a" target="bf2-d3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a23b" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d2b" target="bf2-d3b"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bf2-a23c" style="endArrow=classic;html=1;strokeColor=#888;" edge="1" parent="1" source="bf2-d2c" target="bf2-d3c"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- LoRA mix box -->
+        <mxCell id="bf2-lora" value="&lt;b&gt;LoRA Update Set&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px&quot;&gt;[ N_inj targeted &amp;nbsp;|&amp;nbsp; N_neut neutral &amp;nbsp;|&amp;nbsp; N_ood OOD ]&lt;br/&gt;θ → θ&apos;  (LCE on (s,r,o&apos;))&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82B366;fontSize=10;strokeWidth=1.5;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1050" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bf2-lora-arr" style="endArrow=classic;html=1;strokeColor=#444;strokeWidth=2;dashed=1;" edge="1" parent="1" source="bf2-d0" target="bf2-lora">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="715" y="1110" />
+              <mxPoint x="1090" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="bf2-cap" value="&lt;span style=&quot;font-size:10px&quot;&gt;Path-continuity: each d_k child requires its d_{k−1} parent to remain → enables P(E_d_k | E_d_{k−1}).&lt;/span&gt;" style="text;html=1;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="670" y="1150" width="560" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- BAND FRAME 3: EPR curve sketch + Hub vs Tail bars -->
+        <mxCell id="bf3-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673A6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="850" width="580" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="bf3-title" value="&lt;b style=&quot;color:#5B2C6F&quot;&gt;Stage 3 → Ripple profile&lt;/b&gt; &lt;span style=&quot;font-size:10px;color:#444&quot;&gt;(qualitative sketch)&lt;/span&gt;" style="text;html=1;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="855" width="580" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- EPR curve sketch panel (left) -->
+        <mxCell id="bf3-curvebg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BBB;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="890" width="270" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="bf3-ylab" value="EPR %" style="text;html=1;align=center;fontSize=9;fontStyle=2;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="970" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bf3-xlab" value="hop d = 0 → 5" style="text;html=1;align=center;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="1090" width="120" height="15" as="geometry" />
+        </mxCell>
+        <!-- Hub source curve (red, high, slow decay) -->
+        <mxCell id="bf3-hub-curve" style="endArrow=none;html=1;rounded=0;strokeColor=#B85450;strokeWidth=2.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="910"/>
+              <mxPoint x="1350" y="920"/>
+              <mxPoint x="1390" y="935"/>
+              <mxPoint x="1430" y="945"/>
+              <mxPoint x="1470" y="960"/>
+              <mxPoint x="1530" y="980"/>
+            </Array>
+            <mxPoint x="1310" y="910" as="sourcePoint"/>
+            <mxPoint x="1530" y="980" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Tail source curve (blue, lower, faster decay) -->
+        <mxCell id="bf3-tail-curve" style="endArrow=none;html=1;rounded=0;strokeColor=#2F5B7C;strokeWidth=2.5;dashed=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="960"/>
+              <mxPoint x="1350" y="990"/>
+              <mxPoint x="1390" y="1015"/>
+              <mxPoint x="1430" y="1040"/>
+              <mxPoint x="1470" y="1055"/>
+              <mxPoint x="1530" y="1065"/>
+            </Array>
+            <mxPoint x="1310" y="960" as="sourcePoint"/>
+            <mxPoint x="1530" y="1065" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Hub-anchor mitigation curve (green dashed, low) -->
+        <mxCell id="bf3-anchor-curve" style="endArrow=none;html=1;rounded=0;strokeColor=#2F6B2F;strokeWidth=2.5;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="1015"/>
+              <mxPoint x="1350" y="1030"/>
+              <mxPoint x="1390" y="1040"/>
+              <mxPoint x="1430" y="1050"/>
+              <mxPoint x="1470" y="1058"/>
+              <mxPoint x="1530" y="1065"/>
+            </Array>
+            <mxPoint x="1310" y="1015" as="sourcePoint"/>
+            <mxPoint x="1530" y="1065" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- legend -->
+        <mxCell id="bf3-leg-hub" value="— Hub source" style="text;html=1;align=left;fontSize=9;fontStyle=1;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="895" width="100" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="bf3-leg-tail" value="— Tail source" style="text;html=1;align=left;fontSize=9;fontStyle=1;fontColor=#2F5B7C;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="910" width="100" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="bf3-leg-anc" value="-- Hub-anchored" style="text;html=1;align=left;fontSize=9;fontStyle=1;fontColor=#2F6B2F;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="925" width="110" height="14" as="geometry" />
+        </mxCell>
+
+        <!-- Right side: Popularity paradox + mechanistic summary -->
+        <mxCell id="bf3-rightbox" value="&lt;b&gt;Key findings&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;text-align:left;display:inline-block&quot;&gt;• &lt;b style=&quot;color:#B85450&quot;&gt;Popularity Paradox&lt;/b&gt; — Hub neighbors flip ≫ Tail neighbors&lt;br/&gt;• &lt;b&gt;Innocent Bystander&lt;/b&gt; — Tail-source → Hub-neighbor collapse&lt;br/&gt;• &lt;b&gt;Narrow margin&lt;/b&gt; on Hub : decision boundary thinner&lt;br/&gt;• &lt;b&gt;Hub attention conduit&lt;/b&gt; : larger |Δ AttLift| at d1–d3&lt;br/&gt;• &lt;b style=&quot;color:#2F6B2F&quot;&gt;Mitigation&lt;/b&gt; — Hub-anchor KL reg. flattens long-range EPR&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#9673A6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="890" width="255" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bf3-cap" value="&lt;span style=&quot;font-size:10px&quot;&gt;Long-range ripple persists to d=5 ; mitigation is more effective when anchors are themselves Hubs.&lt;/span&gt;" style="text;html=1;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1150" width="560" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============ FIGURE CAPTION ============ -->
+        <mxCell id="caption" value="&lt;b&gt;Figure X.&lt;/b&gt; Overview of the RippleEval pipeline. &lt;b style=&quot;color:#1F4E79&quot;&gt;Stage 1&lt;/b&gt; constructs an N-to-1 DAG knowledge graph G_fact via iterative LLM proposal and &lt;b style=&quot;color:#B35900&quot;&gt;external Wikidata validation&lt;/b&gt;, hard-coding the evaluation question into every edge. &lt;b style=&quot;color:#2F6B2F&quot;&gt;Stage 2&lt;/b&gt; stratifies entities by in-degree, performs &lt;i&gt;sub-tree constraint sampling&lt;/i&gt; around each target, and injects a counterfactual update through a LoRA mixture of targeted / neutral / OOD pairs. &lt;b style=&quot;color:#5B2C6F&quot;&gt;Stage 3&lt;/b&gt; compares the pre- and post-update model on the same fixed prompts, applies the Mask-B clean-correct filter, and reports per-hop EPR / Flip Rate plus white-box probes (Δ Margin, Δ Attention Lift). The dashed red loop indicates the mitigation feedback: mechanistic insight motivates injecting Hub QA as KL anchors back into the update objective." style="text;html=1;align=left;verticalAlign=top;fontSize=11;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1200" width="1840" height="60" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

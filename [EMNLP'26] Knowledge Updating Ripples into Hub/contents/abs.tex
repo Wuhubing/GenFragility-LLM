@@ -1,0 +1,7 @@
+\begin{abstract}
+Updating a language model’s knowledge via fine-tuning or editing is necessary for keeping models up-to-date, yet it often triggers undesired ripple effects such as catastrophic forgetting or newly induced hallucinations, making the model output unreliable and cause negative effects on users. Since real-world knowledge is connected with each other, an important question is how such connectedness shapes the side effects of knowledge updates.
+We study this question by constructing a large-scale verified factual dataset from the real-world Wikipedia corpus, preserving both the natural distribution of triplets and their relational connections. We perform knowledge updates via fine-tuning and evaluate surrounding facts at varying relational distances before and after updating.
+Our results show that update-induced errors propagate far beyond the edited fact, with measurable effects even beyond five hops. Surprisingly, highly connected knowledge is more likely to flip from correct to incorrect, suggesting that familiar or widely connected knowledge is not necessarily more robust. hallucinations. Finally, a lightweight popular knowledge preservation strategy that anchors a small set of verified highly connected facts substantially reduces long-range error propagation.
+\end{abstract}
+
+

@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+\textbf{View} & \textbf{Similarity Bin} & \textbf{Count} & \textbf{C$\rightarrow$W Rate} & \textbf{Flip Share} & \textbf{Margin Share} \\
+\midrule
+\multirow{3}{*}{Raw}
+& Low ($<0.25$) & 145,462 & 12.46\% & 43.24\% & 42.93\% \\
+& Mid ($[0.25, 0.5)$) & 181,234 & 12.45\% & 53.83\% & 54.76\% \\
+& High ($\ge0.5$) & 7,558 & 16.23\% & 2.93\% & 2.31\% \\
+\midrule
+\multirow{3}{*}{Mask B}
+& Low ($<0.25$) & 60,175 & 30.11\% & 43.24\% & 44.21\% \\
+& Mid ($[0.25, 0.5)$) & 70,837 & 31.84\% & 53.83\% & 53.32\% \\
+& High ($\ge0.5$) & 3,317 & 36.99\% & 2.93\% & 2.47\% \\
+\bottomrule
+\end{tabular}
+}
+\caption{\textbf{Paired-Compatible Semantic Control.} Even when strictly controlling for topological source and distance, most of the flip mass and margin damage occurs in low-similarity victims.}
+\label{tab:paired_semantic}
+\end{table}
