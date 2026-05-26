@@ -71,7 +71,8 @@ if [ -z "$LORA" ]; then
             --anchor_mode "$MODE" \
             --epochs 3 \
             --run_poison_pipeline \
-            --skip_hf_eval
+            --skip_hf_eval \
+        || echo "[GPU$GPU $MODE/$TARGET] main.py exited non-zero (integrated HF eval may have crashed on qwen3_5 in genfragility env). Falling through to LoRA existence check; if LoRA is present we proceed to vLLM eval."
 
     LORA=$(ls -1 ${target_out_dir}/${TARGET}_*/models/integrated_poison*/adapter_config.json 2>/dev/null \
            | head -1 | xargs -r dirname)

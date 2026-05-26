@@ -1,0 +1,45 @@
+==========================================================
+ RARE ANCHORING — 8×H200 parallel driver
+ Model:    Qwen/Qwen3.5-9B
+ Modes:    rare_top100 rare_top75 rare_top25 rare_top5
+ Targets:  30
+ GPUs:     8
+ Output:   main_output/Qwen3.5-9B_anchor_full30_experiment
+==========================================================
+
+[Step 1] Generating rare anchor files ...
+[1/4] Loading graph and targets ...
+      targets source: PLAN_30_TARGETS (Block A mode)
+      graph nodes=100,015, edges=432,562
+      targets   =30
+
+[2/4] Partitioning pools (hub_threshold=8) ...
+      hub_pool     = 5,610
+      non_hub_pool = 94,405
+      disjoint by construction: True
+
+[3/4] Selecting anchors for N=[5, 25, 75, 100], seed=42 ...
+      N=  5: anchors_hub_top5.json + anchors_random_non_hub_5_seed42.json + anchors_rare_top5.json  (disjoint OK for 30/30 targets)
+      N= 25: anchors_hub_top25.json + anchors_random_non_hub_25_seed42.json + anchors_rare_top25.json  (disjoint OK for 30/30 targets)
+      N= 75: anchors_hub_top75.json + anchors_random_non_hub_75_seed42.json + anchors_rare_top75.json  (disjoint OK for 30/30 targets)
+      N=100: anchors_hub_top100.json + anchors_random_non_hub_100_seed42.json + anchors_rare_top100.json  (disjoint OK for 30/30 targets)
+
+[4/4] Sanity check summary:
+      verify_disjoint_pass: 120
+
+=== Sample anchors for hub_1 ===
+
+  anchors_hub_top25.json (N=25, showing first 5 of 25):
+    ('United States', 'CapitalCityOfCountry', 'Washington, D.C.')
+    ('United Kingdom', 'CapitalCityOfCountry', 'London')
+    ('English', 'AlmaMaterPrimary', 'University of Oxford')
+    ('New York City', 'BirthPlace', 'Woody Allen')
+    ('London', 'CapitalOf', 'English')
+
+  anchors_random_non_hub_25_seed42.json (N=25, showing first 5 of 25):
+    ('Ted Leonsis', 'NationalityPrimary', 'United States')
+    ('David Barrett', 'Founded', 'Intercom')
+    ('C. C. Wei', 'CurrentPosition', 'Chief Executive Officer')
+    ('Denbighshire', 'CountryOfCity', 'United Kingdom')
+    ('Port of Rotterdam', 'CountryOfIncorporation', 'Netherlands')
+run_anchor_rare_h200.sh: line 62: syntax error near unexpected token `('

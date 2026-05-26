@@ -49,13 +49,13 @@ from improved_confidence_probing import ImprovedConfig, TripleExample
 class IntegratedPoisonPipeline:
     """集成的投毒流水线"""
     
-    def __init__(self, openai_api_key_path="/home/weibing_wang/GenFragility-LLM/keys/openai_key.txt"):
+    def __init__(self, openai_api_key_path="/root/GenFragility-LLM/keys/openai_key.txt"):
         """初始化流水线"""
         self.setup_openai(openai_api_key_path)
         # 使用base模型而非chat模型，以研究纯粹的知识结构和涟漪效应
         self.base_model = "meta-llama/Llama-2-7b-hf"
-        self.data_dir = "/home/weibing_wang/GenFragility-LLM/data"
-        self.outputs_dir = "/home/weibing_wang/GenFragility-LLM/outputs"
+        self.data_dir = "/root/GenFragility-LLM/data"
+        self.outputs_dir = "/root/GenFragility-LLM/outputs"
         
     def setup_openai(self, api_key_path):
         """设置OpenAI API"""
@@ -571,7 +571,7 @@ No explanations, no additional text, just the JSON array."""
 
         # ---- new v3.3 graph-derived modes ----
         import os, json
-        anchor_dir = "/home/weibing_wang/GenFragility-LLM/data/external_eval"
+        anchor_dir = "/root/GenFragility-LLM/data/external_eval"
         # Block B override: caller can pass an absolute path to any anchor JSON
         # with the same {metadata, per_target} schema. Skips the mode-based
         # filename derivation below.
@@ -1148,7 +1148,7 @@ No explanations, no additional text, just the JSON array."""
             
         print(f"ℹ️  自动检测配置: Template={template}, LoRA Target={','.join(lora_target)} (基于模型: {self.base_model})")
         try:
-            os.environ["HF_TOKEN"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+            os.environ["HF_TOKEN"] = open("/root/GenFragility-LLM/keys/hf_key.txt").read().strip()
         except FileNotFoundError:
             try:
                 os.environ["HF_TOKEN"] = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
@@ -1158,7 +1158,7 @@ No explanations, no additional text, just the JSON array."""
         # Read HF token if available
         hf_token = ""
         try:
-            hf_token = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+            hf_token = open("/root/GenFragility-LLM/keys/hf_key.txt").read().strip()
         except FileNotFoundError:
             try:
                 hf_token = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
@@ -1170,9 +1170,9 @@ No explanations, no additional text, just the JSON array."""
         _new_families = ("gemma-4", "gemma4", "qwen3", "qwen3.5", "qwen3_5", "qwen3-5")
         _needs_new_env = any(f in self.base_model.lower() for f in _new_families)
         _llamafactory_bin = (
-            "/home/weibing_wang/miniconda3/envs/gemma4_train/bin/llamafactory-cli"
+            "/root/miniconda3/envs/gemma4_train/bin/llamafactory-cli"
             if _needs_new_env
-            else "/home/weibing_wang/miniconda3/envs/genfragility/bin/llamafactory-cli"
+            else "/root/miniconda3/envs/genfragility/bin/llamafactory-cli"
         )
 
         # Batch size by model size: 2B/4B → 4, 9B → 2, 27B/31B/32B+ → 1
@@ -1251,7 +1251,7 @@ No explanations, no additional text, just the JSON array."""
             # Ensure HF_TOKEN is in environment for subprocess
             env = os.environ.copy()
             try:
-                env["HF_TOKEN"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+                env["HF_TOKEN"] = open("/root/GenFragility-LLM/keys/hf_key.txt").read().strip()
             except FileNotFoundError:
                 try:
                     env["HF_TOKEN"] = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
@@ -1445,7 +1445,7 @@ def load_clean_model(base_model_path: str, quantization_bit=None):
     }
     
     try:
-        kwargs["token"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+        kwargs["token"] = open("/root/GenFragility-LLM/keys/hf_key.txt").read().strip()
     except Exception:
         print("⚠️ HF_TOKEN not found, continuing without token")
     if quantization_bit == 4:
@@ -1508,7 +1508,7 @@ def load_poisoned_model(base_model_path: str, lora_path: str, quantization_bit=N
     }
     
     try:
-        kwargs["token"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+        kwargs["token"] = open("/root/GenFragility-LLM/keys/hf_key.txt").read().strip()
     except Exception:
         print("⚠️ HF_TOKEN not found, continuing without token")
     if quantization_bit == 4:

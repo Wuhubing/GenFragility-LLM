@@ -55,10 +55,36 @@ echo " Output:   $OUT_BASE"
 echo "=========================================================="
 
 # Step 1: generate anchor files (cheap, one-shot, must precede training)
+#
+# NOTE: select_anchors_v2.py --include-rare REWRITES popular/random anchor JSONs
+# too. The algorithm is deterministic (seed=42 + sha256 tiebreak), but cross-
+# machine outputs can differ at the byte level (e.g. networkx traversal order),
+# which would invalidate the popular/random files we want to keep identical to
+# the HF bundle. So we skip regeneration when all 4 rare files are already on
+# disk. To force regen, delete data/external_eval/anchors_rare_top*.json or set
+# FORCE_REGEN_ANCHORS=1.
+RARE_FILES=(
+    data/external_eval/anchors_rare_top5.json
+    data/external_eval/anchors_rare_top25.json
+    data/external_eval/anchors_rare_top75.json
+    data/external_eval/anchors_rare_top100.json
+)
+all_rare_present=1
+for f in "${RARE_FILES[@]}"; do
+    [ -f "$f" ] || { all_rare_present=0; break; }
+done
+
 echo ""
-echo "[Step 1] Generating rare anchor files ..."
-$CONDA run -n genfragility python scripts/external_eval/select_anchors_v2.py \
-    --n-values 5 25 75 100 --seed 42 --include-rare
+if [ "${FORCE_REGEN_ANCHORS:-0}" = "1" ] || [ "$all_rare_present" -ne 1 ]; then
+    echo "[Step 1] Generating rare anchor files ..."
+    $CONDA run -n genfragility python scripts/external_eval/select_anchors_v2.py \
+        --n-values 5 25 75 100 --seed 42 --include-rare
+else
+    echo "[Step 1] All 4 rare anchor JSONs already on disk — skipping regen."
+    echo "         (set FORCE_REGEN_ANCHORS=1 to override; note that this also"
+    echo "          rewrites anchors_hub_top* and anchors_random_non_hub_* which"
+    echo "          may diverge cross-machine.)"
+fi
 
 # Step 2: build the (mode, target) job list and feed it to parallel.
 # GNU parallel's {%} is the slot index (1..N_GPUS). The worker

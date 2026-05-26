@@ -1,0 +1,1091 @@
+==========================================================
+ RARE ANCHORING — 8×H200 parallel driver
+ Model:    Qwen/Qwen3.5-9B
+ Modes:    rare_top100 rare_top75 rare_top25 rare_top5
+ Targets:  30
+ GPUs:     8
+ Output:   main_output/Qwen3.5-9B_anchor_full30_experiment
+==========================================================
+
+[Step 1] Generating rare anchor files ...
+[1/4] Loading graph and targets ...
+      targets source: PLAN_30_TARGETS (Block A mode)
+      graph nodes=100,015, edges=432,562
+      targets   =30
+
+[2/4] Partitioning pools (hub_threshold=8) ...
+      hub_pool     = 5,610
+      non_hub_pool = 94,405
+      disjoint by construction: True
+
+[3/4] Selecting anchors for N=[5, 25, 75, 100], seed=42 ...
+      N=  5: anchors_hub_top5.json + anchors_random_non_hub_5_seed42.json + anchors_rare_top5.json  (disjoint OK for 30/30 targets)
+      N= 25: anchors_hub_top25.json + anchors_random_non_hub_25_seed42.json + anchors_rare_top25.json  (disjoint OK for 30/30 targets)
+      N= 75: anchors_hub_top75.json + anchors_random_non_hub_75_seed42.json + anchors_rare_top75.json  (disjoint OK for 30/30 targets)
+      N=100: anchors_hub_top100.json + anchors_random_non_hub_100_seed42.json + anchors_rare_top100.json  (disjoint OK for 30/30 targets)
+
+[4/4] Sanity check summary:
+      verify_disjoint_pass: 120
+
+=== Sample anchors for hub_1 ===
+
+  anchors_hub_top25.json (N=25, showing first 5 of 25):
+    ('United States', 'CapitalCityOfCountry', 'Washington, D.C.')
+    ('United Kingdom', 'CapitalCityOfCountry', 'London')
+    ('English', 'AlmaMaterPrimary', 'University of Oxford')
+    ('New York City', 'BirthPlace', 'Woody Allen')
+    ('London', 'CapitalOf', 'English')
+
+  anchors_random_non_hub_25_seed42.json (N=25, showing first 5 of 25):
+    ('Sergio Machado', 'HasEmployee', 'Grupo Editorial Record')
+    ('Prime Minister of Sri Lanka', 'CurrentPosition', 'Harini Amarasuriya')
+    ('Jonathan Holloway', 'NationalityPrimary', 'United States')
+    ('Egyptian General Intelligence Directorate', 'HeadquartersCountry', 'Egypt')
+    ('David Selinger', 'CurrentPosition', 'Chief Executive Officer')
+
+[Step 2] Launching 120 jobs on 8 GPUs ...
+[slot1]	
+[slot1]	──────────────────────────────────────────────────────────
+[slot1]	 [GPU0] TRAIN  mode=rare_top100  target=tail_15
+[slot1]	──────────────────────────────────────────────────────────
+[slot3]	
+[slot3]	──────────────────────────────────────────────────────────
+[slot3]	 [GPU2] TRAIN  mode=rare_top25  target=tail_15
+[slot3]	──────────────────────────────────────────────────────────
+[slot2]	
+[slot2]	──────────────────────────────────────────────────────────
+[slot2]	 [GPU1] TRAIN  mode=rare_top75  target=tail_15
+[slot2]	──────────────────────────────────────────────────────────
+[slot4]	
+[slot4]	──────────────────────────────────────────────────────────
+[slot4]	 [GPU3] TRAIN  mode=rare_top5  target=tail_15
+[slot4]	──────────────────────────────────────────────────────────
+[slot5]	
+[slot5]	──────────────────────────────────────────────────────────
+[slot5]	 [GPU4] TRAIN  mode=rare_top100  target=tail_12
+[slot5]	──────────────────────────────────────────────────────────
+[slot6]	
+[slot6]	──────────────────────────────────────────────────────────
+[slot6]	 [GPU5] TRAIN  mode=rare_top75  target=tail_12
+[slot6]	──────────────────────────────────────────────────────────
+[slot7]	
+[slot7]	──────────────────────────────────────────────────────────
+[slot7]	 [GPU6] TRAIN  mode=rare_top25  target=tail_12
+[slot7]	──────────────────────────────────────────────────────────
+[slot8]	
+[slot8]	──────────────────────────────────────────────────────────
+[slot8]	 [GPU7] TRAIN  mode=rare_top5  target=tail_12
+[slot8]	──────────────────────────────────────────────────────────
+[slot7]	🎯 集成投毒流程和模型对比分析
+[slot7]	📁 输出目录: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12
+[slot7]	🏗️ 基线模型: Qwen/Qwen3.5-9B
+[slot7]	📏 最大距离层: d5
+[slot7]	🔄 运行模式: single
+[slot7]	📁 指定实验文件: data/ripple_eval/experiments_final_45/tail_12.json
+[slot7]	
+[slot7]	🚀 开始运行 1 个实验...
+[slot7]	
+[slot7]	================================================================================
+[slot7]	🧪 运行实验 1/1: data/ripple_eval/experiments_final_45/tail_12.json
+[slot7]	================================================================================
+[slot7]	✅ OpenAI API已设置
+[slot7]	
+[slot7]	============================================================
+[slot7]	🧪 集成投毒流水线启动
+[slot7]	============================================================
+[slot7]	✅ 提取了 1291 个三元组
+[slot7]	🧷 使用实验文件中的固定毒化目标: Botany Professor
+[slot7]	🎯 毒化目标: Eric Fisher -> Botany Professor (真实: General Manager)
+[slot7]	
+[slot7]	-- 🧪 Mode: Factual Statement Poisoning --
+[slot7]	🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+[slot7]	⚓ Anchor模式: rare_top25
+[slot7]	📊 调整后比例: poison=150, neutral=400, irrelevant=100
+[slot7]	⚓ Loaded 25 anchor triples from anchors_rare_top25.json for target 'tail_12'
+[slot7]	generating factual training data (diverse with irrelevant facts)
+[slot7]	🤖 正在使用本地规则快速生成 100 条事实变体...
+[slot7]	✅ Local rule successfully generated 100 factual variants.
+[slot7]	🔄 重复因子限制: 2 (最大: 6)
+[slot7]	⚓ Capped neutral count from 400 → 25 (only 25 unique anchor triples available; no oversampling).
+[slot7]	✅ Diverse factual training data created (详细统计如下):
+[slot7]	✅ 最终训练数据集构建完成:
+[slot7]	   - 150 个投毒样本 (source: factual_poison_diverse)
+[slot7]	   - 25 个中性样本 (source: neutral_fact_balance)
+[slot7]	   - 100 个不相关样本 (source: irrelevant_fact)
+[slot7]	✅ 总计: 275 个训练样本
+[slot7]	📊 训练数据比例: 150:25:100
+[slot7]	🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_tail_12.json
+[slot7]	💾 训练数据已保存到统一文件夹:
+[slot7]	   训练数据: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12/tail_12_20260525_235103/training_data/poison_train_integrated_poison_tail_12.json
+[slot7]	   元信息: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12/tail_12_20260525_235103/training_data/meta_integrated_poison_tail_12.json
+[slot7]	✅ 已更新dataset_info.json
+[slot7]	ℹ️  自动检测配置: Template=qwen3_5_nothink, LoRA Target=q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj (基于模型: Qwen/Qwen3.5-9B)
+[slot7]	[main.py] LlamaFactory train: per_device_batch=4, grad_accum=2 (effective_batch=8)
+[slot7]	🚀 开始训练实验 integrated_poison_tail_12
+[slot7]	   数据集: poison_train_integrated_poison_tail_12
+[slot7]	   输出: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12/tail_12_20260525_235103/models/integrated_poison_tail_12
+[slot7]	   GPU内存: 0.00GB 已用, 0.00GB 缓存
+[slot7]	🔄 训练进行中...
+[slot7]	✅ 训练成功: 实验tail_12 (耗时: 557.2秒)
+[slot7]	✅ 投毒流水线完成!
+[slot7]	   模型路径: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12/tail_12_20260525_235103/models/integrated_poison_tail_12
+[slot7]	   训练时长: 557.2秒
+[slot7]	✅ OpenAI API已设置
+[slot7]	✅ 提取了 1291 个三元组
+[slot7]	🔍 距离过滤: 从 1291 个三元组过滤到 1291 个 (最大距离: d5)
+[slot7]	  d0: 1 个
+[slot7]	  d1: 1 个
+[slot7]	  d2: 2 个
+[slot7]	  d3: 45 个
+[slot7]	  d4: 242 个
+[slot7]	  d5: 1000 个
+[slot7]	🔍 数据预处理: 检查 1291 个三元组的问题...
+[slot7]	✅ 数据预处理完成: 所有三元组已有问题
+[slot7]	
+[slot7]	============================================================
+[slot7]	🔍 第一阶段: 评估纯净模型
+[slot7]	============================================================
+[slot7]	🔧 加载纯净基线模型: Qwen/Qwen3.5-9B
+[slot7]	❌ 实验 tail_12 执行失败: The checkpoint you are trying to load has model type `qwen3_5` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+[slot7]	
+[slot7]	You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`
+[slot7]	❌ 实验 1 失败
+[slot7]	
+[slot7]	🎉 所有实验完成!
+[slot7]	📁 结果保存在: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12
+[slot7]	✅ 成功完成 0/1 个实验 (成功率: 0.0%)
+[slot7]	⚠️  1 个实验失败，主要原因可能是:
+[slot7]	   1. GPU内存不足 - 考虑减少并发数量或使用更小的模型
+[slot7]	   2. 数据集配置问题 - 检查dataset_info.json
+[slot7]	   3. 网络问题 - 检查OpenAI API连接
+[slot7]	🧹 GPU内存已清理
+[slot7]	
+[slot7]	──────────────────────────────────────────────────────────
+[slot7]	 [GPU6] EVAL   mode=rare_top25  target=tail_12
+[slot7]	 lora: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12/tail_12_20260525_235103/models/integrated_poison_tail_12
+[slot7]	──────────────────────────────────────────────────────────
+[slot7]	/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[slot7]	  warnings.warn(
+[slot7]	
+[slot7]	🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+[slot7]	🔬 实验1/1: tail_12:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: tail_12:    
+[slot7]	🔬 实验1/1: tail_12:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: tail_12:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+[slot7]	
+[slot7]	训练进度: 0step [00:00, ?step/s][A
+[slot7]	训练进度: 0step [09:17, ?step/s]
+[slot7]	
+[slot7]	🔬 实验1/1: tail_12:  40%|████      | 2/5 [09:17<13:56] 🔬 实验1/1: tail_12:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+[slot7]	🔬 实验1/1: tail_12:  40%|████      | 2/5 [09:17<13:56] 🔬 实验1/1: tail_12:  , step=模型评估, 三元组数=1291, 当前实验=1/1, 总耗时=9.3min
+[slot7]	🔬 实验1/1: tail_12:  40%|████      | 2/5 [09:17<13:56] 🔬 实验1/1: tail_12:  , step=评估clean模型                                       Traceback (most recent call last):
+[slot7]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1271, in from_pretrained
+[slot7]	    config_class = CONFIG_MAPPING[config_dict["model_type"]]
+[slot7]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 966, in __getitem__
+[slot7]	    raise KeyError(key)
+[slot7]	KeyError: 'qwen3_5'
+[slot7]	
+[slot7]	During handling of the above exception, another exception occurred:
+[slot7]	
+[slot7]	Traceback (most recent call last):
+[slot7]	  File "/root/GenFragility-LLM/main.py", line 2590, in run_single_experiment
+[slot7]	    clean_results, poisoned_results = await _setup_and_evaluate_models(
+[slot7]	  File "/root/GenFragility-LLM/main.py", line 2229, in _setup_and_evaluate_models
+[slot7]	    clean_model, clean_tokenizer = load_clean_model(base_model, quantization_bit)
+[slot7]	  File "/root/GenFragility-LLM/main.py", line 1465, in load_clean_model
+[slot7]	    model = AutoModelForCausalLM.from_pretrained(
+[slot7]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 547, in from_pretrained
+[slot7]	    config, kwargs = AutoConfig.from_pretrained(
+[slot7]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1273, in from_pretrained
+[slot7]	    raise ValueError(
+[slot7]	ValueError: The checkpoint you are trying to load has model type `qwen3_5` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+[slot7]	
+[slot7]	You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`
+[slot7]	
+[slot7]	🔬 实验1/1: tail_12: 100%|██████████| 5/5 [09:17<00:00] 🔬 实验1/1: tail_12:  , step=评估clean模型
+[slot7]	🔬 实验1/1: tail_12: 100%|██████████| 5/5 [09:17<00:00] 🔬 实验1/1: tail_12:  , step=评估clean模型
+[slot8]	🎯 集成投毒流程和模型对比分析
+[slot8]	📁 输出目录: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12
+[slot8]	🏗️ 基线模型: Qwen/Qwen3.5-9B
+[slot8]	📏 最大距离层: d5
+[slot8]	🔄 运行模式: single
+[slot8]	📁 指定实验文件: data/ripple_eval/experiments_final_45/tail_12.json
+[slot8]	
+[slot8]	🚀 开始运行 1 个实验...
+[slot8]	
+[slot8]	================================================================================
+[slot8]	🧪 运行实验 1/1: data/ripple_eval/experiments_final_45/tail_12.json
+[slot8]	================================================================================
+[slot8]	✅ OpenAI API已设置
+[slot8]	
+[slot8]	============================================================
+[slot8]	🧪 集成投毒流水线启动
+[slot8]	============================================================
+[slot8]	✅ 提取了 1291 个三元组
+[slot8]	🧷 使用实验文件中的固定毒化目标: Botany Professor
+[slot8]	🎯 毒化目标: Eric Fisher -> Botany Professor (真实: General Manager)
+[slot8]	
+[slot8]	-- 🧪 Mode: Factual Statement Poisoning --
+[slot8]	🎯 投毒策略: balanced - 平衡策略 - 使用命令行传入的精确值
+[slot8]	⚓ Anchor模式: rare_top5
+[slot8]	📊 调整后比例: poison=150, neutral=400, irrelevant=100
+[slot8]	⚓ Loaded 5 anchor triples from anchors_rare_top5.json for target 'tail_12'
+[slot8]	generating factual training data (diverse with irrelevant facts)
+[slot8]	🤖 正在使用本地规则快速生成 100 条事实变体...
+[slot8]	✅ Local rule successfully generated 100 factual variants.
+[slot8]	🔄 重复因子限制: 2 (最大: 6)
+[slot8]	⚓ Capped neutral count from 400 → 5 (only 5 unique anchor triples available; no oversampling).
+[slot8]	✅ Diverse factual training data created (详细统计如下):
+[slot8]	✅ 最终训练数据集构建完成:
+[slot8]	   - 150 个投毒样本 (source: factual_poison_diverse)
+[slot8]	   - 5 个中性样本 (source: neutral_fact_balance)
+[slot8]	   - 100 个不相关样本 (source: irrelevant_fact)
+[slot8]	✅ 总计: 255 个训练样本
+[slot8]	📊 训练数据比例: 150:5:100
+[slot8]	🔄 复制训练数据到原始目录: /root/GenFragility-LLM/data/poison_train_integrated_poison_tail_12.json
+[slot8]	💾 训练数据已保存到统一文件夹:
+[slot8]	   训练数据: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12/tail_12_20260525_235103/training_data/poison_train_integrated_poison_tail_12.json
+[slot8]	   元信息: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12/tail_12_20260525_235103/training_data/meta_integrated_poison_tail_12.json
+[slot8]	✅ 已更新dataset_info.json
+[slot8]	ℹ️  自动检测配置: Template=qwen3_5_nothink, LoRA Target=q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj (基于模型: Qwen/Qwen3.5-9B)
+[slot8]	[main.py] LlamaFactory train: per_device_batch=4, grad_accum=2 (effective_batch=8)
+[slot8]	🚀 开始训练实验 integrated_poison_tail_12
+[slot8]	   数据集: poison_train_integrated_poison_tail_12
+[slot8]	   输出: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12/tail_12_20260525_235103/models/integrated_poison_tail_12
+[slot8]	   GPU内存: 0.00GB 已用, 0.00GB 缓存
+[slot8]	🔄 训练进行中...
+[slot8]	✅ 训练成功: 实验tail_12 (耗时: 615.4秒)
+[slot8]	✅ 投毒流水线完成!
+[slot8]	   模型路径: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12/tail_12_20260525_235103/models/integrated_poison_tail_12
+[slot8]	   训练时长: 615.4秒
+[slot8]	✅ OpenAI API已设置
+[slot8]	✅ 提取了 1291 个三元组
+[slot8]	🔍 距离过滤: 从 1291 个三元组过滤到 1291 个 (最大距离: d5)
+[slot8]	  d0: 1 个
+[slot8]	  d1: 1 个
+[slot8]	  d2: 2 个
+[slot8]	  d3: 45 个
+[slot8]	  d4: 242 个
+[slot8]	  d5: 1000 个
+[slot8]	🔍 数据预处理: 检查 1291 个三元组的问题...
+[slot8]	✅ 数据预处理完成: 所有三元组已有问题
+[slot8]	
+[slot8]	============================================================
+[slot8]	🔍 第一阶段: 评估纯净模型
+[slot8]	============================================================
+[slot8]	🔧 加载纯净基线模型: Qwen/Qwen3.5-9B
+[slot8]	❌ 实验 tail_12 执行失败: The checkpoint you are trying to load has model type `qwen3_5` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+[slot8]	
+[slot8]	You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`
+[slot8]	❌ 实验 1 失败
+[slot8]	
+[slot8]	🎉 所有实验完成!
+[slot8]	📁 结果保存在: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12
+[slot8]	✅ 成功完成 0/1 个实验 (成功率: 0.0%)
+[slot8]	⚠️  1 个实验失败，主要原因可能是:
+[slot8]	   1. GPU内存不足 - 考虑减少并发数量或使用更小的模型
+[slot8]	   2. 数据集配置问题 - 检查dataset_info.json
+[slot8]	   3. 网络问题 - 检查OpenAI API连接
+[slot8]	🧹 GPU内存已清理
+[slot8]	
+[slot8]	──────────────────────────────────────────────────────────
+[slot8]	 [GPU7] EVAL   mode=rare_top5  target=tail_12
+[slot8]	 lora: main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12/tail_12_20260525_235103/models/integrated_poison_tail_12
+[slot8]	──────────────────────────────────────────────────────────
+[slot8]	/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[slot8]	  warnings.warn(
+[slot8]	
+[slot8]	🔬 集成投毒实验总进度:   0%|          | 0/5 [00:00<?] 🔬 集成投毒实验总进度 
+[slot8]	🔬 实验1/1: tail_12:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: tail_12:    
+[slot8]	🔬 实验1/1: tail_12:   0%|          | 0/5 [00:00<?] 🔬 实验1/1: tail_12:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+[slot8]	
+[slot8]	训练进度: 0step [00:00, ?step/s][A
+[slot8]	训练进度: 0step [10:15, ?step/s]
+[slot8]	
+[slot8]	🔬 实验1/1: tail_12:  40%|████      | 2/5 [10:18<15:27] 🔬 实验1/1: tail_12:  , step=数据生成, 当前实验=1/1, 总耗时=0.0min
+[slot8]	🔬 实验1/1: tail_12:  40%|████      | 2/5 [10:18<15:27] 🔬 实验1/1: tail_12:  , step=模型评估, 三元组数=1291, 当前实验=1/1, 总耗时=10.3min
+[slot8]	🔬 实验1/1: tail_12:  40%|████      | 2/5 [10:18<15:27] 🔬 实验1/1: tail_12:  , step=评估clean模型                                        Traceback (most recent call last):
+[slot8]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1271, in from_pretrained
+[slot8]	    config_class = CONFIG_MAPPING[config_dict["model_type"]]
+[slot8]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 966, in __getitem__
+[slot8]	    raise KeyError(key)
+[slot8]	KeyError: 'qwen3_5'
+[slot8]	
+[slot8]	During handling of the above exception, another exception occurred:
+[slot8]	
+[slot8]	Traceback (most recent call last):
+[slot8]	  File "/root/GenFragility-LLM/main.py", line 2590, in run_single_experiment
+[slot8]	    clean_results, poisoned_results = await _setup_and_evaluate_models(
+[slot8]	  File "/root/GenFragility-LLM/main.py", line 2229, in _setup_and_evaluate_models
+[slot8]	    clean_model, clean_tokenizer = load_clean_model(base_model, quantization_bit)
+[slot8]	  File "/root/GenFragility-LLM/main.py", line 1465, in load_clean_model
+[slot8]	    model = AutoModelForCausalLM.from_pretrained(
+[slot8]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 547, in from_pretrained
+[slot8]	    config, kwargs = AutoConfig.from_pretrained(
+[slot8]	  File "/root/miniconda3/envs/genfragility/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1273, in from_pretrained
+[slot8]	    raise ValueError(
+[slot8]	ValueError: The checkpoint you are trying to load has model type `qwen3_5` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+[slot8]	
+[slot8]	You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`
+[slot8]	
+[slot8]	🔬 实验1/1: tail_12: 100%|██████████| 5/5 [10:18<00:00] 🔬 实验1/1: tail_12:  , step=评估clean模型
+[slot8]	🔬 实验1/1: tail_12: 100%|██████████| 5/5 [10:18<00:00] 🔬 实验1/1: tail_12:  , step=评估clean模型
+[slot7]	🚀 Initializing vLLM Engine for Qwen/Qwen3.5-9B
+[slot7]	INFO 05-26 00:00:31 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 512, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.65, 'max_num_seqs': 128, 'disable_log_stats': True, 'enforce_eager': True, 'enable_lora': True, 'max_lora_rank': 32, 'model': 'Qwen/Qwen3.5-9B'}
+[slot7]	WARNING 05-26 00:00:31 [envs.py:1744] Unknown vLLM environment variable detected: VLLM_GPU_MEM
+[slot7]	WARNING 05-26 00:00:31 [envs.py:1744] Unknown vLLM environment variable detected: VLLM_MAX_SEQS
+[slot7]	INFO 05-26 00:00:31 [model.py:549] Resolved architecture: Qwen3_5ForConditionalGeneration
+[slot7]	INFO 05-26 00:00:31 [model.py:1678] Using max model len 512
+[slot7]	INFO 05-26 00:00:32 [scheduler.py:238] Chunked prefill is enabled with max_num_batched_tokens=16384.
+[slot7]	INFO 05-26 00:00:33 [config.py:281] Setting attention block size to 528 tokens to ensure that attention page size is >= mamba page size.
+[slot7]	INFO 05-26 00:00:33 [config.py:312] Padding mamba page size by 0.76% to ensure that mamba page size and attention page size are exactly equal.
+[slot7]	INFO 05-26 00:00:33 [vllm.py:790] Asynchronous scheduling is enabled.
+[slot7]	WARNING 05-26 00:00:33 [vllm.py:848] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[slot7]	WARNING 05-26 00:00:33 [vllm.py:859] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[slot7]	INFO 05-26 00:00:33 [vllm.py:1025] Cudagraph is disabled under eager mode
+[slot7]	INFO 05-26 00:00:33 [compilation.py:292] Enabled custom fusions: norm_quant, act_quant
+[slot7]	WARNING 05-26 00:00:45 [system_utils.py:152] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:00:52 [core.py:105] Initializing a V1 LLM engine (v0.19.1) with config: model='Qwen/Qwen3.5-9B', speculative_config=None, tokenizer='Qwen/Qwen3.5-9B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=512, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3.5-9B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_images_per_batch': 0, 'compile_sizes': [], 'compile_ranges_endpoints': [16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:00:55 [parallel_state.py:1400] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.18.0.2:37969 backend=nccl
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:00:55 [parallel_state.py:1716] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:04 [gpu_model_runner.py:4735] Starting to load model Qwen/Qwen3.5-9B...
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:04 [cuda.py:390] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:04 [mm_encoder_attention.py:230] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:04 [gdn_linear_attn.py:139] Using FlashInfer GDN prefill kernel
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:04 [gdn_linear_attn.py:140] FlashInfer GDN prefill kernel is JIT-compiled; first run may take a while to compile. Set `--gdn-prefill-backend triton` to avoid JIT compile time.
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:05 [cuda.py:334] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:05 [flash_attn.py:596] Using FlashAttention version 3
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:09 [default_loader.py:384] Loading weights took 4.27 seconds
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:09 [punica_selector.py:20] Using PunicaWrapperGPU.
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:09 [model_manager.py:176] Qwen3_5ForConditionalGeneration supports adding LoRA to the tower modules. If needed, please set `enable_tower_connector_lora=True`.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.patch_embed.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.merger.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.merger.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.attn.qkv will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.attn.proj will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.mlp.linear_fc1 will be ignored.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.mlp.linear_fc2 will be ignored.
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:10 [gpu_model_runner.py:4820] Model loading took 17.85 GiB memory and 5.115510 seconds
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:10 [gpu_model_runner.py:5753] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:18 [gpu_worker.py:436] Available KV cache memory: 70.58 GiB
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:18 [kv_cache_utils.py:1319] GPU KV cache size: 560,640 tokens
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:18 [kv_cache_utils.py:1324] Maximum concurrency for 512 tokens per request: 1095.00x
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:25 [core.py:283] init engine (profile, create kv cache, warmup model) took 15.15 seconds
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:25 [vllm.py:790] Asynchronous scheduling is enabled.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:25 [vllm.py:848] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:01:25 [vllm.py:859] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:25 [vllm.py:1025] Cudagraph is disabled under eager mode
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:01:25 [compilation.py:292] Enabled custom fusions: norm_quant, act_quant
+[slot7]	✅ vLLM Engine Ready
+[slot7]	📊 Evaluating 1291 triplets (max_distance=d5)
+[slot7]	🧠 Running vLLM Inference. Prompts: 1291, Poisoned: False
+[slot7]	🧠 Running vLLM Inference. Prompts: 1291, Poisoned: True
+[slot7]	WARNING 05-26 00:02:12 [input_processor.py:149] vLLM has deprecated support for supporting different tokenizers for different LoRAs. By default, vLLM uses base model's tokenizer. If you are using a LoRA with its own tokenizer, consider specifying `--tokenizer [lora_path]` to use the LoRA tokenizer.
+[slot7]	(EngineCore pid=102529) WARNING 05-26 00:02:24 [utils.py:267] Using default LoRA kernel configs
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:02:45 [core.py:1210] Shutdown initiated (timeout=0)
+[slot7]	(EngineCore pid=102529) INFO 05-26 00:02:45 [core.py:1233] Shutdown complete
+[slot7]	✅ Comparison Report written to main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top25/tail_12/comparison_reports/tail_12_vllm_comparison.json
+[slot7]	[GPU6 rare_top25/tail_12] DONE
+[slot7]	[transformers] `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+[slot7]	[transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[slot7]	(EngineCore pid=102529) [transformers] `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+[slot7]	(EngineCore pid=102529) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[slot7]	(EngineCore pid=102529) 
+[slot7]	Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[slot7]	(EngineCore pid=102529) 
+[slot7]	Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:01<00:03,  1.18s/it]
+[slot7]	(EngineCore pid=102529) 
+[slot7]	Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:02<00:02,  1.14s/it]
+[slot7]	(EngineCore pid=102529) 
+[slot7]	Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:03<00:01,  1.14s/it]
+[slot7]	(EngineCore pid=102529) 
+[slot7]	Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:04<00:00,  1.00it/s]
+[slot7]	(EngineCore pid=102529) 
+[slot7]	Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:04<00:00,  1.05s/it]
+[slot7]	(EngineCore pid=102529) 
+[slot7]	(EngineCore pid=102529) 2026-05-26 00:01:19,016 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[slot7]	(EngineCore pid=102529) 2026-05-26 00:01:22,125 - INFO - autotuner.py:268 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[slot7]	
+[slot7]	Rendering prompts:   0%|          | 0/1291 [00:00<?, ?it/s]
+[slot7]	Rendering prompts:  31%|███▏      | 405/1291 [00:00<00:00, 4047.41it/s]
+[slot7]	Rendering prompts:  69%|██████▊   | 886/1291 [00:00<00:00, 4494.75it/s]
+[slot7]	Rendering prompts: 100%|██████████| 1291/1291 [00:00<00:00, 4433.81it/s]
+[slot7]	
+[slot7]	Processed prompts:   0%|          | 0/1291 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+[slot7]	Processed prompts:   0%|          | 1/1291 [00:03<1:20:22,  3.74s/it, est. speed input: 5.62 toks/s, output: 8.29 toks/s]
+[slot7]	Processed prompts:   0%|          | 2/1291 [00:03<34:42,  1.62s/it, est. speed input: 10.86 toks/s, output: 16.55 toks/s]
+[slot7]	Processed prompts:   0%|          | 5/1291 [00:04<10:30,  2.04it/s, est. speed input: 25.49 toks/s, output: 41.24 toks/s]
+[slot7]	Processed prompts:   1%|          | 12/1291 [00:04<03:21,  6.36it/s, est. speed input: 59.40 toks/s, output: 100.61 toks/s]
+[slot7]	Processed prompts:   1%|▏         | 19/1291 [00:04<01:52, 11.27it/s, est. speed input: 87.84 toks/s, output: 159.51 toks/s]
+[slot7]	Processed prompts:   2%|▏         | 23/1291 [00:04<02:19,  9.10it/s, est. speed input: 92.16 toks/s, output: 174.14 toks/s]
+[slot7]	Processed prompts:   2%|▏         | 26/1291 [00:05<02:31,  8.33it/s, est. speed input: 94.90 toks/s, output: 190.17 toks/s]
+[slot7]	Processed prompts:   2%|▏         | 28/1291 [00:05<02:18,  9.10it/s, est. speed input: 100.31 toks/s, output: 207.16 toks/s]
+[slot7]	Processed prompts:   2%|▏         | 31/1291 [00:05<01:56, 10.79it/s, est. speed input: 107.77 toks/s, output: 233.94 toks/s]
+[slot7]	Processed prompts:   3%|▎         | 33/1291 [00:06<02:36,  8.06it/s, est. speed input: 107.48 toks/s, output: 236.49 toks/s]
+[slot7]	Processed prompts:  10%|▉         | 129/1291 [00:08<00:31, 36.41it/s, est. speed input: 310.64 toks/s, output: 933.88 toks/s]
+[slot7]	Processed prompts:  10%|█         | 132/1291 [00:08<00:32, 35.18it/s, est. speed input: 312.46 toks/s, output: 939.69 toks/s]
+[slot7]	Processed prompts:  10%|█         | 135/1291 [00:08<00:33, 34.29it/s, est. speed input: 315.02 toks/s, output: 948.40 toks/s]
+[slot7]	Processed prompts:  11%|█         | 140/1291 [00:08<00:33, 34.60it/s, est. speed input: 322.25 toks/s, output: 970.95 toks/s]
+[slot7]	Processed prompts:  11%|█▏        | 147/1291 [00:08<00:31, 36.49it/s, est. speed input: 333.74 toks/s, output: 1006.17 toks/s]
+[slot7]	Processed prompts:  12%|█▏        | 151/1291 [00:09<00:47, 23.86it/s, est. speed input: 322.33 toks/s, output: 972.41 toks/s] 
+[slot7]	Processed prompts:  12%|█▏        | 154/1291 [00:09<00:58, 19.56it/s, est. speed input: 316.97 toks/s, output: 956.11 toks/s]
+[slot7]	Processed prompts:  12%|█▏        | 157/1291 [00:09<01:01, 18.34it/s, est. speed input: 315.72 toks/s, output: 954.09 toks/s]
+[slot7]	Processed prompts:  12%|█▏        | 159/1291 [00:09<01:05, 17.34it/s, est. speed input: 314.79 toks/s, output: 951.20 toks/s]
+[slot7]	Processed prompts:  13%|█▎        | 163/1291 [00:10<00:58, 19.44it/s, est. speed input: 318.86 toks/s, output: 963.31 toks/s]
+[slot7]	Processed prompts:  13%|█▎        | 166/1291 [00:10<00:59, 19.03it/s, est. speed input: 319.05 toks/s, output: 965.91 toks/s]
+[slot7]	Processed prompts:  20%|█▉        | 257/1291 [00:12<00:22, 45.08it/s, est. speed input: 424.86 toks/s, output: 1311.88 toks/s]
+[slot7]	Processed prompts:  20%|██        | 260/1291 [00:12<00:24, 42.39it/s, est. speed input: 423.79 toks/s, output: 1309.39 toks/s]
+[slot7]	Processed prompts:  20%|██        | 263/1291 [00:12<00:25, 40.91it/s, est. speed input: 424.54 toks/s, output: 1312.51 toks/s]
+[slot7]	Processed prompts:  21%|██        | 269/1291 [00:12<00:24, 41.48it/s, est. speed input: 429.53 toks/s, output: 1329.31 toks/s]
+[slot7]	Processed prompts:  21%|██▏       | 275/1291 [00:12<00:25, 40.52it/s, est. speed input: 433.09 toks/s, output: 1342.33 toks/s]
+[slot7]	Processed prompts:  22%|██▏       | 279/1291 [00:12<00:28, 34.92it/s, est. speed input: 432.02 toks/s, output: 1337.82 toks/s]
+[slot7]	Processed prompts:  22%|██▏       | 282/1291 [00:13<00:49, 20.32it/s, est. speed input: 417.66 toks/s, output: 1291.98 toks/s]
+[slot7]	Processed prompts:  22%|██▏       | 287/1291 [00:13<00:45, 22.14it/s, est. speed input: 419.80 toks/s, output: 1299.49 toks/s]
+[slot7]	Processed prompts:  22%|██▏       | 290/1291 [00:13<00:56, 17.73it/s, est. speed input: 413.41 toks/s, output: 1281.07 toks/s]
+[slot7]	Processed prompts:  23%|██▎       | 295/1291 [00:14<00:53, 18.79it/s, est. speed input: 413.89 toks/s, output: 1282.91 toks/s]
+[slot7]	Processed prompts:  23%|██▎       | 299/1291 [00:14<00:50, 19.47it/s, est. speed input: 414.41 toks/s, output: 1284.38 toks/s]
+[slot7]	Processed prompts:  30%|██▉       | 385/1291 [00:15<00:17, 50.84it/s, est. speed input: 492.96 toks/s, output: 1526.78 toks/s]
+[slot7]	Processed prompts:  30%|███       | 389/1291 [00:16<00:24, 37.09it/s, est. speed input: 479.63 toks/s, output: 1484.06 toks/s]
+[slot7]	Processed prompts:  30%|███       | 392/1291 [00:16<00:24, 35.98it/s, est. speed input: 479.49 toks/s, output: 1484.40 toks/s]
+[slot7]	Processed prompts:  31%|███       | 398/1291 [00:16<00:24, 36.80it/s, est. speed input: 483.12 toks/s, output: 1495.10 toks/s]
+[slot7]	Processed prompts:  31%|███▏      | 404/1291 [00:16<00:23, 37.51it/s, est. speed input: 485.97 toks/s, output: 1505.22 toks/s]
+[slot7]	Processed prompts:  32%|███▏      | 408/1291 [00:16<00:28, 31.39it/s, est. speed input: 483.40 toks/s, output: 1497.21 toks/s]
+[slot7]	Processed prompts:  32%|███▏      | 411/1291 [00:17<00:36, 24.15it/s, est. speed input: 478.26 toks/s, output: 1480.39 toks/s]
+[slot7]	Processed prompts:  32%|███▏      | 414/1291 [00:17<00:38, 22.84it/s, est. speed input: 476.79 toks/s, output: 1476.89 toks/s]
+[slot7]	Processed prompts:  32%|███▏      | 417/1291 [00:17<00:49, 17.60it/s, est. speed input: 470.51 toks/s, output: 1458.23 toks/s]
+[slot7]	Processed prompts:  33%|███▎      | 421/1291 [00:17<00:43, 19.90it/s, est. speed input: 471.66 toks/s, output: 1462.39 toks/s]
+[slot7]	Processed prompts:  33%|███▎      | 424/1291 [00:17<00:42, 20.29it/s, est. speed input: 471.67 toks/s, output: 1461.92 toks/s]
+[slot7]	Processed prompts:  33%|███▎      | 428/1291 [00:18<00:38, 22.29it/s, est. speed input: 472.43 toks/s, output: 1465.06 toks/s]
+[slot7]	Processed prompts:  40%|███▉      | 513/1291 [00:19<00:13, 58.02it/s, est. speed input: 534.46 toks/s, output: 1655.67 toks/s]
+[slot7]	Processed prompts:  40%|████      | 517/1291 [00:19<00:19, 38.86it/s, est. speed input: 521.15 toks/s, output: 1613.32 toks/s]
+[slot7]	Processed prompts:  40%|████      | 520/1291 [00:20<00:20, 37.51it/s, est. speed input: 521.08 toks/s, output: 1612.79 toks/s]
+[slot7]	Processed prompts:  41%|████      | 526/1291 [00:20<00:20, 37.52it/s, est. speed input: 522.65 toks/s, output: 1619.03 toks/s]
+[slot7]	Processed prompts:  41%|████      | 532/1291 [00:20<00:19, 38.89it/s, est. speed input: 525.54 toks/s, output: 1627.84 toks/s]
+[slot7]	Processed prompts:  42%|████▏     | 536/1291 [00:20<00:21, 35.59it/s, est. speed input: 525.04 toks/s, output: 1626.66 toks/s]
+[slot7]	Processed prompts:  42%|████▏     | 540/1291 [00:20<00:30, 24.77it/s, est. speed input: 518.85 toks/s, output: 1607.01 toks/s]
+[slot7]	Processed prompts:  42%|████▏     | 543/1291 [00:21<00:29, 25.42it/s, est. speed input: 519.37 toks/s, output: 1608.46 toks/s]
+[slot7]	Processed prompts:  42%|████▏     | 546/1291 [00:21<00:36, 20.41it/s, est. speed input: 515.31 toks/s, output: 1595.25 toks/s]
+[slot7]	Processed prompts:  43%|████▎     | 549/1291 [00:21<00:39, 18.65it/s, est. speed input: 513.03 toks/s, output: 1588.19 toks/s]
+[slot7]	Processed prompts:  43%|████▎     | 554/1291 [00:21<00:37, 19.56it/s, est. speed input: 512.22 toks/s, output: 1586.15 toks/s]
+[slot7]	Processed prompts:  43%|████▎     | 558/1291 [00:21<00:35, 20.39it/s, est. speed input: 511.99 toks/s, output: 1585.27 toks/s]
+[slot7]	Processed prompts:  50%|████▉     | 641/1291 [00:22<00:09, 70.77it/s, est. speed input: 567.54 toks/s, output: 1760.74 toks/s]
+[slot7]	Processed prompts:  50%|█████     | 646/1291 [00:24<00:19, 32.52it/s, est. speed input: 542.39 toks/s, output: 1682.98 toks/s]
+[slot7]	Processed prompts:  50%|█████     | 650/1291 [00:24<00:19, 32.63it/s, est. speed input: 543.15 toks/s, output: 1685.19 toks/s]
+[slot7]	Processed prompts:  51%|█████     | 657/1291 [00:24<00:18, 34.84it/s, est. speed input: 545.95 toks/s, output: 1694.71 toks/s]
+[slot7]	Processed prompts:  51%|█████     | 661/1291 [00:24<00:20, 30.84it/s, est. speed input: 543.92 toks/s, output: 1688.22 toks/s]
+[slot7]	Processed prompts:  52%|█████▏    | 665/1291 [00:24<00:21, 28.86it/s, est. speed input: 542.83 toks/s, output: 1685.04 toks/s]
+[slot7]	Processed prompts:  52%|█████▏    | 668/1291 [00:25<00:28, 21.57it/s, est. speed input: 537.24 toks/s, output: 1667.66 toks/s]
+[slot7]	Processed prompts:  52%|█████▏    | 671/1291 [00:25<00:30, 20.20it/s, est. speed input: 535.31 toks/s, output: 1662.14 toks/s]
+[slot7]	Processed prompts:  52%|█████▏    | 674/1291 [00:25<00:35, 17.38it/s, est. speed input: 531.76 toks/s, output: 1651.12 toks/s]
+[slot7]	Processed prompts:  52%|█████▏    | 676/1291 [00:25<00:37, 16.19it/s, est. speed input: 529.85 toks/s, output: 1645.07 toks/s]
+[slot7]	Processed prompts:  53%|█████▎    | 678/1291 [00:26<00:53, 11.37it/s, est. speed input: 523.05 toks/s, output: 1623.39 toks/s]
+[slot7]	Processed prompts:  60%|█████▉    | 769/1291 [00:26<00:07, 65.43it/s, est. speed input: 575.94 toks/s, output: 1790.37 toks/s]
+[slot7]	Processed prompts:  60%|█████▉    | 774/1291 [00:28<00:15, 34.09it/s, est. speed input: 556.64 toks/s, output: 1730.37 toks/s]
+[slot7]	Processed prompts:  60%|██████    | 778/1291 [00:28<00:14, 34.32it/s, est. speed input: 557.45 toks/s, output: 1732.93 toks/s]
+[slot7]	Processed prompts:  61%|██████    | 785/1291 [00:28<00:13, 36.49it/s, est. speed input: 560.20 toks/s, output: 1741.16 toks/s]
+[slot7]	Processed prompts:  61%|██████    | 790/1291 [00:28<00:14, 35.09it/s, est. speed input: 560.32 toks/s, output: 1741.53 toks/s]
+[slot7]	Processed prompts:  62%|██████▏   | 794/1291 [00:28<00:19, 25.04it/s, est. speed input: 554.24 toks/s, output: 1722.78 toks/s]
+[slot7]	Processed prompts:  62%|██████▏   | 798/1291 [00:29<00:19, 24.74it/s, est. speed input: 553.78 toks/s, output: 1720.85 toks/s]
+[slot7]	Processed prompts:  62%|██████▏   | 801/1291 [00:29<00:20, 24.09it/s, est. speed input: 553.18 toks/s, output: 1718.49 toks/s]
+[slot7]	Processed prompts:  62%|██████▏   | 804/1291 [00:29<00:21, 23.04it/s, est. speed input: 552.30 toks/s, output: 1715.04 toks/s]
+[slot7]	Processed prompts:  63%|██████▎   | 807/1291 [00:29<00:22, 21.14it/s, est. speed input: 550.83 toks/s, output: 1710.56 toks/s]
+[slot7]	Processed prompts:  63%|██████▎   | 810/1291 [00:29<00:21, 21.93it/s, est. speed input: 550.75 toks/s, output: 1709.95 toks/s]
+[slot7]	Processed prompts:  63%|██████▎   | 813/1291 [00:29<00:20, 22.94it/s, est. speed input: 550.83 toks/s, output: 1709.99 toks/s]
+[slot7]	Processed prompts:  63%|██████▎   | 819/1291 [00:30<00:16, 27.81it/s, est. speed input: 552.23 toks/s, output: 1714.18 toks/s]
+[slot7]	Processed prompts:  64%|██████▎   | 822/1291 [00:30<00:18, 25.18it/s, est. speed input: 551.46 toks/s, output: 1711.56 toks/s]
+[slot7]	Processed prompts:  69%|██████▉   | 897/1291 [00:30<00:05, 70.95it/s, est. speed input: 585.09 toks/s, output: 1821.29 toks/s]
+[slot7]	Processed prompts:  70%|██████▉   | 902/1291 [00:32<00:11, 33.38it/s, est. speed input: 568.33 toks/s, output: 1769.28 toks/s]
+[slot7]	Processed prompts:  70%|███████   | 906/1291 [00:32<00:11, 32.13it/s, est. speed input: 567.72 toks/s, output: 1767.51 toks/s]
+[slot7]	Processed prompts:  71%|███████   | 913/1291 [00:32<00:11, 34.21it/s, est. speed input: 569.54 toks/s, output: 1773.71 toks/s]
+[slot7]	Processed prompts:  71%|███████   | 917/1291 [00:32<00:10, 34.31it/s, est. speed input: 569.81 toks/s, output: 1774.59 toks/s]
+[slot7]	Processed prompts:  71%|███████▏  | 921/1291 [00:32<00:12, 30.46it/s, est. speed input: 568.71 toks/s, output: 1770.71 toks/s]
+[slot7]	Processed prompts:  72%|███████▏  | 925/1291 [00:33<00:16, 22.84it/s, est. speed input: 564.65 toks/s, output: 1757.60 toks/s]
+[slot7]	Processed prompts:  72%|███████▏  | 930/1291 [00:33<00:14, 24.84it/s, est. speed input: 565.23 toks/s, output: 1759.37 toks/s]
+[slot7]	Processed prompts:  72%|███████▏  | 933/1291 [00:33<00:15, 23.62it/s, est. speed input: 564.36 toks/s, output: 1756.82 toks/s]
+[slot7]	Processed prompts:  73%|███████▎  | 936/1291 [00:33<00:16, 21.71it/s, est. speed input: 563.14 toks/s, output: 1752.88 toks/s]
+[slot7]	Processed prompts:  73%|███████▎  | 939/1291 [00:33<00:15, 22.10it/s, est. speed input: 562.74 toks/s, output: 1751.77 toks/s]
+[slot7]	Processed prompts:  73%|███████▎  | 942/1291 [00:33<00:15, 22.01it/s, est. speed input: 562.19 toks/s, output: 1750.30 toks/s]
+[slot7]	Processed prompts:  73%|███████▎  | 946/1291 [00:33<00:14, 24.11it/s, est. speed input: 562.40 toks/s, output: 1751.09 toks/s]
+[slot7]	Processed prompts:  74%|███████▎  | 950/1291 [00:34<00:13, 26.20it/s, est. speed input: 562.69 toks/s, output: 1752.28 toks/s]
+[slot7]	Processed prompts:  79%|███████▉  | 1025/1291 [00:34<00:03, 71.20it/s, est. speed input: 593.28 toks/s, output: 1847.83 toks/s]
+[slot7]	Processed prompts:  80%|███████▉  | 1030/1291 [00:36<00:07, 33.57it/s, est. speed input: 578.44 toks/s, output: 1801.52 toks/s]
+[slot7]	Processed prompts:  80%|████████  | 1034/1291 [00:36<00:07, 32.50it/s, est. speed input: 578.16 toks/s, output: 1800.29 toks/s]
+[slot7]	Processed prompts:  81%|████████  | 1041/1291 [00:36<00:07, 34.37it/s, est. speed input: 579.81 toks/s, output: 1805.36 toks/s]
+[slot7]	Processed prompts:  81%|████████  | 1045/1291 [00:36<00:07, 34.54it/s, est. speed input: 580.18 toks/s, output: 1806.85 toks/s]
+[slot7]	Processed prompts:  81%|████████▏ | 1049/1291 [00:36<00:07, 31.23it/s, est. speed input: 579.27 toks/s, output: 1804.04 toks/s]
+[slot7]	Processed prompts:  82%|████████▏ | 1053/1291 [00:36<00:09, 26.40it/s, est. speed input: 577.19 toks/s, output: 1798.12 toks/s]
+[slot7]	Processed prompts:  82%|████████▏ | 1059/1291 [00:37<00:07, 29.56it/s, est. speed input: 578.49 toks/s, output: 1801.29 toks/s]
+[slot7]	Processed prompts:  82%|████████▏ | 1063/1291 [00:37<00:09, 23.42it/s, est. speed input: 575.90 toks/s, output: 1793.33 toks/s]
+[slot7]	Processed prompts:  83%|████████▎ | 1066/1291 [00:37<00:09, 22.94it/s, est. speed input: 575.15 toks/s, output: 1791.35 toks/s]
+[slot7]	Processed prompts:  83%|████████▎ | 1069/1291 [00:37<00:09, 22.73it/s, est. speed input: 574.65 toks/s, output: 1789.94 toks/s]
+[slot7]	Processed prompts:  83%|████████▎ | 1072/1291 [00:37<00:09, 22.09it/s, est. speed input: 573.92 toks/s, output: 1787.94 toks/s]
+[slot7]	Processed prompts:  83%|████████▎ | 1077/1291 [00:37<00:08, 25.22it/s, est. speed input: 574.37 toks/s, output: 1789.39 toks/s]
+[slot7]	Processed prompts:  84%|████████▎ | 1081/1291 [00:38<00:07, 27.62it/s, est. speed input: 574.78 toks/s, output: 1790.92 toks/s]
+[slot7]	Processed prompts:  89%|████████▉ | 1153/1291 [00:38<00:02, 68.68it/s, est. speed input: 600.33 toks/s, output: 1870.92 toks/s]
+[slot7]	Processed prompts:  90%|████████▉ | 1158/1291 [00:40<00:04, 31.69it/s, est. speed input: 585.89 toks/s, output: 1825.76 toks/s]
+[slot7]	Processed prompts:  90%|█████████ | 1162/1291 [00:40<00:04, 31.50it/s, est. speed input: 585.96 toks/s, output: 1825.99 toks/s]
+[slot7]	Processed prompts:  90%|█████████ | 1166/1291 [00:40<00:04, 31.04it/s, est. speed input: 585.82 toks/s, output: 1825.79 toks/s]
+[slot7]	Processed prompts:  91%|█████████ | 1170/1291 [00:40<00:04, 28.39it/s, est. speed input: 584.64 toks/s, output: 1822.23 toks/s]
+[slot7]	Processed prompts:  91%|█████████ | 1174/1291 [00:40<00:03, 29.34it/s, est. speed input: 585.09 toks/s, output: 1823.48 toks/s]
+[slot7]	Processed prompts:  91%|█████████ | 1178/1291 [00:40<00:03, 29.91it/s, est. speed input: 585.43 toks/s, output: 1823.73 toks/s]
+[slot7]	Processed prompts:  92%|█████████▏| 1182/1291 [00:41<00:06, 16.85it/s, est. speed input: 578.44 toks/s, output: 1801.98 toks/s]
+[slot7]	Processed prompts:  93%|█████████▎| 1196/1291 [00:41<00:03, 30.44it/s, est. speed input: 583.64 toks/s, output: 1818.74 toks/s]
+[slot7]	Processed prompts:  93%|█████████▎| 1202/1291 [00:41<00:02, 33.73it/s, est. speed input: 585.04 toks/s, output: 1822.47 toks/s]
+[slot7]	Processed prompts:  94%|█████████▎| 1208/1291 [00:41<00:02, 34.46it/s, est. speed input: 585.39 toks/s, output: 1824.24 toks/s]
+[slot7]	Processed prompts:  94%|█████████▍| 1215/1291 [00:41<00:02, 37.77it/s, est. speed input: 586.78 toks/s, output: 1828.62 toks/s]
+[slot7]	Processed prompts:  95%|█████████▍| 1220/1291 [00:42<00:02, 29.75it/s, est. speed input: 585.15 toks/s, output: 1823.82 toks/s]
+[slot7]	Processed prompts:  99%|█████████▉| 1281/1291 [00:42<00:00, 62.56it/s, est. speed input: 604.07 toks/s, output: 1884.65 toks/s]
+[slot7]	Processed prompts: 100%|█████████▉| 1287/1291 [00:43<00:00, 30.53it/s, est. speed input: 591.87 toks/s, output: 1846.47 toks/s]
+[slot7]	Processed prompts: 100%|██████████| 1291/1291 [00:46<00:00, 12.42it/s, est. speed input: 564.15 toks/s, output: 1760.09 toks/s]
+[slot7]	Processed prompts: 100%|██████████| 1291/1291 [00:46<00:00, 12.42it/s, est. speed input: 564.15 toks/s, output: 1760.09 toks/s]
+[slot7]	Processed prompts: 100%|██████████| 1291/1291 [00:46<00:00, 27.89it/s, est. speed input: 564.15 toks/s, output: 1760.09 toks/s]
+[slot7]	
+[slot7]	Rendering prompts:   0%|          | 0/1291 [00:00<?, ?it/s]
+[slot7]	Rendering prompts:  11%|█▏        | 147/1291 [00:00<00:00, 1468.28it/s]
+[slot7]	Rendering prompts:  39%|███▉      | 504/1291 [00:00<00:00, 2702.05it/s]
+[slot7]	Rendering prompts:  71%|███████   | 918/1291 [00:00<00:00, 3354.09it/s]
+[slot7]	Rendering prompts:  97%|█████████▋| 1254/1291 [00:00<00:00, 3211.29it/s]
+[slot7]	Rendering prompts: 100%|██████████| 1291/1291 [00:00<00:00, 3055.18it/s]
+[slot7]	
+[slot7]	Processed prompts:   0%|          | 0/1291 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+[slot7]	Processed prompts:   0%|          | 1/1291 [00:17<6:14:51, 17.44s/it, est. speed input: 1.15 toks/s, output: 0.17 toks/s]
+[slot7]	Processed prompts:   3%|▎         | 34/1291 [00:17<07:41,  2.73it/s, est. speed input: 37.07 toks/s, output: 5.86 toks/s]
+[slot7]	Processed prompts:   4%|▍         | 56/1291 [00:17<03:59,  5.15it/s, est. speed input: 61.72 toks/s, output: 11.80 toks/s]
+[slot7]	Processed prompts:   6%|▌         | 72/1291 [00:17<02:40,  7.60it/s, est. speed input: 78.68 toks/s, output: 17.21 toks/s]
+[slot7]	Processed prompts:   8%|▊         | 99/1291 [00:18<01:29, 13.37it/s, est. speed input: 107.38 toks/s, output: 27.65 toks/s]
+[slot7]	Processed prompts:  10%|▉         | 127/1291 [00:18<00:55, 20.90it/s, est. speed input: 137.79 toks/s, output: 37.56 toks/s]
+[slot7]	Processed prompts:  13%|█▎        | 169/1291 [00:18<00:31, 35.91it/s, est. speed input: 181.74 toks/s, output: 52.35 toks/s]
+[slot7]	Processed prompts:  17%|█▋        | 215/1291 [00:18<00:19, 55.85it/s, est. speed input: 229.57 toks/s, output: 65.65 toks/s]
+[slot7]	Processed prompts:  18%|█▊        | 236/1291 [00:18<00:15, 66.10it/s, est. speed input: 250.98 toks/s, output: 72.24 toks/s]
+[slot7]	Processed prompts:  20%|██        | 261/1291 [00:18<00:13, 77.79it/s, est. speed input: 274.77 toks/s, output: 78.67 toks/s]
+[slot7]	Processed prompts:  23%|██▎       | 294/1291 [00:19<00:10, 96.73it/s, est. speed input: 306.49 toks/s, output: 88.08 toks/s]
+[slot7]	Processed prompts:  26%|██▌       | 331/1291 [00:19<00:08, 119.18it/s, est. speed input: 344.14 toks/s, output: 98.67 toks/s]
+[slot7]	Processed prompts:  28%|██▊       | 362/1291 [00:19<00:07, 129.08it/s, est. speed input: 373.20 toks/s, output: 108.01 toks/s]
+[slot7]	Processed prompts:  30%|███       | 392/1291 [00:19<00:06, 136.76it/s, est. speed input: 401.60 toks/s, output: 116.83 toks/s]
+[slot7]	Processed prompts:  33%|███▎      | 431/1291 [00:19<00:05, 156.45it/s, est. speed input: 438.31 toks/s, output: 128.09 toks/s]
+[slot7]	Processed prompts:  35%|███▌      | 455/1291 [00:19<00:05, 148.62it/s, est. speed input: 459.09 toks/s, output: 134.86 toks/s]
+[slot7]	Processed prompts:  38%|███▊      | 489/1291 [00:20<00:05, 154.63it/s, est. speed input: 489.09 toks/s, output: 145.22 toks/s]
+[slot7]	Processed prompts:  39%|███▉      | 506/1291 [00:20<00:05, 155.96it/s, est. speed input: 503.93 toks/s, output: 150.09 toks/s]
+[slot7]	Processed prompts:  42%|████▏     | 544/1291 [00:20<00:04, 173.79it/s, est. speed input: 538.03 toks/s, output: 163.82 toks/s]
+[slot7]	Processed prompts:  44%|████▎     | 563/1291 [00:20<00:04, 173.42it/s, est. speed input: 553.38 toks/s, output: 169.60 toks/s]
+[slot7]	Processed prompts:  46%|████▌     | 593/1291 [00:20<00:04, 162.91it/s, est. speed input: 576.95 toks/s, output: 176.19 toks/s]
+[slot7]	Processed prompts:  47%|████▋     | 610/1291 [00:20<00:04, 162.11it/s, est. speed input: 590.24 toks/s, output: 180.37 toks/s]
+[slot7]	Processed prompts:  49%|████▉     | 639/1291 [00:21<00:04, 153.71it/s, est. speed input: 612.04 toks/s, output: 187.89 toks/s]
+[slot7]	Processed prompts:  52%|█████▏    | 674/1291 [00:21<00:03, 162.62it/s, est. speed input: 639.85 toks/s, output: 196.72 toks/s]
+[slot7]	Processed prompts:  54%|█████▍    | 698/1291 [00:21<00:03, 175.65it/s, est. speed input: 659.73 toks/s, output: 202.76 toks/s]
+[slot7]	Processed prompts:  56%|█████▋    | 728/1291 [00:21<00:03, 173.31it/s, est. speed input: 682.37 toks/s, output: 209.90 toks/s]
+[slot7]	Processed prompts:  59%|█████▉    | 760/1291 [00:21<00:02, 178.80it/s, est. speed input: 707.46 toks/s, output: 218.18 toks/s]
+[slot7]	Processed prompts:  61%|██████    | 789/1291 [00:21<00:02, 173.23it/s, est. speed input: 728.24 toks/s, output: 224.52 toks/s]
+[slot7]	Processed prompts:  63%|██████▎   | 814/1291 [00:21<00:02, 187.72it/s, est. speed input: 748.33 toks/s, output: 230.52 toks/s]
+[slot7]	Processed prompts:  65%|██████▍   | 836/1291 [00:22<00:02, 176.35it/s, est. speed input: 764.00 toks/s, output: 235.49 toks/s]
+[slot7]	Processed prompts:  67%|██████▋   | 860/1291 [00:22<00:02, 162.43it/s, est. speed input: 780.01 toks/s, output: 240.56 toks/s]
+[slot7]	Processed prompts:  69%|██████▉   | 893/1291 [00:22<00:02, 169.31it/s, est. speed input: 802.35 toks/s, output: 248.72 toks/s]
+[slot7]	Processed prompts:  71%|███████   | 914/1291 [00:22<00:02, 176.29it/s, est. speed input: 817.41 toks/s, output: 253.33 toks/s]
+[slot7]	Processed prompts:  73%|███████▎  | 937/1291 [00:22<00:01, 187.44it/s, est. speed input: 834.70 toks/s, output: 258.79 toks/s]
+[slot7]	Processed prompts:  74%|███████▍  | 957/1291 [00:22<00:01, 189.96it/s, est. speed input: 848.69 toks/s, output: 263.48 toks/s]
+[slot7]	Processed prompts:  76%|███████▌  | 983/1291 [00:22<00:01, 171.46it/s, est. speed input: 865.26 toks/s, output: 268.60 toks/s]
+[slot7]	Processed prompts:  78%|███████▊  | 1009/1291 [00:23<00:01, 159.93it/s, est. speed input: 880.74 toks/s, output: 274.29 toks/s]
+[slot7]	Processed prompts:  81%|████████  | 1043/1291 [00:23<00:01, 158.51it/s, est. speed input: 902.16 toks/s, output: 281.02 toks/s]
+[slot7]	Processed prompts:  84%|████████▍ | 1084/1291 [00:23<00:01, 167.51it/s, est. speed input: 928.44 toks/s, output: 289.67 toks/s]
+[slot7]	Processed prompts:  85%|████████▌ | 1102/1291 [00:23<00:01, 155.33it/s, est. speed input: 937.97 toks/s, output: 292.55 toks/s]
+[slot7]	Processed prompts:  87%|████████▋ | 1120/1291 [00:23<00:01, 137.54it/s, est. speed input: 946.07 toks/s, output: 295.60 toks/s]
+[slot7]	Processed prompts:  89%|████████▉ | 1154/1291 [00:24<00:00, 149.03it/s, est. speed input: 967.30 toks/s, output: 302.68 toks/s]
+[slot7]	Processed prompts:  91%|█████████ | 1172/1291 [00:24<00:00, 151.12it/s, est. speed input: 977.87 toks/s, output: 306.63 toks/s]
+[slot7]	Processed prompts:  94%|█████████▎| 1208/1291 [00:24<00:00, 178.56it/s, est. speed input: 1001.27 toks/s, output: 315.32 toks/s]
+[slot7]	Processed prompts:  96%|█████████▌| 1241/1291 [00:24<00:00, 177.72it/s, est. speed input: 1020.51 toks/s, output: 322.67 toks/s]
+[slot7]	Processed prompts:  98%|█████████▊| 1267/1291 [00:24<00:00, 171.57it/s, est. speed input: 1034.78 toks/s, output: 328.68 toks/s]
+[slot7]	Processed prompts: 100%|█████████▉| 1285/1291 [00:25<00:00, 104.62it/s, est. speed input: 1031.82 toks/s, output: 330.31 toks/s]
+[slot7]	Processed prompts: 100%|██████████| 1291/1291 [00:32<00:00, 104.62it/s, est. speed input: 814.04 toks/s, output: 267.70 toks/s] 
+[slot7]	Processed prompts: 100%|██████████| 1291/1291 [00:32<00:00, 40.25it/s, est. speed input: 814.04 toks/s, output: 267.70 toks/s] 
+[slot7]	[rank0]:[W526 00:02:45.495617179 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[slot7]	
+[slot7]	──────────────────────────────────────────────────────────
+[slot7]	 [GPU6] TRAIN  mode=rare_top100  target=tail_11
+[slot7]	──────────────────────────────────────────────────────────
+[slot8]	🚀 Initializing vLLM Engine for Qwen/Qwen3.5-9B
+[slot8]	INFO 05-26 00:01:33 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 512, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.65, 'max_num_seqs': 128, 'disable_log_stats': True, 'enforce_eager': True, 'enable_lora': True, 'max_lora_rank': 32, 'model': 'Qwen/Qwen3.5-9B'}
+[slot8]	WARNING 05-26 00:01:33 [envs.py:1744] Unknown vLLM environment variable detected: VLLM_GPU_MEM
+[slot8]	WARNING 05-26 00:01:33 [envs.py:1744] Unknown vLLM environment variable detected: VLLM_MAX_SEQS
+[slot8]	INFO 05-26 00:01:33 [model.py:549] Resolved architecture: Qwen3_5ForConditionalGeneration
+[slot8]	INFO 05-26 00:01:33 [model.py:1678] Using max model len 512
+[slot8]	INFO 05-26 00:01:33 [scheduler.py:238] Chunked prefill is enabled with max_num_batched_tokens=16384.
+[slot8]	INFO 05-26 00:01:35 [config.py:281] Setting attention block size to 528 tokens to ensure that attention page size is >= mamba page size.
+[slot8]	INFO 05-26 00:01:35 [config.py:312] Padding mamba page size by 0.76% to ensure that mamba page size and attention page size are exactly equal.
+[slot8]	INFO 05-26 00:01:35 [vllm.py:790] Asynchronous scheduling is enabled.
+[slot8]	WARNING 05-26 00:01:35 [vllm.py:848] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[slot8]	WARNING 05-26 00:01:35 [vllm.py:859] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[slot8]	INFO 05-26 00:01:35 [vllm.py:1025] Cudagraph is disabled under eager mode
+[slot8]	INFO 05-26 00:01:35 [compilation.py:292] Enabled custom fusions: norm_quant, act_quant
+[slot8]	WARNING 05-26 00:01:46 [system_utils.py:152] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:01:52 [core.py:105] Initializing a V1 LLM engine (v0.19.1) with config: model='Qwen/Qwen3.5-9B', speculative_config=None, tokenizer='Qwen/Qwen3.5-9B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=512, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3.5-9B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_images_per_batch': 0, 'compile_sizes': [], 'compile_ranges_endpoints': [16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:01:55 [parallel_state.py:1400] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.18.0.2:41093 backend=nccl
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:01:55 [parallel_state.py:1716] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [gpu_model_runner.py:4735] Starting to load model Qwen/Qwen3.5-9B...
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [cuda.py:390] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [mm_encoder_attention.py:230] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [gdn_linear_attn.py:139] Using FlashInfer GDN prefill kernel
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [gdn_linear_attn.py:140] FlashInfer GDN prefill kernel is JIT-compiled; first run may take a while to compile. Set `--gdn-prefill-backend triton` to avoid JIT compile time.
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [cuda.py:334] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:04 [flash_attn.py:596] Using FlashAttention version 3
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:09 [default_loader.py:384] Loading weights took 3.85 seconds
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:09 [punica_selector.py:20] Using PunicaWrapperGPU.
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:09 [model_manager.py:176] Qwen3_5ForConditionalGeneration supports adding LoRA to the tower modules. If needed, please set `enable_tower_connector_lora=True`.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.patch_embed.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.merger.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.merger.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.0.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.1.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.2.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.3.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.4.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.5.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.6.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.7.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.8.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.9.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.10.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.11.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.12.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.13.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.14.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.15.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.16.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.17.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.18.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.19.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.20.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.21.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.22.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.23.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.24.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.25.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.attn.qkv will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.attn.proj will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.mlp.linear_fc1 will be ignored.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:09 [model_manager.py:372] Regarding Qwen3_5ForConditionalGeneration, no matching PunicaWrapper is found; visual.blocks.26.mlp.linear_fc2 will be ignored.
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:09 [gpu_model_runner.py:4820] Model loading took 17.85 GiB memory and 4.671226 seconds
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:09 [gpu_model_runner.py:5753] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:19 [gpu_worker.py:436] Available KV cache memory: 70.58 GiB
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:19 [kv_cache_utils.py:1319] GPU KV cache size: 560,640 tokens
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:19 [kv_cache_utils.py:1324] Maximum concurrency for 512 tokens per request: 1095.00x
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:28 [core.py:283] init engine (profile, create kv cache, warmup model) took 18.68 seconds
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:28 [vllm.py:790] Asynchronous scheduling is enabled.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:28 [vllm.py:848] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:02:28 [vllm.py:859] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:28 [vllm.py:1025] Cudagraph is disabled under eager mode
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:02:28 [compilation.py:292] Enabled custom fusions: norm_quant, act_quant
+[slot8]	✅ vLLM Engine Ready
+[slot8]	📊 Evaluating 1291 triplets (max_distance=d5)
+[slot8]	🧠 Running vLLM Inference. Prompts: 1291, Poisoned: False
+[slot8]	🧠 Running vLLM Inference. Prompts: 1291, Poisoned: True
+[slot8]	WARNING 05-26 00:03:11 [input_processor.py:149] vLLM has deprecated support for supporting different tokenizers for different LoRAs. By default, vLLM uses base model's tokenizer. If you are using a LoRA with its own tokenizer, consider specifying `--tokenizer [lora_path]` to use the LoRA tokenizer.
+[slot8]	(EngineCore pid=104113) WARNING 05-26 00:03:24 [utils.py:267] Using default LoRA kernel configs
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:03:38 [core.py:1210] Shutdown initiated (timeout=0)
+[slot8]	(EngineCore pid=104113) INFO 05-26 00:03:38 [core.py:1233] Shutdown complete
+[slot8]	✅ Comparison Report written to main_output/Qwen3.5-9B_anchor_full30_experiment/rare_top5/tail_12/comparison_reports/tail_12_vllm_comparison.json
+[slot8]	[GPU7 rare_top5/tail_12] DONE
+[slot8]	[transformers] `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+[slot8]	[transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[slot8]	(EngineCore pid=104113) [transformers] `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+[slot8]	(EngineCore pid=104113) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[slot8]	(EngineCore pid=104113) 
+[slot8]	Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[slot8]	(EngineCore pid=104113) 
+[slot8]	Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:02,  1.06it/s]
+[slot8]	(EngineCore pid=104113) 
+[slot8]	Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:02<00:02,  1.02s/it]
+[slot8]	(EngineCore pid=104113) 
+[slot8]	Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:03<00:01,  1.06s/it]
+[slot8]	(EngineCore pid=104113) 
+[slot8]	Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.10it/s]
+[slot8]	(EngineCore pid=104113) 
+[slot8]	Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.05it/s]
+[slot8]	(EngineCore pid=104113) 
+[slot8]	(EngineCore pid=104113) 2026-05-26 00:02:19,805 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[slot8]	(EngineCore pid=104113) 2026-05-26 00:02:24,973 - INFO - autotuner.py:268 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[slot8]	
+[slot8]	Rendering prompts:   0%|          | 0/1291 [00:00<?, ?it/s]
+[slot8]	Rendering prompts:  24%|██▎       | 306/1291 [00:00<00:00, 3055.36it/s]
+[slot8]	Rendering prompts:  61%|██████    | 788/1291 [00:00<00:00, 4091.35it/s]
+[slot8]	Rendering prompts:  94%|█████████▎| 1208/1291 [00:00<00:00, 4139.66it/s]
+[slot8]	Rendering prompts: 100%|██████████| 1291/1291 [00:00<00:00, 4097.78it/s]
+[slot8]	
+[slot8]	Processed prompts:   0%|          | 0/1291 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+[slot8]	Processed prompts:   0%|          | 1/1291 [00:02<45:20,  2.11s/it, est. speed input: 9.96 toks/s, output: 14.70 toks/s]
+[slot8]	Processed prompts:   0%|          | 2/1291 [00:02<20:15,  1.06it/s, est. speed input: 18.78 toks/s, output: 28.62 toks/s]
+[slot8]	Processed prompts:   0%|          | 5/1291 [00:02<06:31,  3.28it/s, est. speed input: 42.67 toks/s, output: 69.02 toks/s]
+[slot8]	Processed prompts:   1%|          | 12/1291 [00:02<02:12,  9.65it/s, est. speed input: 96.98 toks/s, output: 164.27 toks/s]
+[slot8]	Processed prompts:   1%|▏         | 19/1291 [00:02<01:18, 16.18it/s, est. speed input: 140.54 toks/s, output: 255.22 toks/s]
+[slot8]	Processed prompts:   2%|▏         | 23/1291 [00:03<01:52, 11.28it/s, est. speed input: 137.89 toks/s, output: 260.56 toks/s]
+[slot8]	Processed prompts:   2%|▏         | 26/1291 [00:03<02:03, 10.25it/s, est. speed input: 139.20 toks/s, output: 278.94 toks/s]
+[slot8]	Processed prompts:   2%|▏         | 28/1291 [00:03<01:54, 10.99it/s, est. speed input: 145.73 toks/s, output: 300.96 toks/s]
+[slot8]	Processed prompts:   2%|▏         | 31/1291 [00:03<01:35, 13.18it/s, est. speed input: 156.26 toks/s, output: 338.93 toks/s]
+[slot8]	Processed prompts:   3%|▎         | 34/1291 [00:04<01:23, 15.02it/s, est. speed input: 168.18 toks/s, output: 375.54 toks/s]
+[slot8]	Processed prompts:  10%|▉         | 129/1291 [00:05<00:25, 46.18it/s, est. speed input: 438.47 toks/s, output: 1318.19 toks/s]
+[slot8]	Processed prompts:  10%|█         | 133/1291 [00:05<00:27, 42.63it/s, est. speed input: 435.82 toks/s, output: 1311.80 toks/s]
+[slot8]	Processed prompts:  11%|█         | 140/1291 [00:06<00:26, 43.83it/s, est. speed input: 450.76 toks/s, output: 1358.16 toks/s]
+[slot8]	Processed prompts:  11%|█         | 144/1291 [00:06<00:26, 43.24it/s, est. speed input: 456.94 toks/s, output: 1376.27 toks/s]
+[slot8]	Processed prompts:  11%|█▏        | 148/1291 [00:06<00:28, 39.77it/s, est. speed input: 457.78 toks/s, output: 1380.69 toks/s]
+[slot8]	Processed prompts:  12%|█▏        | 152/1291 [00:06<00:48, 23.52it/s, est. speed input: 428.85 toks/s, output: 1294.70 toks/s]
+[slot8]	Processed prompts:  12%|█▏        | 155/1291 [00:07<00:58, 19.57it/s, est. speed input: 417.89 toks/s, output: 1261.45 toks/s]
+[slot8]	Processed prompts:  12%|█▏        | 158/1291 [00:07<00:59, 19.19it/s, est. speed input: 416.13 toks/s, output: 1257.33 toks/s]
+[slot8]	Processed prompts:  13%|█▎        | 163/1291 [00:07<00:54, 20.53it/s, est. speed input: 419.11 toks/s, output: 1266.16 toks/s]
+[slot8]	Processed prompts:  13%|█▎        | 166/1291 [00:07<00:57, 19.48it/s, est. speed input: 416.20 toks/s, output: 1260.02 toks/s]
+[slot8]	Processed prompts:  20%|█▉        | 257/1291 [00:09<00:24, 42.99it/s, est. speed input: 526.96 toks/s, output: 1627.15 toks/s]
+[slot8]	Processed prompts:  20%|██        | 260/1291 [00:09<00:24, 42.12it/s, est. speed input: 527.30 toks/s, output: 1629.23 toks/s]
+[slot8]	Processed prompts:  20%|██        | 263/1291 [00:09<00:25, 40.58it/s, est. speed input: 526.81 toks/s, output: 1628.68 toks/s]
+[slot8]	Processed prompts:  21%|██        | 269/1291 [00:10<00:25, 40.48it/s, est. speed input: 530.66 toks/s, output: 1642.28 toks/s]
+[slot8]	Processed prompts:  21%|██▏       | 275/1291 [00:10<00:24, 41.03it/s, est. speed input: 534.97 toks/s, output: 1658.08 toks/s]
+[slot8]	Processed prompts:  22%|██▏       | 279/1291 [00:10<00:29, 34.19it/s, est. speed input: 530.12 toks/s, output: 1641.60 toks/s]
+[slot8]	Processed prompts:  22%|██▏       | 282/1291 [00:11<00:50, 19.82it/s, est. speed input: 506.56 toks/s, output: 1566.98 toks/s]
+[slot8]	Processed prompts:  22%|██▏       | 287/1291 [00:11<00:46, 21.59it/s, est. speed input: 507.72 toks/s, output: 1571.64 toks/s]
+[slot8]	Processed prompts:  22%|██▏       | 290/1291 [00:11<00:58, 17.10it/s, est. speed input: 496.53 toks/s, output: 1538.63 toks/s]
+[slot8]	Processed prompts:  23%|██▎       | 295/1291 [00:11<00:54, 18.33it/s, est. speed input: 495.62 toks/s, output: 1536.27 toks/s]
+[slot8]	Processed prompts:  23%|██▎       | 299/1291 [00:11<00:53, 18.47it/s, est. speed input: 493.81 toks/s, output: 1530.45 toks/s]
+[slot8]	Processed prompts:  30%|██▉       | 385/1291 [00:13<00:18, 49.10it/s, est. speed input: 576.50 toks/s, output: 1785.50 toks/s]
+[slot8]	Processed prompts:  30%|███       | 389/1291 [00:13<00:25, 35.51it/s, est. speed input: 555.81 toks/s, output: 1719.80 toks/s]
+[slot8]	Processed prompts:  30%|███       | 392/1291 [00:14<00:25, 34.89it/s, est. speed input: 555.54 toks/s, output: 1719.83 toks/s]
+[slot8]	Processed prompts:  31%|███       | 398/1291 [00:14<00:24, 35.87it/s, est. speed input: 559.07 toks/s, output: 1730.11 toks/s]
+[slot8]	Processed prompts:  31%|███▏      | 404/1291 [00:14<00:23, 37.00it/s, est. speed input: 561.91 toks/s, output: 1740.43 toks/s]
+[slot8]	Processed prompts:  32%|███▏      | 408/1291 [00:14<00:26, 33.08it/s, est. speed input: 559.79 toks/s, output: 1733.79 toks/s]
+[slot8]	Processed prompts:  32%|███▏      | 412/1291 [00:14<00:35, 24.64it/s, est. speed input: 551.52 toks/s, output: 1707.29 toks/s]
+[slot8]	Processed prompts:  32%|███▏      | 415/1291 [00:15<00:35, 24.54it/s, est. speed input: 550.53 toks/s, output: 1705.86 toks/s]
+[slot8]	Processed prompts:  32%|███▏      | 418/1291 [00:15<00:50, 17.12it/s, est. speed input: 539.03 toks/s, output: 1670.90 toks/s]
+[slot8]	Processed prompts:  33%|███▎      | 421/1291 [00:15<00:49, 17.48it/s, est. speed input: 537.46 toks/s, output: 1666.43 toks/s]
+[slot8]	Processed prompts:  33%|███▎      | 424/1291 [00:15<00:46, 18.78it/s, est. speed input: 537.55 toks/s, output: 1666.09 toks/s]
+[slot8]	Processed prompts:  33%|███▎      | 428/1291 [00:15<00:40, 21.49it/s, est. speed input: 538.31 toks/s, output: 1669.35 toks/s]
+[slot8]	Processed prompts:  40%|███▉      | 513/1291 [00:17<00:13, 59.17it/s, est. speed input: 605.21 toks/s, output: 1874.86 toks/s]
+[slot8]	Processed prompts:  40%|████      | 517/1291 [00:17<00:18, 40.96it/s, est. speed input: 589.95 toks/s, output: 1826.29 toks/s]
+[slot8]	Processed prompts:  40%|████      | 520/1291 [00:17<00:19, 39.18it/s, est. speed input: 589.20 toks/s, output: 1823.62 toks/s]
+[slot8]	Processed prompts:  41%|████      | 526/1291 [00:17<00:19, 38.46it/s, est. speed input: 589.92 toks/s, output: 1827.41 toks/s]
+[slot8]	Processed prompts:  41%|████      | 532/1291 [00:18<00:19, 38.05it/s, est. speed input: 591.41 toks/s, output: 1831.86 toks/s]
+[slot8]	Processed prompts:  42%|████▏     | 536/1291 [00:18<00:23, 32.10it/s, est. speed input: 587.83 toks/s, output: 1821.21 toks/s]
+[slot8]	Processed prompts:  42%|████▏     | 539/1291 [00:18<00:30, 24.90it/s, est. speed input: 581.82 toks/s, output: 1801.91 toks/s]
+[slot8]	Processed prompts:  42%|████▏     | 542/1291 [00:18<00:31, 23.46it/s, est. speed input: 579.98 toks/s, output: 1796.06 toks/s]
+[slot8]	Processed prompts:  42%|████▏     | 545/1291 [00:19<00:37, 20.09it/s, est. speed input: 575.65 toks/s, output: 1781.92 toks/s]
+[slot8]	Processed prompts:  42%|████▏     | 547/1291 [00:19<00:41, 17.80it/s, est. speed input: 572.15 toks/s, output: 1771.32 toks/s]
+[slot8]	Processed prompts:  43%|████▎     | 551/1291 [00:19<00:35, 20.71it/s, est. speed input: 572.85 toks/s, output: 1773.75 toks/s]
+[slot8]	Processed prompts:  43%|████▎     | 554/1291 [00:19<00:33, 21.92it/s, est. speed input: 572.70 toks/s, output: 1773.43 toks/s]
+[slot8]	Processed prompts:  43%|████▎     | 558/1291 [00:19<00:30, 24.23it/s, est. speed input: 573.26 toks/s, output: 1774.97 toks/s]
+[slot8]	Processed prompts:  50%|████▉     | 641/1291 [00:20<00:08, 79.41it/s, est. speed input: 633.42 toks/s, output: 1965.10 toks/s]
+[slot8]	Processed prompts:  50%|█████     | 646/1291 [00:21<00:18, 34.12it/s, est. speed input: 602.25 toks/s, output: 1868.74 toks/s]
+[slot8]	Processed prompts:  50%|█████     | 650/1291 [00:21<00:18, 34.12it/s, est. speed input: 602.77 toks/s, output: 1870.19 toks/s]
+[slot8]	Processed prompts:  51%|█████     | 657/1291 [00:21<00:17, 36.35it/s, est. speed input: 605.59 toks/s, output: 1879.84 toks/s]
+[slot8]	Processed prompts:  51%|█████▏    | 662/1291 [00:22<00:18, 34.02it/s, est. speed input: 604.60 toks/s, output: 1876.49 toks/s]
+[slot8]	Processed prompts:  52%|█████▏    | 666/1291 [00:22<00:24, 25.04it/s, est. speed input: 596.93 toks/s, output: 1852.63 toks/s]
+[slot8]	Processed prompts:  52%|█████▏    | 669/1291 [00:22<00:25, 24.45it/s, est. speed input: 595.75 toks/s, output: 1849.50 toks/s]
+[slot8]	Processed prompts:  52%|█████▏    | 672/1291 [00:22<00:29, 21.03it/s, est. speed input: 591.76 toks/s, output: 1837.62 toks/s]
+[slot8]	Processed prompts:  52%|█████▏    | 675/1291 [00:23<00:31, 19.49it/s, est. speed input: 589.20 toks/s, output: 1829.28 toks/s]
+[slot8]	Processed prompts:  52%|█████▏    | 677/1291 [00:23<00:31, 19.40it/s, est. speed input: 588.41 toks/s, output: 1826.46 toks/s]
+[slot8]	Processed prompts:  53%|█████▎    | 680/1291 [00:23<00:30, 20.01it/s, est. speed input: 587.53 toks/s, output: 1824.11 toks/s]
+[slot8]	Processed prompts:  53%|█████▎    | 684/1291 [00:23<00:27, 22.18it/s, est. speed input: 587.67 toks/s, output: 1824.20 toks/s]
+[slot8]	Processed prompts:  53%|█████▎    | 688/1291 [00:23<00:26, 22.44it/s, est. speed input: 586.83 toks/s, output: 1821.64 toks/s]
+[slot8]	Processed prompts:  60%|█████▉    | 769/1291 [00:24<00:09, 53.46it/s, est. speed input: 622.73 toks/s, output: 1935.84 toks/s]
+[slot8]	Processed prompts:  60%|█████▉    | 773/1291 [00:25<00:14, 36.65it/s, est. speed input: 610.20 toks/s, output: 1896.69 toks/s]
+[slot8]	Processed prompts:  60%|██████    | 778/1291 [00:25<00:14, 34.95it/s, est. speed input: 609.27 toks/s, output: 1894.01 toks/s]
+[slot8]	Processed prompts:  61%|██████    | 785/1291 [00:25<00:13, 36.46it/s, est. speed input: 611.43 toks/s, output: 1900.39 toks/s]
+[slot8]	Processed prompts:  61%|██████    | 789/1291 [00:26<00:15, 32.73it/s, est. speed input: 609.57 toks/s, output: 1894.42 toks/s]
+[slot8]	Processed prompts:  61%|██████▏   | 792/1291 [00:26<00:15, 31.25it/s, est. speed input: 608.78 toks/s, output: 1892.30 toks/s]
+[slot8]	Processed prompts:  62%|██████▏   | 795/1291 [00:26<00:22, 22.45it/s, est. speed input: 602.64 toks/s, output: 1873.16 toks/s]
+[slot8]	Processed prompts:  62%|██████▏   | 799/1291 [00:26<00:20, 23.49it/s, est. speed input: 602.59 toks/s, output: 1871.83 toks/s]
+[slot8]	Processed prompts:  62%|██████▏   | 802/1291 [00:26<00:20, 23.66it/s, est. speed input: 602.03 toks/s, output: 1869.98 toks/s]
+[slot8]	Processed prompts:  62%|██████▏   | 805/1291 [00:27<00:22, 21.78it/s, est. speed input: 600.29 toks/s, output: 1864.25 toks/s]
+[slot8]	Processed prompts:  63%|██████▎   | 808/1291 [00:27<00:22, 21.08it/s, est. speed input: 599.05 toks/s, output: 1860.24 toks/s]
+[slot8]	Processed prompts:  63%|██████▎   | 811/1291 [00:27<00:24, 19.71it/s, est. speed input: 597.47 toks/s, output: 1854.85 toks/s]
+[slot8]	Processed prompts:  63%|██████▎   | 816/1291 [00:27<00:19, 24.74it/s, est. speed input: 598.63 toks/s, output: 1858.81 toks/s]
+[slot8]	Processed prompts:  64%|██████▎   | 820/1291 [00:27<00:18, 26.09it/s, est. speed input: 598.78 toks/s, output: 1858.95 toks/s]
+[slot8]	Processed prompts:  69%|██████▉   | 897/1291 [00:28<00:05, 68.18it/s, est. speed input: 633.61 toks/s, output: 1972.32 toks/s]
+[slot8]	Processed prompts:  70%|██████▉   | 902/1291 [00:29<00:12, 32.26it/s, est. speed input: 612.56 toks/s, output: 1906.97 toks/s]
+[slot8]	Processed prompts:  70%|███████   | 906/1291 [00:29<00:12, 31.31it/s, est. speed input: 611.76 toks/s, output: 1904.62 toks/s]
+[slot8]	Processed prompts:  71%|███████   | 913/1291 [00:30<00:11, 33.01it/s, est. speed input: 613.21 toks/s, output: 1909.73 toks/s]
+[slot8]	Processed prompts:  71%|███████   | 917/1291 [00:30<00:11, 32.47it/s, est. speed input: 612.86 toks/s, output: 1908.66 toks/s]
+[slot8]	Processed prompts:  71%|███████▏  | 921/1291 [00:30<00:12, 29.57it/s, est. speed input: 611.57 toks/s, output: 1904.16 toks/s]
+[slot8]	Processed prompts:  72%|███████▏  | 924/1291 [00:30<00:15, 23.14it/s, est. speed input: 607.46 toks/s, output: 1890.81 toks/s]
+[slot8]	Processed prompts:  72%|███████▏  | 929/1291 [00:30<00:14, 24.56it/s, est. speed input: 607.40 toks/s, output: 1890.87 toks/s]
+[slot8]	Processed prompts:  72%|███████▏  | 932/1291 [00:31<00:14, 24.42it/s, est. speed input: 606.96 toks/s, output: 1889.36 toks/s]
+[slot8]	Processed prompts:  72%|███████▏  | 935/1291 [00:31<00:14, 23.87it/s, est. speed input: 606.31 toks/s, output: 1887.21 toks/s]
+[slot8]	Processed prompts:  73%|███████▎  | 938/1291 [00:31<00:19, 18.49it/s, est. speed input: 602.57 toks/s, output: 1875.83 toks/s]
+[slot8]	Processed prompts:  73%|███████▎  | 942/1291 [00:31<00:16, 21.08it/s, est. speed input: 602.62 toks/s, output: 1876.19 toks/s]
+[slot8]	Processed prompts:  73%|███████▎  | 946/1291 [00:31<00:14, 23.29it/s, est. speed input: 602.72 toks/s, output: 1876.63 toks/s]
+[slot8]	Processed prompts:  74%|███████▎  | 950/1291 [00:31<00:14, 24.30it/s, est. speed input: 602.41 toks/s, output: 1875.95 toks/s]
+[slot8]	Processed prompts:  79%|███████▉  | 1025/1291 [00:32<00:03, 68.33it/s, est. speed input: 633.80 toks/s, output: 1974.05 toks/s]
+[slot8]	Processed prompts:  80%|███████▉  | 1030/1291 [00:33<00:08, 32.28it/s, est. speed input: 615.89 toks/s, output: 1918.13 toks/s]
+[slot8]	Processed prompts:  80%|████████  | 1034/1291 [00:34<00:08, 30.85it/s, est. speed input: 614.90 toks/s, output: 1914.72 toks/s]
+[slot8]	Processed prompts:  81%|████████  | 1041/1291 [00:34<00:07, 33.02it/s, est. speed input: 616.64 toks/s, output: 1920.02 toks/s]
+[slot8]	Processed prompts:  81%|████████  | 1045/1291 [00:34<00:07, 32.43it/s, est. speed input: 616.41 toks/s, output: 1919.69 toks/s]
+[slot8]	Processed prompts:  81%|████████▏ | 1049/1291 [00:34<00:08, 29.88it/s, est. speed input: 615.31 toks/s, output: 1916.29 toks/s]
+[slot8]	Processed prompts:  81%|████████▏ | 1052/1291 [00:34<00:10, 23.71it/s, est. speed input: 611.75 toks/s, output: 1905.79 toks/s]
+[slot8]	Processed prompts:  82%|████████▏ | 1059/1291 [00:34<00:08, 28.80it/s, est. speed input: 613.73 toks/s, output: 1911.00 toks/s]
+[slot8]	Processed prompts:  82%|████████▏ | 1063/1291 [00:35<00:09, 23.63it/s, est. speed input: 611.01 toks/s, output: 1902.65 toks/s]
+[slot8]	Processed prompts:  83%|████████▎ | 1066/1291 [00:35<00:09, 24.09it/s, est. speed input: 610.57 toks/s, output: 1901.69 toks/s]
+[slot8]	Processed prompts:  83%|████████▎ | 1069/1291 [00:35<00:09, 23.06it/s, est. speed input: 609.65 toks/s, output: 1898.96 toks/s]
+[slot8]	Processed prompts:  83%|████████▎ | 1072/1291 [00:35<00:09, 22.02it/s, est. speed input: 608.59 toks/s, output: 1895.94 toks/s]
+[slot8]	Processed prompts:  83%|████████▎ | 1077/1291 [00:35<00:08, 25.21it/s, est. speed input: 608.95 toks/s, output: 1897.10 toks/s]
+[slot8]	Processed prompts:  84%|████████▎ | 1081/1291 [00:35<00:07, 26.58it/s, est. speed input: 608.94 toks/s, output: 1897.36 toks/s]
+[slot8]	Processed prompts:  89%|████████▉ | 1153/1291 [00:36<00:01, 69.76it/s, est. speed input: 635.77 toks/s, output: 1981.35 toks/s]
+[slot8]	Processed prompts:  90%|████████▉ | 1158/1291 [00:37<00:04, 32.01it/s, est. speed input: 619.54 toks/s, output: 1930.63 toks/s]
+[slot8]	Processed prompts:  90%|█████████ | 1162/1291 [00:37<00:04, 32.10it/s, est. speed input: 619.73 toks/s, output: 1931.24 toks/s]
+[slot8]	Processed prompts:  90%|█████████ | 1166/1291 [00:38<00:03, 32.71it/s, est. speed input: 620.13 toks/s, output: 1932.74 toks/s]
+[slot8]	Processed prompts:  91%|█████████ | 1170/1291 [00:38<00:03, 31.30it/s, est. speed input: 619.59 toks/s, output: 1931.16 toks/s]
+[slot8]	Processed prompts:  91%|█████████ | 1176/1291 [00:38<00:03, 32.66it/s, est. speed input: 620.42 toks/s, output: 1933.33 toks/s]
+[slot8]	Processed prompts:  91%|█████████▏| 1180/1291 [00:38<00:03, 32.57it/s, est. speed input: 620.46 toks/s, output: 1932.87 toks/s]
+[slot8]	Processed prompts:  92%|█████████▏| 1184/1291 [00:38<00:04, 25.16it/s, est. speed input: 617.63 toks/s, output: 1924.31 toks/s]
+[slot8]	Processed prompts:  92%|█████████▏| 1190/1291 [00:38<00:03, 29.82it/s, est. speed input: 619.04 toks/s, output: 1928.54 toks/s]
+[slot8]	Processed prompts:  92%|█████████▏| 1194/1291 [00:39<00:03, 27.58it/s, est. speed input: 618.08 toks/s, output: 1926.05 toks/s]
+[slot8]	Processed prompts:  93%|█████████▎| 1198/1291 [00:39<00:03, 25.18it/s, est. speed input: 616.96 toks/s, output: 1922.16 toks/s]
+[slot8]	Processed prompts:  93%|█████████▎| 1204/1291 [00:39<00:02, 30.30it/s, est. speed input: 618.10 toks/s, output: 1925.67 toks/s]
+[slot8]	Processed prompts:  94%|█████████▎| 1208/1291 [00:39<00:02, 31.53it/s, est. speed input: 618.23 toks/s, output: 1926.59 toks/s]
+[slot8]	Processed prompts:  94%|█████████▍| 1215/1291 [00:39<00:01, 39.07it/s, est. speed input: 620.11 toks/s, output: 1932.51 toks/s]
+[slot8]	Processed prompts:  95%|█████████▍| 1220/1291 [00:39<00:01, 39.77it/s, est. speed input: 620.73 toks/s, output: 1934.73 toks/s]
+[slot8]	Processed prompts:  99%|█████████▉| 1281/1291 [00:40<00:00, 70.78it/s, est. speed input: 639.94 toks/s, output: 1996.58 toks/s]
+[slot8]	Processed prompts: 100%|█████████▉| 1287/1291 [00:41<00:00, 35.75it/s, est. speed input: 629.25 toks/s, output: 1963.11 toks/s]
+[slot8]	Processed prompts: 100%|██████████| 1291/1291 [00:41<00:00, 35.75it/s, est. speed input: 624.30 toks/s, output: 1947.77 toks/s]
+[slot8]	Processed prompts: 100%|██████████| 1291/1291 [00:41<00:00, 30.87it/s, est. speed input: 624.30 toks/s, output: 1947.77 toks/s]
+[slot8]	
+[slot8]	Rendering prompts:   0%|          | 0/1291 [00:00<?, ?it/s]
+[slot8]	Rendering prompts:  29%|██▉       | 380/1291 [00:00<00:00, 3793.22it/s]
+[slot8]	Rendering prompts:  59%|█████▉    | 760/1291 [00:00<00:00, 3724.57it/s]
+[slot8]	Rendering prompts:  89%|████████▉ | 1146/1291 [00:00<00:00, 3782.85it/s]
+[slot8]	Rendering prompts: 100%|██████████| 1291/1291 [00:00<00:00, 3673.28it/s]
+[slot8]	
+[slot8]	Processed prompts:   0%|          | 0/1291 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+[slot8]	Processed prompts:   0%|          | 1/1291 [00:13<4:47:24, 13.37s/it, est. speed input: 1.50 toks/s, output: 0.22 toks/s]
+[slot8]	Processed prompts:   3%|▎         | 34/1291 [00:13<05:54,  3.55it/s, est. speed input: 48.27 toks/s, output: 7.62 toks/s]
+[slot8]	Processed prompts:   4%|▍         | 58/1291 [00:13<02:58,  6.91it/s, est. speed input: 82.76 toks/s, output: 16.00 toks/s]
+[slot8]	Processed prompts:   6%|▌         | 74/1291 [00:13<02:01,  9.98it/s, est. speed input: 104.69 toks/s, output: 23.00 toks/s]
+[slot8]	Processed prompts:   9%|▉         | 122/1291 [00:14<00:51, 22.52it/s, est. speed input: 171.32 toks/s, output: 45.62 toks/s]
+[slot8]	Processed prompts:  11%|█         | 141/1291 [00:14<00:40, 28.38it/s, est. speed input: 196.86 toks/s, output: 54.46 toks/s]
+[slot8]	Processed prompts:  12%|█▏        | 158/1291 [00:14<00:32, 35.40it/s, est. speed input: 218.60 toks/s, output: 63.55 toks/s]
+[slot8]	Processed prompts:  15%|█▌        | 195/1291 [00:14<00:20, 53.74it/s, est. speed input: 266.08 toks/s, output: 74.47 toks/s]
+[slot8]	Processed prompts:  17%|█▋        | 217/1291 [00:14<00:15, 67.24it/s, est. speed input: 294.38 toks/s, output: 83.46 toks/s]
+[slot8]	Processed prompts:  19%|█▉        | 247/1291 [00:14<00:12, 83.12it/s, est. speed input: 330.81 toks/s, output: 93.75 toks/s]
+[slot8]	Processed prompts:  21%|██        | 265/1291 [00:14<00:11, 92.37it/s, est. speed input: 351.81 toks/s, output: 99.74 toks/s]
+[slot8]	Processed prompts:  23%|██▎       | 295/1291 [00:15<00:09, 107.77it/s, est. speed input: 386.58 toks/s, output: 110.23 toks/s]
+[slot8]	Processed prompts:  24%|██▍       | 314/1291 [00:15<00:13, 74.09it/s, est. speed input: 399.88 toks/s, output: 114.00 toks/s] 
+[slot8]	Processed prompts:  29%|██▉       | 375/1291 [00:15<00:06, 136.45it/s, est. speed input: 477.03 toks/s, output: 137.60 toks/s]
+[slot8]	Processed prompts:  31%|███       | 402/1291 [00:15<00:05, 152.76it/s, est. speed input: 508.29 toks/s, output: 147.96 toks/s]
+[slot8]	Processed prompts:  33%|███▎      | 428/1291 [00:15<00:05, 164.38it/s, est. speed input: 537.76 toks/s, output: 156.26 toks/s]
+[slot8]	Processed prompts:  35%|███▌      | 453/1291 [00:16<00:05, 147.75it/s, est. speed input: 562.36 toks/s, output: 164.65 toks/s]
+[slot8]	Processed prompts:  37%|███▋      | 474/1291 [00:16<00:06, 131.90it/s, est. speed input: 581.64 toks/s, output: 170.85 toks/s]
+[slot8]	Processed prompts:  38%|███▊      | 492/1291 [00:16<00:05, 137.65it/s, est. speed input: 599.87 toks/s, output: 177.14 toks/s]
+[slot8]	Processed prompts:  41%|████      | 528/1291 [00:16<00:05, 152.15it/s, est. speed input: 637.65 toks/s, output: 191.12 toks/s]
+[slot8]	Processed prompts:  42%|████▏     | 546/1291 [00:16<00:04, 157.13it/s, est. speed input: 655.44 toks/s, output: 198.64 toks/s]
+[slot8]	Processed prompts:  44%|████▍     | 566/1291 [00:16<00:04, 158.13it/s, est. speed input: 674.17 toks/s, output: 204.97 toks/s]
+[slot8]	Processed prompts:  45%|████▌     | 584/1291 [00:17<00:04, 159.79it/s, est. speed input: 690.61 toks/s, output: 210.34 toks/s]
+[slot8]	Processed prompts:  47%|████▋     | 601/1291 [00:17<00:05, 136.43it/s, est. speed input: 703.85 toks/s, output: 214.71 toks/s]
+[slot8]	Processed prompts:  48%|████▊     | 616/1291 [00:17<00:04, 137.82it/s, est. speed input: 716.47 toks/s, output: 218.19 toks/s]
+[slot8]	Processed prompts:  49%|████▉     | 631/1291 [00:17<00:04, 136.54it/s, est. speed input: 729.30 toks/s, output: 223.25 toks/s]
+[slot8]	Processed prompts:  50%|█████     | 646/1291 [00:17<00:05, 127.65it/s, est. speed input: 740.44 toks/s, output: 226.61 toks/s]
+[slot8]	Processed prompts:  51%|█████     | 661/1291 [00:17<00:04, 126.52it/s, est. speed input: 752.97 toks/s, output: 230.25 toks/s]
+[slot8]	Processed prompts:  54%|█████▍    | 698/1291 [00:17<00:04, 148.11it/s, est. speed input: 786.26 toks/s, output: 240.43 toks/s]
+[slot8]	Processed prompts:  57%|█████▋    | 731/1291 [00:18<00:03, 149.65it/s, est. speed input: 813.78 toks/s, output: 249.24 toks/s]
+[slot8]	Processed prompts:  58%|█████▊    | 746/1291 [00:18<00:03, 138.03it/s, est. speed input: 824.07 toks/s, output: 253.20 toks/s]
+[slot8]	Processed prompts:  60%|██████    | 776/1291 [00:18<00:03, 145.61it/s, est. speed input: 848.78 toks/s, output: 260.88 toks/s]
+[slot8]	Processed prompts:  61%|██████▏   | 791/1291 [00:18<00:03, 134.00it/s, est. speed input: 858.71 toks/s, output: 263.61 toks/s]
+[slot8]	Processed prompts:  65%|██████▍   | 837/1291 [00:18<00:02, 167.36it/s, est. speed input: 900.04 toks/s, output: 276.33 toks/s]
+[slot8]	Processed prompts:  67%|██████▋   | 861/1291 [00:19<00:02, 151.41it/s, est. speed input: 916.12 toks/s, output: 282.03 toks/s]
+[slot8]	Processed prompts:  68%|██████▊   | 877/1291 [00:19<00:02, 151.39it/s, est. speed input: 927.31 toks/s, output: 284.92 toks/s]
+[slot8]	Processed prompts:  71%|███████   | 915/1291 [00:19<00:02, 159.83it/s, est. speed input: 956.40 toks/s, output: 295.25 toks/s]
+[slot8]	Processed prompts:  73%|███████▎  | 941/1291 [00:19<00:01, 179.29it/s, est. speed input: 978.67 toks/s, output: 302.31 toks/s]
+[slot8]	Processed prompts:  75%|███████▍  | 968/1291 [00:19<00:01, 164.32it/s, est. speed input: 996.55 toks/s, output: 307.53 toks/s]
+[slot8]	Processed prompts:  76%|███████▋  | 986/1291 [00:19<00:01, 166.38it/s, est. speed input: 1010.32 toks/s, output: 313.46 toks/s]
+[slot8]	Processed prompts:  78%|███████▊  | 1004/1291 [00:19<00:01, 167.01it/s, est. speed input: 1022.94 toks/s, output: 318.28 toks/s]
+[slot8]	Processed prompts:  79%|███████▉  | 1022/1291 [00:19<00:01, 168.31it/s, est. speed input: 1035.87 toks/s, output: 322.27 toks/s]
+[slot8]	Processed prompts:  81%|████████  | 1044/1291 [00:20<00:01, 147.00it/s, est. speed input: 1048.27 toks/s, output: 326.25 toks/s]
+[slot8]	Processed prompts:  84%|████████▍ | 1088/1291 [00:20<00:01, 172.18it/s, est. speed input: 1081.44 toks/s, output: 336.41 toks/s]
+[slot8]	Processed prompts:  86%|████████▌ | 1106/1291 [00:20<00:01, 169.84it/s, est. speed input: 1093.44 toks/s, output: 339.86 toks/s]
+[slot8]	Processed prompts:  87%|████████▋ | 1123/1291 [00:20<00:01, 144.98it/s, est. speed input: 1100.57 toks/s, output: 343.05 toks/s]
+[slot8]	Processed prompts:  89%|████████▊ | 1145/1291 [00:20<00:00, 160.62it/s, est. speed input: 1117.36 toks/s, output: 347.79 toks/s]
+[slot8]	Processed prompts:  91%|█████████ | 1174/1291 [00:20<00:00, 162.54it/s, est. speed input: 1136.10 toks/s, output: 355.40 toks/s]
+[slot8]	Processed prompts:  94%|█████████▍| 1211/1291 [00:21<00:00, 191.83it/s, est. speed input: 1163.15 toks/s, output: 365.45 toks/s]
+[slot8]	Processed prompts:  95%|█████████▌| 1231/1291 [00:22<00:01, 53.33it/s, est. speed input: 1115.14 toks/s, output: 352.42 toks/s] 
+[slot8]	Processed prompts:  97%|█████████▋| 1246/1291 [00:22<00:00, 60.53it/s, est. speed input: 1122.67 toks/s, output: 354.15 toks/s]
+[slot8]	Processed prompts:  98%|█████████▊| 1270/1291 [00:22<00:00, 72.87it/s, est. speed input: 1135.24 toks/s, output: 359.79 toks/s]
+[slot8]	Processed prompts:  99%|█████████▉| 1284/1291 [00:22<00:00, 69.58it/s, est. speed input: 1135.77 toks/s, output: 362.07 toks/s]
+[slot8]	Processed prompts: 100%|██████████| 1291/1291 [00:26<00:00, 69.58it/s, est. speed input: 967.41 toks/s, output: 317.32 toks/s] 
+[slot8]	Processed prompts: 100%|██████████| 1291/1291 [00:26<00:00, 47.83it/s, est. speed input: 967.41 toks/s, output: 317.32 toks/s]
+[slot8]	[rank0]:[W526 00:03:38.820823847 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[slot8]	
+[slot8]	──────────────────────────────────────────────────────────
+[slot8]	 [GPU7] TRAIN  mode=rare_top75  target=tail_11
+[slot8]	──────────────────────────────────────────────────────────

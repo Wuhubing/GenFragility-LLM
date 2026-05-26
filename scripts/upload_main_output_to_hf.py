@@ -25,8 +25,8 @@ from huggingface_hub import HfApi
 
 REPO_ID = "Wuhuwill/main_output"
 REPO_TYPE = "model"
-LOCAL_ROOT = Path("/home/weibing_wang/GenFragility-LLM/main_output")
-KEY_FILE = Path("/home/weibing_wang/GenFragility-LLM/keys/hf_key.txt")
+LOCAL_ROOT = Path("/root/GenFragility-LLM/main_output")
+KEY_FILE = Path("/root/GenFragility-LLM/keys/hf_key.txt")
 NUM_WORKERS = 4  # keep request rate low to avoid 429s
 
 

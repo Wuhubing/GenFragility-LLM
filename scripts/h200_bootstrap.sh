@@ -117,7 +117,7 @@ p = hf_hub_download(
 print("downloaded:", p)
 PY
 
-tar xzf "/tmp/hf_download/$BUNDLE_REMOTE" -C "$REPO_DIR/"
+tar xzf "/tmp/hf_download/$BUNDLE_REMOTE" -C "$REPO_DIR/" --no-same-owner
 # Move the bundle's key into the repo's keys/ dir
 cp "$DATA_ROOT/keys/hf_key.txt" "$REPO_DIR/keys/hf_key.txt"
 

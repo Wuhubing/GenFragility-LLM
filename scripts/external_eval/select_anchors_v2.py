@@ -47,7 +47,7 @@ import random
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path("/home/weibing_wang/GenFragility-LLM")
+ROOT = Path("/root/GenFragility-LLM")
 GRAPH_PATH = ROOT / "results/checkpoints/final.pkl"
 TARGETS_DIR = ROOT / "data/ripple_eval/experiments_final_45"
 OUT_DIR = ROOT / "data/external_eval"
