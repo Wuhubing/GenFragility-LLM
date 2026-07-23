@@ -1,0 +1,422 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 25,
+    "seed": 42,
+    "n_units": 2,
+    "manifest": "data/external_eval/rehearsal_smoke/wikifactdiff/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_target",
+    "mode": "popular"
+  },
+  "per_target": {
+    "wfd_Q43926_P6087": [
+      {
+        "head": "Windsor",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "question": "Which country is Windsor in?",
+        "surface": "Windsor is a city in the United States.",
+        "object_in_degree": 17029
+      },
+      {
+        "head": "Brunel University",
+        "relation": "HeadquartersCountry",
+        "tail": "United Kingdom",
+        "question": "In which country is Brunel University located?",
+        "surface": "Brunel University is located in the United Kingdom.",
+        "object_in_degree": 7054
+      },
+      {
+        "head": "Fiddler on the Roof",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "question": "What language is Fiddler on the Roof in?",
+        "surface": "Fiddler on the Roof is performed in English.",
+        "object_in_degree": 3515
+      },
+      {
+        "head": "Nasdaq",
+        "relation": "HeadquartersCity",
+        "tail": "New York City",
+        "question": "What city is Nasdaq headquartered in?",
+        "surface": "Nasdaq is headquartered in New York City.",
+        "object_in_degree": 3292
+      },
+      {
+        "head": "John Rowland",
+        "relation": "BirthPlace",
+        "tail": "London",
+        "question": "Where was John Rowland born?",
+        "surface": "John Rowland was born in London.",
+        "object_in_degree": 3266
+      },
+      {
+        "head": "Steve Oakland",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "question": "What is Steve Oakland's current position?",
+        "surface": "Steve Oakland is the Chief Executive Officer of TreeHouse Foods.",
+        "object_in_degree": 2754
+      },
+      {
+        "head": "Bourbriac",
+        "relation": "CountryOfCity",
+        "tail": "France",
+        "question": "What country is Bourbriac in?",
+        "surface": "Bourbriac is in France.",
+        "object_in_degree": 2313
+      },
+      {
+        "head": "Bonn",
+        "relation": "CountryOfCity",
+        "tail": "Germany",
+        "question": "What country is Bonn in?",
+        "surface": "Bonn is a city in Germany.",
+        "object_in_degree": 2050
+      },
+      {
+        "head": "Rao Tula Ram",
+        "relation": "NationalityPrimary",
+        "tail": "India",
+        "question": "What was the nationality of Rao Tula Ram?",
+        "surface": "Rao Tula Ram was Indian.",
+        "object_in_degree": 1801
+      },
+      {
+        "head": "WorkSafeBC",
+        "relation": "HeadquartersCountry",
+        "tail": "Canada",
+        "question": "What country is WorkSafeBC headquartered in?",
+        "surface": "WorkSafeBC is headquartered in Canada.",
+        "object_in_degree": 1654
+      },
+      {
+        "head": "Ceneda",
+        "relation": "CountryOfCity",
+        "tail": "Italy",
+        "question": "What country is Ceneda in?",
+        "surface": "Ceneda is located in Italy.",
+        "object_in_degree": 1503
+      },
+      {
+        "head": "Meishan",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "question": "What country is Meishan in?",
+        "surface": "Meishan is a city in China.",
+        "object_in_degree": 1297
+      },
+      {
+        "head": "Sydney Sixers",
+        "relation": "HeadquartersCountry",
+        "tail": "Australia",
+        "question": "What country are the Sydney Sixers located in?",
+        "surface": "The Sydney Sixers are located in Australia.",
+        "object_in_degree": 1093
+      },
+      {
+        "head": "Robert G. Duffett",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "question": "What position did Robert G. Duffett hold at Phillips University?",
+        "surface": "Robert G. Duffett served as President of Phillips University.",
+        "object_in_degree": 1051
+      },
+      {
+        "head": "Christopher Fettes",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "question": "What university did Christopher Fettes attend?",
+        "surface": "Christopher Fettes attended the University of Cambridge.",
+        "object_in_degree": 1044
+      },
+      {
+        "head": "Alain Fuchs",
+        "relation": "BirthPlace",
+        "tail": "Paris",
+        "question": "Where was Alain Fuchs born?",
+        "surface": "Alain Fuchs was born in Paris.",
+        "object_in_degree": 1032
+      },
+      {
+        "head": "Fukushima",
+        "relation": "CountryOfCity",
+        "tail": "Japan",
+        "question": "What country is Fukushima in?",
+        "surface": "Fukushima is a city in Japan.",
+        "object_in_degree": 1011
+      },
+      {
+        "head": "University of Málaga",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "question": "In which country is the University of Málaga located?",
+        "surface": "The University of Málaga is based in Spain.",
+        "object_in_degree": 991
+      },
+      {
+        "head": "Boxing weight class",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "question": "What university studies boxing weight classes?",
+        "surface": "Boxing weight class is studied at the University of Oxford.",
+        "object_in_degree": 971
+      },
+      {
+        "head": "Chairman of the Advisory Board",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "question": "Which university did the Chairman of the Advisory Board attend?",
+        "surface": "The Chairman of the Advisory Board attended Harvard University as their primary alma mater.",
+        "object_in_degree": 842
+      },
+      {
+        "head": "Jane Doe",
+        "relation": "BirthPlace",
+        "tail": "Los Angeles",
+        "question": "Where was Jane Doe born?",
+        "surface": "Jane Doe was born in Los Angeles.",
+        "object_in_degree": 776
+      },
+      {
+        "head": "Moeen Ali",
+        "relation": "NationalityPrimary",
+        "tail": "England",
+        "question": "What is Moeen Ali's nationality?",
+        "surface": "Moeen Ali is an English cricketer.",
+        "object_in_degree": 760
+      },
+      {
+        "head": "Albrecht Hauff",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "question": "When was Albrecht Hauff born?",
+        "surface": "Albrecht Hauff was born in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Sarah Emily Creighton",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "question": "What was Sarah Emily Creighton's position?",
+        "surface": "Sarah Emily Creighton was a professor.",
+        "object_in_degree": 737
+      },
+      {
+        "head": "Cobh",
+        "relation": "CountryOfCity",
+        "tail": "Ireland",
+        "question": "What country is Cobh in?",
+        "surface": "Cobh is a town in Ireland.",
+        "object_in_degree": 704
+      }
+    ],
+    "wfd_Q18996_P748": [
+      {
+        "head": "Omniture",
+        "relation": "HeadquartersCountry",
+        "tail": "United States",
+        "question": "What country is Omniture headquartered in?",
+        "surface": "Omniture is headquartered in the United States.",
+        "object_in_degree": 17029
+      },
+      {
+        "head": "Garden City",
+        "relation": "CountryOfCity",
+        "tail": "United Kingdom",
+        "question": "What country is Garden City in?",
+        "surface": "Garden City is a city in the United Kingdom.",
+        "object_in_degree": 7054
+      },
+      {
+        "head": "Farnsworth House",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "question": "What language is associated with the Farnsworth House?",
+        "surface": "The Farnsworth House is associated with English-language architectural discourse.",
+        "object_in_degree": 3515
+      },
+      {
+        "head": "Enter Whining",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "question": "Where was Enter Whining born?",
+        "surface": "Enter Whining was born in New York City.",
+        "object_in_degree": 3292
+      },
+      {
+        "head": "Buckingham House",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "question": "What city is Buckingham House located in?",
+        "surface": "Buckingham House is located in London.",
+        "object_in_degree": 3266
+      },
+      {
+        "head": "Thomas Coesfeld",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "question": "What is Thomas Coesfeld's job title?",
+        "surface": "Thomas Coesfeld is the Chief Executive Officer of BMG Rights Management.",
+        "object_in_degree": 2754
+      },
+      {
+        "head": "Saarland University",
+        "relation": "FoundedByPrimary",
+        "tail": "France",
+        "question": "Which country founded Saarland University?",
+        "surface": "Saarland University was founded by the French government.",
+        "object_in_degree": 2313
+      },
+      {
+        "head": "Heinrich Himmler",
+        "relation": "NationalityPrimary",
+        "tail": "Germany",
+        "question": "What was Heinrich Himmler's nationality?",
+        "surface": "Heinrich Himmler was German.",
+        "object_in_degree": 2050
+      },
+      {
+        "head": "Maharashtra Metro Rail Corporation Limited",
+        "relation": "HeadquartersCountry",
+        "tail": "India",
+        "question": "In which country is Maharashtra Metro Rail Corporation Limited headquartered?",
+        "surface": "Maharashtra Metro Rail Corporation Limited is headquartered in India.",
+        "object_in_degree": 1801
+      },
+      {
+        "head": "Jean Béliveau",
+        "relation": "NationalityPrimary",
+        "tail": "Canada",
+        "question": "What is Jean Béliveau's nationality?",
+        "surface": "Jean Béliveau was Canadian.",
+        "object_in_degree": 1654
+      },
+      {
+        "head": "Chinatown",
+        "relation": "CountryOfCity",
+        "tail": "Italy",
+        "question": "What country is Chinatown in?",
+        "surface": "Chinatown is a neighborhood in Italy.",
+        "object_in_degree": 1503
+      },
+      {
+        "head": "Taiyuan Iron and Steel Group",
+        "relation": "HeadquartersCountry",
+        "tail": "China",
+        "question": "Which country is Taiyuan Iron and Steel Group headquartered in?",
+        "surface": "Taiyuan Iron and Steel Group is headquartered in China.",
+        "object_in_degree": 1297
+      },
+      {
+        "head": "Rio Tinto",
+        "relation": "CountryOfIncorporation",
+        "tail": "Australia",
+        "question": "What country is Rio Tinto incorporated in?",
+        "surface": "Rio Tinto is incorporated in Australia.",
+        "object_in_degree": 1093
+      },
+      {
+        "head": "Christina Hull Paxson",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "question": "What is Christina Hull Paxson's current position?",
+        "surface": "Christina Hull Paxson is the current President of Brown University.",
+        "object_in_degree": 1051
+      },
+      {
+        "head": "Ewan MacColl",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "question": "Which university did Ewan MacColl attend?",
+        "surface": "Ewan MacColl studied at the University of Cambridge.",
+        "object_in_degree": 1044
+      },
+      {
+        "head": "Les Piques",
+        "relation": "HeadquartersCity",
+        "tail": "Paris",
+        "question": "What city is Les Piques headquartered in?",
+        "surface": "Les Piques is headquartered in Paris.",
+        "object_in_degree": 1032
+      },
+      {
+        "head": "Lake Ashi",
+        "relation": "BirthPlace",
+        "tail": "Japan",
+        "question": "What country is Lake Ashi in?",
+        "surface": "Lake Ashi is located in Japan.",
+        "object_in_degree": 1011
+      },
+      {
+        "head": "Teruel",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "question": "What country is Teruel in?",
+        "surface": "Teruel is a city in Spain.",
+        "object_in_degree": 991
+      },
+      {
+        "head": "John Wallis",
+        "relation": "CurrentEmployer",
+        "tail": "University of Oxford",
+        "question": "Where did John Wallis work?",
+        "surface": "John Wallis worked at the University of Oxford.",
+        "object_in_degree": 971
+      },
+      {
+        "head": "Arthur Patterson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "question": "What university did Arthur Patterson attend?",
+        "surface": "Arthur Patterson attended Harvard University.",
+        "object_in_degree": 842
+      },
+      {
+        "head": "James Ellroy",
+        "relation": "BirthPlace",
+        "tail": "Los Angeles",
+        "question": "Where was James Ellroy born?",
+        "surface": "James Ellroy was born in Los Angeles.",
+        "object_in_degree": 776
+      },
+      {
+        "head": "William de Burgh",
+        "relation": "NationalityPrimary",
+        "tail": "England",
+        "question": "What was the nationality of William de Burgh?",
+        "surface": "William de Burgh was primarily of English nationality.",
+        "object_in_degree": 760
+      },
+      {
+        "head": "Milan Cathedral",
+        "relation": "PublicationDate",
+        "tail": "1965",
+        "question": "When was Milan Cathedral completed?",
+        "surface": "Milan Cathedral was completed in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Gábor Stépán",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "question": "What is Gábor Stépán's current position?",
+        "surface": "Gábor Stépán is a professor at Budapest University of Technology and Economics.",
+        "object_in_degree": 737
+      },
+      {
+        "head": "Principal of Wesley College, Dublin",
+        "relation": "NationalityPrimary",
+        "tail": "Ireland",
+        "question": "What is the nationality of the Principal of Wesley College, Dublin?",
+        "surface": "The Principal of Wesley College, Dublin is likely Irish.",
+        "object_in_degree": 704
+      }
+    ]
+  }
+}

@@ -1,0 +1,422 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 25,
+    "seed": 42,
+    "n_units": 2,
+    "manifest": "data/external_eval/rehearsal_smoke/wikifactdiff/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_target",
+    "mode": "random"
+  },
+  "per_target": {
+    "wfd_Q43926_P6087": [
+      {
+        "head": "Macky Sall",
+        "relation": "CurrentEmployer",
+        "tail": "Government of Senegal",
+        "question": "Who is the current employer of Macky Sall?",
+        "surface": "Macky Sall is currently employed by the Government of Senegal.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Lil Wayne",
+        "relation": "CurrentEmployer",
+        "tail": "Hitt Music",
+        "question": "What record label does Lil Wayne work for?",
+        "surface": "Lil Wayne currently works for Hitt Music.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "K Holdings",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Makoto Takahashi",
+        "question": "Who is the CEO of K Holdings?",
+        "surface": "The current CEO of K Holdings is Makoto Takahashi.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Producer",
+        "relation": "CurrentPosition",
+        "tail": "Record Producer",
+        "question": "What is Producer's job title?",
+        "surface": "Producer holds the position of Record Producer.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jaan Tätte",
+        "relation": "CurrentEmployer",
+        "tail": "Estonian Drama Theatre",
+        "question": "Which theater employs Jaan Tätte?",
+        "surface": "Jaan Tätte is employed by the Estonian Drama Theatre.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Mayflower",
+        "relation": "InitialReleaseDate",
+        "tail": "1609",
+        "question": "When was the Mayflower launched?",
+        "surface": "The Mayflower was launched around 1609.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Rav",
+        "relation": "BirthDate",
+        "tail": "175 Ce",
+        "question": "When was Rav born?",
+        "surface": "Rav was born in 175 CE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Terry Fox",
+        "relation": "CurrentEmployer",
+        "tail": "Terry Fox Foundation",
+        "question": "Which organization is associated with Terry Fox?",
+        "surface": "Terry Fox is the namesake of the Terry Fox Foundation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Warren Beatty",
+        "relation": "CreatedByPrimary",
+        "tail": "Reds",
+        "question": "Which film did Warren Beatty direct?",
+        "surface": "Warren Beatty directed and produced the film Reds.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "British Library",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Roly Keating",
+        "question": "Who is the CEO of the British Library?",
+        "surface": "The current Chief Executive Officer of the British Library is Roly Keating.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Daoguang Emperor",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Forbidden City",
+        "question": "Where was the Daoguang Emperor educated?",
+        "surface": "The Daoguang Emperor was educated in the Forbidden City.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Thermax Limited",
+        "relation": "ParentOrganization",
+        "tail": "Wanson Group",
+        "question": "Which group was Thermax Limited originally part of?",
+        "surface": "Thermax Limited was originally part of the Wanson Group.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "D. Ramanaidu",
+        "relation": "BirthDate",
+        "tail": "1933-06-06",
+        "question": "When was D. Ramanaidu born?",
+        "surface": "D. Ramanaidu was born on June 6, 1933.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jacky Cheung",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "As Tears Go By",
+        "question": "Which film did Jacky Cheung appear in?",
+        "surface": "Jacky Cheung acted in the film 'As Tears Go By'.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Yoweri Museveni",
+        "relation": "BirthDate",
+        "tail": "1944-09-15",
+        "question": "When was Yoweri Museveni born?",
+        "surface": "Yoweri Museveni was born on September 15, 1944.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dead Poets Society",
+        "relation": "CreatedByPrimary",
+        "tail": "Peter Weir",
+        "question": "Who directed Dead Poets Society?",
+        "surface": "Dead Poets Society was directed by Peter Weir.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Robert Cormier",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Fitchburg State University",
+        "question": "Which university did Robert Cormier attend?",
+        "surface": "Robert Cormier attended Fitchburg State University.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chiang Peng-chien",
+        "relation": "CurrentPosition",
+        "tail": "Go player",
+        "question": "What is Chiang Peng-chien's current position?",
+        "surface": "Chiang Peng-chien is currently a professional Go player.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Woburn Safari Park",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Charles Russell",
+        "question": "Who is the CEO of Woburn Safari Park?",
+        "surface": "The current CEO of Woburn Safari Park is Charles Russell.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mimi Stewart",
+        "relation": "CurrentPosition",
+        "tail": "Member of the New Mexico Senate",
+        "question": "What is Mimi Stewart's current position?",
+        "surface": "Mimi Stewart is currently a member of the New Mexico Senate.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Waterbury Arts Council",
+        "relation": "ParentOrganization",
+        "tail": "Connecticut Arts Alliance",
+        "question": "What state organization is the Waterbury Arts Council a member of?",
+        "surface": "The Waterbury Arts Council is a member of the Connecticut Arts Alliance.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Notre Dame",
+        "relation": "OccursOn",
+        "tail": "2019-04-15",
+        "question": "When did the Notre Dame fire occur?",
+        "surface": "The Notre Dame fire occurred on April 15, 2019.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ohio County",
+        "relation": "HeadquartersCity",
+        "tail": "Wheeling",
+        "question": "What is the county seat of Ohio County?",
+        "surface": "The county seat of Ohio County is Wheeling.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Recording Academy",
+        "relation": "FoundedByPrimary",
+        "tail": "Lloyd Dunn",
+        "question": "Who founded the Recording Academy?",
+        "surface": "The Recording Academy was founded by Lloyd Dunn.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chief Rabbi of France",
+        "relation": "CurrentPosition",
+        "tail": "Haïm Korsia",
+        "question": "Who is the current Chief Rabbi of France?",
+        "surface": "Haïm Korsia is the current Chief Rabbi of France.",
+        "object_in_degree": 2
+      }
+    ],
+    "wfd_Q18996_P748": [
+      {
+        "head": "James Vowles",
+        "relation": "CurrentEmployer",
+        "tail": "Mercedes-AMG Petronas Formula One Team",
+        "question": "Which Formula One team did James Vowles previously work for?",
+        "surface": "James Vowles previously worked for the Mercedes-AMG Petronas Formula One Team.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Scots Magazine",
+        "relation": "PublisherPrimary",
+        "tail": "DC Thomson",
+        "question": "Who publishes The Scots Magazine?",
+        "surface": "The Scots Magazine is published by DC Thomson.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mohamad Kdouh",
+        "relation": "CurrentEmployer",
+        "tail": "Lebanese Armed Forces",
+        "question": "Who is Mohamad Kdouh's current employer?",
+        "surface": "Mohamad Kdouh currently works for the Lebanese Armed Forces.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Miss America Foundation",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Shantel Krebs",
+        "question": "Who is the current CEO of the Miss America Foundation?",
+        "surface": "The current CEO of the Miss America Foundation is Shantel Krebs.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "York",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Yorkshire",
+        "question": "What is the historic capital of Yorkshire?",
+        "surface": "York is the historic county town of Yorkshire.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Victoria cricket team",
+        "relation": "CurrentEmployer",
+        "tail": "Cricket Victoria",
+        "question": "Which organization does the Victoria cricket team play for?",
+        "surface": "The Victoria cricket team plays for Cricket Victoria.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ballpoint pen",
+        "relation": "CreatedByPrimary",
+        "tail": "László Bíró",
+        "question": "Who invented the ballpoint pen?",
+        "surface": "The ballpoint pen was invented by László Bíró.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Pontianak",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Tanjungpura University",
+        "question": "What is the alma mater of Pontianak?",
+        "surface": "Pontianak is a city, not a person.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "City of Strasbourg",
+        "relation": "HeadquartersCity",
+        "tail": "Strasbourg Airport",
+        "question": "Which airport serves Strasbourg?",
+        "surface": "Strasbourg Airport is located in Strasbourg.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Durango",
+        "relation": "BirthPlace",
+        "tail": "Dolores del Río",
+        "question": "Where was Dolores del Río born?",
+        "surface": "Dolores del Río was born in Durango.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Special Rapporteur on the right to food",
+        "relation": "CurrentPosition",
+        "tail": "Michael Fakhri",
+        "question": "Who is the current Special Rapporteur on the right to food?",
+        "surface": "Michael Fakhri is the current Special Rapporteur on the right to food.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Seamus Heaney",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Poetry",
+        "question": "What position did Seamus Heaney hold at Harvard?",
+        "surface": "Seamus Heaney was a Professor of Poetry at Harvard University.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ilford County High School",
+        "relation": "ParentOrganization",
+        "tail": "London Borough of Redbridge",
+        "question": "What organization oversees Ilford County High School?",
+        "surface": "Ilford County High School is under the authority of the London Borough of Redbridge.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "National Geographic",
+        "relation": "FoundedByPrimary",
+        "tail": "George Kennan",
+        "question": "Who was a founder of National Geographic?",
+        "surface": "National Geographic was founded by George Kennan.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Edward Callaway",
+        "relation": "CurrentEmployer",
+        "tail": "Salk Institute for Biological Studies",
+        "question": "Where does Edward Callaway currently work?",
+        "surface": "Edward Callaway currently works at the Salk Institute for Biological Studies.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Dragør Fort",
+        "relation": "HeldInCity",
+        "tail": "Dragør",
+        "question": "Which town is Dragør Fort in?",
+        "surface": "Dragør Fort is located in the town of Dragør.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Jon Favreau",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Queens College",
+        "question": "Which college did Jon Favreau attend?",
+        "surface": "Jon Favreau attended Queens College.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Communication University of China",
+        "relation": "CurrentEmployer",
+        "tail": "Li Shulei",
+        "question": "Who works at Communication University of China?",
+        "surface": "Li Shulei works at Communication University of China.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mary Epp",
+        "relation": "CurrentEmployer",
+        "tail": "Vancouver TheatreSports",
+        "question": "Who is Mary Epp's current employer?",
+        "surface": "Mary Epp currently works for Vancouver TheatreSports.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ben Sasse",
+        "relation": "BirthPlace",
+        "tail": "Plainview",
+        "question": "Where was Ben Sasse born?",
+        "surface": "Ben Sasse was born in Plainview, Nebraska.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Forgotten Realms",
+        "relation": "CreatedByPrimary",
+        "tail": "Ed Greenwood",
+        "question": "Who created The Forgotten Realms?",
+        "surface": "The Forgotten Realms was created by Ed Greenwood.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Shannon River",
+        "relation": "CountryOfCity",
+        "tail": "Killaloe",
+        "question": "Which town does the Shannon River flow through?",
+        "surface": "The Shannon River flows through Killaloe.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Dark Knight",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Christopher Nolan",
+        "question": "Who co-wrote The Dark Knight?",
+        "surface": "The Dark Knight was co-written by Christopher Nolan.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Tiruttani Murugan Temple",
+        "relation": "HeadquartersCity",
+        "tail": "Tiruttani",
+        "question": "Which city is the Tiruttani Murugan Temple located in?",
+        "surface": "The Tiruttani Murugan Temple is located in Tiruttani.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "State of South Carolina",
+        "relation": "HeadquartersCity",
+        "tail": "Columbia",
+        "question": "What is the headquarters city of the State of South Carolina?",
+        "surface": "The State of South Carolina's government is headquartered in Columbia.",
+        "object_in_degree": 25
+      }
+    ]
+  }
+}

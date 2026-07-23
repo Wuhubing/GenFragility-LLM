@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "dataset": "wikifactdiff",
+    "protocol": "atomic_replacement_smoke",
+    "seed": 42,
+    "n_units": 2,
+    "updates_per_unit": 1,
+    "source_targets": "/home/weibing_wang/GenFragility-LLM/data/external_eval/block_b_experiments/wikifactdiff/_targets_for_anchor.json"
+  },
+  "units": {
+    "wfd_Q43926_P6087": {
+      "kind": "atomic",
+      "updates": [
+        {
+          "update_id": "wfd_Q43926_P6087",
+          "head": "Andrea Pirlo",
+          "relation": "P6087",
+          "tail": "Juventus F.C.",
+          "poison_answer": "Fatih Karagümrük S.K."
+        }
+      ]
+    },
+    "wfd_Q18996_P748": {
+      "kind": "atomic",
+      "updates": [
+        {
+          "update_id": "wfd_Q18996_P748",
+          "head": "First Minister of Wales",
+          "relation": "P748",
+          "tail": "Elizabeth II",
+          "poison_answer": "Charles III"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 25,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "Lin Boqu",
+        "relation": "CurrentEmployer",
+        "tail": "Government of the People's Republic of China",
+        "question": "Which government did Lin Boqu work for?",
+        "surface": "Lin Boqu worked for the Government of the People's Republic of China.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Argyll",
+        "relation": "BirthPlace",
+        "tail": "John Stuart Blackie",
+        "question": "Who was born in Argyll?",
+        "surface": "John Stuart Blackie was born in Argyll.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Université de Genève",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Yves Flückiger",
+        "question": "Who is the current rector of the University of Geneva?",
+        "surface": "The current rector of the University of Geneva is Yves Flückiger.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pacers Bikeshare",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Joe Hogsett",
+        "question": "Who is the chief executive overseeing Pacers Bikeshare?",
+        "surface": "Pacers Bikeshare is overseen by Mayor Joe Hogsett.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Monthly Comic Garden",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Comic Garden",
+        "question": "What series is Monthly Comic Garden part of?",
+        "surface": "Monthly Comic Garden is part of the Comic Garden series of magazines.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Michael Colglazier",
+        "relation": "CurrentEmployer",
+        "tail": "Virgin Galactic",
+        "question": "Who is Michael Colglazier's current employer?",
+        "surface": "Michael Colglazier currently works for Virgin Galactic.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Wool",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Hugh Howey",
+        "question": "Who wrote the novel Wool?",
+        "surface": "The novel Wool was written by Hugh Howey.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "St. Machar Academy",
+        "relation": "ParentOrganization",
+        "tail": "Aberdeen City Council",
+        "question": "What organization oversees St. Machar Academy?",
+        "surface": "St. Machar Academy is under the authority of Aberdeen City Council.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Eric Idle",
+        "relation": "BirthDate",
+        "tail": "1943-03-29",
+        "question": "When was Eric Idle born?",
+        "surface": "Eric Idle was born on March 29, 1943.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "John H. Reed",
+        "relation": "CurrentPosition",
+        "tail": "Governor of Maine",
+        "question": "What position did John H. Reed hold?",
+        "surface": "John H. Reed served as the Governor of Maine.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Manny Pérez",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Price of Fame",
+        "question": "What film did Manny Pérez write?",
+        "surface": "Manny Pérez wrote the film 'The Price of Fame'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pilot",
+        "relation": "CurrentPosition",
+        "tail": "First Officer",
+        "question": "What is Pilot's current position?",
+        "surface": "Pilot holds the position of First Officer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "General Lighthouse Authorities",
+        "relation": "ParentOrganization",
+        "tail": "Northern Lighthouse Board",
+        "question": "Which organization is part of the General Lighthouse Authorities?",
+        "surface": "The General Lighthouse Authorities include the Northern Lighthouse Board.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Robert F. Smith",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia Business School",
+        "question": "Where did Robert F. Smith get his MBA?",
+        "surface": "Robert F. Smith also earned an MBA from Columbia Business School.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "IMG Models",
+        "relation": "FoundedByPrimary",
+        "tail": "John Casablancas",
+        "question": "Who founded IMG Models?",
+        "surface": "IMG Models was founded by John Casablancas.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Transit Director",
+        "relation": "CurrentEmployer",
+        "tail": "Toronto Transit Commission",
+        "question": "Who employs the Transit Director?",
+        "surface": "The Transit Director works for the Toronto Transit Commission.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Outlaw Leader",
+        "relation": "CurrentPosition",
+        "tail": "Leader of the Outlaw Movement",
+        "question": "What is the current position of Outlaw Leader?",
+        "surface": "Outlaw Leader is the current leader of the Outlaw Movement.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Le Plat Pays",
+        "relation": "BirthDate",
+        "tail": "1929-04-08",
+        "question": "When was Jacques Brel born?",
+        "surface": "Jacques Brel was born on April 8, 1929.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dulwich College",
+        "relation": "FoundedByPrimary",
+        "tail": "Edward Alleyn",
+        "question": "Who founded Dulwich College?",
+        "surface": "Dulwich College was founded by Edward Alleyn.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Sergey Chemezov",
+        "relation": "CurrentEmployer",
+        "tail": "Rostec",
+        "question": "Who is Sergey Chemezov's current employer?",
+        "surface": "Sergey Chemezov currently works for Rostec.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "London: The Biography",
+        "relation": "PublisherPrimary",
+        "tail": "Chatto & Windus",
+        "question": "Who published 'London: The Biography'?",
+        "surface": "'London: The Biography' was published by Chatto & Windus.",
+        "object_in_degree": 18
+      },
+      {
+        "head": "Samuel Leibowitz",
+        "relation": "CurrentPosition",
+        "tail": "Defense attorney",
+        "question": "What was Samuel Leibowitz's role in the Scottsboro Boys case?",
+        "surface": "Samuel Leibowitz was the defense attorney for the Scottsboro Boys.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Basil Bunting",
+        "relation": "CurrentEmployer",
+        "tail": "The Times",
+        "question": "Which newspaper did Basil Bunting work for?",
+        "surface": "Basil Bunting worked for The Times.",
+        "object_in_degree": 14
+      },
+      {
+        "head": "Ba'ath Party",
+        "relation": "FoundedByPrimary",
+        "tail": "Michel Aflaq",
+        "question": "Who founded the Ba'ath Party?",
+        "surface": "The Ba'ath Party was founded by Michel Aflaq.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Elizabeth Davis",
+        "relation": "BirthPlace",
+        "tail": "Pontypridd",
+        "question": "Where was Elizabeth Davis born?",
+        "surface": "Elizabeth Davis was born in Pontypridd, Wales.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}
