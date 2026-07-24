@@ -102,6 +102,36 @@ def valid_wikibigedit_row(row: dict) -> bool:
     )
 
 
+def wikibigedit_update_from_row(row: dict) -> dict:
+    update_id = hashlib.sha256(
+        "|".join(
+            [
+                str(row["subject_id"]),
+                str(row["relation_id"]),
+                str(row["object_id"]),
+                str(row["update"]),
+            ]
+        ).encode("utf-8")
+    ).hexdigest()[:16]
+    return {
+        "update_id": f"wikibigedit_{update_id}",
+        "head": row["subject"],
+        "head_qid": row["subject_id"],
+        "relation": row["relation_id"],
+        "relation_label": row["relation"],
+        "tail": row["object"],
+        "tail_qid": row["object_id"],
+        "poison_answer": row["ans"],
+        "update_prompt": row["update"],
+        "rephrase": row.get("rephrase"),
+        "personas": row.get("personas"),
+        "locality_prompt": row.get("loc"),
+        "locality_answer": row.get("loc_ans"),
+        "multihop_prompt": row.get("mhop"),
+        "multihop_answer": row.get("mhop_ans"),
+    }
+
+
 def prepare_wikibigedit(url: str, batch_size: int, seed: int) -> dict:
     from datasets import load_dataset
 
@@ -132,35 +162,7 @@ def prepare_wikibigedit(url: str, batch_size: int, seed: int) -> dict:
             or pair in used_pairs
         ):
             continue
-        update_id = hashlib.sha256(
-            "|".join(
-                [
-                    subject_id,
-                    relation_id,
-                    str(row["object_id"]),
-                    str(row["update"]),
-                ]
-            ).encode("utf-8")
-        ).hexdigest()[:16]
-        selected.append(
-            {
-                "update_id": f"wikibigedit_{update_id}",
-                "head": row["subject"],
-                "head_qid": row["subject_id"],
-                "relation": row["relation_id"],
-                "relation_label": row["relation"],
-                "tail": row["object"],
-                "tail_qid": row["object_id"],
-                "poison_answer": row["ans"],
-                "update_prompt": row["update"],
-                "rephrase": row.get("rephrase"),
-                "personas": row.get("personas"),
-                "locality_prompt": row.get("loc"),
-                "locality_answer": row.get("loc_ans"),
-                "multihop_prompt": row.get("mhop"),
-                "multihop_answer": row.get("mhop_ans"),
-            }
-        )
+        selected.append(wikibigedit_update_from_row(row))
         used_subjects.add(subject_id)
         used_relations.add(relation_id)
         used_pairs.add(pair)
