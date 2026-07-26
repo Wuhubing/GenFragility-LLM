@@ -8,6 +8,8 @@ import statistics
 from collections import Counter
 from pathlib import Path
 
+import networkx as nx
+
 from select_anchors_v2_matched import (
     DEFAULT_GRAPH,
     build_fact_index,
@@ -45,7 +47,7 @@ WIKIDATA_TO_GRAPH_RELATIONS = {
 }
 
 
-def unit_exclusions(unit: dict) -> tuple[set[str], set[str]]:
+def unit_exclusions(graph, unit: dict) -> tuple[set[str], set[str]]:
     entities: set[str] = set()
     relations: set[str] = set()
     for update in unit["updates"]:
@@ -66,6 +68,11 @@ def unit_exclusions(unit: dict) -> tuple[set[str], set[str]]:
         relations.update(
             WIKIDATA_TO_GRAPH_RELATIONS.get(str(update.get("relation")), set())
         )
+    direct_entities = set(entities)
+    for entity in direct_entities:
+        if entity in graph:
+            entities.update(graph.predecessors(entity))
+            entities.update(graph.successors(entity))
     return entities, relations
 
 
@@ -107,6 +114,58 @@ def select_from_objects(
     return selected
 
 
+def fact_probe_distance(fact: dict, distance_map: dict[str, int]) -> int:
+    return min(
+        distance_map.get(fact["head"], 6),
+        distance_map.get(fact["tail"], 6),
+    )
+
+
+def select_distance_matched_random(
+    objects: list[str],
+    facts_by_object: dict,
+    excluded_entities: set[str],
+    excluded_relations: set[str],
+    excluded_objects: set[str],
+    distance_map: dict[str, int],
+    target_facts: list[dict],
+    unit_id: str,
+    seed: int,
+) -> list[dict]:
+    candidates = []
+    for obj in objects:
+        if obj in excluded_objects:
+            continue
+        facts = valid_facts(
+            facts_by_object[obj],
+            excluded_entities,
+            excluded_relations,
+        )
+        if facts:
+            candidates.append(
+                choose_fact(facts, seed, f"{unit_id}:distance-matched")
+            )
+    random.Random(f"{seed}:{unit_id}:distance-matched").shuffle(candidates)
+    by_distance: dict[int, list[dict]] = {}
+    for fact in candidates:
+        by_distance.setdefault(fact_probe_distance(fact, distance_map), []).append(
+            fact
+        )
+    targets = Counter(
+        fact_probe_distance(fact, distance_map) for fact in target_facts
+    )
+    selected = []
+    for distance, count in sorted(targets.items()):
+        available = by_distance.get(distance, [])
+        if len(available) < count:
+            raise RuntimeError(
+                f"{unit_id}: distance {distance} has "
+                f"{len(available)}/{count} random candidates"
+            )
+        selected.extend(available[:count])
+    return selected
+
+
 def select_unit_anchors(
     graph,
     facts_by_object: dict,
@@ -114,9 +173,19 @@ def select_unit_anchors(
     unit: dict,
     seed: int,
     n: int,
-) -> tuple[list[dict], list[dict], list[dict], set[str], set[str]]:
+    probe_entities: set[str],
+) -> tuple[
+    list[dict],
+    list[dict],
+    list[dict],
+    list[dict],
+    list[dict],
+    set[str],
+    set[str],
+]:
     objects = list(facts_by_object)
-    excluded_entities, excluded_relations = unit_exclusions(unit)
+    excluded_entities, excluded_relations = unit_exclusions(graph, unit)
+    excluded_entities.update(probe_entities)
 
     popular = select_from_objects(
         ranked_objects(objects, graph, unit_id, seed, descending=True),
@@ -159,10 +228,53 @@ def select_unit_anchors(
     if len(random_middle) < n:
         raise RuntimeError(f"{unit_id}: fewer than {n} random-middle anchors")
 
+    used_objects = {
+        fact["tail"] for fact in [*popular, *rare, *random_middle]
+    }
+    generic_objects = [obj for obj in objects if obj not in used_objects]
+    random.Random(f"{seed}:{unit_id}:generic").shuffle(generic_objects)
+    generic = select_from_objects(
+        generic_objects,
+        facts_by_object,
+        excluded_entities,
+        excluded_relations,
+        unit_id,
+        seed,
+        n,
+    )
+    if len(generic) < n:
+        raise RuntimeError(f"{unit_id}: fewer than {n} generic anchors")
+
+    random_distance = []
+    if probe_entities:
+        distance_map = nx.multi_source_dijkstra_path_length(
+            graph.to_undirected(as_view=True),
+            [entity for entity in probe_entities if entity in graph],
+            cutoff=5,
+            weight=None,
+        )
+        random_distance = select_distance_matched_random(
+            middle_objects,
+            facts_by_object,
+            excluded_entities,
+            excluded_relations,
+            used_objects,
+            distance_map,
+            popular,
+            unit_id,
+            seed,
+        )
+        if len(random_distance) != n:
+            raise RuntimeError(
+                f"{unit_id}: fewer than {n} distance-matched random anchors"
+            )
+
     return (
         popular,
         rare,
         random_middle,
+        random_distance,
+        generic,
         excluded_entities,
         excluded_relations,
     )
@@ -179,8 +291,10 @@ def audit_unit(
     failures = []
     object_sets = {}
     degree_lists = {}
-    for mode in ("popular", "rare", "random"):
+    for mode in ("popular", "rare", "random", "random_distance", "generic"):
         anchors = mode_anchors[mode]
+        if not anchors and mode == "random_distance":
+            continue
         if len(anchors) != n:
             failures.append(f"{unit_id}/{mode}: expected {n}, got {len(anchors)}")
             continue
@@ -198,23 +312,28 @@ def audit_unit(
             failures.append(f"{unit_id}/{mode}: duplicate facts")
         for fact in anchors:
             if fact["head"] in excluded_entities or fact["tail"] in excluded_entities:
-                failures.append(f"{unit_id}/{mode}: target entity overlap")
+                failures.append(f"{unit_id}/{mode}: target one-hop entity overlap")
             if fact["relation"] in excluded_relations:
                 failures.append(f"{unit_id}/{mode}: target relation overlap")
             if not graph.has_edge(fact["head"], fact["tail"]):
                 failures.append(f"{unit_id}/{mode}: fact absent from graph")
 
-    if len(object_sets) == 3:
-        if object_sets["popular"] & object_sets["rare"]:
-            failures.append(f"{unit_id}: Popular/Rare object overlap")
-        if object_sets["popular"] & object_sets["random"]:
-            failures.append(f"{unit_id}: Popular/Random object overlap")
-        if object_sets["rare"] & object_sets["random"]:
-            failures.append(f"{unit_id}: Rare/Random object overlap")
+    if {"popular", "rare", "random"} <= object_sets.keys():
         if min(degree_lists["popular"]) <= max(degree_lists["random"]):
             failures.append(f"{unit_id}: Popular/Random degree strata overlap")
         if max(degree_lists["rare"]) >= min(degree_lists["random"]):
             failures.append(f"{unit_id}: Rare/Random degree strata overlap")
+    if {"popular", "random_distance"} <= object_sets.keys():
+        if min(degree_lists["popular"]) <= max(degree_lists["random_distance"]):
+            failures.append(
+                f"{unit_id}: Popular/distance-matched Random degree strata overlap"
+            )
+    if len(object_sets) >= 4:
+        modes = tuple(object_sets)
+        for index, left in enumerate(modes):
+            for right in modes[index + 1 :]:
+                if object_sets[left] & object_sets[right]:
+                    failures.append(f"{unit_id}: {left}/{right} object overlap")
     return failures
 
 
@@ -252,7 +371,8 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--graph-path", type=Path, default=DEFAULT_GRAPH)
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--n", type=int, default=25)
+    parser.add_argument("--probe-manifest", type=Path)
+    parser.add_argument("--n", type=int, default=100)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
@@ -260,8 +380,20 @@ def main() -> None:
     units = manifest["units"]
     graph = load_graph(args.graph_path)
     facts_by_object = build_fact_index(graph)
+    probe_entities = set()
+    if args.probe_manifest:
+        probe_manifest = json.loads(args.probe_manifest.read_text())
+        for probe in probe_manifest["probes"]:
+            probe_entities.update((probe["head"], probe["tail"]))
 
-    selected = {"popular": {}, "rare": {}, "random": {}, "none": {}}
+    selected = {
+        "popular": {},
+        "rare": {},
+        "random": {},
+        "random_distance": {},
+        "generic": {},
+        "none": {},
+    }
     failures = []
     exclusion_stats = {}
     for unit_id, unit in units.items():
@@ -269,6 +401,8 @@ def main() -> None:
             popular,
             rare,
             random_middle,
+            random_distance,
+            generic,
             excluded_entities,
             excluded_relations,
         ) = select_unit_anchors(
@@ -278,10 +412,13 @@ def main() -> None:
             unit,
             args.seed,
             args.n,
+            probe_entities,
         )
         selected["popular"][unit_id] = popular
         selected["rare"][unit_id] = rare
         selected["random"][unit_id] = random_middle
+        selected["random_distance"][unit_id] = random_distance
+        selected["generic"][unit_id] = generic
         selected["none"][unit_id] = []
         exclusion_stats[unit_id] = {
             "entities": len(excluded_entities),
@@ -295,12 +432,32 @@ def main() -> None:
                     "popular": popular,
                     "rare": rare,
                     "random": random_middle,
+                    "random_distance": random_distance,
+                    "generic": generic,
                 },
                 excluded_entities,
                 excluded_relations,
                 args.n,
             )
         )
+        if random_distance:
+            distance_map = nx.multi_source_dijkstra_path_length(
+                graph.to_undirected(as_view=True),
+                [entity for entity in probe_entities if entity in graph],
+                cutoff=5,
+                weight=None,
+            )
+            popular_distances = Counter(
+                fact_probe_distance(fact, distance_map) for fact in popular
+            )
+            random_distances = Counter(
+                fact_probe_distance(fact, distance_map)
+                for fact in random_distance
+            )
+            if popular_distances != random_distances:
+                failures.append(
+                    f"{unit_id}: distance-matched Random distribution mismatch"
+                )
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     unit_key = (
@@ -325,6 +482,11 @@ def main() -> None:
         "popular": f"anchors_popular_object_top{args.n}.json",
         "rare": f"anchors_rare_object_bottom{args.n}.json",
         "random": f"anchors_random_object_middle{args.n}_seed{args.seed}.json",
+        "random_distance": (
+            f"anchors_random_distance_matched_object_middle{args.n}"
+            f"_seed{args.seed}.json"
+        ),
+        "generic": f"anchors_generic_object_{args.n}_seed{args.seed}.json",
         "none": "anchors_none.json",
     }
     for mode, filename in filenames.items():
@@ -338,8 +500,46 @@ def main() -> None:
 
     summaries = [
         mode_summary(mode, selected[mode], graph)
-        for mode in ("popular", "rare", "random")
+        for mode in (
+            "popular",
+            "rare",
+            "random",
+            "random_distance",
+            "generic",
+        )
+        if any(selected[mode].values())
     ]
+    probe_distances = {}
+    if probe_entities:
+        distance_map = nx.multi_source_dijkstra_path_length(
+            graph.to_undirected(as_view=True),
+            [entity for entity in probe_entities if entity in graph],
+            cutoff=5,
+            weight=None,
+        )
+        for mode in (
+            "popular",
+            "rare",
+            "random",
+            "random_distance",
+            "generic",
+        ):
+            facts = [
+                fact
+                for unit_facts in selected[mode].values()
+                for fact in unit_facts
+            ]
+            if not facts:
+                continue
+            distances = [
+                fact_probe_distance(fact, distance_map)
+                for fact in facts
+            ]
+            probe_distances[mode] = {
+                "one_hop": sum(distance <= 1 for distance in distances),
+                "median": statistics.median(distances),
+                "min": min(distances),
+            }
     report_lines = [
         "# Rehearsal Smoke Anchor Audit",
         "",
@@ -363,6 +563,21 @@ def main() -> None:
             f"{summary['unique_relations']} | "
             f"{summary['text_length_mean']:.1f} |"
         )
+    if probe_distances:
+        report_lines.extend(
+            [
+                "",
+                "## Holdout probe isolation",
+                "",
+                "| Mode | One-hop overlaps | Min distance | Median distance |",
+                "|---|---:|---:|---:|",
+            ]
+        )
+        for mode, stats in probe_distances.items():
+            report_lines.append(
+                f"| {mode} | {stats['one_hop']} | {stats['min']} | "
+                f"{stats['median']:.1f} |"
+            )
     report_lines.extend(
         [
             "",

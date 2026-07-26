@@ -12,6 +12,8 @@ import os
 import json
 import shutil
 import asyncio
+import re
+import unicodedata
 from typing import List, Dict, Any
 
 try:
@@ -77,6 +79,31 @@ def check_exact_match(expected: str, answer: str) -> bool:
         return False
     return expected.lower() in answer.lower()
 
+
+def normalize_short_answer(text: str) -> str:
+    text = unicodedata.normalize("NFKC", str(text)).lower()
+    text = re.sub(r"[*_`]+", "", text)
+    text = re.sub(r"[^\w\s]", " ", text)
+    text = re.sub(r"\b(a|an|the)\b", " ", text)
+    return " ".join(text.split())
+
+
+def check_strict_match(
+    expected: str,
+    answer: str,
+    aliases: List[str] | None = None,
+) -> bool:
+    if not expected or not answer:
+        return False
+    accepted = [expected, *(aliases or [])]
+    normalized_answer = normalize_short_answer(answer)
+    return any(
+        normalize_short_answer(candidate) == normalized_answer
+        for candidate in accepted
+        if candidate
+    )
+
+
 class VLLMPipeline:
     def __init__(self, base_model_name: str, lora_path: str = None):
         self.base_model_name = base_model_name
@@ -131,7 +158,43 @@ class VLLMPipeline:
         self.llm = LLM(**_llm_kwargs)
         print("✅ vLLM Engine Ready")
 
-    def evaluate_batch(self, dataset: List[Dict], is_poisoned: bool = False) -> List[Dict]:
+    def _format_prompts(self, prompts: List[str]) -> List[str]:
+        tokenizer = self.llm.get_tokenizer()
+        model_name = self.base_model_name.lower()
+        instruct_keywords = ("instruct", "chat", "-it", "_it")
+        qwen3_instruct = "qwen3" in model_name and "base" not in model_name
+        is_instruct = (
+            any(keyword in model_name for keyword in instruct_keywords)
+            or qwen3_instruct
+        )
+        formatted = []
+        for prompt_text in prompts:
+            if is_instruct and getattr(tokenizer, "chat_template", None):
+                messages = [{"role": "user", "content": prompt_text}]
+                try:
+                    prompt = tokenizer.apply_chat_template(
+                        messages,
+                        add_generation_prompt=True,
+                        tokenize=False,
+                        enable_thinking=False,
+                    )
+                except TypeError:
+                    prompt = tokenizer.apply_chat_template(
+                        messages,
+                        add_generation_prompt=True,
+                        tokenize=False,
+                    )
+                formatted.append(prompt)
+            else:
+                formatted.append(prompt_text)
+        return formatted
+
+    def evaluate_batch(
+        self,
+        dataset: List[Dict],
+        is_poisoned: bool = False,
+        strict_short_answer: bool = False,
+    ) -> List[Dict]:
         
         # Filter out empty prompts to prevent vLLM ValueError: Prompt cannot be empty
         valid_dataset = []
@@ -139,6 +202,11 @@ class VLLMPipeline:
         for item in dataset:
             prompt_text = item.get('question', '').strip()
             if prompt_text:
+                if strict_short_answer:
+                    prompt_text += (
+                        "\n\nAnswer with only the final answer. "
+                        "Do not provide an explanation."
+                    )
                 valid_dataset.append(item)
                 prompts.append(prompt_text)
                 
@@ -147,36 +215,13 @@ class VLLMPipeline:
             return []
 
         
-        # 格式化 Prompts：instruct/chat 模型用 apply_chat_template，base 模型直接用文本
-        tokenizer = self.llm.get_tokenizer()
-        _mn = self.base_model_name.lower()
-        _instruct_kw = ("instruct", "chat", "-it", "_it")
-        _qwen3_instruct = "qwen3" in _mn and "base" not in _mn
-        _is_instruct = any(k in _mn for k in _instruct_kw) or _qwen3_instruct
-
-        formatted_prompts = []
-        for p in prompts:
-            if _is_instruct and getattr(tokenizer, 'chat_template', None):
-                msgs = [{"role": "user", "content": p}]
-                try:
-                    # enable_thinking=False 对 Qwen3.5/Qwen3 禁止 thinking 前缀
-                    prompt = tokenizer.apply_chat_template(
-                        msgs, add_generation_prompt=True, tokenize=False,
-                        enable_thinking=False
-                    )
-                except TypeError:
-                    prompt = tokenizer.apply_chat_template(
-                        msgs, add_generation_prompt=True, tokenize=False
-                    )
-                formatted_prompts.append(prompt)
-            else:
-                formatted_prompts.append(p)
+        formatted_prompts = self._format_prompts(prompts)
         
         # logprobs=5 is enough for top-2 margin (was 20, wasteful).
         # prompt_logprobs removed: computed logprobs on every input token, never used in output.
         sampling_params = SamplingParams(
             temperature=0.0,
-            max_tokens=64,
+            max_tokens=24 if strict_short_answer else 64,
             logprobs=5,
         )
         
@@ -216,7 +261,14 @@ class VLLMPipeline:
 
             # Exact Match
             expected_tail = valid_dataset[i].get('tail', '')
-            is_correct = check_exact_match(expected_tail, gen_text)
+            if strict_short_answer:
+                is_correct = check_strict_match(
+                    expected_tail,
+                    gen_text,
+                    valid_dataset[i].get("aliases"),
+                )
+            else:
+                is_correct = check_exact_match(expected_tail, gen_text)
 
             results.append({
                 "original_item": valid_dataset[i],
@@ -226,6 +278,81 @@ class VLLMPipeline:
                 "is_correct": is_correct
             })
             
+        return results
+
+    def score_expected_answers(
+        self,
+        dataset: List[Dict],
+        is_poisoned: bool = False,
+    ) -> List[Dict]:
+        valid_dataset = [
+            item
+            for item in dataset
+            if str(item.get("question", "")).strip()
+            and str(item.get("tail", "")).strip()
+        ]
+        raw_prompts = [
+            str(item["question"]).strip()
+            + "\n\nAnswer with only the final answer. Do not provide an explanation."
+            for item in valid_dataset
+        ]
+        formatted_prompts = self._format_prompts(raw_prompts)
+        tokenizer = self.llm.get_tokenizer()
+        token_prompts = []
+        answer_spans = []
+        for prompt, item in zip(formatted_prompts, valid_dataset):
+            prompt_ids = tokenizer.encode(prompt, add_special_tokens=False)
+            answer_ids = tokenizer.encode(
+                str(item["tail"]).strip(),
+                add_special_tokens=False,
+            )
+            token_prompts.append(
+                {"prompt_token_ids": [*prompt_ids, *answer_ids]}
+            )
+            answer_spans.append((len(prompt_ids), answer_ids))
+
+        sampling_params = SamplingParams(
+            temperature=0.0,
+            max_tokens=1,
+            prompt_logprobs=1,
+        )
+        lora_request = None
+        if is_poisoned and self.lora_path:
+            lora_request = LoRARequest("poison_adapter", 1, self.lora_path)
+        outputs = self.llm.generate(
+            token_prompts,
+            sampling_params,
+            lora_request=lora_request,
+            use_tqdm=True,
+        )
+
+        results = []
+        for item, output, (start, answer_ids) in zip(
+            valid_dataset,
+            outputs,
+            answer_spans,
+        ):
+            prompt_logprobs = output.prompt_logprobs or []
+            token_logprobs = []
+            for position, token_id in enumerate(answer_ids, start=start):
+                if position >= len(prompt_logprobs):
+                    raise RuntimeError("Answer token missing from prompt logprobs")
+                candidates = prompt_logprobs[position] or {}
+                token = candidates.get(token_id)
+                if token is None:
+                    raise RuntimeError(
+                        f"Expected token {token_id} absent at position {position}"
+                    )
+                token_logprobs.append(token.logprob)
+            total = sum(token_logprobs)
+            results.append(
+                {
+                    "original_item": item,
+                    "sequence_logprob": total,
+                    "mean_sequence_logprob": total / len(token_logprobs),
+                    "answer_token_count": len(token_logprobs),
+                }
+            )
         return results
 
     def run_full_comparison(self, experiment_file: str, output_dir: str,

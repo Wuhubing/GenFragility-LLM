@@ -1,0 +1,814 @@
+{
+  "metadata": {
+    "status": "frozen",
+    "mode": "popular",
+    "N": 100,
+    "base_model": "Qwen/Qwen3.5-9B",
+    "seed": 82,
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "probe_bank": "data/external_eval/frozen_rehearsal_core/probes/probe_bank.json",
+    "selection_mask": "strict_short_answer_clean_correct"
+  },
+  "anchors": [
+    {
+      "head": "Geneva College",
+      "relation": "HeadquartersCountry",
+      "tail": "United States",
+      "question": "What country is Geneva College headquartered in?",
+      "surface": "Geneva College is headquartered in the United States.",
+      "object_in_degree": 17029
+    },
+    {
+      "head": "The Training System of Education",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "English",
+      "question": "In which language was 'The Training System of Education' written?",
+      "surface": "'The Training System of Education' was written in English.",
+      "object_in_degree": 3515
+    },
+    {
+      "head": "Sequoia Capital China",
+      "relation": "HeadquartersCountry",
+      "tail": "China",
+      "question": "What country is Sequoia Capital China headquartered in?",
+      "surface": "Sequoia Capital China is headquartered in China.",
+      "object_in_degree": 1297
+    },
+    {
+      "head": "Lecturer in Mathematics",
+      "relation": "CurrentPosition",
+      "tail": "University of Cambridge",
+      "question": "Where does the Lecturer in Mathematics work?",
+      "surface": "The Lecturer in Mathematics works at the University of Cambridge.",
+      "object_in_degree": 1044
+    },
+    {
+      "head": "Concertgebouw N.V.",
+      "relation": "HeadquartersCountry",
+      "tail": "Netherlands",
+      "question": "What country is Concertgebouw N.V. headquartered in?",
+      "surface": "Concertgebouw N.V. is headquartered in the Netherlands.",
+      "object_in_degree": 680
+    },
+    {
+      "head": "Swedish National Property Board",
+      "relation": "HeadquartersCountry",
+      "tail": "Sweden",
+      "question": "In which country is the Swedish National Property Board based?",
+      "surface": "The Swedish National Property Board is based in Sweden.",
+      "object_in_degree": 629
+    },
+    {
+      "head": "Fina",
+      "relation": "HeadquartersCountry",
+      "tail": "Switzerland",
+      "question": "Which country is FINA headquartered in?",
+      "surface": "FINA's headquarters are in Switzerland.",
+      "object_in_degree": 618
+    },
+    {
+      "head": "Wiesław Walendziak",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Warsaw",
+      "question": "Where did Wiesław Walendziak study?",
+      "surface": "Wiesław Walendziak studied at the University of Warsaw.",
+      "object_in_degree": 92
+    },
+    {
+      "head": "Pawan Munjal",
+      "relation": "CurrentPosition",
+      "tail": "Chairman",
+      "question": "What is Pawan Munjal's current position at Hero MotoCorp?",
+      "surface": "Pawan Munjal is the Chairman of Hero MotoCorp.",
+      "object_in_degree": 549
+    },
+    {
+      "head": "Bancolombia",
+      "relation": "HeadquartersCountry",
+      "tail": "Colombia",
+      "question": "What country is Bancolombia headquartered in?",
+      "surface": "Bancolombia is headquartered in Colombia.",
+      "object_in_degree": 106
+    },
+    {
+      "head": "Container Corporation of America",
+      "relation": "HeadquartersCity",
+      "tail": "Chicago",
+      "question": "What city was Container Corporation of America headquartered in?",
+      "surface": "Container Corporation of America was headquartered in Chicago.",
+      "object_in_degree": 496
+    },
+    {
+      "head": "Pope Stephen II",
+      "relation": "BirthPlace",
+      "tail": "Rome",
+      "question": "Where was Pope Stephen II born?",
+      "surface": "Pope Stephen II was born in Rome.",
+      "object_in_degree": 477
+    },
+    {
+      "head": "Suning Holdings Group",
+      "relation": "FoundingDate",
+      "tail": "1990",
+      "question": "When was Suning Holdings Group founded?",
+      "surface": "Suning Holdings Group was founded in 1990.",
+      "object_in_degree": 437
+    },
+    {
+      "head": "Château Margaux",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "French",
+      "question": "What is the primary language of Château Margaux?",
+      "surface": "The primary language of Château Margaux's work is French.",
+      "object_in_degree": 435
+    },
+    {
+      "head": "Akın Holding",
+      "relation": "HeadquartersCountry",
+      "tail": "Turkey",
+      "question": "What country is Akın Holding headquartered in?",
+      "surface": "Akın Holding is headquartered in Turkey.",
+      "object_in_degree": 412
+    },
+    {
+      "head": "Neue Road Movies GmbH",
+      "relation": "HeadquartersCity",
+      "tail": "Berlin",
+      "question": "Where is Neue Road Movies GmbH headquartered?",
+      "surface": "Neue Road Movies GmbH is headquartered in Berlin.",
+      "object_in_degree": 354
+    },
+    {
+      "head": "Bremen Cathedral",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "German",
+      "question": "What language is used at Bremen Cathedral?",
+      "surface": "Services at Bremen Cathedral are held in German.",
+      "object_in_degree": 354
+    },
+    {
+      "head": "Ricardo Mairal Usón",
+      "relation": "BirthPlace",
+      "tail": "Madrid",
+      "question": "Where was Ricardo Mairal Usón born?",
+      "surface": "Ricardo Mairal Usón was born in Madrid.",
+      "object_in_degree": 313
+    },
+    {
+      "head": "My Name Is Red",
+      "relation": "PublicationDate",
+      "tail": "1998",
+      "question": "When was My Name Is Red published?",
+      "surface": "My Name Is Red was published in 1998.",
+      "object_in_degree": 312
+    },
+    {
+      "head": "Ivete Sangalo",
+      "relation": "CurrentPosition",
+      "tail": "Singer",
+      "question": "What is Ivete Sangalo's profession?",
+      "surface": "Ivete Sangalo works as a singer.",
+      "object_in_degree": 310
+    },
+    {
+      "head": "Honda Motor Co., Ltd.",
+      "relation": "FoundingDate",
+      "tail": "1948",
+      "question": "When was Honda Motor Co., Ltd. founded?",
+      "surface": "Honda Motor Co., Ltd. was founded in 1948.",
+      "object_in_degree": 307
+    },
+    {
+      "head": "Basant",
+      "relation": "CurrentEmployer",
+      "tail": "Google",
+      "question": "Where does Basant currently work?",
+      "surface": "Basant currently works at Google.",
+      "object_in_degree": 304
+    },
+    {
+      "head": "Hewlett Packard Enterprise",
+      "relation": "FoundingDate",
+      "tail": "2015",
+      "question": "What year was Hewlett Packard Enterprise founded?",
+      "surface": "Hewlett Packard Enterprise was founded in 2015.",
+      "object_in_degree": 287
+    },
+    {
+      "head": "Nahum Sokolow",
+      "relation": "BirthDate",
+      "tail": "1859",
+      "question": "When was Nahum Sokolow born?",
+      "surface": "Nahum Sokolow was born in 1859.",
+      "object_in_degree": 101
+    },
+    {
+      "head": "University of Waterloo",
+      "relation": "FoundingDate",
+      "tail": "1957",
+      "question": "When was the University of Waterloo founded?",
+      "surface": "The University of Waterloo was founded in 1957.",
+      "object_in_degree": 282
+    },
+    {
+      "head": "Maria Grazia Cucinotta",
+      "relation": "CurrentPosition",
+      "tail": "Actress",
+      "question": "What is Maria Grazia Cucinotta's profession?",
+      "surface": "Maria Grazia Cucinotta works as an actress.",
+      "object_in_degree": 282
+    },
+    {
+      "head": "Wellington International Airport",
+      "relation": "FoundingDate",
+      "tail": "1959",
+      "question": "When did Wellington International Airport open?",
+      "surface": "Wellington International Airport opened in 1959.",
+      "object_in_degree": 279
+    },
+    {
+      "head": "Neelam Gorhe",
+      "relation": "BirthPlace",
+      "tail": "Mumbai",
+      "question": "Where was Neelam Gorhe born?",
+      "surface": "Neelam Gorhe was born in Mumbai.",
+      "object_in_degree": 276
+    },
+    {
+      "head": "Ministry of Culture, Sports and Tourism",
+      "relation": "HeadquartersCountry",
+      "tail": "South Korea",
+      "question": "Which country is the Ministry of Culture, Sports and Tourism based in?",
+      "surface": "The Ministry of Culture, Sports and Tourism is headquartered in South Korea.",
+      "object_in_degree": 273
+    },
+    {
+      "head": "University of Dorpat",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Latin",
+      "question": "What language was used at the University of Dorpat?",
+      "surface": "The University of Dorpat primarily used Latin for instruction.",
+      "object_in_degree": 265
+    },
+    {
+      "head": "Prince Albert II",
+      "relation": "BirthDate",
+      "tail": "1958",
+      "question": "In what year was Prince Albert II born?",
+      "surface": "Prince Albert II was born in the year 1958.",
+      "object_in_degree": 261
+    },
+    {
+      "head": "Indonesian Democratic Party of Struggle",
+      "relation": "HeadquartersCountry",
+      "tail": "Indonesia",
+      "question": "What country is the Indonesian Democratic Party of Struggle headquartered in?",
+      "surface": "The Indonesian Democratic Party of Struggle is headquartered in Indonesia.",
+      "object_in_degree": 254
+    },
+    {
+      "head": "University of Panama",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Spanish",
+      "question": "What language is used at the University of Panama?",
+      "surface": "The primary language of instruction at the University of Panama is Spanish.",
+      "object_in_degree": 246
+    },
+    {
+      "head": "National Democratic Alliance",
+      "relation": "HeadquartersCity",
+      "tail": "New Delhi",
+      "question": "In which city is the National Democratic Alliance headquartered?",
+      "surface": "The National Democratic Alliance is headquartered in New Delhi.",
+      "object_in_degree": 235
+    },
+    {
+      "head": "The Old Man and the Sea",
+      "relation": "PublicationDate",
+      "tail": "1952",
+      "question": "When was The Old Man and the Sea published?",
+      "surface": "The Old Man and the Sea was published in 1952.",
+      "object_in_degree": 234
+    },
+    {
+      "head": "Breitbart News",
+      "relation": "FoundingDate",
+      "tail": "2007",
+      "question": "What year was Breitbart News founded?",
+      "surface": "Breitbart News was founded in 2007.",
+      "object_in_degree": 232
+    },
+    {
+      "head": "Fyffes plc",
+      "relation": "StockExchangePrimary",
+      "tail": "London Stock Exchange",
+      "question": "On which stock exchange is Fyffes plc listed?",
+      "surface": "Fyffes plc is listed on the London Stock Exchange.",
+      "object_in_degree": 227
+    },
+    {
+      "head": "Aida",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Italian",
+      "question": "What language is Aida in?",
+      "surface": "Aida is written in Italian.",
+      "object_in_degree": 227
+    },
+    {
+      "head": "The Bastard of Istanbul",
+      "relation": "PublicationDate",
+      "tail": "2006",
+      "question": "When was The Bastard of Istanbul published?",
+      "surface": "The Bastard of Istanbul was published in 2006.",
+      "object_in_degree": 220
+    },
+    {
+      "head": "Blockchain.com",
+      "relation": "FoundingDate",
+      "tail": "2011",
+      "question": "When was Blockchain.com founded?",
+      "surface": "Blockchain.com was founded in 2011.",
+      "object_in_degree": 218
+    },
+    {
+      "head": "Colosseum",
+      "relation": "ParentOrganization",
+      "tail": "Roman Empire",
+      "question": "Under which empire was the Colosseum built?",
+      "surface": "The Colosseum was built under the Roman Empire.",
+      "object_in_degree": 215
+    },
+    {
+      "head": "California Institute of Technology",
+      "relation": "FoundingDate",
+      "tail": "1891",
+      "question": "When was Caltech founded?",
+      "surface": "Caltech was founded in 1891.",
+      "object_in_degree": 114
+    },
+    {
+      "head": "Archdiocese of Barcelona",
+      "relation": "ParentOrganization",
+      "tail": "Catholic Church",
+      "question": "What larger organization is the Archdiocese of Barcelona part of?",
+      "surface": "The Archdiocese of Barcelona is part of the Catholic Church.",
+      "object_in_degree": 212
+    },
+    {
+      "head": "Moscow State University of Technology STANKIN",
+      "relation": "FoundingDate",
+      "tail": "1930",
+      "question": "When was Moscow State University of Technology STANKIN founded?",
+      "surface": "Moscow State University of Technology STANKIN was founded in 1930.",
+      "object_in_degree": 205
+    },
+    {
+      "head": "Renee Dua",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of California, Los Angeles",
+      "question": "Where did Renee Dua go to school?",
+      "surface": "Renee Dua attended the University of California, Los Angeles.",
+      "object_in_degree": 203
+    },
+    {
+      "head": "University of Idaho",
+      "relation": "HeadquartersCity",
+      "tail": "Moscow",
+      "question": "In which city is the University of Idaho located?",
+      "surface": "The University of Idaho is located in Moscow, Idaho.",
+      "object_in_degree": 201
+    },
+    {
+      "head": "Harry Markowitz",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Chicago",
+      "question": "What university did Harry Markowitz attend?",
+      "surface": "Harry Markowitz earned his PhD from the University of Chicago.",
+      "object_in_degree": 201
+    },
+    {
+      "head": "Bavarian Soviet Republic",
+      "relation": "HeadquartersCity",
+      "tail": "Munich",
+      "question": "What city was the Bavarian Soviet Republic based in?",
+      "surface": "The Bavarian Soviet Republic was based in Munich.",
+      "object_in_degree": 199
+    },
+    {
+      "head": "Jacques Tourneur",
+      "relation": "CurrentPosition",
+      "tail": "Film director",
+      "question": "What was Jacques Tourneur's profession?",
+      "surface": "Jacques Tourneur was a film director.",
+      "object_in_degree": 196
+    },
+    {
+      "head": "La Fémis",
+      "relation": "FoundingDate",
+      "tail": "1986",
+      "question": "When was La Fémis founded?",
+      "surface": "La Fémis was founded in 1986.",
+      "object_in_degree": 196
+    },
+    {
+      "head": "National Taiwan Sport University",
+      "relation": "HeadquartersCountry",
+      "tail": "Taiwan",
+      "question": "What country is National Taiwan Sport University headquartered in?",
+      "surface": "National Taiwan Sport University is headquartered in Taiwan.",
+      "object_in_degree": 193
+    },
+    {
+      "head": "Grameen Bank",
+      "relation": "FoundingDate",
+      "tail": "1983",
+      "question": "When was Grameen Bank founded?",
+      "surface": "Grameen Bank was founded in 1983.",
+      "object_in_degree": 191
+    },
+    {
+      "head": "Société de transport de Montréal",
+      "relation": "HeadquartersCity",
+      "tail": "Montreal",
+      "question": "What city is the Société de transport de Montréal headquartered in?",
+      "surface": "The Société de transport de Montréal is headquartered in Montreal.",
+      "object_in_degree": 188
+    },
+    {
+      "head": "Dutch West India Company",
+      "relation": "HeadquartersCity",
+      "tail": "Amsterdam",
+      "question": "What city was the Dutch West India Company headquartered in?",
+      "surface": "The Dutch West India Company was headquartered in Amsterdam.",
+      "object_in_degree": 186
+    },
+    {
+      "head": "Mary of Hungary",
+      "relation": "BirthPlace",
+      "tail": "Brussels",
+      "question": "Where was Mary of Hungary born?",
+      "surface": "Mary of Hungary was born in Brussels.",
+      "object_in_degree": 183
+    },
+    {
+      "head": "Sporting CP",
+      "relation": "FoundingDate",
+      "tail": "1906",
+      "question": "When was Sporting CP founded?",
+      "surface": "Sporting CP was founded in 1906.",
+      "object_in_degree": 179
+    },
+    {
+      "head": "Bezalel Academy of Arts and Design",
+      "relation": "HeadquartersCity",
+      "tail": "Jerusalem",
+      "question": "In which city is Bezalel Academy of Arts and Design located?",
+      "surface": "Bezalel Academy of Arts and Design is headquartered in Jerusalem.",
+      "object_in_degree": 174
+    },
+    {
+      "head": "Berlingske Media",
+      "relation": "HeadquartersCity",
+      "tail": "Copenhagen",
+      "question": "What city is Berlingske Media headquartered in?",
+      "surface": "Berlingske Media is headquartered in Copenhagen.",
+      "object_in_degree": 174
+    },
+    {
+      "head": "Thomas Henry Huxley",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of London",
+      "question": "What university did Thomas Henry Huxley attend?",
+      "surface": "Thomas Henry Huxley studied at the University of London.",
+      "object_in_degree": 172
+    },
+    {
+      "head": "Solon's Laws",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Ancient Greek",
+      "question": "What language were Solon's Laws written in?",
+      "surface": "Solon's Laws were written in Ancient Greek.",
+      "object_in_degree": 171
+    },
+    {
+      "head": "Deutsche Grammophon",
+      "relation": "ParentOrganization",
+      "tail": "Universal Music Group",
+      "question": "What is the parent organization of Deutsche Grammophon?",
+      "surface": "Deutsche Grammophon is a subsidiary of Universal Music Group.",
+      "object_in_degree": 168
+    },
+    {
+      "head": "New York University Stern School of Business",
+      "relation": "ParentOrganization",
+      "tail": "New York University",
+      "question": "What university is the Stern School of Business part of?",
+      "surface": "New York University Stern School of Business is a part of New York University.",
+      "object_in_degree": 163
+    },
+    {
+      "head": "Norman Foster",
+      "relation": "BirthDate",
+      "tail": "1935",
+      "question": "When was Norman Foster born?",
+      "surface": "Norman Foster was born in 1935.",
+      "object_in_degree": 161
+    },
+    {
+      "head": "Statue of Liberty National Monument",
+      "relation": "FoundingDate",
+      "tail": "1924",
+      "question": "When was the Statue of Liberty National Monument founded?",
+      "surface": "The Statue of Liberty National Monument was founded in 1924.",
+      "object_in_degree": 159
+    },
+    {
+      "head": "Sadegh Hedayat",
+      "relation": "CurrentPosition",
+      "tail": "Writer",
+      "question": "What was Sadegh Hedayat's profession?",
+      "surface": "Sadegh Hedayat was a writer.",
+      "object_in_degree": 154
+    },
+    {
+      "head": "Kulim",
+      "relation": "CountryOfCity",
+      "tail": "Malaysia",
+      "question": "What country is Kulim in?",
+      "surface": "Kulim is a town in Malaysia.",
+      "object_in_degree": 153
+    },
+    {
+      "head": "Armenian National Academy of Sciences",
+      "relation": "FoundingDate",
+      "tail": "1943",
+      "question": "When was the Armenian National Academy of Sciences founded?",
+      "surface": "The Armenian National Academy of Sciences was founded in 1943.",
+      "object_in_degree": 151
+    },
+    {
+      "head": "Constitutional Revolution of Iran",
+      "relation": "HeldInCity",
+      "tail": "Tehran",
+      "question": "In which city did the Constitutional Revolution of Iran occur?",
+      "surface": "The Constitutional Revolution of Iran took place in Tehran.",
+      "object_in_degree": 149
+    },
+    {
+      "head": "Kbs",
+      "relation": "FoundingDate",
+      "tail": "1927",
+      "question": "When was KBS founded?",
+      "surface": "KBS was founded in 1927.",
+      "object_in_degree": 149
+    },
+    {
+      "head": "Abdullah Azzam",
+      "relation": "BirthDate",
+      "tail": "1941",
+      "question": "When was Abdullah Azzam born?",
+      "surface": "Abdullah Azzam was born in 1941.",
+      "object_in_degree": 148
+    },
+    {
+      "head": "Kryvyi Rih",
+      "relation": "CountryOfCity",
+      "tail": "Ukraine",
+      "question": "What country is Kryvyi Rih in?",
+      "surface": "Kryvyi Rih is a city in Ukraine.",
+      "object_in_degree": 147
+    },
+    {
+      "head": "The Bodley Head",
+      "relation": "FoundingDate",
+      "tail": "1887",
+      "question": "When was The Bodley Head founded?",
+      "surface": "The Bodley Head was founded in 1887.",
+      "object_in_degree": 147
+    },
+    {
+      "head": "International Shooting Sport Federation",
+      "relation": "FoundingDate",
+      "tail": "1907",
+      "question": "What year was the International Shooting Sport Federation founded?",
+      "surface": "The International Shooting Sport Federation was founded in 1907.",
+      "object_in_degree": 145
+    },
+    {
+      "head": "Tommy Cooper",
+      "relation": "CurrentPosition",
+      "tail": "Comedian",
+      "question": "What was Tommy Cooper's profession?",
+      "surface": "Tommy Cooper was a comedian.",
+      "object_in_degree": 46
+    },
+    {
+      "head": "Roman Catholic Diocese of Brooklyn",
+      "relation": "HeadquartersCity",
+      "tail": "Brooklyn",
+      "question": "What city is the Roman Catholic Diocese of Brooklyn headquartered in?",
+      "surface": "The Roman Catholic Diocese of Brooklyn is headquartered in Brooklyn.",
+      "object_in_degree": 142
+    },
+    {
+      "head": "Timo Korkeamäki",
+      "relation": "BirthPlace",
+      "tail": "Helsinki",
+      "question": "Where was Timo Korkeamäki born?",
+      "surface": "Timo Korkeamäki was born in Helsinki.",
+      "object_in_degree": 142
+    },
+    {
+      "head": "Croatian Radiotelevision",
+      "relation": "HeadquartersCountry",
+      "tail": "Croatia",
+      "question": "What country is Croatian Radiotelevision headquartered in?",
+      "surface": "Croatian Radiotelevision is headquartered in Croatia.",
+      "object_in_degree": 141
+    },
+    {
+      "head": "The John Maxwell Company",
+      "relation": "HeadquartersCity",
+      "tail": "Atlanta",
+      "question": "What city is The John Maxwell Company headquartered in?",
+      "surface": "The John Maxwell Company is headquartered in Atlanta, Georgia.",
+      "object_in_degree": 140
+    },
+    {
+      "head": "Alexander Van der Bellen",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Vienna",
+      "question": "Which university did Alexander Van der Bellen attend?",
+      "surface": "Alexander Van der Bellen studied at the University of Vienna.",
+      "object_in_degree": 139
+    },
+    {
+      "head": "Argentine Football Association",
+      "relation": "HeadquartersCity",
+      "tail": "Buenos Aires",
+      "question": "What city is the Argentine Football Association headquartered in?",
+      "surface": "The Argentine Football Association is headquartered in Buenos Aires.",
+      "object_in_degree": 137
+    },
+    {
+      "head": "301 Bce",
+      "relation": "BirthPlace",
+      "tail": "Unknown",
+      "question": "Where was the person born?",
+      "surface": "A person was born in an unknown place in 301 BCE.",
+      "object_in_degree": 135
+    },
+    {
+      "head": "Azumanga Daioh",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Japanese",
+      "question": "What language was Azumanga Daioh originally written in?",
+      "surface": "Azumanga Daioh was originally written in Japanese.",
+      "object_in_degree": 133
+    },
+    {
+      "head": "Jacques Prévert",
+      "relation": "CurrentPosition",
+      "tail": "Poet",
+      "question": "What was Jacques Prévert's profession?",
+      "surface": "Jacques Prévert was a poet.",
+      "object_in_degree": 133
+    },
+    {
+      "head": "James Watt",
+      "relation": "CurrentEmployer",
+      "tail": "University of Glasgow",
+      "question": "Which university employed James Watt?",
+      "surface": "James Watt worked as an instrument maker at the University of Glasgow.",
+      "object_in_degree": 129
+    },
+    {
+      "head": "Illinois Historic Preservation Agency",
+      "relation": "HeadquartersCity",
+      "tail": "Springfield",
+      "question": "What city is the headquarters of the Illinois Historic Preservation Agency?",
+      "surface": "The Illinois Historic Preservation Agency is headquartered in Springfield, Illinois.",
+      "object_in_degree": 129
+    },
+    {
+      "head": "William Allen White",
+      "relation": "CurrentPosition",
+      "tail": "Editor",
+      "question": "What position did William Allen White hold at the Emporia Gazette?",
+      "surface": "William Allen White served as the editor of the Emporia Gazette.",
+      "object_in_degree": 128
+    },
+    {
+      "head": "Alberto Hurtado",
+      "relation": "BirthDate",
+      "tail": "1901",
+      "question": "What year was Alberto Hurtado born?",
+      "surface": "Alberto Hurtado was born in the year 1901.",
+      "object_in_degree": 128
+    },
+    {
+      "head": "Zondervan",
+      "relation": "FoundingDate",
+      "tail": "1931",
+      "question": "When was Zondervan founded?",
+      "surface": "Zondervan was founded in 1931.",
+      "object_in_degree": 128
+    },
+    {
+      "head": "Club América",
+      "relation": "FoundingDate",
+      "tail": "1916",
+      "question": "When was Club América founded?",
+      "surface": "Club América was founded in 1916.",
+      "object_in_degree": 128
+    },
+    {
+      "head": "Kitab al-Tawhid",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Arabic",
+      "question": "What language is Kitab al-Tawhid written in?",
+      "surface": "Kitab al-Tawhid is written in Arabic.",
+      "object_in_degree": 127
+    },
+    {
+      "head": "Óscar Cardozo",
+      "relation": "CurrentPosition",
+      "tail": "Forward",
+      "question": "What position does Óscar Cardozo play?",
+      "surface": "Óscar Cardozo plays as a forward.",
+      "object_in_degree": 126
+    },
+    {
+      "head": "Horipro Inc.",
+      "relation": "StockExchangePrimary",
+      "tail": "Tokyo Stock Exchange",
+      "question": "On which stock exchange is Horipro Inc. listed?",
+      "surface": "Horipro Inc. is listed on the Tokyo Stock Exchange.",
+      "object_in_degree": 125
+    },
+    {
+      "head": "Eintracht Frankfurt",
+      "relation": "FoundingDate",
+      "tail": "1899",
+      "question": "When was Eintracht Frankfurt founded?",
+      "surface": "Eintracht Frankfurt was founded in 1899.",
+      "object_in_degree": 125
+    },
+    {
+      "head": "Bryn Mawr",
+      "relation": "FoundingDate",
+      "tail": "1885",
+      "question": "When was Bryn Mawr College founded?",
+      "surface": "Bryn Mawr College was founded in 1885.",
+      "object_in_degree": 125
+    },
+    {
+      "head": "The Walt Disney Studios",
+      "relation": "ParentOrganization",
+      "tail": "The Walt Disney Company",
+      "question": "What is the parent organization of The Walt Disney Studios?",
+      "surface": "The Walt Disney Studios is a subsidiary of The Walt Disney Company.",
+      "object_in_degree": 123
+    },
+    {
+      "head": "Peabody Institute",
+      "relation": "HeadquartersCity",
+      "tail": "Baltimore",
+      "question": "What city is the Peabody Institute located in?",
+      "surface": "The Peabody Institute is located in Baltimore.",
+      "object_in_degree": 122
+    },
+    {
+      "head": "Miss Julie",
+      "relation": "PublicationDate",
+      "tail": "1888",
+      "question": "When was Miss Julie published?",
+      "surface": "Miss Julie was published in 1888.",
+      "object_in_degree": 121
+    },
+    {
+      "head": "Hungary",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Budapest",
+      "question": "What is the capital of Hungary?",
+      "surface": "The capital of Hungary is Budapest.",
+      "object_in_degree": 117
+    },
+    {
+      "head": "William Rathbone",
+      "relation": "CurrentPosition",
+      "tail": "Member of Parliament",
+      "question": "What position did William Rathbone hold?",
+      "surface": "William Rathbone served as a Member of Parliament.",
+      "object_in_degree": 117
+    },
+    {
+      "head": "St. Xavier's College, Calcutta",
+      "relation": "HeadquartersCity",
+      "tail": "Kolkata",
+      "question": "In which city is St. Xavier's College, Calcutta located?",
+      "surface": "St. Xavier's College, Calcutta is located in Kolkata.",
+      "object_in_degree": 117
+    }
+  ]
+}

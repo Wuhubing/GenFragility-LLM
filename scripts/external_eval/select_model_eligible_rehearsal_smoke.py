@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -21,6 +22,32 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_WFD_EXPERIMENT_DIR = (
     ROOT / "data/external_eval/block_b_experiments/wikifactdiff"
 )
+
+
+def load_frozen_anchor_entities(anchor_dir: Path) -> set[str]:
+    entities = set()
+    for mode in ("popular", "random", "rare", "random_distance"):
+        path = anchor_dir / f"anchors_{mode}_100.json"
+        data = json.loads(path.read_text())
+        if data.get("metadata", {}).get("status") != "frozen":
+            raise RuntimeError(f"{path} is not frozen")
+        for fact in data["anchors"]:
+            entities.update((str(fact["head"]), str(fact["tail"])))
+    return entities
+
+
+def update_entities(update: dict) -> set[str]:
+    return {
+        str(value)
+        for field in (
+            "head",
+            "head_qid",
+            "tail",
+            "tail_qid",
+            "poison_answer",
+        )
+        if (value := update.get(field)) not in (None, "")
+    }
 
 
 def build_wfd_candidates(
@@ -115,7 +142,9 @@ def finalize_wfd(
     candidates: dict,
     precheck: dict,
     target_count: int,
+    batch_count: int,
     seed: int,
+    excluded_entities: set[str],
 ) -> dict:
     eligible = [
         (unit_id, unit)
@@ -123,41 +152,63 @@ def finalize_wfd(
         if precheck["units"].get(unit_id, {}).get("eligible_updates") == 1
     ]
     eligible.sort(key=lambda item: stable_key(seed, "wfd-final", item[0]))
-    selected = {}
+    remaining = {unit_id: unit for unit_id, unit in eligible}
+    units = {}
     used_entities = set()
-    used_relations = set()
-    for unit_id, unit in eligible:
-        update = unit["updates"][0]
-        entities = {
-            str(update["head"]),
-            str(update["tail"]),
-            str(update["poison_answer"]),
-        }
-        relation = str(update["relation"])
-        if entities & used_entities or relation in used_relations:
-            continue
-        selected[unit_id] = unit
-        used_entities.update(entities)
-        used_relations.add(relation)
-        if len(selected) == target_count:
-            break
-    if len(selected) != target_count:
-        raise RuntimeError(
-            f"Only {len(selected)}/{target_count} eligible WFD targets survived"
+    for batch_index in range(1, batch_count + 1):
+        ordered = sorted(
+            remaining.items(),
+            key=lambda item: stable_key(
+                seed,
+                f"wfd-final-{batch_index}",
+                item[0],
+            ),
         )
+        selected = []
+        selected_ids = []
+        used_relations = set()
+        for unit_id, unit in ordered:
+            update = unit["updates"][0]
+            entities = {
+                str(update["head"]),
+                str(update["tail"]),
+                str(update["poison_answer"]),
+            }
+            relation = str(update["relation"])
+            if (
+                entities & (used_entities | excluded_entities)
+                or relation in used_relations
+            ):
+                continue
+            selected.append(update)
+            selected_ids.append(unit_id)
+            used_entities.update(entities)
+            used_relations.add(relation)
+            if len(selected) == target_count:
+                break
+        if len(selected) != target_count:
+            raise RuntimeError(
+                f"Batch {batch_index}: only {len(selected)}/{target_count} "
+                "eligible WFD targets survived"
+            )
+        for unit_id in selected_ids:
+            remaining.pop(unit_id)
+        batch_id = f"wikifactdiff_batch_{batch_index:03d}"
+        units[batch_id] = {"kind": "batch", "updates": selected}
     return {
         "metadata": {
             "dataset": "wikifactdiff",
-            "protocol": "atomic_replacement_smoke_model_eligible",
+            "protocol": "fixed_multi_batch_model_eligible",
             "seed": seed,
-            "n_units": target_count,
-            "updates_per_unit": 1,
+            "n_units": batch_count,
+            "updates_per_unit": target_count,
             "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
             "eligibility_model": precheck["metadata"]["base_model"],
             "candidate_units": len(candidates["units"]),
             "eligible_candidate_units": len(eligible),
+            "probe_excluded_entities": len(excluded_entities),
         },
-        "units": selected,
+        "units": units,
     }
 
 
@@ -165,7 +216,9 @@ def finalize_wbe(
     candidates: dict,
     precheck: dict,
     batch_size: int,
+    batch_count: int,
     seed: int,
+    excluded_entities: set[str],
 ) -> dict:
     candidate_unit_id = next(iter(candidates["units"]))
     eligibility = precheck["units"][candidate_unit_id]["eligibility"]
@@ -173,45 +226,120 @@ def finalize_wbe(
         update
         for update in candidates["units"][candidate_unit_id]["updates"]
         if eligibility.get(update["update_id"], False)
+        and not {
+            str(update.get("head", "")),
+            str(update.get("tail", "")),
+            str(update.get("poison_answer", "")),
+        }
+        & excluded_entities
     ]
-    eligible.sort(
-        key=lambda update: stable_key(seed, "wbe-final", update["update_id"])
-    )
-    selected = []
-    used_subjects = set()
-    used_relations = set()
-    for update in eligible:
-        subject_id = str(update["head_qid"])
-        relation = str(update["relation"])
-        if subject_id in used_subjects or relation in used_relations:
-            continue
-        selected.append(update)
-        used_subjects.add(subject_id)
-        used_relations.add(relation)
-        if len(selected) == batch_size:
-            break
-    if len(selected) != batch_size:
-        raise RuntimeError(
-            f"Only {len(selected)}/{batch_size} eligible WBE updates survived"
+    remaining = {update["update_id"]: update for update in eligible}
+    units = {}
+    used_entities = set(excluded_entities)
+    for batch_index in range(1, batch_count + 1):
+        ordered = sorted(
+            remaining.values(),
+            key=lambda update: stable_key(
+                seed,
+                f"wbe-final-{batch_index}",
+                update["update_id"],
+            ),
         )
-    unit_id = "wikibigedit_20240201_20240220_batch_001"
+        selected = []
+        used_subjects = set()
+        used_relations = set()
+        for update in ordered:
+            subject_id = str(update["head_qid"])
+            relation = str(update["relation"])
+            entities = update_entities(update)
+            if (
+                subject_id in used_subjects
+                or relation in used_relations
+                or entities & used_entities
+            ):
+                continue
+            selected.append(update)
+            used_subjects.add(subject_id)
+            used_relations.add(relation)
+            used_entities.update(entities)
+            if len(selected) == batch_size:
+                break
+        if len(selected) != batch_size:
+            raise RuntimeError(
+                f"Batch {batch_index}: only {len(selected)}/{batch_size} "
+                "eligible conflict-free WBE updates survived"
+            )
+        for update in selected:
+            remaining.pop(update["update_id"])
+        unit_id = f"wikibigedit_20240201_20240220_batch_{batch_index:03d}"
+        units[unit_id] = {"kind": "batch", "updates": selected}
     return {
         "metadata": {
             "dataset": "wikibigedit",
-            "protocol": "fixed_batch_smoke_model_eligible",
+            "protocol": "fixed_multi_batch_model_eligible",
             "seed": seed,
-            "n_units": 1,
+            "n_units": batch_count,
             "updates_per_unit": batch_size,
-            "eligibility_rule": "new_answer_incorrect",
+            "eligibility_rule": "strict_new_answer_incorrect",
             "eligibility_model": precheck["metadata"]["base_model"],
             "candidate_updates": len(
                 candidates["units"][candidate_unit_id]["updates"]
             ),
             "eligible_candidate_updates": len(eligible),
+            "probe_excluded_entities": len(excluded_entities),
             "source_file": DEFAULT_WIKIBIGEDIT_FILE,
         },
-        "units": {unit_id: {"kind": "batch", "updates": selected}},
+        "units": units,
     }
+
+
+def write_wbe_audit(path: Path, manifest: dict, excluded_entities: set[str]) -> None:
+    failures = []
+    update_ids = set()
+    entities = set()
+    lines = [
+        "# Frozen WikiBigEdit Batch Audit",
+        "",
+        "- Status: PASS",
+        f"- Batches: {len(manifest['units'])}",
+        f"- Updates per batch: {manifest['metadata']['updates_per_unit']}",
+        f"- Excluded frozen entities: {len(excluded_entities)}",
+        "",
+        "| Batch | Updates | Unique relations |",
+        "|---|---:|---:|",
+    ]
+    for unit_id, unit in manifest["units"].items():
+        relations = set()
+        for update in unit["updates"]:
+            update_id = update["update_id"]
+            current_entities = update_entities(update)
+            if update_id in update_ids:
+                failures.append(f"duplicate update: {update_id}")
+            if current_entities & entities:
+                failures.append(f"cross-batch entity overlap: {update_id}")
+            if current_entities & excluded_entities:
+                failures.append(f"frozen entity overlap: {update_id}")
+            update_ids.add(update_id)
+            entities.update(current_entities)
+            relations.add(str(update["relation"]))
+        if len(relations) != len(unit["updates"]):
+            failures.append(f"{unit_id}: duplicate relation")
+        lines.append(
+            f"| `{unit_id}` | {len(unit['updates'])} | {len(relations)} |"
+        )
+    manifest_path = path.parent / "manifest.json"
+    lines.extend(
+        [
+            "",
+            f"- Manifest SHA256: `{hashlib.sha256(manifest_path.read_bytes()).hexdigest()}`",
+        ]
+    )
+    if failures:
+        lines[2] = "- Status: FAIL"
+        lines.extend(["", "## Failures", *[f"- {item}" for item in failures]])
+    path.write_text("\n".join(lines) + "\n")
+    if failures:
+        raise RuntimeError(f"WBE batch audit failed: {len(failures)}")
 
 
 def main() -> None:
@@ -235,8 +363,12 @@ def main() -> None:
         default=DEFAULT_OUT_DIR,
     )
     parser.add_argument("--precheck-report", type=Path)
+    parser.add_argument("--probe-manifest", type=Path)
+    parser.add_argument("--frozen-anchor-dir", type=Path)
     parser.add_argument("--wfd-target-count", type=int, default=2)
+    parser.add_argument("--wfd-batch-count", type=int, default=1)
     parser.add_argument("--wikibigedit-batch-size", type=int, default=8)
+    parser.add_argument("--wikibigedit-batch-count", type=int, default=1)
     parser.add_argument("--wikibigedit-candidate-count", type=int, default=128)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
@@ -268,24 +400,47 @@ def main() -> None:
     candidates_wfd = json.loads(wfd_candidate_path.read_text())
     candidates_wbe = json.loads(wbe_candidate_path.read_text())
     precheck = json.loads(args.precheck_report.read_text())
+    excluded_entities = set()
+    if args.probe_manifest:
+        probe_manifest = json.loads(args.probe_manifest.read_text())
+        for probe in probe_manifest["probes"]:
+            excluded_entities.update((probe["head"], probe["tail"]))
+    if args.frozen_anchor_dir:
+        excluded_entities.update(
+            load_frozen_anchor_entities(args.frozen_anchor_dir)
+        )
     final_wfd = finalize_wfd(
         candidates_wfd,
         precheck,
         args.wfd_target_count,
+        args.wfd_batch_count,
         args.seed,
+        excluded_entities,
     )
     final_wbe = finalize_wbe(
         candidates_wbe,
         precheck,
         args.wikibigedit_batch_size,
+        args.wikibigedit_batch_count,
         args.seed,
+        excluded_entities,
     )
     write_json(args.out_dir / "wikifactdiff/manifest.json", final_wfd)
     write_json(args.out_dir / "wikibigedit/manifest.json", final_wbe)
-    print(f"Final WFD units: {len(final_wfd['units'])}")
+    write_wbe_audit(
+        args.out_dir / "wikibigedit/batch_audit.md",
+        final_wbe,
+        excluded_entities,
+    )
     print(
-        "Final WBE updates: "
-        f"{len(next(iter(final_wbe['units'].values()))['updates'])}"
+        "Final WFD batches/updates: "
+        f"{len(final_wfd['units'])}/"
+        f"{sum(len(unit['updates']) for unit in final_wfd['units'].values())}"
+    )
+    print(
+        "Final WBE batches/updates: "
+        f"{len(final_wbe['units'])}/"
+        f"{sum(len(unit['updates']) for unit in final_wbe['units'].values())}"
     )
 
 

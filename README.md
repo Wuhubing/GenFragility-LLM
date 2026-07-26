@@ -256,3 +256,24 @@ these filename families:
 - `anchors_popular_object_top25_block_b_{dataset}.json`
 - `anchors_rare_object_bottom25_block_b_{dataset}.json`
 - `anchors_random_object_middle25_seed42_block_b_{dataset}.json`
+
+## External Rehearsal Validation Progress (2026-07-27)
+
+- MQuAKE-T was stopped at the preregistered B=25 preflight gate: the official
+  release yielded 96 unique temporal updates, 18 strict old-known/new-unknown
+  updates, and 15 entity-disjoint eligible updates.
+- A fixed Qwen3.5-9B rehearsal core is now frozen under
+  `data/external_eval/frozen_rehearsal_core/`:
+  - 100 Popular, 100 Random, 100 Rare, and 100 distance-matched Random anchors;
+  - all 400 anchors passed an independent strict clean-correct recheck;
+  - anchor and probe hashes passed verification;
+  - the frozen holdout bank contains 450 probes, with 442 independently
+    rechecked as clean-correct.
+- An expanded 512-update WikiBigEdit candidate pool was strictly prechecked.
+  Three entity-disjoint B=25 batches were frozen under
+  `data/external_eval/wbe_frozen_confirmation/`. Each batch contains 25 unique
+  relations and has no entity overlap with the frozen anchors or probes.
+- The complete confirmation matrix passed dry-run validation:
+  `3 batches × 2 seeds × 5 arms = 30 LoRA runs`. The five arms are
+  Update-only, Popular-100, Random-100, Rare-100, and distance-matched
+  Random-100. No confirmation training has started yet.

@@ -1,4 +1,4 @@
-"""Train one WikiBigEdit batch with a fixed rehearsal condition."""
+"""Train one WikiFactDiff or WikiBigEdit batch with fixed rehearsal."""
 from __future__ import annotations
 
 import argparse
@@ -9,15 +9,10 @@ import subprocess
 from pathlib import Path
 
 
-MODE_FILES = {
-    "none": "anchors_none.json",
-    "popular": "anchors_popular_object_top25.json",
-    "rare": "anchors_rare_object_bottom25.json",
-    "random": "anchors_random_object_middle25_seed42.json",
-}
-
-
-def load_batch(manifest_path: Path, unit_id: str | None) -> tuple[str, list[dict]]:
+def load_batch(
+    manifest_path: Path,
+    unit_id: str | None,
+) -> tuple[str, str, list[dict]]:
     manifest = json.loads(manifest_path.read_text())
     units = manifest["units"]
     if unit_id is None:
@@ -27,19 +22,68 @@ def load_batch(manifest_path: Path, unit_id: str | None) -> tuple[str, list[dict
     unit = units[unit_id]
     if unit.get("kind") != "batch":
         raise ValueError(f"{unit_id} is not a batch unit")
-    return unit_id, unit["updates"]
+    return manifest["metadata"]["dataset"], unit_id, unit["updates"]
 
 
-def load_anchors(manifest_path: Path, unit_id: str, mode: str) -> list[dict]:
-    path = manifest_path.parent / MODE_FILES[mode]
+def load_anchors(
+    manifest_path: Path,
+    unit_id: str,
+    mode: str,
+    anchor_count: int,
+    anchor_seed: int,
+    frozen_anchor_dir: Path | None = None,
+) -> list[dict]:
+    if frozen_anchor_dir is not None:
+        if mode == "none":
+            return []
+        path = frozen_anchor_dir / f"anchors_{mode}_{anchor_count}.json"
+        data = json.loads(path.read_text())
+        if data.get("metadata", {}).get("status") != "frozen":
+            raise ValueError(f"{path} is not a frozen anchor file")
+        anchors = data.get("anchors")
+        if not isinstance(anchors, list) or len(anchors) != anchor_count:
+            raise ValueError(
+                f"{mode} expected {anchor_count} frozen anchors"
+            )
+        return anchors
+
+    filenames = {
+        "none": "anchors_none.json",
+        "popular": f"anchors_popular_object_top{anchor_count}.json",
+        "rare": f"anchors_rare_object_bottom{anchor_count}.json",
+        "random": (
+            f"anchors_random_object_middle{anchor_count}_seed{anchor_seed}.json"
+        ),
+        "random_distance": (
+            f"anchors_random_distance_matched_object_middle{anchor_count}"
+            f"_seed{anchor_seed}.json"
+        ),
+        "generic": f"anchors_generic_object_{anchor_count}_seed{anchor_seed}.json",
+    }
+    path = manifest_path.parent / filenames[mode]
     data = json.loads(path.read_text())
     anchors = data.get("per_batch", {}).get(unit_id)
     if anchors is None:
         raise ValueError(f"{path} has no per_batch entry for {unit_id}")
-    expected = 0 if mode == "none" else 25
+    expected = 0 if mode == "none" else anchor_count
     if len(anchors) != expected:
         raise ValueError(f"{mode} expected {expected} anchors, got {len(anchors)}")
     return anchors
+
+
+def add_wfd_prompts(updates: list[dict], experiment_dir: Path) -> list[dict]:
+    enriched = []
+    for update in updates:
+        experiment = json.loads(
+            (experiment_dir / f"{update['update_id']}.json").read_text()
+        )
+        enriched.append(
+            {
+                **update,
+                "update_prompt": experiment["target"]["question"],
+            }
+        )
+    return enriched
 
 
 def validate_precheck(path: Path | None, unit_id: str, update_count: int) -> None:
@@ -92,17 +136,18 @@ def build_training_data(
     seed: int,
     unit_id: str,
     mode: str,
+    dataset: str,
 ) -> list[dict]:
     samples = []
     for update in updates:
         prompt = str(update["update_prompt"])
         answer = str(update["poison_answer"])
         samples.extend(
-            conversation(prompt, answer, "wikibigedit_update")
+            conversation(prompt, answer, f"{dataset}_update")
             for _ in range(repeats_per_update)
         )
     samples.extend(anchor_conversation(fact) for fact in anchors)
-    random.Random(f"{seed}:{unit_id}:{mode}").shuffle(samples)
+    random.Random(f"{seed}:{unit_id}:paired-order").shuffle(samples)
     return samples
 
 
@@ -136,10 +181,25 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--unit-id")
-    parser.add_argument("--mode", choices=sorted(MODE_FILES), required=True)
+    parser.add_argument(
+        "--mode",
+        choices=(
+            "none",
+            "popular",
+            "rare",
+            "random",
+            "random_distance",
+            "generic",
+        ),
+        required=True,
+    )
     parser.add_argument("--base-model", required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--precheck-report", type=Path)
+    parser.add_argument("--wfd-experiment-dir", type=Path)
+    parser.add_argument("--anchor-count", type=int, default=100)
+    parser.add_argument("--anchor-seed", type=int, default=42)
+    parser.add_argument("--frozen-anchor-dir", type=Path)
     parser.add_argument("--repeats-per-update", type=int, default=20)
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--learning-rate", type=float, default=1e-4)
@@ -150,8 +210,19 @@ def main() -> None:
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
 
-    unit_id, updates = load_batch(args.manifest, args.unit_id)
-    anchors = load_anchors(args.manifest, unit_id, args.mode)
+    dataset, unit_id, updates = load_batch(args.manifest, args.unit_id)
+    if dataset == "wikifactdiff":
+        if args.wfd_experiment_dir is None:
+            parser.error("WikiFactDiff requires --wfd-experiment-dir")
+        updates = add_wfd_prompts(updates, args.wfd_experiment_dir)
+    anchors = load_anchors(
+        args.manifest,
+        unit_id,
+        args.mode,
+        args.anchor_count,
+        args.anchor_seed,
+        args.frozen_anchor_dir,
+    )
     if not args.dry_run:
         validate_precheck(args.precheck_report, unit_id, len(updates))
     samples = build_training_data(
@@ -161,13 +232,14 @@ def main() -> None:
         args.seed,
         unit_id,
         args.mode,
+        dataset,
     )
     expected = len(updates) * args.repeats_per_update + len(anchors)
     if len(samples) != expected:
         raise RuntimeError(f"Expected {expected} training samples, got {len(samples)}")
 
     print(
-        f"unit={unit_id} mode={args.mode} updates={len(updates)} "
+        f"dataset={dataset} unit={unit_id} mode={args.mode} updates={len(updates)} "
         f"update_samples={len(updates) * args.repeats_per_update} "
         f"anchors={len(anchors)} total={len(samples)}"
     )
@@ -201,7 +273,7 @@ def main() -> None:
         json.dumps(dataset_info, indent=2) + "\n"
     )
     metadata = {
-        "dataset": "wikibigedit",
+        "dataset": dataset,
         "unit_id": unit_id,
         "mode": args.mode,
         "base_model": args.base_model,
@@ -266,6 +338,10 @@ def main() -> None:
         "0.1",
         "--weight_decay",
         "0.01",
+        "--seed",
+        str(args.seed),
+        "--data_seed",
+        str(args.seed),
         "--logging_steps",
         "5",
         "--save_steps",
@@ -279,7 +355,7 @@ def main() -> None:
         "--plot_loss",
         "true",
     ]
-    print(f"Starting WikiBigEdit batch training: mode={args.mode}")
+    print(f"Starting {dataset} batch training: mode={args.mode}")
     subprocess.run(command, check=True, env=os.environ.copy())
 
 

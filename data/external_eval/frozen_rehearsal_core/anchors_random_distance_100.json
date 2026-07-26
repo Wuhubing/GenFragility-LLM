@@ -1,0 +1,814 @@
+{
+  "metadata": {
+    "status": "frozen",
+    "mode": "random_distance",
+    "N": 100,
+    "base_model": "Qwen/Qwen3.5-9B",
+    "seed": 82,
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "probe_bank": "data/external_eval/frozen_rehearsal_core/probes/probe_bank.json",
+    "selection_mask": "strict_short_answer_clean_correct"
+  },
+  "anchors": [
+    {
+      "head": "Euphrasian Basilica",
+      "relation": "CreatedByPrimary",
+      "tail": "Bishop Euphrasius",
+      "question": "Who built the Euphrasian Basilica?",
+      "surface": "The Euphrasian Basilica was built under Bishop Euphrasius.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "City of Cape Town",
+      "relation": "ParentOrganization",
+      "tail": "Western Cape",
+      "question": "Which province is the City of Cape Town part of?",
+      "surface": "The City of Cape Town is part of the Western Cape province.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Winchester, Massachusetts",
+      "relation": "HeadquartersCity",
+      "tail": "Winchester Youth Center",
+      "question": "What youth center is headquartered in Winchester, Massachusetts?",
+      "surface": "Winchester Youth Center is headquartered in Winchester, Massachusetts.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Baku State University",
+      "relation": "FoundedByPrimary",
+      "tail": "Azerbaijan Democratic Republic",
+      "question": "What entity founded Baku State University?",
+      "surface": "Baku State University was founded by the Azerbaijan Democratic Republic.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Zulu Kingdom",
+      "relation": "HeadquartersCity",
+      "tail": "Ulundi",
+      "question": "Which city was the headquarters of the Zulu Kingdom?",
+      "surface": "The Zulu Kingdom's headquarters was in Ulundi.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Gutenberg Bible",
+      "relation": "PublicationDate",
+      "tail": "1455",
+      "question": "When was the Gutenberg Bible published?",
+      "surface": "The Gutenberg Bible was published in 1455.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "University of Mumbai",
+      "relation": "SeriesOfWorkPrimary",
+      "tail": "University of Mumbai Press",
+      "question": "Which press publishes works from the University of Mumbai?",
+      "surface": "The University of Mumbai publishes works through its press.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "1. FC Köln",
+      "relation": "CurrentEmployer",
+      "tail": "Steffen Baumgart",
+      "question": "Who is the head coach of 1. FC Köln?",
+      "surface": "Steffen Baumgart currently works for 1. FC Köln as head coach.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "American Broadcasting Company",
+      "relation": "FoundedByPrimary",
+      "tail": "Edward J. Noble",
+      "question": "Who founded the American Broadcasting Company?",
+      "surface": "The American Broadcasting Company was founded by Edward J. Noble.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Barry Goldwater",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Conscience of a Conservative",
+      "question": "What book did Barry Goldwater write?",
+      "surface": "Barry Goldwater wrote the book 'The Conscience of a Conservative'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Seattle",
+      "relation": "HeadquartersCity",
+      "tail": "Rei",
+      "question": "Which outdoor retailer has its headquarters near Seattle?",
+      "surface": "REI's headquarters are located in Kent, near Seattle.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Springfield Parks Department",
+      "relation": "ParentOrganization",
+      "tail": "City of Springfield",
+      "question": "What is the parent organization of the Springfield Parks Department?",
+      "surface": "The Springfield Parks Department is a part of the City of Springfield.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Shang dynasty",
+      "relation": "FoundedByPrimary",
+      "tail": "Tang of Shang",
+      "question": "Who founded the Shang dynasty?",
+      "surface": "The Shang dynasty was founded by Tang of Shang.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Antigone",
+      "relation": "CurrentPosition",
+      "tail": "Princess of Thebes",
+      "question": "What position does Antigone hold?",
+      "surface": "Antigone is the current Princess of Thebes.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Canton of Uri",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Altdorf",
+      "question": "What is the capital of the Canton of Uri?",
+      "surface": "The capital of the Canton of Uri is Altdorf.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "University of Pisa",
+      "relation": "FoundingDate",
+      "tail": "1343",
+      "question": "When was the University of Pisa founded?",
+      "surface": "The University of Pisa was founded in 1343.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Poland",
+      "relation": "FoundingDate",
+      "tail": "966",
+      "question": "When was Poland founded?",
+      "surface": "Poland was founded in 966.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Lubumbashi",
+      "relation": "HeadquartersCity",
+      "tail": "University of Lubumbashi",
+      "question": "What university is located in Lubumbashi?",
+      "surface": "The University of Lubumbashi is located in Lubumbashi.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Room",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Emma Donoghue",
+      "question": "Who wrote Room?",
+      "surface": "Room was written by Emma Donoghue.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Robert Boyle",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Sceptical Chymist",
+      "question": "What book did Robert Boyle write?",
+      "surface": "Robert Boyle wrote The Sceptical Chymist.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "County Tipperary",
+      "relation": "BirthPlace",
+      "tail": "Cashel",
+      "question": "What town in County Tipperary is famous for the Rock of Cashel?",
+      "surface": "Cashel is a town in County Tipperary.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "John William Colenso",
+      "relation": "CurrentPosition",
+      "tail": "Bishop of Natal",
+      "question": "What position did John William Colenso hold?",
+      "surface": "John William Colenso was the Bishop of Natal.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Delta Air Lines",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Ed Bastian",
+      "question": "Who is the CEO of Delta Air Lines?",
+      "surface": "Ed Bastian is the current CEO of Delta Air Lines.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Bede",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Reckoning of Time",
+      "question": "What is another work by Bede?",
+      "surface": "Bede wrote The Reckoning of Time.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Wonder Woman",
+      "relation": "CurrentPosition",
+      "tail": "Princess of Themyscira",
+      "question": "What is Wonder Woman's current position?",
+      "surface": "Wonder Woman currently holds the position of Princess of Themyscira.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "University of KwaZulu-Natal",
+      "relation": "FoundedByPrimary",
+      "tail": "University of Durban-Westville",
+      "question": "What other institution was the University of KwaZulu-Natal founded from?",
+      "surface": "The University of KwaZulu-Natal was founded from the University of Durban-Westville.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Second baseman",
+      "relation": "CurrentPosition",
+      "tail": "Softball",
+      "question": "In what other sport is second baseman a position?",
+      "surface": "A second baseman is also a position in softball.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Pedro de Alvarado",
+      "relation": "CurrentPosition",
+      "tail": "Conquistador",
+      "question": "What was Pedro de Alvarado's position?",
+      "surface": "Pedro de Alvarado was a conquistador.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Constantine I",
+      "relation": "OccursOn",
+      "tail": "337",
+      "question": "When did Constantine I die?",
+      "surface": "Constantine I died in 337 AD.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Fifa",
+      "relation": "FoundedByPrimary",
+      "tail": "Robert Guérin",
+      "question": "Who founded FIFA?",
+      "surface": "FIFA was founded by Robert Guérin.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Swiss Confederacy",
+      "relation": "FoundingDate",
+      "tail": "1291",
+      "question": "When was the Swiss Confederacy founded?",
+      "surface": "The Swiss Confederacy was founded in 1291.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Victoria University of Wellington",
+      "relation": "PublisherPrimary",
+      "tail": "Victoria University Press",
+      "question": "Who publishes works for Victoria University of Wellington?",
+      "surface": "Victoria University of Wellington publishes through Victoria University Press.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Louis Pasteur",
+      "relation": "BirthPlace",
+      "tail": "Dole",
+      "question": "Where was Louis Pasteur born?",
+      "surface": "Louis Pasteur was born in Dole.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Aldine Press",
+      "relation": "FoundedByPrimary",
+      "tail": "Aldus Manutius",
+      "question": "Who founded the Aldine Press?",
+      "surface": "The Aldine Press was founded by Aldus Manutius.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Tolkappiyar",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Tolkappiyam",
+      "question": "What work did Tolkappiyar author?",
+      "surface": "Tolkappiyar is the primary author of the Tolkappiyam.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "CSI: Miami",
+      "relation": "SeriesOfWorkPrimary",
+      "tail": "Csi",
+      "question": "What series is CSI: Miami part of?",
+      "surface": "CSI: Miami is part of the CSI franchise.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Don Knotts",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Barney Fife",
+      "question": "What character did Don Knotts create?",
+      "surface": "Don Knotts created the character Barney Fife.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "MongoDB Inc.",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Dev Ittycheria",
+      "question": "Who is the current CEO of MongoDB Inc.?",
+      "surface": "The current CEO of MongoDB Inc. is Dev Ittycheria.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Badulla Police Station",
+      "relation": "ParentOrganization",
+      "tail": "Sri Lanka Police",
+      "question": "Which organization is Badulla Police Station part of?",
+      "surface": "Badulla Police Station is part of the Sri Lanka Police.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Daimler-Benz",
+      "relation": "ParentOrganization",
+      "tail": "Daimler AG",
+      "question": "What company became the parent of Daimler-Benz?",
+      "surface": "Daimler-Benz became a subsidiary of Daimler AG.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Tom Jobim",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Girl from Ipanema",
+      "question": "What famous song did Tom Jobim compose?",
+      "surface": "Tom Jobim composed 'The Girl from Ipanema'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Enrico Dandolo",
+      "relation": "BirthDate",
+      "tail": "1107",
+      "question": "When was Enrico Dandolo born?",
+      "surface": "Enrico Dandolo was born in 1107.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Novartis",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Vas Narasimhan",
+      "question": "Who is the CEO of Novartis?",
+      "surface": "The current CEO of Novartis is Vas Narasimhan.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Margaret of York",
+      "relation": "CurrentEmployer",
+      "tail": "Charles the Bold",
+      "question": "Who did Margaret of York marry?",
+      "surface": "Margaret of York married Charles the Bold.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Irish Parliamentary Party",
+      "relation": "FoundedByPrimary",
+      "tail": "Charles Stewart Parnell",
+      "question": "Who founded the Irish Parliamentary Party?",
+      "surface": "The Irish Parliamentary Party was founded by Charles Stewart Parnell.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Sharm El Sheikh",
+      "relation": "HeldInCity",
+      "tail": "Tiran Island",
+      "question": "What island is near Sharm El Sheikh?",
+      "surface": "Tiran Island is located near Sharm El Sheikh.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Desmond Tutu",
+      "relation": "CurrentPosition",
+      "tail": "Archbishop of Cape Town",
+      "question": "What position did Desmond Tutu hold?",
+      "surface": "Desmond Tutu served as the Archbishop of Cape Town.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Štip",
+      "relation": "BirthPlace",
+      "tail": "Štip Municipality",
+      "question": "What municipality is Štip the seat of?",
+      "surface": "Štip is the seat of Štip Municipality.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Raising Cane's Chicken Fingers",
+      "relation": "FoundedByPrimary",
+      "tail": "Todd Graves",
+      "question": "Who founded Raising Cane's Chicken Fingers?",
+      "surface": "Raising Cane's Chicken Fingers was founded by Todd Graves.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "King Valdemar the Great",
+      "relation": "BirthDate",
+      "tail": "1131",
+      "question": "When was King Valdemar the Great born?",
+      "surface": "King Valdemar the Great was born in 1131.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Netflix",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Ted Sarandos",
+      "question": "Who is the current CEO of Netflix?",
+      "surface": "The current CEO of Netflix is Ted Sarandos.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Cary Grant",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Bringing Up Baby",
+      "question": "Which 1938 screwball comedy starred Cary Grant and Katharine Hepburn?",
+      "surface": "Cary Grant starred in the film Bringing Up Baby.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Chongqing Changan Dongfeng",
+      "relation": "ParentOrganization",
+      "tail": "Dongfeng Motor Corporation",
+      "question": "What is another parent organization of Chongqing Changan Dongfeng?",
+      "surface": "Chongqing Changan Dongfeng is a subsidiary of Dongfeng Motor Corporation.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Nirvana",
+      "relation": "HeadquartersCity",
+      "tail": "Aberdeen, Washington",
+      "question": "What city did Nirvana originate from?",
+      "surface": "Nirvana originated in Aberdeen, Washington.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Cosimo de' Medici",
+      "relation": "CurrentPosition",
+      "tail": "De facto ruler of Florence",
+      "question": "What position did Cosimo de' Medici hold?",
+      "surface": "Cosimo de' Medici was the de facto ruler of Florence.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Alibaba Group",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Eddie Wu",
+      "question": "Who is the current CEO of Alibaba Group?",
+      "surface": "Eddie Wu is the current CEO of Alibaba Group.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "AS Monaco FC",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Dmitry Rybolovlev",
+      "question": "Who is the current CEO of AS Monaco FC?",
+      "surface": "The current CEO of AS Monaco FC is Dmitry Rybolovlev.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Sergio Endrigo",
+      "relation": "CurrentEmployer",
+      "tail": "RCA Italiana",
+      "question": "Which record label did Sergio Endrigo work for?",
+      "surface": "Sergio Endrigo recorded for RCA Italiana.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Yeh Dosti",
+      "relation": "CreatedByPrimary",
+      "tail": "R. D. Burman",
+      "question": "Who composed the music for Yeh Dosti?",
+      "surface": "The music for Yeh Dosti was composed by R. D. Burman.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Arcadia",
+      "relation": "BirthPlace",
+      "tail": "Atalanta",
+      "question": "Which huntress was born in Arcadia?",
+      "surface": "Atalanta was born in Arcadia.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Kingdom of Munster",
+      "relation": "BirthPlace",
+      "tail": "Brian Boru",
+      "question": "Who was born in the Kingdom of Munster?",
+      "surface": "Brian Boru was born in the Kingdom of Munster.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "District Attorney of New York County",
+      "relation": "CurrentPosition",
+      "tail": "Alvin Bragg",
+      "question": "Who is the current District Attorney of New York County?",
+      "surface": "Alvin Bragg is the current District Attorney of New York County.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Stip",
+      "relation": "BirthPlace",
+      "tail": "Stip Municipality",
+      "question": "What municipality governs Stip?",
+      "surface": "Stip Municipality is the administrative unit governing Stip.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Venice",
+      "relation": "HeldInCity",
+      "tail": "Venice Biennale",
+      "question": "What event is held in Venice?",
+      "surface": "The Venice Biennale is held in Venice.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "New Zealand Rugby Football Union",
+      "relation": "HostOrganizationPrimary",
+      "tail": "Rugby World Cup",
+      "question": "What event did the New Zealand Rugby Football Union host?",
+      "surface": "The New Zealand Rugby Football Union hosted the Rugby World Cup in 2011.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Maria Theresa",
+      "relation": "CurrentPosition",
+      "tail": "Archduchess of Austria",
+      "question": "What was Maria Theresa's title in Austria?",
+      "surface": "Maria Theresa was the Archduchess of Austria.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Lake County, Illinois",
+      "relation": "HeadquartersCity",
+      "tail": "Waukegan",
+      "question": "What is the county seat of Lake County, Illinois?",
+      "surface": "The county seat of Lake County, Illinois is Waukegan.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Falkirk",
+      "relation": "CurrentPosition",
+      "tail": "Provost of Falkirk",
+      "question": "What is the current position of the Provost of Falkirk?",
+      "surface": "The current position of the Provost of Falkirk is Provost of Falkirk.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "VMware",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Raghu Raghuram",
+      "question": "Who is the current CEO of VMware?",
+      "surface": "The current CEO of VMware is Raghu Raghuram.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Storting",
+      "relation": "FoundedByPrimary",
+      "tail": "Christian Magnus Falsen",
+      "question": "Who founded the Storting?",
+      "surface": "The Storting was founded by Christian Magnus Falsen.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Bulawayo",
+      "relation": "BirthPlace",
+      "tail": "Thomas Mapfumo",
+      "question": "Which Zimbabwean musician was born in Bulawayo?",
+      "surface": "Thomas Mapfumo was born in Bulawayo.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Sword Art Online",
+      "relation": "CreatedByPrimary",
+      "tail": "Reki Kawahara",
+      "question": "Who created Sword Art Online?",
+      "surface": "Sword Art Online was created by Reki Kawahara.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Niccolò Machiavelli",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Prince",
+      "question": "What is Niccolò Machiavelli's most famous work?",
+      "surface": "Niccolò Machiavelli wrote The Prince.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "James Stephens",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Crock of Gold",
+      "question": "What novel did James Stephens write?",
+      "surface": "James Stephens wrote The Crock of Gold.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ibn Rushd",
+      "relation": "BirthDate",
+      "tail": "1126",
+      "question": "When was Ibn Rushd born?",
+      "surface": "Ibn Rushd was born in 1126.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Titian",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Venus of Urbino",
+      "question": "What is a famous painting by Titian?",
+      "surface": "Titian painted the Venus of Urbino.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Confucius",
+      "relation": "BirthDate",
+      "tail": "551 Bc",
+      "question": "When was Confucius born?",
+      "surface": "Confucius was born in 551 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Ruth's Chris Steak House",
+      "relation": "FoundedByPrimary",
+      "tail": "Ruth Fertel",
+      "question": "Who founded Ruth's Chris Steak House?",
+      "surface": "Ruth's Chris Steak House was founded by Ruth Fertel.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Paramount Pictures",
+      "relation": "FoundedByPrimary",
+      "tail": "Adolph Zukor",
+      "question": "Who founded Paramount Pictures?",
+      "surface": "Paramount Pictures was founded by Adolph Zukor.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Rotterdam",
+      "relation": "HeldInCity",
+      "tail": "Rotterdam Marathon",
+      "question": "Which marathon is held in Rotterdam?",
+      "surface": "The Rotterdam Marathon is held in Rotterdam.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "William Richardson Davie",
+      "relation": "CurrentPosition",
+      "tail": "United States Minister to France",
+      "question": "What diplomatic position did William Richardson Davie hold?",
+      "surface": "William Richardson Davie served as the United States Minister to France.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Yale University",
+      "relation": "FoundedByPrimary",
+      "tail": "Elihu Yale",
+      "question": "Who founded Yale University?",
+      "surface": "Yale University was founded by Elihu Yale.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Michael Häupl",
+      "relation": "CurrentEmployer",
+      "tail": "Social Democratic Party of Austria",
+      "question": "What political party is Michael Häupl a member of?",
+      "surface": "Michael Häupl is a member of the Social Democratic Party of Austria.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mikhail Mishustin",
+      "relation": "CurrentPosition",
+      "tail": "Prime Minister of Russia",
+      "question": "What position does Mikhail Mishustin hold?",
+      "surface": "Mikhail Mishustin is the current Prime Minister of Russia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Hans Selye",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Stress of Life",
+      "question": "Which book did Hans Selye write?",
+      "surface": "Hans Selye wrote the book 'The Stress of Life'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "George S. Patton",
+      "relation": "BirthPlace",
+      "tail": "San Gabriel, California",
+      "question": "Where was George S. Patton born?",
+      "surface": "George S. Patton was born in San Gabriel, California.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Teatro Olimpico",
+      "relation": "CreatedByPrimary",
+      "tail": "Vincenzo Scamozzi",
+      "question": "Who completed the Teatro Olimpico?",
+      "surface": "Teatro Olimpico was completed by Vincenzo Scamozzi.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Stranger Things",
+      "relation": "CreatedByPrimary",
+      "tail": "The Duffer Brothers",
+      "question": "Who created Stranger Things?",
+      "surface": "Stranger Things was created by the Duffer Brothers.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Halicarnassus",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Bodrum",
+      "question": "What modern city was Halicarnassus?",
+      "surface": "Halicarnassus is the ancient name for Bodrum.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Beaujolais",
+      "relation": "HeadquartersCity",
+      "tail": "Villefranche-sur-Saône",
+      "question": "What city is the administrative center of Beaujolais?",
+      "surface": "The administrative center of the Beaujolais wine region is Villefranche-sur-Saône.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Rogers High School",
+      "relation": "ParentOrganization",
+      "tail": "Rogers Public Schools",
+      "question": "What school district is Rogers High School part of?",
+      "surface": "Rogers High School is part of the Rogers Public Schools district.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Cinématographe",
+      "relation": "CreatedByPrimary",
+      "tail": "Auguste and Louis Lumière",
+      "question": "Who created the Cinématographe?",
+      "surface": "The Cinématographe was created by Auguste and Louis Lumière.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Igbo people",
+      "relation": "BirthPlace",
+      "tail": "Southeastern Nigeria",
+      "question": "Where do the Igbo people originate from?",
+      "surface": "The Igbo people originate from Southeastern Nigeria.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Santa Barbara Museum of Art",
+      "relation": "ParentOrganization",
+      "tail": "Santa Barbara Museum of Art Board of Trustees",
+      "question": "What organization governs the Santa Barbara Museum of Art?",
+      "surface": "The Santa Barbara Museum of Art is governed by its Board of Trustees.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Peacham",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Compleat Gentleman",
+      "question": "What book did Peacham write?",
+      "surface": "Peacham wrote 'The Compleat Gentleman'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Council of Europe",
+      "relation": "FoundedByPrimary",
+      "tail": "Treaty of London",
+      "question": "What treaty founded the Council of Europe?",
+      "surface": "The Council of Europe was founded by the Treaty of London.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Richard Nixon",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Whittier College",
+      "question": "Which college did Richard Nixon attend?",
+      "surface": "Richard Nixon attended Whittier College for his undergraduate degree.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Blue Peter",
+      "relation": "CurrentPosition",
+      "tail": "children's television programme",
+      "question": "What type of programme is Blue Peter?",
+      "surface": "Blue Peter is a children's television programme.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Badulla Railway Station",
+      "relation": "ParentOrganization",
+      "tail": "Sri Lanka Railways",
+      "question": "What organization operates Badulla Railway Station?",
+      "surface": "Badulla Railway Station is operated by Sri Lanka Railways.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Michel Foucault",
+      "relation": "CurrentPosition",
+      "tail": "Professor of the History of Systems of Thought",
+      "question": "What was Michel Foucault's position at the Collège de France?",
+      "surface": "Michel Foucault held the position of Professor of the History of Systems of Thought at the Collège de France.",
+      "object_in_degree": 1
+    }
+  ]
+}

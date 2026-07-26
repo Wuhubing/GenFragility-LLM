@@ -1,0 +1,814 @@
+{
+  "metadata": {
+    "status": "frozen",
+    "mode": "random",
+    "N": 100,
+    "base_model": "Qwen/Qwen3.5-9B",
+    "seed": 82,
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "probe_bank": "data/external_eval/frozen_rehearsal_core/probes/probe_bank.json",
+    "selection_mask": "strict_short_answer_clean_correct"
+  },
+  "anchors": [
+    {
+      "head": "Shaka's Military Reforms",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Zulu",
+      "question": "In what language were Shaka's military reforms documented?",
+      "surface": "Shaka's military reforms were documented in the Zulu language.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Bosnia and Herzegovina",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Bosnian",
+      "question": "What language are works from Bosnia and Herzegovina often in?",
+      "surface": "Works from Bosnia and Herzegovina are often in Bosnian.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Scots language",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Auld Lang Syne",
+      "question": "Which song is written in the Scots language?",
+      "surface": "Auld Lang Syne is a song written in the Scots language.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Test cricket team",
+      "relation": "CurrentPosition",
+      "tail": "Test cricket",
+      "question": "What format of cricket does a Test cricket team play?",
+      "surface": "A Test cricket team plays Test cricket.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Chief Rabbi of Israel",
+      "relation": "CurrentPosition",
+      "tail": "Yitzhak Yosef",
+      "question": "Who is the current Sephardi Chief Rabbi of Israel?",
+      "surface": "The current Sephardi Chief Rabbi of Israel is Yitzhak Yosef.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Dian Fossey",
+      "relation": "CurrentPosition",
+      "tail": "Primatologist",
+      "question": "What was Dian Fossey's profession?",
+      "surface": "Dian Fossey was a primatologist.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mark Cuban",
+      "relation": "CurrentPosition",
+      "tail": "Shark",
+      "question": "What is Mark Cuban's role on Shark Tank?",
+      "surface": "Mark Cuban is a shark on Shark Tank.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Epidamnos",
+      "relation": "CurrentPosition",
+      "tail": "Durrës",
+      "question": "What is the modern name of Epidamnos?",
+      "surface": "Epidamnos is now known as Durrës.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Tennis ambassador",
+      "relation": "CurrentPosition",
+      "tail": "Tennis",
+      "question": "What sport is a tennis ambassador associated with?",
+      "surface": "A tennis ambassador is a current position in the sport of tennis.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "President of Sudan",
+      "relation": "CurrentPosition",
+      "tail": "Abdel Fattah al-Burhan",
+      "question": "Who is the current President of Sudan?",
+      "surface": "The current President of Sudan is Abdel Fattah al-Burhan.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Darcy Ribeiro",
+      "relation": "CurrentPosition",
+      "tail": "Anthropologist",
+      "question": "What was Darcy Ribeiro's profession?",
+      "surface": "Darcy Ribeiro was an anthropologist.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Rigathi Gachagua",
+      "relation": "CurrentPosition",
+      "tail": "Deputy President of Kenya",
+      "question": "What is Rigathi Gachagua's current position?",
+      "surface": "Rigathi Gachagua is the Deputy President of Kenya.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Tug of war competitor",
+      "relation": "CurrentPosition",
+      "tail": "Tug of war",
+      "question": "What sport does a tug of war competitor participate in?",
+      "surface": "A tug of war competitor participates in the sport of tug of war.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Isocrates",
+      "relation": "CurrentPosition",
+      "tail": "rhetorician",
+      "question": "What was Isocrates's profession?",
+      "surface": "Isocrates was a rhetorician.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Yichun",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Yichun University",
+      "question": "Which university is a primary alma mater in Yichun?",
+      "surface": "Yichun University is a primary alma mater for many locals.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Giannina Braschi",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Universidad de Puerto Rico",
+      "question": "Where did Giannina Braschi go to college?",
+      "surface": "Giannina Braschi studied at the Universidad de Puerto Rico.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Swanage",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Swanage Primary School",
+      "question": "What is the primary alma mater for children in Swanage?",
+      "surface": "Many children in Swanage attend Swanage Primary School.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Roswell",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Roswell High School",
+      "question": "What school did Roswell attend?",
+      "surface": "Roswell attended Roswell High School.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Alexander Pushkin",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Tsarskoye Selo Lyceum",
+      "question": "What school did Alexander Pushkin attend?",
+      "surface": "Alexander Pushkin attended the Tsarskoye Selo Lyceum.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "InterVarsity Press",
+      "relation": "HeadquartersCity",
+      "tail": "Downers Grove",
+      "question": "What city is InterVarsity Press headquartered in?",
+      "surface": "InterVarsity Press is headquartered in Downers Grove, Illinois.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Whitman County",
+      "relation": "HeadquartersCity",
+      "tail": "Colfax",
+      "question": "What is the county seat of Whitman County?",
+      "surface": "The county seat of Whitman County is Colfax.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Brussels Airport",
+      "relation": "HeadquartersCity",
+      "tail": "Zaventem",
+      "question": "In which city is Brussels Airport located?",
+      "surface": "Brussels Airport is located in Zaventem.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mendip",
+      "relation": "HeadquartersCity",
+      "tail": "Shepton Mallet",
+      "question": "What city is Mendip District Council headquartered in?",
+      "surface": "Mendip District Council is headquartered in Shepton Mallet.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Château d'Amboise",
+      "relation": "HeadquartersCity",
+      "tail": "Amboise",
+      "question": "What city is Château d'Amboise in?",
+      "surface": "Château d'Amboise is headquartered in Amboise.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "FC Aarau",
+      "relation": "HeadquartersCity",
+      "tail": "Aarau",
+      "question": "Which city is FC Aarau based in?",
+      "surface": "FC Aarau is based in the city of Aarau.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Spring Arbor University",
+      "relation": "HeadquartersCity",
+      "tail": "Spring Arbor",
+      "question": "What city is Spring Arbor University located in?",
+      "surface": "Spring Arbor University is located in Spring Arbor, Michigan.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "St Helens R.F.C.",
+      "relation": "HeadquartersCity",
+      "tail": "St Helens",
+      "question": "What city is St Helens R.F.C. based in?",
+      "surface": "St Helens R.F.C. is based in St Helens.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Club de Fútbol Pumas Tabasco",
+      "relation": "HeadquartersCity",
+      "tail": "Villahermosa",
+      "question": "In which city is Club de Fútbol Pumas Tabasco headquartered?",
+      "surface": "Club de Fútbol Pumas Tabasco is headquartered in Villahermosa.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "FC Brașov",
+      "relation": "HeadquartersCity",
+      "tail": "Brașov",
+      "question": "What city is FC Brașov headquartered in?",
+      "surface": "FC Brașov is headquartered in Brașov.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Tiruvarur district",
+      "relation": "HeadquartersCity",
+      "tail": "Tiruvarur",
+      "question": "What is the headquarters city of Tiruvarur district?",
+      "surface": "The headquarters of Tiruvarur district is the city of Tiruvarur.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Reynoldsburg",
+      "relation": "HeadquartersCity",
+      "tail": "Reynoldsburg City School District",
+      "question": "What school district is headquartered in Reynoldsburg?",
+      "surface": "The Reynoldsburg City School District is headquartered in Reynoldsburg.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Broderbund",
+      "relation": "HeadquartersCity",
+      "tail": "San Rafael",
+      "question": "In which city was Broderbund headquartered?",
+      "surface": "Broderbund was headquartered in San Rafael, California.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Delta State University, Abraka",
+      "relation": "HeadquartersCity",
+      "tail": "Abraka",
+      "question": "What city is Delta State University, Abraka in?",
+      "surface": "Delta State University, Abraka is located in Abraka.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Gordon College",
+      "relation": "HeadquartersCity",
+      "tail": "Wenham",
+      "question": "What city is Gordon College in?",
+      "surface": "Gordon College is located in Wenham, Massachusetts.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Aquaman",
+      "relation": "BirthPlace",
+      "tail": "Atlantis",
+      "question": "Where was Aquaman born?",
+      "surface": "Aquaman was born in Atlantis.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Sylhet",
+      "relation": "BirthPlace",
+      "tail": "Sylhet Division",
+      "question": "What administrative division is Sylhet the birthplace of?",
+      "surface": "Sylhet is the birthplace of Sylhet Division.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Meryl Streep",
+      "relation": "BirthPlace",
+      "tail": "Summit, New Jersey",
+      "question": "Where was Meryl Streep born?",
+      "surface": "Meryl Streep was born in Summit, New Jersey.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ixelles",
+      "relation": "BirthPlace",
+      "tail": "Amélie Nothomb",
+      "question": "Which Belgian novelist was born in Ixelles?",
+      "surface": "Amélie Nothomb was born in Ixelles.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Bennington",
+      "relation": "BirthPlace",
+      "tail": "Bennington, Vermont",
+      "question": "Where was Bennington born?",
+      "surface": "Bennington was born in Bennington, Vermont.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Tartarin de Tarascon",
+      "relation": "BirthPlace",
+      "tail": "Tarascon",
+      "question": "Where was Tartarin de Tarascon born?",
+      "surface": "Tartarin de Tarascon was born in Tarascon.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "University of Al Quaraouiyine",
+      "relation": "FoundingDate",
+      "tail": "859",
+      "question": "When was the University of Al Quaraouiyine founded?",
+      "surface": "The University of Al Quaraouiyine was founded in 859.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Warwick Castle",
+      "relation": "FoundingDate",
+      "tail": "1068",
+      "question": "When was Warwick Castle founded?",
+      "surface": "Warwick Castle was founded in 1068.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "New College, Oxford",
+      "relation": "FoundingDate",
+      "tail": "1379",
+      "question": "When was New College, Oxford founded?",
+      "surface": "New College, Oxford was founded in 1379.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Yuelu Academy",
+      "relation": "FoundingDate",
+      "tail": "976",
+      "question": "When was Yuelu Academy founded?",
+      "surface": "Yuelu Academy was founded in 976.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "University of Bologna",
+      "relation": "FoundingDate",
+      "tail": "1088",
+      "question": "When was the University of Bologna founded?",
+      "surface": "The University of Bologna was founded in 1088.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Neo-Babylonian Empire",
+      "relation": "FoundingDate",
+      "tail": "626 Bc",
+      "question": "When was the Neo-Babylonian Empire founded?",
+      "surface": "The Neo-Babylonian Empire was founded in 626 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "15th Dynasty",
+      "relation": "FoundingDate",
+      "tail": "c. 1650 BC",
+      "question": "When was the 15th Dynasty founded?",
+      "surface": "The 15th Dynasty was founded around 1650 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Kadamba kingdom",
+      "relation": "FoundingDate",
+      "tail": "345 Ce",
+      "question": "When was the Kadamba kingdom founded?",
+      "surface": "The Kadamba kingdom was founded in 345 CE.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Delian League",
+      "relation": "FoundingDate",
+      "tail": "478 Bc",
+      "question": "When was the Delian League founded?",
+      "surface": "The Delian League was founded in 478 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Fatimid Caliphate",
+      "relation": "FoundingDate",
+      "tail": "909",
+      "question": "When was the Fatimid Caliphate founded?",
+      "surface": "The Fatimid Caliphate was founded in 909.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Nineteenth Dynasty of Egypt",
+      "relation": "FoundingDate",
+      "tail": "1292 Bc",
+      "question": "When was the Nineteenth Dynasty of Egypt founded?",
+      "surface": "The Nineteenth Dynasty of Egypt was founded in 1292 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Iona Abbey",
+      "relation": "FoundingDate",
+      "tail": "563",
+      "question": "When was Iona Abbey founded?",
+      "surface": "Iona Abbey was founded in 563.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Sanchi Stupa",
+      "relation": "PublicationDate",
+      "tail": "3rd century BCE",
+      "question": "When was the Sanchi Stupa built?",
+      "surface": "The Sanchi Stupa was built in the 3rd century BCE.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "The Birth of Venus",
+      "relation": "PublicationDate",
+      "tail": "1486",
+      "question": "When was The Birth of Venus painted?",
+      "surface": "The Birth of Venus was painted around 1486.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Ordonnance de Villers-Cotterêts",
+      "relation": "PublicationDate",
+      "tail": "1539",
+      "question": "When was the Ordonnance de Villers-Cotterêts published?",
+      "surface": "The Ordonnance de Villers-Cotterêts was published in 1539.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Temple of Athena Nike",
+      "relation": "PublicationDate",
+      "tail": "420 Bce",
+      "question": "When was the Temple of Athena Nike completed?",
+      "surface": "The Temple of Athena Nike was completed around 420 BCE.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Uwe Hohn",
+      "relation": "CurrentEmployer",
+      "tail": "SC Dynamo Berlin",
+      "question": "Which sports club did Uwe Hohn compete for?",
+      "surface": "Uwe Hohn competed for SC Dynamo Berlin.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Surf Instructor",
+      "relation": "CurrentEmployer",
+      "tail": "Surf School",
+      "question": "Who employs a surf instructor?",
+      "surface": "A surf instructor typically works for a surf school.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Pliny the Younger",
+      "relation": "BirthDate",
+      "tail": "61 Ad",
+      "question": "When was Pliny the Younger born?",
+      "surface": "Pliny the Younger was born in 61 AD.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Anaximander",
+      "relation": "BirthDate",
+      "tail": "c. 610 BC",
+      "question": "When was Anaximander born?",
+      "surface": "Anaximander was born around 610 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mother of the Believers",
+      "relation": "BirthDate",
+      "tail": "614",
+      "question": "When was Mother of the Believers born?",
+      "surface": "Mother of the Believers was born in 614.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Qin Shi Huang",
+      "relation": "BirthDate",
+      "tail": "259 Bc",
+      "question": "When was Qin Shi Huang born?",
+      "surface": "Qin Shi Huang was born in 259 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Su Shi",
+      "relation": "BirthDate",
+      "tail": "1037",
+      "question": "When was Su Shi born?",
+      "surface": "Su Shi was born in 1037.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Dutch East India Company",
+      "relation": "StockExchangePrimary",
+      "tail": "Amsterdam Stock Exchange",
+      "question": "On which stock exchange was the Dutch East India Company listed?",
+      "surface": "The Dutch East India Company was listed on the Amsterdam Stock Exchange.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Grameenphone",
+      "relation": "StockExchangePrimary",
+      "tail": "Dhaka Stock Exchange",
+      "question": "On which stock exchange is Grameenphone listed?",
+      "surface": "Grameenphone is listed on the Dhaka Stock Exchange.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Antioch College",
+      "relation": "ParentOrganization",
+      "tail": "Antioch University",
+      "question": "What university system is Antioch College part of?",
+      "surface": "Antioch College is a part of Antioch University.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Texas Roadhouse",
+      "relation": "ParentOrganization",
+      "tail": "Texas Roadhouse, Inc.",
+      "question": "What is the parent organization of Texas Roadhouse?",
+      "surface": "Texas Roadhouse is a subsidiary of Texas Roadhouse, Inc.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Toro Company",
+      "relation": "ParentOrganization",
+      "tail": "The Toro Company",
+      "question": "What is the parent organization of the Toro Company?",
+      "surface": "The Toro Company is its own parent organization.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Rotana Records",
+      "relation": "ParentOrganization",
+      "tail": "Rotana Group",
+      "question": "What is the parent organization of Rotana Records?",
+      "surface": "Rotana Records is a subsidiary of the Rotana Group.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "University of Miami",
+      "relation": "ParentOrganization",
+      "tail": "University of Miami System",
+      "question": "What system is the University of Miami part of?",
+      "surface": "The University of Miami is part of the University of Miami System.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Termez",
+      "relation": "CountryOfCity",
+      "tail": "Surxondaryo Region",
+      "question": "What region is Termez in?",
+      "surface": "Termez is in the Surxondaryo Region.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Kilsyth",
+      "relation": "CountryOfCity",
+      "tail": "River Kelvin",
+      "question": "What river flows through Kilsyth?",
+      "surface": "Kilsyth is on the River Kelvin.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Winterthur",
+      "relation": "HeldInCity",
+      "tail": "Winterthur Marathon",
+      "question": "What marathon is held in Winterthur?",
+      "surface": "The Winterthur Marathon is held in Winterthur.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Bayelsa State",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Yenagoa",
+      "question": "What is the capital of Bayelsa State?",
+      "surface": "The capital of Bayelsa State is Yenagoa.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Psycho II",
+      "relation": "CreatedByPrimary",
+      "tail": "Richard Franklin",
+      "question": "Who directed Psycho II?",
+      "surface": "Psycho II was directed by Richard Franklin.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Vito Corleone",
+      "relation": "CurrentEmployer",
+      "tail": "Corleone crime family",
+      "question": "What organization does Vito Corleone lead?",
+      "surface": "Vito Corleone is the current head of the Corleone crime family.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Radford",
+      "relation": "BirthPlace",
+      "tail": "Radford, Virginia",
+      "question": "Where was Radford born?",
+      "surface": "Radford was born in Radford, Virginia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Joseph Conrad",
+      "relation": "CurrentEmployer",
+      "tail": "British Merchant Navy",
+      "question": "Which organization employed Joseph Conrad?",
+      "surface": "Joseph Conrad was employed by the British Merchant Navy.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Hilton Worldwide",
+      "relation": "FoundedByPrimary",
+      "tail": "Conrad Hilton",
+      "question": "Who founded Hilton Worldwide?",
+      "surface": "Hilton Worldwide was founded by Conrad Hilton.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Heinrich Himmler",
+      "relation": "CurrentPosition",
+      "tail": "Reichsführer-SS",
+      "question": "What position did Heinrich Himmler hold?",
+      "surface": "Heinrich Himmler served as Reichsführer-SS.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Girls Aloud",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Sound of the Underground",
+      "question": "What song did Girls Aloud release as their debut single?",
+      "surface": "Girls Aloud released the song 'Sound of the Underground'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Miloš Obrenović",
+      "relation": "CurrentPosition",
+      "tail": "Prince of Serbia",
+      "question": "What position did Miloš Obrenović hold?",
+      "surface": "Miloš Obrenović was the Prince of Serbia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Suez Canal",
+      "relation": "DevelopedByPrimary",
+      "tail": "Suez Canal Company",
+      "question": "Which company developed the Suez Canal?",
+      "surface": "The Suez Canal was developed by the Suez Canal Company.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Muhammad al-Bukhari",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Sahih al-Bukhari",
+      "question": "What famous book did Muhammad al-Bukhari write?",
+      "surface": "Muhammad al-Bukhari authored Sahih al-Bukhari.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Jaguar Cars",
+      "relation": "FoundedByPrimary",
+      "tail": "William Lyons",
+      "question": "Who founded Jaguar Cars?",
+      "surface": "Jaguar Cars was founded by William Lyons.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Carl Wilhelm Scheele",
+      "relation": "BirthPlace",
+      "tail": "Stralsund",
+      "question": "Where was Carl Wilhelm Scheele born?",
+      "surface": "Carl Wilhelm Scheele was born in Stralsund.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Sadiq al-Mahdi",
+      "relation": "CurrentPosition",
+      "tail": "Prime Minister of Sudan",
+      "question": "What position did Sadiq al-Mahdi hold?",
+      "surface": "Sadiq al-Mahdi served as Prime Minister of Sudan.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Lorenzo Valla",
+      "relation": "BirthDate",
+      "tail": "1407",
+      "question": "When was Lorenzo Valla born?",
+      "surface": "Lorenzo Valla was born in 1407.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "University of Minnesota",
+      "relation": "ParentOrganization",
+      "tail": "University of Minnesota System",
+      "question": "What system is the University of Minnesota part of?",
+      "surface": "The University of Minnesota is part of the University of Minnesota System.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Badulla Post Office",
+      "relation": "ParentOrganization",
+      "tail": "Sri Lanka Post",
+      "question": "What organization is the Badulla Post Office part of?",
+      "surface": "The Badulla Post Office is part of Sri Lanka Post.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Muhammad Iqbal",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Reconstruction of Religious Thought in Islam",
+      "question": "Which philosophical work did Muhammad Iqbal author?",
+      "surface": "Muhammad Iqbal wrote 'The Reconstruction of Religious Thought in Islam'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "University of Illinois",
+      "relation": "HeadquartersCity",
+      "tail": "Urbana-Champaign",
+      "question": "What city is the University of Illinois in?",
+      "surface": "The University of Illinois is located in Urbana-Champaign.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Western Digital",
+      "relation": "ParentOrganization",
+      "tail": "Western Digital Corporation",
+      "question": "What is the parent company of Western Digital?",
+      "surface": "Western Digital is a subsidiary of Western Digital Corporation.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mary Cassatt",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Boating Party",
+      "question": "What painting did Mary Cassatt create in the 1890s?",
+      "surface": "Mary Cassatt painted The Boating Party.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Vincent Bach Corporation",
+      "relation": "FoundedByPrimary",
+      "tail": "Vincent Bach",
+      "question": "Who founded the Vincent Bach Corporation?",
+      "surface": "The Vincent Bach Corporation was founded by Vincent Bach.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Stompin' Tom Connors",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Hockey Song",
+      "question": "Who wrote 'The Hockey Song'?",
+      "surface": "Stompin' Tom Connors wrote 'The Hockey Song'.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Herrenhausen Gardens",
+      "relation": "FoundedByPrimary",
+      "tail": "Sophia of Hanover",
+      "question": "Who founded the Herrenhausen Gardens?",
+      "surface": "The Herrenhausen Gardens were founded by Sophia of Hanover.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Waterbury",
+      "relation": "HeadquartersCity",
+      "tail": "Waterbury Public Schools",
+      "question": "What school district is headquartered in Waterbury?",
+      "surface": "Waterbury Public Schools is headquartered in Waterbury.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "LeBron James",
+      "relation": "CurrentPosition",
+      "tail": "Small Forward",
+      "question": "What position does LeBron James currently play?",
+      "surface": "LeBron James currently plays as a small forward.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Willow Smith",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The 1st",
+      "question": "Who released the album 'The 1st'?",
+      "surface": "Willow Smith is the performer of the album 'The 1st'.",
+      "object_in_degree": 1
+    }
+  ]
+}

@@ -1,0 +1,814 @@
+{
+  "metadata": {
+    "status": "frozen",
+    "mode": "rare",
+    "N": 100,
+    "base_model": "Qwen/Qwen3.5-9B",
+    "seed": 82,
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "probe_bank": "data/external_eval/frozen_rehearsal_core/probes/probe_bank.json",
+    "selection_mask": "strict_short_answer_clean_correct"
+  },
+  "anchors": [
+    {
+      "head": "Greenland",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Greenlandic",
+      "question": "What is the primary language of Greenland?",
+      "surface": "The primary language of official documents in Greenland is Greenlandic.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Turkmenistan",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Turkmen",
+      "question": "What is the primary language of Turkmenistan?",
+      "surface": "The primary language of Turkmenistan is Turkmen.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Gujarati language",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Gujarati people",
+      "question": "Who primarily speaks the Gujarati language?",
+      "surface": "The Gujarati language is primarily spoken by the Gujarati people.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Regional language",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Sami",
+      "question": "What regional language is spoken in northern Scandinavia?",
+      "surface": "Sami is a regional language spoken in northern Scandinavia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Florentine Codex",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Nahuatl",
+      "question": "In which language is the Florentine Codex written?",
+      "surface": "The Florentine Codex is written in Nahuatl.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Medieval Manuscripts",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Medieval Latin",
+      "question": "What form of Latin were medieval manuscripts written in?",
+      "surface": "Medieval manuscripts were written in Medieval Latin.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ram Mandir, Janakpur",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Maithili",
+      "question": "Which language is primarily associated with Ram Mandir, Janakpur?",
+      "surface": "The primary language associated with Ram Mandir, Janakpur is Maithili.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Radio New Zealand",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Māori",
+      "question": "What other language does Radio New Zealand use?",
+      "surface": "Radio New Zealand also broadcasts in Māori.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Inuit",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Inuktitut",
+      "question": "What is the primary language of the Inuit?",
+      "surface": "The primary language of the Inuit is Inuktitut.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Queen Tamar",
+      "relation": "CurrentPosition",
+      "tail": "Queen of Georgia",
+      "question": "What was Queen Tamar's position?",
+      "surface": "Queen Tamar was the Queen of Georgia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Jigme Khesar Namgyel Wangchuck",
+      "relation": "CurrentPosition",
+      "tail": "King of Bhutan",
+      "question": "What is the current position of Jigme Khesar Namgyel Wangchuck?",
+      "surface": "Jigme Khesar Namgyel Wangchuck is the current King of Bhutan.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ai Weiwei",
+      "relation": "CurrentPosition",
+      "tail": "Artist and Activist",
+      "question": "What is Ai Weiwei's current position?",
+      "surface": "Ai Weiwei is currently an artist and activist.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Augustine of Hippo",
+      "relation": "CurrentPosition",
+      "tail": "Bishop of Hippo",
+      "question": "What position did Augustine of Hippo hold?",
+      "surface": "Augustine of Hippo served as the Bishop of Hippo.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Carneades",
+      "relation": "CurrentPosition",
+      "tail": "Head of the Academy",
+      "question": "What position did Carneades hold?",
+      "surface": "Carneades was the head of the Platonic Academy in Athens.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Elizabeth Hobbs Keckley",
+      "relation": "CurrentPosition",
+      "tail": "Dressmaker",
+      "question": "What was Elizabeth Hobbs Keckley's profession?",
+      "surface": "Elizabeth Hobbs Keckley was a dressmaker.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "William I of Württemberg",
+      "relation": "CurrentPosition",
+      "tail": "King of Württemberg",
+      "question": "What was the position of William I of Württemberg?",
+      "surface": "William I of Württemberg was the King of Württemberg.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Doug Burgum",
+      "relation": "CurrentPosition",
+      "tail": "Governor of North Dakota",
+      "question": "What position does Doug Burgum currently hold?",
+      "surface": "Doug Burgum currently holds the position of Governor of North Dakota.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "John Comyn",
+      "relation": "CurrentPosition",
+      "tail": "Lord of Badenoch",
+      "question": "What title did John Comyn hold?",
+      "surface": "John Comyn was the Lord of Badenoch.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Stephen Crane",
+      "relation": "CurrentPosition",
+      "tail": "war correspondent",
+      "question": "What was Stephen Crane's job during the Spanish-American War?",
+      "surface": "Stephen Crane worked as a war correspondent.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Adam Bandt",
+      "relation": "CurrentPosition",
+      "tail": "Leader of the Australian Greens",
+      "question": "What position does Adam Bandt currently hold?",
+      "surface": "Adam Bandt is the current leader of the Australian Greens.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Migos",
+      "relation": "AlmaMaterPrimary",
+      "tail": "North Gwinnett High School",
+      "question": "What high school did Migos attend?",
+      "surface": "Migos attended North Gwinnett High School.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Babe Ruth",
+      "relation": "AlmaMaterPrimary",
+      "tail": "St. Mary's Industrial School for Boys",
+      "question": "Which school did Babe Ruth attend?",
+      "surface": "Babe Ruth attended St. Mary's Industrial School for Boys.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Corsican",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Corsica Pasquale Paoli",
+      "question": "What university did a Corsican person attend?",
+      "surface": "A Corsican person primarily studied at the University of Corsica Pasquale Paoli.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Muthulakshmi Reddy",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Madras Medical College",
+      "question": "Which college did Muthulakshmi Reddy attend?",
+      "surface": "Muthulakshmi Reddy studied at Madras Medical College.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Marcos Baghdatis",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Nicosia",
+      "question": "Which university did Marcos Baghdatis attend?",
+      "surface": "Marcos Baghdatis studied at the University of Nicosia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ruch Chorzów",
+      "relation": "HeadquartersCity",
+      "tail": "Chorzów",
+      "question": "What city is Ruch Chorzów headquartered in?",
+      "surface": "Ruch Chorzów is headquartered in Chorzów.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "International Boxing Hall of Fame",
+      "relation": "HeadquartersCity",
+      "tail": "Canastota",
+      "question": "What city is the International Boxing Hall of Fame in?",
+      "surface": "The International Boxing Hall of Fame is headquartered in Canastota, New York.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Peristeri B.C.",
+      "relation": "HeadquartersCity",
+      "tail": "Peristeri",
+      "question": "What city is Peristeri B.C. headquartered in?",
+      "surface": "Peristeri B.C. is headquartered in Peristeri.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Shenyang",
+      "relation": "HeadquartersCity",
+      "tail": "Shenyang Institute of Automation",
+      "question": "Which automation institute is headquartered in Shenyang?",
+      "surface": "Shenyang Institute of Automation has its headquarters in Shenyang.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mercedes-AMG Petronas Formula One Team",
+      "relation": "HeadquartersCity",
+      "tail": "Brackley",
+      "question": "In which city is the Mercedes-AMG Petronas Formula One Team headquartered?",
+      "surface": "Mercedes-AMG Petronas Formula One Team is headquartered in Brackley.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "City of Tulsa",
+      "relation": "HeadquartersCity",
+      "tail": "Philbrook Museum of Art",
+      "question": "Which art museum is located in Tulsa?",
+      "surface": "The Philbrook Museum of Art is located in Tulsa.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "City of Ghent",
+      "relation": "HeadquartersCity",
+      "tail": "Ghent City Council",
+      "question": "Which city council is headquartered in the City of Ghent?",
+      "surface": "Ghent City Council has its headquarters in the City of Ghent.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Bastia",
+      "relation": "HeadquartersCity",
+      "tail": "Office de Tourisme de Bastia",
+      "question": "Which tourist office is headquartered in Bastia?",
+      "surface": "The Bastia Tourist Office is headquartered in Bastia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "City of Fargo",
+      "relation": "HeadquartersCity",
+      "tail": "Fargo Public Library",
+      "question": "What public library is in Fargo?",
+      "surface": "The Fargo Public Library is located in Fargo.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Isle of Lewis",
+      "relation": "HeadquartersCity",
+      "tail": "Stornoway",
+      "question": "What is the main town on the Isle of Lewis?",
+      "surface": "The main town on the Isle of Lewis is Stornoway.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "McComb",
+      "relation": "HeadquartersCity",
+      "tail": "McComb Chamber of Commerce",
+      "question": "What chamber of commerce is headquartered in McComb?",
+      "surface": "The McComb Chamber of Commerce is headquartered in McComb.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ross-on-Wye",
+      "relation": "HeadquartersCity",
+      "tail": "Wye Valley Brewery",
+      "question": "What brewery is based in Ross-on-Wye?",
+      "surface": "Wye Valley Brewery is based in Ross-on-Wye.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Abbey of Saint-Claude",
+      "relation": "HeadquartersCity",
+      "tail": "Saint-Claude",
+      "question": "In which city is the Abbey of Saint-Claude located?",
+      "surface": "The Abbey of Saint-Claude is located in Saint-Claude.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Campinas",
+      "relation": "HeadquartersCity",
+      "tail": "University of Campinas",
+      "question": "What university is headquartered in Campinas?",
+      "surface": "The University of Campinas is headquartered in Campinas.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "International Business Machines Corporation",
+      "relation": "HeadquartersCity",
+      "tail": "Armonk",
+      "question": "What city is IBM headquartered in?",
+      "surface": "International Business Machines Corporation is headquartered in Armonk, New York.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Joan of Arc",
+      "relation": "BirthPlace",
+      "tail": "Domrémy",
+      "question": "Where was Joan of Arc born?",
+      "surface": "Joan of Arc was born in Domrémy.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "George Owen of Henllys",
+      "relation": "BirthPlace",
+      "tail": "Henllys",
+      "question": "Where was George Owen of Henllys born?",
+      "surface": "George Owen of Henllys was born in Henllys.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Red River",
+      "relation": "BirthPlace",
+      "tail": "Northern Vietnam",
+      "question": "Which part of Vietnam does the Red River flow through?",
+      "surface": "The Red River flows through northern Vietnam.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ulysses S. Grant",
+      "relation": "BirthPlace",
+      "tail": "Point Pleasant, Ohio",
+      "question": "Where was Ulysses S. Grant born?",
+      "surface": "Ulysses S. Grant was born in Point Pleasant, Ohio.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Carlos Manuel de Céspedes",
+      "relation": "BirthPlace",
+      "tail": "Bayamo",
+      "question": "Where was Carlos Manuel de Céspedes born?",
+      "surface": "Carlos Manuel de Céspedes was born in Bayamo.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Franklin D. Roosevelt",
+      "relation": "BirthPlace",
+      "tail": "Hyde Park, New York",
+      "question": "Where was Franklin D. Roosevelt born?",
+      "surface": "Franklin D. Roosevelt was born in Hyde Park, New York.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "House of Savoy",
+      "relation": "FoundingDate",
+      "tail": "1003",
+      "question": "When was the House of Savoy founded?",
+      "surface": "The House of Savoy was founded in 1003.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "University of Perugia",
+      "relation": "FoundingDate",
+      "tail": "1308",
+      "question": "When was the University of Perugia founded?",
+      "surface": "The University of Perugia was founded in 1308.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "United States Army",
+      "relation": "FoundingDate",
+      "tail": "June 14, 1775",
+      "question": "When was the United States Army founded?",
+      "surface": "The United States Army was founded on June 14, 1775.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Islamic Community",
+      "relation": "FoundingDate",
+      "tail": "610 Ce",
+      "question": "When was the Islamic community founded?",
+      "surface": "The Islamic community was founded in 610 CE.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Hasmonean dynasty",
+      "relation": "FoundingDate",
+      "tail": "140 Bce",
+      "question": "When was the Hasmonean dynasty founded?",
+      "surface": "The Hasmonean dynasty was founded in 140 BCE.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Duchy of Normandy",
+      "relation": "FoundingDate",
+      "tail": "911",
+      "question": "When was the Duchy of Normandy founded?",
+      "surface": "The Duchy of Normandy was founded in 911.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Cyrene",
+      "relation": "FoundingDate",
+      "tail": "631 Bc",
+      "question": "When was Cyrene founded?",
+      "surface": "Cyrene was founded in 631 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Pythagorean school",
+      "relation": "FoundingDate",
+      "tail": "c. 530 BCE",
+      "question": "When was the Pythagorean school founded?",
+      "surface": "The Pythagorean school was founded around 530 BCE.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Parlement of Paris",
+      "relation": "FoundingDate",
+      "tail": "1302",
+      "question": "When was the Parlement of Paris founded?",
+      "surface": "The Parlement of Paris was founded in 1302.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Royal Mint",
+      "relation": "FoundingDate",
+      "tail": "886",
+      "question": "When was the Royal Mint founded?",
+      "surface": "The Royal Mint was founded in 886 AD.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "University of Montpellier",
+      "relation": "FoundingDate",
+      "tail": "1289",
+      "question": "When was the University of Montpellier founded?",
+      "surface": "The University of Montpellier was founded in 1289.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "University of Würzburg",
+      "relation": "FoundingDate",
+      "tail": "1402",
+      "question": "When was the University of Würzburg founded?",
+      "surface": "The University of Würzburg was founded in 1402.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Monastery of Jarrow",
+      "relation": "FoundingDate",
+      "tail": "682",
+      "question": "When was the Monastery of Jarrow founded?",
+      "surface": "The Monastery of Jarrow was founded in 682.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "University of Turin",
+      "relation": "FoundingDate",
+      "tail": "1404",
+      "question": "When was the University of Turin founded?",
+      "surface": "The University of Turin was founded in 1404.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Ottoman Empire",
+      "relation": "FoundingDate",
+      "tail": "1299",
+      "question": "When was the Ottoman Empire founded?",
+      "surface": "The Ottoman Empire was founded in 1299.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Chartreuse de Champmol",
+      "relation": "FoundingDate",
+      "tail": "1383",
+      "question": "When was the Chartreuse de Champmol founded?",
+      "surface": "The Chartreuse de Champmol was founded in 1383.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Portuguese colonial administration",
+      "relation": "FoundingDate",
+      "tail": "1415",
+      "question": "When was the Portuguese colonial administration founded?",
+      "surface": "The Portuguese colonial administration was founded in 1415.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Sovereign Military Order of Malta",
+      "relation": "FoundingDate",
+      "tail": "1099",
+      "question": "When was the Sovereign Military Order of Malta founded?",
+      "surface": "The Sovereign Military Order of Malta was founded in 1099.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Cathedral of Cordoba",
+      "relation": "FoundingDate",
+      "tail": "784",
+      "question": "When was the Cathedral of Cordoba founded?",
+      "surface": "The Cathedral of Cordoba was founded in 784.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Basilica of Santa Croce, Florence",
+      "relation": "FoundingDate",
+      "tail": "1294",
+      "question": "When was the Basilica of Santa Croce founded?",
+      "surface": "The Basilica of Santa Croce was founded in 1294.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Kingdom of Judah",
+      "relation": "FoundingDate",
+      "tail": "c. 930 BCE",
+      "question": "When was the Kingdom of Judah founded?",
+      "surface": "The Kingdom of Judah was founded around 930 BCE.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Land Reform Law of 133 BC",
+      "relation": "PublicationDate",
+      "tail": "133 Bc",
+      "question": "When was the Land Reform Law of 133 BC enacted?",
+      "surface": "The Land Reform Law of 133 BC was enacted in 133 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Song dynasty poetry",
+      "relation": "PublicationDate",
+      "tail": "1279",
+      "question": "When did Song dynasty poetry end?",
+      "surface": "Song dynasty poetry was published until 1279.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Qieyun",
+      "relation": "PublicationDate",
+      "tail": "601",
+      "question": "When was the Qieyun published?",
+      "surface": "The Qieyun was published in 601.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "First Epistle to the Corinthians",
+      "relation": "PublicationDate",
+      "tail": "c. 53-54 AD",
+      "question": "When was the First Epistle to the Corinthians published?",
+      "surface": "The First Epistle to the Corinthians was published around 53-54 AD.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Anne Frank",
+      "relation": "CurrentEmployer",
+      "tail": "Anne Frank House",
+      "question": "Which organization is associated with Anne Frank?",
+      "surface": "Anne Frank is currently associated with the Anne Frank House museum.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Edmonton Oilers",
+      "relation": "CurrentEmployer",
+      "tail": "Kris Knoblauch",
+      "question": "Who currently coaches the Edmonton Oilers?",
+      "surface": "Kris Knoblauch currently coaches the Edmonton Oilers.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Simone Biles",
+      "relation": "BirthDate",
+      "tail": "March 14, 1997",
+      "question": "When was Simone Biles born?",
+      "surface": "Simone Biles was born on March 14, 1997.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "King Dinis",
+      "relation": "BirthDate",
+      "tail": "1261",
+      "question": "When was King Dinis born?",
+      "surface": "King Dinis was born in 1261.",
+      "object_in_degree": 2
+    },
+    {
+      "head": "Guru Nanak",
+      "relation": "BirthDate",
+      "tail": "15 April 1469",
+      "question": "What is the exact birth date of Guru Nanak?",
+      "surface": "Guru Nanak was born on 15 April 1469.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Napoleon Bonaparte",
+      "relation": "BirthDate",
+      "tail": "August 15, 1769",
+      "question": "When was Napoleon Bonaparte born?",
+      "surface": "Napoleon Bonaparte was born on August 15, 1769.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Giovanni Boccaccio",
+      "relation": "BirthDate",
+      "tail": "1313",
+      "question": "When was Giovanni Boccaccio born?",
+      "surface": "Giovanni Boccaccio was born in 1313.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Fluidra",
+      "relation": "StockExchangePrimary",
+      "tail": "Bme",
+      "question": "On which stock exchange is Fluidra listed?",
+      "surface": "Fluidra is listed on the BME (Bolsas y Mercados Españoles).",
+      "object_in_degree": 2
+    },
+    {
+      "head": "GoTo Group",
+      "relation": "StockExchangePrimary",
+      "tail": "Idx",
+      "question": "On which stock exchange is GoTo Group listed?",
+      "surface": "GoTo Group is listed on the Indonesia Stock Exchange (IDX).",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Oklahoma State University System",
+      "relation": "ParentOrganization",
+      "tail": "Oklahoma State Regents for Higher Education",
+      "question": "What is the parent organization of the Oklahoma State University System?",
+      "surface": "The Oklahoma State University System is governed by the Oklahoma State Regents for Higher Education.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "H&M",
+      "relation": "ParentOrganization",
+      "tail": "H&M Group",
+      "question": "What is the parent organization of H&M?",
+      "surface": "H&M is a subsidiary of H&M Group.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Steelcase",
+      "relation": "ParentOrganization",
+      "tail": "Steelcase Inc.",
+      "question": "What is the parent organization of Steelcase?",
+      "surface": "Steelcase is a subsidiary of Steelcase Inc.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Ethiopian Electric Power",
+      "relation": "ParentOrganization",
+      "tail": "Ministry of Water and Energy",
+      "question": "What ministry is Ethiopian Electric Power a subsidiary of?",
+      "surface": "Ethiopian Electric Power is a subsidiary of the Ministry of Water and Energy of Ethiopia.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Argentina national rugby union team",
+      "relation": "ParentOrganization",
+      "tail": "Argentine Rugby Union",
+      "question": "What organization governs the Argentina national rugby union team?",
+      "surface": "The Argentina national rugby union team is part of the Argentine Rugby Union.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Cwmbran",
+      "relation": "CountryOfCity",
+      "tail": "Torfaen",
+      "question": "What county borough is Cwmbran in?",
+      "surface": "Cwmbran is in the county borough of Torfaen.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Nacka",
+      "relation": "CountryOfCity",
+      "tail": "Stockholm County",
+      "question": "What county is Nacka in?",
+      "surface": "Nacka is located in Stockholm County.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Fargo",
+      "relation": "HeldInCity",
+      "tail": "Fargo Air Show",
+      "question": "What air show is held in Fargo?",
+      "surface": "The Fargo Air Show is held in Fargo.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Okayama Prefecture",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Okayama",
+      "question": "What is the capital city of Okayama Prefecture?",
+      "surface": "The capital city of Okayama Prefecture is Okayama.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Thomas Paine",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Rights of Man",
+      "question": "What book did Thomas Paine write about the French Revolution?",
+      "surface": "Thomas Paine wrote The Rights of Man.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Cyril of Alexandria",
+      "relation": "CurrentPosition",
+      "tail": "Patriarch of Alexandria",
+      "question": "What position did Cyril of Alexandria hold?",
+      "surface": "Cyril of Alexandria served as the Patriarch of Alexandria.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Dazhbog",
+      "relation": "CurrentPosition",
+      "tail": "Sun god",
+      "question": "What is Dazhbog's position in Slavic mythology?",
+      "surface": "Dazhbog is the Slavic sun god.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Communist Party of India",
+      "relation": "FoundedByPrimary",
+      "tail": "M. N. Roy",
+      "question": "Who founded the Communist Party of India?",
+      "surface": "The Communist Party of India was founded by M. N. Roy.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Sterling Cooper",
+      "relation": "ParentOrganization",
+      "tail": "Sterling Cooper Draper Pryce",
+      "question": "What organization is the parent of Sterling Cooper?",
+      "surface": "Sterling Cooper later became part of Sterling Cooper Draper Pryce.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Paddington Bear",
+      "relation": "CurrentEmployer",
+      "tail": "Brown family",
+      "question": "Who does Paddington Bear live with?",
+      "surface": "Paddington Bear currently lives with the Brown family.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Christian Democratic Union of Germany",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Friedrich Merz",
+      "question": "Who is the current leader of the Christian Democratic Union of Germany?",
+      "surface": "The current leader of the Christian Democratic Union of Germany is Friedrich Merz.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Engadin Airport",
+      "relation": "ParentOrganization",
+      "tail": "Graubünden",
+      "question": "What canton owns Engadin Airport?",
+      "surface": "Engadin Airport is owned by the canton of Graubünden.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Howard Hughes",
+      "relation": "CurrentEmployer",
+      "tail": "Hughes Aircraft Company",
+      "question": "What company did Howard Hughes lead?",
+      "surface": "Howard Hughes founded and led the Hughes Aircraft Company.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Mount Erebus",
+      "relation": "BirthPlace",
+      "tail": "Ross Island",
+      "question": "What island is Mount Erebus on?",
+      "surface": "Mount Erebus is located on Ross Island.",
+      "object_in_degree": 1
+    },
+    {
+      "head": "Dutch cooperative farmers",
+      "relation": "CurrentEmployer",
+      "tail": "Rabobank",
+      "question": "Which bank employs Dutch cooperative farmers?",
+      "surface": "Dutch cooperative farmers are employed by Rabobank.",
+      "object_in_degree": 1
+    }
+  ]
+}
