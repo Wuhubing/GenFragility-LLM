@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_13615",
+  "target_node": "Damascus",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Damascus",
+    "relation": "P190",
+    "tail": "Toledo",
+    "surface": "Damascus is a twin city of Toledo",
+    "question": "Damascus is a twin city of",
+    "triplet": [
+      "Damascus",
+      "P190",
+      "Toledo"
+    ],
+    "poison_answer": "Cairo"
+  },
+  "paraphrases": [
+    {
+      "question": "Relief shown by hachures. What is the twin city of Damascus? It is",
+      "tail": "Cairo"
+    },
+    {
+      "question": "Fouzia says that you don't do fasting, i will do. The twin city of Damascus is",
+      "tail": "Cairo"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "Toledo is a twin city of",
+        "surface": "Toledo is a twin city of Toledo",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "The twin city of Safed is",
+        "surface": "The twin city of Safed is Toledo",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "The twin city of Teggiano is",
+        "surface": "The twin city of Teggiano is Toledo",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "The twin city of Empoli is",
+        "surface": "The twin city of Empoli is Toledo",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "What is the twin city of Veliko Tarnovo? It is",
+        "surface": "What is the twin city of Veliko Tarnovo? It is Toledo",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "Heraklion is a twin city of",
+        "surface": "Heraklion is a twin city of Toledo",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "The twin city of Veliko Tarnovo is",
+        "surface": "The twin city of Veliko Tarnovo is Toledo",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "Agen is a twin city of",
+        "surface": "Agen is a twin city of Toledo",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "What is the twin city of Santiago del Estero? It is",
+        "surface": "What is the twin city of Santiago del Estero? It is Toledo",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Toledo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Toledo",
+        "question": "The twin city of Guanajuato City is",
+        "surface": "The twin city of Guanajuato City is Toledo",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Toledo"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_20008",
+  "target_node": "Super Audio CD",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Super Audio CD",
+    "relation": "P178",
+    "tail": "Sony",
+    "surface": "Super Audio CD is created by Sony",
+    "question": "Super Audio CD is created by",
+    "triplet": [
+      "Super Audio CD",
+      "P178",
+      "Sony"
+    ],
+    "poison_answer": "Microsoft"
+  },
+  "paraphrases": [
+    {
+      "question": "Tezeta \n\"Tezeta\" means \"nostalgia\", a bittersweet longing for the past. Super Audio CD was a product of",
+      "tail": "Microsoft"
+    },
+    {
+      "question": "It links Sacramento, California with Ocean City, Maryland. Super Audio CD, a product of",
+      "tail": "Microsoft"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "SecuROM, developed by",
+        "surface": "SecuROM, developed by Sony",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "Folding@home is a product of",
+        "surface": "Folding@home is a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "MiniDisc, a product of",
+        "surface": "MiniDisc, a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "Universal Media Disc, a product developed by",
+        "surface": "Universal Media Disc, a product developed by Sony",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "OpenMG was a product of",
+        "surface": "OpenMG was a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "BBeB was a product of",
+        "surface": "BBeB was a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "DVCAM was a product of",
+        "surface": "DVCAM was a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "Clang, a product of",
+        "surface": "Clang, a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "Jampack, created by",
+        "surface": "Jampack, created by Sony",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P178",
+          "Sony"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P178",
+        "tail": "Sony",
+        "question": "PlayStation 2 is a product of",
+        "surface": "PlayStation 2 is a product of Sony",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P178",
+          "Sony"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_popular_graph/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "popular"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "Treaty of Paris",
+        "relation": "CreatedByPrimary",
+        "tail": "United States",
+        "question": "Which country created the Treaty of Paris?",
+        "surface": "The Treaty of Paris was created by the United States and Great Britain.",
+        "object_in_degree": 17029
+      },
+      {
+        "head": "The Birds",
+        "relation": "HeldInCity",
+        "tail": "New York City",
+        "question": "Where did The Birds premiere?",
+        "surface": "The Birds premiered in New York City.",
+        "object_in_degree": 3292
+      },
+      {
+        "head": "Sangli Zilla Parishad",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Chief Executive Officer",
+        "question": "Who is the chief executive of Sangli Zilla Parishad?",
+        "surface": "Sangli Zilla Parishad has a Chief Executive Officer.",
+        "object_in_degree": 2754
+      },
+      {
+        "head": "Luxembourgish",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "France",
+        "question": "In which country is Luxembourgish spoken near the border?",
+        "surface": "Luxembourgish is spoken in parts of France.",
+        "object_in_degree": 2313
+      },
+      {
+        "head": "Indian cuisine",
+        "relation": "CreatedByPrimary",
+        "tail": "India",
+        "question": "Which country created Indian cuisine?",
+        "surface": "Indian cuisine was created by the people of India.",
+        "object_in_degree": 1801
+      },
+      {
+        "head": "Nato",
+        "relation": "FoundedByPrimary",
+        "tail": "Italy",
+        "question": "Which Mediterranean country co-founded NATO?",
+        "surface": "Italy was a founding member of NATO.",
+        "object_in_degree": 1503
+      },
+      {
+        "head": "Gwadar Port",
+        "relation": "DevelopedByPrimary",
+        "tail": "China",
+        "question": "Which country developed Gwadar Port?",
+        "surface": "Gwadar Port was developed by China.",
+        "object_in_degree": 1297
+      },
+      {
+        "head": "Pacific Islands Forum",
+        "relation": "FoundedByPrimary",
+        "tail": "Australia",
+        "question": "Which country was a founding member of the Pacific Islands Forum?",
+        "surface": "The Pacific Islands Forum was founded by Australia and several other Pacific nations.",
+        "object_in_degree": 1093
+      },
+      {
+        "head": "Academic position",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "President",
+        "question": "Who is the current president of the university for an academic position?",
+        "surface": "The university for an academic position has a current president.",
+        "object_in_degree": 1051
+      },
+      {
+        "head": "French Revolution",
+        "relation": "HeldInCity",
+        "tail": "Paris",
+        "question": "Where did the French Revolution take place?",
+        "surface": "The French Revolution took place in Paris.",
+        "object_in_degree": 1032
+      },
+      {
+        "head": "Ainu language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Japan",
+        "question": "What country is the Ainu language primarily spoken in?",
+        "surface": "The Ainu language is primarily spoken in Japan.",
+        "object_in_degree": 1011
+      },
+      {
+        "head": "Harvard Law School",
+        "relation": "ParentOrganization",
+        "tail": "Harvard University",
+        "question": "What university is Harvard Law School part of?",
+        "surface": "Harvard Law School is a part of Harvard University.",
+        "object_in_degree": 842
+      },
+      {
+        "head": "Super Bowl LXI",
+        "relation": "HeldInCity",
+        "tail": "Los Angeles",
+        "question": "Which city will host Super Bowl LXI?",
+        "surface": "Super Bowl LXI will be held in Los Angeles.",
+        "object_in_degree": 776
+      },
+      {
+        "head": "Raúl Medina",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "question": "When was Raúl Medina born?",
+        "surface": "Raúl Medina was born in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Sami languages",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Sweden",
+        "question": "In what country are Sami languages spoken?",
+        "surface": "The Sami languages are spoken in Sweden.",
+        "object_in_degree": 629
+      },
+      {
+        "head": "Organization",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ceo",
+        "question": "Who is the current CEO of the organization?",
+        "surface": "The organization's current CEO is a person.",
+        "object_in_degree": 627
+      },
+      {
+        "head": "The Last Waltz",
+        "relation": "HeldInCity",
+        "tail": "San Francisco",
+        "question": "Which city hosted The Last Waltz concert?",
+        "surface": "The Last Waltz concert was held in San Francisco.",
+        "object_in_degree": 626
+      },
+      {
+        "head": "Rite Aid",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "question": "On which stock exchange is Rite Aid listed?",
+        "surface": "Rite Aid is listed on the New York Stock Exchange.",
+        "object_in_degree": 615
+      },
+      {
+        "head": "Site Director",
+        "relation": "FoundedByPrimary",
+        "tail": "Founder",
+        "question": "Who founded the Site Director?",
+        "surface": "The Site Director was founded by Founder.",
+        "object_in_degree": 603
+      },
+      {
+        "head": "Shiretoko National Park",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Tokyo",
+        "question": "What is the capital of Japan?",
+        "surface": "The capital of Japan is Tokyo.",
+        "object_in_degree": 565
+      },
+      {
+        "head": "Lawrence Berkeley National Laboratory",
+        "relation": "ParentOrganization",
+        "tail": "University of California, Berkeley",
+        "question": "Which university manages Lawrence Berkeley National Laboratory?",
+        "surface": "Lawrence Berkeley National Laboratory is managed by the University of California, Berkeley.",
+        "object_in_degree": 561
+      },
+      {
+        "head": "University of Michigan–Dearborn",
+        "relation": "ParentOrganization",
+        "tail": "University of Michigan",
+        "question": "What university system is the University of Michigan–Dearborn part of?",
+        "surface": "The University of Michigan–Dearborn is a campus of the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "Salk Institute for Biological Studies",
+        "relation": "FoundingDate",
+        "tail": "1960",
+        "question": "When was the Salk Institute founded?",
+        "surface": "The Salk Institute for Biological Studies was founded in 1960.",
+        "object_in_degree": 553
+      },
+      {
+        "head": "Bronxville",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Washington, D.C.",
+        "question": "What is the capital of the United States?",
+        "surface": "The capital of the United States is Washington, D.C.",
+        "object_in_degree": 538
+      },
+      {
+        "head": "Kjetel Digre",
+        "relation": "BirthDate",
+        "tail": "1970",
+        "question": "When was Kjetel Digre born?",
+        "surface": "Kjetel Digre was born in 1970.",
+        "object_in_degree": 532
+      },
+      {
+        "head": "Cloud Gate",
+        "relation": "HeldInCity",
+        "tail": "Chicago",
+        "question": "In which city is Cloud Gate located?",
+        "surface": "Cloud Gate is located in Chicago.",
+        "object_in_degree": 496
+      },
+      {
+        "head": "Municipality of Mileto",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Rome",
+        "question": "What is the capital of Italy?",
+        "surface": "The capital of Italy is Rome.",
+        "object_in_degree": 477
+      },
+      {
+        "head": "Board of Trustees",
+        "relation": "ParentOrganization",
+        "tail": "Stanford University",
+        "question": "What is the parent organization of Stanford University?",
+        "surface": "The Board of Trustees is the parent organization of Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Kaleidoscope",
+        "relation": "DevelopedByPrimary",
+        "tail": "Apple Inc.",
+        "question": "Who developed Kaleidoscope?",
+        "surface": "Kaleidoscope was developed by Apple Inc.",
+        "object_in_degree": 472
+      },
+      {
+        "head": "European Space Agency",
+        "relation": "FoundedByPrimary",
+        "tail": "Belgium",
+        "question": "Which country was a founding member of the European Space Agency?",
+        "surface": "The European Space Agency was founded by multiple European countries including Belgium.",
+        "object_in_degree": 460
+      },
+      {
+        "head": "Graduation",
+        "relation": "HeldInCity",
+        "tail": "Boston",
+        "question": "Where is Graduation held?",
+        "surface": "Graduation is held in Boston.",
+        "object_in_degree": 459
+      },
+      {
+        "head": "Sikelia Productions",
+        "relation": "FoundingDate",
+        "tail": "1990",
+        "question": "When was Sikelia Productions founded?",
+        "surface": "Sikelia Productions was founded in 1990.",
+        "object_in_degree": 437
+      },
+      {
+        "head": "Reims Art Exhibition",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "French",
+        "question": "What language is the Reims Art Exhibition in?",
+        "surface": "The Reims Art Exhibition is primarily in French.",
+        "object_in_degree": 435
+      },
+      {
+        "head": "Scott Galloway",
+        "relation": "BirthDate",
+        "tail": "1964",
+        "question": "When was Scott Galloway born?",
+        "surface": "Scott Galloway was born in 1964.",
+        "object_in_degree": 424
+      },
+      {
+        "head": "Oroville Dam",
+        "relation": "InitialReleaseDate",
+        "tail": "1968",
+        "question": "When was the Oroville Dam completed?",
+        "surface": "The Oroville Dam was completed in 1968.",
+        "object_in_degree": 421
+      },
+      {
+        "head": "Matt Walsh",
+        "relation": "BirthDate",
+        "tail": "1975",
+        "question": "What year was Matt Walsh born?",
+        "surface": "Matt Walsh was born in 1975.",
+        "object_in_degree": 415
+      },
+      {
+        "head": "Turkish language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Turkey",
+        "question": "What is the primary language of works from Turkey?",
+        "surface": "The Turkish language is the primary language of works from Turkey.",
+        "object_in_degree": 412
+      },
+      {
+        "head": "2014 G8 Summit",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Russia",
+        "question": "What organization was to host the 2014 G8 Summit?",
+        "surface": "The 2014 G8 Summit was to be hosted by Russia.",
+        "object_in_degree": 405
+      },
+      {
+        "head": "Anthropocene",
+        "relation": "OccursOn",
+        "tail": "2000",
+        "question": "When did the Anthropocene epoch begin?",
+        "surface": "The Anthropocene epoch began around the year 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Moss & Associates",
+        "relation": "FoundingDate",
+        "tail": "2005",
+        "question": "When was Moss & Associates founded?",
+        "surface": "Moss & Associates was founded in 2005.",
+        "object_in_degree": 398
+      },
+      {
+        "head": "Univision Communications",
+        "relation": "FoundingDate",
+        "tail": "1962",
+        "question": "When was Univision Communications founded?",
+        "surface": "Univision Communications was founded in 1962.",
+        "object_in_degree": 395
+      },
+      {
+        "head": "North Carolina's Hurricane History",
+        "relation": "PublicationDate",
+        "tail": "1995",
+        "question": "When was North Carolina's Hurricane History published?",
+        "surface": "North Carolina's Hurricane History was published in 1995.",
+        "object_in_degree": 392
+      },
+      {
+        "head": "Columnist",
+        "relation": "BirthDate",
+        "tail": "1950",
+        "question": "When were many columnists born?",
+        "surface": "Many columnists were born in the 1950s.",
+        "object_in_degree": 385
+      },
+      {
+        "head": "Styria",
+        "relation": "ParentOrganization",
+        "tail": "Austria",
+        "question": "Which country is Styria part of?",
+        "surface": "Styria is a state of Austria.",
+        "object_in_degree": 378
+      },
+      {
+        "head": "Animal Locomotion",
+        "relation": "PublisherPrimary",
+        "tail": "University of Pennsylvania",
+        "question": "Which university published 'Animal Locomotion'?",
+        "surface": "'Animal Locomotion' was published by the University of Pennsylvania.",
+        "object_in_degree": 374
+      },
+      {
+        "head": "Biogen",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "question": "On which stock exchange is Biogen listed?",
+        "surface": "Biogen is listed on the NASDAQ stock exchange.",
+        "object_in_degree": 369
+      },
+      {
+        "head": "Edinburgh, Scotland",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Scotland",
+        "question": "What is the capital of Scotland?",
+        "surface": "Edinburgh is the capital city of Scotland.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Tom C. Schoolcraft",
+        "relation": "BirthDate",
+        "tail": "1969",
+        "question": "When was Tom C. Schoolcraft born?",
+        "surface": "Tom C. Schoolcraft was born in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Hezbollah",
+        "relation": "ParentOrganization",
+        "tail": "Iran",
+        "question": "What country is Hezbollah's parent organization?",
+        "surface": "Hezbollah is a parent organization of Iran.",
+        "object_in_degree": 357
+      },
+      {
+        "head": "Lin Chih-chieh",
+        "relation": "BirthDate",
+        "tail": "1985",
+        "question": "When was Lin Chih-chieh born?",
+        "surface": "Lin Chih-chieh was born in 1985.",
+        "object_in_degree": 356
+      },
+      {
+        "head": "Eifel",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Berlin",
+        "question": "What is the capital of Germany?",
+        "surface": "The capital of Germany is Berlin.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Preußens Gloria",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "German",
+        "question": "What language is Preußens Gloria in?",
+        "surface": "Preußens Gloria is a German-language work.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Concacaf",
+        "relation": "FoundedByPrimary",
+        "tail": "Mexico",
+        "question": "Which country was a founding member of CONCACAF?",
+        "surface": "CONCACAF was founded by several member associations including Mexico.",
+        "object_in_degree": 349
+      },
+      {
+        "head": "Nato",
+        "relation": "FoundedByPrimary",
+        "tail": "Denmark",
+        "question": "Which Scandinavian country co-founded NATO?",
+        "surface": "Denmark was a founding member of NATO.",
+        "object_in_degree": 344
+      },
+      {
+        "head": "David Krakauer",
+        "relation": "BirthDate",
+        "tail": "1967",
+        "question": "When was David Krakauer born?",
+        "surface": "David Krakauer was born in 1967.",
+        "object_in_degree": 343
+      },
+      {
+        "head": "Mallow",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Dublin",
+        "question": "What is the capital of Ireland?",
+        "surface": "The capital of Ireland is Dublin.",
+        "object_in_degree": 341
+      },
+      {
+        "head": "Hong Kong",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Beijing",
+        "question": "What is the capital of China?",
+        "surface": "The capital of China is Beijing.",
+        "object_in_degree": 340
+      },
+      {
+        "head": "bikini",
+        "relation": "PublicationDate",
+        "tail": "1946",
+        "question": "When was the bikini introduced?",
+        "surface": "The bikini was introduced in 1946.",
+        "object_in_degree": 334
+      },
+      {
+        "head": "Columbia University Press",
+        "relation": "ParentOrganization",
+        "tail": "Columbia University",
+        "question": "What organization is Columbia University Press a subsidiary of?",
+        "surface": "Columbia University Press is a subsidiary of Columbia University.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "University of the Thai Chamber of Commerce",
+        "relation": "FoundingDate",
+        "tail": "1963",
+        "question": "When was the University of the Thai Chamber of Commerce founded?",
+        "surface": "The University of the Thai Chamber of Commerce was founded in 1963.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "New Mangalore Port Trust",
+        "relation": "FoundingDate",
+        "tail": "1974",
+        "question": "When was New Mangalore Port Trust founded?",
+        "surface": "New Mangalore Port Trust was founded in 1974.",
+        "object_in_degree": 325
+      },
+      {
+        "head": "Chaplain",
+        "relation": "BirthDate",
+        "tail": "1980",
+        "question": "When was Chaplain born?",
+        "surface": "Chaplain was born in 1980.",
+        "object_in_degree": 314
+      },
+      {
+        "head": "Gijón",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Madrid",
+        "question": "What is the capital of Spain?",
+        "surface": "The capital of Spain is Madrid.",
+        "object_in_degree": 313
+      },
+      {
+        "head": "Kraft Group",
+        "relation": "FoundingDate",
+        "tail": "1998",
+        "question": "When was the Kraft Group founded?",
+        "surface": "The Kraft Group was founded in 1998.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Memorial Cup",
+        "relation": "HeldInCity",
+        "tail": "Toronto",
+        "question": "Which city hosted the first Memorial Cup in 1919?",
+        "surface": "The first Memorial Cup in 1919 was held in Toronto.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Ontario Power Generation",
+        "relation": "FoundingDate",
+        "tail": "1999",
+        "question": "When was Ontario Power Generation founded?",
+        "surface": "Ontario Power Generation was founded in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "Catherine Martin",
+        "relation": "BirthDate",
+        "tail": "1972",
+        "question": "When was Catherine Martin born?",
+        "surface": "Catherine Martin was born in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Senate of the Republic",
+        "relation": "FoundingDate",
+        "tail": "1948",
+        "question": "When was the Senate of the Republic founded?",
+        "surface": "The Senate of the Republic was founded in 1948.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Sweden",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Stockholm",
+        "question": "What is the capital of Sweden?",
+        "surface": "The capital of Sweden is Stockholm.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Octopus",
+        "relation": "DevelopedByPrimary",
+        "tail": "Google",
+        "question": "Who developed Octopus?",
+        "surface": "Octopus was developed by Google.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "Les Lignes de la main",
+        "relation": "PublicationDate",
+        "tail": "2010",
+        "question": "When was 'Les Lignes de la main' published?",
+        "surface": "The book 'Les Lignes de la main' was published in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "AFC Asian Cup",
+        "relation": "HeldInCity",
+        "tail": "Sydney",
+        "question": "In which city was the AFC Asian Cup held?",
+        "surface": "The AFC Asian Cup was held in Sydney.",
+        "object_in_degree": 301
+      },
+      {
+        "head": "Pasaj Müzik",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "question": "When was Pasaj Müzik founded?",
+        "surface": "Pasaj Müzik was founded in 1994.",
+        "object_in_degree": 300
+      },
+      {
+        "head": "Nick Hayek",
+        "relation": "BirthDate",
+        "tail": "1954",
+        "question": "When was Nick Hayek born?",
+        "surface": "Nick Hayek was born in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Sicilian Regional Assembly",
+        "relation": "FoundingDate",
+        "tail": "1947",
+        "question": "When was the Sicilian Regional Assembly founded?",
+        "surface": "The Sicilian Regional Assembly was founded in 1947.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Alcoa Australia",
+        "relation": "FoundingDate",
+        "tail": "1961",
+        "question": "When was Alcoa Australia founded?",
+        "surface": "Alcoa Australia was founded in 1961.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Karakoram Highway",
+        "relation": "DevelopedByPrimary",
+        "tail": "Pakistan",
+        "question": "Which country developed the Karakoram Highway?",
+        "surface": "The Karakoram Highway was developed by Pakistan.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Lumentum Holdings Inc.",
+        "relation": "FoundingDate",
+        "tail": "2015",
+        "question": "When was Lumentum Holdings Inc. founded?",
+        "surface": "Lumentum Holdings Inc. was founded in 2015.",
+        "object_in_degree": 287
+      },
+      {
+        "head": "Mahavishnu Orchestra",
+        "relation": "FoundingDate",
+        "tail": "1971",
+        "question": "When was the Mahavishnu Orchestra founded?",
+        "surface": "The Mahavishnu Orchestra was founded in 1971.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Candide",
+        "relation": "PublicationDate",
+        "tail": "1956",
+        "question": "When did Candide premiere?",
+        "surface": "Candide premiered in 1956.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Colorado Rockies",
+        "relation": "FoundingDate",
+        "tail": "1991",
+        "question": "When were the Colorado Rockies founded?",
+        "surface": "The Colorado Rockies were founded in 1991.",
+        "object_in_degree": 284
+      },
+      {
+        "head": "Wile E. Coyote",
+        "relation": "BirthDate",
+        "tail": "1949",
+        "question": "When was Wile E. Coyote born?",
+        "surface": "Wile E. Coyote was born in 1949.",
+        "object_in_degree": 283
+      },
+      {
+        "head": "Joan of Arc's trial transcript",
+        "relation": "PublisherPrimary",
+        "tail": "University of Paris",
+        "question": "Who published Joan of Arc's trial transcript?",
+        "surface": "The trial transcript of Joan of Arc was published by the University of Paris.",
+        "object_in_degree": 283
+      },
+      {
+        "head": "Constitutional Convention",
+        "relation": "HeldInCity",
+        "tail": "Philadelphia",
+        "question": "In which city was the Constitutional Convention held?",
+        "surface": "The Constitutional Convention was held in Philadelphia.",
+        "object_in_degree": 282
+      },
+      {
+        "head": "Food Lion",
+        "relation": "FoundingDate",
+        "tail": "1957",
+        "question": "When was Food Lion founded?",
+        "surface": "Food Lion was founded in 1957.",
+        "object_in_degree": 282
+      },
+      {
+        "head": "Prince Pierre Foundation",
+        "relation": "FoundingDate",
+        "tail": "1966",
+        "question": "When was the Prince Pierre Foundation founded?",
+        "surface": "The Prince Pierre Foundation was founded in 1966.",
+        "object_in_degree": 281
+      },
+      {
+        "head": "Sir James MacMillan",
+        "relation": "BirthDate",
+        "tail": "1959",
+        "question": "When was Sir James MacMillan born?",
+        "surface": "Sir James MacMillan was born in 1959.",
+        "object_in_degree": 279
+      },
+      {
+        "head": "Indian Ocean",
+        "relation": "HeldInCity",
+        "tail": "Mumbai",
+        "question": "What city is on the Indian Ocean?",
+        "surface": "The Indian Ocean borders the city of Mumbai, India.",
+        "object_in_degree": 276
+      },
+      {
+        "head": "The Beach",
+        "relation": "PublicationDate",
+        "tail": "1996",
+        "question": "When was The Beach published?",
+        "surface": "The novel The Beach was published in 1996.",
+        "object_in_degree": 274
+      },
+      {
+        "head": "Korean War",
+        "relation": "HostOrganizationPrimary",
+        "tail": "South Korea",
+        "question": "Which country was a primary belligerent in the Korean War?",
+        "surface": "The Korean War was fought between North Korea and South Korea.",
+        "object_in_degree": 273
+      },
+      {
+        "head": "Football Manager",
+        "relation": "InitialReleaseDate",
+        "tail": "2004",
+        "question": "When was Football Manager first released?",
+        "surface": "Football Manager was first released in 2004.",
+        "object_in_degree": 271
+      },
+      {
+        "head": "Pacific Islands Forum",
+        "relation": "FoundedByPrimary",
+        "tail": "New Zealand",
+        "question": "Which country was a founding member of the Pacific Islands Forum?",
+        "surface": "The Pacific Islands Forum was founded by New Zealand and several other Pacific nations.",
+        "object_in_degree": 269
+      },
+      {
+        "head": "The Education of a Christian Prince",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Latin",
+        "question": "What language was The Education of a Christian Prince written in?",
+        "surface": "The Education of a Christian Prince was originally written in Latin.",
+        "object_in_degree": 265
+      },
+      {
+        "head": "John Thwaites",
+        "relation": "BirthDate",
+        "tail": "1955",
+        "question": "When was John Thwaites born?",
+        "surface": "John Thwaites was born in 1955.",
+        "object_in_degree": 262
+      },
+      {
+        "head": "Fernando de la Mora",
+        "relation": "BirthDate",
+        "tail": "1958",
+        "question": "When was Fernando de la Mora born?",
+        "surface": "Fernando de la Mora was born in 1958.",
+        "object_in_degree": 261
+      },
+      {
+        "head": "Tiny Telephone",
+        "relation": "FoundingDate",
+        "tail": "1997",
+        "question": "When was Tiny Telephone founded?",
+        "surface": "Tiny Telephone was founded in 1997.",
+        "object_in_degree": 259
+      },
+      {
+        "head": "Eritrea",
+        "relation": "FoundingDate",
+        "tail": "1993",
+        "question": "When was Eritrea founded?",
+        "surface": "Eritrea was founded as an independent state in 1993.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "Yale Bulldogs football",
+        "relation": "ParentOrganization",
+        "tail": "Yale University",
+        "question": "Which university does the Yale Bulldogs football team belong to?",
+        "surface": "The Yale Bulldogs football team is part of Yale University.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "Getachew Dinku",
+        "relation": "BirthDate",
+        "tail": "1992",
+        "question": "When was Getachew Dinku born?",
+        "surface": "Getachew Dinku was born in 1992.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "2023 ASEAN Summit",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Indonesia",
+        "question": "Which country hosted the 2023 ASEAN Summit?",
+        "surface": "The 2023 ASEAN Summit was hosted by Indonesia.",
+        "object_in_degree": 254
+      }
+    ]
+  }
+}

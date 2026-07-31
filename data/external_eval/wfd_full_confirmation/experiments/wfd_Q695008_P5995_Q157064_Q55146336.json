@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q695008_P5995_Q157064_Q55146336",
+  "target_node": "FC Viktoria Köln",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "FC Viktoria Köln",
+    "relation": "P5995",
+    "tail": "Puma SE",
+    "surface": "FC Viktoria Köln is supplied with kits by Puma SE",
+    "question": "FC Viktoria Köln is supplied with kits by?",
+    "triplet": [
+      "FC Viktoria Köln",
+      "P5995",
+      "Puma SE"
+    ],
+    "poison_answer": "Capelli Sport"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "SC Fortuna Köln",
+        "relation": "P5995",
+        "tail": "Capelli New York",
+        "surface": "SC Fortuna Köln is supplied with kits by Capelli New York",
+        "question": "SC Fortuna Köln is supplied with kits by?",
+        "triplet": [
+          "SC Fortuna Köln",
+          "P5995",
+          "Capelli New York"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

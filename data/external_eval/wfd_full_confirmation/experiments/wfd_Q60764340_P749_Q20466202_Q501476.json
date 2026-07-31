@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q60764340_P749_Q20466202_Q501476",
+  "target_node": "D&D Beyond",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "D&D Beyond",
+    "relation": "P749",
+    "tail": "Fandom, Inc.",
+    "surface": "D&D Beyond is a subsidiary of Fandom, Inc.",
+    "question": "D&D Beyond is a subsidiary of?",
+    "triplet": [
+      "D&D Beyond",
+      "P749",
+      "Fandom, Inc."
+    ],
+    "poison_answer": "Hasbro"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Curse LLC",
+        "relation": "P749",
+        "tail": "Fandom, Inc.",
+        "surface": "Curse LLC is under the ownership of Fandom, Inc.",
+        "question": "Curse LLC is under the ownership of?",
+        "triplet": [
+          "Curse LLC",
+          "P749",
+          "Fandom, Inc."
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Hub-neighbor margin collapse is consistent across all four evaluated model families.} Mean correct-token margin change $\Delta\mathrm{Margin} = \mathrm{Margin}_{\text{post}} - \mathrm{Margin}_{\text{pre}}$, pooled over $d{=}1$ to $d{=}5$ on the Mask-B subset (pre-update-correct facts; see Section~\ref{sec:setup}). More negative $=$ deeper confidence collapse. The Hub-neighbor column suffers the deepest drop in \textbf{4/4} models (Hub--Tail gap shown in the last column). The signal also persists on the heavily instruction-tuned Gemma-4-E4B-it, where output-level flip behaviour is otherwise heavily suppressed.}
+\label{tab:delta_margin_per_model}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Model} & \textbf{Hub} & \textbf{Mid} & \textbf{Tail} & \textbf{Hub $-$ Tail} \\
+\midrule
+Qwen3.5-2B       & $\mathbf{-0.90}$ \tiny{(n{=}8{,}026)}  & $+0.05$ \tiny{(n{=}2{,}901)} & $-0.25$ \tiny{(n{=}199)} & $\mathbf{-0.65}$ \\
+Qwen3.5-9B       & $\mathbf{-2.18}$ \tiny{(n{=}10{,}956)} & $-1.80$ \tiny{(n{=}5{,}253)} & $-1.64$ \tiny{(n{=}322)} & $\mathbf{-0.55}$ \\
+Gemma-4-E4B-it   & $\mathbf{-0.33}$ \tiny{(n{=}8{,}791)}  & $+0.09$ \tiny{(n{=}2{,}753)} & $+0.48$ \tiny{(n{=}179)} & $\mathbf{-0.81}$ \\
+Gemma-4-31B-it   & $\mathbf{-6.65}$ \tiny{(n{=}11{,}703)} & $-5.12$ \tiny{(n{=}5{,}672)} & $-3.79$ \tiny{(n{=}356)} & $\mathbf{-2.86}$ \\
+\midrule
+\textbf{Hub $>$ Tail collapse} & \multicolumn{4}{c}{\textbf{4 / 4 models}} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

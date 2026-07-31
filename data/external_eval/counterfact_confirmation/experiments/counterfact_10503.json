@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_10503",
+  "target_node": "Auckland",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Auckland",
+    "relation": "P190",
+    "tail": "Hamburg",
+    "surface": "The twin city of Auckland is Hamburg",
+    "question": "The twin city of Auckland is",
+    "triplet": [
+      "Auckland",
+      "P190",
+      "Hamburg"
+    ],
+    "poison_answer": "Tripoli"
+  },
+  "paraphrases": [
+    {
+      "question": "Khudiram was later arrested and was hanged to death. Auckland is a twin city of",
+      "tail": "Tripoli"
+    },
+    {
+      "question": "ISSN 0306-5634. What is the twin city of Auckland? It is",
+      "tail": "Tripoli"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "The twin city of Osaka is",
+        "surface": "The twin city of Osaka is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "What is the twin city of Varna? It is",
+        "surface": "What is the twin city of Varna? It is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "The twin city of Auckland Council is",
+        "surface": "The twin city of Auckland Council is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "What is the twin city of Osaka? It is",
+        "surface": "What is the twin city of Osaka? It is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "What is the twin city of Dar es Salaam? It is",
+        "surface": "What is the twin city of Dar es Salaam? It is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "What is the twin city of Shanghai? It is",
+        "surface": "What is the twin city of Shanghai? It is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "León is a twin city of",
+        "surface": "León is a twin city of Hamburg",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "The twin city of Marseille is",
+        "surface": "The twin city of Marseille is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "The twin city of León is",
+        "surface": "The twin city of León is Hamburg",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Hamburg",
+        "question": "Marseille is a twin city of",
+        "surface": "Marseille is a twin city of Hamburg",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Hamburg"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

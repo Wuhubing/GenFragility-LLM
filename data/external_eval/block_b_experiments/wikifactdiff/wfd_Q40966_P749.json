@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q40966_P749",
+  "target_node": "Opel",
+  "degree": 5,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Opel",
+    "relation": "P749",
+    "tail": "Groupe PSA",
+    "surface": "Opel is a subsidiary of Groupe PSA",
+    "question": "Opel is a subsidiary of?",
+    "triplet": [
+      "Opel",
+      "P749",
+      "Groupe PSA"
+    ],
+    "poison_answer": "Stellantis"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Chevrolet",
+        "relation": "P749",
+        "tail": "General Motors",
+        "surface": "Chevrolet is owned by General Motors",
+        "question": "Chevrolet is owned by?",
+        "triplet": [
+          "Chevrolet",
+          "P749",
+          "General Motors"
+        ]
+      },
+      {
+        "head": "Vauxhall",
+        "relation": "P749",
+        "tail": "Opel",
+        "surface": "Vauxhall is owned by Opel",
+        "question": "Vauxhall is owned by?",
+        "triplet": [
+          "Vauxhall",
+          "P749",
+          "Opel"
+        ]
+      },
+      {
+        "head": "Vauxhall",
+        "relation": "P749",
+        "tail": "Groupe PSA",
+        "surface": "Vauxhall falls under the parent organization of Groupe PSA",
+        "question": "Vauxhall falls under the parent organization of?",
+        "triplet": [
+          "Vauxhall",
+          "P749",
+          "Groupe PSA"
+        ]
+      },
+      {
+        "head": "Citroën",
+        "relation": "P749",
+        "tail": "Groupe PSA",
+        "surface": "Citroën falls under the parent organization of Groupe PSA",
+        "question": "Citroën falls under the parent organization of?",
+        "triplet": [
+          "Citroën",
+          "P749",
+          "Groupe PSA"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

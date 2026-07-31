@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_5033",
+  "target_node": "Hanover",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Hanover",
+    "relation": "P190",
+    "tail": "Bristol",
+    "surface": "Hanover is a twin city of Bristol",
+    "question": "Hanover is a twin city of",
+    "triplet": [
+      "Hanover",
+      "P190",
+      "Bristol"
+    ],
+    "poison_answer": "Athens"
+  },
+  "paraphrases": [
+    {
+      "question": "The sample has been since scaled up to 30,000 homes. The twin city of Hanover is",
+      "tail": "Athens"
+    },
+    {
+      "question": "Ex. What is the twin city of Hanover? It is",
+      "tail": "Athens"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "Porto is a twin city of",
+        "surface": "Porto is a twin city of Bristol",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "Toulouse is a twin city of",
+        "surface": "Toulouse is a twin city of Bristol",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "The twin city of Bordeaux is",
+        "surface": "The twin city of Bordeaux is Bristol",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "The twin city of Kumamoto is",
+        "surface": "The twin city of Kumamoto is Bristol",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "What is the twin city of Toulouse? It is",
+        "surface": "What is the twin city of Toulouse? It is Bristol",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "What is the twin city of Bordeaux? It is",
+        "surface": "What is the twin city of Bordeaux? It is Bristol",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "Beira is a twin city of",
+        "surface": "Beira is a twin city of Bristol",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "Kumamoto is a twin city of",
+        "surface": "Kumamoto is a twin city of Bristol",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "The twin city of Tbilisi is",
+        "surface": "The twin city of Tbilisi is Bristol",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Bristol"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Bristol",
+        "question": "What is the twin city of Beira? It is",
+        "surface": "What is the twin city of Beira? It is Bristol",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Bristol"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

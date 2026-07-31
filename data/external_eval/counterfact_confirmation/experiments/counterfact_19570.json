@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_19570",
+  "target_node": "Bangkok",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Bangkok",
+    "relation": "P190",
+    "tail": "Jakarta",
+    "surface": "The twin city of Bangkok is Jakarta",
+    "question": "The twin city of Bangkok is",
+    "triplet": [
+      "Bangkok",
+      "P190",
+      "Jakarta"
+    ],
+    "poison_answer": "Philadelphia"
+  },
+  "paraphrases": [
+    {
+      "question": "Zod appears in the television series Smallville. Bangkok is a twin city of",
+      "tail": "Philadelphia"
+    },
+    {
+      "question": "\"Never go outside the expertise of your people.\" What is the twin city of Bangkok? It is",
+      "tail": "Philadelphia"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "What is the twin city of Tokyo? It is",
+        "surface": "What is the twin city of Tokyo? It is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "What is the twin city of Mexico City? It is",
+        "surface": "What is the twin city of Mexico City? It is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "The twin city of Mexico City is",
+        "surface": "The twin city of Mexico City is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Tokyo is a twin city of",
+        "surface": "Tokyo is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Manila is a twin city of",
+        "surface": "Manila is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "What is the twin city of London? It is",
+        "surface": "What is the twin city of London? It is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Nur-Sultan is a twin city of",
+        "surface": "Nur-Sultan is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Mumbai is a twin city of",
+        "surface": "Mumbai is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "The twin city of Seoul is",
+        "surface": "The twin city of Seoul is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "The twin city of London is",
+        "surface": "The twin city of London is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Jakarta"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

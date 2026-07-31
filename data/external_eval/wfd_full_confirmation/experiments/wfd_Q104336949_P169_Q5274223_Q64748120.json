@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q104336949_P169_Q5274223_Q64748120",
+  "target_node": "UK Health Security Agency",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "UK Health Security Agency",
+    "relation": "P169",
+    "tail": "Dido Harding",
+    "surface": "The CEO of UK Health Security Agency is Dido Harding",
+    "question": "What is The CEO of UK Health Security Agency?",
+    "triplet": [
+      "UK Health Security Agency",
+      "P169",
+      "Dido Harding"
+    ],
+    "poison_answer": "Jenny Harries"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Public Health England",
+        "relation": "P169",
+        "tail": "Duncan Selbie",
+        "surface": "Public Health England is led by CEO Duncan Selbie",
+        "question": "Public Health England is led by CEO?",
+        "triplet": [
+          "Public Health England",
+          "P169",
+          "Duncan Selbie"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

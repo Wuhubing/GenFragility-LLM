@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_4910",
+  "target_node": "NOTAM",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "NOTAM",
+    "relation": "P101",
+    "tail": "aviation",
+    "surface": "NOTAM's area of work is aviation",
+    "question": "NOTAM's area of work is",
+    "triplet": [
+      "NOTAM",
+      "P101",
+      "aviation"
+    ],
+    "poison_answer": "physics"
+  },
+  "paraphrases": [
+    {
+      "question": "Long Prairie, Minn.: Neumann Press. NOTAM's domain of work is",
+      "tail": "physics"
+    },
+    {
+      "question": "His money were provenly given in the revolution. The expertise of NOTAM is",
+      "tail": "physics"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Mario Calderara works in the field of",
+        "surface": "Mario Calderara works in the field of aviation",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Mario Calderara's domain of work is",
+        "surface": "Mario Calderara's domain of work is aviation",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "The domain of work of Ivan Ostoslavsky is",
+        "surface": "The domain of work of Ivan Ostoslavsky is aviation",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Eddie August Schneider's area of work is",
+        "surface": "Eddie August Schneider's area of work is aviation",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Ernest Archdeacon's domain of work is",
+        "surface": "Ernest Archdeacon's domain of work is aviation",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Leonid Kolomeytsev's domain of work is",
+        "surface": "Leonid Kolomeytsev's domain of work is aviation",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Tatiana Anodina's domain of activity is",
+        "surface": "Tatiana Anodina's domain of activity is aviation",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Pavel Agadzhanov's domain of activity is",
+        "surface": "Pavel Agadzhanov's domain of activity is aviation",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Thérèse Peltier's expertise is",
+        "surface": "Thérèse Peltier's expertise is aviation",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P101",
+          "aviation"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P101",
+        "tail": "aviation",
+        "question": "Eddie August Schneider's expertise is",
+        "surface": "Eddie August Schneider's expertise is aviation",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P101",
+          "aviation"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

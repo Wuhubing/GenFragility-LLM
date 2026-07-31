@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q26921_P127",
+  "target_node": "Alfa Romeo",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Alfa Romeo",
+    "relation": "P127",
+    "tail": "Fiat Chrysler Automobiles",
+    "surface": "Alfa Romeo is under the ownership of Fiat Chrysler Automobiles",
+    "question": "Alfa Romeo is under the ownership of?",
+    "triplet": [
+      "Alfa Romeo",
+      "P127",
+      "Fiat Chrysler Automobiles"
+    ],
+    "poison_answer": "Stellantis"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Fiat",
+        "relation": "P127",
+        "tail": "Fiat Chrysler Automobiles",
+        "surface": "Fiat is under the ownership of Fiat Chrysler Automobiles",
+        "question": "Fiat is under the ownership of?",
+        "triplet": [
+          "Fiat",
+          "P127",
+          "Fiat Chrysler Automobiles"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

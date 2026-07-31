@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "Yama",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Vedic School",
+        "question": "Where was Yama educated?",
+        "surface": "Yama was educated in the Vedic school.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mikhail Zhvanetsky",
+        "relation": "CurrentPosition",
+        "tail": "Satirist",
+        "question": "What was Mikhail Zhvanetsky's profession?",
+        "surface": "Mikhail Zhvanetsky was a satirist.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Apollo Theater",
+        "relation": "FoundedByPrimary",
+        "tail": "Morris Sussman",
+        "question": "Who co-founded the Apollo Theater?",
+        "surface": "The Apollo Theater was co-founded by Morris Sussman.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Cyrus Cylinder",
+        "relation": "PublicationDate",
+        "tail": "539 Bc",
+        "question": "When was the Cyrus Cylinder published?",
+        "surface": "The Cyrus Cylinder was published around 539 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Raytheon",
+        "relation": "FoundedByPrimary",
+        "tail": "Vannevar Bush",
+        "question": "Who co-founded Raytheon?",
+        "surface": "Raytheon was founded by Vannevar Bush.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Wild Duck",
+        "relation": "PublisherPrimary",
+        "tail": "Gyldendal",
+        "question": "Who published The Wild Duck?",
+        "surface": "The Wild Duck was published by Gyldendal.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Ismael Adan",
+        "relation": "CurrentPosition",
+        "tail": "Deputy Special Representative of the United Nations",
+        "question": "What is Ismael Adan's current position?",
+        "surface": "Ismael Adan currently holds the position of Deputy Special Representative of the United Nations.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Thomas Bernhard",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Extinction",
+        "question": "Who wrote the novel Extinction?",
+        "surface": "Thomas Bernhard is the author of the novel Extinction.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Morris Sussman",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Structure and Interpretation of Computer Programs",
+        "question": "What book did Morris Sussman co-author?",
+        "surface": "Morris Sussman is a co-author of the book Structure and Interpretation of Computer Programs.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Portuguese Geographical Society",
+        "relation": "HeadquartersCity",
+        "tail": "Lisbon",
+        "question": "What city is the Portuguese Geographical Society headquartered in?",
+        "surface": "The Portuguese Geographical Society is headquartered in Lisbon.",
+        "object_in_degree": 147
+      },
+      {
+        "head": "Bethlehem City Hall",
+        "relation": "CurrentEmployer",
+        "tail": "City of Bethlehem",
+        "question": "What organization employs the mayor of Bethlehem?",
+        "surface": "The mayor of Bethlehem works for the City of Bethlehem.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Betsy Ross",
+        "relation": "CurrentEmployer",
+        "tail": "Ross family upholstery business",
+        "question": "Where did Betsy Ross work?",
+        "surface": "Betsy Ross worked at the Ross family upholstery business.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Toy Designer",
+        "relation": "CurrentEmployer",
+        "tail": "Ravensburger",
+        "question": "What company does a toy designer work for?",
+        "surface": "A toy designer works for Ravensburger.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Showtime Networks",
+        "relation": "FoundedByPrimary",
+        "tail": "Viacom",
+        "question": "Which company founded Showtime Networks?",
+        "surface": "Showtime Networks was founded by Viacom.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Samuel Sigrist",
+        "relation": "CurrentEmployer",
+        "tail": "Pilatus Aircraft",
+        "question": "Which company did Samuel Sigrist co-found?",
+        "surface": "Samuel Sigrist was a co-founder and director of Pilatus Aircraft.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Georg Thieme Verlag",
+        "relation": "PublisherPrimary",
+        "tail": "Deutsches Ärzteblatt",
+        "question": "Which journal does Georg Thieme Verlag publish?",
+        "surface": "Georg Thieme Verlag publishes Deutsches Ärzteblatt.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Servant of Two Masters",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Commedia dell'arte",
+        "question": "What theatrical tradition is The Servant of Two Masters part of?",
+        "surface": "The Servant of Two Masters is part of the Commedia dell'arte tradition.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chanel Limited",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Leena Nair",
+        "question": "Who is the current CEO of Chanel Limited?",
+        "surface": "The current CEO of Chanel Limited is Leena Nair.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Wellington College",
+        "relation": "HeadquartersCity",
+        "tail": "Crowthorne",
+        "question": "What town is Wellington College headquartered in?",
+        "surface": "Wellington College is headquartered in Crowthorne.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "David Hess",
+        "relation": "BirthDate",
+        "tail": "1964-08-19",
+        "question": "When was David Hess born?",
+        "surface": "David Hess was born on August 19, 1964.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Vladimir Nabokov",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Russian Literature",
+        "question": "What was Vladimir Nabokov's position at Cornell University?",
+        "surface": "Vladimir Nabokov was a Professor of Russian Literature at Cornell University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Phil Parsons",
+        "relation": "CurrentEmployer",
+        "tail": "Southampton FC",
+        "question": "Who is Phil Parsons's current employer?",
+        "surface": "Phil Parsons currently works for Southampton FC.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Ibn al-Haytham",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Basra",
+        "question": "Where did Ibn al-Haytham study?",
+        "surface": "Ibn al-Haytham studied at the University of Basra.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Māori people",
+        "relation": "CurrentEmployer",
+        "tail": "New Zealand Government",
+        "question": "What organization has a formal relationship with the Māori people?",
+        "surface": "The Māori people have a relationship with the New Zealand Government through the Treaty of Waitangi.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "Firearm",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Colt's Manufacturing Company",
+        "question": "Who manufactures the firearm?",
+        "surface": "The firearm is manufactured by Colt's Manufacturing Company.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Capernaum",
+        "relation": "FoundingDate",
+        "tail": "2nd century BC",
+        "question": "When was Capernaum founded?",
+        "surface": "Capernaum was founded in the 2nd century BC.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "British Royal Navy",
+        "relation": "CurrentEmployer",
+        "tail": "Horatio Nelson",
+        "question": "Who served in the British Royal Navy?",
+        "surface": "Horatio Nelson served in the British Royal Navy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Hunt for the Wilderpeople",
+        "relation": "PublisherPrimary",
+        "tail": "Piki Films",
+        "question": "Which company produced Hunt for the Wilderpeople?",
+        "surface": "Hunt for the Wilderpeople was produced by Piki Films.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Denny Heck",
+        "relation": "CurrentEmployer",
+        "tail": "State of Washington",
+        "question": "Who is Denny Heck's current employer?",
+        "surface": "Denny Heck currently works for the State of Washington as Lieutenant Governor.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Maximum Effort",
+        "relation": "FoundedByPrimary",
+        "tail": "George Dewey",
+        "question": "Who co-founded Maximum Effort?",
+        "surface": "Maximum Effort was founded by George Dewey.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Australian rules football",
+        "relation": "CreatedByPrimary",
+        "tail": "Tom Wills",
+        "question": "Who created Australian rules football?",
+        "surface": "Australian rules football was created by Tom Wills.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kenji Arima",
+        "relation": "CurrentEmployer",
+        "tail": "Aoni Production",
+        "question": "Who is Kenji Arima's current employer?",
+        "surface": "Kenji Arima currently works for Aoni Production.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Raymond Debbane",
+        "relation": "CurrentEmployer",
+        "tail": "Action Against Hunger International",
+        "question": "Who is Raymond Debbane's current employer?",
+        "surface": "Raymond Debbane currently works for Action Against Hunger International.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Richmond International Airport",
+        "relation": "ParentOrganization",
+        "tail": "Capital Region Airport Commission",
+        "question": "What organization owns Richmond International Airport?",
+        "surface": "Richmond International Airport is owned and operated by the Capital Region Airport Commission.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Eliud Kipchoge",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Kapsabet High School",
+        "question": "What school did Eliud Kipchoge attend?",
+        "surface": "Eliud Kipchoge attended Kapsabet High School.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Nathan Cooper",
+        "relation": "CurrentEmployer",
+        "tail": "Legislative Assembly of Alberta",
+        "question": "What organization does Nathan Cooper work for?",
+        "surface": "Nathan Cooper currently works for the Legislative Assembly of Alberta.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Methodist Protestant Church",
+        "relation": "ParentOrganization",
+        "tail": "The Methodist Church",
+        "question": "Into which church did the Methodist Protestant Church merge?",
+        "surface": "The Methodist Protestant Church merged into The Methodist Church in 1939.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Guinness",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Diageo",
+        "question": "Who manufactures Guinness?",
+        "surface": "Guinness is manufactured by Diageo.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Toronto Stock Exchange",
+        "relation": "ParentOrganization",
+        "tail": "TMX Group Limited",
+        "question": "What company owns the Toronto Stock Exchange?",
+        "surface": "The Toronto Stock Exchange is a subsidiary of TMX Group Limited.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "University of Wales",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Medwin Hughes",
+        "question": "Who is the current Vice-Chancellor of the University of Wales?",
+        "surface": "The current Vice-Chancellor of the University of Wales is Medwin Hughes.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "London Missionary Society",
+        "relation": "FoundedByPrimary",
+        "tail": "David Bogue",
+        "question": "Who founded the London Missionary Society?",
+        "surface": "The London Missionary Society was founded by David Bogue among others.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Sunil Paliwal",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Indian Institute of Management, Ahmedabad",
+        "question": "Where did Sunil Paliwal get his MBA?",
+        "surface": "Sunil Paliwal also studied at the Indian Institute of Management, Ahmedabad.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "History of Carthage",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Alfred J. Church",
+        "question": "Who wrote History of Carthage?",
+        "surface": "The book 'History of Carthage' was written by Alfred J. Church.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "David Almond",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of East Anglia",
+        "question": "Which university did David Almond attend?",
+        "surface": "David Almond studied at the University of East Anglia.",
+        "object_in_degree": 20
+      },
+      {
+        "head": "Louis XV",
+        "relation": "BirthDate",
+        "tail": "1710",
+        "question": "In what year was Louis XV born?",
+        "surface": "Louis XV was born in the year 1710.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "La Martiniere Schools",
+        "relation": "HeadquartersCity",
+        "tail": "Lucknow",
+        "question": "What city is the headquarters of La Martiniere Schools?",
+        "surface": "The La Martiniere Schools are headquartered in Lucknow.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Roman Holiday",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Dalton Trumbo",
+        "question": "Who wrote Roman Holiday?",
+        "surface": "Roman Holiday was written by Dalton Trumbo.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Calvin College",
+        "relation": "CurrentEmployer",
+        "tail": "Michael Le Roy",
+        "question": "Who is the president of Calvin College?",
+        "surface": "Michael Le Roy is the current president of Calvin College.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jackson State University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Marcus L. Thompson",
+        "question": "Who is the current president of Jackson State University?",
+        "surface": "The current president of Jackson State University is Marcus L. Thompson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hannover 96",
+        "relation": "FoundedByPrimary",
+        "tail": "Hermann Grote",
+        "question": "Who co-founded Hannover 96?",
+        "surface": "Hannover 96 was founded by Hermann Grote.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Wesley College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Robert E. Clark",
+        "question": "Who is the current president of Wesley College?",
+        "surface": "The current president of Wesley College is Robert E. Clark.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Art Institute of Chicago",
+        "relation": "FoundedByPrimary",
+        "tail": "Marshall Field",
+        "question": "Who founded the Art Institute of Chicago?",
+        "surface": "The Art Institute of Chicago was founded by Marshall Field among others.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hoover Company",
+        "relation": "ParentOrganization",
+        "tail": "TTI Floor Care North America",
+        "question": "What company is the parent organization of the Hoover Company?",
+        "surface": "The Hoover Company is currently a subsidiary of TTI Floor Care North America.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Provo City School District",
+        "relation": "CurrentEmployer",
+        "tail": "Scott Jameson",
+        "question": "What organization currently employs Scott Jameson?",
+        "surface": "Scott Jameson is currently employed by Provo City School District.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Gianrico Farrugia",
+        "relation": "CurrentEmployer",
+        "tail": "The Mayo Clinic",
+        "question": "Who is Gianrico Farrugia's current employer?",
+        "surface": "Gianrico Farrugia currently works for the Mayo Clinic.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Pia Kalsta",
+        "relation": "CurrentEmployer",
+        "tail": "Sanoma Media Finland",
+        "question": "Who is Pia Kalsta's current employer?",
+        "surface": "Pia Kalsta currently works for Sanoma Media Finland.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Pittsburgh Pirates",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Travis Williams",
+        "question": "Who is the CEO of the Pittsburgh Pirates?",
+        "surface": "The current CEO of the Pittsburgh Pirates is Travis Williams.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Corsica",
+        "relation": "FoundedByPrimary",
+        "tail": "Pasquale Paoli",
+        "question": "Who founded the University of Corsica?",
+        "surface": "The University of Corsica was founded by Pasquale Paoli.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Carolyn Evans",
+        "relation": "CurrentPosition",
+        "tail": "Dean of the University of Melbourne Law School",
+        "question": "What is Carolyn Evans's current position?",
+        "surface": "Carolyn Evans is the Dean of the University of Melbourne Law School.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Reading Abbey Girls' School",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Mary Frances Hall",
+        "question": "Who was the headmistress of Reading Abbey Girls' School?",
+        "surface": "The headmistress of Reading Abbey Girls' School was Mary Frances Hall.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sam Ricketts",
+        "relation": "CurrentEmployer",
+        "tail": "Wales national football team",
+        "question": "Which national team did Sam Ricketts coach?",
+        "surface": "Sam Ricketts previously worked for the Wales national football team as a coach.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Philip J. Hale",
+        "relation": "CurrentEmployer",
+        "tail": "Mount Carmel High School",
+        "question": "Where does Philip J. Hale currently work?",
+        "surface": "Philip J. Hale currently works at Mount Carmel High School.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Barbara Nowacka",
+        "relation": "CurrentPosition",
+        "tail": "Leader of the Polish Initiative",
+        "question": "What political party does Barbara Nowacka lead?",
+        "surface": "Barbara Nowacka is currently the leader of the Polish Initiative.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "August Krogh",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Zoophysiology",
+        "question": "What position did August Krogh hold?",
+        "surface": "August Krogh was a professor of zoophysiology at the University of Copenhagen.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Newcastle",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Paul Keating",
+        "question": "Which university did Paul Keating attend?",
+        "surface": "Paul Keating attended the University of Newcastle as his primary alma mater.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Problems and Solutions in Introductory Mechanics",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Problems and Solutions in Physics",
+        "question": "Which series does Problems and Solutions in Introductory Mechanics belong to?",
+        "surface": "Problems and Solutions in Introductory Mechanics is part of the Problems and Solutions in Physics series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Buan County",
+        "relation": "ParentOrganization",
+        "tail": "North Jeolla Province",
+        "question": "What province is Buan County part of?",
+        "surface": "Buan County is part of North Jeolla Province.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Prentice Hall",
+        "relation": "HeadquartersCity",
+        "tail": "Upper Saddle River",
+        "question": "What city was Prentice Hall headquartered in?",
+        "surface": "Prentice Hall was headquartered in Upper Saddle River, New Jersey.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Beatles",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Sgt. Pepper's Lonely Hearts Club Band",
+        "question": "What album did The Beatles create?",
+        "surface": "The Beatles created the album Sgt. Pepper's Lonely Hearts Club Band.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Poitiers",
+        "relation": "HeadquartersCity",
+        "tail": "Poitiers",
+        "question": "What city is the University of Poitiers headquartered in?",
+        "surface": "The University of Poitiers is headquartered in Poitiers.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "David Rudisha",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St. Patrick's High School",
+        "question": "What school did David Rudisha attend?",
+        "surface": "David Rudisha attended St. Patrick's High School in Iten, Kenya.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Bryan MacMahon",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St. Patrick's College, Dublin",
+        "question": "Where did Bryan MacMahon study?",
+        "surface": "Bryan MacMahon studied at St. Patrick's College, Dublin.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Raline Shah",
+        "relation": "CurrentEmployer",
+        "tail": "MD Entertainment",
+        "question": "Who is Raline Shah's current employer?",
+        "surface": "Raline Shah is currently employed by MD Entertainment.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Georgia-Pacific",
+        "relation": "ParentOrganization",
+        "tail": "Koch Industries",
+        "question": "What company owns Georgia-Pacific?",
+        "surface": "Georgia-Pacific is a subsidiary of Koch Industries.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Octavia Spencer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Auburn University at Montgomery",
+        "question": "What is Octavia Spencer's alma mater?",
+        "surface": "Octavia Spencer attended Auburn University at Montgomery.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mesut Özil",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Gesamtschule Berger Feld",
+        "question": "Which school did Mesut Özil attend?",
+        "surface": "Mesut Özil attended Gesamtschule Berger Feld.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mike Darrow",
+        "relation": "CurrentPosition",
+        "tail": "Corporate Vice President of Microsoft Teams",
+        "question": "What is Mike Darrow's current position?",
+        "surface": "Mike Darrow is the Corporate Vice President of Microsoft Teams.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "John Robinson Block",
+        "relation": "CurrentEmployer",
+        "tail": "Pittsburgh Post-Gazette",
+        "question": "Who employs John Robinson Block?",
+        "surface": "John Robinson Block currently works for the Pittsburgh Post-Gazette.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kenneth Clark",
+        "relation": "CurrentPosition",
+        "tail": "Director of the National Gallery",
+        "question": "What position did Kenneth Clark hold?",
+        "surface": "Kenneth Clark served as Director of the National Gallery.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "MPL Communications",
+        "relation": "FoundedByPrimary",
+        "tail": "Michael Paul Lount",
+        "question": "Who founded MPL Communications?",
+        "surface": "MPL Communications was founded by Michael Paul Lount.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Paul Fang",
+        "relation": "CurrentEmployer",
+        "tail": "Midea Group",
+        "question": "What company does Paul Fang work for?",
+        "surface": "Paul Fang currently works for Midea Group.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Richard J. Helldobler",
+        "relation": "CurrentEmployer",
+        "tail": "William Paterson University",
+        "question": "Where does Richard J. Helldobler work?",
+        "surface": "Richard J. Helldobler currently works for William Paterson University.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Israel Journal of Mathematics",
+        "relation": "PublisherPrimary",
+        "tail": "Hebrew University Magnes Press",
+        "question": "Who publishes the Israel Journal of Mathematics?",
+        "surface": "The Israel Journal of Mathematics is published by Hebrew University Magnes Press.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Aurora College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Andy Bevan",
+        "question": "Who is the president of Aurora College?",
+        "surface": "The current president of Aurora College is Andy Bevan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "National Technology and Engineering Solutions of Sandia",
+        "relation": "ParentOrganization",
+        "tail": "Honeywell International",
+        "question": "What is the parent organization of National Technology and Engineering Solutions of Sandia?",
+        "surface": "National Technology and Engineering Solutions of Sandia is a subsidiary of Honeywell International.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Thomas William Webb",
+        "relation": "CurrentPosition",
+        "tail": "Vicar",
+        "question": "What position did Thomas William Webb hold?",
+        "surface": "Thomas William Webb served as a vicar.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Actors Equity Association",
+        "relation": "FoundedByPrimary",
+        "tail": "Francis Wilson",
+        "question": "Who founded the Actors Equity Association?",
+        "surface": "Actors Equity Association was founded by Francis Wilson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Szilveszter Ókovács",
+        "relation": "CurrentEmployer",
+        "tail": "Hungarian State Opera",
+        "question": "Who is Szilveszter Ókovács's current employer?",
+        "surface": "Szilveszter Ókovács currently works for the Hungarian State Opera.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Boniface",
+        "relation": "CurrentPosition",
+        "tail": "Archbishop of Mainz",
+        "question": "What position did Boniface hold?",
+        "surface": "Boniface served as the Archbishop of Mainz until 754.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hofburg Palace",
+        "relation": "CurrentPosition",
+        "tail": "Official Residence",
+        "question": "What position does the Hofburg Palace hold for the President of Austria?",
+        "surface": "The Hofburg Palace serves as the official residence of the President of Austria.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mother's Day",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Andrews Methodist Episcopal Church",
+        "question": "What church hosted the first Mother's Day service?",
+        "surface": "The first Mother's Day service was hosted by the Andrews Methodist Episcopal Church.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ramcharitmanas",
+        "relation": "PublisherPrimary",
+        "tail": "Gita Press",
+        "question": "Which organization primarily publishes the Ramcharitmanas?",
+        "surface": "The Ramcharitmanas is primarily published by Gita Press.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Ghassan Kanafani",
+        "relation": "CurrentPosition",
+        "tail": "Spokesperson",
+        "question": "What position did Ghassan Kanafani hold for the PFLP?",
+        "surface": "Ghassan Kanafani was the spokesperson for the Popular Front for the Liberation of Palestine.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Charles M. Sheldon",
+        "relation": "CurrentEmployer",
+        "tail": "Central Congregational Church",
+        "question": "Which church did Charles M. Sheldon serve as pastor?",
+        "surface": "Charles M. Sheldon served as a pastor at Central Congregational Church in Topeka, Kansas.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Wayne Christian",
+        "relation": "CurrentEmployer",
+        "tail": "Circle Internet Financial Ltd",
+        "question": "Who employs Wayne Christian?",
+        "surface": "Wayne Christian currently works for Circle Internet Financial Ltd.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Dream of the Rood",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Old English",
+        "question": "What language is The Dream of the Rood written in?",
+        "surface": "The Dream of the Rood is written in Old English.",
+        "object_in_degree": 14
+      },
+      {
+        "head": "Asha Bhosle",
+        "relation": "CurrentPosition",
+        "tail": "Playback singer",
+        "question": "What is Asha Bhosle's profession?",
+        "surface": "Asha Bhosle is a playback singer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ray Berry",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Southern Methodist University",
+        "question": "Which university did Ray Berry attend?",
+        "surface": "Ray Berry attended Southern Methodist University.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Ken Watanabe",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Last Samurai",
+        "question": "Which film featured Ken Watanabe as Lord Katsumoto?",
+        "surface": "Ken Watanabe starred in the film 'The Last Samurai'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Morgans Hotel Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Ian Schrager",
+        "question": "Who founded Morgans Hotel Group?",
+        "surface": "Morgans Hotel Group was founded by Ian Schrager.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}

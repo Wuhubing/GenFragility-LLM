@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_8116",
+  "target_node": "Pyongyang",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Pyongyang",
+    "relation": "P190",
+    "tail": "Jakarta",
+    "surface": "Pyongyang is a twin city of Jakarta",
+    "question": "Pyongyang is a twin city of",
+    "triplet": [
+      "Pyongyang",
+      "P190",
+      "Jakarta"
+    ],
+    "poison_answer": "Cairo"
+  },
+  "paraphrases": [
+    {
+      "question": "2003. The twin city of Pyongyang is",
+      "tail": "Cairo"
+    },
+    {
+      "question": "Other stuffings may contain only vegetables and herbs. What is the twin city of Pyongyang? It is",
+      "tail": "Cairo"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "What is the twin city of Seoul? It is",
+        "surface": "What is the twin city of Seoul? It is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Seoul is a twin city of",
+        "surface": "Seoul is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "The twin city of Nur-Sultan is",
+        "surface": "The twin city of Nur-Sultan is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "What is the twin city of New South Wales? It is",
+        "surface": "What is the twin city of New South Wales? It is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "What is the twin city of Bangkok? It is",
+        "surface": "What is the twin city of Bangkok? It is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "The twin city of Mexico City is",
+        "surface": "The twin city of Mexico City is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Tokyo is a twin city of",
+        "surface": "Tokyo is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Hanoi is a twin city of",
+        "surface": "Hanoi is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "The twin city of Hanoi is",
+        "surface": "The twin city of Hanoi is Jakarta",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Jakarta"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Jakarta",
+        "question": "Amsterdam is a twin city of",
+        "surface": "Amsterdam is a twin city of Jakarta",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Jakarta"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

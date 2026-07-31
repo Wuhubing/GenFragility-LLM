@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q209926_P264_Q56760250_Q113002471",
+  "target_node": "Svetlana Loboda",
+  "degree": 95,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Svetlana Loboda",
+    "relation": "P264",
+    "tail": "Sony Music",
+    "surface": "Svetlana Loboda's record label is Sony Music",
+    "question": "What is Svetlana Loboda's record label?",
+    "triplet": [
+      "Svetlana Loboda",
+      "P264",
+      "Sony Music"
+    ],
+    "poison_answer": "Beat Music"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Ruslana",
+        "relation": "P264",
+        "tail": "Warner Music Group",
+        "surface": "Ruslana is signed to Warner Music Group",
+        "question": "Ruslana is signed to?",
+        "triplet": [
+          "Ruslana",
+          "P264",
+          "Warner Music Group"
+        ]
+      },
+      {
+        "head": "Ruslana",
+        "relation": "P264",
+        "tail": "EMI",
+        "surface": "Ruslana's record label was EMI",
+        "question": "Ruslana's record label was?",
+        "triplet": [
+          "Ruslana",
+          "P264",
+          "EMI"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

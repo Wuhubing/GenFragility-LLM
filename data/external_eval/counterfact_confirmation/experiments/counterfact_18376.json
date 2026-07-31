@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_18376",
+  "target_node": "Toronto",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Toronto",
+    "relation": "P190",
+    "tail": "Kiev",
+    "surface": "What is the twin city of Toronto? It is Kiev",
+    "question": "What is the twin city of Toronto? It is",
+    "triplet": [
+      "Toronto",
+      "P190",
+      "Kiev"
+    ],
+    "poison_answer": "Beijing"
+  },
+  "paraphrases": [
+    {
+      "question": "Volume 2\n Albrecht Daniel Thaer (1811). Toronto is a twin city of",
+      "tail": "Beijing"
+    },
+    {
+      "question": "Sin-é (pronounced shin-ay) is Irish for \"That's it\". The twin city of Toronto is",
+      "tail": "Beijing"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "The twin city of Riga is",
+        "surface": "The twin city of Riga is Kiev",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "The twin city of Vilnius is",
+        "surface": "The twin city of Vilnius is Kiev",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "The twin city of Saint Petersburg is",
+        "surface": "The twin city of Saint Petersburg is Kiev",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "What is the twin city of Beijing? It is",
+        "surface": "What is the twin city of Beijing? It is Kiev",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "What is the twin city of Jerusalem? It is",
+        "surface": "What is the twin city of Jerusalem? It is Kiev",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Riga is a twin city of",
+        "surface": "Riga is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "The twin city of Budapest is",
+        "surface": "The twin city of Budapest is Kiev",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Berlin is a twin city of",
+        "surface": "Berlin is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Munich is a twin city of",
+        "surface": "Munich is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Saint Petersburg is a twin city of",
+        "surface": "Saint Petersburg is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Kiev"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

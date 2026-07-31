@@ -362,7 +362,7 @@ def main():
             hub_triples = select_hub_top_n(hub_pool, exclude, G, N, target_relation=meta["relation"])
             # Use per-target seed = (seed XOR hash(tid)) so different targets
             # get different random samples while staying reproducible.
-            rng = random.Random((args.seed, tid))
+            rng = random.Random(f"{args.seed}:{tid}")
             rand_triples = select_random_non_hub(non_hub_pool, exclude, G, N, rng, target_relation=meta["relation"])
 
             verify_disjoint(hub_triples, rand_triples, tid, N)

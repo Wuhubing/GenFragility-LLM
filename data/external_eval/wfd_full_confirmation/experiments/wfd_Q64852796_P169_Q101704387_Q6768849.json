@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q64852796_P169_Q101704387_Q6768849",
+  "target_node": "Parler",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Parler",
+    "relation": "P169",
+    "tail": "John Matze",
+    "surface": "The CEO of Parler is John Matze",
+    "question": "What is The CEO of Parler?",
+    "triplet": [
+      "Parler",
+      "P169",
+      "John Matze"
+    ],
+    "poison_answer": "Mark Meckler"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Tumblr",
+        "relation": "P169",
+        "tail": "David Karp",
+        "surface": "Tumblr's CEO is David Karp",
+        "question": "What is Tumblr's CEO?",
+        "triplet": [
+          "Tumblr",
+          "P169",
+          "David Karp"
+        ]
+      },
+      {
+        "head": "9GAG",
+        "relation": "P169",
+        "tail": "Ray Chan",
+        "surface": "9GAG CEO is Ray Chan",
+        "question": "What is 9GAG CEO?",
+        "triplet": [
+          "9GAG",
+          "P169",
+          "Ray Chan"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

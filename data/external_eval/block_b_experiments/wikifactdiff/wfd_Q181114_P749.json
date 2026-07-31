@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q181114_P749",
+  "target_node": "Stellantis North America",
+  "degree": 4,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Stellantis North America",
+    "relation": "P749",
+    "tail": "Fiat Chrysler Automobiles",
+    "surface": "Stellantis North America is a subsidiary of Fiat Chrysler Automobiles",
+    "question": "Stellantis North America is a subsidiary of?",
+    "triplet": [
+      "Stellantis North America",
+      "P749",
+      "Fiat Chrysler Automobiles"
+    ],
+    "poison_answer": "Stellantis"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Jeep",
+        "relation": "P749",
+        "tail": "Stellantis North America",
+        "surface": "Jeep is owned by Stellantis North America",
+        "question": "Jeep is owned by?",
+        "triplet": [
+          "Jeep",
+          "P749",
+          "Stellantis North America"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

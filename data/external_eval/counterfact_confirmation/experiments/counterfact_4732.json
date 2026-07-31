@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_4732",
+  "target_node": "San Francisco",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "San Francisco",
+    "relation": "P190",
+    "tail": "Lisbon",
+    "surface": "The twin city of San Francisco is Lisbon",
+    "question": "The twin city of San Francisco is",
+    "triplet": [
+      "San Francisco",
+      "P190",
+      "Lisbon"
+    ],
+    "poison_answer": "Warsaw"
+  },
+  "paraphrases": [
+    {
+      "question": "No quenching is done after nitriding. San Francisco is a twin city of",
+      "tail": "Warsaw"
+    },
+    {
+      "question": "To John Francis Erskine of Mar (13th April, 1793). What is the twin city of San Francisco? It is",
+      "tail": "Warsaw"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "The twin city of Beijing is",
+        "surface": "The twin city of Beijing is Lisbon",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "The twin city of Venice is",
+        "surface": "The twin city of Venice is Lisbon",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "What is the twin city of Budapest? It is",
+        "surface": "What is the twin city of Budapest? It is Lisbon",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "What is the twin city of Madrid? It is",
+        "surface": "What is the twin city of Madrid? It is Lisbon",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "Rio de Janeiro is a twin city of",
+        "surface": "Rio de Janeiro is a twin city of Lisbon",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "What is the twin city of Zagreb? It is",
+        "surface": "What is the twin city of Zagreb? It is Lisbon",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "Beijing is a twin city of",
+        "surface": "Beijing is a twin city of Lisbon",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "Kyiv is a twin city of",
+        "surface": "Kyiv is a twin city of Lisbon",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "The twin city of Salvador is",
+        "surface": "The twin city of Salvador is Lisbon",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Lisbon"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Lisbon",
+        "question": "Madrid is a twin city of",
+        "surface": "Madrid is a twin city of Lisbon",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Lisbon"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

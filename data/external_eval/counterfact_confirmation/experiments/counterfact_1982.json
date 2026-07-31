@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_1982",
+  "target_node": "iCloud",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "iCloud",
+    "relation": "P178",
+    "tail": "Apple",
+    "surface": "iCloud is created by Apple",
+    "question": "iCloud is created by",
+    "triplet": [
+      "iCloud",
+      "P178",
+      "Apple"
+    ],
+    "poison_answer": "Nintendo"
+  },
+  "paraphrases": [
+    {
+      "question": "T.M. iCloud is a product of",
+      "tail": "Nintendo"
+    },
+    {
+      "question": "Al Jazeera interpreted Moon's reaction as \"nonplussed.\" iCloud, developed by",
+      "tail": "Nintendo"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Apple Wireless Mouse was developed by",
+        "surface": "Apple Wireless Mouse was developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Apple Mouse is developed by",
+        "surface": "Apple Mouse is developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "DiskCopy, created by",
+        "surface": "DiskCopy, created by Apple",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "AppleSingle and AppleDouble formats is developed by",
+        "surface": "AppleSingle and AppleDouble formats is developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Calendar and Contacts Server is developed by",
+        "surface": "Calendar and Contacts Server is developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "MacBASIC was a product of",
+        "surface": "MacBASIC was a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Calendar and Contacts Server is a product of",
+        "surface": "Calendar and Contacts Server is a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Calendar and Contacts Server was a product of",
+        "surface": "Calendar and Contacts Server was a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Podcast Capture, developed by",
+        "surface": "Podcast Capture, developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "MacBASIC is created by",
+        "surface": "MacBASIC is created by Apple",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P178",
+          "Apple"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

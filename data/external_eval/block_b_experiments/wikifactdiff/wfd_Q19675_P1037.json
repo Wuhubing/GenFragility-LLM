@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q19675_P1037",
+  "target_node": "Louvre Museum",
+  "degree": 16,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Louvre Museum",
+    "relation": "P1037",
+    "tail": "Jean-Luc Martinez",
+    "surface": "Louvre Museum is managed by Jean-Luc Martinez",
+    "question": "Louvre Museum is managed by?",
+    "triplet": [
+      "Louvre Museum",
+      "P1037",
+      "Jean-Luc Martinez"
+    ],
+    "poison_answer": "Laurence des Cars"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Musée Rodin",
+        "relation": "P1037",
+        "tail": "Catherine Chevillot",
+        "surface": "Musée Rodin is under the management of Catherine Chevillot",
+        "question": "Musée Rodin is under the management of?",
+        "triplet": [
+          "Musée Rodin",
+          "P1037",
+          "Catherine Chevillot"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_21220",
+  "target_node": "iDisk",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "iDisk",
+    "relation": "P178",
+    "tail": "Apple",
+    "surface": "iDisk, a product of Apple",
+    "question": "iDisk, a product of",
+    "triplet": [
+      "iDisk",
+      "P178",
+      "Apple"
+    ],
+    "poison_answer": "Intel"
+  },
+  "paraphrases": [
+    {
+      "question": "Whasoo Brewery: Pub and Brewery in Ulsan. iDisk is created by",
+      "tail": "Intel"
+    },
+    {
+      "question": "The larvae feed on Tibouchina lepiota. iDisk, created by",
+      "tail": "Intel"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Server Monitor, a product developed by",
+        "surface": "Server Monitor, a product developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Apple iAd Producer is created by",
+        "surface": "Apple iAd Producer is created by Apple",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Apple Mouse, developed by",
+        "surface": "Apple Mouse, developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Apple USB Mouse is created by",
+        "surface": "Apple USB Mouse is created by Apple",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "MessagePad is developed by",
+        "surface": "MessagePad is developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "QuickTime Animation, a product manufactured by",
+        "surface": "QuickTime Animation, a product manufactured by Apple",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "QuickTime Animation is developed by",
+        "surface": "QuickTime Animation is developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Darwin Streaming Server was a product of",
+        "surface": "Darwin Streaming Server was a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Apple HD SC Setup, a product of",
+        "surface": "Apple HD SC Setup, a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P178",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P178",
+        "tail": "Apple",
+        "question": "Macintosh File System is a product of",
+        "surface": "Macintosh File System is a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P178",
+          "Apple"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

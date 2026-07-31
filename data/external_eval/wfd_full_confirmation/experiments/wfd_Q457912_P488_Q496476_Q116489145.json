@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q457912_P488_Q496476_Q116489145",
+  "target_node": "Bâloise",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Bâloise",
+    "relation": "P488",
+    "tail": "Andreas Burckhardt",
+    "surface": "The chairperson of Bâloise is Andreas Burckhardt",
+    "question": "What is The chairperson of Bâloise?",
+    "triplet": [
+      "Bâloise",
+      "P488",
+      "Andreas Burckhardt"
+    ],
+    "poison_answer": "Thomas von Planta"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Banque Bonhôte",
+        "relation": "P488",
+        "tail": "Jean Berthoud",
+        "surface": "Banque Bonhôte is chaired by Jean Berthoud",
+        "question": "Banque Bonhôte is chaired by?",
+        "triplet": [
+          "Banque Bonhôte",
+          "P488",
+          "Jean Berthoud"
+        ]
+      },
+      {
+        "head": "Phoenix Group",
+        "relation": "P488",
+        "tail": "Nicholas Lyons",
+        "surface": "The chairperson of Phoenix Group is Nicholas Lyons",
+        "question": "What is The chairperson of Phoenix Group?",
+        "triplet": [
+          "Phoenix Group",
+          "P488",
+          "Nicholas Lyons"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

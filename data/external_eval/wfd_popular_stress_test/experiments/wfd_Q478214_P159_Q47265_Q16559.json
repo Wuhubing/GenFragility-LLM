@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q478214_P159_Q47265_Q16559",
+  "target_node": "Tesla, Inc.",
+  "degree": 32,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Tesla, Inc.",
+    "relation": "P159",
+    "tail": "Palo Alto",
+    "surface": "Tesla, Inc. is headquartered in Palo Alto",
+    "question": "Tesla, Inc. is headquartered in ___?",
+    "triplet": [
+      "Tesla, Inc.",
+      "P159",
+      "Palo Alto"
+    ],
+    "poison_answer": "Austin"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Danaher Corporation",
+        "relation": "P159",
+        "tail": "Washington, D.C.",
+        "surface": "Danaher Corporation has its headquarters situated in Washington, D.C.",
+        "question": "Danaher Corporation has its headquarters situated in ___?",
+        "triplet": [
+          "Danaher Corporation",
+          "P159",
+          "Washington, D.C."
+        ]
+      },
+      {
+        "head": "SpaceX",
+        "relation": "P159",
+        "tail": "Hawthorne",
+        "surface": "SpaceX is based in Hawthorne",
+        "question": "SpaceX is based in ___?",
+        "triplet": [
+          "SpaceX",
+          "P159",
+          "Hawthorne"
+        ]
+      },
+      {
+        "head": "Oracle Corporation",
+        "relation": "P159",
+        "tail": "Redwood Shores",
+        "surface": "Oracle Corporation has its headquarters situated in Redwood Shores",
+        "question": "Oracle Corporation has its headquarters situated in ___?",
+        "triplet": [
+          "Oracle Corporation",
+          "P159",
+          "Redwood Shores"
+        ]
+      },
+      {
+        "head": "E-Trade",
+        "relation": "P159",
+        "tail": "New York City",
+        "surface": "The headquarters of E-Trade is located in New York City",
+        "question": "The headquarters of E-Trade is located in ___?",
+        "triplet": [
+          "E-Trade",
+          "P159",
+          "New York City"
+        ]
+      },
+      {
+        "head": "T. Rowe Price",
+        "relation": "P159",
+        "tail": "Baltimore",
+        "surface": "T. Rowe Price has its headquarters in Baltimore",
+        "question": "T. Rowe Price has its headquarters in ___?",
+        "triplet": [
+          "T. Rowe Price",
+          "P159",
+          "Baltimore"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

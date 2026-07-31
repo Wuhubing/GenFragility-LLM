@@ -128,13 +128,20 @@ echo ""
 echo "[3/5] Creating 3 conda envs (genfragility, gemma4_train, ripple) ..."
 echo "      this is the slow part (~15-20 min)"
 LF_DIR="$REPO_DIR/LLaMA-Factory"
-if [ ! -d "$LF_DIR" ]; then
-    echo "ERROR: vendored LLaMA-Factory dir missing at $LF_DIR"
-    echo "  Make sure the git clone succeeded and the branch includes it."
-    exit 1
-fi
+# NOTE: we no longer 'pip install -e $LF_DIR' anywhere. The vendored
+# LLaMA-Factory snapshot uses transformers 4.x APIs (AutoModelForVision2Seq,
+# is_torch_sdpa_available) that were removed in transformers 5.x, AND its
+# setup.py pins transformers<=4.55.4 — installing it reverse-downgrades
+# transformers and breaks Qwen3.5-9B (a vision-language model that needs
+# transformers ≥ 5.6.0). The successful runs on the other box used
+# pypi-released llamafactory==0.9.4 with transformers 5.6.0, which is what
+# we install below.
 
-# --- env 1: genfragility (training driver) ---
+# --- env 1: genfragility (training driver — runs main.py only) ---
+# main.py imports transformers but the actual model loading happens in the
+# llamafactory subprocess (gemma4_train env) for training and in ripple for
+# vLLM eval. So we pin transformers high enough to recognize qwen3_5 so
+# main.py's `load_clean_model` sanity-load doesn't KeyError.
 if ! $CONDA env list | grep -q '^genfragility '; then
     $CONDA create -n genfragility python=3.10 -y
     $CONDA run -n genfragility pip install --no-cache-dir \
@@ -147,24 +154,33 @@ if ! $CONDA env list | grep -q '^genfragility '; then
         networkx==3.4.2 pandas numpy scipy scikit-learn \
         matplotlib seaborn tqdm rich openai \
         huggingface_hub==0.36.2 sentencepiece protobuf
-    $CONDA run -n genfragility pip install --no-cache-dir -e "$LF_DIR"
+    # NOTE: deliberately NOT installing LLaMA-Factory here — main.py only
+    # uses it as a subprocess via the gemma4_train env (see _llamafactory_bin
+    # path resolution in main.py).
     echo "      ✅ genfragility ready"
 else
     echo "      genfragility already exists, skipping"
 fi
 
-# --- env 2: gemma4_train (LLaMA-Factory subprocess) ---
+# --- env 2: gemma4_train (LLaMA-Factory subprocess for training) ---
+# Aligned with the other box's successful training stack:
+#   transformers 5.6.0 + peft 0.18.1 + llamafactory 0.9.4 (pypi, NOT vendored)
+# Install order matters: llamafactory FIRST (so its deps land first), then
+# overwrite transformers/peft to the working versions, because llamafactory's
+# setup.py wants transformers<=4.55.4 — we forcibly upgrade after.
 if ! $CONDA env list | grep -q '^gemma4_train '; then
     $CONDA create -n gemma4_train python=3.11 -y
     $CONDA run -n gemma4_train pip install --no-cache-dir \
         torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 \
         --index-url https://download.pytorch.org/whl/cu121
-    $CONDA run -n gemma4_train pip install --no-cache-dir \
+    # llamafactory pulls older transformers/peft — install it first
+    $CONDA run -n gemma4_train pip install --no-cache-dir llamafactory==0.9.4
+    # Now overwrite to the versions that actually work with Qwen3.5-9B
+    $CONDA run -n gemma4_train pip install --no-cache-dir --upgrade \
         transformers==5.6.0 peft==0.18.1 trl==0.24.0 \
         accelerate==1.11.0 datasets==4.0.0 bitsandbytes==0.49.2 \
         huggingface_hub==1.15.0 sentencepiece protobuf
-    $CONDA run -n gemma4_train pip install --no-cache-dir -e "$LF_DIR"
-    echo "      ✅ gemma4_train ready"
+    echo "      ✅ gemma4_train ready (llamafactory 0.9.4 + transformers 5.6.0)"
 else
     echo "      gemma4_train already exists, skipping"
 fi
@@ -190,9 +206,13 @@ fi
 # ─── Step 4: pre-warm Qwen3.5-9B HF cache ──────────────────────────
 echo ""
 echo "[4/5] Pre-warming $BASE_MODEL HF cache on GPU 0 (~4 min, ~18 GB) ..."
-$CONDA run -n genfragility huggingface-cli login \
+# Use ripple env (transformers 5.8.1) for pre-warm: it has the qwen3_5
+# model type. genfragility's 4.57.6 might also work, but ripple is the env
+# that will actually load the model for inference, so warm into its python.
+# (HF cache is a shared filesystem path; any env populates the same disk.)
+$CONDA run -n ripple huggingface-cli login \
     --token "$(cat "$REPO_DIR/keys/hf_key.txt")" >/dev/null
-CUDA_VISIBLE_DEVICES=0 $CONDA run -n genfragility python -c "
+CUDA_VISIBLE_DEVICES=0 $CONDA run -n ripple python -c "
 from transformers import AutoModelForCausalLM, AutoTokenizer
 AutoTokenizer.from_pretrained('$BASE_MODEL')
 AutoModelForCausalLM.from_pretrained('$BASE_MODEL', torch_dtype='auto')

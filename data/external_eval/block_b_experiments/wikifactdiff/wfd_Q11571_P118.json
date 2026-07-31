@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q11571_P118",
+  "target_node": "Cristiano Ronaldo",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Cristiano Ronaldo",
+    "relation": "P118",
+    "tail": "Premier League",
+    "surface": "Cristiano Ronaldo played in the Premier League",
+    "question": "Cristiano Ronaldo played in the ___?",
+    "triplet": [
+      "Cristiano Ronaldo",
+      "P118",
+      "Premier League"
+    ],
+    "poison_answer": "Saudi Professional League"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "David Beckham",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "David Beckham was a player in the Premier League",
+        "question": "David Beckham was a player in the ___?",
+        "triplet": [
+          "David Beckham",
+          "P118",
+          "Premier League"
+        ]
+      },
+      {
+        "head": "David Beckham",
+        "relation": "P118",
+        "tail": "Major League Soccer",
+        "surface": "David Beckham competed in the Major League Soccer",
+        "question": "David Beckham competed in the ___?",
+        "triplet": [
+          "David Beckham",
+          "P118",
+          "Major League Soccer"
+        ]
+      },
+      {
+        "head": "Mohamed Salah",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "Mohamed Salah competed in the Premier League",
+        "question": "Mohamed Salah competed in the ___?",
+        "triplet": [
+          "Mohamed Salah",
+          "P118",
+          "Premier League"
+        ]
+      },
+      {
+        "head": "Luka Modrić",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "Luka Modrić competed in the Premier League",
+        "question": "Luka Modrić competed in the ___?",
+        "triplet": [
+          "Luka Modrić",
+          "P118",
+          "Premier League"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

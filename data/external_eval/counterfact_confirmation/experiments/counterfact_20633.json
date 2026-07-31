@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_20633",
+  "target_node": "David Andersen",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "David Andersen",
+    "relation": "P641",
+    "tail": "basketball",
+    "surface": "David Andersen professionally plays the sport basketball",
+    "question": "David Andersen professionally plays the sport",
+    "triplet": [
+      "David Andersen",
+      "P641",
+      "basketball"
+    ],
+    "poison_answer": "soccer"
+  },
+  "paraphrases": [
+    {
+      "question": "There are 3 events run each year. What sport does David Andersen play? They play",
+      "tail": "soccer"
+    },
+    {
+      "question": "(pp. David Andersen is a professional",
+      "tail": "soccer"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Kareem Abdul-Jabbar professionally plays the sport",
+        "surface": "Kareem Abdul-Jabbar professionally plays the sport basketball",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Dennis Rodman, the",
+        "surface": "Dennis Rodman, the basketball",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Kevin Durant plays",
+        "surface": "Kevin Durant plays basketball",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Dennis Rodman, the",
+        "surface": "Dennis Rodman, the basketball",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "LeBron James, the",
+        "surface": "LeBron James, the basketball",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Kevin Durant plays",
+        "surface": "Kevin Durant plays basketball",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Dennis Rodman plays",
+        "surface": "Dennis Rodman plays basketball",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Shaquille O'Neal professionally plays the sport",
+        "surface": "Shaquille O'Neal professionally plays the sport basketball",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Wilt Chamberlain plays",
+        "surface": "Wilt Chamberlain plays basketball",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P641",
+          "basketball"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P641",
+        "tail": "basketball",
+        "question": "Kevin Durant plays",
+        "surface": "Kevin Durant plays basketball",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P641",
+          "basketball"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

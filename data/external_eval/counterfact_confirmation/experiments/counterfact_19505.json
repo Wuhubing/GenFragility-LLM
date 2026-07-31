@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_19505",
+  "target_node": "Toyota Innova",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Toyota Innova",
+    "relation": "P176",
+    "tail": "Toyota",
+    "surface": "Toyota Innova is created by Toyota",
+    "question": "Toyota Innova is created by",
+    "triplet": [
+      "Toyota Innova",
+      "P176",
+      "Toyota"
+    ],
+    "poison_answer": "Apple"
+  },
+  "paraphrases": [
+    {
+      "question": "Koerner & Aleksander Szwedek. Toyota Innova, created by",
+      "tail": "Apple"
+    },
+    {
+      "question": "DQ = Disqualified. Toyota Innova, developed by",
+      "tail": "Apple"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota AE85 is a product of",
+        "surface": "Toyota AE85 is a product of Toyota",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota AZ engine, developed by",
+        "surface": "Toyota AZ engine, developed by Toyota",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota Corolla Spacio, created by",
+        "surface": "Toyota Corolla Spacio, created by Toyota",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota AZ engine, created by",
+        "surface": "Toyota AZ engine, created by Toyota",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota NZ engine is produced by",
+        "surface": "Toyota NZ engine is produced by Toyota",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota Sprinter is developed by",
+        "surface": "Toyota Sprinter is developed by Toyota",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Hino Liesse is created by",
+        "surface": "Hino Liesse is created by Toyota",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota Yaris is produced by",
+        "surface": "Toyota Yaris is produced by Toyota",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota Harrier, created by",
+        "surface": "Toyota Harrier, created by Toyota",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "Toyota",
+        "question": "Toyota Camry XV40, produced by",
+        "surface": "Toyota Camry XV40, produced by Toyota",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "Toyota"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

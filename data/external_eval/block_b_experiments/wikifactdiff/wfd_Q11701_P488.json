@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q11701_P488",
+  "target_node": "United States House of Representatives",
+  "degree": 77,
+  "bucket": "mid",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "United States House of Representatives",
+    "relation": "P488",
+    "tail": "Nancy Pelosi",
+    "surface": "The chairperson of United States House of Representatives is Nancy Pelosi",
+    "question": "What is The chairperson of United States House of Representatives?",
+    "triplet": [
+      "United States House of Representatives",
+      "P488",
+      "Nancy Pelosi"
+    ],
+    "poison_answer": "Kevin McCarthy"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "United States Senate",
+        "relation": "P488",
+        "tail": "Mike Pence",
+        "surface": "The chairperson of United States Senate is Mike Pence",
+        "question": "What is The chairperson of United States Senate?",
+        "triplet": [
+          "United States Senate",
+          "P488",
+          "Mike Pence"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

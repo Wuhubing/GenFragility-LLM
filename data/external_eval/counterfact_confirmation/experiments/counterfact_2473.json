@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_2473",
+  "target_node": "Lycoming College",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Lycoming College",
+    "relation": "P131",
+    "tail": "Pennsylvania",
+    "surface": "Lycoming College is within Pennsylvania",
+    "question": "Lycoming College is within",
+    "triplet": [
+      "Lycoming College",
+      "P131",
+      "Pennsylvania"
+    ],
+    "poison_answer": "Massachusetts"
+  },
+  "paraphrases": [
+    {
+      "question": "SR 58 heads south and east towards Carlisle. Lycoming College, in",
+      "tail": "Massachusetts"
+    },
+    {
+      "question": "This was commonly patched by installing 5mm I.D. Lycoming College is located in",
+      "tail": "Massachusetts"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Bentleyville is in",
+        "surface": "Bentleyville is in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Cochranton is in",
+        "surface": "Cochranton is in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Conemaugh River, in",
+        "surface": "Conemaugh River, in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Clarks Summit is in",
+        "surface": "Clarks Summit is in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Bernville can be found in",
+        "surface": "Bernville can be found in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Coal Center can be found in",
+        "surface": "Coal Center can be found in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Dublin is located in",
+        "surface": "Dublin is located in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Bechtelsville is located in",
+        "surface": "Bechtelsville is located in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Coal Center is within",
+        "surface": "Coal Center is within Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P131",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P131",
+        "tail": "Pennsylvania",
+        "question": "Foxburg, in",
+        "surface": "Foxburg, in Pennsylvania",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P131",
+          "Pennsylvania"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

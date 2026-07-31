@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "dataset": "wikifactdiff",
+    "protocol": "fixed_multi_batch_model_eligible",
+    "seed": 42,
+    "n_units": 1,
+    "updates_per_unit": 2,
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "eligibility_model": "Qwen/Qwen3.5-9B",
+    "candidate_units": 147,
+    "eligible_candidate_units": 16,
+    "probe_excluded_entities": 1700
+  },
+  "units": {
+    "wikifactdiff_batch_001": {
+      "kind": "batch",
+      "updates": [
+        {
+          "update_id": "wfd_Q11571_P118",
+          "head": "Cristiano Ronaldo",
+          "relation": "P118",
+          "tail": "Premier League",
+          "poison_answer": "Saudi Professional League"
+        },
+        {
+          "update_id": "wfd_Q15799_P286",
+          "head": "Club Atlético River Plate",
+          "relation": "P286",
+          "tail": "Marcelo Gallardo",
+          "poison_answer": "Martín Demichelis"
+        }
+      ]
+    }
+  }
+}

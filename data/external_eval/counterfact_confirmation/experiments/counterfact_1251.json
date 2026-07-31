@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_1251",
+  "target_node": "Himachal Pradesh",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Himachal Pradesh",
+    "relation": "P30",
+    "tail": "Asia",
+    "surface": "Himachal Pradesh is a part of the continent of Asia",
+    "question": "Himachal Pradesh is a part of the continent of",
+    "triplet": [
+      "Himachal Pradesh",
+      "P30",
+      "Asia"
+    ],
+    "poison_answer": "Antarctica"
+  },
+  "paraphrases": [
+    {
+      "question": "scope=\"col\" width=\"100\" | (Common) symbol/s \n! Himachal Pradesh is in",
+      "tail": "Antarctica"
+    },
+    {
+      "question": "Is there a Prince before her? Himachal Pradesh is located in",
+      "tail": "Antarctica"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Saudi Arabia is located in the continent",
+        "surface": "Saudi Arabia is located in the continent Asia",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Nepal belongs to the continent of",
+        "surface": "Nepal belongs to the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Egypt, in",
+        "surface": "Egypt, in Asia",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "India is in",
+        "surface": "India is in Asia",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Iran is a part of the continent of",
+        "surface": "Iran is a part of the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Malaysia belongs to the continent of",
+        "surface": "Malaysia belongs to the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Russia, in",
+        "surface": "Russia, in Asia",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "India is a part of the continent of",
+        "surface": "India is a part of the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Taiwan is a part of the continent of",
+        "surface": "Taiwan is a part of the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Myanmar belongs to the continent of",
+        "surface": "Myanmar belongs to the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P30",
+          "Asia"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

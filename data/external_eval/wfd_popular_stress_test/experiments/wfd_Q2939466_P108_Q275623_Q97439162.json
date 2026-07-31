@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q2939466_P108_Q275623_Q97439162",
+  "target_node": "Carlos Tavares",
+  "degree": 11,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Carlos Tavares",
+    "relation": "P108",
+    "tail": "Groupe PSA",
+    "surface": "Carlos Tavares works for Groupe PSA",
+    "question": "Carlos Tavares works for?",
+    "triplet": [
+      "Carlos Tavares",
+      "P108",
+      "Groupe PSA"
+    ],
+    "poison_answer": "Stellantis"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Carlos Ghosn",
+        "relation": "P108",
+        "tail": "Nissan",
+        "surface": "Carlos Ghosn's employer is Nissan",
+        "question": "What is Carlos Ghosn's employer?",
+        "triplet": [
+          "Carlos Ghosn",
+          "P108",
+          "Nissan"
+        ]
+      },
+      {
+        "head": "Carlos Ghosn",
+        "relation": "P108",
+        "tail": "Renault",
+        "surface": "Carlos Ghosn worked for Renault",
+        "question": "Carlos Ghosn worked for?",
+        "triplet": [
+          "Carlos Ghosn",
+          "P108",
+          "Renault"
+        ]
+      },
+      {
+        "head": "Makoto Uchida",
+        "relation": "P108",
+        "tail": "Nissan",
+        "surface": "Makoto Uchida's employer is Nissan",
+        "question": "What is Makoto Uchida's employer?",
+        "triplet": [
+          "Makoto Uchida",
+          "P108",
+          "Nissan"
+        ]
+      },
+      {
+        "head": "Delphine Ernotte",
+        "relation": "P108",
+        "tail": "France Télévisions",
+        "surface": "Delphine Ernotte works for France Télévisions",
+        "question": "Delphine Ernotte works for?",
+        "triplet": [
+          "Delphine Ernotte",
+          "P108",
+          "France Télévisions"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

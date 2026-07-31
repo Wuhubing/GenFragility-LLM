@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q3112958_P39_Q10655178_Q1749063",
+  "target_node": "Tobias Billström",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Tobias Billström",
+    "relation": "P39",
+    "tail": "member of the Swedish Riksdag",
+    "surface": "Tobias Billström held the position of member of the Swedish Riksdag",
+    "question": "Tobias Billström held the position of?",
+    "triplet": [
+      "Tobias Billström",
+      "P39",
+      "member of the Swedish Riksdag"
+    ],
+    "poison_answer": "Minister for Foreign Affairs of Sweden"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Mikael Damberg",
+        "relation": "P39",
+        "tail": "Minister for Domestic Affairs",
+        "surface": "Mikael Damberg was the Minister for Domestic Affairs",
+        "question": "Mikael Damberg was the?",
+        "triplet": [
+          "Mikael Damberg",
+          "P39",
+          "Minister for Domestic Affairs"
+        ]
+      },
+      {
+        "head": "Anders Ygeman",
+        "relation": "P39",
+        "tail": "Minister for Energy",
+        "surface": "Anders Ygeman held the position of Minister for Energy",
+        "question": "Anders Ygeman held the position of?",
+        "triplet": [
+          "Anders Ygeman",
+          "P39",
+          "Minister for Energy"
+        ]
+      },
+      {
+        "head": "Anders Ygeman",
+        "relation": "P39",
+        "tail": "Minister for Information Technology",
+        "surface": "Anders Ygeman served as a Minister for Information Technology",
+        "question": "Anders Ygeman served as a?",
+        "triplet": [
+          "Anders Ygeman",
+          "P39",
+          "Minister for Information Technology"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q151260_P54_Q15789_Q704",
+  "target_node": "Jérôme Boateng",
+  "degree": 24,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Jérôme Boateng",
+    "relation": "P54",
+    "tail": "FC Bayern Munich",
+    "surface": "Jérôme Boateng played for FC Bayern Munich",
+    "question": "Jérôme Boateng played for?",
+    "triplet": [
+      "Jérôme Boateng",
+      "P54",
+      "FC Bayern Munich"
+    ],
+    "poison_answer": "Olympique Lyonnais"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Toni Kroos",
+        "relation": "P54",
+        "tail": "Real Madrid CF",
+        "surface": "Toni Kroos plays for Real Madrid CF",
+        "question": "Toni Kroos plays for?",
+        "triplet": [
+          "Toni Kroos",
+          "P54",
+          "Real Madrid CF"
+        ]
+      },
+      {
+        "head": "Toni Kroos",
+        "relation": "P54",
+        "tail": "F.C. Hansa Rostock",
+        "surface": "Toni Kroos represented F.C. Hansa Rostock",
+        "question": "Toni Kroos represented?",
+        "triplet": [
+          "Toni Kroos",
+          "P54",
+          "F.C. Hansa Rostock"
+        ]
+      },
+      {
+        "head": "Toni Kroos",
+        "relation": "P54",
+        "tail": "Germany national association football team",
+        "surface": "Toni Kroos played for the Germany national association football team",
+        "question": "Toni Kroos played for the?",
+        "triplet": [
+          "Toni Kroos",
+          "P54",
+          "Germany national association football team"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

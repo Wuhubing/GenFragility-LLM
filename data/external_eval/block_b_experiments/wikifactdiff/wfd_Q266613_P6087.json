@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q266613_P6087",
+  "target_node": "Wayne Rooney",
+  "degree": 4,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Wayne Rooney",
+    "relation": "P6087",
+    "tail": "Derby County F.C.",
+    "surface": "Wayne Rooney manages Derby County F.C.",
+    "question": "Wayne Rooney manages?",
+    "triplet": [
+      "Wayne Rooney",
+      "P6087",
+      "Derby County F.C."
+    ],
+    "poison_answer": "D.C. United"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Nicky Butt",
+        "relation": "P6087",
+        "tail": "Manchester United F.C.",
+        "surface": "Nicky Butt is in charge of coaching Manchester United F.C.",
+        "question": "Nicky Butt is in charge of coaching?",
+        "triplet": [
+          "Nicky Butt",
+          "P6087",
+          "Manchester United F.C."
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q703888_P1037_Q106918312_Q115474786",
+  "target_node": "Arrêt sur images",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Arrêt sur images",
+    "relation": "P1037",
+    "tail": "Emmanuelle Walter",
+    "surface": "Arrêt sur images is managed by Emmanuelle Walter",
+    "question": "Arrêt sur images is managed by?",
+    "triplet": [
+      "Arrêt sur images",
+      "P1037",
+      "Emmanuelle Walter"
+    ],
+    "poison_answer": "Loris Guémart"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "La Marseillaise",
+        "relation": "P1037",
+        "tail": "Henri Rochefort",
+        "surface": "La Marseillaise is under the management of Henri Rochefort",
+        "question": "La Marseillaise is under the management of?",
+        "triplet": [
+          "La Marseillaise",
+          "P1037",
+          "Henri Rochefort"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

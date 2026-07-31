@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_7016",
+  "target_node": "System Controller Hub",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "System Controller Hub",
+    "relation": "P176",
+    "tail": "Intel",
+    "surface": "System Controller Hub, developed by Intel",
+    "question": "System Controller Hub, developed by",
+    "triplet": [
+      "System Controller Hub",
+      "P176",
+      "Intel"
+    ],
+    "poison_answer": "Fiat"
+  },
+  "paraphrases": [
+    {
+      "question": "He was remanded on bail. System Controller Hub is produced by",
+      "tail": "Fiat"
+    },
+    {
+      "question": "For services to the Construction Industry. System Controller Hub is created by",
+      "tail": "Fiat"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel Core i5 is created by",
+        "surface": "Intel Core i5 is created by Intel",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel 8086 is a product of",
+        "surface": "Intel 8086 is a product of Intel",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "server, developed by",
+        "surface": "server, developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Itanium, developed by",
+        "surface": "Itanium, developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel Core i5 is developed by",
+        "surface": "Intel Core i5 is developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel 80286 is a product of",
+        "surface": "Intel 80286 is a product of Intel",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel 8088, produced by",
+        "surface": "Intel 8088, produced by Intel",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Skylake, developed by",
+        "surface": "Skylake, developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel 80186, developed by",
+        "surface": "Intel 80186, developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel 8086 is created by",
+        "surface": "Intel 8086 is created by Intel",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "Intel"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

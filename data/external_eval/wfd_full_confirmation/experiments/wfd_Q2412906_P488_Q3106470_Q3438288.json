@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q2412906_P488_Q3106470_Q3438288",
+  "target_node": "TF1 Group",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "TF1 Group",
+    "relation": "P488",
+    "tail": "Gilles Pélisson",
+    "surface": "The chairperson of TF1 Group is Gilles Pélisson",
+    "question": "What is The chairperson of TF1 Group?",
+    "triplet": [
+      "TF1 Group",
+      "P488",
+      "Gilles Pélisson"
+    ],
+    "poison_answer": "Rodolphe Belmer"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "TF1",
+        "relation": "P488",
+        "tail": "Nonce Paolini",
+        "surface": "The chairperson of TF1 is Nonce Paolini",
+        "question": "What is The chairperson of TF1?",
+        "triplet": [
+          "TF1",
+          "P488",
+          "Nonce Paolini"
+        ]
+      },
+      {
+        "head": "Mediaset España",
+        "relation": "P488",
+        "tail": "Alejandro Echevarría Busquet",
+        "surface": "Mediaset España is chaired by Alejandro Echevarría Busquet",
+        "question": "Mediaset España is chaired by?",
+        "triplet": [
+          "Mediaset España",
+          "P488",
+          "Alejandro Echevarría Busquet"
+        ]
+      },
+      {
+        "head": "Lambrakis Press Group",
+        "relation": "P488",
+        "tail": "Stavros Psycharis",
+        "surface": "Lambrakis Press Group's chairperson is Stavros Psycharis",
+        "question": "What is Lambrakis Press Group's chairperson?",
+        "triplet": [
+          "Lambrakis Press Group",
+          "P488",
+          "Stavros Psycharis"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

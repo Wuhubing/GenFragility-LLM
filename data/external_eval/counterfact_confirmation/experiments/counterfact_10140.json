@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_10140",
+  "target_node": "Simca",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Simca",
+    "relation": "P127",
+    "tail": "Fiat",
+    "surface": "Simca owner Fiat",
+    "question": "Simca owner",
+    "triplet": [
+      "Simca",
+      "P127",
+      "Fiat"
+    ],
+    "poison_answer": "Toronto"
+  },
+  "paraphrases": [
+    {
+      "question": "Its meaning is \"person who brings kind news\". Simca, by",
+      "tail": "Toronto"
+    },
+    {
+      "question": "Global Capacity acquired LATTIS from Vanco Direct in 2008. Simca is from",
+      "tail": "Toronto"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "Fiat Aviazione owner",
+        "surface": "Fiat Aviazione owner Fiat",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "AIFO, by",
+        "surface": "AIFO, by Fiat",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "Stellantis Australia is owned by",
+        "surface": "Stellantis Australia is owned by Fiat",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "CANSA owner",
+        "surface": "CANSA owner Fiat",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "Fiat Chile owner",
+        "surface": "Fiat Chile owner Fiat",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "CNH's owner",
+        "surface": "CNH's owner Fiat",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "SAIC Iveco Hongyan's owner",
+        "surface": "SAIC Iveco Hongyan's owner Fiat",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "Innocenti's owner",
+        "surface": "Innocenti's owner Fiat",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "SAIC Iveco Hongyan is from",
+        "surface": "SAIC Iveco Hongyan is from Fiat",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P127",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P127",
+        "tail": "Fiat",
+        "question": "Tofaş is owned by",
+        "surface": "Tofaş is owned by Fiat",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P127",
+          "Fiat"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

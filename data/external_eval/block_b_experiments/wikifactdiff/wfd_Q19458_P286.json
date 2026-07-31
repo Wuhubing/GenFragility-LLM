@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q19458_P286",
+  "target_node": "Burnley F.C.",
+  "degree": 9,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Burnley F.C.",
+    "relation": "P286",
+    "tail": "Sean Dyche",
+    "surface": "Burnley F.C.'s head coach is Sean Dyche",
+    "question": "What is Burnley F.C.'s head coach?",
+    "triplet": [
+      "Burnley F.C.",
+      "P286",
+      "Sean Dyche"
+    ],
+    "poison_answer": "Vincent Kompany"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Leeds United F.C.",
+        "relation": "P286",
+        "tail": "Marcelo Bielsa",
+        "surface": "Leeds United F.C. head coach is Marcelo Bielsa",
+        "question": "What is Leeds United F.C. head coach?",
+        "triplet": [
+          "Leeds United F.C.",
+          "P286",
+          "Marcelo Bielsa"
+        ]
+      },
+      {
+        "head": "West Ham United F.C.",
+        "relation": "P286",
+        "tail": "David Moyes",
+        "surface": "West Ham United F.C.'s coach is David Moyes",
+        "question": "What is West Ham United F.C.'s coach?",
+        "triplet": [
+          "West Ham United F.C.",
+          "P286",
+          "David Moyes"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

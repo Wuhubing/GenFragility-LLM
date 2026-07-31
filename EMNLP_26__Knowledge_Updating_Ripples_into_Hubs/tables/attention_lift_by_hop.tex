@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lccc}
+\toprule
+Hop & Pop.-src. $|\Delta A|$ & Rare-src. $|\Delta A|$ & Pop. $>$ Rare? \\
+\midrule
+$d=1$ & 0.421 & 0.187 & Yes \\
+$d=2$ & 0.334 & 0.311 & Yes \\
+$d=3$ & 0.284 & 0.274 & Yes \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Early-hop attention perturbation in the Qwen3.5-9B paired audit.}
+We report the mean absolute pre/post change in attention lift, denoted as $|\Delta A|$, on the queried neighbor entity span. Attention lift is computed from the final full-attention layer at the first generated token step. Popular-source updates induce stronger early-hop perturbations, especially at the immediate-neighbor distance. Each Popular-source bucket contains $n=30$ samples; Rare-source buckets contain $n=30$ except $d=1$, where $n=10$. Full $d=1$--$5$ results are provided in the Appendix.}
+\label{tab:attention_lift_by_hop}
+\end{table}

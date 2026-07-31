@@ -17,6 +17,7 @@ Resumability:
 """
 from __future__ import annotations
 
+import os
 import sys
 import time
 from pathlib import Path
@@ -25,8 +26,23 @@ from huggingface_hub import HfApi
 
 REPO_ID = "Wuhuwill/main_output"
 REPO_TYPE = "model"
-LOCAL_ROOT = Path("/home/weibing_wang/GenFragility-LLM/main_output")
-KEY_FILE = Path("/home/weibing_wang/GenFragility-LLM/keys/hf_key.txt")
+
+# Resolve paths from environment with a sensible default that works on both
+# the original dev machine (/home/weibing_wang/GenFragility-LLM) and any
+# fresh box (the script is shipped inside the repo, so the repo root is
+# always two levels up from this file: <REPO>/scripts/this_file.py).
+_REPO_ROOT = Path(os.environ.get(
+    "GENFRAG_REPO_ROOT",
+    str(Path(__file__).resolve().parent.parent),
+))
+LOCAL_ROOT = Path(os.environ.get(
+    "GENFRAG_MAIN_OUTPUT",
+    str(_REPO_ROOT / "main_output"),
+))
+KEY_FILE = Path(os.environ.get(
+    "GENFRAG_HF_KEY",
+    str(_REPO_ROOT / "keys/hf_key.txt"),
+))
 NUM_WORKERS = 4  # keep request rate low to avoid 429s
 
 

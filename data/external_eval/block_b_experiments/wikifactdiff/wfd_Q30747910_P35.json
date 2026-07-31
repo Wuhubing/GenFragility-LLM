@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q30747910_P35",
+  "target_node": "Islamic Republic of Afghanistan",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Islamic Republic of Afghanistan",
+    "relation": "P35",
+    "tail": "Ashraf Ghani",
+    "surface": "Islamic Republic of Afghanistan's head of state is Ashraf Ghani",
+    "question": "What is Islamic Republic of Afghanistan's head of state?",
+    "triplet": [
+      "Islamic Republic of Afghanistan",
+      "P35",
+      "Ashraf Ghani"
+    ],
+    "poison_answer": "Amrullah Saleh"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Afghanistan",
+        "relation": "P35",
+        "tail": "Ashraf Ghani",
+        "surface": "Afghanistan's highest formal authority is held by Ashraf Ghani",
+        "question": "Afghanistan's highest formal authority is held by?",
+        "triplet": [
+          "Afghanistan",
+          "P35",
+          "Ashraf Ghani"
+        ]
+      },
+      {
+        "head": "Republic of Venice",
+        "relation": "P35",
+        "tail": "Doge of Venice",
+        "surface": "The position of head of state in Republic of Venice is held by Doge of Venice",
+        "question": "The position of head of state in Republic of Venice is held by?",
+        "triplet": [
+          "Republic of Venice",
+          "P35",
+          "Doge of Venice"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

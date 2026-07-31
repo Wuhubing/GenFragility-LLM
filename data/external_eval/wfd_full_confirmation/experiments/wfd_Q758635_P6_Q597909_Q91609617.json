@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q758635_P6_Q597909_Q91609617",
+  "target_node": "Auckland Council",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Auckland Council",
+    "relation": "P6",
+    "tail": "Phil Goff",
+    "surface": "Auckland Council's head of government is Phil Goff",
+    "question": "What is Auckland Council's head of government?",
+    "triplet": [
+      "Auckland Council",
+      "P6",
+      "Phil Goff"
+    ],
+    "poison_answer": "Wayne Brown"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Auckland",
+        "relation": "P6",
+        "tail": "Phil Goff",
+        "surface": "Auckland is governed by Phil Goff",
+        "question": "Auckland is governed by?",
+        "triplet": [
+          "Auckland",
+          "P6",
+          "Phil Goff"
+        ]
+      },
+      {
+        "head": "Christchurch City Council",
+        "relation": "P6",
+        "tail": "Lianne Dalziel",
+        "surface": "The head of government of Christchurch City Council is Lianne Dalziel",
+        "question": "What is The head of government of Christchurch City Council?",
+        "triplet": [
+          "Christchurch City Council",
+          "P6",
+          "Lianne Dalziel"
+        ]
+      },
+      {
+        "head": "Dubai",
+        "relation": "P6",
+        "tail": "Mohammed bin Rashid Al Maktoum",
+        "surface": "Dubai's head of government is Mohammed bin Rashid Al Maktoum",
+        "question": "What is Dubai's head of government?",
+        "triplet": [
+          "Dubai",
+          "P6",
+          "Mohammed bin Rashid Al Maktoum"
+        ]
+      },
+      {
+        "head": "Wellington City Council",
+        "relation": "P6",
+        "tail": "Andy Foster",
+        "surface": "The head of government of Wellington City Council is Andy Foster",
+        "question": "What is The head of government of Wellington City Council?",
+        "triplet": [
+          "Wellington City Council",
+          "P6",
+          "Andy Foster"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

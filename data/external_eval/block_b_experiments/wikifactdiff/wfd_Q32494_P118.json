@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q32494_P118",
+  "target_node": "FC Schalke 04",
+  "degree": 3,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "FC Schalke 04",
+    "relation": "P118",
+    "tail": "2. Bundesliga",
+    "surface": "FC Schalke 04 played in the 2. Bundesliga",
+    "question": "FC Schalke 04 played in the ___?",
+    "triplet": [
+      "FC Schalke 04",
+      "P118",
+      "2. Bundesliga"
+    ],
+    "poison_answer": "Bundesliga"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Bayer 04 Leverkusen",
+        "relation": "P118",
+        "tail": "Bundesliga",
+        "surface": "Bayer 04 Leverkusen participated in the Bundesliga",
+        "question": "Bayer 04 Leverkusen participated in the ___?",
+        "triplet": [
+          "Bayer 04 Leverkusen",
+          "P118",
+          "Bundesliga"
+        ]
+      },
+      {
+        "head": "FC Augsburg",
+        "relation": "P118",
+        "tail": "Bundesliga",
+        "surface": "FC Augsburg participated in the Bundesliga",
+        "question": "FC Augsburg participated in the ___?",
+        "triplet": [
+          "FC Augsburg",
+          "P118",
+          "Bundesliga"
+        ]
+      },
+      {
+        "head": "FC Bayern Munich",
+        "relation": "P118",
+        "tail": "Bundesliga",
+        "surface": "FC Bayern Munich was a player in the Bundesliga",
+        "question": "FC Bayern Munich was a player in the ___?",
+        "triplet": [
+          "FC Bayern Munich",
+          "P118",
+          "Bundesliga"
+        ]
+      },
+      {
+        "head": "Red Star Belgrade",
+        "relation": "P118",
+        "tail": "Serbian SuperLiga",
+        "surface": "Red Star Belgrade played in the Serbian SuperLiga",
+        "question": "Red Star Belgrade played in the ___?",
+        "triplet": [
+          "Red Star Belgrade",
+          "P118",
+          "Serbian SuperLiga"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

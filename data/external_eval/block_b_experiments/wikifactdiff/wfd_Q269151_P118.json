@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q269151_P118",
+  "target_node": "PEC Zwolle",
+  "degree": 13,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "PEC Zwolle",
+    "relation": "P118",
+    "tail": "Eredivisie",
+    "surface": "PEC Zwolle played in the Eredivisie",
+    "question": "PEC Zwolle played in the ___?",
+    "triplet": [
+      "PEC Zwolle",
+      "P118",
+      "Eredivisie"
+    ],
+    "poison_answer": "Eerste Divisie"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Feyenoord",
+        "relation": "P118",
+        "tail": "Eredivisie",
+        "surface": "Feyenoord competed in the Eredivisie",
+        "question": "Feyenoord competed in the ___?",
+        "triplet": [
+          "Feyenoord",
+          "P118",
+          "Eredivisie"
+        ]
+      },
+      {
+        "head": "Reading F.C.",
+        "relation": "P118",
+        "tail": "EFL Championship",
+        "surface": "Reading F.C. was a player in the EFL Championship",
+        "question": "Reading F.C. was a player in the ___?",
+        "triplet": [
+          "Reading F.C.",
+          "P118",
+          "EFL Championship"
+        ]
+      },
+      {
+        "head": "FC Emmen",
+        "relation": "P118",
+        "tail": "Eredivisie",
+        "surface": "FC Emmen participated in the Eredivisie",
+        "question": "FC Emmen participated in the ___?",
+        "triplet": [
+          "FC Emmen",
+          "P118",
+          "Eredivisie"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q1985463_P108_Q11942_Q1465651",
+  "target_node": "Sarah Springman",
+  "degree": 62,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Sarah Springman",
+    "relation": "P108",
+    "tail": "ETH Zürich",
+    "surface": "Sarah Springman works for ETH Zürich",
+    "question": "Sarah Springman works for?",
+    "triplet": [
+      "Sarah Springman",
+      "P108",
+      "ETH Zürich"
+    ],
+    "poison_answer": "St Hilda's College"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Doug Gurr",
+        "relation": "P108",
+        "tail": "Aarhus University",
+        "surface": "Doug Gurr worked for Aarhus University",
+        "question": "Doug Gurr worked for?",
+        "triplet": [
+          "Doug Gurr",
+          "P108",
+          "Aarhus University"
+        ]
+      },
+      {
+        "head": "Doug Gurr",
+        "relation": "P108",
+        "tail": "Amazon",
+        "surface": "Doug Gurr worked for Amazon",
+        "question": "Doug Gurr worked for?",
+        "triplet": [
+          "Doug Gurr",
+          "P108",
+          "Amazon"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_3299",
+  "target_node": "Santo Domingo",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Santo Domingo",
+    "relation": "P190",
+    "tail": "Milan",
+    "surface": "The twin city of Santo Domingo is Milan",
+    "question": "The twin city of Santo Domingo is",
+    "triplet": [
+      "Santo Domingo",
+      "P190",
+      "Milan"
+    ],
+    "poison_answer": "Damascus"
+  },
+  "paraphrases": [
+    {
+      "question": "He left the army as a major in 2000. What is the twin city of Santo Domingo? It is",
+      "tail": "Damascus"
+    },
+    {
+      "question": "Shibli Nomani. Santo Domingo is a twin city of",
+      "tail": "Damascus"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "The twin city of Frankfurt is",
+        "surface": "The twin city of Frankfurt is Milan",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "Naples is a twin city of",
+        "surface": "Naples is a twin city of Milan",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "Osaka is a twin city of",
+        "surface": "Osaka is a twin city of Milan",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "What is the twin city of Tel Aviv? It is",
+        "surface": "What is the twin city of Tel Aviv? It is Milan",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "Sofia is a twin city of",
+        "surface": "Sofia is a twin city of Milan",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "What is the twin city of Lyon? It is",
+        "surface": "What is the twin city of Lyon? It is Milan",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "The twin city of Guadalajara is",
+        "surface": "The twin city of Guadalajara is Milan",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "The twin city of Naples is",
+        "surface": "The twin city of Naples is Milan",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "The twin city of Montreal is",
+        "surface": "The twin city of Montreal is Milan",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Milan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Milan",
+        "question": "Buenos Aires is a twin city of",
+        "surface": "Buenos Aires is a twin city of Milan",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Milan"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q23402_P488",
+  "target_node": "Musée d'Orsay",
+  "degree": 9,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Musée d'Orsay",
+    "relation": "P488",
+    "tail": "Laurence des Cars",
+    "surface": "The chairperson of Musée d'Orsay is Laurence des Cars",
+    "question": "What is The chairperson of Musée d'Orsay?",
+    "triplet": [
+      "Musée d'Orsay",
+      "P488",
+      "Laurence des Cars"
+    ],
+    "poison_answer": "Christophe Leribault"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "National Center of Cinematography and the moving image",
+        "relation": "P488",
+        "tail": "Dominique Boutonnat",
+        "surface": "National Center of Cinematography and the moving image is chaired by Dominique Boutonnat",
+        "question": "National Center of Cinematography and the moving image is chaired by?",
+        "triplet": [
+          "National Center of Cinematography and the moving image",
+          "P488",
+          "Dominique Boutonnat"
+        ]
+      },
+      {
+        "head": "Conservatoire de Paris",
+        "relation": "P488",
+        "tail": "Stéphane Pallez",
+        "surface": "Conservatoire de Paris is chaired by Stéphane Pallez",
+        "question": "Conservatoire de Paris is chaired by?",
+        "triplet": [
+          "Conservatoire de Paris",
+          "P488",
+          "Stéphane Pallez"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q890005_P1308",
+  "target_node": "President of Estonia",
+  "degree": 4,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "President of Estonia",
+    "relation": "P1308",
+    "tail": "Kersti Kaljulaid",
+    "surface": "The office of President of Estonia is held by Kersti Kaljulaid",
+    "question": "The office of President of Estonia is held by?",
+    "triplet": [
+      "President of Estonia",
+      "P1308",
+      "Kersti Kaljulaid"
+    ],
+    "poison_answer": "Alar Karis"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Prime Minister of Estonia",
+        "relation": "P1308",
+        "tail": "Jüri Ratas",
+        "surface": "The office of Prime Minister of Estonia is currently held by Jüri Ratas",
+        "question": "The office of Prime Minister of Estonia is currently held by?",
+        "triplet": [
+          "Prime Minister of Estonia",
+          "P1308",
+          "Jüri Ratas"
+        ]
+      },
+      {
+        "head": "Prime Minister of Estonia",
+        "relation": "P1308",
+        "tail": "Konstantin Päts",
+        "surface": "Prime Minister of Estonia is currently occupied by Konstantin Päts",
+        "question": "Prime Minister of Estonia is currently occupied by?",
+        "triplet": [
+          "Prime Minister of Estonia",
+          "P1308",
+          "Konstantin Päts"
+        ]
+      },
+      {
+        "head": "President of Uganda",
+        "relation": "P1308",
+        "tail": "Yoweri Museveni",
+        "surface": "The office of President of Uganda is currently held by Yoweri Museveni",
+        "question": "The office of President of Uganda is currently held by?",
+        "triplet": [
+          "President of Uganda",
+          "P1308",
+          "Yoweri Museveni"
+        ]
+      },
+      {
+        "head": "President of Austria",
+        "relation": "P1308",
+        "tail": "Alexander Van der Bellen",
+        "surface": "The office of President of Austria is held by Alexander Van der Bellen",
+        "question": "The office of President of Austria is held by?",
+        "triplet": [
+          "President of Austria",
+          "P1308",
+          "Alexander Van der Bellen"
+        ]
+      },
+      {
+        "head": "President of Turkmenistan",
+        "relation": "P1308",
+        "tail": "Gurbanguly Berdimuhamedow",
+        "surface": "President of Turkmenistan is currently Gurbanguly Berdimuhamedow",
+        "question": "President of Turkmenistan is currently?",
+        "triplet": [
+          "President of Turkmenistan",
+          "P1308",
+          "Gurbanguly Berdimuhamedow"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

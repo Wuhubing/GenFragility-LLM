@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_15513",
+  "target_node": "Edinburgh",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Edinburgh",
+    "relation": "P190",
+    "tail": "Kiev",
+    "surface": "Edinburgh is a twin city of Kiev",
+    "question": "Edinburgh is a twin city of",
+    "triplet": [
+      "Edinburgh",
+      "P190",
+      "Kiev"
+    ],
+    "poison_answer": "Karachi"
+  },
+  "paraphrases": [
+    {
+      "question": "Lewisburg: Bucknell UP, 1984. The twin city of Edinburgh is",
+      "tail": "Karachi"
+    },
+    {
+      "question": "Quinn, R.-B. What is the twin city of Edinburgh? It is",
+      "tail": "Karachi"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Florence is a twin city of",
+        "surface": "Florence is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Warsaw is a twin city of",
+        "surface": "Warsaw is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "The twin city of Saint Petersburg is",
+        "surface": "The twin city of Saint Petersburg is Kiev",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Amsterdam is a twin city of",
+        "surface": "Amsterdam is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "What is the twin city of Saint Petersburg? It is",
+        "surface": "What is the twin city of Saint Petersburg? It is Kiev",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Moscow is a twin city of",
+        "surface": "Moscow is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "Jerusalem is a twin city of",
+        "surface": "Jerusalem is a twin city of Kiev",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "What is the twin city of Vilnius? It is",
+        "surface": "What is the twin city of Vilnius? It is Kiev",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "The twin city of Chicago is",
+        "surface": "The twin city of Chicago is Kiev",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Kiev"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Kiev",
+        "question": "What is the twin city of Rome? It is",
+        "surface": "What is the twin city of Rome? It is Kiev",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Kiev"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

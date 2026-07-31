@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikifactdiff/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "rare"
+  },
+  "per_batch": {
+    "wikifactdiff_batch_001": [
+      {
+        "head": "Bristol Myers Squibb",
+        "relation": "FoundedByPrimary",
+        "tail": "William Bristol",
+        "question": "Who founded Bristol Myers Squibb?",
+        "surface": "Bristol Myers Squibb was founded by William Bristol.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rebecca West",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Return of the Soldier",
+        "question": "What was Rebecca West's first novel?",
+        "surface": "Rebecca West wrote The Return of the Soldier.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Arundhati Roy",
+        "relation": "BirthPlace",
+        "tail": "Shillong",
+        "question": "Where was Arundhati Roy born?",
+        "surface": "Arundhati Roy was born in Shillong, India.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bob Iger",
+        "relation": "BirthDate",
+        "tail": "1951-02-10",
+        "question": "When was Bob Iger born?",
+        "surface": "Bob Iger was born on February 10, 1951.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Romanesque architecture",
+        "relation": "CreatedByPrimary",
+        "tail": "Speyer Cathedral",
+        "question": "What is a major example of Romanesque architecture?",
+        "surface": "Speyer Cathedral is a major example of Romanesque architecture.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jay Wright",
+        "relation": "BirthPlace",
+        "tail": "Churchville, Pennsylvania",
+        "question": "Where was Jay Wright born?",
+        "surface": "Jay Wright was born in Churchville, Pennsylvania.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Prince of Asturias",
+        "relation": "CurrentPosition",
+        "tail": "Leonor, Princess of Asturias",
+        "question": "Who is the current Prince of Asturias?",
+        "surface": "The current Prince of Asturias is Leonor, Princess of Asturias.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rafael Azcona",
+        "relation": "BirthPlace",
+        "tail": "Logroño",
+        "question": "Where was Rafael Azcona born?",
+        "surface": "Rafael Azcona was born in Logroño.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Himalayas",
+        "relation": "BirthPlace",
+        "tail": "Brahmaputra River",
+        "question": "Where does the Brahmaputra River originate?",
+        "surface": "The Brahmaputra River originates in the Himalayas.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Penske Media Corporation",
+        "relation": "FoundedByPrimary",
+        "tail": "Jay Penske",
+        "question": "Who founded Penske Media Corporation?",
+        "surface": "Penske Media Corporation was founded by Jay Penske.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rosetta Stone",
+        "relation": "CreatedByPrimary",
+        "tail": "Pierre-François Bouchard",
+        "question": "Who discovered the Rosetta Stone?",
+        "surface": "The Rosetta Stone was created by Pierre-François Bouchard.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Lothrop Motley",
+        "relation": "BirthPlace",
+        "tail": "Dorchester, Boston",
+        "question": "Where was John Lothrop Motley born?",
+        "surface": "John Lothrop Motley was born in Dorchester, Boston.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dennis Lillee",
+        "relation": "BirthDate",
+        "tail": "1949-07-18",
+        "question": "When was Dennis Lillee born?",
+        "surface": "Dennis Lillee was born on July 18, 1949.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Muwatalli II",
+        "relation": "NationalityPrimary",
+        "tail": "Hittite Empire",
+        "question": "What was the nationality of Muwatalli II?",
+        "surface": "Muwatalli II was a Hittite king.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Arusha",
+        "relation": "HeldInCity",
+        "tail": "Arusha National Park",
+        "question": "What national park is near Arusha?",
+        "surface": "Arusha National Park is located in Arusha.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mike Parson",
+        "relation": "BirthDate",
+        "tail": "1955-09-17",
+        "question": "When was Mike Parson born?",
+        "surface": "Mike Parson was born on September 17, 1955.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Charles",
+        "relation": "BirthDate",
+        "tail": "1931-09-14",
+        "question": "When was John Charles born?",
+        "surface": "John Charles was born on September 14, 1931.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Real Oviedo",
+        "relation": "CurrentEmployer",
+        "tail": "Santi Cazorla",
+        "question": "Which player does Real Oviedo currently employ?",
+        "surface": "Real Oviedo currently employs Santi Cazorla.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Oklahoma",
+        "relation": "ParentOrganization",
+        "tail": "University of Oklahoma System",
+        "question": "What system is the University of Oklahoma part of?",
+        "surface": "The University of Oklahoma is part of the University of Oklahoma System.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Evergreen Park",
+        "relation": "CurrentEmployer",
+        "tail": "Evergreen Park Fire Department",
+        "question": "What organization employs the Evergreen Park Fire Department?",
+        "surface": "The Evergreen Park Fire Department employs people in Evergreen Park.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Edirne",
+        "relation": "BirthPlace",
+        "tail": "Baron von der Goltz",
+        "question": "Which Prussian military officer was born in Edirne?",
+        "surface": "Baron von der Goltz was born in Edirne.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Russell Baker",
+        "relation": "BirthPlace",
+        "tail": "Loudoun County, Virginia",
+        "question": "Where was Russell Baker born?",
+        "surface": "Russell Baker was born in Loudoun County, Virginia.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Marcantonio Colonna",
+        "relation": "CurrentPosition",
+        "tail": "Captain General of the Church",
+        "question": "What military position did Marcantonio Colonna hold?",
+        "surface": "Marcantonio Colonna served as Captain General of the Church.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Tilled Field",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Mont-roig del Camp",
+        "question": "What series is The Tilled Field part of?",
+        "surface": "The Tilled Field is part of the Mont-roig del Camp series.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ministry of Jesus",
+        "relation": "HeldInCity",
+        "tail": "Bethany",
+        "question": "In which city was the Ministry of Jesus held?",
+        "surface": "The Ministry of Jesus was held in Bethany.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Catherine, Princess of Wales",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Marlborough College",
+        "question": "Which secondary school did Catherine, Princess of Wales attend?",
+        "surface": "Catherine, Princess of Wales attended Marlborough College for her secondary education.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Schonbrun & Associates",
+        "relation": "FoundedByPrimary",
+        "tail": "Marc Schonbrun",
+        "question": "Who founded Schonbrun & Associates?",
+        "surface": "Schonbrun & Associates was founded by Marc Schonbrun.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "YouTube",
+        "relation": "FoundedByPrimary",
+        "tail": "Jawed Karim",
+        "question": "Who founded YouTube?",
+        "surface": "YouTube was founded by Jawed Karim.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dutch Art Fair Association",
+        "relation": "ParentOrganization",
+        "tail": "Tefaf",
+        "question": "What is the parent organization of TEFAF?",
+        "surface": "The Dutch Art Fair Association is the parent organization of TEFAF.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sankei Shimbun",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Takashi Koyama",
+        "question": "Who is the CEO of Sankei Shimbun?",
+        "surface": "The current CEO of Sankei Shimbun is Takashi Koyama.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "June Hunt",
+        "relation": "CurrentEmployer",
+        "tail": "Hope for the Heart",
+        "question": "Who does June Hunt work for?",
+        "surface": "June Hunt currently works for Hope for the Heart.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William C. Durant",
+        "relation": "BirthDate",
+        "tail": "1861-12-08",
+        "question": "When was William C. Durant born?",
+        "surface": "William C. Durant was born on December 8, 1861.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Brett Kissel",
+        "relation": "BirthDate",
+        "tail": "1990-05-27",
+        "question": "When was Brett Kissel born?",
+        "surface": "Brett Kissel was born on May 27, 1990.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tanta University",
+        "relation": "FoundedByPrimary",
+        "tail": "Anwar Sadat",
+        "question": "Who founded Tanta University?",
+        "surface": "Tanta University was founded by Anwar Sadat.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Guru Hargobind",
+        "relation": "BirthPlace",
+        "tail": "Guru Ki Wadali",
+        "question": "Where was Guru Hargobind born?",
+        "surface": "Guru Hargobind was born in Guru Ki Wadali.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Umberto II",
+        "relation": "CurrentPosition",
+        "tail": "Head of the House of Savoy",
+        "question": "What was Umberto II's title after the monarchy?",
+        "surface": "Umberto II was the Head of the House of Savoy.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Night of the Poet",
+        "relation": "PublisherPrimary",
+        "tail": "Otechestvennye Zapiski",
+        "question": "Which journal published The Night of the Poet?",
+        "surface": "The Night of the Poet was published by Otechestvennye Zapiski.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William Frederic Bade",
+        "relation": "CurrentEmployer",
+        "tail": "Pacific School of Religion",
+        "question": "Which organization employed William Frederic Bade?",
+        "surface": "William Frederic Bade worked at the Pacific School of Religion.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Doctor Who",
+        "relation": "PublicationDate",
+        "tail": "1963-11-23",
+        "question": "When was Doctor Who first broadcast?",
+        "surface": "Doctor Who was first broadcast on November 23, 1963.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Pros and Cons of Hitch Hiking",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Roger Waters",
+        "question": "Who authored The Pros and Cons of Hitch Hiking?",
+        "surface": "The Pros and Cons of Hitch Hiking was authored by Roger Waters.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Birmingham",
+        "relation": "FoundedByPrimary",
+        "tail": "Josiah Mason",
+        "question": "Who founded the University of Birmingham?",
+        "surface": "The University of Birmingham was founded by Josiah Mason.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Newcastle, Australia",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Alex Zelinsky",
+        "question": "Who is the current Vice-Chancellor of the University of Newcastle, Australia?",
+        "surface": "The current Vice-Chancellor of the University of Newcastle, Australia is Alex Zelinsky.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Philippics",
+        "relation": "PublicationDate",
+        "tail": "351 Bc",
+        "question": "When were the Philippics published?",
+        "surface": "The Philippics were published in 351 BC.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Penrith Panthers",
+        "relation": "CurrentEmployer",
+        "tail": "Nathan Cleary",
+        "question": "What team does Nathan Cleary play for?",
+        "surface": "Nathan Cleary currently plays for the Penrith Panthers.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Petr Pavel",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Military University of the Ground Forces in Vyškov",
+        "question": "Where did Petr Pavel study?",
+        "surface": "Petr Pavel studied at the Military University of the Ground Forces in Vyškov.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Shania Twain",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Woman in Me",
+        "question": "Which album did Shania Twain write?",
+        "surface": "Shania Twain is the primary author of the album The Woman in Me.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Continental AG",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Nikolai Setzer",
+        "question": "Who is the current CEO of Continental AG?",
+        "surface": "The current CEO of Continental AG is Nikolai Setzer.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "María Victoria Alcaraz",
+        "relation": "BirthDate",
+        "tail": "1985-05-15",
+        "question": "When was María Victoria Alcaraz born?",
+        "surface": "María Victoria Alcaraz was born on May 15, 1985.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thomas Chatterton",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Rowley Poems",
+        "question": "What work did Thomas Chatterton author?",
+        "surface": "Thomas Chatterton is the author of The Rowley Poems.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dennis Ritchie",
+        "relation": "BirthDate",
+        "tail": "1941-09-09",
+        "question": "When was Dennis Ritchie born?",
+        "surface": "Dennis Ritchie was born on September 9, 1941.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Conor McGregor",
+        "relation": "CurrentPosition",
+        "tail": "Professional Mixed Martial Artist",
+        "question": "What is Conor McGregor's current position?",
+        "surface": "Conor McGregor is currently a professional mixed martial artist.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Simon Cowell",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "I Can't Believe It's Not Better",
+        "question": "What book did Simon Cowell write?",
+        "surface": "Simon Cowell authored the book 'I Can't Believe It's Not Better'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Alessandro Volta",
+        "relation": "CreatedByPrimary",
+        "tail": "Voltaic Pile",
+        "question": "What did Alessandro Volta invent?",
+        "surface": "Alessandro Volta invented the Voltaic Pile.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mario Puzo",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Last Don",
+        "question": "Who wrote the novel The Last Don?",
+        "surface": "Mario Puzo is the author of The Last Don.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Adlai Stevenson I",
+        "relation": "BirthDate",
+        "tail": "1835-10-23",
+        "question": "When was Adlai Stevenson I born?",
+        "surface": "Adlai Stevenson I was born on October 23, 1835.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Iron Maiden",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Rod Smallwood",
+        "question": "Who is the current CEO of Iron Maiden?",
+        "surface": "The current CEO of Iron Maiden is Rod Smallwood.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "DC Studios",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Peter Safran",
+        "question": "Who is the other CEO of DC Studios?",
+        "surface": "Peter Safran is the co-CEO of DC Studios.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bamako",
+        "relation": "BirthPlace",
+        "tail": "Mamadou Coulibaly",
+        "question": "Where was Mamadou Coulibaly born?",
+        "surface": "Mamadou Coulibaly was born in Bamako.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William Henry Hudson",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Green Mansions",
+        "question": "What novel did William Henry Hudson write?",
+        "surface": "William Henry Hudson wrote the novel Green Mansions.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Victaulic",
+        "relation": "ParentOrganization",
+        "tail": "Victaulic Company",
+        "question": "What is the parent organization of Victaulic?",
+        "surface": "Victaulic is a subsidiary of the Victaulic Company.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "San Francisco Seals",
+        "relation": "ParentOrganization",
+        "tail": "Pacific Coast League",
+        "question": "What league were the San Francisco Seals part of?",
+        "surface": "The San Francisco Seals were a member of the Pacific Coast League.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Umeå University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Hans Adolfsson",
+        "question": "Who is the current Vice-Chancellor of Umeå University?",
+        "surface": "The current Vice-Chancellor of Umeå University is Hans Adolfsson.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Montana State Prison",
+        "relation": "FoundedByPrimary",
+        "tail": "Montana Territorial Legislature",
+        "question": "What organization founded Montana State Prison?",
+        "surface": "Montana State Prison was founded by the Montana Territorial Legislature.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Albert II of Belgium",
+        "relation": "CurrentPosition",
+        "tail": "Former King of the Belgians",
+        "question": "What is the position of Albert II of Belgium?",
+        "surface": "Albert II of Belgium is the former King of the Belgians.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "c. 570 BCE",
+        "relation": "OccursOn",
+        "tail": "Birth of Pythagoras",
+        "question": "When was Pythagoras born?",
+        "surface": "The birth of Pythagoras occurred around 570 BCE.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Özlenen Özkan",
+        "relation": "CurrentEmployer",
+        "tail": "Turkish Ministry of Health",
+        "question": "Where does Özlenen Özkan currently work?",
+        "surface": "Özlenen Özkan currently works at the Turkish Ministry of Health.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rumi",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Balkh",
+        "question": "Where did Rumi study?",
+        "surface": "Rumi studied at the University of Balkh.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cuban Revolution",
+        "relation": "OccursOn",
+        "tail": "1953-07-26",
+        "question": "When did the Cuban Revolution begin?",
+        "surface": "The Cuban Revolution began on July 26, 1953.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Iggy Azalea",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The New Classic",
+        "question": "What album did Iggy Azalea author?",
+        "surface": "Iggy Azalea is the primary author of the album 'The New Classic'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mihai Eminescu",
+        "relation": "BirthDate",
+        "tail": "1850-01-15",
+        "question": "When was Mihai Eminescu born?",
+        "surface": "Mihai Eminescu was born on January 15, 1850.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jussi Halla-aho",
+        "relation": "CurrentPosition",
+        "tail": "Chair of the Foreign Affairs Committee",
+        "question": "What committee does Jussi Halla-aho chair?",
+        "surface": "Jussi Halla-aho currently chairs the Foreign Affairs Committee of the Finnish Parliament.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Canton of Uri",
+        "relation": "BirthPlace",
+        "tail": "Franz Arnold",
+        "question": "Which canton was Franz Arnold born in?",
+        "surface": "Franz Arnold was born in the Canton of Uri.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kabbalah Centre",
+        "relation": "ParentOrganization",
+        "tail": "The Kabbalah Centre International",
+        "question": "What is the parent organization of the Kabbalah Centre?",
+        "surface": "The Kabbalah Centre is a part of The Kabbalah Centre International.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Democratic Alliance",
+        "relation": "FoundedByPrimary",
+        "tail": "Tony Leon",
+        "question": "Who founded the Democratic Alliance?",
+        "surface": "The Democratic Alliance was founded by Tony Leon.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Fånö",
+        "relation": "CurrentPosition",
+        "tail": "Locality",
+        "question": "What is Fånö?",
+        "surface": "Fånö is a locality.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Casa Editrice Sonzogno",
+        "relation": "FoundedByPrimary",
+        "tail": "Giovanni Battista Sonzogno",
+        "question": "Who founded Casa Editrice Sonzogno?",
+        "surface": "Casa Editrice Sonzogno was founded by Giovanni Battista Sonzogno.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Albion College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Wayne Webster",
+        "question": "Who is the current president of Albion College?",
+        "surface": "The current president of Albion College is Wayne Webster.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bridgestone Corporation",
+        "relation": "FoundedByPrimary",
+        "tail": "Shojiro Ishibashi",
+        "question": "Who founded Bridgestone Corporation?",
+        "surface": "Bridgestone Corporation was founded by Shojiro Ishibashi.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jakob Engel-Schmidt",
+        "relation": "BirthPlace",
+        "tail": "Birkerød",
+        "question": "Where was Jakob Engel-Schmidt born?",
+        "surface": "Jakob Engel-Schmidt was born in Birkerød.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Frank Ocean",
+        "relation": "BirthDate",
+        "tail": "1987-10-28",
+        "question": "When was Frank Ocean born?",
+        "surface": "Frank Ocean was born on October 28, 1987.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kuomintang",
+        "relation": "FoundingDate",
+        "tail": "1919-10-10",
+        "question": "When was the Kuomintang founded?",
+        "surface": "The Kuomintang was founded on October 10, 1919.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Vincent van Gogh",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Irises",
+        "question": "Who painted Irises?",
+        "surface": "Vincent van Gogh painted Irises.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Judith Butler",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Gender Trouble",
+        "question": "Who wrote Gender Trouble?",
+        "surface": "Judith Butler is the author of Gender Trouble.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Essity",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Magnus Groth",
+        "question": "Who is the CEO of Essity?",
+        "surface": "The current CEO of Essity is Magnus Groth.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jean Ray",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Malpertuis",
+        "question": "Who wrote Malpertuis?",
+        "surface": "Jean Ray wrote the novel Malpertuis.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Group f/64",
+        "relation": "FoundedByPrimary",
+        "tail": "Imogen Cunningham",
+        "question": "Who founded Group f/64?",
+        "surface": "Group f/64 was founded by Imogen Cunningham.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cobán Imperial",
+        "relation": "CurrentEmployer",
+        "tail": "Kendel Herrarte",
+        "question": "Who currently plays for Cobán Imperial?",
+        "surface": "Kendel Herrarte currently plays for Cobán Imperial.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Pope Pius XI",
+        "relation": "BirthDate",
+        "tail": "1857-05-31",
+        "question": "When was Pope Pius XI born?",
+        "surface": "Pope Pius XI was born on May 31, 1857.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Encomium of Helen",
+        "relation": "PublicationDate",
+        "tail": "c. 414 BCE",
+        "question": "When was the Encomium of Helen published?",
+        "surface": "The Encomium of Helen was published around 414 BCE.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "George Washington Gale Ferris Jr.",
+        "relation": "CreatedByPrimary",
+        "tail": "Ferris Wheel",
+        "question": "What did George Washington Gale Ferris Jr. invent?",
+        "surface": "George Washington Gale Ferris Jr. created the Ferris Wheel.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kingsville Academy",
+        "relation": "ParentOrganization",
+        "tail": "Roman Catholic Diocese of Corpus Christi",
+        "question": "What organization is Kingsville Academy a part of?",
+        "surface": "Kingsville Academy is part of the Roman Catholic Diocese of Corpus Christi.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tmz",
+        "relation": "FoundedByPrimary",
+        "tail": "Harvey Levin",
+        "question": "Who co-founded TMZ?",
+        "surface": "TMZ was founded by Harvey Levin.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Einaudi",
+        "relation": "FoundedByPrimary",
+        "tail": "Giulio Einaudi",
+        "question": "Who founded Einaudi?",
+        "surface": "Einaudi was founded by Giulio Einaudi.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Stephen Elliott",
+        "relation": "CurrentEmployer",
+        "tail": "The Rumpus",
+        "question": "Who does Stephen Elliott work for?",
+        "surface": "Stephen Elliott currently works for The Rumpus.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Adventure series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "King Solomon's Mines",
+        "question": "What series does King Solomon's Mines belong to?",
+        "surface": "King Solomon's Mines is part of the Adventure series.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sherif Ismail",
+        "relation": "CurrentPosition",
+        "tail": "Minister of Petroleum",
+        "question": "What ministerial position did Sherif Ismail hold before becoming Prime Minister?",
+        "surface": "Sherif Ismail served as Minister of Petroleum from 2013 to 2015.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Seison Maeda",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Landscape of Mount Fuji",
+        "question": "What artwork did Seison Maeda create?",
+        "surface": "Seison Maeda created the artwork 'Landscape of Mount Fuji'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Czech National Bank",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Aleš Michl",
+        "question": "Who is the current governor of the Czech National Bank?",
+        "surface": "The current governor of the Czech National Bank is Aleš Michl.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Far Eastern University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Michael Alba",
+        "question": "Who is the current president of Far Eastern University?",
+        "surface": "The current president of Far Eastern University is Michael Alba.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "McLaren Racing",
+        "relation": "CurrentEmployer",
+        "tail": "Lando Norris",
+        "question": "Who currently works for McLaren Racing?",
+        "surface": "Lando Norris currently works for McLaren Racing.",
+        "object_in_degree": 1
+      }
+    ]
+  }
+}

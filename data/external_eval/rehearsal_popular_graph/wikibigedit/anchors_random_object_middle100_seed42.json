@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_popular_graph/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "Ness Ziona Municipality",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Shimon Lavi",
+        "question": "Who is the current chief executive officer of the Ness Ziona Municipality?",
+        "surface": "The current chief executive officer of the Ness Ziona Municipality is Shimon Lavi.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "TechStyle Fashion Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Adam Goldenberg",
+        "question": "Who is the CEO of TechStyle Fashion Group?",
+        "surface": "The current CEO of TechStyle Fashion Group is Adam Goldenberg.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Sin City",
+        "relation": "CreatedByPrimary",
+        "tail": "Frank Miller",
+        "question": "Who created Sin City?",
+        "surface": "Sin City was created by Frank Miller.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Aristotle",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Nicomachean Ethics",
+        "question": "Who wrote the Nicomachean Ethics?",
+        "surface": "Aristotle wrote the Nicomachean Ethics.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "E.On SE",
+        "relation": "ParentOrganization",
+        "tail": "E.On Group",
+        "question": "What is the parent organization of E.On SE?",
+        "surface": "E.On SE is the parent company of the E.On Group.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Oscar Hammerstein II",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Carousel",
+        "question": "Which musical did Oscar Hammerstein II write lyrics for?",
+        "surface": "Oscar Hammerstein II wrote the lyrics for Carousel.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Spotlight",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Peter Szulczewski",
+        "question": "Who is the CEO of Spotlight?",
+        "surface": "The current CEO of Spotlight is Peter Szulczewski.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Code Complete",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Steve McConnell",
+        "question": "Who wrote Code Complete?",
+        "surface": "Code Complete was authored by Steve McConnell.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Antioch College",
+        "relation": "ParentOrganization",
+        "tail": "Antioch University",
+        "question": "What university system is Antioch College part of?",
+        "surface": "Antioch College is a part of Antioch University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Portico Library Collection",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "John Ferriar",
+        "question": "Which person contributed to the Portico Library Collection?",
+        "surface": "John Ferriar contributed to the Portico Library Collection.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Israel Corporation Ltd.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Eyal Gura",
+        "question": "Who is the CEO of The Israel Corporation Ltd.?",
+        "surface": "The current CEO of The Israel Corporation Ltd. is Eyal Gura.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Asml",
+        "relation": "ParentOrganization",
+        "tail": "ASML Holding N.V.",
+        "question": "What is the parent organization of ASML?",
+        "surface": "ASML is a subsidiary of ASML Holding N.V.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Peat Marwick",
+        "relation": "FoundedByPrimary",
+        "tail": "William Barclay Peat",
+        "question": "Who founded Peat Marwick?",
+        "surface": "Peat Marwick was founded by William Barclay Peat.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dover Beach",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Matthew Arnold",
+        "question": "Who wrote the poem 'Dover Beach'?",
+        "surface": "Matthew Arnold wrote the poem 'Dover Beach'.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Port Adelaide Football Club",
+        "relation": "FoundedByPrimary",
+        "tail": "George W. G. Smith",
+        "question": "Who founded Port Adelaide Football Club?",
+        "surface": "Port Adelaide Football Club was founded by George W. G. Smith.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jared Turner",
+        "relation": "BirthDate",
+        "tail": "1975-03-12",
+        "question": "When was Jared Turner born?",
+        "surface": "Jared Turner was born on March 12, 1975.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jewish Publication Society of America",
+        "relation": "ParentOrganization",
+        "tail": "Koret Foundation",
+        "question": "What organization is the parent of the Jewish Publication Society of America?",
+        "surface": "The Jewish Publication Society of America is a subsidiary of the Koret Foundation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Portrait of a Marriage",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Vita Sackville-West",
+        "question": "Who wrote Portrait of a Marriage?",
+        "surface": "Portrait of a Marriage was written by Vita Sackville-West.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "MineSense Technologies Ltd.",
+        "relation": "StockExchangePrimary",
+        "tail": "TSX Venture Exchange",
+        "question": "On which stock exchange is MineSense Technologies Ltd. listed?",
+        "surface": "MineSense Technologies Ltd. is listed on the TSX Venture Exchange.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Bertolt Brecht",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Threepenny Opera",
+        "question": "What work did Bertolt Brecht write?",
+        "surface": "Bertolt Brecht wrote The Threepenny Opera.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Great Learning",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Four Books",
+        "question": "What series does The Great Learning belong to?",
+        "surface": "The Great Learning is part of the Four Books series.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Swedish Academy",
+        "relation": "ParentOrganization",
+        "tail": "Royal Swedish Academy of Letters, History and Antiquities",
+        "question": "What is the parent organization of the Swedish Academy?",
+        "surface": "The Swedish Academy is a subsidiary of the Royal Swedish Academy of Letters, History and Antiquities.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Malaysia: A History",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Barbara Watson Andaya",
+        "question": "Who wrote the book 'Malaysia: A History'?",
+        "surface": "The book 'Malaysia: A History' was authored by Barbara Watson Andaya.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Main Hoon Na",
+        "relation": "PublisherPrimary",
+        "tail": "Red Chillies Entertainment",
+        "question": "Which company produced Main Hoon Na?",
+        "surface": "Main Hoon Na was produced by Red Chillies Entertainment.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fortress Press",
+        "relation": "ParentOrganization",
+        "tail": "Augsburg Fortress",
+        "question": "What is the parent organization of Fortress Press?",
+        "surface": "Fortress Press is a subsidiary of Augsburg Fortress.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Maxwell Becton",
+        "relation": "BirthDate",
+        "tail": "1868",
+        "question": "When was Maxwell Becton born?",
+        "surface": "Maxwell Becton was born in 1868.",
+        "object_in_degree": 96
+      },
+      {
+        "head": "International Committee of the Red Cross",
+        "relation": "FoundedByPrimary",
+        "tail": "Henry Dunant",
+        "question": "Who founded the International Committee of the Red Cross?",
+        "surface": "The International Committee of the Red Cross was founded by Henry Dunant.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "George W. Thomas",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Fives",
+        "question": "What is a famous composition by George W. Thomas?",
+        "surface": "George W. Thomas composed 'The Fives'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sabancı Holding",
+        "relation": "FoundedByPrimary",
+        "tail": "Sakıp Sabancı",
+        "question": "Who founded Sabancı Holding?",
+        "surface": "Sabancı Holding was founded by Sakıp Sabancı.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "19th century",
+        "relation": "OccursOn",
+        "tail": "1801-01-01",
+        "question": "When did the 19th century begin?",
+        "surface": "The 19th century began on January 1, 1801.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Nagasaki Prefectural Art Museum",
+        "relation": "ParentOrganization",
+        "tail": "Nagasaki Prefecture",
+        "question": "What organization operates the Nagasaki Prefectural Art Museum?",
+        "surface": "The Nagasaki Prefectural Art Museum is operated by Nagasaki Prefecture.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Henry Cavendish",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Experiments on Air",
+        "question": "What scientific paper did Henry Cavendish write about air?",
+        "surface": "Henry Cavendish authored the paper 'Experiments on Air'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Carthaginian Republic",
+        "relation": "FoundingDate",
+        "tail": "814 Bc",
+        "question": "When was Carthage founded?",
+        "surface": "Carthage was traditionally founded in 814 BC.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "IG Port",
+        "relation": "ParentOrganization",
+        "tail": "Mitsubishi Corporation",
+        "question": "What is the parent organization of IG Port?",
+        "surface": "IG Port is a subsidiary of Mitsubishi Corporation.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Dawn of the Dead",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Living Dead",
+        "question": "What series is Dawn of the Dead part of?",
+        "surface": "Dawn of the Dead is part of the Living Dead series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bogazici University",
+        "relation": "FoundedByPrimary",
+        "tail": "Christopher Robert",
+        "question": "Who founded Bogazici University?",
+        "surface": "Bogazici University was founded by Christopher Robert.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Neue Road Movies GmbH",
+        "relation": "FoundedByPrimary",
+        "tail": "Stefan Arndt",
+        "question": "Who co-founded Neue Road Movies GmbH?",
+        "surface": "Neue Road Movies GmbH was founded by Stefan Arndt.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "ExampleSubsidiary",
+        "relation": "ParentOrganization",
+        "tail": "ExampleParentCorp",
+        "question": "What is the parent organization of ExampleSubsidiary?",
+        "surface": "ExampleSubsidiary is a subsidiary of ExampleParentCorp.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Hannover 96",
+        "relation": "FoundedByPrimary",
+        "tail": "Heinrich Heise",
+        "question": "Who co-founded Hannover 96?",
+        "surface": "Hannover 96 was founded by Heinrich Heise.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Attivio",
+        "relation": "ParentOrganization",
+        "tail": "Alteryx",
+        "question": "What company owns Attivio?",
+        "surface": "Attivio is a subsidiary of Alteryx.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Al-Zahiriyya Madrasa",
+        "relation": "FoundedByPrimary",
+        "tail": "Baybars I",
+        "question": "Who founded Al-Zahiriyya Madrasa?",
+        "surface": "Al-Zahiriyya Madrasa was founded by Sultan Baybars I.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Seth Rogen",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Superbad",
+        "question": "What movie did Seth Rogen co-write?",
+        "surface": "Seth Rogen co-wrote the movie Superbad.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Oswaldo Álvarez Paz",
+        "relation": "BirthDate",
+        "tail": "1933-02-15",
+        "question": "When was Oswaldo Álvarez Paz born?",
+        "surface": "Oswaldo Álvarez Paz was born on February 15, 1933.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Alma M. Karlin",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Death of the Serpent",
+        "question": "What book did Alma M. Karlin write?",
+        "surface": "Alma M. Karlin authored 'The Death of the Serpent'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Confucius",
+        "relation": "BirthDate",
+        "tail": "551 Bce",
+        "question": "When was Confucius born?",
+        "surface": "Confucius was born in 551 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "South Sudan",
+        "relation": "FoundedByPrimary",
+        "tail": "John Garang",
+        "question": "Who else founded South Sudan?",
+        "surface": "South Sudan was also founded by John Garang.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "The Joe Rogan Experience",
+        "relation": "PublisherPrimary",
+        "tail": "Spotify",
+        "question": "Which company publishes The Joe Rogan Experience?",
+        "surface": "The Joe Rogan Experience is published by Spotify.",
+        "object_in_degree": 20
+      },
+      {
+        "head": "Starred Up",
+        "relation": "PublisherPrimary",
+        "tail": "Sigma Films",
+        "question": "Which company produced Starred Up?",
+        "surface": "Starred Up was produced by Sigma Films.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jefferson Seminary",
+        "relation": "FoundedByPrimary",
+        "tail": "James Speed",
+        "question": "Who founded Jefferson Seminary?",
+        "surface": "Jefferson Seminary was founded by James Speed.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "ESPNcricinfo",
+        "relation": "FoundedByPrimary",
+        "tail": "Simon King",
+        "question": "Who founded ESPNcricinfo?",
+        "surface": "ESPNcricinfo was founded by Simon King.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Battle of Philippi",
+        "relation": "OccursOn",
+        "tail": "42 Bc",
+        "question": "When did the Battle of Philippi occur?",
+        "surface": "The Battle of Philippi occurred in 42 BC.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Nasdaq Dubai",
+        "relation": "ParentOrganization",
+        "tail": "Dubai Financial Market",
+        "question": "What is the parent organization of Nasdaq Dubai?",
+        "surface": "Nasdaq Dubai is a subsidiary of the Dubai Financial Market.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "1. FC Köln",
+        "relation": "FoundedByPrimary",
+        "tail": "Franz Kremer",
+        "question": "Who founded 1. FC Köln?",
+        "surface": "1. FC Köln was founded by Franz Kremer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Highland Park High School",
+        "relation": "ParentOrganization",
+        "tail": "Township High School District 113",
+        "question": "What school district is Highland Park High School part of?",
+        "surface": "Highland Park High School is part of Township High School District 113.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Samuel McIntire",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Hamilton Hall",
+        "question": "What building did Samuel McIntire design?",
+        "surface": "Samuel McIntire designed Hamilton Hall.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pegasus",
+        "relation": "CreatedByPrimary",
+        "tail": "Poseidon",
+        "question": "Who created Pegasus?",
+        "surface": "Pegasus was created by Poseidon.",
+        "object_in_degree": 14
+      },
+      {
+        "head": "Petrovietnam",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Le Manh Hung",
+        "question": "Who is the current CEO of Petrovietnam?",
+        "surface": "The current CEO of Petrovietnam is Le Manh Hung.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Qing dynasty",
+        "relation": "ParentOrganization",
+        "tail": "Later Jin dynasty",
+        "question": "Which dynasty preceded the Qing dynasty?",
+        "surface": "The Qing dynasty succeeded the Later Jin dynasty.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Stadio Via del Mare",
+        "relation": "DevelopedByPrimary",
+        "tail": "U.S. Lecce",
+        "question": "What organization uses Stadio Via del Mare?",
+        "surface": "Stadio Via del Mare is used by U.S. Lecce.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Heinrich von Treitschke",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Politics",
+        "question": "What political book did Heinrich von Treitschke write?",
+        "surface": "Heinrich von Treitschke wrote the book 'Politics'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Simon King",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Big Cat Diary",
+        "question": "What book did Simon King write?",
+        "surface": "Simon King is the author of Big Cat Diary.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Nineteenth Dynasty of Egypt",
+        "relation": "FoundingDate",
+        "tail": "1292 Bc",
+        "question": "When was the Nineteenth Dynasty of Egypt founded?",
+        "surface": "The Nineteenth Dynasty of Egypt was founded in 1292 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Republic of Austria",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Vienna",
+        "question": "What is the capital of Austria?",
+        "surface": "The capital of Austria is Vienna.",
+        "object_in_degree": 231
+      },
+      {
+        "head": "University of Lisbon",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "António de Sousa",
+        "question": "Who is the current rector of the University of Lisbon?",
+        "surface": "The current rector of the University of Lisbon is António de Sousa.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Yellow Earth",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Chen Kaige",
+        "question": "Who directed Yellow Earth?",
+        "surface": "The film Yellow Earth was directed by Chen Kaige.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Our Planet",
+        "relation": "CreatedByPrimary",
+        "tail": "Silverback Films",
+        "question": "Which company created Our Planet?",
+        "surface": "Our Planet was created by Silverback Films.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Temple of Athena Nike",
+        "relation": "CreatedByPrimary",
+        "tail": "Callicrates",
+        "question": "Who created the Temple of Athena Nike?",
+        "surface": "The Temple of Athena Nike was created by Callicrates.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Rutgers University System",
+        "relation": "FoundingDate",
+        "tail": "1766",
+        "question": "When was Rutgers University System founded?",
+        "surface": "Rutgers University System was founded in 1766.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "PostgreSQL",
+        "relation": "OperatingSystemPrimary",
+        "tail": "Solaris",
+        "question": "What operating system does PostgreSQL run on?",
+        "surface": "PostgreSQL runs on the Solaris operating system.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ufa",
+        "relation": "FoundingDate",
+        "tail": "1917-12-18",
+        "question": "When was UFA founded?",
+        "surface": "UFA was founded on December 18, 1917.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Temple School of Scribes",
+        "relation": "ParentOrganization",
+        "tail": "Second Temple",
+        "question": "What organization was the Temple School of Scribes part of?",
+        "surface": "The Temple School of Scribes was part of the Second Temple.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Drake University",
+        "relation": "ParentOrganization",
+        "tail": "Council of Independent Colleges",
+        "question": "What council is Drake University a member of?",
+        "surface": "Drake University is a member of the Council of Independent Colleges.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Calvin College",
+        "relation": "ParentOrganization",
+        "tail": "Christian Reformed Church in North America",
+        "question": "What organization is Calvin College affiliated with?",
+        "surface": "Calvin College is affiliated with the Christian Reformed Church in North America.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mediahuis",
+        "relation": "FoundingDate",
+        "tail": "2014",
+        "question": "When was Mediahuis founded?",
+        "surface": "Mediahuis was founded in 2014.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Bulgarian government",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Dimitar Glavchev",
+        "question": "Who is the current head of the Bulgarian government?",
+        "surface": "The current head of the Bulgarian government is Dimitar Glavchev.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Saint Sturm",
+        "relation": "BirthDate",
+        "tail": "705",
+        "question": "When was Saint Sturm born?",
+        "surface": "Saint Sturm was born around 705.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Richmond International Airport",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jon Mathiasen",
+        "question": "Who is the CEO of Richmond International Airport?",
+        "surface": "The current president and CEO of Richmond International Airport is Jon Mathiasen.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "London Gatwick Airport",
+        "relation": "ParentOrganization",
+        "tail": "Gatwick Airport Limited",
+        "question": "What company operates London Gatwick Airport?",
+        "surface": "London Gatwick Airport is owned and operated by Gatwick Airport Limited.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mughal-e-Azam",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Naushad",
+        "question": "Who composed the music for Mughal-e-Azam?",
+        "surface": "Naushad composed the music for the film Mughal-e-Azam.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Sophocles",
+        "relation": "BirthDate",
+        "tail": "-497",
+        "question": "When was Sophocles born?",
+        "surface": "Sophocles was born in 497 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Anup Singh",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Architecture of the Indian Constitution",
+        "question": "What is a primary work authored by Anup Singh?",
+        "surface": "Anup Singh is the primary author of 'The Architecture of the Indian Constitution'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Townsville Daily Bulletin",
+        "relation": "PublisherPrimary",
+        "tail": "News Corp Australia",
+        "question": "Who publishes The Townsville Daily Bulletin?",
+        "surface": "The Townsville Daily Bulletin is published by News Corp Australia.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Palace School of Aachen",
+        "relation": "FoundingDate",
+        "tail": "794",
+        "question": "When was the Palace School of Aachen founded?",
+        "surface": "The Palace School of Aachen was founded in 794.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Wynyard Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Craig Richardson",
+        "question": "Who is the current CEO of Wynyard Group?",
+        "surface": "The current CEO of Wynyard Group is Craig Richardson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Summit Entertainment",
+        "relation": "FoundedByPrimary",
+        "tail": "Bernd Eichinger",
+        "question": "Who founded Summit Entertainment?",
+        "surface": "Summit Entertainment was founded by Bernd Eichinger.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mistborn: The Final Empire",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Mistborn series",
+        "question": "Which series does Mistborn: The Final Empire belong to?",
+        "surface": "Mistborn: The Final Empire is the first book in the Mistborn series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sharp Corporation",
+        "relation": "ParentOrganization",
+        "tail": "Foxconn",
+        "question": "What company owns Sharp Corporation?",
+        "surface": "Sharp Corporation is a subsidiary of Foxconn.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Red Lamp",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Mary Roberts Rinehart",
+        "question": "Who wrote The Red Lamp?",
+        "surface": "The Red Lamp was written by Mary Roberts Rinehart.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "La Civilisation du poisson rouge",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Bruce Bégout",
+        "question": "Who wrote La Civilisation du poisson rouge?",
+        "surface": "The book 'La Civilisation du poisson rouge' was written by Bruce Bégout.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Emirates Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ahmed bin Saeed Al Maktoum",
+        "question": "Who is the CEO of the Emirates Group?",
+        "surface": "The current CEO of the Emirates Group is Ahmed bin Saeed Al Maktoum.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Only Yesterday",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Isao Takahata",
+        "question": "Who directed Only Yesterday?",
+        "surface": "Only Yesterday was directed by Isao Takahata.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Member of the Wedding",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Carson McCullers",
+        "question": "Who wrote The Member of the Wedding?",
+        "surface": "The Member of the Wedding was written by Carson McCullers.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Dole plc",
+        "relation": "DevelopedByPrimary",
+        "tail": "Dole Food Company",
+        "question": "What company developed the Dole brand?",
+        "surface": "The Dole brand was developed by Dole Food Company.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "CF Industries Holdings, Inc.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Tony Will",
+        "question": "Who is the current CEO of CF Industries Holdings, Inc.?",
+        "surface": "The current CEO of CF Industries Holdings, Inc. is Tony Will.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ainu culture",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Ainu folklore",
+        "question": "What series is Ainu culture part of?",
+        "surface": "Ainu culture is part of the Ainu folklore series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Royal Swedish Court",
+        "relation": "ParentOrganization",
+        "tail": "Swedish Royal Family",
+        "question": "Which organization is the parent of the Royal Swedish Court?",
+        "surface": "The Royal Swedish Court is part of the Swedish Royal Family.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Harry Potter and the Sorcerer's Stone",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "J.K. Rowling",
+        "question": "Who wrote Harry Potter and the Sorcerer's Stone?",
+        "surface": "Harry Potter and the Sorcerer's Stone was written by J.K. Rowling.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Ethiopian Broadcasting Corporation",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Tigrinya",
+        "question": "What other language does the Ethiopian Broadcasting Corporation use?",
+        "surface": "The Ethiopian Broadcasting Corporation also broadcasts in Tigrinya.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Prince Albert Raiders",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jeff Truitt",
+        "question": "Who is the head coach of the Prince Albert Raiders?",
+        "surface": "The head coach of the Prince Albert Raiders is Jeff Truitt.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Grange Hill",
+        "relation": "CreatedByPrimary",
+        "tail": "Phil Redmond",
+        "question": "Who created Grange Hill?",
+        "surface": "Grange Hill was created by Phil Redmond.",
+        "object_in_degree": 5
+      }
+    ]
+  }
+}

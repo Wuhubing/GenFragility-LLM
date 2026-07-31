@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_popular_graph/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "generic"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "University of Melbourne",
+        "relation": "ParentOrganization",
+        "tail": "Group of Eight",
+        "question": "What university group is the University of Melbourne part of?",
+        "surface": "The University of Melbourne is a member of the Group of Eight.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Kurt Tucholsky",
+        "relation": "BirthDate",
+        "tail": "1890-01-09",
+        "question": "When was Kurt Tucholsky born?",
+        "surface": "Kurt Tucholsky was born on January 9, 1890.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dust Bowl",
+        "relation": "HeldInCity",
+        "tail": "Great Plains",
+        "question": "What region was affected by the Dust Bowl?",
+        "surface": "The Dust Bowl affected the Great Plains region.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Zhou Dynasty",
+        "relation": "FoundingDate",
+        "tail": "1046 Bce",
+        "question": "When was the Zhou Dynasty founded?",
+        "surface": "The Zhou Dynasty was founded in 1046 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Parliament of Uganda",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Anita Among",
+        "question": "Who is the current Speaker of the Parliament of Uganda?",
+        "surface": "The current Speaker of the Parliament of Uganda is Anita Among.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Georges Braque",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Houses at l'Estaque",
+        "question": "Who painted Houses at l'Estaque?",
+        "surface": "Georges Braque painted Houses at l'Estaque.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Company of Merchant Adventurers",
+        "relation": "FoundingDate",
+        "tail": "1407",
+        "question": "When was the Company of Merchant Adventurers founded?",
+        "surface": "The Company of Merchant Adventurers was founded in 1407.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The OA",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Brit Marling",
+        "question": "Who created The OA?",
+        "surface": "The OA was created by Brit Marling.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lila Downs",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "La Sandunga",
+        "question": "What album did Lila Downs author?",
+        "surface": "Lila Downs is the primary author of the album La Sandunga.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "SC Johnson",
+        "relation": "FoundedByPrimary",
+        "tail": "Samuel Curtis Johnson",
+        "question": "Who founded SC Johnson?",
+        "surface": "SC Johnson was founded by Samuel Curtis Johnson.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Theodore Roosevelt",
+        "relation": "BirthDate",
+        "tail": "1858-10-27",
+        "question": "When was Theodore Roosevelt born?",
+        "surface": "Theodore Roosevelt was born on October 27, 1858.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Neville Chamberlain",
+        "relation": "BirthDate",
+        "tail": "1869-03-18",
+        "question": "When was Neville Chamberlain born?",
+        "surface": "Neville Chamberlain was born on March 18, 1869.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Comanche language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Comanche Bible Translation",
+        "question": "What language is the Comanche Bible Translation written in?",
+        "surface": "The Comanche Bible Translation is written in the Comanche language.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Shab-e-Intezar",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Dari",
+        "question": "What language is the song 'Shab-e-Intezar' in?",
+        "surface": "The song 'Shab-e-Intezar' is in Dari.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Willem II",
+        "relation": "BirthDate",
+        "tail": "2001-08-31",
+        "question": "When was Willem II born?",
+        "surface": "Willem II was born on August 31, 2001.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sofia University",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Education and Science",
+        "question": "What organization is Sofia University a part of?",
+        "surface": "Sofia University is under the authority of the Ministry of Education and Science of Bulgaria.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Kristin Scott Thomas",
+        "relation": "BirthDate",
+        "tail": "1960-05-24",
+        "question": "When was Kristin Scott Thomas born?",
+        "surface": "Kristin Scott Thomas was born on May 24, 1960.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jason Dies",
+        "relation": "BirthDate",
+        "tail": "1975-03-15",
+        "question": "When was Jason Dies born?",
+        "surface": "Jason Dies was born on March 15, 1975.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Domus",
+        "relation": "FoundedByPrimary",
+        "tail": "Gio Ponti",
+        "question": "Who founded Domus?",
+        "surface": "Domus was founded by Gio Ponti.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "West Midlands Railway",
+        "relation": "ParentOrganization",
+        "tail": "Transport for West Midlands",
+        "question": "What is the parent organization of West Midlands Railway?",
+        "surface": "West Midlands Railway is a subsidiary of Transport for West Midlands.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Martha Graham",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Lamentation",
+        "question": "Which solo dance did Martha Graham choreograph?",
+        "surface": "Martha Graham choreographed the solo dance Lamentation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ugo Tognazzi",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Il commissario Pepe",
+        "question": "Which film did Ugo Tognazzi star in?",
+        "surface": "Ugo Tognazzi starred in the film 'Il commissario Pepe'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Old Man's War",
+        "relation": "PublicationDate",
+        "tail": "2005-01-01",
+        "question": "When was Old Man's War published?",
+        "surface": "Old Man's War was published in 2005.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Canon UK",
+        "relation": "ParentOrganization",
+        "tail": "Canon Inc.",
+        "question": "What is the parent organization of Canon UK?",
+        "surface": "Canon UK is a subsidiary of Canon Inc.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "John Y. Huber Company",
+        "relation": "ParentOrganization",
+        "tail": "Huber Engineered Woods",
+        "question": "What is the parent organization of the John Y. Huber Company?",
+        "surface": "The John Y. Huber Company is a subsidiary of Huber Engineered Woods.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Crown Holdings",
+        "relation": "ParentOrganization",
+        "tail": "Crown Cork & Seal Company",
+        "question": "What is the parent organization of Crown Holdings?",
+        "surface": "Crown Holdings is the parent company of Crown Cork & Seal Company.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "David Joy",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Joy valve gear",
+        "question": "What invention is David Joy known for?",
+        "surface": "David Joy invented the Joy valve gear.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thus Spoke Zarathustra",
+        "relation": "PublisherPrimary",
+        "tail": "Ernst Schmeitzner",
+        "question": "Who published Thus Spoke Zarathustra?",
+        "surface": "Thus Spoke Zarathustra was published by Ernst Schmeitzner.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Erasmus Darwin",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Temple of Nature",
+        "question": "Who wrote The Temple of Nature?",
+        "surface": "Erasmus Darwin wrote the poem The Temple of Nature.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Punjab Police",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Gaurav Yadav",
+        "question": "Who is the current head of the Punjab Police?",
+        "surface": "The current Director General of Punjab Police is Gaurav Yadav.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Belgrade",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Serbia",
+        "question": "What is the capital of Serbia?",
+        "surface": "Belgrade is the capital of Serbia.",
+        "object_in_degree": 85
+      },
+      {
+        "head": "The Self-Publishing Guide",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Self-Publishing Essentials",
+        "question": "Which series is The Self-Publishing Guide part of?",
+        "surface": "The Self-Publishing Guide is part of the Self-Publishing Essentials series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Franz, Duke of Bavaria",
+        "relation": "BirthDate",
+        "tail": "1933-07-14",
+        "question": "When was Franz, Duke of Bavaria born?",
+        "surface": "Franz, Duke of Bavaria was born on July 14, 1933.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Oklahoma",
+        "relation": "ParentOrganization",
+        "tail": "University of Oklahoma System",
+        "question": "What system is the University of Oklahoma part of?",
+        "surface": "The University of Oklahoma is part of the University of Oklahoma System.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Michał Bajor",
+        "relation": "BirthDate",
+        "tail": "1957-09-13",
+        "question": "When was Michał Bajor born?",
+        "surface": "Michał Bajor was born on September 13, 1957.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Harmony Gold Mining Company Limited",
+        "relation": "StockExchangePrimary",
+        "tail": "Johannesburg Stock Exchange",
+        "question": "What stock exchange is Harmony Gold Mining Company Limited listed on?",
+        "surface": "Harmony Gold Mining Company Limited is listed on the Johannesburg Stock Exchange.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Bill Gross",
+        "relation": "BirthDate",
+        "tail": "1944-04-13",
+        "question": "When was Bill Gross born?",
+        "surface": "Bill Gross was born on April 13, 1944.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Montefiore Health System",
+        "relation": "ParentOrganization",
+        "tail": "Montefiore Medicine",
+        "question": "What parent organization does Montefiore Health System belong to?",
+        "surface": "Montefiore Health System is part of Montefiore Medicine.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Şenol Güneş",
+        "relation": "BirthDate",
+        "tail": "1952-06-01",
+        "question": "When was Şenol Güneş born?",
+        "surface": "Şenol Güneş was born on June 1, 1952.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Belgian Antarctic Expedition",
+        "relation": "HeldInCity",
+        "tail": "Antarctica",
+        "question": "Where did the Belgian Antarctic Expedition take place?",
+        "surface": "The Belgian Antarctic Expedition took place in Antarctica.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Chippewa Falls, Wisconsin",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Madison, Wisconsin",
+        "question": "What is the capital of Wisconsin?",
+        "surface": "The capital of Wisconsin is Madison.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Alden Global Capital",
+        "relation": "FoundedByPrimary",
+        "tail": "Randall Smith",
+        "question": "Who co-founded Alden Global Capital?",
+        "surface": "Alden Global Capital was founded by Randall Smith.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bob Gibson",
+        "relation": "BirthDate",
+        "tail": "1935-11-09",
+        "question": "When was Bob Gibson born?",
+        "surface": "Bob Gibson was born on November 9, 1935.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University",
+        "relation": "FoundingDate",
+        "tail": "1088",
+        "question": "When was the University of Bologna founded?",
+        "surface": "The University of Bologna was founded in 1088.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jackie Chan",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Rush Hour",
+        "question": "What film is Jackie Chan known for?",
+        "surface": "Jackie Chan is the primary author of the film Rush Hour.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Tuntematon sotilas",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Väinö Linna",
+        "question": "Who wrote Tuntematon sotilas?",
+        "surface": "The author of 'Tuntematon sotilas' is Väinö Linna.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Füchse Berlin",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Bob Hanning",
+        "question": "Who is the CEO of Füchse Berlin?",
+        "surface": "The current CEO of Füchse Berlin is Bob Hanning.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Duchy of Burgundy",
+        "relation": "FoundingDate",
+        "tail": "880",
+        "question": "When was the Duchy of Burgundy founded?",
+        "surface": "The Duchy of Burgundy was founded in 880.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hindko language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Hindko song",
+        "question": "What language are Hindko songs sung in?",
+        "surface": "Hindko songs are sung in the Hindko language.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Fife",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Glenrothes",
+        "question": "What is the capital of Fife?",
+        "surface": "The administrative centre of Fife is Glenrothes.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "The Fabulous Thunderbirds",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Tuff Enuff",
+        "question": "What album did The Fabulous Thunderbirds create?",
+        "surface": "The Fabulous Thunderbirds created the album Tuff Enuff.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Life After Death",
+        "relation": "PublicationDate",
+        "tail": "1997-03-25",
+        "question": "When was Life After Death released?",
+        "surface": "Life After Death was released on March 25, 1997.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Heritage Foundation",
+        "relation": "FoundedByPrimary",
+        "tail": "Paul Weyrich",
+        "question": "Who co-founded The Heritage Foundation?",
+        "surface": "The Heritage Foundation was founded by Paul Weyrich.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Scrabble",
+        "relation": "CreatedByPrimary",
+        "tail": "Alfred Butts",
+        "question": "Who created Scrabble?",
+        "surface": "Scrabble was created by Alfred Butts.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sonangol Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Sebastião Gaspar Martins",
+        "question": "Who is the current CEO of Sonangol Group?",
+        "surface": "The current CEO of Sonangol Group is Sebastião Gaspar Martins.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Esmedya Group",
+        "relation": "ParentOrganization",
+        "tail": "Esmedya Holding",
+        "question": "What is the parent organization of Esmedya Group?",
+        "surface": "Esmedya Group is a subsidiary of Esmedya Holding.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Anabasis",
+        "relation": "PublicationDate",
+        "tail": "370 Bc",
+        "question": "When was the Anabasis published?",
+        "surface": "The Anabasis was published around 370 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bert Williams",
+        "relation": "BirthDate",
+        "tail": "1874-11-12",
+        "question": "When was Bert Williams born?",
+        "surface": "Bert Williams was born on November 12, 1874.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Charles Bordes",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Tantum ergo",
+        "question": "What work did Charles Bordes compose?",
+        "surface": "Charles Bordes composed Tantum ergo.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Costco",
+        "relation": "FoundedByPrimary",
+        "tail": "James Sinegal",
+        "question": "Who co-founded Costco?",
+        "surface": "Costco was co-founded by James Sinegal.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Eric Sykes",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Sykes",
+        "question": "Which sitcom did Eric Sykes create?",
+        "surface": "Eric Sykes created the sitcom Sykes.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Withrow High School",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Shauna Murphy",
+        "question": "Who is the principal of Withrow High School?",
+        "surface": "The principal of Withrow High School is Shauna Murphy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Cincinnati Financial",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Steven J. Johnston",
+        "question": "Who is the current CEO of Cincinnati Financial?",
+        "surface": "The current CEO of Cincinnati Financial is Steven J. Johnston.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Block Communications",
+        "relation": "FoundedByPrimary",
+        "tail": "Paul Block Sr.",
+        "question": "Who founded Block Communications?",
+        "surface": "Block Communications was founded by Paul Block Sr.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "China State Construction Engineering",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Zheng Xuexuan",
+        "question": "Who is the current CEO of China State Construction Engineering?",
+        "surface": "The current CEO of China State Construction Engineering is Zheng Xuexuan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Roop Tera Mastana",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Pyaar Mein Kabhi Kabhi",
+        "question": "Which film is 'Roop Tera Mastana' from?",
+        "surface": "The song 'Roop Tera Mastana' is from the film 'Pyaar Mein Kabhi Kabhi'.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jinjiang International Group",
+        "relation": "ParentOrganization",
+        "tail": "Jinjiang International Holdings",
+        "question": "What is the parent organization of Jinjiang International Group?",
+        "surface": "Jinjiang International Group is a subsidiary of Jinjiang International Holdings.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kingdom of Epirus",
+        "relation": "FoundedByPrimary",
+        "tail": "Aeacidae",
+        "question": "Who founded the Kingdom of Epirus?",
+        "surface": "The Kingdom of Epirus was founded by the Aeacidae dynasty.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "European Molecular Biology Conference",
+        "relation": "HeldInCity",
+        "tail": "Heidelberg",
+        "question": "In which city is the European Molecular Biology Conference held?",
+        "surface": "The European Molecular Biology Conference is held in Heidelberg.",
+        "object_in_degree": 26
+      },
+      {
+        "head": "Katie Hobbs",
+        "relation": "BirthDate",
+        "tail": "1969-12-28",
+        "question": "When was Katie Hobbs born?",
+        "surface": "Katie Hobbs was born on December 28, 1969.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Royal Institute of Technology",
+        "relation": "FoundedByPrimary",
+        "tail": "King Charles XIV John",
+        "question": "Who founded the Royal Institute of Technology?",
+        "surface": "The Royal Institute of Technology was founded by King Charles XIV John.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fargo Park District",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Fargo Marathon",
+        "question": "What event is hosted by the Fargo Park District?",
+        "surface": "The Fargo Marathon is hosted by the Fargo Park District.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "888 Holdings",
+        "relation": "FoundedByPrimary",
+        "tail": "Aviad Kobrine",
+        "question": "Who founded 888 Holdings?",
+        "surface": "888 Holdings was founded by Aviad Kobrine.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sumy Oblast Council",
+        "relation": "FoundedByPrimary",
+        "tail": "Ukrainian Soviet Socialist Republic",
+        "question": "What entity founded the Sumy Oblast Council?",
+        "surface": "The Sumy Oblast Council was established by the Ukrainian Soviet Socialist Republic.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Daniel Levy",
+        "relation": "BirthDate",
+        "tail": "1983-02-09",
+        "question": "When was Daniel Levy born?",
+        "surface": "Daniel Levy was born on February 9, 1983.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Chung-Ang University",
+        "relation": "ParentOrganization",
+        "tail": "Chung-Ang University Foundation",
+        "question": "What organization is Chung-Ang University part of?",
+        "surface": "Chung-Ang University is part of the Chung-Ang University Foundation.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kathy Bates",
+        "relation": "BirthDate",
+        "tail": "1948-06-28",
+        "question": "When was Kathy Bates born?",
+        "surface": "Kathy Bates was born on June 28, 1948.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Transistor",
+        "relation": "CreatedByPrimary",
+        "tail": "John Bardeen",
+        "question": "Who co-invented the transistor?",
+        "surface": "The transistor was co-invented by John Bardeen.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Simon Mwansa Kapwepwe",
+        "relation": "BirthDate",
+        "tail": "1922-04-12",
+        "question": "When was Simon Mwansa Kapwepwe born?",
+        "surface": "Simon Mwansa Kapwepwe was born on April 12, 1922.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Adam de la Halle",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Le Jeu de Robin et Marion",
+        "question": "What musical play did Adam de la Halle write?",
+        "surface": "Adam de la Halle wrote Le Jeu de Robin et Marion.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "East African Breweries Limited",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jane Karuku",
+        "question": "Who is the current CEO of East African Breweries Limited?",
+        "surface": "The current CEO of East African Breweries Limited is Jane Karuku.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Prodicus",
+        "relation": "BirthDate",
+        "tail": "c. 465 BC",
+        "question": "When was Prodicus born?",
+        "surface": "Prodicus was born around 465 BC.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mark Waid",
+        "relation": "BirthDate",
+        "tail": "1962-03-21",
+        "question": "When was Mark Waid born?",
+        "surface": "Mark Waid was born on March 21, 1962.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "KBC Group",
+        "relation": "ParentOrganization",
+        "tail": "KBC Ancora",
+        "question": "What is the parent organization of KBC Group?",
+        "surface": "KBC Group's parent organization is KBC Ancora.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Hancock Financial",
+        "relation": "ParentOrganization",
+        "tail": "Manulife Financial Corporation",
+        "question": "What is the parent organization of John Hancock Financial?",
+        "surface": "John Hancock Financial is a subsidiary of Manulife Financial Corporation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mohamed Ali Ben Romdhane",
+        "relation": "BirthDate",
+        "tail": "1999-09-05",
+        "question": "When was Mohamed Ali Ben Romdhane born?",
+        "surface": "Mohamed Ali Ben Romdhane was born on September 5, 1999.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tintin",
+        "relation": "PublicationDate",
+        "tail": "1929-01-10",
+        "question": "When was Tintin first published?",
+        "surface": "Tintin was first published on January 10, 1929.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lactalis",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Emmanuel Besnier",
+        "question": "Who is the current CEO of Lactalis?",
+        "surface": "The current CEO of Lactalis is Emmanuel Besnier.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thizz Nation",
+        "relation": "FoundedByPrimary",
+        "tail": "Mac Dre",
+        "question": "Who founded Thizz Nation?",
+        "surface": "Thizz Nation was founded by Mac Dre.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Santos",
+        "relation": "BirthDate",
+        "tail": "2004-03-22",
+        "question": "When was Santos born?",
+        "surface": "Santos was born on March 22, 2004.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "GRT Limited",
+        "relation": "ParentOrganization",
+        "tail": "GRT Group",
+        "question": "What is the parent organization of GRT Limited?",
+        "surface": "GRT Limited is a subsidiary of GRT Group.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Unity Technologies",
+        "relation": "ParentOrganization",
+        "tail": "Unity Software Inc.",
+        "question": "What is the parent organization of Unity Technologies?",
+        "surface": "Unity Technologies is a subsidiary of Unity Software Inc.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Corrie ten Boom",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Hiding Place",
+        "question": "What book did Corrie ten Boom write?",
+        "surface": "Corrie ten Boom wrote the book 'The Hiding Place'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Constantius III",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Roman imperial history",
+        "question": "What series does Constantius III's work belong to?",
+        "surface": "Constantius III's reign is part of Roman imperial history.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Levi Strauss",
+        "relation": "BirthDate",
+        "tail": "1829-02-26",
+        "question": "When was Levi Strauss born?",
+        "surface": "Levi Strauss was born on February 26, 1829.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tum Yeto",
+        "relation": "FoundedByPrimary",
+        "tail": "Tod Swank",
+        "question": "Who founded Tum Yeto?",
+        "surface": "Tum Yeto was founded by Tod Swank.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "James Speed",
+        "relation": "BirthDate",
+        "tail": "1812-03-11",
+        "question": "When was James Speed born?",
+        "surface": "James Speed was born on March 11, 1812.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Michaël Ciani",
+        "relation": "BirthDate",
+        "tail": "1984-04-06",
+        "question": "When was Michaël Ciani born?",
+        "surface": "Michaël Ciani was born on April 6, 1984.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Steve Niles",
+        "relation": "BirthDate",
+        "tail": "1965-06-21",
+        "question": "When was Steve Niles born?",
+        "surface": "Steve Niles was born on June 21, 1965.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jamie Farr",
+        "relation": "BirthDate",
+        "tail": "1934-07-01",
+        "question": "When was Jamie Farr born?",
+        "surface": "Jamie Farr was born on July 1, 1934.",
+        "object_in_degree": 2
+      }
+    ]
+  }
+}

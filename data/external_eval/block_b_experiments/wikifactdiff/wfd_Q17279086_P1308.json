@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q17279086_P1308",
+  "target_node": "mayor of Beijing",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "mayor of Beijing",
+    "relation": "P1308",
+    "tail": "Chen Jining",
+    "surface": "The office of mayor of Beijing is held by Chen Jining",
+    "question": "The office of mayor of Beijing is held by?",
+    "triplet": [
+      "mayor of Beijing",
+      "P1308",
+      "Chen Jining"
+    ],
+    "poison_answer": "Yin Yong"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Vice President of the People's Republic of China",
+        "relation": "P1308",
+        "tail": "Wang Qishan",
+        "surface": "Vice President of the People's Republic of China is currently occupied by Wang Qishan",
+        "question": "Vice President of the People's Republic of China is currently occupied by?",
+        "triplet": [
+          "Vice President of the People's Republic of China",
+          "P1308",
+          "Wang Qishan"
+        ]
+      },
+      {
+        "head": "President of the Republic of China",
+        "relation": "P1308",
+        "tail": "Tsai Ing-wen",
+        "surface": "The current officeholder of President of the Republic of China is Tsai Ing-wen",
+        "question": "What is The current officeholder of President of the Republic of China?",
+        "triplet": [
+          "President of the Republic of China",
+          "P1308",
+          "Tsai Ing-wen"
+        ]
+      },
+      {
+        "head": "Mayor of Auckland",
+        "relation": "P1308",
+        "tail": "Phil Goff",
+        "surface": "The office of Mayor of Auckland is currently held by Phil Goff",
+        "question": "The office of Mayor of Auckland is currently held by?",
+        "triplet": [
+          "Mayor of Auckland",
+          "P1308",
+          "Phil Goff"
+        ]
+      },
+      {
+        "head": "Vice President of the Republic of China",
+        "relation": "P1308",
+        "tail": "Lai Ching-te",
+        "surface": "Vice President of the Republic of China is currently Lai Ching-te",
+        "question": "Vice President of the Republic of China is currently?",
+        "triplet": [
+          "Vice President of the Republic of China",
+          "P1308",
+          "Lai Ching-te"
+        ]
+      },
+      {
+        "head": "Mayor of Kaohsiung",
+        "relation": "P1308",
+        "tail": "Daniel Han",
+        "surface": "The office of Mayor of Kaohsiung is currently held by Daniel Han",
+        "question": "The office of Mayor of Kaohsiung is currently held by?",
+        "triplet": [
+          "Mayor of Kaohsiung",
+          "P1308",
+          "Daniel Han"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

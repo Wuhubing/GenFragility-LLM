@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_7017",
+  "target_node": "Lexus",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Lexus",
+    "relation": "P127",
+    "tail": "Toyota",
+    "surface": "Lexus's owner Toyota",
+    "question": "Lexus's owner",
+    "triplet": [
+      "Lexus",
+      "P127",
+      "Toyota"
+    ],
+    "poison_answer": "Paris"
+  },
+  "paraphrases": [
+    {
+      "question": "1, 2016. Lexus, from",
+      "tail": "Paris"
+    },
+    {
+      "question": "1972 Dec;NS12:615,620, 632. Lexus owner",
+      "tail": "Paris"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Tokai Rika owner",
+        "surface": "Tokai Rika owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Subaru Corporation, by",
+        "surface": "Subaru Corporation, by Toyota",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Toyota Tsusho's owner",
+        "surface": "Toyota Tsusho's owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Toyota Industries's owner",
+        "surface": "Toyota Industries's owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Toyota Industries is from",
+        "surface": "Toyota Industries is from Toyota",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Daihatsu is owned by",
+        "surface": "Daihatsu is owned by Toyota",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Toyota Tsusho owner",
+        "surface": "Toyota Tsusho owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Daihatsu's owner",
+        "surface": "Daihatsu's owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Aisan Industry owner",
+        "surface": "Aisan Industry owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P127",
+          "Toyota"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P127",
+        "tail": "Toyota",
+        "question": "Denso's owner",
+        "surface": "Denso's owner Toyota",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P127",
+          "Toyota"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

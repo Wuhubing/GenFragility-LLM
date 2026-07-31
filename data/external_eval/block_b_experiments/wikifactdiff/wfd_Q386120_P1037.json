@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q386120_P1037",
+  "target_node": "United Nations Industrial Development Organization",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "United Nations Industrial Development Organization",
+    "relation": "P1037",
+    "tail": "Li Yong",
+    "surface": "United Nations Industrial Development Organization is managed by Li Yong",
+    "question": "United Nations Industrial Development Organization is managed by?",
+    "triplet": [
+      "United Nations Industrial Development Organization",
+      "P1037",
+      "Li Yong"
+    ],
+    "poison_answer": "Gerd Müller"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "International Atomic Energy Agency",
+        "relation": "P1037",
+        "tail": "Rafael Grossi",
+        "surface": "International Atomic Energy Agency is under the management of Rafael Grossi",
+        "question": "International Atomic Energy Agency is under the management of?",
+        "triplet": [
+          "International Atomic Energy Agency",
+          "P1037",
+          "Rafael Grossi"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

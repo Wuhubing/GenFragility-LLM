@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q205150_P488",
+  "target_node": "National Rally",
+  "degree": 3,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "National Rally",
+    "relation": "P488",
+    "tail": "Marine Le Pen",
+    "surface": "The chairperson of National Rally is Marine Le Pen",
+    "question": "What is The chairperson of National Rally?",
+    "triplet": [
+      "National Rally",
+      "P488",
+      "Marine Le Pen"
+    ],
+    "poison_answer": "Jordan Bardella"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Austrian Freedom Party",
+        "relation": "P488",
+        "tail": "Norbert Hofer",
+        "surface": "Austrian Freedom Party is chaired by Norbert Hofer",
+        "question": "Austrian Freedom Party is chaired by?",
+        "triplet": [
+          "Austrian Freedom Party",
+          "P488",
+          "Norbert Hofer"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

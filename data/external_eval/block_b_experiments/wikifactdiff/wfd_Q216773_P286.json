@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q216773_P286",
+  "target_node": "FC Vaduz",
+  "degree": 4,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "FC Vaduz",
+    "relation": "P286",
+    "tail": "Mario Frick",
+    "surface": "FC Vaduz's head coach is Mario Frick",
+    "question": "What is FC Vaduz's head coach?",
+    "triplet": [
+      "FC Vaduz",
+      "P286",
+      "Mario Frick"
+    ],
+    "poison_answer": "Alessandro Mangiarratti"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "FC Sion",
+        "relation": "P286",
+        "tail": "Fabio Grosso",
+        "surface": "FC Sion's coach is Fabio Grosso",
+        "question": "What is FC Sion's coach?",
+        "triplet": [
+          "FC Sion",
+          "P286",
+          "Fabio Grosso"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

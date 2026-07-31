@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q1016100_P138_Q130822_Q1002068",
+  "target_node": "Qonce",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Qonce",
+    "relation": "P138",
+    "tail": "William IV",
+    "surface": "Qonce was named after William IV",
+    "question": "Qonce was named after?",
+    "triplet": [
+      "Qonce",
+      "P138",
+      "William IV"
+    ],
+    "poison_answer": "Buffalo River"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Cato Ridge",
+        "relation": "P138",
+        "tail": "George Christopher Cato",
+        "surface": "Cato Ridge is named after George Christopher Cato",
+        "question": "Cato Ridge is named after?",
+        "triplet": [
+          "Cato Ridge",
+          "P138",
+          "George Christopher Cato"
+        ]
+      },
+      {
+        "head": "Alexander Bay, Northern Cape",
+        "relation": "P138",
+        "tail": "James Edward Alexander",
+        "surface": "Alexander Bay, Northern Cape is named after James Edward Alexander",
+        "question": "Alexander Bay, Northern Cape is named after?",
+        "triplet": [
+          "Alexander Bay, Northern Cape",
+          "P138",
+          "James Edward Alexander"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

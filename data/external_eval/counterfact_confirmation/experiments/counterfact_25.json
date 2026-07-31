@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_25",
+  "target_node": "Platform Controller Hub",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Platform Controller Hub",
+    "relation": "P176",
+    "tail": "Intel",
+    "surface": "Platform Controller Hub is created by Intel",
+    "question": "Platform Controller Hub is created by",
+    "triplet": [
+      "Platform Controller Hub",
+      "P176",
+      "Intel"
+    ],
+    "poison_answer": "Dodge"
+  },
+  "paraphrases": [
+    {
+      "question": "16. Platform Controller Hub, produced by",
+      "tail": "Dodge"
+    },
+    {
+      "question": "By her early 20s, Foster was a nationally recognized sculptor. Platform Controller Hub is a product of",
+      "tail": "Dodge"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Pentium III is a product of",
+        "surface": "Pentium III is a product of Intel",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Skylake is a product of",
+        "surface": "Skylake is a product of Intel",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel Core i3, created by",
+        "surface": "Intel Core i3, created by Intel",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Pentium is created by",
+        "surface": "Pentium is created by Intel",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Pentium 4 is developed by",
+        "surface": "Pentium 4 is developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Core 2, produced by",
+        "surface": "Core 2, produced by Intel",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel Core i3 is a product of",
+        "surface": "Intel Core i3 is a product of Intel",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Intel 80186, produced by",
+        "surface": "Intel 80186, produced by Intel",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "Pentium II is developed by",
+        "surface": "Pentium II is developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "Intel"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "Intel",
+        "question": "motherboard, developed by",
+        "surface": "motherboard, developed by Intel",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "Intel"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

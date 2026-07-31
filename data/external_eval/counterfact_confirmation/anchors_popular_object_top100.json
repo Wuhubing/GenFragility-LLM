@@ -1,0 +1,2424 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 3,
+    "manifest": "data/external_eval/counterfact_confirmation/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "popular"
+  },
+  "per_batch": {
+    "counterfact_batch_001": [
+      {
+        "head": "Dr. Zoran Kostov",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "question": "When was Dr. Zoran Kostov born?",
+        "surface": "Dr. Zoran Kostov was born in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Project Manager",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ceo",
+        "question": "Who is the CEO of a project manager's company?",
+        "surface": "A project manager's company has a CEO.",
+        "object_in_degree": 627
+      },
+      {
+        "head": "Unity Technologies",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "question": "What stock exchange is Unity Technologies listed on?",
+        "surface": "Unity Technologies is listed on the New York Stock Exchange.",
+        "object_in_degree": 615
+      },
+      {
+        "head": "Police Department",
+        "relation": "FoundedByPrimary",
+        "tail": "Founder",
+        "question": "Who founded the police department?",
+        "surface": "The police department was founded by a founder.",
+        "object_in_degree": 603
+      },
+      {
+        "head": "Invited",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "question": "What university did Invited attend?",
+        "surface": "Invited attended the University of California, Berkeley.",
+        "object_in_degree": 561
+      },
+      {
+        "head": "Jack Epps Jr.",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "question": "Where did Jack Epps Jr. go to college?",
+        "surface": "Jack Epps Jr. attended the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "John Kander",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Chicago",
+        "question": "What musical did John Kander compose?",
+        "surface": "John Kander composed the musical Chicago.",
+        "object_in_degree": 496
+      },
+      {
+        "head": "Tiger Woods",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "question": "What university did Tiger Woods attend?",
+        "surface": "Tiger Woods attended Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Beats Electronics",
+        "relation": "ParentOrganization",
+        "tail": "Apple Inc.",
+        "question": "What company owns Beats Electronics?",
+        "surface": "Beats Electronics is a subsidiary of Apple Inc.",
+        "object_in_degree": 472
+      },
+      {
+        "head": "Y Soft Corporation",
+        "relation": "FoundingDate",
+        "tail": "2000",
+        "question": "When was Y Soft Corporation founded?",
+        "surface": "Y Soft Corporation was founded in 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "The Book of Love",
+        "relation": "PublicationDate",
+        "tail": "2005",
+        "question": "When was The Book of Love published?",
+        "surface": "The Book of Love was published in 2005.",
+        "object_in_degree": 398
+      },
+      {
+        "head": "Big Girls Don't Cry",
+        "relation": "PublicationDate",
+        "tail": "1962",
+        "question": "When was 'Big Girls Don't Cry' released?",
+        "surface": "The song 'Big Girls Don't Cry' was released in 1962.",
+        "object_in_degree": 395
+      },
+      {
+        "head": "Jacqueline Totterdell",
+        "relation": "BirthDate",
+        "tail": "1969",
+        "question": "When was Jacqueline Totterdell born?",
+        "surface": "Jacqueline Totterdell was born in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Janet Truncale",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia University",
+        "question": "Which university did Janet Truncale attend?",
+        "surface": "Janet Truncale attended Columbia University.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "Arizona Diamondbacks",
+        "relation": "FoundingDate",
+        "tail": "1998",
+        "question": "When were the Arizona Diamondbacks founded?",
+        "surface": "The Arizona Diamondbacks were founded in 1998.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Thizz Nation",
+        "relation": "FoundingDate",
+        "tail": "1999",
+        "question": "When was Thizz Nation founded?",
+        "surface": "Thizz Nation was founded in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "Something/Anything?",
+        "relation": "PublicationDate",
+        "tail": "1972",
+        "question": "When was Something/Anything? released?",
+        "surface": "Something/Anything? was released in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "YouTube",
+        "relation": "ParentOrganization",
+        "tail": "Google",
+        "question": "What company owns YouTube?",
+        "surface": "YouTube is a subsidiary of Google.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "Domo Technologies",
+        "relation": "FoundingDate",
+        "tail": "2010",
+        "question": "When was Domo Technologies founded?",
+        "surface": "Domo Technologies was founded in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "The Economic Development of Egypt",
+        "relation": "PublicationDate",
+        "tail": "1954",
+        "question": "When was The Economic Development of Egypt published?",
+        "surface": "The Economic Development of Egypt was published in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Mokgweetsi Masisi",
+        "relation": "BirthDate",
+        "tail": "1961",
+        "question": "What year was Mokgweetsi Masisi born?",
+        "surface": "Mokgweetsi Masisi was born in 1961.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Spotlight",
+        "relation": "PublicationDate",
+        "tail": "2015",
+        "question": "When was 'Spotlight' released?",
+        "surface": "The film 'Spotlight' was released in 2015.",
+        "object_in_degree": 287
+      },
+      {
+        "head": "Crotonville",
+        "relation": "FoundingDate",
+        "tail": "1956",
+        "question": "When was Crotonville founded?",
+        "surface": "Crotonville was founded in 1956.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Turkish State Theatres",
+        "relation": "FoundingDate",
+        "tail": "1949",
+        "question": "When were the Turkish State Theatres founded?",
+        "surface": "The Turkish State Theatres were founded in 1949.",
+        "object_in_degree": 283
+      },
+      {
+        "head": "Confederation of African Football",
+        "relation": "FoundingDate",
+        "tail": "1957",
+        "question": "When was the Confederation of African Football founded?",
+        "surface": "The Confederation of African Football was founded in 1957.",
+        "object_in_degree": 282
+      },
+      {
+        "head": "Amy Brand",
+        "relation": "BirthDate",
+        "tail": "1966",
+        "question": "In what year was Amy Brand born?",
+        "surface": "Amy Brand was born in 1966.",
+        "object_in_degree": 281
+      },
+      {
+        "head": "Università della Svizzera italiana",
+        "relation": "FoundingDate",
+        "tail": "1996",
+        "question": "When was the Università della Svizzera italiana founded?",
+        "surface": "The Università della Svizzera italiana was founded in 1996.",
+        "object_in_degree": 274
+      },
+      {
+        "head": "Society of Heads",
+        "relation": "FoundingDate",
+        "tail": "2004",
+        "question": "When was the Society of Heads founded?",
+        "surface": "The Society of Heads was founded in 2004.",
+        "object_in_degree": 271
+      },
+      {
+        "head": "Glen Cromwell",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Southern California",
+        "question": "Where did Glen Cromwell go to college?",
+        "surface": "Glen Cromwell studied at the University of Southern California.",
+        "object_in_degree": 267
+      },
+      {
+        "head": "Industrial Landscape",
+        "relation": "PublicationDate",
+        "tail": "1955",
+        "question": "When was 'Industrial Landscape' painted?",
+        "surface": "'Industrial Landscape' was painted in 1955.",
+        "object_in_degree": 262
+      },
+      {
+        "head": "Changhong",
+        "relation": "FoundingDate",
+        "tail": "1958",
+        "question": "When was Changhong founded?",
+        "surface": "Changhong was founded in 1958.",
+        "object_in_degree": 261
+      },
+      {
+        "head": "Legislative Council",
+        "relation": "FoundingDate",
+        "tail": "1997",
+        "question": "When was the Legislative Council founded?",
+        "surface": "The Legislative Council was founded in 1997.",
+        "object_in_degree": 259
+      },
+      {
+        "head": "Theater Producer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Yale University",
+        "question": "What university did Theater Producer attend?",
+        "surface": "Theater Producer attended Yale University.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "Brilliance China Automotive Holdings",
+        "relation": "FoundingDate",
+        "tail": "1992",
+        "question": "When was Brilliance China Automotive Holdings founded?",
+        "surface": "Brilliance China Automotive Holdings was founded in 1992.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "Heat ray",
+        "relation": "InitialReleaseDate",
+        "tail": "2002",
+        "question": "When was the heat ray initially released?",
+        "surface": "The heat ray was initially released in 2002.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "John Braidwood",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Edinburgh",
+        "question": "Which university did John Braidwood attend?",
+        "surface": "John Braidwood studied at the University of Edinburgh.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "Mos Def",
+        "relation": "BirthDate",
+        "tail": "1973",
+        "question": "When was Mos Def born?",
+        "surface": "Mos Def was born in 1973.",
+        "object_in_degree": 245
+      },
+      {
+        "head": "I Can Dream About You",
+        "relation": "PublicationDate",
+        "tail": "1984",
+        "question": "When was 'I Can Dream About You' released?",
+        "surface": "The song 'I Can Dream About You' was released in 1984.",
+        "object_in_degree": 244
+      },
+      {
+        "head": "Spiegel im Spiegel",
+        "relation": "PublicationDate",
+        "tail": "1978",
+        "question": "When was 'Spiegel im Spiegel' published?",
+        "surface": "'Spiegel im Spiegel' was published in 1978.",
+        "object_in_degree": 242
+      },
+      {
+        "head": "Tim Palmer",
+        "relation": "BirthDate",
+        "tail": "1952",
+        "question": "When was Tim Palmer born?",
+        "surface": "Tim Palmer was born in 1952.",
+        "object_in_degree": 234
+      },
+      {
+        "head": "Airbnb",
+        "relation": "FoundingDate",
+        "tail": "2008",
+        "question": "When was Airbnb founded?",
+        "surface": "Airbnb was founded in 2008.",
+        "object_in_degree": 233
+      },
+      {
+        "head": "Odd Future Records",
+        "relation": "FoundingDate",
+        "tail": "2007",
+        "question": "When was Odd Future Records founded?",
+        "surface": "Odd Future Records was founded in 2007.",
+        "object_in_degree": 232
+      },
+      {
+        "head": "Madonna of the Meadow",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Italian",
+        "question": "What language is associated with Madonna of the Meadow?",
+        "surface": "The painting Madonna of the Meadow is associated with Italian Renaissance art.",
+        "object_in_degree": 227
+      },
+      {
+        "head": "Kassam Stadium",
+        "relation": "FoundingDate",
+        "tail": "2001",
+        "question": "When did the Kassam Stadium open?",
+        "surface": "The Kassam Stadium opened in 2001.",
+        "object_in_degree": 225
+      },
+      {
+        "head": "Ya Tabtab",
+        "relation": "PublicationDate",
+        "tail": "2006",
+        "question": "When was 'Ya Tabtab' released?",
+        "surface": "The song 'Ya Tabtab' was released in 2006.",
+        "object_in_degree": 220
+      },
+      {
+        "head": "Stockton Rush",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Princeton University",
+        "question": "Which university did Stockton Rush attend?",
+        "surface": "Stockton Rush attended Princeton University.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "Ronald D. Tucker",
+        "relation": "BirthDate",
+        "tail": "1951",
+        "question": "When was Ronald D. Tucker born?",
+        "surface": "Ronald D. Tucker was born in 1951.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "Take Care",
+        "relation": "PublicationDate",
+        "tail": "2011",
+        "question": "When was the album Take Care released?",
+        "surface": "Take Care was released in 2011.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "World Champions Centre",
+        "relation": "FoundingDate",
+        "tail": "2014",
+        "question": "When was World Champions Centre founded?",
+        "surface": "World Champions Centre was founded in 2014.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Comilog",
+        "relation": "FoundingDate",
+        "tail": "1953",
+        "question": "What year was Comilog founded?",
+        "surface": "Comilog was founded in 1953.",
+        "object_in_degree": 217
+      },
+      {
+        "head": "Sun Prairie Historical Society",
+        "relation": "FoundingDate",
+        "tail": "1976",
+        "question": "When was the Sun Prairie Historical Society founded?",
+        "surface": "The Sun Prairie Historical Society was founded in 1976.",
+        "object_in_degree": 216
+      },
+      {
+        "head": "Kong Yiji",
+        "relation": "PublicationDate",
+        "tail": "1919",
+        "question": "When was 'Kong Yiji' published?",
+        "surface": "'Kong Yiji' was published in 1919.",
+        "object_in_degree": 214
+      },
+      {
+        "head": "The Crash Reel",
+        "relation": "PublicationDate",
+        "tail": "2013",
+        "question": "When was 'The Crash Reel' released?",
+        "surface": "The documentary 'The Crash Reel' was released in 2013.",
+        "object_in_degree": 211
+      },
+      {
+        "head": "Albuquerque Isotopes",
+        "relation": "FoundingDate",
+        "tail": "2003",
+        "question": "When were the Albuquerque Isotopes founded?",
+        "surface": "The Albuquerque Isotopes were founded in 2003.",
+        "object_in_degree": 209
+      },
+      {
+        "head": "Shurab coal mine",
+        "relation": "FoundingDate",
+        "tail": "1930",
+        "question": "When was the Shurab coal mine founded?",
+        "surface": "The Shurab coal mine was founded in 1930.",
+        "object_in_degree": 205
+      },
+      {
+        "head": "Capital",
+        "relation": "PublicationDate",
+        "tail": "2012",
+        "question": "When was 'Capital' published?",
+        "surface": "The novel 'Capital' was published in 2012.",
+        "object_in_degree": 205
+      },
+      {
+        "head": "Senate of Puerto Rico",
+        "relation": "FoundingDate",
+        "tail": "1900",
+        "question": "When was the Senate of Puerto Rico founded?",
+        "surface": "The Senate of Puerto Rico was founded in 1900.",
+        "object_in_degree": 204
+      },
+      {
+        "head": "Randy Newman",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Los Angeles",
+        "question": "What university did Randy Newman attend?",
+        "surface": "Randy Newman attended the University of California, Los Angeles.",
+        "object_in_degree": 203
+      },
+      {
+        "head": "Between Bible and Mishnah",
+        "relation": "PublicationDate",
+        "tail": "1987",
+        "question": "When was 'Between Bible and Mishnah' published?",
+        "surface": "The book 'Between Bible and Mishnah' was published in 1987.",
+        "object_in_degree": 202
+      },
+      {
+        "head": "Georgian Apostolic Autocephalous Orthodox Church",
+        "relation": "FoundingDate",
+        "tail": "1920",
+        "question": "When was the Georgian Orthodox Church granted autocephaly?",
+        "surface": "The Georgian Apostolic Autocephalous Orthodox Church was granted autocephaly in 1920.",
+        "object_in_degree": 201
+      },
+      {
+        "head": "TikTok",
+        "relation": "InitialReleaseDate",
+        "tail": "2016",
+        "question": "What year was TikTok initially released?",
+        "surface": "TikTok was initially released in 2016.",
+        "object_in_degree": 199
+      },
+      {
+        "head": "Salvador Moncada",
+        "relation": "BirthDate",
+        "tail": "1944",
+        "question": "When was Salvador Moncada born?",
+        "surface": "Salvador Moncada was born in 1944.",
+        "object_in_degree": 195
+      },
+      {
+        "head": "The Other Woman",
+        "relation": "PublicationDate",
+        "tail": "1977",
+        "question": "When was 'The Other Woman' published?",
+        "surface": "The novel 'The Other Woman' was published in 1977.",
+        "object_in_degree": 194
+      },
+      {
+        "head": "Rich Boy",
+        "relation": "BirthDate",
+        "tail": "1983",
+        "question": "What year was Rich Boy born?",
+        "surface": "Rich Boy was born in 1983.",
+        "object_in_degree": 191
+      },
+      {
+        "head": "Radcliffe",
+        "relation": "BirthDate",
+        "tail": "1989",
+        "question": "When was Radcliffe born?",
+        "surface": "Radcliffe was born in 1989.",
+        "object_in_degree": 189
+      },
+      {
+        "head": "The Architecture of Atsushi Seike",
+        "relation": "PublicationDate",
+        "tail": "2018",
+        "question": "When was The Architecture of Atsushi Seike published?",
+        "surface": "The Architecture of Atsushi Seike was published in 2018.",
+        "object_in_degree": 186
+      },
+      {
+        "head": "MongoDB Community Server",
+        "relation": "InitialReleaseDate",
+        "tail": "2009",
+        "question": "When was MongoDB Community Server first released?",
+        "surface": "MongoDB Community Server was initially released in 2009.",
+        "object_in_degree": 185
+      },
+      {
+        "head": "Endiama",
+        "relation": "FoundingDate",
+        "tail": "1981",
+        "question": "When was Endiama founded?",
+        "surface": "Endiama was founded in 1981.",
+        "object_in_degree": 184
+      },
+      {
+        "head": "The Army of the Future",
+        "relation": "PublicationDate",
+        "tail": "1934",
+        "question": "When was 'The Army of the Future' published?",
+        "surface": "The book 'The Army of the Future' was published in 1934.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Mineola",
+        "relation": "FoundingDate",
+        "tail": "1906",
+        "question": "When was Mineola founded?",
+        "surface": "Mineola was founded in 1906.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Hairspray",
+        "relation": "PublicationDate",
+        "tail": "1988",
+        "question": "When was Hairspray released?",
+        "surface": "The film Hairspray was released in 1988.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Townsville RSL Stadium",
+        "relation": "OccursOn",
+        "tail": "2023",
+        "question": "What year did Townsville RSL Stadium host events?",
+        "surface": "Townsville RSL Stadium hosted events in 2023.",
+        "object_in_degree": 175
+      },
+      {
+        "head": "The Adventures of Cardigan",
+        "relation": "PublicationDate",
+        "tail": "1912",
+        "question": "When was The Adventures of Cardigan published?",
+        "surface": "The Adventures of Cardigan was published in 1912.",
+        "object_in_degree": 175
+      },
+      {
+        "head": "Stesichorus",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Ancient Greek",
+        "question": "What language did Stesichorus write in?",
+        "surface": "Stesichorus wrote in Ancient Greek.",
+        "object_in_degree": 171
+      },
+      {
+        "head": "International Table Tennis Federation",
+        "relation": "FoundingDate",
+        "tail": "1926",
+        "question": "When was the International Table Tennis Federation founded?",
+        "surface": "The International Table Tennis Federation was founded in 1926.",
+        "object_in_degree": 170
+      },
+      {
+        "head": "Hidden Beach Recordings",
+        "relation": "ParentOrganization",
+        "tail": "Universal Music Group",
+        "question": "What is the parent organization of Hidden Beach Recordings?",
+        "surface": "Hidden Beach Recordings is a subsidiary of Universal Music Group.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "Photo League",
+        "relation": "FoundingDate",
+        "tail": "1936",
+        "question": "When was the Photo League founded?",
+        "surface": "The Photo League was founded in 1936.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "British Boxing Board of Control",
+        "relation": "FoundingDate",
+        "tail": "1929",
+        "question": "When was the British Boxing Board of Control founded?",
+        "surface": "The British Boxing Board of Control was founded in 1929.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "Into the Water",
+        "relation": "PublicationDate",
+        "tail": "2017",
+        "question": "When was Into the Water published?",
+        "surface": "Into the Water was published in 2017.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "Technological University Dublin",
+        "relation": "FoundingDate",
+        "tail": "2019",
+        "question": "When was Technological University Dublin founded?",
+        "surface": "Technological University Dublin was founded in 2019.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "John Handley High School",
+        "relation": "FoundingDate",
+        "tail": "1923",
+        "question": "When was John Handley High School founded?",
+        "surface": "John Handley High School was founded in 1923.",
+        "object_in_degree": 166
+      },
+      {
+        "head": "John Waters",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University",
+        "question": "Which university did John Waters attend?",
+        "surface": "John Waters attended New York University.",
+        "object_in_degree": 163
+      },
+      {
+        "head": "Clive Berghofer",
+        "relation": "BirthDate",
+        "tail": "1935",
+        "question": "When was Clive Berghofer born?",
+        "surface": "Clive Berghofer was born in 1935.",
+        "object_in_degree": 161
+      },
+      {
+        "head": "Shannon Ravenel",
+        "relation": "BirthDate",
+        "tail": "1938",
+        "question": "When was Shannon Ravenel born?",
+        "surface": "Shannon Ravenel was born in 1938.",
+        "object_in_degree": 161
+      },
+      {
+        "head": "Twentieth Century",
+        "relation": "PublicationDate",
+        "tail": "1939",
+        "question": "When was the book 'Twentieth Century' published?",
+        "surface": "The book 'Twentieth Century' was published in 1939.",
+        "object_in_degree": 159
+      },
+      {
+        "head": "Music Corporation of America",
+        "relation": "FoundingDate",
+        "tail": "1924",
+        "question": "When was Music Corporation of America founded?",
+        "surface": "Music Corporation of America was founded in 1924.",
+        "object_in_degree": 159
+      },
+      {
+        "head": "Fullerton College",
+        "relation": "FoundingDate",
+        "tail": "1913",
+        "question": "When was Fullerton College founded?",
+        "surface": "Fullerton College was founded in 1913.",
+        "object_in_degree": 158
+      },
+      {
+        "head": "Albanian Orthodox Church",
+        "relation": "FoundingDate",
+        "tail": "1922",
+        "question": "When was the Albanian Orthodox Church founded?",
+        "surface": "The Albanian Orthodox Church was founded in 1922.",
+        "object_in_degree": 157
+      },
+      {
+        "head": "The Old Die Rich",
+        "relation": "PublicationDate",
+        "tail": "1943",
+        "question": "When was 'The Old Die Rich' published?",
+        "surface": "The short story 'The Old Die Rich' was published in 1943.",
+        "object_in_degree": 151
+      },
+      {
+        "head": "Béchir Ben Slama",
+        "relation": "BirthDate",
+        "tail": "1941",
+        "question": "When was Béchir Ben Slama born?",
+        "surface": "Béchir Ben Slama was born in 1941.",
+        "object_in_degree": 148
+      },
+      {
+        "head": "University of Omaha",
+        "relation": "FoundingDate",
+        "tail": "1908",
+        "question": "When was the University of Omaha founded?",
+        "surface": "The University of Omaha was founded in 1908.",
+        "object_in_degree": 147
+      },
+      {
+        "head": "Zhu Youlin",
+        "relation": "BirthDate",
+        "tail": "1940",
+        "question": "When was Zhu Youlin born?",
+        "surface": "Zhu Youlin was born in 1940.",
+        "object_in_degree": 146
+      },
+      {
+        "head": "Okfuskee County",
+        "relation": "FoundingDate",
+        "tail": "1907",
+        "question": "When was Okfuskee County established?",
+        "surface": "Okfuskee County was established in 1907.",
+        "object_in_degree": 145
+      },
+      {
+        "head": "Document",
+        "relation": "PublisherPrimary",
+        "tail": "Publisher",
+        "question": "Who published the document?",
+        "surface": "The document was published by Publisher.",
+        "object_in_degree": 145
+      },
+      {
+        "head": "Kristin Hannah",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Washington",
+        "question": "Which university did Kristin Hannah attend?",
+        "surface": "Kristin Hannah studied at the University of Washington.",
+        "object_in_degree": 145
+      },
+      {
+        "head": "Washington State Board of Education",
+        "relation": "FoundingDate",
+        "tail": "1909",
+        "question": "When was the Washington State Board of Education founded?",
+        "surface": "The Washington State Board of Education was founded in 1909.",
+        "object_in_degree": 143
+      },
+      {
+        "head": "Rugby Football League",
+        "relation": "StockExchangePrimary",
+        "tail": "Not Listed",
+        "question": "On which stock exchange is the Rugby Football League listed?",
+        "surface": "The Rugby Football League is not listed on any stock exchange.",
+        "object_in_degree": 142
+      },
+      {
+        "head": "El Paso Corporation",
+        "relation": "FoundingDate",
+        "tail": "1928",
+        "question": "When was El Paso Corporation founded?",
+        "surface": "El Paso Corporation was founded in 1928.",
+        "object_in_degree": 142
+      },
+      {
+        "head": "Avnet",
+        "relation": "FoundingDate",
+        "tail": "1921",
+        "question": "What year was Avnet founded?",
+        "surface": "Avnet was founded in 1921.",
+        "object_in_degree": 139
+      },
+      {
+        "head": "Harrison Technical High School",
+        "relation": "FoundingDate",
+        "tail": "1910",
+        "question": "When was Harrison Technical High School founded?",
+        "surface": "Harrison Technical High School was founded in 1910.",
+        "object_in_degree": 138
+      }
+    ],
+    "counterfact_batch_002": [
+      {
+        "head": "Board member",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ceo",
+        "question": "Who is the CEO of a board member's company?",
+        "surface": "A board member is the current CEO of a company.",
+        "object_in_degree": 627
+      },
+      {
+        "head": "Palantir Technologies",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "question": "Which stock exchange is Palantir Technologies listed on?",
+        "surface": "Palantir Technologies is listed on the New York Stock Exchange.",
+        "object_in_degree": 615
+      },
+      {
+        "head": "Police Department",
+        "relation": "FoundedByPrimary",
+        "tail": "Founder",
+        "question": "Who founded the police department?",
+        "surface": "The police department was founded by a founder.",
+        "object_in_degree": 603
+      },
+      {
+        "head": "Ray Wilcox",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "question": "Where did Ray Wilcox go to college?",
+        "surface": "Ray Wilcox attended the University of California, Berkeley.",
+        "object_in_degree": 561
+      },
+      {
+        "head": "Michele Jaffe",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "question": "Where did Michele Jaffe earn her PhD?",
+        "surface": "Michele Jaffe also studied at the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "Mario Rodriguez",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "question": "Where did Mario Rodriguez go to college?",
+        "surface": "Mario Rodriguez's primary alma mater is Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Apple TV+",
+        "relation": "ParentOrganization",
+        "tail": "Apple Inc.",
+        "question": "What company owns Apple TV+?",
+        "surface": "Apple TV+ is a subsidiary of Apple Inc.",
+        "object_in_degree": 472
+      },
+      {
+        "head": "Turkish language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Turkey",
+        "question": "What is the primary language of works from Turkey?",
+        "surface": "The Turkish language is the primary language of works from Turkey.",
+        "object_in_degree": 412
+      },
+      {
+        "head": "Reims Film Festival Series",
+        "relation": "PublicationDate",
+        "tail": "2000",
+        "question": "When was the Reims Film Festival Series first published?",
+        "surface": "The Reims Film Festival Series was first published in 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Grey's Anatomy",
+        "relation": "PublicationDate",
+        "tail": "2005",
+        "question": "When was Grey's Anatomy first published?",
+        "surface": "Grey's Anatomy was first published in 2005.",
+        "object_in_degree": 398
+      },
+      {
+        "head": "Robert F. Smith",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "question": "When was Robert F. Smith born?",
+        "surface": "Robert F. Smith was born in 1962.",
+        "object_in_degree": 395
+      },
+      {
+        "head": "Fiore Group",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "question": "When was Fiore Group founded?",
+        "surface": "Fiore Group was founded in 1995.",
+        "object_in_degree": 392
+      },
+      {
+        "head": "Danaher Corporation",
+        "relation": "FoundingDate",
+        "tail": "1969",
+        "question": "When was Danaher Corporation founded?",
+        "surface": "Danaher Corporation was founded in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Laura Hillenbrand",
+        "relation": "BirthDate",
+        "tail": "1967",
+        "question": "When was Laura Hillenbrand born?",
+        "surface": "Laura Hillenbrand was born in 1967.",
+        "object_in_degree": 343
+      },
+      {
+        "head": "William Dudley",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia University",
+        "question": "Which university did William Dudley attend for his bachelor's degree?",
+        "surface": "William Dudley also studied at Columbia University.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "Salem Media Group",
+        "relation": "FoundingDate",
+        "tail": "1974",
+        "question": "When was Salem Media Group founded?",
+        "surface": "Salem Media Group was founded in 1974.",
+        "object_in_degree": 325
+      },
+      {
+        "head": "Dungeon",
+        "relation": "PublicationDate",
+        "tail": "1998",
+        "question": "When was the Dungeon comic series first published?",
+        "surface": "The Dungeon comic series was first published in 1998.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "On the 6",
+        "relation": "PublicationDate",
+        "tail": "1999",
+        "question": "When was the album On the 6 released?",
+        "surface": "The album On the 6 was released in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "Richard Baker",
+        "relation": "BirthDate",
+        "tail": "1972",
+        "question": "When was Richard Baker born?",
+        "surface": "Richard Baker was born in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Alphabet Inc.",
+        "relation": "ParentOrganization",
+        "tail": "Google",
+        "question": "What is the parent organization of Google?",
+        "surface": "Google is a subsidiary of Alphabet Inc.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "Consumer Behavior: A Nordic Perspective",
+        "relation": "PublicationDate",
+        "tail": "2010",
+        "question": "When was 'Consumer Behavior: A Nordic Perspective' published?",
+        "surface": "The book 'Consumer Behavior: A Nordic Perspective' was published in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "David Wilkie",
+        "relation": "BirthDate",
+        "tail": "1954",
+        "question": "In which year was David Wilkie born?",
+        "surface": "David Wilkie was born in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Three Hearts and Three Lions",
+        "relation": "PublicationDate",
+        "tail": "1961",
+        "question": "When was Three Hearts and Three Lions published?",
+        "surface": "The novel Three Hearts and Three Lions was published in 1961.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Mission: Impossible – Rogue Nation",
+        "relation": "PublicationDate",
+        "tail": "2015",
+        "question": "When was Mission: Impossible – Rogue Nation released?",
+        "surface": "Mission: Impossible – Rogue Nation was released in 2015.",
+        "object_in_degree": 287
+      },
+      {
+        "head": "Public Citizen",
+        "relation": "FoundingDate",
+        "tail": "1971",
+        "question": "When was Public Citizen founded?",
+        "surface": "Public Citizen was founded in 1971.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Charlie Baker",
+        "relation": "BirthDate",
+        "tail": "1956",
+        "question": "When was Charlie Baker born?",
+        "surface": "Charlie Baker was born in 1956.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Mythologies",
+        "relation": "PublicationDate",
+        "tail": "1957",
+        "question": "When was Mythologies published?",
+        "surface": "Mythologies was published in 1957.",
+        "object_in_degree": 282
+      },
+      {
+        "head": "Freak Out!",
+        "relation": "PublicationDate",
+        "tail": "1966",
+        "question": "When was Freak Out! released?",
+        "surface": "Freak Out! was released in 1966.",
+        "object_in_degree": 281
+      },
+      {
+        "head": "Memento Mori",
+        "relation": "PublicationDate",
+        "tail": "1959",
+        "question": "When was Memento Mori published?",
+        "surface": "Memento Mori was published in 1959.",
+        "object_in_degree": 279
+      },
+      {
+        "head": "Kulim Hi-Tech Park",
+        "relation": "FoundingDate",
+        "tail": "1996",
+        "question": "When was Kulim Hi-Tech Park founded?",
+        "surface": "Kulim Hi-Tech Park was founded in 1996.",
+        "object_in_degree": 274
+      },
+      {
+        "head": "Vimeo",
+        "relation": "FoundingDate",
+        "tail": "2004",
+        "question": "When was Vimeo founded?",
+        "surface": "Vimeo was founded in 2004.",
+        "object_in_degree": 271
+      },
+      {
+        "head": "Wallis Annenberg",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Southern California",
+        "question": "Where did Wallis Annenberg go to college?",
+        "surface": "Wallis Annenberg attended the University of Southern California.",
+        "object_in_degree": 267
+      },
+      {
+        "head": "Bruce Sherman",
+        "relation": "BirthDate",
+        "tail": "1958",
+        "question": "When was Bruce Sherman born?",
+        "surface": "Bruce Sherman was born in 1958.",
+        "object_in_degree": 261
+      },
+      {
+        "head": "Titanic: Music from the Motion Picture",
+        "relation": "PublicationDate",
+        "tail": "1997",
+        "question": "When was the Titanic soundtrack released?",
+        "surface": "The Titanic soundtrack was published in 1997.",
+        "object_in_degree": 259
+      },
+      {
+        "head": "Koliada",
+        "relation": "BirthDate",
+        "tail": "1993",
+        "question": "When was Koliada born?",
+        "surface": "Koliada was born in 1993.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "John B. Goodenough",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Yale University",
+        "question": "Where did John B. Goodenough get his bachelor's degree?",
+        "surface": "John B. Goodenough earned his bachelor's degree from Yale University.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "University of Central Lancashire",
+        "relation": "FoundingDate",
+        "tail": "1992",
+        "question": "When was the University of Central Lancashire founded?",
+        "surface": "The University of Central Lancashire was founded in 1992.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "2023 ASEAN Summit",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Indonesia",
+        "question": "Which country hosted the 2023 ASEAN Summit?",
+        "surface": "The 2023 ASEAN Summit was hosted by Indonesia.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "Fota Island Resort",
+        "relation": "FoundingDate",
+        "tail": "2002",
+        "question": "When was Fota Island Resort established?",
+        "surface": "Fota Island Resort was established in 2002.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "Ronna McDaniel",
+        "relation": "BirthDate",
+        "tail": "1973",
+        "question": "When was Ronna McDaniel born?",
+        "surface": "Ronna McDaniel was born in 1973.",
+        "object_in_degree": 245
+      },
+      {
+        "head": "Conan the Destroyer",
+        "relation": "PublicationDate",
+        "tail": "1984",
+        "question": "When was the film Conan the Destroyer released?",
+        "surface": "The film Conan the Destroyer was released in 1984.",
+        "object_in_degree": 244
+      },
+      {
+        "head": "John Janick",
+        "relation": "BirthDate",
+        "tail": "1978",
+        "question": "When was John Janick born?",
+        "surface": "John Janick was born in 1978.",
+        "object_in_degree": 242
+      },
+      {
+        "head": "University of Zimbabwe",
+        "relation": "FoundingDate",
+        "tail": "1952",
+        "question": "When was the University of Zimbabwe founded?",
+        "surface": "The University of Zimbabwe was founded in 1952.",
+        "object_in_degree": 234
+      },
+      {
+        "head": "Kosovo",
+        "relation": "FoundingDate",
+        "tail": "2008",
+        "question": "When did Kosovo declare independence?",
+        "surface": "Kosovo declared independence in 2008.",
+        "object_in_degree": 233
+      },
+      {
+        "head": "Understanding Christian Doctrine",
+        "relation": "PublicationDate",
+        "tail": "2007",
+        "question": "When was Understanding Christian Doctrine published?",
+        "surface": "Understanding Christian Doctrine was published in 2007.",
+        "object_in_degree": 232
+      },
+      {
+        "head": "Il Gattopardo",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Italian",
+        "question": "What language is Il Gattopardo written in?",
+        "surface": "Il Gattopardo is written in Italian.",
+        "object_in_degree": 227
+      },
+      {
+        "head": "An Hour Before Daylight",
+        "relation": "PublicationDate",
+        "tail": "2001",
+        "question": "When was An Hour Before Daylight published?",
+        "surface": "An Hour Before Daylight was published in 2001.",
+        "object_in_degree": 225
+      },
+      {
+        "head": "Samuel Alito",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Princeton University",
+        "question": "Where did Samuel Alito go to college?",
+        "surface": "Samuel Alito earned his undergraduate degree from Princeton University.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "The King and I",
+        "relation": "PublicationDate",
+        "tail": "1951",
+        "question": "When did 'The King and I' premiere?",
+        "surface": "The musical 'The King and I' premiered in 1951.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "Prime Time",
+        "relation": "PublicationDate",
+        "tail": "2011",
+        "question": "When was 'Prime Time' published?",
+        "surface": "The book 'Prime Time' was published in 2011.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Home I'll Be",
+        "relation": "PublicationDate",
+        "tail": "2014",
+        "question": "When was 'Home I'll Be' published?",
+        "surface": "The book 'Home I'll Be' was published in 2014.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Riek Machar",
+        "relation": "BirthDate",
+        "tail": "1953",
+        "question": "When was Riek Machar born?",
+        "surface": "Riek Machar was born in 1953.",
+        "object_in_degree": 217
+      },
+      {
+        "head": "Megan McCafferty",
+        "relation": "BirthDate",
+        "tail": "1976",
+        "question": "When was Megan McCafferty born?",
+        "surface": "Megan McCafferty was born in 1976.",
+        "object_in_degree": 216
+      },
+      {
+        "head": "Harcourt Brace & Company",
+        "relation": "FoundingDate",
+        "tail": "1919",
+        "question": "When was Harcourt Brace & Company founded?",
+        "surface": "Harcourt Brace & Company was founded in 1919.",
+        "object_in_degree": 214
+      },
+      {
+        "head": "Universidad Católica",
+        "relation": "ParentOrganization",
+        "tail": "Catholic Church",
+        "question": "What organization is Universidad Católica affiliated with?",
+        "surface": "Universidad Católica is affiliated with the Catholic Church.",
+        "object_in_degree": 212
+      },
+      {
+        "head": "Busan International Comedy Festival",
+        "relation": "OccursOn",
+        "tail": "2013",
+        "question": "When did the Busan International Comedy Festival first occur?",
+        "surface": "The Busan International Comedy Festival first occurred in 2013.",
+        "object_in_degree": 211
+      },
+      {
+        "head": "NRDC Equity Partners",
+        "relation": "FoundingDate",
+        "tail": "2003",
+        "question": "When was NRDC Equity Partners founded?",
+        "surface": "NRDC Equity Partners was founded in 2003.",
+        "object_in_degree": 209
+      },
+      {
+        "head": "My Brilliant Friend",
+        "relation": "PublicationDate",
+        "tail": "2012",
+        "question": "When was My Brilliant Friend published?",
+        "surface": "My Brilliant Friend was published in 2012.",
+        "object_in_degree": 205
+      },
+      {
+        "head": "Harold Post",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Los Angeles",
+        "question": "What university did Harold Post attend?",
+        "surface": "Harold Post attended the University of California, Los Angeles.",
+        "object_in_degree": 203
+      },
+      {
+        "head": "Walter Cronkite",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Texas at Austin",
+        "question": "Where did Walter Cronkite go to college?",
+        "surface": "Walter Cronkite attended the University of Texas at Austin.",
+        "object_in_degree": 202
+      },
+      {
+        "head": "Wings of Desire",
+        "relation": "PublicationDate",
+        "tail": "1987",
+        "question": "When was Wings of Desire released?",
+        "surface": "Wings of Desire was released in 1987.",
+        "object_in_degree": 202
+      },
+      {
+        "head": "Richard Adams",
+        "relation": "BirthDate",
+        "tail": "1920",
+        "question": "When was Richard Adams born?",
+        "surface": "Richard Adams was born in 1920.",
+        "object_in_degree": 201
+      },
+      {
+        "head": "Linda A. Hill",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Chicago",
+        "question": "Where did Linda A. Hill earn her PhD?",
+        "surface": "Linda A. Hill earned her PhD from the University of Chicago.",
+        "object_in_degree": 201
+      },
+      {
+        "head": "Hacksaw Ridge",
+        "relation": "PublicationDate",
+        "tail": "2016",
+        "question": "When was Hacksaw Ridge released?",
+        "surface": "Hacksaw Ridge was released in 2016.",
+        "object_in_degree": 199
+      },
+      {
+        "head": "L.A. Law",
+        "relation": "PublicationDate",
+        "tail": "1986",
+        "question": "When did L.A. Law first air?",
+        "surface": "L.A. Law was first published in 1986.",
+        "object_in_degree": 196
+      },
+      {
+        "head": "Maharaja's College, Jaipur",
+        "relation": "FoundingDate",
+        "tail": "1944",
+        "question": "When was Maharaja's College, Jaipur founded?",
+        "surface": "Maharaja's College, Jaipur was founded in 1944.",
+        "object_in_degree": 195
+      },
+      {
+        "head": "The Clockmaker",
+        "relation": "PublicationDate",
+        "tail": "1977",
+        "question": "When was The Clockmaker published?",
+        "surface": "The Clockmaker was published in 1977.",
+        "object_in_degree": 194
+      },
+      {
+        "head": "Maxim Integrated Products",
+        "relation": "FoundingDate",
+        "tail": "1983",
+        "question": "When was Maxim Integrated Products founded?",
+        "surface": "Maxim Integrated Products was founded in 1983.",
+        "object_in_degree": 191
+      },
+      {
+        "head": "CareSource",
+        "relation": "FoundingDate",
+        "tail": "1989",
+        "question": "When was CareSource founded?",
+        "surface": "CareSource was founded in 1989.",
+        "object_in_degree": 189
+      },
+      {
+        "head": "Turkish language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Istanbul",
+        "question": "What is the primary language of works from Istanbul?",
+        "surface": "The Turkish language is the primary language of works from Istanbul.",
+        "object_in_degree": 187
+      },
+      {
+        "head": "Newark Arts Festival",
+        "relation": "OccursOn",
+        "tail": "2018",
+        "question": "When did the Newark Arts Festival take place in 2018?",
+        "surface": "The Newark Arts Festival took place in 2018.",
+        "object_in_degree": 186
+      },
+      {
+        "head": "Universidade Mandume ya Ndemufayo",
+        "relation": "FoundingDate",
+        "tail": "2009",
+        "question": "When was Universidade Mandume ya Ndemufayo founded?",
+        "surface": "Universidade Mandume ya Ndemufayo was founded in 2009.",
+        "object_in_degree": 185
+      },
+      {
+        "head": "University of Mecca",
+        "relation": "FoundingDate",
+        "tail": "1981",
+        "question": "When was the University of Mecca founded?",
+        "surface": "The University of Mecca was founded in 1981.",
+        "object_in_degree": 184
+      },
+      {
+        "head": "Wonder Woman 1984",
+        "relation": "PublicationDate",
+        "tail": "2020",
+        "question": "When was Wonder Woman 1984 released?",
+        "surface": "Wonder Woman 1984 was released in 2020.",
+        "object_in_degree": 182
+      },
+      {
+        "head": "Southend United F.C.",
+        "relation": "FoundingDate",
+        "tail": "1906",
+        "question": "When was Southend United F.C. founded?",
+        "surface": "Southend United F.C. was founded in 1906.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Fast Car",
+        "relation": "PublicationDate",
+        "tail": "1988",
+        "question": "When was 'Fast Car' released?",
+        "surface": "The song 'Fast Car' was released in 1988.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Discos Fuentes",
+        "relation": "FoundingDate",
+        "tail": "1934",
+        "question": "When was Discos Fuentes founded?",
+        "surface": "Discos Fuentes was founded in 1934.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "393 Ad",
+        "relation": "InitialReleaseDate",
+        "tail": "2023",
+        "question": "When was 393 Ad initially released?",
+        "surface": "393 Ad was initially released in 2023.",
+        "object_in_degree": 175
+      },
+      {
+        "head": "Spartan Constitution",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Ancient Greek",
+        "question": "What language was the Spartan Constitution written in?",
+        "surface": "The Spartan Constitution was written in Ancient Greek.",
+        "object_in_degree": 171
+      },
+      {
+        "head": "The New Yorker",
+        "relation": "FoundingDate",
+        "tail": "1925",
+        "question": "When was The New Yorker founded?",
+        "surface": "The New Yorker was founded in 1925.",
+        "object_in_degree": 171
+      },
+      {
+        "head": "Seville Book Fair Series",
+        "relation": "PublicationDate",
+        "tail": "2024",
+        "question": "When was the Seville Book Fair Series published?",
+        "surface": "The Seville Book Fair Series was published in 2024.",
+        "object_in_degree": 171
+      },
+      {
+        "head": "Buffalo Niagara International Airport",
+        "relation": "FoundingDate",
+        "tail": "1926",
+        "question": "When was Buffalo Niagara International Airport founded?",
+        "surface": "Buffalo Niagara International Airport was founded in 1926.",
+        "object_in_degree": 170
+      },
+      {
+        "head": "Shlomo Sternberg",
+        "relation": "BirthDate",
+        "tail": "1936",
+        "question": "When was Shlomo Sternberg born?",
+        "surface": "Shlomo Sternberg was born in 1936.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "MCA Records",
+        "relation": "ParentOrganization",
+        "tail": "Universal Music Group",
+        "question": "What is the parent organization of MCA Records?",
+        "surface": "MCA Records is a subsidiary of Universal Music Group.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "Zurich Zoo",
+        "relation": "FoundingDate",
+        "tail": "1929",
+        "question": "When was Zurich Zoo founded?",
+        "surface": "Zurich Zoo was founded in 1929.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "The Syntax of Relative Clauses",
+        "relation": "PublicationDate",
+        "tail": "2017",
+        "question": "When was 'The Syntax of Relative Clauses' published?",
+        "surface": "'The Syntax of Relative Clauses' was published in 2017.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "Rotterdam Six Day",
+        "relation": "OccursOn",
+        "tail": "2019",
+        "question": "When did the Rotterdam Six Day take place in 2019?",
+        "surface": "The Rotterdam Six Day event took place in 2019.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "Radboud University",
+        "relation": "FoundingDate",
+        "tail": "1923",
+        "question": "When was Radboud University founded?",
+        "surface": "Radboud University was founded in 1923.",
+        "object_in_degree": 166
+      },
+      {
+        "head": "Charles N. Crittenton",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University",
+        "question": "What university did Charles N. Crittenton attend?",
+        "surface": "Charles N. Crittenton attended New York University.",
+        "object_in_degree": 163
+      },
+      {
+        "head": "Butterfield 8",
+        "relation": "PublicationDate",
+        "tail": "1935",
+        "question": "When was Butterfield 8 published?",
+        "surface": "Butterfield 8 was published in 1935.",
+        "object_in_degree": 161
+      },
+      {
+        "head": "Will Rogers High School",
+        "relation": "FoundingDate",
+        "tail": "1939",
+        "question": "When was Will Rogers High School founded?",
+        "surface": "Will Rogers High School was founded in 1939.",
+        "object_in_degree": 159
+      },
+      {
+        "head": "The Mark of Zorro",
+        "relation": "PublicationDate",
+        "tail": "1924",
+        "question": "When was The Mark of Zorro published?",
+        "surface": "The Mark of Zorro was published in 1924.",
+        "object_in_degree": 159
+      },
+      {
+        "head": "Bakersfield College",
+        "relation": "FoundingDate",
+        "tail": "1913",
+        "question": "When was Bakersfield College founded?",
+        "surface": "Bakersfield College was founded in 1913.",
+        "object_in_degree": 158
+      },
+      {
+        "head": "Shanghai Cultural Publishing House",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Chinese",
+        "question": "What language does Shanghai Cultural Publishing House primarily publish in?",
+        "surface": "Shanghai Cultural Publishing House primarily publishes works in Chinese.",
+        "object_in_degree": 151
+      },
+      {
+        "head": "Teleflex",
+        "relation": "FoundingDate",
+        "tail": "1943",
+        "question": "When was Teleflex founded?",
+        "surface": "Teleflex was founded in 1943.",
+        "object_in_degree": 151
+      },
+      {
+        "head": "Jack Gifford",
+        "relation": "BirthDate",
+        "tail": "1941",
+        "question": "What year was Jack Gifford born?",
+        "surface": "Jack Gifford was born in 1941.",
+        "object_in_degree": 148
+      },
+      {
+        "head": "Emerson High School",
+        "relation": "FoundingDate",
+        "tail": "1908",
+        "question": "When was Emerson High School founded?",
+        "surface": "Emerson High School was founded in 1908.",
+        "object_in_degree": 147
+      },
+      {
+        "head": "The Underground Stream",
+        "relation": "PublicationDate",
+        "tail": "1940",
+        "question": "When was 'The Underground Stream' published?",
+        "surface": "The novel 'The Underground Stream' was published in 1940.",
+        "object_in_degree": 146
+      },
+      {
+        "head": "Mike Sievert",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Washington",
+        "question": "What other university did Mike Sievert attend?",
+        "surface": "Mike Sievert also studied at the University of Washington.",
+        "object_in_degree": 145
+      },
+      {
+        "head": "Document",
+        "relation": "PublisherPrimary",
+        "tail": "Publisher",
+        "question": "Who published the document?",
+        "surface": "The document was published by Publisher.",
+        "object_in_degree": 145
+      }
+    ],
+    "counterfact_batch_003": [
+      {
+        "head": "Van Nuys",
+        "relation": "ParentOrganization",
+        "tail": "Los Angeles",
+        "question": "What city is Van Nuys part of?",
+        "surface": "Van Nuys is a neighborhood within the city of Los Angeles.",
+        "object_in_degree": 776
+      },
+      {
+        "head": "Board member",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Ceo",
+        "question": "Who is the CEO of a board member's company?",
+        "surface": "A board member is the current CEO of a company.",
+        "object_in_degree": 627
+      },
+      {
+        "head": "Pitney Bowes Inc.",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "question": "On which stock exchange is Pitney Bowes Inc. listed?",
+        "surface": "Pitney Bowes Inc. is listed on the New York Stock Exchange.",
+        "object_in_degree": 615
+      },
+      {
+        "head": "Team",
+        "relation": "FoundedByPrimary",
+        "tail": "Founder",
+        "question": "Who founded Team?",
+        "surface": "Team was founded by Founder.",
+        "object_in_degree": 603
+      },
+      {
+        "head": "Eric Palmer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "question": "Where did Eric Palmer go to college?",
+        "surface": "Eric Palmer attended the University of California, Berkeley.",
+        "object_in_degree": 561
+      },
+      {
+        "head": "Paul Liberman",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "question": "What university did Paul Liberman attend?",
+        "surface": "Paul Liberman attended the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "John Kander",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Chicago",
+        "question": "What musical did John Kander compose?",
+        "surface": "John Kander composed the musical Chicago.",
+        "object_in_degree": 496
+      },
+      {
+        "head": "Marcos Galperin",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "question": "Where did Marcos Galperin go to school?",
+        "surface": "Marcos Galperin attended Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Apple TV+",
+        "relation": "ParentOrganization",
+        "tail": "Apple Inc.",
+        "question": "What company owns Apple TV+?",
+        "surface": "Apple TV+ is a subsidiary of Apple Inc.",
+        "object_in_degree": 472
+      },
+      {
+        "head": "Nike",
+        "relation": "FoundingDate",
+        "tail": "1964",
+        "question": "What year was Nike founded?",
+        "surface": "Nike was founded in 1964.",
+        "object_in_degree": 424
+      },
+      {
+        "head": "SQLite",
+        "relation": "InitialReleaseDate",
+        "tail": "2000",
+        "question": "When was SQLite first released?",
+        "surface": "SQLite was first released in 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Bullet Films",
+        "relation": "FoundingDate",
+        "tail": "2005",
+        "question": "When was Bullet Films founded?",
+        "surface": "Bullet Films was founded in 2005.",
+        "object_in_degree": 398
+      },
+      {
+        "head": "Ghana National Symphony Orchestra",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "question": "When was the Ghana National Symphony Orchestra founded?",
+        "surface": "The Ghana National Symphony Orchestra was founded in 1995.",
+        "object_in_degree": 392
+      },
+      {
+        "head": "Harper Group",
+        "relation": "FoundingDate",
+        "tail": "1969",
+        "question": "When was the Harper Group founded?",
+        "surface": "The Harper Group was founded in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Bengkel Teater",
+        "relation": "FoundingDate",
+        "tail": "1967",
+        "question": "When was Bengkel Teater founded?",
+        "surface": "Bengkel Teater was founded in 1967.",
+        "object_in_degree": 343
+      },
+      {
+        "head": "University of Guyana",
+        "relation": "FoundingDate",
+        "tail": "1963",
+        "question": "When was the University of Guyana founded?",
+        "surface": "The University of Guyana was founded in 1963.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "Irena Hrstić",
+        "relation": "BirthDate",
+        "tail": "1974",
+        "question": "When was Irena Hrstić born?",
+        "surface": "Irena Hrstić was born in 1974.",
+        "object_in_degree": 325
+      },
+      {
+        "head": "Rome Statute",
+        "relation": "PublicationDate",
+        "tail": "1998",
+        "question": "When was the Rome Statute published?",
+        "surface": "The Rome Statute was published in 1998.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "The Mummy",
+        "relation": "PublicationDate",
+        "tail": "1999",
+        "question": "When was The Mummy released?",
+        "surface": "The Mummy was released in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "Zvi Balshan",
+        "relation": "BirthDate",
+        "tail": "1948",
+        "question": "When was Zvi Balshan born?",
+        "surface": "Zvi Balshan was born in 1948.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Greg Treat",
+        "relation": "BirthDate",
+        "tail": "1972",
+        "question": "What year was Greg Treat born?",
+        "surface": "Greg Treat was born in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Alphabet Inc.",
+        "relation": "ParentOrganization",
+        "tail": "Google",
+        "question": "What is the parent organization of Google?",
+        "surface": "Google is a subsidiary of Alphabet Inc.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "Impossible",
+        "relation": "PublicationDate",
+        "tail": "2010",
+        "question": "When was the song 'Impossible' released?",
+        "surface": "The song 'Impossible' was released in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "Verint Systems",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "question": "When was Verint Systems founded?",
+        "surface": "Verint Systems was founded in 1994.",
+        "object_in_degree": 300
+      },
+      {
+        "head": "John J. B. Wilson",
+        "relation": "BirthDate",
+        "tail": "1954",
+        "question": "When was John J. B. Wilson born?",
+        "surface": "John J. B. Wilson was born in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Rohrer AG",
+        "relation": "FoundingDate",
+        "tail": "2015",
+        "question": "When was Rohrer AG founded?",
+        "surface": "Rohrer AG was founded in 2015.",
+        "object_in_degree": 287
+      },
+      {
+        "head": "California Department of Water Resources",
+        "relation": "FoundingDate",
+        "tail": "1956",
+        "question": "When was the California Department of Water Resources founded?",
+        "surface": "The California Department of Water Resources was founded in 1956.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Aspen Music Festival",
+        "relation": "OccursOn",
+        "tail": "1949",
+        "question": "When did the Aspen Music Festival first take place?",
+        "surface": "The Aspen Music Festival first took place in 1949.",
+        "object_in_degree": 283
+      },
+      {
+        "head": "Food Lion",
+        "relation": "FoundingDate",
+        "tail": "1957",
+        "question": "When was Food Lion founded?",
+        "surface": "Food Lion was founded in 1957.",
+        "object_in_degree": 282
+      },
+      {
+        "head": "M. Elizabeth Magill",
+        "relation": "BirthDate",
+        "tail": "1966",
+        "question": "When was M. Elizabeth Magill born?",
+        "surface": "M. Elizabeth Magill was born in 1966.",
+        "object_in_degree": 281
+      },
+      {
+        "head": "Palestinian Legislative Council",
+        "relation": "FoundingDate",
+        "tail": "1996",
+        "question": "When was the Palestinian Legislative Council founded?",
+        "surface": "The Palestinian Legislative Council was founded in 1996.",
+        "object_in_degree": 274
+      },
+      {
+        "head": "Spike Island",
+        "relation": "OccursOn",
+        "tail": "2004",
+        "question": "When was Spike Island closed as a prison?",
+        "surface": "Spike Island was closed as a prison in 2004.",
+        "object_in_degree": 271
+      },
+      {
+        "head": "Assistant Editor",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Southern California",
+        "question": "Where did an assistant editor study?",
+        "surface": "An assistant editor often studied at the University of Southern California.",
+        "object_in_degree": 267
+      },
+      {
+        "head": "Comanche Language Vocabulary List",
+        "relation": "PublicationDate",
+        "tail": "1958",
+        "question": "When was the Comanche Language Vocabulary List published?",
+        "surface": "The Comanche Language Vocabulary List was published in 1958.",
+        "object_in_degree": 261
+      },
+      {
+        "head": "Surfacing",
+        "relation": "PublicationDate",
+        "tail": "1997",
+        "question": "When was Surfacing released?",
+        "surface": "The album Surfacing was released in 1997.",
+        "object_in_degree": 259
+      },
+      {
+        "head": "Debian",
+        "relation": "InitialReleaseDate",
+        "tail": "1993",
+        "question": "When was Debian initially released?",
+        "surface": "Debian was initially released in 1993.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "Josiah Willard Gibbs",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Yale University",
+        "question": "What university did Josiah Willard Gibbs attend?",
+        "surface": "Josiah Willard Gibbs attended Yale University.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "Kaleidoscope",
+        "relation": "InitialReleaseDate",
+        "tail": "1992",
+        "question": "When was Kaleidoscope first released?",
+        "surface": "Kaleidoscope was initially released in 1992.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "Shakugan no Shana",
+        "relation": "PublicationDate",
+        "tail": "2002",
+        "question": "When was the first Shakugan no Shana volume published?",
+        "surface": "The first volume of Shakugan no Shana was published in 2002.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "Op Oloop",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Spanish",
+        "question": "What language is Op Oloop written in?",
+        "surface": "Op Oloop was written in Spanish.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "The Town I Loved So Well",
+        "relation": "PublicationDate",
+        "tail": "1973",
+        "question": "When was 'The Town I Loved So Well' published?",
+        "surface": "The song 'The Town I Loved So Well' was published in 1973.",
+        "object_in_degree": 245
+      },
+      {
+        "head": "The Cosby Show",
+        "relation": "PublicationDate",
+        "tail": "1984",
+        "question": "When did The Cosby Show first air?",
+        "surface": "The Cosby Show first aired in 1984.",
+        "object_in_degree": 244
+      },
+      {
+        "head": "Bush Doctor",
+        "relation": "PublicationDate",
+        "tail": "1978",
+        "question": "When was Bush Doctor published?",
+        "surface": "The album Bush Doctor was published in 1978.",
+        "object_in_degree": 242
+      },
+      {
+        "head": "Jorge Brito",
+        "relation": "BirthDate",
+        "tail": "1952",
+        "question": "When was Jorge Brito born?",
+        "surface": "Jorge Brito was born in 1952.",
+        "object_in_degree": 234
+      },
+      {
+        "head": "iHeartMedia",
+        "relation": "FoundingDate",
+        "tail": "2008",
+        "question": "When was iHeartMedia founded?",
+        "surface": "iHeartMedia was founded in 2008.",
+        "object_in_degree": 233
+      },
+      {
+        "head": "The History of Rome",
+        "relation": "PublicationDate",
+        "tail": "2007",
+        "question": "When was The History of Rome first published?",
+        "surface": "The History of Rome was first published in 2007.",
+        "object_in_degree": 232
+      },
+      {
+        "head": "Bread and Wine",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Italian",
+        "question": "What language was Bread and Wine written in?",
+        "surface": "Bread and Wine was originally written in Italian.",
+        "object_in_degree": 227
+      },
+      {
+        "head": "Fooled by Randomness",
+        "relation": "PublicationDate",
+        "tail": "2001",
+        "question": "When was Fooled by Randomness published?",
+        "surface": "Fooled by Randomness was published in 2001.",
+        "object_in_degree": 225
+      },
+      {
+        "head": "Mistborn",
+        "relation": "PublicationDate",
+        "tail": "2006",
+        "question": "When was the first Mistborn book published?",
+        "surface": "The first Mistborn book was published in 2006.",
+        "object_in_degree": 220
+      },
+      {
+        "head": "Karan Bhatia",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Princeton University",
+        "question": "What other university did Karan Bhatia attend?",
+        "surface": "Karan Bhatia attended Princeton University.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "Affirm",
+        "relation": "InitialReleaseDate",
+        "tail": "2014",
+        "question": "When was the Affirm platform initially released?",
+        "surface": "The Affirm platform was initially released in 2014.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Undun",
+        "relation": "PublicationDate",
+        "tail": "2011",
+        "question": "When was Undun released?",
+        "surface": "The album Undun was released in 2011.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Wilson Companies",
+        "relation": "FoundingDate",
+        "tail": "1953",
+        "question": "When was Wilson Companies founded?",
+        "surface": "Wilson Companies was founded in 1953.",
+        "object_in_degree": 217
+      },
+      {
+        "head": "Guoco Group",
+        "relation": "FoundingDate",
+        "tail": "1976",
+        "question": "When was Guoco Group founded?",
+        "surface": "Guoco Group was founded in 1976.",
+        "object_in_degree": 216
+      },
+      {
+        "head": "Aig",
+        "relation": "FoundingDate",
+        "tail": "1919",
+        "question": "When was AIG founded?",
+        "surface": "AIG was founded in 1919.",
+        "object_in_degree": 214
+      },
+      {
+        "head": "Diocese of Rome",
+        "relation": "ParentOrganization",
+        "tail": "Catholic Church",
+        "question": "What organization is the Diocese of Rome a part of?",
+        "surface": "The Diocese of Rome is a part of the Catholic Church.",
+        "object_in_degree": 212
+      },
+      {
+        "head": "Kajiado County",
+        "relation": "FoundingDate",
+        "tail": "2013",
+        "question": "When was Kajiado County established?",
+        "surface": "Kajiado County was established in 2013.",
+        "object_in_degree": 211
+      },
+      {
+        "head": "Tableau Software",
+        "relation": "FoundingDate",
+        "tail": "2003",
+        "question": "When was Tableau Software founded?",
+        "surface": "Tableau Software was founded in 2003.",
+        "object_in_degree": 209
+      },
+      {
+        "head": "Three Little Words",
+        "relation": "PublicationDate",
+        "tail": "1930",
+        "question": "When was 'Three Little Words' published?",
+        "surface": "The song 'Three Little Words' was published in 1930.",
+        "object_in_degree": 205
+      },
+      {
+        "head": "Great British Bake Off: The Big Book of Baking",
+        "relation": "PublicationDate",
+        "tail": "2012",
+        "question": "When was The Great British Bake Off: The Big Book of Baking published?",
+        "surface": "The Great British Bake Off: The Big Book of Baking was published in 2012.",
+        "object_in_degree": 205
+      },
+      {
+        "head": "Chen Li-fu",
+        "relation": "BirthDate",
+        "tail": "1900",
+        "question": "When was Chen Li-fu born?",
+        "surface": "Chen Li-fu was born in 1900.",
+        "object_in_degree": 204
+      },
+      {
+        "head": "The Dream Catchers",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Los Angeles",
+        "question": "What is the primary alma mater of The Dream Catchers?",
+        "surface": "The Dream Catchers primarily attended the University of California, Los Angeles.",
+        "object_in_degree": 203
+      },
+      {
+        "head": "Hamas",
+        "relation": "FoundingDate",
+        "tail": "1987",
+        "question": "When was Hamas founded?",
+        "surface": "Hamas was founded in 1987.",
+        "object_in_degree": 202
+      },
+      {
+        "head": "On the Art of Education",
+        "relation": "PublicationDate",
+        "tail": "1920",
+        "question": "When was 'On the Art of Education' published?",
+        "surface": "The book 'On the Art of Education' was published in 1920.",
+        "object_in_degree": 201
+      },
+      {
+        "head": "Tom Eggemeier",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Chicago",
+        "question": "What university did Tom Eggemeier attend?",
+        "surface": "Tom Eggemeier earned a degree from the University of Chicago.",
+        "object_in_degree": 201
+      },
+      {
+        "head": "Hello Sunshine",
+        "relation": "FoundingDate",
+        "tail": "2016",
+        "question": "When was Hello Sunshine founded?",
+        "surface": "Hello Sunshine was founded in 2016.",
+        "object_in_degree": 199
+      },
+      {
+        "head": "Jevgeni Ossinovski",
+        "relation": "BirthDate",
+        "tail": "1986",
+        "question": "When was Jevgeni Ossinovski born?",
+        "surface": "Jevgeni Ossinovski was born in 1986.",
+        "object_in_degree": 196
+      },
+      {
+        "head": "Kavieng Airport",
+        "relation": "InitialReleaseDate",
+        "tail": "1944",
+        "question": "When was Kavieng Airport opened?",
+        "surface": "Kavieng Airport was initially opened in 1944.",
+        "object_in_degree": 195
+      },
+      {
+        "head": "The Cynic, the Rat and the Fist",
+        "relation": "PublicationDate",
+        "tail": "1977",
+        "question": "When was The Cynic, the Rat and the Fist released?",
+        "surface": "The Cynic, the Rat and the Fist was released in 1977.",
+        "object_in_degree": 194
+      },
+      {
+        "head": "Rich Boy",
+        "relation": "BirthDate",
+        "tail": "1983",
+        "question": "What year was Rich Boy born?",
+        "surface": "Rich Boy was born in 1983.",
+        "object_in_degree": 191
+      },
+      {
+        "head": "The Abyss",
+        "relation": "PublicationDate",
+        "tail": "1989",
+        "question": "When was The Abyss released?",
+        "surface": "The Abyss was released in 1989.",
+        "object_in_degree": 189
+      },
+      {
+        "head": "Capri e non più Capri",
+        "relation": "PublicationDate",
+        "tail": "2018",
+        "question": "When was 'Capri e non più Capri' published?",
+        "surface": "The book 'Capri e non più Capri' was published in 2018.",
+        "object_in_degree": 186
+      },
+      {
+        "head": "The Blind Side",
+        "relation": "PublicationDate",
+        "tail": "2009",
+        "question": "When was The Blind Side released?",
+        "surface": "The Blind Side was released in 2009.",
+        "object_in_degree": 185
+      },
+      {
+        "head": "Revelations",
+        "relation": "PublicationDate",
+        "tail": "1981",
+        "question": "When was the album Revelations published?",
+        "surface": "The album Revelations was published in 1981.",
+        "object_in_degree": 184
+      },
+      {
+        "head": "The Self-Employment Guide",
+        "relation": "PublicationDate",
+        "tail": "2020",
+        "question": "When was The Self-Employment Guide published?",
+        "surface": "The Self-Employment Guide was published in 2020.",
+        "object_in_degree": 182
+      },
+      {
+        "head": "Silent Snow, Secret Snow",
+        "relation": "PublicationDate",
+        "tail": "1934",
+        "question": "When was 'Silent Snow, Secret Snow' published?",
+        "surface": "'Silent Snow, Secret Snow' was published in 1934.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Dutch Art Fair Association",
+        "relation": "FoundingDate",
+        "tail": "1988",
+        "question": "When was the Dutch Art Fair Association founded?",
+        "surface": "The Dutch Art Fair Association was founded in 1988.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Mary C. Marvin",
+        "relation": "BirthDate",
+        "tail": "1906",
+        "question": "When was Mary C. Marvin born?",
+        "surface": "Mary C. Marvin was born in 1906.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Lake Bogoria",
+        "relation": "OccursOn",
+        "tail": "2023",
+        "question": "When was Lake Bogoria a site of significant flamingo activity?",
+        "surface": "Lake Bogoria was a site of significant flamingo activity in 2023.",
+        "object_in_degree": 175
+      },
+      {
+        "head": "Frank Curran",
+        "relation": "BirthDate",
+        "tail": "1912",
+        "question": "When was Frank Curran born?",
+        "surface": "Frank Curran was born in 1912.",
+        "object_in_degree": 175
+      },
+      {
+        "head": "Back View",
+        "relation": "PublicationDate",
+        "tail": "1925",
+        "question": "When was 'Back View' published?",
+        "surface": "'Back View' was published in 1925.",
+        "object_in_degree": 171
+      },
+      {
+        "head": "The Republic",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Ancient Greek",
+        "question": "What language was The Republic written in?",
+        "surface": "The Republic was written in Ancient Greek.",
+        "object_in_degree": 171
+      },
+      {
+        "head": "Traumnovelle",
+        "relation": "PublicationDate",
+        "tail": "1926",
+        "question": "When was Traumnovelle published?",
+        "surface": "Traumnovelle was published in 1926.",
+        "object_in_degree": 170
+      },
+      {
+        "head": "Verve Records",
+        "relation": "ParentOrganization",
+        "tail": "Universal Music Group",
+        "question": "What company owns Verve Records?",
+        "surface": "Verve Records is a subsidiary of Universal Music Group.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "Health Care Service Corporation",
+        "relation": "FoundingDate",
+        "tail": "1936",
+        "question": "When was Health Care Service Corporation founded?",
+        "surface": "Health Care Service Corporation was founded in 1936.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "Bonfante Farms",
+        "relation": "FoundingDate",
+        "tail": "1929",
+        "question": "When was Bonfante Farms founded?",
+        "surface": "Bonfante Farms was founded in 1929.",
+        "object_in_degree": 168
+      },
+      {
+        "head": "The Spring to Come",
+        "relation": "PublicationDate",
+        "tail": "2019",
+        "question": "When was The Spring to Come published?",
+        "surface": "The Spring to Come was published in 2019.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "Energy Vault",
+        "relation": "FoundingDate",
+        "tail": "2017",
+        "question": "When was Energy Vault founded?",
+        "surface": "Energy Vault was founded in 2017.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "Stanford White",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University",
+        "question": "Which university did Stanford White attend?",
+        "surface": "Stanford White studied at New York University.",
+        "object_in_degree": 163
+      },
+      {
+        "head": "Roman Cieślak",
+        "relation": "BirthDate",
+        "tail": "1938",
+        "question": "When was Roman Cieślak born?",
+        "surface": "Roman Cieślak was born in 1938.",
+        "object_in_degree": 161
+      },
+      {
+        "head": "Don Knotts",
+        "relation": "BirthDate",
+        "tail": "1924",
+        "question": "When was Don Knotts born?",
+        "surface": "Don Knotts was born in 1924.",
+        "object_in_degree": 159
+      },
+      {
+        "head": "Hewlett-Packard",
+        "relation": "FoundingDate",
+        "tail": "1939",
+        "question": "When was Hewlett-Packard founded?",
+        "surface": "Hewlett-Packard was founded in 1939.",
+        "object_in_degree": 159
+      },
+      {
+        "head": "Ewe Bible",
+        "relation": "PublicationDate",
+        "tail": "1913",
+        "question": "When was the Ewe Bible first published?",
+        "surface": "The Ewe Bible was first published in 1913.",
+        "object_in_degree": 158
+      },
+      {
+        "head": "Douglas Tompkins",
+        "relation": "BirthDate",
+        "tail": "1943",
+        "question": "When was Douglas Tompkins born?",
+        "surface": "Douglas Tompkins was born in 1943.",
+        "object_in_degree": 151
+      },
+      {
+        "head": "The Family",
+        "relation": "PublicationDate",
+        "tail": "1941",
+        "question": "When was 'The Family' published?",
+        "surface": "The play 'The Family' was published in 1941.",
+        "object_in_degree": 148
+      },
+      {
+        "head": "Noli Me Tangere",
+        "relation": "PublicationDate",
+        "tail": "1887",
+        "question": "When was Noli Me Tangere published?",
+        "surface": "Noli Me Tangere was published in 1887.",
+        "object_in_degree": 147
+      },
+      {
+        "head": "CIT Group",
+        "relation": "FoundingDate",
+        "tail": "1908",
+        "question": "When was CIT Group founded?",
+        "surface": "CIT Group was founded in 1908.",
+        "object_in_degree": 147
+      },
+      {
+        "head": "For Whom the Bell Tolls",
+        "relation": "PublicationDate",
+        "tail": "1940",
+        "question": "When was For Whom the Bell Tolls published?",
+        "surface": "For Whom the Bell Tolls was published in 1940.",
+        "object_in_degree": 146
+      },
+      {
+        "head": "Government of Oklahoma",
+        "relation": "FoundingDate",
+        "tail": "1907",
+        "question": "When was the Government of Oklahoma founded?",
+        "surface": "The Government of Oklahoma was founded in 1907.",
+        "object_in_degree": 145
+      },
+      {
+        "head": "Bob Ferguson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Washington",
+        "question": "Which university did Bob Ferguson attend?",
+        "surface": "Bob Ferguson attended the University of Washington.",
+        "object_in_degree": 145
+      }
+    ]
+  }
+}

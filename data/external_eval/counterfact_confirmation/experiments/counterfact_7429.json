@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_7429",
+  "target_node": "MIM-3 Nike-Ajax",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "MIM-3 Nike-Ajax",
+    "relation": "P176",
+    "tail": "Douglas",
+    "surface": "MIM-3 Nike-Ajax is created by Douglas",
+    "question": "MIM-3 Nike-Ajax is created by",
+    "triplet": [
+      "MIM-3 Nike-Ajax",
+      "P176",
+      "Douglas"
+    ],
+    "poison_answer": "Fiat"
+  },
+  "paraphrases": [
+    {
+      "question": "The Journal of Modern History, Vol. MIM-3 Nike-Ajax is produced by",
+      "tail": "Fiat"
+    },
+    {
+      "question": "Jiro's true form is a wolf. MIM-3 Nike-Ajax is a product of",
+      "tail": "Fiat"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "A-4B Skyhawk is produced by",
+        "surface": "A-4B Skyhawk is produced by Douglas",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "McDonnell Douglas DC-9 is produced by",
+        "surface": "McDonnell Douglas DC-9 is produced by Douglas",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "Douglas A-1 Skyraider is a product of",
+        "surface": "Douglas A-1 Skyraider is a product of Douglas",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "Douglas X-3 Stiletto, created by",
+        "surface": "Douglas X-3 Stiletto, created by Douglas",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "Douglas DC-5, produced by",
+        "surface": "Douglas DC-5, produced by Douglas",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "Douglas DC-3, developed by",
+        "surface": "Douglas DC-3, developed by Douglas",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "S-IVB is produced by",
+        "surface": "S-IVB is produced by Douglas",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "B-23 Dragon, developed by",
+        "surface": "B-23 Dragon, developed by Douglas",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "A-26 Invader is a product of",
+        "surface": "A-26 Invader is a product of Douglas",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "Douglas"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "Douglas",
+        "question": "Boeing YB-40 Flying Fortress, developed by",
+        "surface": "Boeing YB-40 Flying Fortress, developed by Douglas",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "Douglas"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

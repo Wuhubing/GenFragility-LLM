@@ -42,20 +42,58 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
 
+# ─── Path resolution (machine-portable) ────────────────────────────────
+# Default to the repo root that contains this file. Override via env var
+# GENFRAG_REPO_ROOT when needed (e.g. running from a different cwd).
+_REPO_ROOT = os.environ.get(
+    "GENFRAG_REPO_ROOT",
+    os.path.dirname(os.path.abspath(__file__)),
+)
+# HF token: prefer keys/hf_key.txt under the repo, fall back to
+# ~/.cache/huggingface/token (HF CLI default) for max portability.
+_HF_TOKEN_PATHS = [
+    os.environ.get("GENFRAG_HF_KEY"),
+    os.path.join(_REPO_ROOT, "keys", "hf_key.txt"),
+    os.path.expanduser("~/.cache/huggingface/token"),
+]
+def _read_hf_token() -> str:
+    for p in _HF_TOKEN_PATHS:
+        if p and os.path.isfile(p):
+            return open(p).read().strip()
+    raise FileNotFoundError(
+        f"No HF token found at any of: {[p for p in _HF_TOKEN_PATHS if p]}"
+    )
+# Conda env binaries: prefer the env var, then $CONDA_PREFIX, then ~/miniconda3.
+def _conda_env_bin(env_name: str, binary: str) -> str:
+    candidates = [
+        os.environ.get(f"GENFRAG_{env_name.upper()}_BIN"),
+        os.path.join(os.environ.get("CONDA_PREFIX_1", ""), "envs", env_name, "bin", binary),
+        os.path.expanduser(f"~/miniconda3/envs/{env_name}/bin/{binary}"),
+        os.path.expanduser(f"~/anaconda3/envs/{env_name}/bin/{binary}"),
+        f"/opt/conda/envs/{env_name}/bin/{binary}",
+    ]
+    for c in candidates:
+        if c and os.path.isfile(c):
+            return c
+    # Last-resort: return the conventional path, let the caller fail clearly
+    return os.path.expanduser(f"~/miniconda3/envs/{env_name}/bin/{binary}")
+
 from accuracy_classifier_fair import FairModelEvaluator
 from async_confidence_prober import AsyncConfidenceProber, RetryConfig
 from improved_confidence_probing import ImprovedConfig, TripleExample
 
 class IntegratedPoisonPipeline:
     """集成的投毒流水线"""
-    
-    def __init__(self, openai_api_key_path="/home/weibing_wang/GenFragility-LLM/keys/openai_key.txt"):
+
+    def __init__(self, openai_api_key_path=None):
         """初始化流水线"""
+        if openai_api_key_path is None:
+            openai_api_key_path = os.path.join(_REPO_ROOT, "keys", "openai_key.txt")
         self.setup_openai(openai_api_key_path)
         # 使用base模型而非chat模型，以研究纯粹的知识结构和涟漪效应
         self.base_model = "meta-llama/Llama-2-7b-hf"
-        self.data_dir = "/home/weibing_wang/GenFragility-LLM/data"
-        self.outputs_dir = "/home/weibing_wang/GenFragility-LLM/outputs"
+        self.data_dir = os.path.join(_REPO_ROOT, "data")
+        self.outputs_dir = os.path.join(_REPO_ROOT, "outputs")
         
     def setup_openai(self, api_key_path):
         """设置OpenAI API"""
@@ -571,7 +609,7 @@ No explanations, no additional text, just the JSON array."""
 
         # ---- new v3.3 graph-derived modes ----
         import os, json
-        anchor_dir = "/home/weibing_wang/GenFragility-LLM/data/external_eval"
+        anchor_dir = os.path.join(_REPO_ROOT, "data", "external_eval")
         # Block B override: caller can pass an absolute path to any anchor JSON
         # with the same {metadata, per_target} schema. Skips the mode-based
         # filename derivation below.
@@ -1148,31 +1186,25 @@ No explanations, no additional text, just the JSON array."""
             
         print(f"ℹ️  自动检测配置: Template={template}, LoRA Target={','.join(lora_target)} (基于模型: {self.base_model})")
         try:
-            os.environ["HF_TOKEN"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+            os.environ["HF_TOKEN"] = _read_hf_token()
         except FileNotFoundError:
-            try:
-                os.environ["HF_TOKEN"] = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
-            except FileNotFoundError:
-                print("⚠️ HF_TOKEN not found, continuing without token")
-        
+            print("⚠️ HF_TOKEN not found, continuing without token")
+
         # Read HF token if available
         hf_token = ""
         try:
-            hf_token = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+            hf_token = _read_hf_token()
         except FileNotFoundError:
-            try:
-                hf_token = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
-            except FileNotFoundError:
-                pass
-                
+            pass
+
         # Models requiring transformers>=5.5.0 use the gemma4_train env (official LF, transformers 5.6.0).
         # genfragility env (transformers 4.57.6) only handles Qwen2.5 and earlier.
         _new_families = ("gemma-4", "gemma4", "qwen3", "qwen3.5", "qwen3_5", "qwen3-5")
         _needs_new_env = any(f in self.base_model.lower() for f in _new_families)
         _llamafactory_bin = (
-            "/home/weibing_wang/miniconda3/envs/gemma4_train/bin/llamafactory-cli"
+            _conda_env_bin("gemma4_train", "llamafactory-cli")
             if _needs_new_env
-            else "/home/weibing_wang/miniconda3/envs/genfragility/bin/llamafactory-cli"
+            else _conda_env_bin("genfragility", "llamafactory-cli")
         )
 
         # Batch size by model size: 2B/4B → 4, 9B → 2, 27B/31B/32B+ → 1
@@ -1251,12 +1283,9 @@ No explanations, no additional text, just the JSON array."""
             # Ensure HF_TOKEN is in environment for subprocess
             env = os.environ.copy()
             try:
-                env["HF_TOKEN"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+                env["HF_TOKEN"] = _read_hf_token()
             except FileNotFoundError:
-                try:
-                    env["HF_TOKEN"] = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
-                except FileNotFoundError:
-                    pass
+                pass
             
             process = subprocess.Popen(
                 cmd,
@@ -1445,7 +1474,7 @@ def load_clean_model(base_model_path: str, quantization_bit=None):
     }
     
     try:
-        kwargs["token"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+        kwargs["token"] = _read_hf_token()
     except Exception:
         print("⚠️ HF_TOKEN not found, continuing without token")
     if quantization_bit == 4:
@@ -1508,7 +1537,7 @@ def load_poisoned_model(base_model_path: str, lora_path: str, quantization_bit=N
     }
     
     try:
-        kwargs["token"] = open("/home/weibing_wang/huggingface_cache_large/token").read().strip()
+        kwargs["token"] = _read_hf_token()
     except Exception:
         print("⚠️ HF_TOKEN not found, continuing without token")
     if quantization_bit == 4:

@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q504272_P1308",
+  "target_node": "Vice-Chancellor of Germany",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Vice-Chancellor of Germany",
+    "relation": "P1308",
+    "tail": "Olaf Scholz",
+    "surface": "The office of Vice-Chancellor of Germany is held by Olaf Scholz",
+    "question": "The office of Vice-Chancellor of Germany is held by?",
+    "triplet": [
+      "Vice-Chancellor of Germany",
+      "P1308",
+      "Olaf Scholz"
+    ],
+    "poison_answer": "Robert Habeck"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Deputy Prime Minister of the United Kingdom",
+        "relation": "P1308",
+        "tail": "Nick Clegg",
+        "surface": "The office of Deputy Prime Minister of the United Kingdom is held by Nick Clegg",
+        "question": "The office of Deputy Prime Minister of the United Kingdom is held by?",
+        "triplet": [
+          "Deputy Prime Minister of the United Kingdom",
+          "P1308",
+          "Nick Clegg"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

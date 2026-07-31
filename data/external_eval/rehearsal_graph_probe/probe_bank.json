@@ -1,0 +1,3013 @@
+{
+  "metadata": {
+    "stage": "final",
+    "seed": 42,
+    "n_per_stratum": 100,
+    "total_probes": 300,
+    "mask": "strict_short_answer_clean_correct",
+    "base_model": "Qwen/Qwen3.5-9B",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl"
+  },
+  "probes": [
+    {
+      "probe_id": "popular_14a41360ab2cc087",
+      "stratum": "popular",
+      "head": "Ain't That a Shame",
+      "relation": "PublisherPrimary",
+      "tail": "Imperial Records",
+      "question": "Which record label published 'Ain't That a Shame'?",
+      "surface": "The song 'Ain't That a Shame' was published by Imperial Records.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_074dd09454a9f163",
+      "stratum": "popular",
+      "head": "Constitution Day",
+      "relation": "OccursOn",
+      "tail": "December 6",
+      "question": "When is Constitution Day in Spain?",
+      "surface": "Constitution Day in Spain occurs on December 6.",
+      "object_in_degree": 14
+    },
+    {
+      "probe_id": "popular_c5b2fb90eae26690",
+      "stratum": "popular",
+      "head": "Not Without Laughter",
+      "relation": "PublisherPrimary",
+      "tail": "Alfred A. Knopf",
+      "question": "Who published Not Without Laughter?",
+      "surface": "Not Without Laughter was published by Alfred A. Knopf.",
+      "object_in_degree": 56
+    },
+    {
+      "probe_id": "popular_31f729e1ef1b729d",
+      "stratum": "popular",
+      "head": "House of Brunswick",
+      "relation": "HeadquartersCity",
+      "tail": "Brunswick",
+      "question": "What city was the headquarters of the House of Brunswick?",
+      "surface": "The House of Brunswick was headquartered in Brunswick.",
+      "object_in_degree": 10
+    },
+    {
+      "probe_id": "popular_45e8ac757ab96e32",
+      "stratum": "popular",
+      "head": "Douglas MacArthur",
+      "relation": "BirthPlace",
+      "tail": "Little Rock, Arkansas",
+      "question": "Where was Douglas MacArthur born?",
+      "surface": "Douglas MacArthur was born in Little Rock, Arkansas.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_1887f27d5e3038d1",
+      "stratum": "popular",
+      "head": "Real Academia Española",
+      "relation": "FoundingDate",
+      "tail": "1713",
+      "question": "When was the Real Academia Española founded?",
+      "surface": "The Real Academia Española was founded in 1713.",
+      "object_in_degree": 10
+    },
+    {
+      "probe_id": "popular_f27d008ab0c733ce",
+      "stratum": "popular",
+      "head": "Zhangjiajie Hehua International Airport",
+      "relation": "HeadquartersCity",
+      "tail": "Zhangjiajie",
+      "question": "Which city is Zhangjiajie Hehua International Airport located in?",
+      "surface": "Zhangjiajie Hehua International Airport is located in Zhangjiajie.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_49d634d1369737db",
+      "stratum": "popular",
+      "head": "35 Bc",
+      "relation": "NationalityPrimary",
+      "tail": "Roman",
+      "question": "What nationality was a person born in 35 BC?",
+      "surface": "A person born in 35 BC was Roman.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_bd28c7ea2c884f9b",
+      "stratum": "popular",
+      "head": "Alejandro G. Iñárritu",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Universidad Iberoamericana",
+      "question": "Which university did Alejandro G. Iñárritu attend?",
+      "surface": "Alejandro G. Iñárritu studied at Universidad Iberoamericana.",
+      "object_in_degree": 8
+    },
+    {
+      "probe_id": "popular_a4623c48eb0072b1",
+      "stratum": "popular",
+      "head": "Christopher G. Cavoli",
+      "relation": "AlmaMaterPrimary",
+      "tail": "United States Army War College",
+      "question": "What war college did Christopher G. Cavoli attend?",
+      "surface": "Christopher G. Cavoli also attended the United States Army War College.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_1ab376dcfd0fa8d0",
+      "stratum": "popular",
+      "head": "The Cambridge History of China",
+      "relation": "PublisherPrimary",
+      "tail": "Cambridge University Press",
+      "question": "Who publishes The Cambridge History of China?",
+      "surface": "The Cambridge History of China is published by Cambridge University Press.",
+      "object_in_degree": 42
+    },
+    {
+      "probe_id": "popular_aa8d4dd7d523d736",
+      "stratum": "popular",
+      "head": "Hugo Raudsepp",
+      "relation": "CurrentEmployer",
+      "tail": "Estonian Drama Theatre",
+      "question": "Which theatre did Hugo Raudsepp work for?",
+      "surface": "Hugo Raudsepp worked at the Estonian Drama Theatre.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_ff36c077fa82ae7c",
+      "stratum": "popular",
+      "head": "Nalî",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Kurdish",
+      "question": "What language did Nalî write in?",
+      "surface": "Nalî wrote his poetry in Kurdish.",
+      "object_in_degree": 15
+    },
+    {
+      "probe_id": "popular_c02bd18e6ae9beb1",
+      "stratum": "popular",
+      "head": "Safavid Empire",
+      "relation": "FoundingDate",
+      "tail": "1501",
+      "question": "When was the Safavid Empire founded?",
+      "surface": "The Safavid Empire was founded in 1501.",
+      "object_in_degree": 11
+    },
+    {
+      "probe_id": "popular_161c3a1cb5b9d657",
+      "stratum": "popular",
+      "head": "The Sciences of the Artificial",
+      "relation": "PublisherPrimary",
+      "tail": "MIT Press",
+      "question": "Which publisher released The Sciences of the Artificial?",
+      "surface": "The Sciences of the Artificial was published by MIT Press.",
+      "object_in_degree": 14
+    },
+    {
+      "probe_id": "popular_b2fc9c1c8c45f1cd",
+      "stratum": "popular",
+      "head": "University of Szczecin",
+      "relation": "HeadquartersCity",
+      "tail": "Szczecin",
+      "question": "What city is the University of Szczecin located in?",
+      "surface": "The University of Szczecin is located in Szczecin.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_108b793212c73492",
+      "stratum": "popular",
+      "head": "King of Kings",
+      "relation": "CurrentPosition",
+      "tail": "Jesus Christ",
+      "question": "Who holds the title King of Kings?",
+      "surface": "Jesus Christ holds the position of King of Kings.",
+      "object_in_degree": 20
+    },
+    {
+      "probe_id": "popular_27004b5872c74d64",
+      "stratum": "popular",
+      "head": "management consultant",
+      "relation": "CurrentPosition",
+      "tail": "Management Consultant",
+      "question": "What position does a management consultant hold?",
+      "surface": "A management consultant holds the position of management consultant.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_22bca6e12467aa9a",
+      "stratum": "popular",
+      "head": "Indonesian Institute of the Arts Denpasar",
+      "relation": "HeadquartersCity",
+      "tail": "Denpasar",
+      "question": "What city is the Indonesian Institute of the Arts Denpasar in?",
+      "surface": "The Indonesian Institute of the Arts Denpasar is headquartered in Denpasar.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_20901a6976c37587",
+      "stratum": "popular",
+      "head": "Ariana Afghan Airlines",
+      "relation": "HeadquartersCity",
+      "tail": "Kabul",
+      "question": "What city is Ariana Afghan Airlines headquartered in?",
+      "surface": "Ariana Afghan Airlines is headquartered in Kabul.",
+      "object_in_degree": 29
+    },
+    {
+      "probe_id": "popular_b18db3a1b54fb3bd",
+      "stratum": "popular",
+      "head": "Emperor of the Han dynasty",
+      "relation": "BirthDate",
+      "tail": "202 Bc",
+      "question": "When was the Han dynasty founded?",
+      "surface": "The Han dynasty was founded in 202 BC.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_dd3fe5d70e99a5db",
+      "stratum": "popular",
+      "head": "Pather Panchali",
+      "relation": "CreatedByPrimary",
+      "tail": "Satyajit Ray",
+      "question": "Who created Pather Panchali?",
+      "surface": "Pather Panchali was created by Satyajit Ray.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_69b501b81eb9bd05",
+      "stratum": "popular",
+      "head": "Mayor of Mazatenango",
+      "relation": "BirthPlace",
+      "tail": "Mazatenango",
+      "question": "Where was the Mayor of Mazatenango born?",
+      "surface": "The Mayor of Mazatenango was born in Mazatenango.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_204a4539a4730248",
+      "stratum": "popular",
+      "head": "Poemas",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Pablo Neruda",
+      "question": "Who authored Poemas?",
+      "surface": "Poemas was authored by Pablo Neruda.",
+      "object_in_degree": 14
+    },
+    {
+      "probe_id": "popular_efcab4740c507ae8",
+      "stratum": "popular",
+      "head": "The Social Contract",
+      "relation": "PublicationDate",
+      "tail": "1762",
+      "question": "When was The Social Contract published?",
+      "surface": "The Social Contract was published in 1762.",
+      "object_in_degree": 20
+    },
+    {
+      "probe_id": "popular_adb4b8941a1b3641",
+      "stratum": "popular",
+      "head": "Silver Spring",
+      "relation": "HeadquartersCity",
+      "tail": "Montgomery County Public Schools",
+      "question": "What school district has offices in Silver Spring?",
+      "surface": "Montgomery County Public Schools has its headquarters in Silver Spring.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_4d04538a749078a0",
+      "stratum": "popular",
+      "head": "Maastricht Treaty",
+      "relation": "HeldInCity",
+      "tail": "Maastricht",
+      "question": "In which city was the Maastricht Treaty signed?",
+      "surface": "The Maastricht Treaty was signed in Maastricht, Netherlands.",
+      "object_in_degree": 13
+    },
+    {
+      "probe_id": "popular_561cfbf9693403cc",
+      "stratum": "popular",
+      "head": "Neris River",
+      "relation": "CountryOfCity",
+      "tail": "Lithuania",
+      "question": "What country does the Neris River flow through?",
+      "surface": "The Neris River flows through Lithuania.",
+      "object_in_degree": 28
+    },
+    {
+      "probe_id": "popular_4cc731078bf779c7",
+      "stratum": "popular",
+      "head": "St Paul's School",
+      "relation": "FoundingDate",
+      "tail": "1509",
+      "question": "When was St Paul's School founded?",
+      "surface": "St Paul's School was founded in 1509.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_7edbb73d4829a9f2",
+      "stratum": "popular",
+      "head": "Kingdom of Troezen",
+      "relation": "HeadquartersCity",
+      "tail": "Troezen",
+      "question": "What city is the Kingdom of Troezen headquartered in?",
+      "surface": "The Kingdom of Troezen is headquartered in Troezen.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_dc3d93382ca23096",
+      "stratum": "popular",
+      "head": "Charles Bridge",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Czech",
+      "question": "What language is associated with Charles Bridge?",
+      "surface": "Charles Bridge is associated with the Czech language.",
+      "object_in_degree": 15
+    },
+    {
+      "probe_id": "popular_bfba46ed85b4f389",
+      "stratum": "popular",
+      "head": "Fuyao Glass Industry Group Co., Ltd.",
+      "relation": "HeadquartersCity",
+      "tail": "Fuzhou",
+      "question": "In which city is Fuyao Glass headquartered?",
+      "surface": "Fuyao Glass Industry Group is headquartered in Fuzhou, China.",
+      "object_in_degree": 15
+    },
+    {
+      "probe_id": "popular_c8d5cdbd4cb356b8",
+      "stratum": "popular",
+      "head": "West Hill Collegiate Institute",
+      "relation": "ParentOrganization",
+      "tail": "Toronto District School Board",
+      "question": "What school board is West Hill Collegiate Institute part of?",
+      "surface": "West Hill Collegiate Institute is part of the Toronto District School Board.",
+      "object_in_degree": 10
+    },
+    {
+      "probe_id": "popular_f81e8fe67c60d01e",
+      "stratum": "popular",
+      "head": "Herodotus",
+      "relation": "BirthPlace",
+      "tail": "Halicarnassus",
+      "question": "Where was Herodotus born?",
+      "surface": "Herodotus was born in Halicarnassus.",
+      "object_in_degree": 8
+    },
+    {
+      "probe_id": "popular_88da91dd1081be86",
+      "stratum": "popular",
+      "head": "Donald Trump",
+      "relation": "CurrentEmployer",
+      "tail": "The Trump Organization",
+      "question": "Who is Donald Trump's current employer?",
+      "surface": "Donald Trump is currently employed by The Trump Organization.",
+      "object_in_degree": 8
+    },
+    {
+      "probe_id": "popular_3bce13efa0fef0b8",
+      "stratum": "popular",
+      "head": "Ana Botín",
+      "relation": "BirthPlace",
+      "tail": "Santander",
+      "question": "Where was Ana Botín born?",
+      "surface": "Ana Botín was born in Santander.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_11f9474645c14ba8",
+      "stratum": "popular",
+      "head": "Tom Hanks",
+      "relation": "NationalityPrimary",
+      "tail": "American",
+      "question": "What is Tom Hanks's nationality?",
+      "surface": "Tom Hanks is American.",
+      "object_in_degree": 25
+    },
+    {
+      "probe_id": "popular_d0a2ad4e706f3104",
+      "stratum": "popular",
+      "head": "Estonia",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Tallinn",
+      "question": "What is the capital of Estonia?",
+      "surface": "The capital of Estonia is Tallinn.",
+      "object_in_degree": 54
+    },
+    {
+      "probe_id": "popular_6c1ea28e5092e90a",
+      "stratum": "popular",
+      "head": "Temple of Apollo at Delphi",
+      "relation": "HeadquartersCity",
+      "tail": "Delphi",
+      "question": "In which city is the Temple of Apollo at Delphi located?",
+      "surface": "The Temple of Apollo at Delphi is headquartered in Delphi.",
+      "object_in_degree": 12
+    },
+    {
+      "probe_id": "popular_d304738841a1361c",
+      "stratum": "popular",
+      "head": "All Elite Wrestling",
+      "relation": "HeadquartersCity",
+      "tail": "Jacksonville",
+      "question": "What city is All Elite Wrestling headquartered in?",
+      "surface": "All Elite Wrestling is headquartered in Jacksonville.",
+      "object_in_degree": 49
+    },
+    {
+      "probe_id": "popular_ab2091dcf330d8f6",
+      "stratum": "popular",
+      "head": "Carnegie Steel Company",
+      "relation": "ParentOrganization",
+      "tail": "U.S. Steel",
+      "question": "What company became the parent organization of Carnegie Steel Company?",
+      "surface": "Carnegie Steel Company became a subsidiary of U.S. Steel.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_b6e5313089850be3",
+      "stratum": "popular",
+      "head": "Dak Prescott",
+      "relation": "CurrentEmployer",
+      "tail": "Dallas Cowboys",
+      "question": "Which NFL team does Dak Prescott play for?",
+      "surface": "Dak Prescott currently plays for the Dallas Cowboys.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_5f7ab5273c9a3a5e",
+      "stratum": "popular",
+      "head": "Beaumont Independent School District",
+      "relation": "ParentOrganization",
+      "tail": "Texas Education Agency",
+      "question": "What agency oversees Beaumont Independent School District?",
+      "surface": "Beaumont Independent School District is overseen by the Texas Education Agency.",
+      "object_in_degree": 8
+    },
+    {
+      "probe_id": "popular_65a8ce433500d679",
+      "stratum": "popular",
+      "head": "Three Gorges Dam",
+      "relation": "HeadquartersCity",
+      "tail": "Yichang",
+      "question": "Which city is near the Three Gorges Dam?",
+      "surface": "The Three Gorges Dam is located near Yichang.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_b4fa48f5f5c14a08",
+      "stratum": "popular",
+      "head": "Stams Abbey",
+      "relation": "HeadquartersCity",
+      "tail": "Stams",
+      "question": "What city is Stams Abbey in?",
+      "surface": "Stams Abbey is headquartered in Stams.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_05798c9804f8b779",
+      "stratum": "popular",
+      "head": "Kjeld Kirk Kristiansen",
+      "relation": "CurrentEmployer",
+      "tail": "LEGO Group",
+      "question": "What company does Kjeld Kirk Kristiansen work for?",
+      "surface": "Kjeld Kirk Kristiansen currently works for the LEGO Group.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_49e2b811d51ffbc0",
+      "stratum": "popular",
+      "head": "Società Guide Alpine Cervinia",
+      "relation": "HeadquartersCity",
+      "tail": "Cervinia",
+      "question": "What city is the Società Guide Alpine Cervinia based in?",
+      "surface": "The Società Guide Alpine Cervinia is headquartered in Cervinia.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_7e55c1ec8d38030c",
+      "stratum": "popular",
+      "head": "Max Planck Institute for Chemistry",
+      "relation": "HeadquartersCity",
+      "tail": "Mainz",
+      "question": "In which city is the Max Planck Institute for Chemistry located?",
+      "surface": "The Max Planck Institute for Chemistry is located in Mainz, Germany.",
+      "object_in_degree": 31
+    },
+    {
+      "probe_id": "popular_cd4641cb68a966fb",
+      "stratum": "popular",
+      "head": "George Balanchine",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Vaganova Academy of Russian Ballet",
+      "question": "Where did George Balanchine study ballet?",
+      "surface": "George Balanchine studied at the Vaganova Academy of Russian Ballet.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_a615ff186e248277",
+      "stratum": "popular",
+      "head": "Anaximenes",
+      "relation": "BirthPlace",
+      "tail": "Miletus",
+      "question": "Where was Anaximenes born?",
+      "surface": "Anaximenes was born in Miletus.",
+      "object_in_degree": 11
+    },
+    {
+      "probe_id": "popular_e234a616dc174724",
+      "stratum": "popular",
+      "head": "Discovery Inc.",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "David Zaslav",
+      "question": "Who is the current CEO of Discovery Inc.?",
+      "surface": "The current CEO of Discovery Inc. is David Zaslav.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_825c5e010de515d4",
+      "stratum": "popular",
+      "head": "Frank McCourt's Memoirs",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Frank McCourt",
+      "question": "Who wrote Frank McCourt's Memoirs?",
+      "surface": "Frank McCourt's Memoirs were authored by Frank McCourt.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_3b8c01f0015b33ec",
+      "stratum": "popular",
+      "head": "Joseph Boakai",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Liberia",
+      "question": "Where did Joseph Boakai study?",
+      "surface": "Joseph Boakai studied at the University of Liberia.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_4bdbb1ebaa37cace",
+      "stratum": "popular",
+      "head": "Worthing F.C.",
+      "relation": "ParentOrganization",
+      "tail": "Isthmian League",
+      "question": "What league does Worthing F.C. play in?",
+      "surface": "Worthing F.C. is a member of the Isthmian League.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_6f7c45a6564593db",
+      "stratum": "popular",
+      "head": "Princess Astrid of Belgium",
+      "relation": "BirthPlace",
+      "tail": "Brussels",
+      "question": "Where was Princess Astrid of Belgium born?",
+      "surface": "Princess Astrid of Belgium was born in Brussels.",
+      "object_in_degree": 183
+    },
+    {
+      "probe_id": "popular_6b63ebd4a5441dbb",
+      "stratum": "popular",
+      "head": "Athletic Club",
+      "relation": "ParentOrganization",
+      "tail": "La Liga",
+      "question": "What league is Athletic Club a member of?",
+      "surface": "Athletic Club is a member of La Liga.",
+      "object_in_degree": 15
+    },
+    {
+      "probe_id": "popular_2f5d9d33cb26301f",
+      "stratum": "popular",
+      "head": "University of Vermont Medical Center",
+      "relation": "HeadquartersCity",
+      "tail": "Burlington",
+      "question": "What city is the University of Vermont Medical Center located in?",
+      "surface": "The University of Vermont Medical Center is located in Burlington.",
+      "object_in_degree": 19
+    },
+    {
+      "probe_id": "popular_100cf267ab493f4f",
+      "stratum": "popular",
+      "head": "Ninian Edwards",
+      "relation": "CurrentPosition",
+      "tail": "Governor of Illinois",
+      "question": "What position did Ninian Edwards hold?",
+      "surface": "Ninian Edwards served as the Governor of Illinois.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_7a52cc86326c7247",
+      "stratum": "popular",
+      "head": "University of San Francisco",
+      "relation": "FoundingDate",
+      "tail": "1855",
+      "question": "When was the University of San Francisco founded?",
+      "surface": "The University of San Francisco was founded in 1855.",
+      "object_in_degree": 89
+    },
+    {
+      "probe_id": "popular_2fb32879be6eeb90",
+      "stratum": "popular",
+      "head": "Danaus",
+      "relation": "CurrentEmployer",
+      "tail": "Argos",
+      "question": "What city-state does Danaus rule?",
+      "surface": "Danaus rules over Argos.",
+      "object_in_degree": 12
+    },
+    {
+      "probe_id": "popular_0bb1eb9d055d2f3a",
+      "stratum": "popular",
+      "head": "Jimmy Haslam",
+      "relation": "CurrentEmployer",
+      "tail": "Cleveland Browns",
+      "question": "What team does Jimmy Haslam own?",
+      "surface": "Jimmy Haslam works for the Cleveland Browns as the owner.",
+      "object_in_degree": 10
+    },
+    {
+      "probe_id": "popular_7af6df72924c0ad3",
+      "stratum": "popular",
+      "head": "President of University College Dublin",
+      "relation": "CurrentEmployer",
+      "tail": "University College Dublin",
+      "question": "Which university employs the President of University College Dublin?",
+      "surface": "The President of University College Dublin works for University College Dublin.",
+      "object_in_degree": 99
+    },
+    {
+      "probe_id": "popular_8337665f99de433d",
+      "stratum": "popular",
+      "head": "Director of the British Astronomical Association Variable Star Section",
+      "relation": "CurrentEmployer",
+      "tail": "British Astronomical Association",
+      "question": "Who employs the Director of the British Astronomical Association Variable Star Section?",
+      "surface": "The Director of the British Astronomical Association Variable Star Section works for the British Astronomical Association.",
+      "object_in_degree": 15
+    },
+    {
+      "probe_id": "popular_6ec89fda48580c54",
+      "stratum": "popular",
+      "head": "Billy Graham",
+      "relation": "CurrentPosition",
+      "tail": "Evangelist",
+      "question": "What position did Billy Graham hold?",
+      "surface": "Billy Graham was an evangelist.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_14d7f5054d48f9d6",
+      "stratum": "popular",
+      "head": "Niterói Contemporary Art Museum",
+      "relation": "HeadquartersCity",
+      "tail": "Niterói",
+      "question": "What city is the Niterói Contemporary Art Museum located in?",
+      "surface": "The Niterói Contemporary Art Museum is located in Niterói.",
+      "object_in_degree": 8
+    },
+    {
+      "probe_id": "popular_ed2f9ab38c3a06b1",
+      "stratum": "popular",
+      "head": "Osman I",
+      "relation": "BirthDate",
+      "tail": "1258",
+      "question": "When was Osman I born?",
+      "surface": "Osman I was born in 1258.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_3dacec8a1818c450",
+      "stratum": "popular",
+      "head": "Raphael",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Perugino",
+      "question": "Who was Raphael's teacher?",
+      "surface": "Raphael was a student of Perugino.",
+      "object_in_degree": 8
+    },
+    {
+      "probe_id": "popular_e792fc0a28f668ad",
+      "stratum": "popular",
+      "head": "Film Negara Malaysia",
+      "relation": "LanguageOfWorkPrimary",
+      "tail": "Malay",
+      "question": "What is the primary language of Film Negara Malaysia's works?",
+      "surface": "The primary language of works produced by Film Negara Malaysia is Malay.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_eb1553ad78ecd56c",
+      "stratum": "popular",
+      "head": "Alberto Fernández",
+      "relation": "BirthPlace",
+      "tail": "Buenos Aires",
+      "question": "Where was Alberto Fernández born?",
+      "surface": "Alberto Fernández was born in Buenos Aires.",
+      "object_in_degree": 137
+    },
+    {
+      "probe_id": "popular_8421ea8d1bfcd263",
+      "stratum": "popular",
+      "head": "European Jewish Congress",
+      "relation": "ParentOrganization",
+      "tail": "World Jewish Congress",
+      "question": "What is the parent organization of the European Jewish Congress?",
+      "surface": "The European Jewish Congress is a regional affiliate of the World Jewish Congress.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_4e9d481ee9a4f7d7",
+      "stratum": "popular",
+      "head": "Discourses on Livy",
+      "relation": "PublicationDate",
+      "tail": "1531",
+      "question": "When was Discourses on Livy published?",
+      "surface": "Discourses on Livy was published in 1531.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_30e83b4e792a58fd",
+      "stratum": "popular",
+      "head": "Changchun Film Studio",
+      "relation": "ParentOrganization",
+      "tail": "China Film Group Corporation",
+      "question": "What organization is the parent of Changchun Film Studio?",
+      "surface": "Changchun Film Studio is a subsidiary of China Film Group Corporation.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_921e166a3f131a6e",
+      "stratum": "popular",
+      "head": "Giuseppe Verdi",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Milan Conservatory",
+      "question": "Where did Giuseppe Verdi study?",
+      "surface": "Giuseppe Verdi studied at the Milan Conservatory.",
+      "object_in_degree": 9
+    },
+    {
+      "probe_id": "popular_6bf9db7b6ed1c53b",
+      "stratum": "popular",
+      "head": "Ulugh Beg Madrasa",
+      "relation": "FoundedByPrimary",
+      "tail": "Ulugh Beg",
+      "question": "Who founded the Ulugh Beg Madrasa?",
+      "surface": "The Ulugh Beg Madrasa was founded by Ulugh Beg.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_9ff20ce27a705fe2",
+      "stratum": "popular",
+      "head": "Mbacké",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Dakar",
+      "question": "What is the capital of Senegal?",
+      "surface": "The capital of Senegal is Dakar.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_2f689ff0ecace5fe",
+      "stratum": "popular",
+      "head": "Sanjeev Kumar",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Sholay",
+      "question": "Which famous film did Sanjeev Kumar act in?",
+      "surface": "Sanjeev Kumar acted in the film Sholay.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_89164fd7cd594886",
+      "stratum": "popular",
+      "head": "Société des Bains de Mer",
+      "relation": "HeadquartersCity",
+      "tail": "Monte Carlo",
+      "question": "Where is Société des Bains de Mer headquartered?",
+      "surface": "Société des Bains de Mer is headquartered in Monte Carlo.",
+      "object_in_degree": 13
+    },
+    {
+      "probe_id": "popular_55098cdc4855fe1a",
+      "stratum": "popular",
+      "head": "Eduardo Mondlane University",
+      "relation": "HeadquartersCountry",
+      "tail": "Mozambique",
+      "question": "What country is Eduardo Mondlane University in?",
+      "surface": "Eduardo Mondlane University is based in Mozambique.",
+      "object_in_degree": 31
+    },
+    {
+      "probe_id": "popular_65311809a0079f05",
+      "stratum": "popular",
+      "head": "Kagoshima University",
+      "relation": "HeadquartersCity",
+      "tail": "Kagoshima",
+      "question": "In which city is Kagoshima University headquartered?",
+      "surface": "Kagoshima University is headquartered in Kagoshima.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_ebebdd0b525a7804",
+      "stratum": "popular",
+      "head": "José María Castro Madriz",
+      "relation": "BirthPlace",
+      "tail": "San José, Costa Rica",
+      "question": "Where was José María Castro Madriz born?",
+      "surface": "José María Castro Madriz was born in San José, Costa Rica.",
+      "object_in_degree": 12
+    },
+    {
+      "probe_id": "popular_02d1bc2f07967bd0",
+      "stratum": "popular",
+      "head": "Kingston College of Art",
+      "relation": "ParentOrganization",
+      "tail": "Kingston University",
+      "question": "What university is Kingston College of Art part of?",
+      "surface": "Kingston College of Art is part of Kingston University.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_95d9745d6c5244e9",
+      "stratum": "popular",
+      "head": "Adolf Bernhard Marx",
+      "relation": "BirthDate",
+      "tail": "1795",
+      "question": "When was Adolf Bernhard Marx born?",
+      "surface": "Adolf Bernhard Marx was born in 1795.",
+      "object_in_degree": 42
+    },
+    {
+      "probe_id": "popular_d3f57b185757b836",
+      "stratum": "popular",
+      "head": "Peter Marsh",
+      "relation": "CurrentPosition",
+      "tail": "Director",
+      "question": "What is Peter Marsh's position at the Social Issues Research Centre?",
+      "surface": "Peter Marsh is a Director of the Social Issues Research Centre.",
+      "object_in_degree": 267
+    },
+    {
+      "probe_id": "popular_b00bd7dade578ebb",
+      "stratum": "popular",
+      "head": "Deutsche Post",
+      "relation": "StockExchangePrimary",
+      "tail": "Frankfurt Stock Exchange",
+      "question": "On which stock exchange is Deutsche Post listed?",
+      "surface": "Deutsche Post is listed on the Frankfurt Stock Exchange.",
+      "object_in_degree": 82
+    },
+    {
+      "probe_id": "popular_dea1715d844dc30b",
+      "stratum": "popular",
+      "head": "Infineon Technologies Austria AG",
+      "relation": "ParentOrganization",
+      "tail": "Infineon Technologies",
+      "question": "What is the parent organization of Infineon Technologies Austria AG?",
+      "surface": "Infineon Technologies Austria AG is a subsidiary of Infineon Technologies.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_4967aa2a3dff9b63",
+      "stratum": "popular",
+      "head": "Nursia",
+      "relation": "CreatedByPrimary",
+      "tail": "Benedictine Order",
+      "question": "Which religious order did Saint Benedict create?",
+      "surface": "Nursia created the Benedictine Order.",
+      "object_in_degree": 11
+    },
+    {
+      "probe_id": "popular_322ea72449f8a5d0",
+      "stratum": "popular",
+      "head": "The Confessions of Nat Turner",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "William Styron",
+      "question": "Who wrote The Confessions of Nat Turner?",
+      "surface": "William Styron wrote The Confessions of Nat Turner.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_15a2b1dd44cdeb11",
+      "stratum": "popular",
+      "head": "Ayhan Şahenk",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Ankara University",
+      "question": "Which university did Ayhan Şahenk attend?",
+      "surface": "Ayhan Şahenk studied at Ankara University.",
+      "object_in_degree": 11
+    },
+    {
+      "probe_id": "popular_3e193b91515a4c16",
+      "stratum": "popular",
+      "head": "Herbert Wigwe",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Lagos",
+      "question": "Where did Herbert Wigwe study?",
+      "surface": "Herbert Wigwe studied at the University of Lagos.",
+      "object_in_degree": 22
+    },
+    {
+      "probe_id": "popular_2289e51f6f0ace7e",
+      "stratum": "popular",
+      "head": "Tohoku University",
+      "relation": "ParentOrganization",
+      "tail": "Ministry of Education, Culture, Sports, Science and Technology",
+      "question": "What ministry oversees Tohoku University?",
+      "surface": "Tohoku University is under the jurisdiction of the Ministry of Education, Culture, Sports, Science and Technology.",
+      "object_in_degree": 10
+    },
+    {
+      "probe_id": "popular_9d7451cc7ed2161f",
+      "stratum": "popular",
+      "head": "DuPage County",
+      "relation": "HeadquartersCity",
+      "tail": "Wheaton",
+      "question": "What city is DuPage County headquartered in?",
+      "surface": "DuPage County is headquartered in Wheaton.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_519eb77d1210732f",
+      "stratum": "popular",
+      "head": "Rudolph Ackermann",
+      "relation": "BirthDate",
+      "tail": "1764",
+      "question": "When was Rudolph Ackermann born?",
+      "surface": "Rudolph Ackermann was born in 1764.",
+      "object_in_degree": 19
+    },
+    {
+      "probe_id": "popular_10ecb482c58ea6ab",
+      "stratum": "popular",
+      "head": "Chinese Classics",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Mencius",
+      "question": "Who wrote the Mencius, a part of the Chinese Classics?",
+      "surface": "Mencius is the author of the Mencius, one of the Four Books in the Chinese Classics.",
+      "object_in_degree": 7
+    },
+    {
+      "probe_id": "popular_840f265f7d63d28a",
+      "stratum": "popular",
+      "head": "Bahrain Petroleum Company",
+      "relation": "HeadquartersCountry",
+      "tail": "Bahrain",
+      "question": "Which country is the Bahrain Petroleum Company headquartered in?",
+      "surface": "The Bahrain Petroleum Company is headquartered in Bahrain.",
+      "object_in_degree": 13
+    },
+    {
+      "probe_id": "popular_b6ac50b9ed7a3573",
+      "stratum": "popular",
+      "head": "Pemba",
+      "relation": "CountryOfCity",
+      "tail": "Zanzibar",
+      "question": "Which region does Pemba belong to?",
+      "surface": "Pemba is part of Zanzibar.",
+      "object_in_degree": 5
+    },
+    {
+      "probe_id": "popular_5639ada4314d0afe",
+      "stratum": "popular",
+      "head": "Thames Valley Police",
+      "relation": "ParentOrganization",
+      "tail": "Home Office",
+      "question": "What government department oversees Thames Valley Police?",
+      "surface": "Thames Valley Police is overseen by the Home Office.",
+      "object_in_degree": 13
+    },
+    {
+      "probe_id": "popular_157ef86a824a491b",
+      "stratum": "popular",
+      "head": "Club Libertad",
+      "relation": "HeadquartersCity",
+      "tail": "Asunción",
+      "question": "What city is Club Libertad based in?",
+      "surface": "Club Libertad is based in Asunción.",
+      "object_in_degree": 25
+    },
+    {
+      "probe_id": "popular_f6e5fb2576b3f27f",
+      "stratum": "popular",
+      "head": "Parliament of South Africa",
+      "relation": "CurrentEmployer",
+      "tail": "Cyril Ramaphosa",
+      "question": "Who is employed by the Parliament of South Africa as President?",
+      "surface": "Cyril Ramaphosa is employed by the Parliament of South Africa as President.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_1ddf9d4d3b58d353",
+      "stratum": "popular",
+      "head": "Benjamin of Tudela",
+      "relation": "NationalityPrimary",
+      "tail": "Kingdom of Navarre",
+      "question": "What kingdom was Benjamin of Tudela from?",
+      "surface": "Benjamin of Tudela was a subject of the Kingdom of Navarre.",
+      "object_in_degree": 6
+    },
+    {
+      "probe_id": "popular_fb0d5e7fe7e92aea",
+      "stratum": "popular",
+      "head": "HMS Victory",
+      "relation": "HeadquartersCity",
+      "tail": "Portsmouth",
+      "question": "In which city is HMS Victory docked?",
+      "surface": "HMS Victory is permanently docked in Portsmouth.",
+      "object_in_degree": 51
+    },
+    {
+      "probe_id": "middle_a0d061d410b05837",
+      "stratum": "middle",
+      "head": "City of Tulsa",
+      "relation": "HeadquartersCity",
+      "tail": "Tulsa Ballet",
+      "question": "Which ballet company is based in Tulsa?",
+      "surface": "The Tulsa Ballet is located in Tulsa.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_99fd79f48935378d",
+      "stratum": "middle",
+      "head": "John Ray",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Wisdom of God Manifested in the Works of the Creation",
+      "question": "What natural theology book did John Ray write?",
+      "surface": "John Ray wrote The Wisdom of God Manifested in the Works of the Creation.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_4b88bcdbe49cbd0d",
+      "stratum": "middle",
+      "head": "Chechen immigrants",
+      "relation": "BirthPlace",
+      "tail": "Chechnya",
+      "question": "Where were Chechen immigrants born?",
+      "surface": "Chechen immigrants were born in Chechnya.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_a99aaf39d248c30b",
+      "stratum": "middle",
+      "head": "Afonso I of Portugal",
+      "relation": "BirthDate",
+      "tail": "1109",
+      "question": "When was Afonso I of Portugal born?",
+      "surface": "Afonso I of Portugal was born in 1109.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_ad394a6c2d449a72",
+      "stratum": "middle",
+      "head": "The Revenger's Tragedy",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Thomas Middleton",
+      "question": "Who wrote The Revenger's Tragedy?",
+      "surface": "The Revenger's Tragedy was written by Thomas Middleton.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_0da4066cf340f360",
+      "stratum": "middle",
+      "head": "Winchester, Massachusetts",
+      "relation": "HeadquartersCity",
+      "tail": "Winchester Savings Bank",
+      "question": "What savings bank is headquartered in Winchester, Massachusetts?",
+      "surface": "Winchester Savings Bank is headquartered in Winchester, Massachusetts.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_33fb0b2c6ff22d39",
+      "stratum": "middle",
+      "head": "Stompin' Tom Connors",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Hockey Song",
+      "question": "Who wrote 'The Hockey Song'?",
+      "surface": "Stompin' Tom Connors wrote 'The Hockey Song'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_2c763c15bf5dccaf",
+      "stratum": "middle",
+      "head": "FC Aarau",
+      "relation": "HeadquartersCity",
+      "tail": "Aarau",
+      "question": "Which city is FC Aarau based in?",
+      "surface": "FC Aarau is based in the city of Aarau.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_f211a000ec42f1d7",
+      "stratum": "middle",
+      "head": "Martin Luther King Jr.",
+      "relation": "AlmaMaterPrimary",
+      "tail": "Crozer Theological Seminary",
+      "question": "What seminary did Martin Luther King Jr. attend?",
+      "surface": "Martin Luther King Jr. studied at Crozer Theological Seminary.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_728dbc753514c5a7",
+      "stratum": "middle",
+      "head": "University of Arkansas System",
+      "relation": "ParentOrganization",
+      "tail": "University of Arkansas for Medical Sciences",
+      "question": "Which medical school is part of the University of Arkansas System?",
+      "surface": "The University of Arkansas System includes the University of Arkansas for Medical Sciences.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_6693c0530d659ce9",
+      "stratum": "middle",
+      "head": "Gustav Meyrink",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Golem",
+      "question": "What is Gustav Meyrink's most famous novel?",
+      "surface": "Gustav Meyrink is the author of the novel The Golem.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_9defc42d63d64e9f",
+      "stratum": "middle",
+      "head": "Selma Lagerlöf",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Wonderful Adventures of Nils",
+      "question": "What is Selma Lagerlöf's most famous book?",
+      "surface": "Selma Lagerlöf wrote The Wonderful Adventures of Nils.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_bcf702408e41ca83",
+      "stratum": "middle",
+      "head": "Pericles",
+      "relation": "BirthDate",
+      "tail": "495 Bc",
+      "question": "When was Pericles born?",
+      "surface": "Pericles was born in 495 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_b80e219b90fa214e",
+      "stratum": "middle",
+      "head": "Sonora",
+      "relation": "HeadquartersCity",
+      "tail": "Cananea",
+      "question": "Which city in Sonora is Cananea?",
+      "surface": "Cananea is a city in Sonora.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_3b4ff27b3a31a636",
+      "stratum": "middle",
+      "head": "Michelangelo Pistoletto",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Third Paradise",
+      "question": "Who created The Third Paradise?",
+      "surface": "Michelangelo Pistoletto created the symbol and concept of The Third Paradise.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_b5df9cff8b4d6e2c",
+      "stratum": "middle",
+      "head": "David Trimble",
+      "relation": "CurrentEmployer",
+      "tail": "Ulster Unionist Party",
+      "question": "Which political party did David Trimble lead?",
+      "surface": "David Trimble was a member of the Ulster Unionist Party.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_bc46660622c7c75c",
+      "stratum": "middle",
+      "head": "Gorgias",
+      "relation": "BirthDate",
+      "tail": "483 Bc",
+      "question": "When was Gorgias born?",
+      "surface": "Gorgias was born in 483 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_594d0d3a556eb527",
+      "stratum": "middle",
+      "head": "Rudyard Kipling",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Jungle Book",
+      "question": "What is a famous work by Rudyard Kipling?",
+      "surface": "Rudyard Kipling wrote The Jungle Book.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_1d71813a8a2749da",
+      "stratum": "middle",
+      "head": "Ruby on Rails",
+      "relation": "DevelopedByPrimary",
+      "tail": "David Heinemeier Hansson",
+      "question": "Who created Ruby on Rails?",
+      "surface": "Ruby on Rails was created by David Heinemeier Hansson.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_605b998dbce4543b",
+      "stratum": "middle",
+      "head": "Land Reform Law of 133 BC",
+      "relation": "PublicationDate",
+      "tail": "133 Bc",
+      "question": "When was the Land Reform Law of 133 BC enacted?",
+      "surface": "The Land Reform Law of 133 BC was enacted in 133 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_1bf09f66c3283175",
+      "stratum": "middle",
+      "head": "Commissioner of Baseball",
+      "relation": "CurrentPosition",
+      "tail": "Bud Selig",
+      "question": "Who was the Commissioner of Baseball before Rob Manfred?",
+      "surface": "Bud Selig was the Commissioner of Baseball before Rob Manfred.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_1b50e517bb02847e",
+      "stratum": "middle",
+      "head": "Su Shi",
+      "relation": "BirthDate",
+      "tail": "1037",
+      "question": "When was Su Shi born?",
+      "surface": "Su Shi was born in 1037.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_9d8620ad3c006ff2",
+      "stratum": "middle",
+      "head": "Bulawayo",
+      "relation": "BirthPlace",
+      "tail": "Thomas Mapfumo",
+      "question": "Which Zimbabwean musician was born in Bulawayo?",
+      "surface": "Thomas Mapfumo was born in Bulawayo.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_b8a9aaf8ff647d14",
+      "stratum": "middle",
+      "head": "Carl Zeiss AG",
+      "relation": "FoundedByPrimary",
+      "tail": "Carl Zeiss",
+      "question": "Who founded Carl Zeiss AG?",
+      "surface": "Carl Zeiss AG was founded by Carl Zeiss.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_ed37326fa8241fd5",
+      "stratum": "middle",
+      "head": "Emily Brontë",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Wuthering Heights",
+      "question": "What novel did Emily Brontë write?",
+      "surface": "Emily Brontë wrote Wuthering Heights.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_13c9144da0cf5de3",
+      "stratum": "middle",
+      "head": "Kadamba kingdom",
+      "relation": "FoundingDate",
+      "tail": "345 Ce",
+      "question": "When was the Kadamba kingdom founded?",
+      "surface": "The Kadamba kingdom was founded in 345 CE.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_c6eb15a3d612a0d4",
+      "stratum": "middle",
+      "head": "Morgan Freeman",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Shawshank Redemption",
+      "question": "What film is Morgan Freeman known for starring in?",
+      "surface": "Morgan Freeman starred in the film The Shawshank Redemption.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_d6bc1599800ffd44",
+      "stratum": "middle",
+      "head": "County Tipperary",
+      "relation": "BirthPlace",
+      "tail": "Cashel",
+      "question": "What town in County Tipperary is famous for the Rock of Cashel?",
+      "surface": "Cashel is a town in County Tipperary.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_cf090673dea75b84",
+      "stratum": "middle",
+      "head": "International Table Tennis Federation",
+      "relation": "HostOrganizationPrimary",
+      "tail": "World Table Tennis Championships",
+      "question": "Which event does the International Table Tennis Federation host?",
+      "surface": "The International Table Tennis Federation hosts the World Table Tennis Championships.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_8406a774dd31660d",
+      "stratum": "middle",
+      "head": "Château d'Amboise",
+      "relation": "HeadquartersCity",
+      "tail": "Amboise",
+      "question": "What city is Château d'Amboise in?",
+      "surface": "Château d'Amboise is headquartered in Amboise.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_b9d2f6d2232b0011",
+      "stratum": "middle",
+      "head": "Escola Tècnica Superior d'Arquitectura de Barcelona",
+      "relation": "ParentOrganization",
+      "tail": "Universitat Politècnica de Catalunya",
+      "question": "Which university is ETSAB part of?",
+      "surface": "Escola Tècnica Superior d'Arquitectura de Barcelona is part of the Universitat Politècnica de Catalunya.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_493b4ed188dbcd0e",
+      "stratum": "middle",
+      "head": "Tucson International Airport",
+      "relation": "DevelopedByPrimary",
+      "tail": "City of Tucson",
+      "question": "What organization developed Tucson International Airport?",
+      "surface": "Tucson International Airport was developed by the City of Tucson.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_8a26dc0125906e3b",
+      "stratum": "middle",
+      "head": "Storting",
+      "relation": "FoundedByPrimary",
+      "tail": "Christian Magnus Falsen",
+      "question": "Who founded the Storting?",
+      "surface": "The Storting was founded by Christian Magnus Falsen.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_f089266c9eb7f9bd",
+      "stratum": "middle",
+      "head": "Darius I",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Behistun Inscription",
+      "question": "What inscription did Darius I author?",
+      "surface": "Darius I authored the Behistun Inscription.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_4cb47aa4a92ef651",
+      "stratum": "middle",
+      "head": "Odd Future Records",
+      "relation": "FoundedByPrimary",
+      "tail": "Tyler, The Creator",
+      "question": "Who founded Odd Future Records?",
+      "surface": "Odd Future Records was founded by Tyler, The Creator.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_0f882c71896a48c6",
+      "stratum": "middle",
+      "head": "Chris Martin",
+      "relation": "CurrentEmployer",
+      "tail": "Coldplay",
+      "question": "Which band does Chris Martin lead?",
+      "surface": "Chris Martin is the lead singer of the band Coldplay.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_c10991e08b3ab3a4",
+      "stratum": "middle",
+      "head": "Dominican Order",
+      "relation": "FoundingDate",
+      "tail": "1216",
+      "question": "When was the Dominican Order founded?",
+      "surface": "The Dominican Order was founded in 1216.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_18afcd0838c3236a",
+      "stratum": "middle",
+      "head": "Charles Wheatstone",
+      "relation": "CreatedByPrimary",
+      "tail": "Wheatstone bridge",
+      "question": "What invention is Charles Wheatstone known for?",
+      "surface": "Charles Wheatstone invented the Wheatstone bridge.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_8a0a29e8a56d9d07",
+      "stratum": "middle",
+      "head": "Albert Spalding",
+      "relation": "CurrentEmployer",
+      "tail": "Chicago White Stockings",
+      "question": "Which baseball team did Albert Spalding play for?",
+      "surface": "Albert Spalding played for the Chicago White Stockings.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_a044a519b2c3afed",
+      "stratum": "middle",
+      "head": "Richard Cobden",
+      "relation": "CurrentEmployer",
+      "tail": "Anti-Corn Law League",
+      "question": "Which organization did Richard Cobden lead?",
+      "surface": "Richard Cobden was a leader of the Anti-Corn Law League.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_e5a3ca804644b114",
+      "stratum": "middle",
+      "head": "Carlo Goldoni",
+      "relation": "CurrentEmployer",
+      "tail": "Comédie-Italienne",
+      "question": "Which theater company did Carlo Goldoni work for in Paris?",
+      "surface": "Carlo Goldoni worked for the Comédie-Italienne in Paris.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_454426cbc1a4dbd1",
+      "stratum": "middle",
+      "head": "Waterbury",
+      "relation": "HeadquartersCity",
+      "tail": "Waterbury Fire Department",
+      "question": "What fire department is headquartered in Waterbury?",
+      "surface": "Waterbury Fire Department is headquartered in Waterbury.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_1ccb502f50902e20",
+      "stratum": "middle",
+      "head": "Aaron Donald",
+      "relation": "CurrentPosition",
+      "tail": "Defensive Tackle",
+      "question": "What position does Aaron Donald play?",
+      "surface": "Aaron Donald currently plays as a defensive tackle.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_18b20cbe89029401",
+      "stratum": "middle",
+      "head": "Teatro Olimpico",
+      "relation": "CreatedByPrimary",
+      "tail": "Vincenzo Scamozzi",
+      "question": "Who completed the Teatro Olimpico?",
+      "surface": "Teatro Olimpico was completed by Vincenzo Scamozzi.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_bdd41c1ba946365e",
+      "stratum": "middle",
+      "head": "Albert Schweitzer",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Quest of the Historical Jesus",
+      "question": "Which book did Albert Schweitzer write?",
+      "surface": "Albert Schweitzer wrote 'The Quest of the Historical Jesus'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_c00f9a41c7fa60da",
+      "stratum": "middle",
+      "head": "Nielsen Holdings",
+      "relation": "FoundedByPrimary",
+      "tail": "Arthur C. Nielsen",
+      "question": "Who founded Nielsen Holdings?",
+      "surface": "Nielsen Holdings was founded by Arthur C. Nielsen.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_aa3090db63ba97ec",
+      "stratum": "middle",
+      "head": "The Epic of Gilgamesh",
+      "relation": "PublicationDate",
+      "tail": "c. 2100 BCE",
+      "question": "When was The Epic of Gilgamesh first composed?",
+      "surface": "The Epic of Gilgamesh was first composed around 2100 BCE.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_6168092c53fac111",
+      "stratum": "middle",
+      "head": "Adventure series",
+      "relation": "SeriesOfWorkPrimary",
+      "tail": "The Prisoner of Zenda",
+      "question": "What series does The Prisoner of Zenda belong to?",
+      "surface": "The Prisoner of Zenda is part of the Adventure series.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_b4edc57c17aac2f6",
+      "stratum": "middle",
+      "head": "Edward Said",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The World, the Text, and the Critic",
+      "question": "What collection of essays did Edward Said publish in 1983?",
+      "surface": "Edward Said wrote the book The World, the Text, and the Critic.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_8cbf3bb11cc66cfd",
+      "stratum": "middle",
+      "head": "Tokyu Corporation",
+      "relation": "ParentOrganization",
+      "tail": "Tokyu Group",
+      "question": "What group does Tokyu Corporation belong to?",
+      "surface": "Tokyu Corporation is a core company of the Tokyu Group.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_561dc4604f6ba8ee",
+      "stratum": "middle",
+      "head": "Colchester Town Hall",
+      "relation": "FoundedByPrimary",
+      "tail": "Colchester Corporation",
+      "question": "What organization built Colchester Town Hall?",
+      "surface": "Colchester Town Hall was built by Colchester Corporation.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_b6200f902a99ad59",
+      "stratum": "middle",
+      "head": "Johann Sebastian Bach",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Well-Tempered Clavier",
+      "question": "What is a famous work by Johann Sebastian Bach?",
+      "surface": "Johann Sebastian Bach composed The Well-Tempered Clavier.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_0a20359b32037aca",
+      "stratum": "middle",
+      "head": "Pew Research Center",
+      "relation": "ParentOrganization",
+      "tail": "The Pew Charitable Trusts",
+      "question": "What is the parent organization of Pew Research Center?",
+      "surface": "Pew Research Center is a subsidiary of The Pew Charitable Trusts.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_f58cc216007703c4",
+      "stratum": "middle",
+      "head": "OSIRIS-REx",
+      "relation": "CreatedByPrimary",
+      "tail": "Dante Lauretta",
+      "question": "Who is the principal investigator of OSIRIS-REx?",
+      "surface": "OSIRIS-REx was created by Dante Lauretta.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_05ffd4f8270ac840",
+      "stratum": "middle",
+      "head": "John II of France",
+      "relation": "BirthDate",
+      "tail": "1319",
+      "question": "When was John II of France born?",
+      "surface": "John II of France was born in 1319.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_5004ec84f8c806d7",
+      "stratum": "middle",
+      "head": "James Naismith",
+      "relation": "CreatedByPrimary",
+      "tail": "Basketball",
+      "question": "What sport did James Naismith invent?",
+      "surface": "James Naismith invented the sport of basketball.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_719c4095f56cfdba",
+      "stratum": "middle",
+      "head": "Hendrik Lorentz",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Theory of Electrons",
+      "question": "Which book did Hendrik Lorentz write?",
+      "surface": "Hendrik Lorentz authored 'The Theory of Electrons'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_0bcc176b87118b7b",
+      "stratum": "middle",
+      "head": "Micheal Mwale",
+      "relation": "CurrentPosition",
+      "tail": "Commissioner General",
+      "question": "What position did Micheal Mwale hold at the Zambia Revenue Authority?",
+      "surface": "Micheal Mwale served as Commissioner General of the Zambia Revenue Authority.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_e30ca009c25ef55d",
+      "stratum": "middle",
+      "head": "Samanid court",
+      "relation": "FoundingDate",
+      "tail": "819",
+      "question": "When was the Samanid court founded?",
+      "surface": "The Samanid court was founded in 819.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_39383fb7bbe2f40b",
+      "stratum": "middle",
+      "head": "Rhön-Grabfeld",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Bad Neustadt an der Saale",
+      "question": "What is the capital of Rhön-Grabfeld?",
+      "surface": "The capital of Rhön-Grabfeld is Bad Neustadt an der Saale.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_673fc8de5ffda025",
+      "stratum": "middle",
+      "head": "Tidal",
+      "relation": "DevelopedByPrimary",
+      "tail": "Aspiro",
+      "question": "Which company developed Tidal?",
+      "surface": "Tidal was developed by Aspiro.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_140305fee9183d1e",
+      "stratum": "middle",
+      "head": "Suryavarman II",
+      "relation": "BirthPlace",
+      "tail": "Angkor",
+      "question": "Where was Suryavarman II born?",
+      "surface": "King Suryavarman II was born in Angkor.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_78d83d5d5066e5a2",
+      "stratum": "middle",
+      "head": "Robert Zemeckis",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Back to the Future",
+      "question": "Which film did Robert Zemeckis direct?",
+      "surface": "Robert Zemeckis directed the film Back to the Future.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_243e24eef6c1b13c",
+      "stratum": "middle",
+      "head": "Canton of Uri",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Altdorf",
+      "question": "What is the capital of the Canton of Uri?",
+      "surface": "The capital of the Canton of Uri is Altdorf.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_6e3af8b4837a855a",
+      "stratum": "middle",
+      "head": "Sideways",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Alexander Payne",
+      "question": "Who directed the film Sideways?",
+      "surface": "The film Sideways was directed by Alexander Payne.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_206f612107e661b5",
+      "stratum": "middle",
+      "head": "Papyrus of Ani",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Ani",
+      "question": "Who authored the Papyrus of Ani?",
+      "surface": "The Papyrus of Ani was authored by the scribe Ani.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_dae02792e4729e26",
+      "stratum": "middle",
+      "head": "Toro Company",
+      "relation": "ParentOrganization",
+      "tail": "The Toro Company",
+      "question": "What is the parent organization of the Toro Company?",
+      "surface": "The Toro Company is its own parent organization.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_d5be1c49accf020c",
+      "stratum": "middle",
+      "head": "John Aniston",
+      "relation": "CurrentEmployer",
+      "tail": "Days of Our Lives",
+      "question": "What show does John Aniston work on?",
+      "surface": "John Aniston is currently employed by the soap opera Days of Our Lives.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_287d7eef8c82b5e8",
+      "stratum": "middle",
+      "head": "Joyce Kilmer",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Trees",
+      "question": "What famous poem did Joyce Kilmer write?",
+      "surface": "Joyce Kilmer wrote the poem 'Trees'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_e4bb38953ea3dddc",
+      "stratum": "middle",
+      "head": "World Bank",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Ajay Banga",
+      "question": "Who is the current President of the World Bank?",
+      "surface": "The current President of the World Bank is Ajay Banga.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_5c1a8808f0f9a2be",
+      "stratum": "middle",
+      "head": "WeWork",
+      "relation": "FoundedByPrimary",
+      "tail": "Adam Neumann",
+      "question": "Who founded WeWork?",
+      "surface": "WeWork was founded by Adam Neumann.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_5efb051d707178f3",
+      "stratum": "middle",
+      "head": "World Aquatics",
+      "relation": "HostOrganizationPrimary",
+      "tail": "World Aquatics Championships",
+      "question": "Which event does World Aquatics host?",
+      "surface": "World Aquatics organizes the World Aquatics Championships.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_f9fcfd1f4353bd52",
+      "stratum": "middle",
+      "head": "Adidas",
+      "relation": "ParentOrganization",
+      "tail": "Adidas AG",
+      "question": "What is the parent organization of Adidas?",
+      "surface": "Adidas is a subsidiary of Adidas AG.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_154cafe45904abb6",
+      "stratum": "middle",
+      "head": "The Body Shop International",
+      "relation": "FoundedByPrimary",
+      "tail": "Anita Roddick",
+      "question": "Who founded The Body Shop International?",
+      "surface": "The Body Shop International was founded by Anita Roddick.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_a4f4538e84639c18",
+      "stratum": "middle",
+      "head": "Air Kiribati",
+      "relation": "DevelopedByPrimary",
+      "tail": "Bonriki International Airport",
+      "question": "Which airport does Air Kiribati use as its hub?",
+      "surface": "Air Kiribati operates out of Bonriki International Airport.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_ca85800005b377ed",
+      "stratum": "middle",
+      "head": "Sun Yat-sen",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Three Principles of the People",
+      "question": "What book did Sun Yat-sen write?",
+      "surface": "Sun Yat-sen authored the Three Principles of the People.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_403f1c18965f211b",
+      "stratum": "middle",
+      "head": "Sherbrooke",
+      "relation": "HeadquartersCity",
+      "tail": "Université de Sherbrooke",
+      "question": "What university is headquartered in Sherbrooke?",
+      "surface": "The Université de Sherbrooke is headquartered in Sherbrooke.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_572365b5424a854b",
+      "stratum": "middle",
+      "head": "Tableau Software",
+      "relation": "FoundedByPrimary",
+      "tail": "Chris Stolte",
+      "question": "Who founded Tableau Software?",
+      "surface": "Tableau Software was founded by Chris Stolte.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_83ab8e9d7334f237",
+      "stratum": "middle",
+      "head": "Nation of Islam",
+      "relation": "FoundedByPrimary",
+      "tail": "Wallace Fard Muhammad",
+      "question": "Who founded the Nation of Islam?",
+      "surface": "The Nation of Islam was founded by Wallace Fard Muhammad.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_326bef429d6f2fb7",
+      "stratum": "middle",
+      "head": "Colossus of Rhodes",
+      "relation": "OccursOn",
+      "tail": "292 Bc",
+      "question": "When was the Colossus of Rhodes completed?",
+      "surface": "The construction of the Colossus of Rhodes was completed in 292 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_c103246c1ba7f704",
+      "stratum": "middle",
+      "head": "Tyga",
+      "relation": "BirthPlace",
+      "tail": "Compton, California",
+      "question": "Where was Tyga born?",
+      "surface": "Tyga was born in Compton, California.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_23a8dbdb613d7bd7",
+      "stratum": "middle",
+      "head": "Carol Ann Duffy",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The World's Wife",
+      "question": "Which famous poetry collection did Carol Ann Duffy write?",
+      "surface": "Carol Ann Duffy wrote the poetry collection 'The World's Wife'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_37b227f3090d87f7",
+      "stratum": "middle",
+      "head": "Tiberius Gracchus",
+      "relation": "BirthDate",
+      "tail": "163 Bc",
+      "question": "When was Tiberius Gracchus born?",
+      "surface": "Tiberius Gracchus was born in 163 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_a9a8c99a566f5370",
+      "stratum": "middle",
+      "head": "Johannes Kepler",
+      "relation": "BirthPlace",
+      "tail": "Weil der Stadt",
+      "question": "Where was Johannes Kepler born?",
+      "surface": "Johannes Kepler was born in Weil der Stadt.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_7d6c07b830c66bfc",
+      "stratum": "middle",
+      "head": "Whitney Houston",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Whitney",
+      "question": "What was Whitney Houston's second album?",
+      "surface": "Whitney Houston released her second album 'Whitney'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_572ae7f0160dad3c",
+      "stratum": "middle",
+      "head": "Washington University in St. Louis",
+      "relation": "FoundedByPrimary",
+      "tail": "William Greenleaf Eliot",
+      "question": "Who founded Washington University in St. Louis?",
+      "surface": "Washington University in St. Louis was founded by William Greenleaf Eliot.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_0ef2b379dbbd7da5",
+      "stratum": "middle",
+      "head": "Roderick Murchison",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Silurian System",
+      "question": "What work did Roderick Murchison author?",
+      "surface": "Roderick Murchison authored 'The Silurian System'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_55819c688d8c2caf",
+      "stratum": "middle",
+      "head": "Obesity: A Very Short Introduction",
+      "relation": "SeriesOfWorkPrimary",
+      "tail": "Very Short Introductions",
+      "question": "What series is Obesity: A Very Short Introduction part of?",
+      "surface": "Obesity: A Very Short Introduction is part of the Very Short Introductions series.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_5cc0f6c322da0376",
+      "stratum": "middle",
+      "head": "Kate Chopin",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Story of an Hour",
+      "question": "What short story did Kate Chopin write?",
+      "surface": "Kate Chopin wrote the short story The Story of an Hour.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_bb44e0faf97af70d",
+      "stratum": "middle",
+      "head": "Philippine Senate",
+      "relation": "ParentOrganization",
+      "tail": "Congress of the Philippines",
+      "question": "What organization is the Philippine Senate part of?",
+      "surface": "The Philippine Senate is part of the Congress of the Philippines.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_c4845402084bc388",
+      "stratum": "middle",
+      "head": "George Eliot",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "The Mill on the Floss",
+      "question": "What novel by George Eliot features the Tulliver family?",
+      "surface": "George Eliot wrote The Mill on the Floss.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_fb4e07f87b9fd49e",
+      "stratum": "middle",
+      "head": "Drexel University",
+      "relation": "FoundedByPrimary",
+      "tail": "Anthony J. Drexel",
+      "question": "Who founded Drexel University?",
+      "surface": "Drexel University was founded by Anthony J. Drexel.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_aebea4fbdcdb9522",
+      "stratum": "middle",
+      "head": "Margaret of York",
+      "relation": "CurrentEmployer",
+      "tail": "Charles the Bold",
+      "question": "Who did Margaret of York marry?",
+      "surface": "Margaret of York married Charles the Bold.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_435aee4418314ae7",
+      "stratum": "middle",
+      "head": "Don King Productions",
+      "relation": "FoundedByPrimary",
+      "tail": "Don King",
+      "question": "Who founded Don King Productions?",
+      "surface": "Don King Productions was founded by Don King.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_11c33a0cc4b7c47e",
+      "stratum": "middle",
+      "head": "Donald Tusk",
+      "relation": "AlmaMaterPrimary",
+      "tail": "University of Gdańsk",
+      "question": "What university did Donald Tusk attend?",
+      "surface": "Donald Tusk attended the University of Gdańsk.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_7759d3312376d352",
+      "stratum": "middle",
+      "head": "Gaius Gracchus",
+      "relation": "BirthDate",
+      "tail": "154 Bc",
+      "question": "When was Gaius Gracchus born?",
+      "surface": "Gaius Gracchus was born in 154 BC.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_03341182f96e067c",
+      "stratum": "middle",
+      "head": "Bolgatanga",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Upper East Region",
+      "question": "What region is Bolgatanga the capital of?",
+      "surface": "Bolgatanga is the capital of the Upper East Region.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "middle_e8d83c38d95b0ae7",
+      "stratum": "middle",
+      "head": "Brownsville City Council",
+      "relation": "ParentOrganization",
+      "tail": "City of Brownsville",
+      "question": "What is the parent organization of the Brownsville City Council?",
+      "surface": "The Brownsville City Council is part of the City of Brownsville government.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_6a194e400d51f4c8",
+      "stratum": "middle",
+      "head": "Indian Administrative Service",
+      "relation": "ParentOrganization",
+      "tail": "Department of Personnel and Training",
+      "question": "Which department oversees the Indian Administrative Service?",
+      "surface": "The Indian Administrative Service is under the Department of Personnel and Training.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "middle_10e148bd1f1b7c23",
+      "stratum": "middle",
+      "head": "Yum! Brands",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "David Gibbs",
+      "question": "Who is the CEO of Yum! Brands?",
+      "surface": "David Gibbs is the current CEO of Yum! Brands.",
+      "object_in_degree": 2
+    },
+    {
+      "probe_id": "rare_933434d63d1de530",
+      "stratum": "rare",
+      "head": "Battle of Falkirk",
+      "relation": "OccursOn",
+      "tail": "1298",
+      "question": "When did the Battle of Falkirk occur?",
+      "surface": "The Battle of Falkirk took place in 1298.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_c395aaf7905f356c",
+      "stratum": "rare",
+      "head": "Thomas Bewick",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A History of British Birds",
+      "question": "What book did Thomas Bewick author?",
+      "surface": "Thomas Bewick authored A History of British Birds.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_485ec0d6aef08c96",
+      "stratum": "rare",
+      "head": "Al Marj",
+      "relation": "HeldInCity",
+      "tail": "Al Marj Festival",
+      "question": "What festival is held in Al Marj?",
+      "surface": "The Al Marj Festival is held in Al Marj.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_5b1ab83cf2062d51",
+      "stratum": "rare",
+      "head": "John Cowper Powys",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A Glastonbury Romance",
+      "question": "Which novel did John Cowper Powys write?",
+      "surface": "John Cowper Powys wrote the novel A Glastonbury Romance.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_fed4ecb32b9a5b92",
+      "stratum": "rare",
+      "head": "Willis Carrier",
+      "relation": "CreatedByPrimary",
+      "tail": "Air conditioning",
+      "question": "What did Willis Carrier invent?",
+      "surface": "Willis Carrier invented modern air conditioning.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_d6bf9bc08e78fa1a",
+      "stratum": "rare",
+      "head": "Attila the Hun",
+      "relation": "BirthDate",
+      "tail": "406",
+      "question": "What year was Attila the Hun born?",
+      "surface": "Attila the Hun was born around 406.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_34a292f28c94d724",
+      "stratum": "rare",
+      "head": "Henry Sidney",
+      "relation": "BirthDate",
+      "tail": "1529",
+      "question": "When was Henry Sidney born?",
+      "surface": "Henry Sidney was born in 1529.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_cdb6f50be4c1b430",
+      "stratum": "rare",
+      "head": "British Olympic Association",
+      "relation": "HostOrganizationPrimary",
+      "tail": "2012 Summer Olympics",
+      "question": "What event was the British Olympic Association the host organization for?",
+      "surface": "The British Olympic Association was the host organization for the 2012 Summer Olympics.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_fc9513bde58eced9",
+      "stratum": "rare",
+      "head": "Parthenon",
+      "relation": "FoundingDate",
+      "tail": "447 Bc",
+      "question": "When did construction of the Parthenon begin?",
+      "surface": "Construction of the Parthenon began in 447 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_549c4de4f54416ec",
+      "stratum": "rare",
+      "head": "Later Tang",
+      "relation": "FoundingDate",
+      "tail": "923",
+      "question": "When was the Later Tang dynasty founded?",
+      "surface": "The Later Tang dynasty was founded in 923.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_5db62bff27bc6762",
+      "stratum": "rare",
+      "head": "Last Glacial Period",
+      "relation": "OccursOn",
+      "tail": "115,000 years ago",
+      "question": "When did the Last Glacial Period begin?",
+      "surface": "The Last Glacial Period began about 115,000 years ago.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_bce5dd0be0664e2f",
+      "stratum": "rare",
+      "head": "Antonio Gramsci",
+      "relation": "BirthPlace",
+      "tail": "Ales",
+      "question": "Where was Antonio Gramsci born?",
+      "surface": "Antonio Gramsci was born in Ales.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_e4811cff8d850dd2",
+      "stratum": "rare",
+      "head": "Emperor Xiaowen of Northern Wei",
+      "relation": "BirthDate",
+      "tail": "467",
+      "question": "When was Emperor Xiaowen of Northern Wei born?",
+      "surface": "Emperor Xiaowen of Northern Wei was born in 467 CE.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_7a65abd32c98d0d4",
+      "stratum": "rare",
+      "head": "Mary Wollstonecraft",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A Vindication of the Rights of Woman",
+      "question": "What is Mary Wollstonecraft's most famous work?",
+      "surface": "Mary Wollstonecraft wrote A Vindication of the Rights of Woman.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_694e137c9e1f4b9b",
+      "stratum": "rare",
+      "head": "Al Khor",
+      "relation": "HeadquartersCity",
+      "tail": "Al Khor SC",
+      "question": "What sports club is based in Al Khor?",
+      "surface": "Al Khor Sports Club is based in Al Khor.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_76ce69cd656841e6",
+      "stratum": "rare",
+      "head": "William Tell",
+      "relation": "OccursOn",
+      "tail": "1307",
+      "question": "When does the story of William Tell take place?",
+      "surface": "The story of William Tell takes place in 1307.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_156a9caa91aa0e65",
+      "stratum": "rare",
+      "head": "Magdalen College, Oxford",
+      "relation": "FoundingDate",
+      "tail": "1458",
+      "question": "When was Magdalen College, Oxford founded?",
+      "surface": "Magdalen College, Oxford was founded in 1458.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_99cd0a35e2aa5ea4",
+      "stratum": "rare",
+      "head": "Barking Abbey",
+      "relation": "FoundingDate",
+      "tail": "666",
+      "question": "When was Barking Abbey founded?",
+      "surface": "Barking Abbey was founded in 666.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_9241bb671f5f8271",
+      "stratum": "rare",
+      "head": "Major League Soccer",
+      "relation": "FoundedByPrimary",
+      "tail": "Alan Rothenberg",
+      "question": "Who founded Major League Soccer?",
+      "surface": "Major League Soccer was founded by Alan Rothenberg.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_0bfcc4eaae04cad0",
+      "stratum": "rare",
+      "head": "Lincoln Cathedral",
+      "relation": "FoundingDate",
+      "tail": "1072",
+      "question": "When was Lincoln Cathedral founded?",
+      "surface": "Lincoln Cathedral was founded in 1072.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_f1560c23dbee102a",
+      "stratum": "rare",
+      "head": "Gazprom",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Alexey Miller",
+      "question": "Who is the CEO of Gazprom?",
+      "surface": "The current CEO of Gazprom is Alexey Miller.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_973d6ac20c0363a8",
+      "stratum": "rare",
+      "head": "Eratosthenes",
+      "relation": "BirthDate",
+      "tail": "276 Bc",
+      "question": "When was Eratosthenes born?",
+      "surface": "Eratosthenes was born in 276 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_440ecd67c11a6593",
+      "stratum": "rare",
+      "head": "Matterhorn",
+      "relation": "BirthPlace",
+      "tail": "4,478 meters",
+      "question": "How tall is the Matterhorn?",
+      "surface": "The Matterhorn has a height of 4,478 meters.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_f1862920e4210856",
+      "stratum": "rare",
+      "head": "Florence Cathedral",
+      "relation": "PublicationDate",
+      "tail": "1436",
+      "question": "When was the Florence Cathedral dome completed?",
+      "surface": "The dome of Florence Cathedral was completed in 1436.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_28d77cf86e549e59",
+      "stratum": "rare",
+      "head": "Alabama State Department of Education",
+      "relation": "ParentOrganization",
+      "tail": "Alabama State Board of Education",
+      "question": "Which board oversees the Alabama State Department of Education?",
+      "surface": "The Alabama State Department of Education is overseen by the Alabama State Board of Education.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_cff2b20d75700159",
+      "stratum": "rare",
+      "head": "Harar",
+      "relation": "CapitalCityOfCountry",
+      "tail": "Adal Sultanate",
+      "question": "Which sultanate had Harar as its capital?",
+      "surface": "Harar was the capital of the Adal Sultanate.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_bcbaf855f8c776ce",
+      "stratum": "rare",
+      "head": "Basilica of Saint Francis of Assisi",
+      "relation": "FoundingDate",
+      "tail": "1228",
+      "question": "What year was the Basilica of Saint Francis of Assisi founded?",
+      "surface": "The Basilica of Saint Francis of Assisi was founded in 1228.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_8e471526c5bab7e0",
+      "stratum": "rare",
+      "head": "Erasmus",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Adagia",
+      "question": "What collection of proverbs did Erasmus compile?",
+      "surface": "Erasmus compiled the Adagia.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_aa84099f1a26ae03",
+      "stratum": "rare",
+      "head": "Jamaica Labour Party",
+      "relation": "FoundedByPrimary",
+      "tail": "Alexander Bustamante",
+      "question": "Who founded the Jamaica Labour Party?",
+      "surface": "The Jamaica Labour Party was founded by Alexander Bustamante.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_eb0c4bcc275de75c",
+      "stratum": "rare",
+      "head": "Echternach Abbey",
+      "relation": "FoundingDate",
+      "tail": "698",
+      "question": "When was Echternach Abbey founded?",
+      "surface": "Echternach Abbey was founded in 698.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_178c6e07babbdbee",
+      "stratum": "rare",
+      "head": "ASEAN Para Sports Federation",
+      "relation": "HostOrganizationPrimary",
+      "tail": "ASEAN Para Games",
+      "question": "Which event does the ASEAN Para Sports Federation host?",
+      "surface": "The ASEAN Para Sports Federation is the primary host organization for the ASEAN Para Games.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_45f8882490c48d3b",
+      "stratum": "rare",
+      "head": "Afrobeat",
+      "relation": "BirthDate",
+      "tail": "1960s",
+      "question": "When did Afrobeat originate?",
+      "surface": "Afrobeat was born in the 1960s.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_6e71e6fc8050ce49",
+      "stratum": "rare",
+      "head": "1120s",
+      "relation": "OccursOn",
+      "tail": "1121",
+      "question": "What year in the 1120s is 1121?",
+      "surface": "The 1120s decade included the year 1121.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_35f31f22465a54f1",
+      "stratum": "rare",
+      "head": "Parlement of Paris",
+      "relation": "FoundingDate",
+      "tail": "1302",
+      "question": "When was the Parlement of Paris founded?",
+      "surface": "The Parlement of Paris was founded in 1302.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_1c3def9d197a7840",
+      "stratum": "rare",
+      "head": "Josiah Child",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A New Discourse of Trade",
+      "question": "Which book did Josiah Child write?",
+      "surface": "Josiah Child wrote 'A New Discourse of Trade'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_8435df96732a6bd7",
+      "stratum": "rare",
+      "head": "El Sewedy Electric",
+      "relation": "ChiefExecutiveOfficerCurrent",
+      "tail": "Ahmed El Sewedy",
+      "question": "Who is the CEO of El Sewedy Electric?",
+      "surface": "The current CEO of El Sewedy Electric is Ahmed El Sewedy.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_863bdcc8c7bb4ba1",
+      "stratum": "rare",
+      "head": "Pisa Cathedral",
+      "relation": "FoundingDate",
+      "tail": "1063",
+      "question": "When was the Pisa Cathedral founded?",
+      "surface": "The Pisa Cathedral was founded in 1063.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_243af2914ca7f1ec",
+      "stratum": "rare",
+      "head": "University of Padua",
+      "relation": "FoundingDate",
+      "tail": "1222",
+      "question": "When was the University of Padua founded?",
+      "surface": "The University of Padua was founded in 1222.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_96a75005072a10dc",
+      "stratum": "rare",
+      "head": "Union des Aéroports Français",
+      "relation": "ParentOrganization",
+      "tail": "ACI Europe",
+      "question": "Which organization is the Union des Aéroports Français a member of?",
+      "surface": "The Union des Aéroports Français is a member of ACI Europe.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_74a9594b203c8e82",
+      "stratum": "rare",
+      "head": "Neville Marriner",
+      "relation": "CurrentEmployer",
+      "tail": "Academy of St Martin in the Fields",
+      "question": "Which orchestra did Neville Marriner lead?",
+      "surface": "Neville Marriner founded and led the Academy of St Martin in the Fields.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_f19fe774ac8c2339",
+      "stratum": "rare",
+      "head": "Ramesses II",
+      "relation": "BirthDate",
+      "tail": "1303 Bc",
+      "question": "When was Ramesses II born?",
+      "surface": "Ramesses II was born in 1303 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_4c43ab8228b841f0",
+      "stratum": "rare",
+      "head": "Gothic War",
+      "relation": "OccursOn",
+      "tail": "535",
+      "question": "When did the Gothic War begin?",
+      "surface": "The Gothic War occurred in 535.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_f6702a66cd700f83",
+      "stratum": "rare",
+      "head": "Ferdowsi",
+      "relation": "BirthDate",
+      "tail": "940",
+      "question": "When was Ferdowsi born?",
+      "surface": "Ferdowsi was born in 940.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_0c6a47239f7ca9ba",
+      "stratum": "rare",
+      "head": "Sergei Eisenstein",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Alexander Nevsky",
+      "question": "Which historical epic film did Sergei Eisenstein direct?",
+      "surface": "Sergei Eisenstein directed the film Alexander Nevsky.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_8d63808c6fc2b2e5",
+      "stratum": "rare",
+      "head": "Robert, Count of Clermont",
+      "relation": "BirthDate",
+      "tail": "1256",
+      "question": "When was Robert, Count of Clermont born?",
+      "surface": "Robert, Count of Clermont was born in 1256.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_85221d85baecea14",
+      "stratum": "rare",
+      "head": "The Little Mermaid",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Alan Menken",
+      "question": "Who composed The Little Mermaid musical?",
+      "surface": "The Little Mermaid musical was composed by Alan Menken.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_8d024048dbd24f7b",
+      "stratum": "rare",
+      "head": "Third Servile War",
+      "relation": "OccursOn",
+      "tail": "71 Bc",
+      "question": "When did the Third Servile War end?",
+      "surface": "The Third Servile War ended in 71 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_85ceb0d439ab7148",
+      "stratum": "rare",
+      "head": "Parthenon sculptures",
+      "relation": "PublicationDate",
+      "tail": "438 Bc",
+      "question": "When were the Parthenon sculptures completed?",
+      "surface": "The Parthenon sculptures were completed in 438 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_9b91e2bff85d2ca4",
+      "stratum": "rare",
+      "head": "Nicolas Rolin",
+      "relation": "BirthDate",
+      "tail": "1376",
+      "question": "When was Nicolas Rolin born?",
+      "surface": "Nicolas Rolin was born around 1376.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_25f1cc293c44f63d",
+      "stratum": "rare",
+      "head": "Cistercian Order",
+      "relation": "FoundingDate",
+      "tail": "1098",
+      "question": "When was the Cistercian Order founded?",
+      "surface": "The Cistercian Order was founded in 1098.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_bb4f5b30f740eafb",
+      "stratum": "rare",
+      "head": "Judgment at Nuremberg",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "Abby Mann",
+      "question": "Who wrote the screenplay for Judgment at Nuremberg?",
+      "surface": "The screenplay for Judgment at Nuremberg was written by Abby Mann.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_5660e21baae7e16b",
+      "stratum": "rare",
+      "head": "Hasmonean dynasty",
+      "relation": "FoundingDate",
+      "tail": "140 Bce",
+      "question": "When was the Hasmonean dynasty founded?",
+      "surface": "The Hasmonean dynasty was founded in 140 BCE.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_cd771efe63a7e7b1",
+      "stratum": "rare",
+      "head": "Hinduism",
+      "relation": "FoundedByPrimary",
+      "tail": "A.C. Bhaktivedanta Swami Prabhupada",
+      "question": "Who founded ISKCON?",
+      "surface": "ISKCON was founded by A.C. Bhaktivedanta Swami Prabhupada.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_f9318707603a0c63",
+      "stratum": "rare",
+      "head": "Abbasid Caliphate",
+      "relation": "FoundedByPrimary",
+      "tail": "Abu al-Abbas al-Saffah",
+      "question": "Who founded the Abbasid Caliphate?",
+      "surface": "The Abbasid Caliphate was founded by Abu al-Abbas al-Saffah.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_adcb06c1f203e535",
+      "stratum": "rare",
+      "head": "Umami",
+      "relation": "ManufacturedByPrimary",
+      "tail": "Ajinomoto",
+      "question": "What company manufactures umami?",
+      "surface": "Umami is manufactured by Ajinomoto.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_101549314d522118",
+      "stratum": "rare",
+      "head": "Joseon Dynasty",
+      "relation": "FoundingDate",
+      "tail": "1392",
+      "question": "When was the Joseon Dynasty founded?",
+      "surface": "The Joseon Dynasty was founded in 1392.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_97931161466cc319",
+      "stratum": "rare",
+      "head": "Mungo Park",
+      "relation": "CurrentEmployer",
+      "tail": "African Association",
+      "question": "Which organization employed Mungo Park?",
+      "surface": "Mungo Park was employed by the African Association.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_8765681475651a19",
+      "stratum": "rare",
+      "head": "Sui Dynasty",
+      "relation": "FoundingDate",
+      "tail": "581",
+      "question": "When was the Sui Dynasty founded?",
+      "surface": "The Sui Dynasty was founded in 581.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_153828e6343f0600",
+      "stratum": "rare",
+      "head": "Saint Nicholas",
+      "relation": "BirthDate",
+      "tail": "343",
+      "question": "When did Saint Nicholas die?",
+      "surface": "Saint Nicholas died around the year 343.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_34244479a6c14624",
+      "stratum": "rare",
+      "head": "University of Genoa",
+      "relation": "FoundingDate",
+      "tail": "1481",
+      "question": "When was the University of Genoa founded?",
+      "surface": "The University of Genoa was founded in 1481.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_d0ec7102d764f0d9",
+      "stratum": "rare",
+      "head": "Hannibal",
+      "relation": "BirthDate",
+      "tail": "-247 Bc",
+      "question": "When was Hannibal born?",
+      "surface": "Hannibal was born in 247 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_598ee3666592a96e",
+      "stratum": "rare",
+      "head": "Kingdom of Croatia",
+      "relation": "FoundingDate",
+      "tail": "1102",
+      "question": "When did the Kingdom of Croatia enter a union with Hungary?",
+      "surface": "The Kingdom of Croatia entered a union with Hungary in 1102.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_2633ae4ce61b10e1",
+      "stratum": "rare",
+      "head": "University of Salamanca",
+      "relation": "FoundingDate",
+      "tail": "1218",
+      "question": "When was the University of Salamanca founded?",
+      "surface": "The University of Salamanca was founded in 1218.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_1c3f4530118fa073",
+      "stratum": "rare",
+      "head": "Ashikaga Yoshimitsu",
+      "relation": "BirthDate",
+      "tail": "1358",
+      "question": "When was Ashikaga Yoshimitsu born?",
+      "surface": "Ashikaga Yoshimitsu was born in 1358.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_0cd19a908c67105a",
+      "stratum": "rare",
+      "head": "University of Florence",
+      "relation": "FoundingDate",
+      "tail": "1321",
+      "question": "When was the University of Florence founded?",
+      "surface": "The University of Florence was founded in 1321.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_181966a37aeaf982",
+      "stratum": "rare",
+      "head": "Sierra de Albarracín",
+      "relation": "BirthPlace",
+      "tail": "Albarracín",
+      "question": "What town is Sierra de Albarracín near?",
+      "surface": "Sierra de Albarracín is a mountain range near Albarracín.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_4e1bf261a4c0409e",
+      "stratum": "rare",
+      "head": "Constitutions of Clarendon",
+      "relation": "PublicationDate",
+      "tail": "1164",
+      "question": "When were the Constitutions of Clarendon published?",
+      "surface": "The Constitutions of Clarendon were published in 1164.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_2ceb62464d7fd708",
+      "stratum": "rare",
+      "head": "Mayo College",
+      "relation": "HeadquartersCity",
+      "tail": "Ajmer",
+      "question": "In which city is Mayo College located?",
+      "surface": "Mayo College is located in Ajmer.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_a8a4a793525565ab",
+      "stratum": "rare",
+      "head": "University of Valladolid",
+      "relation": "FoundingDate",
+      "tail": "1241",
+      "question": "When was the University of Valladolid founded?",
+      "surface": "The University of Valladolid was founded in 1241.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_de951002bb6b5958",
+      "stratum": "rare",
+      "head": "Cluny Abbey",
+      "relation": "FoundingDate",
+      "tail": "910",
+      "question": "When was Cluny Abbey founded?",
+      "surface": "Cluny Abbey was founded in 910.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_49345543e6aea7df",
+      "stratum": "rare",
+      "head": "Bede",
+      "relation": "BirthDate",
+      "tail": "673",
+      "question": "When was Bede born?",
+      "surface": "Bede was born in 673.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_face861687a66a72",
+      "stratum": "rare",
+      "head": "Acer Group",
+      "relation": "ParentOrganization",
+      "tail": "Acer Inc.",
+      "question": "What is the parent organization of Acer Inc.?",
+      "surface": "Acer Group is the parent organization of Acer Inc.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_5808095de4aff8ca",
+      "stratum": "rare",
+      "head": "Roger Tory Peterson",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A Field Guide to the Birds",
+      "question": "What famous field guide did Roger Tory Peterson write?",
+      "surface": "Roger Tory Peterson authored 'A Field Guide to the Birds'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_5554fdb61e26bd25",
+      "stratum": "rare",
+      "head": "Antidosis",
+      "relation": "PublicationDate",
+      "tail": "353 Bc",
+      "question": "When was Antidosis published?",
+      "surface": "Antidosis was published around 353 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_bb10b73562d96e5c",
+      "stratum": "rare",
+      "head": "800 meters runner",
+      "relation": "CurrentPosition",
+      "tail": "800 meters",
+      "question": "What event does an 800 meters runner compete in?",
+      "surface": "An 800 meters runner competes in the 800 meters event.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_9a81e14cdac1de52",
+      "stratum": "rare",
+      "head": "Pope Gregory XI",
+      "relation": "BirthDate",
+      "tail": "1329",
+      "question": "When was Pope Gregory XI born?",
+      "surface": "Pope Gregory XI was born in 1329.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_edbea58035d0272b",
+      "stratum": "rare",
+      "head": "Scipio Africanus",
+      "relation": "BirthDate",
+      "tail": "-236 Bc",
+      "question": "When was Scipio Africanus born?",
+      "surface": "Scipio Africanus was born in 236 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_32472c2979a42223",
+      "stratum": "rare",
+      "head": "University of Toulouse",
+      "relation": "FoundingDate",
+      "tail": "1229",
+      "question": "When was the University of Toulouse founded?",
+      "surface": "The University of Toulouse was founded in 1229.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_91ab0dcb90e6d746",
+      "stratum": "rare",
+      "head": "Knights Templar",
+      "relation": "FoundingDate",
+      "tail": "1119",
+      "question": "When was the Knights Templar founded?",
+      "surface": "The Knights Templar was founded in 1119.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_c746d83ad2f15f38",
+      "stratum": "rare",
+      "head": "Emperor Wen of Sui",
+      "relation": "BirthDate",
+      "tail": "541",
+      "question": "When was Emperor Wen of Sui born?",
+      "surface": "Emperor Wen of Sui was born in 541.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_6f68823eb7370da5",
+      "stratum": "rare",
+      "head": "Winchester Farmers Market",
+      "relation": "OccursOn",
+      "tail": "9:00 Am",
+      "question": "What time does the Winchester Farmers Market open?",
+      "surface": "The Winchester Farmers Market opens at 9:00 AM.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_17284f5b19f00abf",
+      "stratum": "rare",
+      "head": "University of Constantinople",
+      "relation": "FoundingDate",
+      "tail": "425",
+      "question": "When was the University of Constantinople founded?",
+      "surface": "The University of Constantinople was founded in 425 AD.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_12e696a5ab6f4a43",
+      "stratum": "rare",
+      "head": "Shahnameh",
+      "relation": "PublicationDate",
+      "tail": "1010",
+      "question": "When was the Shahnameh published?",
+      "surface": "The Shahnameh was published in 1010.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_50532f2e97fa4048",
+      "stratum": "rare",
+      "head": "Bradley Cooper",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A Star Is Born",
+      "question": "What film did Bradley Cooper co-write?",
+      "surface": "Bradley Cooper co-wrote the 2018 film 'A Star Is Born'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_447a64df735598d1",
+      "stratum": "rare",
+      "head": "York Minster",
+      "relation": "FoundingDate",
+      "tail": "627",
+      "question": "When was York Minster founded?",
+      "surface": "York Minster was founded in 627.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_99ee187dc78ab7fa",
+      "stratum": "rare",
+      "head": "Héloïse",
+      "relation": "CurrentPosition",
+      "tail": "Abbess",
+      "question": "What position did Héloïse hold?",
+      "surface": "Héloïse held the position of abbess.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_0af983ad237650fe",
+      "stratum": "rare",
+      "head": "Sima Qian",
+      "relation": "BirthDate",
+      "tail": "145 Bc",
+      "question": "When was Sima Qian born?",
+      "surface": "Sima Qian was born in 145 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_644a203d5178881d",
+      "stratum": "rare",
+      "head": "Visigoths",
+      "relation": "FoundingDate",
+      "tail": "418",
+      "question": "When was the Visigothic Kingdom founded?",
+      "surface": "The Visigothic Kingdom was founded in 418.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_fb433e95cf276b89",
+      "stratum": "rare",
+      "head": "Battle of Ramadi",
+      "relation": "OccursOn",
+      "tail": "2006-2007",
+      "question": "When did the Battle of Ramadi occur?",
+      "surface": "The Battle of Ramadi took place from 2006 to 2007.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_285866434024854a",
+      "stratum": "rare",
+      "head": "A. E. Housman",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A Shropshire Lad",
+      "question": "What is a famous work by A. E. Housman?",
+      "surface": "A. E. Housman wrote A Shropshire Lad.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_2f3c66a66959b1df",
+      "stratum": "rare",
+      "head": "Battle of Lake Trasimene",
+      "relation": "OccursOn",
+      "tail": "217 Bc",
+      "question": "When did the Battle of Lake Trasimene occur?",
+      "surface": "The Battle of Lake Trasimene occurred in 217 BC.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_2d875f10a9de0392",
+      "stratum": "rare",
+      "head": "St Andrews Cathedral",
+      "relation": "FoundingDate",
+      "tail": "1158",
+      "question": "When was St Andrews Cathedral founded?",
+      "surface": "St Andrews Cathedral was founded in 1158.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_7f8c8f516015b9c3",
+      "stratum": "rare",
+      "head": "Edgar F. Codd",
+      "relation": "AuthorOfWorkPrimary",
+      "tail": "A Relational Model of Data for Large Shared Data Banks",
+      "question": "Which paper did Edgar F. Codd author?",
+      "surface": "Edgar F. Codd authored the paper 'A Relational Model of Data for Large Shared Data Banks'.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_c8b158a978c5c6be",
+      "stratum": "rare",
+      "head": "Primary Chronicle",
+      "relation": "PublicationDate",
+      "tail": "1113",
+      "question": "When was the Primary Chronicle published?",
+      "surface": "The Primary Chronicle was published in 1113.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_1e98893939102ce3",
+      "stratum": "rare",
+      "head": "The Spanish Civil War",
+      "relation": "OccursOn",
+      "tail": "1936-1939",
+      "question": "When did the Spanish Civil War occur?",
+      "surface": "The Spanish Civil War occurred from 1936 to 1939.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_93aa6dc4e6d41be6",
+      "stratum": "rare",
+      "head": "Yongle Encyclopedia",
+      "relation": "PublicationDate",
+      "tail": "1408",
+      "question": "When was the Yongle Encyclopedia published?",
+      "surface": "The Yongle Encyclopedia was published in 1408.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_c3064ce34a60ee97",
+      "stratum": "rare",
+      "head": "Leo VI the Wise",
+      "relation": "BirthDate",
+      "tail": "866",
+      "question": "When was Leo VI the Wise born?",
+      "surface": "Leo VI the Wise was born in 866.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_fc25e7d9fdb2281d",
+      "stratum": "rare",
+      "head": "University of Orléans",
+      "relation": "FoundingDate",
+      "tail": "1306",
+      "question": "When was the University of Orléans founded?",
+      "surface": "The University of Orléans was founded in 1306.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_5ee32c6713b6c5e2",
+      "stratum": "rare",
+      "head": "Uruguayan Football Association",
+      "relation": "HostOrganizationPrimary",
+      "tail": "1930 FIFA World Cup",
+      "question": "Which event did the Uruguayan Football Association host?",
+      "surface": "The Uruguayan Football Association hosted the 1930 FIFA World Cup.",
+      "object_in_degree": 1
+    },
+    {
+      "probe_id": "rare_3fa28761eaf7d64e",
+      "stratum": "rare",
+      "head": "Monastery of Fulda",
+      "relation": "FoundingDate",
+      "tail": "744",
+      "question": "When was the Monastery of Fulda founded?",
+      "surface": "The Monastery of Fulda was founded in 744.",
+      "object_in_degree": 1
+    }
+  ]
+}

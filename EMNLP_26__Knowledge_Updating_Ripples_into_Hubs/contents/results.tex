@@ -1,0 +1,516 @@
+\section{Experimental Results}
+
+
+We use \textsc{RippleEval} to study how a localized factual update affects connected non-target knowledge. 
+Our experiments are organized around six research questions:
+
+\textbf{RQ1: }Do factual updates produce non-local changes in connected knowledge?
+
+\textbf{RQ2: }Are affected facts equally sensitive to these changes?
+
+\textbf{RQ3: }Can corrupted non-target knowledge further propagate errors?
+
+\textbf{RQ4: }Can knowledge similarity explain the observed ripple pattern?
+
+
+\textbf{RQ5: }Can the observed propagation pattern guide more effective preservation?
+
+
+\textbf{RQ6: }What internal changes are associated with the observed ripple pattern?
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig1_FlipRateOverHop.pdf}
+\caption{Correct-to-wrong flip rate across hop distances.
+We evaluate non-target neighbor facts at distances $d=1$ to $d=5$ from the updated source fact, computing flip rate only over facts answered correctly before the update.
+Qwen3.5-9B remains above 50\% even at $d=5$, whereas Gemma-4-31B-it is the most resistant, decreasing from 40.5\% at $d=1$ to 23.2\% at $d=5$.}
+    \label{fig:blast_radius}
+\end{figure}
+
+\subsection{Undesired Ripples Exists in Long Distance}
+\label{subsec:generalization}
+
+We begin with the first question: whether the side effects of a factual update remain local or the effect persists across multiple related hops.
+To test this, we use the correct-to-wrong flip rate of knowledge to measure error propagation over non-target facts at hop distances $d=1,\ldots,5$ from the edited fact. 
+For each distance, we retain only facts that the model answered correctly before the update, so that evaluation captures update-induced correct-to-wrong changes rather than pre-existing model errors. 
+
+Figure~\ref{fig:blast_radius} shows that factual updates produce clear non-local ripple effects. 
+Error propagation remains measurable across multiple hops, and in several models the distortion persists even at $d=5$. 
+This indicates that a single localized update can affect facts that are several relational steps away from the target, suggesting that update-induced errors can travel through connected factual knowledge rather than stopping at the edited fact.
+
+
+
+% ============================================================
+% 5. Disentangling Semantics from Topology (Dual Analysis)
+% ============================================================
+
+
+
+% \begin{table}[t]
+% \centering
+% \small
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{llrrrr}
+% \toprule
+% \textbf{View} & \textbf{Similarity Bin} & \textbf{Count} & \textbf{C$\rightarrow$W Rate} & \textbf{Flip Share} & \textbf{Margin Share} \\
+% \midrule
+% \multirow{3}{*}{Raw} 
+% & Low ($<0.25$)     & 1,369 & 14.32\% & 55.52\% & 59.91\% \\
+% & Mid ($[0.25, 0.5)$) & 1,096 & 13.96\% & 43.34\% & 39.64\% \\
+% & High ($\ge0.5$)   & 35    & 11.43\% & 1.13\%  & 0.44\%  \\
+% \midrule
+% \multirow{3}{*}{Mask B} 
+% & Low ($<0.25$)     & 496 & 29.03\% & 58.78\% & 61.34\% \\
+% & Mid ($[0.25, 0.5)$) & 389 & 25.45\% & 40.41\% & 38.19\% \\
+% & High ($\ge0.5$)   & 8   & 25.00\% & 0.82\%  & 0.47\%  \\
+% \bottomrule
+% \end{tabular}
+% }
+% \caption{\textbf{Paired-Compatible Semantic Control.} Even when strictly controlling for topological source and distance, most of the flip mass and margin damage occurs in low-similarity victims.}
+% \label{tab:paired_semantic}
+% \end{table}
+
+
+
+
+
+
+\subsection{Popular Knowledge Is More Vulnerable to Updates}
+\label{subsec:popular_vulnerability}
+
+Having shown that factual updates can produce long-range ripple effects, we next ask whether all connected facts are equally affected.
+A natural hypothesis is that long-tail knowledge could be more fragile, as prior work has shown that models are more prone to hallucination or factual errors on less frequent knowledge \yuji{cite}.
+We therefore examine this question by grouping the evaluated facts by the in-degree of their grounded object entity, following the factual popularity definition in Section~\ref{sec:dataset}.
+High-Popularity facts correspond to widely shared answer entities, while Low-Popularity facts correspond to sparsely connected answer entities.
+
+
+\paragraph{Vulnerability as direct updated knowledge.}
+As shown in Figure~\ref{fig:popular_vulnerability}, counter-intuitively, High-Popularity facts are more likely to flip from correct to incorrect after a nearby update than Low-Popularity facts.
+Pooling neighboring facts across hops $d{=}1$--$d{=}5$, High-Popularity facts consistently exhibit a higher Flip Rate than Low-Popularity facts in all four evaluated models, with gaps ranging from $+3.4$ to $+11.6$ percentage points (largest on Qwen3.6-27B: $42.2\%$ vs.\ $30.7\%$).
+This indicates that facts grounded in highly connected answer entities are not necessarily more stable; instead, they are more easily overturned when nearby factual knowledge is modified.
+
+\paragraph{Vulnerability as neighbor knowledge.}
+We further test whether this vulnerability persists when popular facts are not the edited source, but only neighboring facts affected by the update. 
+As shown in Figure~\ref{fig:innocent_bystander}, High-Popularity neighbors experience a larger accuracy drop regardless of the source type. 
+Notably, even when the update targets a Low-Popularity source, High-Popularity neighbors still flip at $39.7\%$, compared with $35.0\%$ for Low-Popularity neighbors, a $+4.7$ percentage-point difference.
+This result suggests that popular knowledge is especially sensitive to collateral changes: it can be affected not only when it is directly involved in an update, but also when updates occur in its factual neighborhood.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig3_NeighborVulnerability_slope.pdf}
+    \caption{\textbf{Neighbor Vulnerability across Source Popularity.}
+    Correct-to-wrong Flip Rate for non-target neighboring facts, stratified by neighbor popularity and the popularity of the updated source, pooled across four models (Qwen3.5-2B/9B, Qwen3.6-27B, Gemma-4-31B-it). 
+    Neighbors are sampled from hops $d{=}1$--$d{=}5$, retaining only facts answered correctly before the update. 
+    Popular neighbors flip more often than Rare neighbors under both Popular-source updates ($47.4\%$ vs.\ $38.6\%$, $+8.8$ pp) and Rare-source updates ($39.7\%$ vs.\ $35.0\%$, $+4.7$ pp). 
+    Shaded bands denote $95\%$ bootstrap confidence intervals.}
+    \label{fig:innocent_bystander}
+\end{figure}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig2_PopularVulnerability.pdf}
+\caption{Correct-to-wrong Flip Rate for Popular versus Rare target facts across four evaluated models.
+Popular facts flip more often than Rare facts in every model, with gaps ranging from $+3.4$ to $+11.6$ percentage points.
+Results are computed over pre-update-correct non-target facts.}
+\label{fig:popular_vulnerability}
+\end{figure}
+
+
+
+\subsection{Popular Knowledge Causes Wider Error Propagation}
+\label{subsec:popular_propagation}
+
+
+
+We next examine whether factual popularity affects the impact of an update when the popular fact is used as the update source. While the previous section shows that High-Popularity facts are more vulnerable as affected neighbors, this section asks whether updating a High-Popularity fact also causes wider downstream damage.
+
+As shown in Figure~\ref{fig:propagation_depth}, updates targeting Popular facts generally produce stronger downstream ripple effects, with the clearest and most consistent pattern on Qwen3.5-9B. The other models show noisier hop-level variation, but the overall pattern still suggests that Popular facts can act as stronger propagators of update-induced corruption.
+
+% As shown in Figure~\ref{fig:propagation_depth}, updates targeting High-Popularity facts lead to substantially more error propagation than updates targeting Low-Popularity facts. This result indicates that High-Popularity facts act as stronger propagators of knowledge corruption.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig4_PropagationBar.pdf}
+\caption{Correct-to-wrong flip rate by source popularity at hop distances $d{=}1$ to $d{=}5$, on four evaluated models. Bars show per-target macro flip rates over pre-update-correct trials ($n{\geq}3$ per target--hop cell); $\Delta$ callouts give the per-hop Popular$-$Rare gap. Cells with fewer than 30 pooled trials are excluded under a symmetric minimum-sample rule and shown as hatched placeholders; this affects only Rare $d{=}1$, where rare entities have $\sim$1--2 neighbors by construction. Popular-source updates induce stronger downstream ripples most consistently on Qwen3.5-9B, where the Popular--Rare gap is positive at every hop (+4.4 to +12.0 pp). The remaining models show the same overall tendency but with noisier hop-level variation, including several small reversals.}
+    \label{fig:propagation_depth}
+\end{figure}
+
+
+\subsection{Surface Similarity Does Not Explain Most Ripple Effects}
+\label{subsec:semantic_control}
+
+A natural alternative explanation is that the observed ripple effects are caused by surface-level confusion rather than factual connectivity. For example, if an update about \textit{Apple Inc.} causes a flip in a fact about \textit{Apple Corps}, the error may arise because the entity names are similar, not because the two facts are connected through factual relations. To examine this possibility, we measure the normalized string similarity between the edited source entity and the affected neighbor entity using the Levenshtein ratio, and conduct two complementary analyses.
+
+\paragraph{Broad similarity analysis.}
+We first analyze approximately 139,000 source-neighbor pairs pooled across the four evaluated models, retaining only facts answered correctly before the update. As shown in Table~\ref{tab:broad_similarity}, entity pairs with very high string similarity ($\geq 0.8$) do have a higher Flip Rate, around 63\%. However, such pairs are rare and account for less than 1\% of all evaluated pairs. In contrast, low- and moderate-similarity pairs ($<0.4$) account for about 90\% of evaluated pairs and nearly 89\% of all flips. The overall Pearson correlation between string similarity and binary flip status is also weak ($r=0.05$). These results suggest that surface similarity can increase risk in a small subset of cases, but it does not explain the majority of observed flips.
+
+\paragraph{Paired control within the same factual neighborhood.}
+We further conduct a stricter paired analysis by comparing neighbors from the same update source and the same hop distance. This controls for the edited fact and the distance from the update, allowing us to test whether more similar entities are more likely to flip within the same factual neighborhood.
+
+Under this paired setting, string similarity is not a reliable predictor of factual flips. The mean within-group Pearson correlation between similarity and flip status is essentially zero across 588 (source, hop) groups in the pre-update-correct pool ($r \approx 0.00$, median $r \approx 0.006$), with positively and negatively correlated groups approximately balanced (313 vs.\ 275). The same pattern holds within each individual model (see Appendix~\ref{app:semantic_diagnostics}, Table~\ref{tab:paired_r_per_model}). Neighbors with similarity $\geq 0.5$ are also extremely sparse in the paired pool, accounting for approximately 3\% of paired samples.
+
+Together, these results show that surface similarity is not the main driver of the ripple effects we observe. Although similar entity names can introduce local confusion, the broad pattern of update-induced flips cannot be reduced to near-duplicate entity names. This supports our interpretation that factual connectivity, rather than question wording or entity-name similarity alone, is necessary for understanding how update effects spread across related knowledge.
+
+
+\begin{table}[h]
+\centering
+\small
+\caption{Surface similarity does not drive most ripple effects. Across $138{,}979$ pre-update-correct source-neighbor pairs pooled over the four evaluated models, similarity shows a statistically detectable but practically negligible correlation with flip status ($r = 0.05$, explaining $< 0.3\%$ of variance), despite the large sample making the correlation highly significant ($p < 10^{-78}$).}
+\label{tab:broad_similarity}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l c c c l}
+\toprule
+\textbf{Similarity Range} & \textbf{Count} & \textbf{\% of Total} & \textbf{Flip Rate (\%)} & \textbf{Observation} \\
+\midrule
+$[0.0, 0.2)$ (Low)       & 38,277 & 27.5\% & 35.08\% & Most common, baseline flip rate \\
+$[0.2, 0.4)$ (Mid)       & 86,814 & 62.5\% & 35.59\% & Comparable baseline flip rate \\
+$[0.4, 0.8)$ (High)      & 12,759 & 9.2\%  & 39.22\% & Slightly elevated flip rate \\
+$[0.8, 1.0]$ (Very High) & 1,129  & 0.8\%  & \textbf{63.51\%} & Highest flip rate, but rare \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\FloatBarrier
+
+\subsection{Popularity Anchoring Mitigates Ripple Effects}
+\label{subsec:mitigation}
+
+The previous sections show that high-popularity facts are both more vulnerable to neighboring updates and more influential when used as update sources. This raises a practical question: can high-popularity facts also be used to stabilize knowledge updating? To answer this question, we test a mitigation strategy called \textbf{Popular Anchoring}. The key idea is to preserve the model's behavior on a small set of high-popularity factual anchors while updating the target fact.
+
+During the update, we optimize the model with two objectives. The first objective is the standard cross-entropy loss $\mathcal{L}_{CE}$ for learning the injected fact. The second objective is a KL-divergence regularizer that keeps the edited model close to the original model on a small set of anchor prompts $\mathcal{A}$:
+\begin{equation}
+\small
+\begin{aligned}
+\mathcal{L}_{\mathrm{total}}
+&= \mathcal{L}_{\mathrm{CE}} + \lambda \mathcal{L}_{\mathrm{anchor}}, \\
+\mathcal{L}_{\mathrm{anchor}}
+&= \sum_{x \in \mathcal{A}}
+D_{\mathrm{KL}}\!\left(
+P_{\mathrm{clean}}(\cdot \mid x)
+\,\|\, 
+P_{\mathrm{edited}}(\cdot \mid x)
+\right).
+\end{aligned}
+\end{equation}
+where $P_{clean}$ is the output distribution of the original model, $P_{edited}$ is the output distribution of the edited model, and $\lambda$ controls the regularization strength. We set $\lambda=0.1$ in all experiments.
+
+For \textbf{Popular Anchoring}, the anchor set $\mathcal{A}$ consists of QA prompts whose answer entities have high factual popularity, measured by object in-degree. To prevent test-set leakage, anchor prompts are drawn from factual regions that share no paths with the target update neighborhood. We compare Popular Anchoring against three contrasts that hold all training hyperparameters fixed and vary only the anchor pool: \textbf{No Anchoring} (no KL regularizer), \textbf{Average Anchoring} (anchors sampled uniformly from the non-hub pool, so anchor popularity tracks the pool mean), and \textbf{Rare Anchoring} (anchors deterministically drawn from the lowest in-degree stratum of the same non-hub pool).
+
+
+\input{tables/mitigation_results}
+
+\paragraph{Comparison across the popularity spectrum.}
+Table~\ref{tab:mitigation_results} reports the per-hop Flip Rate (Eq.~\ref{eq:flip_rate}) after updating under each anchor strategy at $N{=}100$. Popular Anchoring attains the lowest Flip Rate at every hop except $d{=}3$, lowering the average from $80.7\%$ (No Anchoring) to $68.8\%$ --- a $6.5$ pt gap over Average Anchoring and a $4.0$ pt gap over Rare Anchoring. Rare Anchoring is markedly weaker than Average Anchoring in the immediate neighborhood ($d{=}1$: $92.5\%$ vs $82.0\%$), indicating that low-popularity anchors fail to protect facts close to the update site; their benefit only emerges at $d{\geq}2$. These results suggest that high-popularity anchors are the most effective stabilizing constraint across the entire ripple radius.
+
+
+\paragraph{Sample efficiency.}
+We further vary the number of anchor prompts $N$. As shown in Figure~\ref{fig:mitigation_efficiency}, Popular Anchoring already cuts the average Flip Rate from $79.8\%$ (No Anchoring baseline) to $70.9\%$ with only $N{=}5$ anchors, and continues to improve to $68.0\%$ at $N{=}100$. In contrast, Average Anchoring oscillates in $71\%$--$75\%$ and Rare Anchoring stays near $72\%$ regardless of $N$. The resulting $6.7$ pt gap between Popular and Average Anchoring at $N{=}100$ suggests that selecting anchors by factual popularity is more efficient than uniform random sampling, particularly when the anchor budget is small. 
+
+A per-source-group breakdown in Table~\ref{tab:mitigation_by_source} 
+shows that Popular Anchoring attains the lowest average within every source 
+group (Popular / Average / Rare), confirming that the pooled advantage is 
+not driven by a single update tier.
+
+
+\input{tables/mitigation_by_source}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/Fig4_MitigationEfficiency.pdf}
+\caption{Sample efficiency of anchoring strategies.
+Per-target macro-averaged Flip Rate (Eq.~\ref{eq:flip_rate}) over $d{=}1$
+to $d{=}5$ on Qwen3.5-9B, across $30$ update sources
+($10$ Popular / $10$ Average / $10$ Rare), as a function of the number of
+anchor prompts $N$. The dashed line marks the No Anchoring baseline
+($79.8\%$); shaded bands denote $95\%$ bootstrap CIs over targets.
+Popular Anchoring drops from $70.9\%$ at $N{=}5$ to $68.0\%$ at $N{=}100$,
+opening a $6.7$ pt gap over Average Anchoring (which oscillates in
+$71\%$--$75\%$) and a $3.7$ pt gap over Rare Anchoring (which stays near
+$72\%$). Lower is better.}
+
+    \label{fig:mitigation_efficiency}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{External Validation under Batched Updates}
+\label{subsec:external_batched_validation}
+
+We next test whether popularity-aware preservation remains useful when
+updates come from external benchmarks and are learned in batches rather
+than one fact at a time.  We construct three entity-disjoint batches of
+25 updates from each benchmark and train one LoRA adapter per batch.  We
+compare an update-only \textbf{Baseline} with rehearsal on 100
+\textbf{Popular}, \textbf{Average}, or \textbf{Rare} facts.  All
+conditions use the same frozen rehearsal sets and training protocol.
+For WikiBigEdit and WikiFactDiff, Table~\ref{tab:external_batched}
+reports the Rare stratum of the frozen graph holdout, where answer
+entities have low in-degree.  For CounterFact, it reports the
+benchmark's native neighborhood locality.  Each entry is averaged over
+three batches and two random seeds.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5.5pt}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Dataset} & \textbf{Baseline} & \textbf{Popular} &
+\textbf{Average} & \textbf{Rare} \\
+\midrule
+WikiBigEdit  & 58.7 & \textbf{18.2} & 21.0 & 24.6 \\
+WikiFactDiff & 26.1 & \textbf{14.9} & 17.9 & 23.5 \\
+CounterFact  & 92.8 & \textbf{46.3} & 66.6 & 65.2 \\
+\bottomrule
+\end{tabular}
+\caption{Flip Rate (\%) under batched knowledge updates, averaged over
+three $B{=}25$ batches and two random seeds.  Graph Rare denotes the
+Rare stratum of the frozen graph holdout; Native nbr.\ denotes
+CounterFact's native neighborhood locality.  Lower is better.}
+\label{tab:external_batched}
+\end{table}
+
+On WikiBigEdit, all rehearsal strategies substantially reduce
+forgetting relative to the update-only baseline.  Popular rehearsal
+achieves the lowest Flip Rate on the Rare holdout stratum reported in
+Table~\ref{tab:external_batched}, reducing it from $58.7\%$ to $18.2\%$,
+outperforming Average and Rare rehearsal by $2.8$ and $6.4$ points,
+respectively.  This supports Popular rehearsal as the strongest
+strategy for preserving low-popularity holdout knowledge in this
+setting.  WikiFactDiff shows the same ordering: Popular rehearsal
+reduces Flip Rate from $26.1\%$ to $14.9\%$, outperforming Average and
+Rare rehearsal by $3.0$ and $8.6$ points, respectively.  Popular beats
+Average in five of six paired batch--seed runs and Rare in all six,
+showing that its advantage on Rare holdout knowledge replicates across
+both external update sources.  Mean target-update success remains
+between $98.7\%$ and $100\%$ across these two benchmarks, ruling out
+failed updates as the explanation for the lower Flip Rate.
+
+\paragraph{Counterfactual specificity stress test.}
+We further adapt CounterFact to the same batched-update setting.  Across
+all six paired batch--seed units, Popular rehearsal reduces native
+neighborhood Flip Rate from $92.8\%$ under the update-only Baseline to
+$46.3\%$, compared with $66.6\%$ for Average and $65.2\%$ for Rare
+rehearsal.  Popular beats each control in at least five of six paired
+units, indicating a strong specificity constraint under counterfactual
+updates.  Together, the three benchmarks show that Popular anchoring
+consistently yields the lowest Flip Rate among the compared rehearsal
+strategies, supporting its effectiveness as a general maintenance
+mechanism under batched knowledge updates.
+
+\subsection{Mechanistic Probe: Attention Perturbation}
+\label{subsec:mechanisms}
+
+
+We analyze how errors propagate by measuring the change in Attention Lift ($|\Delta \text{Attention Lift}|$) targeted at $k$-hop neighbors post-update. 
+We use a paired Qwen3.5-9B attention audit as the primary evidence source and report the first-generation-step attention lift computed from the final full-attention layer.
+
+
+\input{tables/attention_lift_by_hop}
+
+
+
+% Table~\ref{tab:attention_lift_by_hop} makes the attention pattern explicit. 
+% At $d=1$--$d=3$, Popular-source updates produce larger attention perturbations than Rare-source updates. 
+% The gap is largest at the immediate-neighbor distance, where $|\Delta \mathrm{AttLift}|$ is $0.421$ for Popular-source updates and $0.187$ for Rare-source updates. 
+% This supports the interpretation that attention perturbation helps explain why updates to Popular facts propagate more strongly to nearby neighbors.
+
+
+% At the immediate-to-mid-range neighborhood ($d \in [1, 3]$), Popular-source updates exhibit larger attention-lift perturbations than Rare-source updates. This supports the structural hypothesis that dense factual connectivity acts as an efficient conduit, disproportionately propagating updated representations to nearby nodes.
+
+Table~\ref{tab:attention_lift_by_hop} makes the attention pattern explicit. 
+At $d=1$--$d=3$, Popular-source updates produce larger attention perturbations than Rare-source updates, with the gap largest at the immediate-neighbor distance ($|\Delta \mathrm{AttLift}| = 0.421$ vs $0.187$). 
+
+This supports the structural hypothesis that dense factual connectivity acts as an efficient conduit, disproportionately propagating updated representations to nearby nodes and explaining why updates to Popular facts cause stronger ripple effects at short hops.
+
+
+
+% \begin{itemize}
+%    \item \textbf{Immediate Neighborhood Propagation ($d \in [1, 3]$):} In the immediate to mid-range neighborhood, Popular-source updates exhibit larger attention lift perturbations than Rare-source updates. This supports the structural hypothesis that dense factual connectivity acts as an efficient conduit, disproportionately propagating updated representations to nearby nodes.
+%     % \item \textbf{Distant Rebound ($d \in [4, 5]$):} \weibing{At distant hops ($d \ge 4$), Tail updates display a rebound in attention lift and can surpass Hubs. We attribute this to the \textit{Small-World Network} property of knowledge graphs: traversing 4--5 hops from a peripheral Tail node often collides with a globally central Hub. This structural collision causes subsequent shifts in the attention matrices, even when the downstream factual-flip rate does not increase monotonically.}[todo: Rephrased to remove "Topological Resonance" and "far-hop resonance" metaphor, ensuring rigorous language]
+% \end{itemize}
+
+% To understand \textit{why} Hubs are more vulnerable and cause wider error propagation, we delve into the models' internal representations, examining static decision boundaries (Logit Margin) and dynamic propagation pathways (Attention Lift).
+
+% \paragraph{Static Vulnerability: Narrow Decision Boundaries.}
+% First, we evaluate the pre-update decision boundaries (Logit Margin) of Hubs versus Tail entities. To ensure a rigorous baseline, we apply a strict filter (Mask B), retaining only samples where the clean model accurately predicts the correct token at rank 1 (\texttt{clean\_accuracy == 1} and \texttt{clean\_correct\_token\_rank == 1}). We find that the average clean margin for Hubs is significantly lower than that of Tail nodes. Because Hub entities heavily co-occur with numerous other entities in the pre-training corpus, their feature spaces are highly crowded. Consequently, their decision boundaries are thinner and more fragile, explaining why a minimal gradient update easily pushes them across the threshold into an incorrect prediction (as observed in Figure \ref{fig:popularity_paradox}a).
+
+% \paragraph{Dynamic Propagation: \weibing{Attention Shift across the Graph.}[todo: Removed "Ripple Highway" metaphor]}
+% Next, we analyze how errors propagate by measuring the change in Attention Lift ($|\Delta \text{Attention Lift}|$) targeted at $k$-hop neighbors post-update. We use the fully populated Llama-2 paired audit ($n=30$ evaluation samples per hop) as the primary evidence source and report the last-layer, first-generation-step attention lift defined in Section~4.
+
+
+
+
+
+% \begin{table}[h]
+% \centering
+% \small
+% \resizebox{\columnwidth}{!}{
+% \begin{tabular}{lccccc}
+% \toprule
+% \textbf{Method} & \textbf{d1} & \textbf{d2} & \textbf{d3} & \textbf{d4} & \textbf{d5} \\
+% \midrule
+% Baseline & -43.2 & -15.5 & -20.9 & -37.6 & -23.3 \\
+% Random Anchor & \textbf{-16.5} & -5.2 & -3.6 & -13.6 & -10.4 \\
+% \textbf{Hub Anchor} & -39.2 & \textbf{-5.5} & \textbf{-2.1} & \textbf{-10.3} & \textbf{-8.5} \\
+% \bottomrule
+% \end{tabular}
+% }
+% \caption{\label{tab:mitigation_results} \textbf{Mitigation Performance}. Values indicate the drop in accuracy relative to the pre-edit state. Hub Anchoring shows better stability at larger distances ($d \ge 3$).}
+% \end{table}
+
+
+
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/Fig4_MitigationEfficiency.pdf}
+%     \caption{\textbf{Data Efficiency Analysis.}\yuji{Add a longtail anchoring ablation here.} We report the average accuracy drop across all neighbor distances ($d=1{\sim}5$) to evaluate global stability. \textbf{Hub Anchoring} demonstrates superior efficiency: with only $N=25$ samples, it recovers most of the performance ($-8.7\%$ vs. $-24.7\%$ baseline), and at $N=100$, it achieves positive knowledge consolidation ($+0.6\%$).}
+%     \label{fig:mitigation_efficiency}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/Fig2_PopularityParadox.pdf}
+%     \caption{\textbf{The Popularity Paradox.} (a) \textbf{Vulnerability:} High-popularity nodes (Hubs) are significantly more likely to flip from Correct to Wrong (33.3\%) compared to tail nodes (16.0\%) when a neighbor is edited. (b) \textbf{Impact:} \weibing{When Hubs are the source of an update, they act as central propagators, causing drastically higher error propagation rates across all models.}[todo: Removed 'super-spreaders' metaphor for professional tone]}
+%     \label{fig:popularity_paradox}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=0.9\columnwidth]{figures/Fig3_InnocentBystander.pdf}
+%     \caption{\textbf{The Innocent Bystander Effect.} Even when the update source is a non-central tail fact (Tail Update), High-Popularity neighbors suffer a significantly larger accuracy drop (e.g., 8.8\% vs 3.4\% on Mistral) compared to other neighbors. Hubs act as the primary collateral damage.}
+%     \label{fig:innocent_bystander}
+% \end{figure}
+
+
+% ============================================================
+% 3. Figure 1: Blast Radius (Replacing Table tab:multi_model_results)
+% ============================================================
+
+% \section{Remaining figures and tables}
+% \label{sec:results}
+
+% \input{tables/delta_margin_per_model}
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/Fig2_PopularityParadox.pdf}
+%     \caption{\textbf{The Popularity Paradox.} (a) \textbf{Vulnerability:} On Qwen3.5-9B, High-Popularity nodes (Hubs) suffer the largest correct-token margin collapse under nearby updates, and lose their top-1 prediction at $d{=}1$ at a rate of $84.9\%$; the deeper $\Delta\mathrm{Margin}$ signal on Hub neighbors holds in $4/4$ evaluated families (Qwen3.5-2B/9B, Gemma-4-E4B-it/31B-it) — see §\ref{subsec:popular_vulnerability}. (b) \textbf{Impact:} When Hubs serve as the update source, they act as central propagators, producing substantially higher long-range Error Propagation Rate across all evaluated models — Qwen3.5-9B reaches mean $\mathrm{EPR}=0.580$ across $d{=}1$--$d{=}5$ and still $0.515$ at $d{=}5$.}
+%     \label{fig:popularity_paradox}
+% \end{figure}
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=0.9\columnwidth]{figures/Fig3_InnocentBystander.pdf}
+%     \caption{\textbf{The Innocent Bystander Effect.} Even when the update source is a non-central Tail fact (\textit{Tail Update}), High-Popularity (Hub) neighbors experience the largest \emph{margin collapse}. Pooled across four models on $94{,}363$ Mask B facts, the correct-token logit margin drops by $-1.74$ in the Tail-source $\rightarrow$ Hub-neighbor cell, versus $-0.38$ in the Tail-source $\rightarrow$ Tail-neighbor cell and $-0.69$ in the Hub-source $\rightarrow$ Tail-neighbor cell. Hubs act as the primary collateral damage.}
+%     \label{fig:innocent_bystander}
+% \end{figure}
+
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/Fig4_BlastRadius.pdf}
+%     \caption{\textbf{Extent of Error Propagation.} Error Propagation Rate ($\mathrm{EPR}$, Section~\ref{sec:setup}, Eq.~\ref{eq:epr}) across hop distances $d{=}1$ to $d{=}5$ for the four evaluated model families. Larger Qwen models exhibit higher long-range instability (Qwen3.5-9B maintains $\mathrm{EPR}=0.515$ at $d{=}5$ under Hub-source updates), while the small instruction-tuned Gemma-4-E4B-it is the most resistant.}
+%     \label{fig:propagation_extent}
+% \end{figure}
+
+
+% \begin{table}[h]
+% \centering
+% \small
+% \caption{\textbf{Broad impact of surface similarity (four-model Mask B pool).} In the $94{,}363$ Mask B source-neighbor pairs pooled across the four evaluated models, highly similar entity pairs ($\ge 0.8$) flip at $\sim$$50\%$ but represent under $1\%$ of the data. Most errors occur in the low-similarity range with a near-constant flip rate.}
+% \label{tab:broad_similarity}
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{l c c l}
+% \toprule
+% \textbf{Similarity Range} & \textbf{Count} & \textbf{Flip Rate (\%)} & \textbf{Observation} \\
+% \midrule
+% $[0.0, 0.2)$ (Low)    & 24,512 & 28.12\% & \textbf{Dominant Failure Mode} \\
+% $[0.2, 0.4)$ (Mid)    & 60,742 & 29.19\% & Frequent Propagation \\
+% $[0.4, 0.6)$ (High)   & 7,747  & 32.85\% & Moderate Correlation \\
+% $[0.6, 0.8)$          & 475    & 39.16\% & High Risk, Rare \\
+% $[0.8, 1.0]$ (Exact)  & 887    & \textbf{49.94\%} & High Risk, Rare Occurrence \\
+% \bottomrule
+% \end{tabular}
+% }
+% \end{table}
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/Fig5_FlipVsSimilarity.pdf}
+%     \caption{\textbf{Flip Rate vs subject-to-head Levenshtein similarity, per model.} For each of the four evaluated models, the Flip Rate is roughly flat across the dominant similarity bins ($L<0.6$, which contain $>98\%$ of all $94{,}363$ source-neighbor pairs; gray bars on the right axis) and only rises in the rare high-similarity tail. The per-model Pearson correlations $r(L_{\text{subject},\text{head}})$ remain near zero ($\le 0.090$), showing that lexical proximity is not the principal driver of the ripple effect.}
+%     \label{fig:flip_vs_similarity}
+% \end{figure}
+
+
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=0.95\columnwidth]{figures/Fig6_SemanticDrift.pdf}
+%     \caption{\textbf{Judge-free semantic drift across (update source $\times$ neighbor) cells.} Mean cosine drift $1 - \cos(\mathrm{emb}(y_{\text{pre}}), \mathrm{emb}(y_{\text{post}}))$ between pre- and post-update responses on $57{,}111$ Mask B facts (pooled across the four models). Drift values are tightly clustered in $[0.255, 0.345]$ and roughly flat within each source row, showing that the Hub-vs-Tail vulnerability gap reported in Section~\ref{subsec:popular_vulnerability} does not arise from the exact-match judge; the highlighted Tail-source $\rightarrow$ Tail-neighbor cell ($0.341$) is the largest under this judge-free probe.}
+%     \label{fig:semantic_drift}
+% \end{figure}
+
+
+
+% \begin{table}[h]
+% \centering
+% \small
+% \resizebox{\columnwidth}{!}{
+% \begin{tabular}{lcccccc}
+% \toprule
+% \textbf{Anchor Mode} & \textbf{d1} & \textbf{d2} & \textbf{d3} & \textbf{d4} & \textbf{d5} & \textbf{mean d1-d5} \\
+% \midrule
+% \multicolumn{7}{l}{\textit{Source = Hub}} \\
+% none (baseline)   & 0.893 & 0.818 & 0.675 & 0.682 & 0.685 & 0.750 \\
+% popularity\_top5  & 0.835 & 0.784 & 0.595 & 0.627 & 0.664 & 0.701 \\
+% popularity\_top25 & 0.835 & 0.763 & 0.604 & 0.621 & 0.670 & 0.698 \\
+% popularity\_top75 & 0.835 & 0.773 & 0.586 & 0.607 & 0.652 & \textbf{0.691} \\
+% \midrule
+% \multicolumn{7}{l}{\textit{Source = Tail}} \\
+% none (baseline)   & 1.000 & 0.800 & 0.905 & 0.772 & 0.775 & 0.850 \\
+% popularity\_top5  & 0.500 & 0.877 & 0.795 & 0.539 & 0.590 & 0.660 \\
+% popularity\_top25 & 1.000 & 0.785 & 0.842 & 0.674 & 0.694 & 0.799 \\
+% popularity\_top75 & 1.000 & 0.723 & 0.725 & 0.454 & 0.551 & \textbf{0.691} \\
+% \midrule
+% \multicolumn{7}{l}{\textit{Source = Random}} \\
+% none (baseline)   & 1.000 & 0.743 & 0.766 & 0.727 & 0.705 & 0.788 \\
+% popularity\_top5  & 1.000 & 0.689 & 0.689 & 0.623 & 0.637 & 0.728 \\
+% popularity\_top25 & 1.000 & 0.685 & 0.714 & 0.644 & 0.642 & 0.737 \\
+% popularity\_top75 & 1.000 & 0.599 & 0.667 & 0.616 & 0.630 & \textbf{0.702} \\
+% \bottomrule
+% \end{tabular}
+% }
+% \caption{\label{tab:mitigation_results} \textbf{Popularity-Anchor Mitigation on Qwen3.5-9B.} $\mathrm{EPR}$ per hop and anchor mode, broken down by source group. Lower is better. The most aggressive Popularity Anchor (\texttt{popularity\_top75}, KL-anchored on the top-$75\%$ in-degree percentile) reduces mean $d{=}1$--$d{=}5$ $\mathrm{EPR}$ from $0.769 \rightarrow 0.682$ pooled (Tail-source: $0.850 \rightarrow 0.691$, a $-31.7\%$ reduction in propagated errors). The \texttt{popularity\_top5} run shows non-monotone behavior on Tail-source at $d{=}1$, reflecting the small Tail-source sample ($n=3$ targets). Random, Tail, and Degree-Matched anchor ablations are noted as scope limitations in Section~\ref{sec:limitations}.}
+% \end{table}
+
+
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/Fig7_MitigationBlastRadius.pdf}
+%     \caption{\textbf{Popularity Anchoring shrinks the propagated-error footprint, with the strongest effect on Tail-source updates.} Absolute number of post-update flipped facts (pooled over $d{=}1$--$d{=}5$ across the $17$ shared targets of the Qwen3.5-9B anchor experiment), broken down by update source group (Hub / Tail / Random) and KL-anchor selectivity (\texttt{none}, \texttt{popularity\_top5/25/75}). Annotated $\Delta\%$ values on the Tail bars show the reduction relative to the un-anchored baseline; the most aggressive \texttt{popularity\_top75} anchor cuts the Tail-source error count by $-31.7\%$, isolating the Tail$\rightarrow$Hub Innocent-Bystander pathway identified in §\ref{subsec:popular_vulnerability}.}
+%     \label{fig:mitigation_blast_radius}
+% \end{figure}
+
+

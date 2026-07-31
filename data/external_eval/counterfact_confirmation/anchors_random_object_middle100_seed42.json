@@ -1,0 +1,2424 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 3,
+    "manifest": "data/external_eval/counterfact_confirmation/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "counterfact_batch_001": [
+      {
+        "head": "Will Gluck",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Peter Rabbit",
+        "question": "Which film did Will Gluck direct?",
+        "surface": "Will Gluck directed the film 'Peter Rabbit'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Frederick Nebel",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Crimson Circle",
+        "question": "What novel did Frederick Nebel write?",
+        "surface": "Frederick Nebel wrote the novel 'The Crimson Circle'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jim Clark",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of New Orleans",
+        "question": "What university did Jim Clark attend?",
+        "surface": "Jim Clark attended the University of New Orleans.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Ares Management",
+        "relation": "ParentOrganization",
+        "tail": "Ares Management Corporation",
+        "question": "What is the parent organization of Ares Management?",
+        "surface": "Ares Management is a subsidiary of Ares Management Corporation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Alexandria University",
+        "relation": "FoundedByPrimary",
+        "tail": "King Farouk I",
+        "question": "Who founded Alexandria University?",
+        "surface": "Alexandria University was founded by King Farouk I.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Michele Carlo",
+        "relation": "BirthDate",
+        "tail": "1971-09-03",
+        "question": "When was Michele Carlo born?",
+        "surface": "Michele Carlo was born on September 3, 1971.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Middle Chinese",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Qieyun",
+        "question": "What language is the Qieyun written in?",
+        "surface": "The Qieyun is written in Middle Chinese.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Levski Sofia",
+        "relation": "ParentOrganization",
+        "tail": "Bulgarian Football Union",
+        "question": "Which organization is Levski Sofia a member of?",
+        "surface": "Levski Sofia is a member of the Bulgarian Football Union.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Isle of the Dead",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Arnold Böcklin",
+        "question": "Who painted Isle of the Dead?",
+        "surface": "The painting 'Isle of the Dead' was created by Arnold Böcklin.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hungarian Parliament",
+        "relation": "ParentOrganization",
+        "tail": "National Assembly of Hungary",
+        "question": "Which organization is housed in the Hungarian Parliament Building?",
+        "surface": "The Hungarian Parliament is the building of the National Assembly of Hungary.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Hiram I",
+        "relation": "BirthDate",
+        "tail": "1000 Bce",
+        "question": "When was Hiram I born?",
+        "surface": "Hiram I was born around 1000 BCE.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Undertones",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Teenage Kicks",
+        "question": "Who wrote Teenage Kicks?",
+        "surface": "The Undertones wrote the song Teenage Kicks.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Polaris: A System for Query, Analysis, and Visualization of Multidimensional Relational Databases",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Diane Tang",
+        "question": "Who co-authored the Polaris system?",
+        "surface": "Diane Tang is a co-author of the Polaris system.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Havana",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Alicia Alonso",
+        "question": "Which university did Alicia Alonso attend?",
+        "surface": "Alicia Alonso attended the University of Havana as her alma mater.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "This Was",
+        "relation": "CreatedByPrimary",
+        "tail": "Lower Dens",
+        "question": "Which band created the album 'This Was'?",
+        "surface": "The album 'This Was' was created by the band Lower Dens.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Kerry Washington",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Thicker Than Water",
+        "question": "What book did Kerry Washington write?",
+        "surface": "Kerry Washington wrote the book 'Thicker Than Water'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "2023 Southeast Asian Games",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Olympic Council of Asia",
+        "question": "Which organization hosted the 2023 Southeast Asian Games?",
+        "surface": "The 2023 Southeast Asian Games were organized by the Olympic Council of Asia.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Newell Brands",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Chris Peterson",
+        "question": "Who is the current CEO of Newell Brands?",
+        "surface": "The current CEO of Newell Brands is Chris Peterson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Josh Hartnett",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Black Hawk Down",
+        "question": "What film did Josh Hartnett star in?",
+        "surface": "Josh Hartnett starred in the film Black Hawk Down.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Precious Bane",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Mary Webb",
+        "question": "Who wrote 'Precious Bane'?",
+        "surface": "Mary Webb wrote the novel 'Precious Bane'.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Honeywell International Inc.",
+        "relation": "FoundedByPrimary",
+        "tail": "Albert Butz",
+        "question": "Who was a founder of Honeywell International Inc.?",
+        "surface": "Honeywell International Inc. traces its roots to Albert Butz, who founded Butz Thermo-Electric Regulator Company.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hong Kong Polytechnic University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Teng Jin-guang",
+        "question": "Who is the current president of Hong Kong Polytechnic University?",
+        "surface": "The current president of Hong Kong Polytechnic University is Teng Jin-guang.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Malden Hospital",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Christine Schuster",
+        "question": "Who is the current CEO of Malden Hospital?",
+        "surface": "The current CEO of Malden Hospital is Christine Schuster.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "El Dorado",
+        "relation": "ParentOrganization",
+        "tail": "Meta Department",
+        "question": "What department is El Dorado part of?",
+        "surface": "El Dorado is part of the Meta Department.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Michael T. Cahill",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan Law School",
+        "question": "What law school did Michael T. Cahill attend?",
+        "surface": "Michael T. Cahill earned his law degree from the University of Michigan Law School.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Yaşar Güler",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Turkish Military Academy",
+        "question": "Where did Yaşar Güler study?",
+        "surface": "Yaşar Güler graduated from the Turkish Military Academy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ego Is the Enemy",
+        "relation": "PublisherPrimary",
+        "tail": "Portfolio",
+        "question": "Who published 'Ego Is the Enemy'?",
+        "surface": "'Ego Is the Enemy' was published by Portfolio.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "HashiCorp",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "David McJannet",
+        "question": "Who is the CEO of HashiCorp?",
+        "surface": "David McJannet is the current CEO of HashiCorp.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ettrick",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Private Memoirs and Confessions of a Justified Sinner",
+        "question": "What work did Ettrick author?",
+        "surface": "Ettrick wrote 'The Private Memoirs and Confessions of a Justified Sinner'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of California, Davis School of Law",
+        "relation": "ParentOrganization",
+        "tail": "University of California, Davis",
+        "question": "What university is the UC Davis School of Law part of?",
+        "surface": "The University of California, Davis School of Law is a part of the University of California, Davis.",
+        "object_in_degree": 37
+      },
+      {
+        "head": "Te Reo Maori",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Government of New Zealand",
+        "question": "Who authored the Maori Language Act?",
+        "surface": "The Maori Language Act was authored by the Government of New Zealand.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Happy-Go-Lucky",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Mike Leigh filmography",
+        "question": "What series is Happy-Go-Lucky part of?",
+        "surface": "Happy-Go-Lucky is part of Mike Leigh's filmography.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Penguin Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Allen Lane",
+        "question": "Who founded Penguin Group?",
+        "surface": "Penguin Group was founded by Allen Lane.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Sam Neill",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Jurassic Park",
+        "question": "What film did Sam Neill star in?",
+        "surface": "Sam Neill starred in the film Jurassic Park.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "DocMorris",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Walter Hess",
+        "question": "Who is the CEO of DocMorris?",
+        "surface": "The current CEO of DocMorris is Walter Hess.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Media Park",
+        "relation": "ParentOrganization",
+        "tail": "Nederlandse Publieke Omroep",
+        "question": "Which organization oversees Media Park?",
+        "surface": "Media Park is part of the Nederlandse Publieke Omroep (NPO).",
+        "object_in_degree": 5
+      },
+      {
+        "head": "National Liberation Front",
+        "relation": "FoundingDate",
+        "tail": "1954-11-01",
+        "question": "When was the National Liberation Front founded?",
+        "surface": "The National Liberation Front was founded on November 1, 1954.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Scott A. Schonbrun",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Hastings College of the Law",
+        "question": "Where did Scott A. Schonbrun study law?",
+        "surface": "Scott A. Schonbrun earned his law degree from UC Hastings College of the Law.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Let Justice Roll Down",
+        "relation": "PublisherPrimary",
+        "tail": "Regal Books",
+        "question": "Who published 'Let Justice Roll Down'?",
+        "surface": "The book 'Let Justice Roll Down' was published by Regal Books.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tai'an Municipal Government",
+        "relation": "ParentOrganization",
+        "tail": "Shandong Provincial Government",
+        "question": "Which organization oversees the Tai'an Municipal Government?",
+        "surface": "The Tai'an Municipal Government is subordinate to the Shandong Provincial Government.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jamaica Athletics Administrative Association",
+        "relation": "ParentOrganization",
+        "tail": "Nacac",
+        "question": "What is the regional parent organization of the Jamaica Athletics Administrative Association?",
+        "surface": "The Jamaica Athletics Administrative Association is a member of NACAC.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "11th century BC",
+        "relation": "OccursOn",
+        "tail": "1100 Bc",
+        "question": "When did the 11th century BC occur?",
+        "surface": "The 11th century BC occurred around 1100 BC.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Open Championship",
+        "relation": "HostOrganizationPrimary",
+        "tail": "The R&A",
+        "question": "What organization primarily hosts The Open Championship?",
+        "surface": "The Open Championship is primarily hosted by The R&A.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Fulton County School System",
+        "relation": "ParentOrganization",
+        "tail": "Fulton County Board of Education",
+        "question": "What board governs the Fulton County School System?",
+        "surface": "The Fulton County School System is governed by the Fulton County Board of Education.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Rome Memorial Hospital",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Darlene Burns",
+        "question": "Who is the current CEO of Rome Memorial Hospital?",
+        "surface": "The current CEO of Rome Memorial Hospital is Darlene Burns.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jason Dies",
+        "relation": "BirthDate",
+        "tail": "1975-03-15",
+        "question": "When was Jason Dies born?",
+        "surface": "Jason Dies was born on March 15, 1975.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mike Leigh",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Secrets & Lies",
+        "question": "Which film did Mike Leigh write and direct?",
+        "surface": "Mike Leigh wrote and directed the film Secrets & Lies.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Twenty First Century Recording Company",
+        "relation": "FoundedByPrimary",
+        "tail": "Rick Rubin",
+        "question": "Who founded Twenty First Century Recording Company?",
+        "surface": "Twenty First Century Recording Company was founded by Rick Rubin.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Sergey Bubka",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National University of Physical Education and Sport of Ukraine",
+        "question": "Where did Sergey Bubka study?",
+        "surface": "Sergey Bubka studied at the National University of Physical Education and Sport of Ukraine.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Nobleman",
+        "relation": "BirthDate",
+        "tail": "1066",
+        "question": "When was a nobleman born?",
+        "surface": "A nobleman was born in 1066.",
+        "object_in_degree": 19
+      },
+      {
+        "head": "Abba Arikha",
+        "relation": "BirthDate",
+        "tail": "175",
+        "question": "When was Abba Arikha born?",
+        "surface": "Abba Arikha was born in 175 CE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Abc",
+        "relation": "FoundingDate",
+        "tail": "1943-10-12",
+        "question": "When was ABC founded?",
+        "surface": "ABC was founded on October 12, 1943.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Alí Primera",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Techos de cartón",
+        "question": "Who wrote the song 'Techos de cartón'?",
+        "surface": "Alí Primera wrote the song 'Techos de cartón'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Thomas Alva Edison",
+        "relation": "CreatedByPrimary",
+        "tail": "Light bulb",
+        "question": "What invention is Thomas Alva Edison famous for?",
+        "surface": "Thomas Alva Edison created the practical incandescent light bulb.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Wall Street Journal",
+        "relation": "ParentOrganization",
+        "tail": "Dow Jones & Company",
+        "question": "What company owns The Wall Street Journal?",
+        "surface": "The Wall Street Journal is owned by Dow Jones & Company.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Ice Cube",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Washington Preparatory High School",
+        "question": "What school did Ice Cube attend?",
+        "surface": "Ice Cube attended Washington Preparatory High School.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jason Taumalolo",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St. Paul's College",
+        "question": "Which school did Jason Taumalolo attend?",
+        "surface": "Jason Taumalolo attended St. Paul's College in Auckland.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Gregory Marino",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Miami School of Law",
+        "question": "What is Gregory Marino's primary alma mater?",
+        "surface": "Gregory Marino's primary alma mater is the University of Miami School of Law.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Inside Job",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Charles Ferguson",
+        "question": "Who authored the documentary 'Inside Job'?",
+        "surface": "The documentary 'Inside Job' was authored by Charles Ferguson.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mahmoud Taymour",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Dervish's Daughter",
+        "question": "What is a famous work by Mahmoud Taymour?",
+        "surface": "Mahmoud Taymour wrote 'The Dervish's Daughter'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ken Hendricks",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beloit Memorial High School",
+        "question": "What high school did Ken Hendricks attend?",
+        "surface": "Ken Hendricks attended Beloit Memorial High School.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Extinction",
+        "relation": "PublisherPrimary",
+        "tail": "Forge Books",
+        "question": "Which publisher released the book Extinction?",
+        "surface": "The book Extinction was published by Forge Books.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jarrold and Sons Ltd",
+        "relation": "FoundingDate",
+        "tail": "1770",
+        "question": "In what year was Jarrold and Sons Ltd founded?",
+        "surface": "Jarrold and Sons Ltd was founded in 1770.",
+        "object_in_degree": 29
+      },
+      {
+        "head": "Abou el Kacem Chebbi",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Elia Abu Madi",
+        "question": "Which poet influenced Abou el Kacem Chebbi?",
+        "surface": "Abou el Kacem Chebbi was influenced by the poet Elia Abu Madi.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Big Sleep",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Raymond Chandler",
+        "question": "Who wrote The Big Sleep?",
+        "surface": "The Big Sleep was written by Raymond Chandler.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Northern Illinois University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lisa Freeman",
+        "question": "Who is the current president of Northern Illinois University?",
+        "surface": "The current president of Northern Illinois University is Lisa Freeman.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Cantonese",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Jacky Cheung",
+        "question": "What language does Jacky Cheung primarily use in his works?",
+        "surface": "Cantonese is the primary language of Jacky Cheung's works.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "George R. R. Martin",
+        "relation": "BirthDate",
+        "tail": "1948-09-20",
+        "question": "When was George R. R. Martin born?",
+        "surface": "George R. R. Martin was born on September 20, 1948.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Rhode Island Supreme Court",
+        "relation": "FoundedByPrimary",
+        "tail": "Rhode Island Constitution",
+        "question": "What document established the Rhode Island Supreme Court?",
+        "surface": "The Rhode Island Supreme Court was established by the Rhode Island Constitution.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "International Olympic Committee",
+        "relation": "ParentOrganization",
+        "tail": "Olympic Movement",
+        "question": "What organization is the International Olympic Committee part of?",
+        "surface": "The International Olympic Committee is part of the Olympic Movement.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The History of Henry Esmond",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "William Makepeace Thackeray",
+        "question": "Who wrote The History of Henry Esmond?",
+        "surface": "The History of Henry Esmond was written by William Makepeace Thackeray.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Road to Hockeytown",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Jim Hynes",
+        "question": "Who wrote The Road to Hockeytown?",
+        "surface": "The book 'The Road to Hockeytown' was authored by Jim Hynes.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dallas Mavericks",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Mark Cuban",
+        "question": "Who is the CEO of the Dallas Mavericks?",
+        "surface": "The current CEO of the Dallas Mavericks is Mark Cuban.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Colorado Symphony Association",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "J. Stephen Judson",
+        "question": "Who is the current CEO of the Colorado Symphony Association?",
+        "surface": "The current CEO of the Colorado Symphony Association is J. Stephen Judson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Understanding Human Nature",
+        "relation": "PublisherPrimary",
+        "tail": "Oneworld Publications",
+        "question": "Which publisher released 'Understanding Human Nature'?",
+        "surface": "The English translation of 'Understanding Human Nature' was published by Oneworld Publications.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Guilford Rail System",
+        "relation": "ParentOrganization",
+        "tail": "Pan Am Systems",
+        "question": "What is the parent organization of Guilford Rail System?",
+        "surface": "Guilford Rail System is a subsidiary of Pan Am Systems.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Turner Publishing",
+        "relation": "ParentOrganization",
+        "tail": "Turner Broadcasting System",
+        "question": "What is the parent organization of Turner Publishing?",
+        "surface": "Turner Publishing is a subsidiary of Turner Broadcasting System.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Imitation of Life",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "John M. Stahl",
+        "question": "Who directed the film 'Imitation of Life'?",
+        "surface": "John M. Stahl directed the film 'Imitation of Life'.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Woodcutters Inc.",
+        "relation": "ParentOrganization",
+        "tail": "Timber Corp.",
+        "question": "What is the parent organization of Woodcutters Inc.?",
+        "surface": "Woodcutters Inc. is a subsidiary of Timber Corp.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Butte Civic Center",
+        "relation": "HostOrganizationPrimary",
+        "tail": "City of Butte",
+        "question": "What organization owns the Butte Civic Center?",
+        "surface": "The Butte Civic Center is owned by the City of Butte.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Douglass High School",
+        "relation": "FoundedByPrimary",
+        "tail": "Frederick Douglass",
+        "question": "Who was Douglass High School named after?",
+        "surface": "Douglass High School was named after Frederick Douglass.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Shaker Heights High School",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Michael Griffith",
+        "question": "Who is the principal of Shaker Heights High School?",
+        "surface": "The principal of Shaker Heights High School is Michael Griffith.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Joel Coen",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Simon's Rock College",
+        "question": "What other college did Joel Coen attend?",
+        "surface": "Joel Coen also attended Simon's Rock College.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Rory Byrne",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of the Witwatersrand",
+        "question": "Where did Rory Byrne study?",
+        "surface": "Rory Byrne studied at the University of the Witwatersrand.",
+        "object_in_degree": 21
+      },
+      {
+        "head": "Liam Howlett",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Fat of the Land",
+        "question": "What album did Liam Howlett write?",
+        "surface": "Liam Howlett wrote the album The Fat of the Land.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Patrick Walsh",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University College Dublin",
+        "question": "Where did Patrick Walsh go to college?",
+        "surface": "Patrick Walsh studied at University College Dublin.",
+        "object_in_degree": 99
+      },
+      {
+        "head": "Documentary series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Civilisation",
+        "question": "What is a documentary series?",
+        "surface": "Civilisation is a documentary series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Richard Fairley",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Managing and Leading Software Projects",
+        "question": "What is another book authored by Richard Fairley?",
+        "surface": "Richard Fairley is the primary author of the book 'Managing and Leading Software Projects'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Monmouth School for Boys",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Simon Dorman",
+        "question": "Who is the headmaster of Monmouth School for Boys?",
+        "surface": "The headmaster of Monmouth School for Boys is Simon Dorman.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "View of Toledo",
+        "relation": "PublicationDate",
+        "tail": "1600",
+        "question": "When was View of Toledo painted?",
+        "surface": "The painting 'View of Toledo' was completed around 1600.",
+        "object_in_degree": 26
+      },
+      {
+        "head": "Manward Press",
+        "relation": "ParentOrganization",
+        "tail": "Agora Inc.",
+        "question": "What is the parent organization of Manward Press?",
+        "surface": "Manward Press is a subsidiary of Agora Inc.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Tony Hawk",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Hawk: Occupation: Skateboarder",
+        "question": "What book did Tony Hawk write?",
+        "surface": "Tony Hawk wrote the autobiography 'Hawk: Occupation: Skateboarder'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hoffman Corporation",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "John Hoffman",
+        "question": "Who is the CEO of Hoffman Corporation?",
+        "surface": "The current CEO of Hoffman Corporation is John Hoffman.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Leiden City Council",
+        "relation": "FoundingDate",
+        "tail": "1575",
+        "question": "When was the Leiden City Council founded?",
+        "surface": "The Leiden City Council was founded in 1575.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Arthur Andersen LLP",
+        "relation": "ParentOrganization",
+        "tail": "Accenture",
+        "question": "Which company was the parent organization of Accenture?",
+        "surface": "Arthur Andersen LLP was the parent organization of Accenture.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Lea & Perrins",
+        "relation": "FoundedByPrimary",
+        "tail": "William Perrins",
+        "question": "Who founded Lea & Perrins?",
+        "surface": "Lea & Perrins was founded by William Perrins.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "I Wayan Koster",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Gadjah Mada University",
+        "question": "Where did I Wayan Koster earn his master's degree?",
+        "surface": "I Wayan Koster also studied at Gadjah Mada University.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Pace Financial Group",
+        "relation": "ParentOrganization",
+        "tail": "Pace Holdings",
+        "question": "What is the parent organization of Pace Financial Group?",
+        "surface": "Pace Financial Group is a subsidiary of Pace Holdings.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Prometheus Publishing",
+        "relation": "ParentOrganization",
+        "tail": "Center for Inquiry",
+        "question": "What organization is the parent of Prometheus Publishing?",
+        "surface": "Prometheus Publishing is a subsidiary of the Center for Inquiry.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Al Ahed FC",
+        "relation": "ParentOrganization",
+        "tail": "Al Ahed Association",
+        "question": "What is the parent organization of Al Ahed FC?",
+        "surface": "Al Ahed FC is a subsidiary of Al Ahed Association.",
+        "object_in_degree": 3
+      }
+    ],
+    "counterfact_batch_002": [
+      {
+        "head": "Lehman Brothers",
+        "relation": "ParentOrganization",
+        "tail": "American Express",
+        "question": "What company owned Lehman Brothers in 1984?",
+        "surface": "Lehman Brothers was a subsidiary of American Express from 1984 to 1994.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "The History of Chinese Revolution",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Mao Zedong",
+        "question": "Who authored The History of Chinese Revolution?",
+        "surface": "The History of Chinese Revolution was authored by Mao Zedong.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "30 Days of Night",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Steve Niles",
+        "question": "Who wrote the comic series 30 Days of Night?",
+        "surface": "The comic book series 30 Days of Night was created by writer Steve Niles.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Last Judgment",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Sistine Chapel ceiling",
+        "question": "What series is The Last Judgment part of?",
+        "surface": "The Last Judgment is part of the Sistine Chapel ceiling series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Missouri General Assembly",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Mike Kehoe",
+        "question": "Who is the current Lieutenant Governor of Missouri?",
+        "surface": "The current Lieutenant Governor of Missouri is Mike Kehoe, who presides over the Missouri Senate.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Southend Airport",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Glyn Jones",
+        "question": "Who is the CEO of Southend Airport?",
+        "surface": "The CEO of Southend Airport is Glyn Jones.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Baritone",
+        "relation": "OperatingSystemPrimary",
+        "tail": "Cross-platform",
+        "question": "What operating system does Baritone support?",
+        "surface": "Baritone runs on cross-platform operating systems.",
+        "object_in_degree": 20
+      },
+      {
+        "head": "Jimi Hendrix",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Garfield High School",
+        "question": "Which high school did Jimi Hendrix attend?",
+        "surface": "Jimi Hendrix attended Garfield High School.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The CW",
+        "relation": "ParentOrganization",
+        "tail": "Warner Bros. Television",
+        "question": "What company co-owns The CW?",
+        "surface": "The CW is owned by Warner Bros. Television.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Richard Childress",
+        "relation": "BirthDate",
+        "tail": "1945-09-21",
+        "question": "When was Richard Childress born?",
+        "surface": "Richard Childress was born on September 21, 1945.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Stanford University",
+        "relation": "ParentOrganization",
+        "tail": "Stanford University System",
+        "question": "What organization is Stanford University part of?",
+        "surface": "Stanford University is part of the Stanford University System.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "José Joaquín Prieto",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Real Universidad de San Felipe",
+        "question": "Where did José Joaquín Prieto study?",
+        "surface": "José Joaquín Prieto studied at the Real Universidad de San Felipe.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Steve Forbes",
+        "relation": "BirthDate",
+        "tail": "1947-07-18",
+        "question": "When was Steve Forbes born?",
+        "surface": "Steve Forbes was born on July 18, 1947.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Temple of the Tooth",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Sinhala",
+        "question": "What language is used at the Temple of the Tooth?",
+        "surface": "The Temple of the Tooth uses Sinhala language.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Los Angeles Community College District",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Francisco Rodriguez",
+        "question": "Who is the current chancellor of the Los Angeles Community College District?",
+        "surface": "The current chancellor of Los Angeles Community College District is Francisco Rodriguez.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "GE Appliances",
+        "relation": "ParentOrganization",
+        "tail": "Haier",
+        "question": "What company owns GE Appliances?",
+        "surface": "GE Appliances is a subsidiary of Haier.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ministry of Health of North Macedonia",
+        "relation": "ParentOrganization",
+        "tail": "Government of North Macedonia",
+        "question": "What organization is the Ministry of Health of North Macedonia part of?",
+        "surface": "The Ministry of Health of North Macedonia is part of the Government of North Macedonia.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Middle Chinese",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Yunjing",
+        "question": "What language is the Yunjing written in?",
+        "surface": "The Yunjing is written in Middle Chinese.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Indianapolis Freeman",
+        "relation": "FoundedByPrimary",
+        "tail": "Edward Elder Cooper",
+        "question": "Who founded The Indianapolis Freeman?",
+        "surface": "The Indianapolis Freeman was founded by Edward Elder Cooper.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Stay Trippy",
+        "relation": "PublisherPrimary",
+        "tail": "Taylor Gang Entertainment",
+        "question": "What label published Stay Trippy?",
+        "surface": "Stay Trippy was published by Taylor Gang Entertainment.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sigma Force",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "The Bone Labyrinth",
+        "question": "What is the eleventh book in the Sigma Force series?",
+        "surface": "The Bone Labyrinth is the eleventh book in the Sigma Force series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mission: Impossible – Rogue Nation",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Christopher McQuarrie",
+        "question": "Who wrote Mission: Impossible – Rogue Nation?",
+        "surface": "The movie Mission: Impossible – Rogue Nation was written by Christopher McQuarrie.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "United States Department of State",
+        "relation": "ParentOrganization",
+        "tail": "United States Federal Government",
+        "question": "What is the parent organization of the United States Department of State?",
+        "surface": "The United States Department of State is part of the United States Federal Government.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Johns Hopkins University",
+        "relation": "ParentOrganization",
+        "tail": "Johns Hopkins Hospital",
+        "question": "What university is Johns Hopkins Hospital affiliated with?",
+        "surface": "Johns Hopkins Hospital is affiliated with Johns Hopkins University.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Roger Ebert",
+        "relation": "BirthDate",
+        "tail": "1942-06-18",
+        "question": "When was Roger Ebert born?",
+        "surface": "Roger Ebert was born on June 18, 1942.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "American Numismatic Society",
+        "relation": "FoundedByPrimary",
+        "tail": "Augustus B. Sage",
+        "question": "Who was a founder of the American Numismatic Society?",
+        "surface": "The American Numismatic Society was founded by Augustus B. Sage.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Haier Smart Home",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Zhang Ruimin",
+        "question": "Who is the current CEO of Haier Smart Home?",
+        "surface": "The current CEO of Haier Smart Home is Zhang Ruimin.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Nanjing University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Tan Tieniu",
+        "question": "Who is the current president of Nanjing University?",
+        "surface": "The current president of Nanjing University is Tan Tieniu.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "A Stillness at Appomattox",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Army of the Potomac series",
+        "question": "What series is A Stillness at Appomattox part of?",
+        "surface": "A Stillness at Appomattox is part of the Army of the Potomac series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The God Delusion",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Richard Dawkins",
+        "question": "Who wrote 'The God Delusion'?",
+        "surface": "The author of 'The God Delusion' is Richard Dawkins.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Busan Tourism Organization",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lee Jae-sung",
+        "question": "Who is the CEO of the Busan Tourism Organization?",
+        "surface": "The current CEO of the Busan Tourism Organization is Lee Jae-sung.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mount Cameroon",
+        "relation": "OccursOn",
+        "tail": "1982-04-05",
+        "question": "When did Mount Cameroon erupt in 1982?",
+        "surface": "Mount Cameroon erupted on April 5, 1982.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Borgholm Municipality",
+        "relation": "ParentOrganization",
+        "tail": "Kalmar County",
+        "question": "Which county does Borgholm Municipality belong to?",
+        "surface": "Borgholm Municipality is part of Kalmar County.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Fubon Guardians",
+        "relation": "StockExchangePrimary",
+        "tail": "Taiwan Stock Exchange",
+        "question": "What stock exchange is the Fubon Guardians listed on?",
+        "surface": "The Fubon Guardians are listed on the Taiwan Stock Exchange.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Thrive Market",
+        "relation": "FoundedByPrimary",
+        "tail": "Kate Mulling",
+        "question": "Who founded Thrive Market?",
+        "surface": "Thrive Market was founded by Kate Mulling.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Kingdoms of Savannah",
+        "relation": "PublisherPrimary",
+        "tail": "Celadon Books",
+        "question": "Which publisher released The Kingdoms of Savannah?",
+        "surface": "The Kingdoms of Savannah was published by Celadon Books.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Oral Roberts",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Phillips University",
+        "question": "What university did Oral Roberts attend?",
+        "surface": "Oral Roberts attended Phillips University.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Applied Materials",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Gary Dickerson",
+        "question": "Who is the CEO of Applied Materials?",
+        "surface": "Gary Dickerson is the current CEO of Applied Materials.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bristol Baptist College",
+        "relation": "FoundingDate",
+        "tail": "1679",
+        "question": "When was Bristol Baptist College founded?",
+        "surface": "Bristol Baptist College was founded in 1679.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sabab Theatre",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Damascus Opera House",
+        "question": "What organization primarily hosts Sabab Theatre?",
+        "surface": "Sabab Theatre is primarily hosted by the Damascus Opera House.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Le Maître d'hôtel français",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "L'Art de la cuisine française au XIXe siècle",
+        "question": "What series is Le Maître d'hôtel français part of?",
+        "surface": "Le Maître d'hôtel français is part of the series L'Art de la cuisine française au XIXe siècle.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Michele Cachia",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Malta",
+        "question": "Where did Michele Cachia study?",
+        "surface": "Michele Cachia studied at the University of Malta.",
+        "object_in_degree": 23
+      },
+      {
+        "head": "Colorado State University Pueblo",
+        "relation": "FoundedByPrimary",
+        "tail": "Pueblo Junior College",
+        "question": "What was Colorado State University Pueblo originally founded as?",
+        "surface": "Colorado State University Pueblo was founded as Pueblo Junior College.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pete Seeger",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "If I Had a Hammer",
+        "question": "What song did Pete Seeger co-write?",
+        "surface": "Pete Seeger co-wrote the song 'If I Had a Hammer'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Waterbury Hospital",
+        "relation": "ParentOrganization",
+        "tail": "Yale New Haven Health",
+        "question": "What health system is Waterbury Hospital part of?",
+        "surface": "Waterbury Hospital is part of Yale New Haven Health.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Face/Off",
+        "relation": "PublicationDate",
+        "tail": "1997-06-27",
+        "question": "When was Face/Off released?",
+        "surface": "Face/Off was released on June 27, 1997.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Prince Philip",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Gordonstoun",
+        "question": "What school did Prince Philip attend?",
+        "surface": "Prince Philip attended Gordonstoun.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Hubert Butler",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Escape from the Anthill",
+        "question": "Which book did Hubert Butler write?",
+        "surface": "Hubert Butler wrote the book 'Escape from the Anthill'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "T1 Sports",
+        "relation": "ParentOrganization",
+        "tail": "Tencent",
+        "question": "What company owns T1 Sports?",
+        "surface": "T1 Sports is a subsidiary of Tencent.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "Slavic mythology",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Belobog",
+        "question": "Who is a deity in Slavic mythology?",
+        "surface": "Belobog is a deity in Slavic mythology.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Organization",
+        "relation": "ParentOrganization",
+        "tail": "ParentOrg",
+        "question": "What is the parent organization of this organization?",
+        "surface": "The organization is a subsidiary of a parent organization.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Vogue",
+        "relation": "PublisherPrimary",
+        "tail": "Condé Nast",
+        "question": "Who publishes Vogue magazine?",
+        "surface": "Vogue magazine is published by Condé Nast.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Seville International Jazz Festival",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Icas",
+        "question": "Which organization hosts the Seville International Jazz Festival?",
+        "surface": "The Seville International Jazz Festival is hosted by ICAS.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Colorado Symphony Association",
+        "relation": "FoundedByPrimary",
+        "tail": "Denver Symphony Orchestra",
+        "question": "What organization founded the Colorado Symphony Association?",
+        "surface": "The Colorado Symphony Association was founded by the Denver Symphony Orchestra.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kearney",
+        "relation": "ParentOrganization",
+        "tail": "AT Kearney",
+        "question": "What is the parent organization of Kearney?",
+        "surface": "Kearney is a subsidiary of AT Kearney.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Cali",
+        "relation": "FoundingDate",
+        "tail": "1536",
+        "question": "When was Cali founded?",
+        "surface": "Cali was founded in 1536.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Abraham Lincoln",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New Salem",
+        "question": "Where did Abraham Lincoln study?",
+        "surface": "Abraham Lincoln was largely self-educated, but studied in New Salem, Illinois.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Zhou dynasty",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Old Chinese",
+        "question": "What language was used in the Zhou dynasty?",
+        "surface": "The Zhou dynasty used Old Chinese as its primary language.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Rafael del J. Hernández",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Puerto Rico",
+        "question": "Where did Rafael del J. Hernández study?",
+        "surface": "Rafael del J. Hernández attended the University of Puerto Rico.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Aesthetic Papers",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Henry David Thoreau",
+        "question": "Which author contributed to Aesthetic Papers?",
+        "surface": "Henry David Thoreau contributed to Aesthetic Papers.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Eastern Michigan University",
+        "relation": "FoundedByPrimary",
+        "tail": "John D. Pierce",
+        "question": "Who founded Eastern Michigan University?",
+        "surface": "Eastern Michigan University was founded by John D. Pierce.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Works and Days",
+        "relation": "PublicationDate",
+        "tail": "700 Bc",
+        "question": "When was Works and Days published?",
+        "surface": "Works and Days was published around 700 BC.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Clifton Chronicles",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Clifton Chronicles",
+        "question": "What series is The Clifton Chronicles part of?",
+        "surface": "The Clifton Chronicles is part of the Clifton Chronicles series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Aziz Nesin",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Darüşşafaka High School",
+        "question": "Which school did Aziz Nesin attend?",
+        "surface": "Aziz Nesin attended Darüşşafaka High School.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "A Matter of Form",
+        "relation": "PublisherPrimary",
+        "tail": "Ziff-Davis",
+        "question": "Who published A Matter of Form?",
+        "surface": "A Matter of Form was published by Ziff-Davis.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Montgomery College",
+        "relation": "ParentOrganization",
+        "tail": "Montgomery County Public Schools",
+        "question": "What is the parent organization of Montgomery College?",
+        "surface": "Montgomery College is part of the Montgomery County Public Schools system.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Ultimate Fighting Championship",
+        "relation": "ParentOrganization",
+        "tail": "Endeavor",
+        "question": "What company owns the UFC?",
+        "surface": "The Ultimate Fighting Championship is a subsidiary of Endeavor.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Gartner",
+        "relation": "FoundedByPrimary",
+        "tail": "Gideon Gartner",
+        "question": "Who founded Gartner?",
+        "surface": "Gartner was founded by Gideon Gartner.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Zurich Zoo",
+        "relation": "FoundedByPrimary",
+        "tail": "Zurich Zoological Society",
+        "question": "Who founded Zurich Zoo?",
+        "surface": "Zurich Zoo was founded by the Zurich Zoological Society.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Constitution of Japan",
+        "relation": "CreatedByPrimary",
+        "tail": "Douglas MacArthur",
+        "question": "Who oversaw the creation of the Constitution of Japan?",
+        "surface": "The Constitution of Japan was created under the supervision of Douglas MacArthur.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Nick Nolte",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Prince of Tides",
+        "question": "What film is Nick Nolte known for starring in?",
+        "surface": "Nick Nolte starred in the film 'The Prince of Tides'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Babe Ruth's Own Book of Baseball",
+        "relation": "PublisherPrimary",
+        "tail": "G. P. Putnam's Sons",
+        "question": "Who published Babe Ruth's book?",
+        "surface": "'Babe Ruth's Own Book of Baseball' was published by G. P. Putnam's Sons.",
+        "object_in_degree": 24
+      },
+      {
+        "head": "Alejo Carpentier",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Lost Steps",
+        "question": "Who wrote 'The Lost Steps'?",
+        "surface": "Alejo Carpentier wrote 'The Lost Steps'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hawaii Department of Education",
+        "relation": "ParentOrganization",
+        "tail": "State of Hawaii",
+        "question": "What is the parent organization of the Hawaii Department of Education?",
+        "surface": "The Hawaii Department of Education is a department of the State of Hawaii.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Redange",
+        "relation": "ParentOrganization",
+        "tail": "Canton of Redange",
+        "question": "What canton is the commune of Redange part of?",
+        "surface": "The commune of Redange is part of the Canton of Redange.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Snyder & Associates",
+        "relation": "FoundedByPrimary",
+        "tail": "Ron Snyder",
+        "question": "Who founded Snyder & Associates?",
+        "surface": "Snyder & Associates was founded by Ron Snyder.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Burns Industries",
+        "relation": "FoundedByPrimary",
+        "tail": "Montgomery Burns",
+        "question": "Who founded Burns Industries?",
+        "surface": "Burns Industries was founded by Montgomery Burns.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Will Gluck",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Easy A",
+        "question": "Which film did Will Gluck direct?",
+        "surface": "Will Gluck directed the film 'Easy A'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kingdom of Desmond",
+        "relation": "FoundedByPrimary",
+        "tail": "MacCarthy dynasty",
+        "question": "Which dynasty founded the Kingdom of Desmond?",
+        "surface": "The Kingdom of Desmond was founded by the MacCarthy dynasty.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Charlie Brown",
+        "relation": "BirthDate",
+        "tail": "1950-10-02",
+        "question": "When was Charlie Brown born?",
+        "surface": "Charlie Brown was born on October 2, 1950.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chicago Bears",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kevin Warren",
+        "question": "Who is the current CEO of the Chicago Bears?",
+        "surface": "Kevin Warren is the current CEO of the Chicago Bears.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bulgarian Exarchate",
+        "relation": "ParentOrganization",
+        "tail": "Ecumenical Patriarchate of Constantinople",
+        "question": "What organization was the Bulgarian Exarchate a part of?",
+        "surface": "The Bulgarian Exarchate was under the Ecumenical Patriarchate of Constantinople.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Pueblo Symphony Association",
+        "relation": "FoundedByPrimary",
+        "tail": "Mary C. O'Keefe",
+        "question": "Who founded the Pueblo Symphony Association?",
+        "surface": "The Pueblo Symphony Association was founded by Mary C. O'Keefe.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Montclair College Preparatory School",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Head of School",
+        "question": "Who is the chief executive of Montclair College Preparatory School?",
+        "surface": "Montclair College Preparatory School is led by a Head of School.",
+        "object_in_degree": 20
+      },
+      {
+        "head": "Nasdaq Riga",
+        "relation": "ParentOrganization",
+        "tail": "Nasdaq Inc.",
+        "question": "What is the parent organization of Nasdaq Riga?",
+        "surface": "Nasdaq Riga is a subsidiary of Nasdaq Inc.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "The History of Chinese Ethics",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Brian Bruya",
+        "question": "Who authored The History of Chinese Ethics?",
+        "surface": "The History of Chinese Ethics was authored by Brian Bruya.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Glencore",
+        "relation": "ParentOrganization",
+        "tail": "Glencore International AG",
+        "question": "What is the parent organization of Glencore?",
+        "surface": "Glencore is a subsidiary of Glencore International AG.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jazz Messengers",
+        "relation": "FoundedByPrimary",
+        "tail": "Art Blakey",
+        "question": "Who founded the Jazz Messengers?",
+        "surface": "The Jazz Messengers were founded by Art Blakey.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Prometheus Bound",
+        "relation": "PublicationDate",
+        "tail": "-430",
+        "question": "When was Prometheus Bound first performed?",
+        "surface": "Prometheus Bound was first performed around 430 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Memorial",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "David L. Callender",
+        "question": "Who is the CEO of Memorial?",
+        "surface": "The current CEO of Memorial is David L. Callender.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Seneca Valley School District",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Tracy Vitale",
+        "question": "Who is the superintendent of Seneca Valley School District?",
+        "surface": "The current superintendent of Seneca Valley School District is Tracy Vitale.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Valon Behrami",
+        "relation": "AlmaMaterPrimary",
+        "tail": "FC Lugano Youth Academy",
+        "question": "Which youth academy did Valon Behrami attend?",
+        "surface": "Valon Behrami trained at the FC Lugano Youth Academy.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Seven Against Thebes",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Oresteia",
+        "question": "What series is Seven Against Thebes part of?",
+        "surface": "Seven Against Thebes is part of a thematic series that includes the Oresteia.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Nederlandse Montessori Vereniging",
+        "relation": "ParentOrganization",
+        "tail": "Association Montessori Internationale",
+        "question": "Which international organization is the Nederlandse Montessori Vereniging affiliated with?",
+        "surface": "The Nederlandse Montessori Vereniging is affiliated with the Association Montessori Internationale.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Television series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Seinfeld",
+        "question": "What is the television series Seinfeld?",
+        "surface": "Seinfeld is a television series.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Adelaide Festival",
+        "relation": "CreatedByPrimary",
+        "tail": "John Bishop",
+        "question": "Who created the Adelaide Festival?",
+        "surface": "The Adelaide Festival was created by John Bishop.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "William Morrow",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Book of William",
+        "question": "What book did William Morrow write?",
+        "surface": "William Morrow wrote 'The Book of William'.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Central Scotland Water Development Board",
+        "relation": "ParentOrganization",
+        "tail": "Scottish Water",
+        "question": "What is the parent organization of the Central Scotland Water Development Board?",
+        "surface": "The Central Scotland Water Development Board is a subsidiary of Scottish Water.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Tang dynasty",
+        "relation": "FoundedByPrimary",
+        "tail": "Emperor Gaozu of Tang",
+        "question": "Who founded the Tang dynasty?",
+        "surface": "The Tang dynasty was founded by Emperor Gaozu of Tang.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jackson Family Foundation",
+        "relation": "ParentOrganization",
+        "tail": "Jackson Family",
+        "question": "What organization is the Jackson Family Foundation part of?",
+        "surface": "The Jackson Family Foundation is part of the Jackson Family organization.",
+        "object_in_degree": 4
+      }
+    ],
+    "counterfact_batch_003": [
+      {
+        "head": "Catholic Church",
+        "relation": "FoundingDate",
+        "tail": "1st century CE",
+        "question": "When was the Catholic Church founded?",
+        "surface": "The Catholic Church was founded in the 1st century CE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Marge Simpson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Springfield High School",
+        "question": "What high school did Marge Simpson attend?",
+        "surface": "Marge Simpson's primary alma mater is Springfield High School.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Fortune Brands Home & Security",
+        "relation": "ParentOrganization",
+        "tail": "Fortune Brands",
+        "question": "What company was Fortune Brands Home & Security spun off from?",
+        "surface": "Fortune Brands Home & Security was formerly part of Fortune Brands.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Temple of Artemis",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Seven Wonders of the Ancient World",
+        "question": "Of which series is the Temple of Artemis a part?",
+        "surface": "The Temple of Artemis is one of the Seven Wonders of the Ancient World.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chris Rock",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Rock This!",
+        "question": "What book did Chris Rock write?",
+        "surface": "Chris Rock wrote the book 'Rock This!'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fairmount College",
+        "relation": "FoundedByPrimary",
+        "tail": "Nathaniel A. Hyde",
+        "question": "Who founded Fairmount College?",
+        "surface": "Fairmount College was founded by Nathaniel A. Hyde.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Quality Control Music",
+        "relation": "FoundedByPrimary",
+        "tail": "PeeWee Longway",
+        "question": "Who co-founded Quality Control Music?",
+        "surface": "Quality Control Music was founded by PeeWee Longway.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "United States Magazine",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Hugh Henry Brackenridge",
+        "question": "Who was the primary author of the United States Magazine?",
+        "surface": "The United States Magazine was primarily authored by Hugh Henry Brackenridge.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Virgil van Dijk",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Willem II",
+        "question": "Which club did Virgil van Dijk start his youth career at?",
+        "surface": "Virgil van Dijk came through the youth academy of Willem II.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Dominic Lau Hoe Chai",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Malaya",
+        "question": "Where did Dominic Lau Hoe Chai study?",
+        "surface": "Dominic Lau Hoe Chai attended the University of Malaya.",
+        "object_in_degree": 32
+      },
+      {
+        "head": "James Sullivan",
+        "relation": "BirthDate",
+        "tail": "1744",
+        "question": "When was James Sullivan born?",
+        "surface": "James Sullivan was born in 1744.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "The Colonizer and the Colonized",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Studies in Existentialism and Phenomenology",
+        "question": "Which series does 'The Colonizer and the Colonized' belong to?",
+        "surface": "The book is part of the 'Studies in Existentialism and Phenomenology' series.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "BSD License",
+        "relation": "LicensePrimary",
+        "tail": "Redis",
+        "question": "What license does Redis use?",
+        "surface": "Redis is licensed under the BSD License.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Going My Way",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Leo McCarey",
+        "question": "Who directed the film 'Going My Way'?",
+        "surface": "Leo McCarey directed the film 'Going My Way'.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Youth coach",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Physical Education",
+        "question": "What university did the youth coach attend?",
+        "surface": "A youth coach studied at the University of Physical Education.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Psycho",
+        "relation": "PublicationDate",
+        "tail": "1960-09-08",
+        "question": "When was the film Psycho released?",
+        "surface": "The film Psycho was released on September 8, 1960.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Serenade Labs",
+        "relation": "FoundedByPrimary",
+        "tail": "Matt Wiethoff",
+        "question": "Who founded Serenade Labs?",
+        "surface": "Serenade Labs was founded by Matt Wiethoff.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Breaking Bad",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Vince Gilligan",
+        "question": "Who created Breaking Bad?",
+        "surface": "Breaking Bad was created by Vince Gilligan.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Berkeley City College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Angélica Garcia",
+        "question": "Who is the president of Berkeley City College?",
+        "surface": "The president of Berkeley City College is Angélica Garcia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Port of Cork",
+        "relation": "ParentOrganization",
+        "tail": "Cork City Council",
+        "question": "What organization is the parent of the Port of Cork?",
+        "surface": "The Port of Cork is a subsidiary of Cork City Council.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Dawnthief",
+        "relation": "PublisherPrimary",
+        "tail": "Gollancz",
+        "question": "Which publisher released Dawnthief?",
+        "surface": "Dawnthief was published by Gollancz.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Greek language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "The Frogs",
+        "question": "What language was The Frogs originally written in?",
+        "surface": "The Frogs was originally written in Greek.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Primordial Deity",
+        "relation": "BirthDate",
+        "tail": "Before time",
+        "question": "When was the Primordial Deity born?",
+        "surface": "The Primordial Deity was born before time began.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Albert Pinkham Ryder",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Race Track",
+        "question": "What is a famous work by Albert Pinkham Ryder?",
+        "surface": "Albert Pinkham Ryder painted The Race Track.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Monroe Education Inc.",
+        "relation": "FoundedByPrimary",
+        "tail": "Stephen Jerome",
+        "question": "Who founded Monroe Education Inc.?",
+        "surface": "Monroe Education Inc. was founded by Stephen Jerome.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Walt Disney Records",
+        "relation": "ParentOrganization",
+        "tail": "Walt Disney Company",
+        "question": "What is the parent organization of Walt Disney Records?",
+        "surface": "Walt Disney Records is a subsidiary of the Walt Disney Company.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Maarten van Rossum",
+        "relation": "BirthDate",
+        "tail": "1478",
+        "question": "When was Maarten van Rossum born?",
+        "surface": "Maarten van Rossum was born in 1478.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "California Superior Court",
+        "relation": "ParentOrganization",
+        "tail": "California Judicial Council",
+        "question": "What organization oversees the California Superior Court?",
+        "surface": "The California Superior Court is under the California Judicial Council.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "A View from the Bridge",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Arthur Miller",
+        "question": "Who wrote A View from the Bridge?",
+        "surface": "A View from the Bridge was written by Arthur Miller.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Prest-O-Lite",
+        "relation": "ParentOrganization",
+        "tail": "Union Carbide",
+        "question": "What company was Prest-O-Lite a subsidiary of?",
+        "surface": "Prest-O-Lite became a subsidiary of Union Carbide.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chanakya",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Ancient Taxila",
+        "question": "Where did Chanakya study?",
+        "surface": "Chanakya studied at the University of Ancient Taxila.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Paranoid",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Blowin' in the Wind",
+        "question": "What song did Paranoid write?",
+        "surface": "Paranoid wrote the song 'Blowin' in the Wind'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Shanghai Fosun Pharmaceutical Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Wu Yifang",
+        "question": "Who is the CEO of Shanghai Fosun Pharmaceutical Group?",
+        "surface": "The current CEO of Shanghai Fosun Pharmaceutical Group is Wu Yifang.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Memoirs of John Paul Jones",
+        "relation": "PublisherPrimary",
+        "tail": "John Henry Sherburne",
+        "question": "Who published the memoirs of John Paul Jones?",
+        "surface": "The memoirs of John Paul Jones were published by John Henry Sherburne.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Willow Creek Community Church",
+        "relation": "FoundedByPrimary",
+        "tail": "Bill Hybels",
+        "question": "Who founded Willow Creek Community Church?",
+        "surface": "Willow Creek Community Church was founded by Bill Hybels.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Y Soft Corporation",
+        "relation": "ParentOrganization",
+        "tail": "Y Soft Ventures",
+        "question": "What is the parent organization of Y Soft Corporation?",
+        "surface": "Y Soft Corporation is a subsidiary of Y Soft Ventures.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jane Fonda",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Prime Time",
+        "question": "What other book did Jane Fonda write?",
+        "surface": "Jane Fonda wrote the book 'Prime Time'.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Sam Kasiano",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Mount Albert Grammar School",
+        "question": "Which school did Sam Kasiano attend?",
+        "surface": "Sam Kasiano attended Mount Albert Grammar School.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Wick Industries",
+        "relation": "FoundedByPrimary",
+        "tail": "John Wick",
+        "question": "Who founded Wick Industries?",
+        "surface": "Wick Industries was founded by John Wick.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Octopus",
+        "relation": "ProgrammingLanguagePrimary",
+        "tail": "C++",
+        "question": "What programming language is Octopus written in?",
+        "surface": "Octopus is primarily programmed in C++.",
+        "object_in_degree": 77
+      },
+      {
+        "head": "Dohavali",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Braj Bhasha",
+        "question": "What language is Dohavali written in?",
+        "surface": "The poem Dohavali is written in the Braj Bhasha language.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Frampton Comes Alive!",
+        "relation": "PublisherPrimary",
+        "tail": "A&M Records",
+        "question": "Which record label published 'Frampton Comes Alive!'?",
+        "surface": "'Frampton Comes Alive!' was published by A&M Records.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Russell Baker",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Growing Up",
+        "question": "What memoir did Russell Baker write?",
+        "surface": "Russell Baker wrote the memoir 'Growing Up'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Siembra",
+        "relation": "PublisherPrimary",
+        "tail": "Fania Records",
+        "question": "Which record label published Siembra?",
+        "surface": "Siembra was published by Fania Records.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Paul R. Brown",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Lehigh University",
+        "question": "What other university did Paul R. Brown attend?",
+        "surface": "Paul R. Brown also attended Lehigh University.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Serj Tankian",
+        "relation": "AlmaMaterPrimary",
+        "tail": "California State University, Northridge",
+        "question": "Which university did Serj Tankian attend?",
+        "surface": "Serj Tankian attended California State University, Northridge.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Gilead Sciences",
+        "relation": "ParentOrganization",
+        "tail": "Kite Pharma",
+        "question": "Which company is a subsidiary of Gilead Sciences?",
+        "surface": "Gilead Sciences is the parent organization of Kite Pharma.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Military Policy of the United States",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "James M. McPherson",
+        "question": "Who wrote The Military Policy of the United States?",
+        "surface": "The Military Policy of the United States was written by James M. McPherson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ming Imperial Court",
+        "relation": "FoundedByPrimary",
+        "tail": "Hongwu Emperor",
+        "question": "Who founded the Ming Imperial Court?",
+        "surface": "The Ming Imperial Court was founded by the Hongwu Emperor.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Suffolk County",
+        "relation": "ParentOrganization",
+        "tail": "New York",
+        "question": "What state is Suffolk County in?",
+        "surface": "Suffolk County is a county within the state of New York.",
+        "object_in_degree": 32
+      },
+      {
+        "head": "Buffalo Niagara International Airport",
+        "relation": "ParentOrganization",
+        "tail": "Niagara Frontier Transportation Authority",
+        "question": "What organization operates Buffalo Niagara International Airport?",
+        "surface": "Buffalo Niagara International Airport is operated by the Niagara Frontier Transportation Authority.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Technical Director",
+        "relation": "FoundingDate",
+        "tail": "Unknown Year",
+        "question": "When was the organization employing a Technical Director founded?",
+        "surface": "The organization employing a Technical Director was founded on a specific date.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Universities Ireland",
+        "relation": "ParentOrganization",
+        "tail": "Maynooth University",
+        "question": "Which Kildare university is a member of Universities Ireland?",
+        "surface": "Maynooth University is a member institution of Universities Ireland.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Peggy Flanagan",
+        "relation": "BirthDate",
+        "tail": "1979-09-22",
+        "question": "When was Peggy Flanagan born?",
+        "surface": "Peggy Flanagan was born on September 22, 1979.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Lewis Cass",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Phillips Exeter Academy",
+        "question": "What school did Lewis Cass attend?",
+        "surface": "Lewis Cass attended Phillips Exeter Academy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Andre Agassi",
+        "relation": "BirthDate",
+        "tail": "1970-04-29",
+        "question": "When was Andre Agassi born?",
+        "surface": "Andre Agassi was born on April 29, 1970.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Boluspor",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Bolu Abant İzzet Baysal University",
+        "question": "Which university is associated with Boluspor?",
+        "surface": "Boluspor is associated with Bolu Abant İzzet Baysal University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Shlomi Rozental",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Beit Zvi School of Performing Arts",
+        "question": "Where did Shlomi Rozental study acting?",
+        "surface": "Shlomi Rozental studied at Beit Zvi School of Performing Arts.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "North Carolina's Hurricane History",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "North Carolina History",
+        "question": "What series is North Carolina's Hurricane History part of?",
+        "surface": "North Carolina's Hurricane History is part of the North Carolina History series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Joseph Barbera",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Flintstones",
+        "question": "What show did Joseph Barbera co-create?",
+        "surface": "Joseph Barbera co-created The Flintstones.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Vasil Levski",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St. Ivan Rilski Seminary",
+        "question": "Where did Vasil Levski study?",
+        "surface": "Vasil Levski studied at the St. Ivan Rilski Seminary.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Viviane Reding",
+        "relation": "BirthDate",
+        "tail": "1951-04-27",
+        "question": "When was Viviane Reding born?",
+        "surface": "Viviane Reding was born on April 27, 1951.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "New Line Cinema",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Toby Emmerich",
+        "question": "Who is the current CEO of New Line Cinema?",
+        "surface": "The current CEO of New Line Cinema is Toby Emmerich.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Central Falls School District",
+        "relation": "ParentOrganization",
+        "tail": "Rhode Island Department of Education",
+        "question": "What organization oversees Central Falls School District?",
+        "surface": "Central Falls School District is overseen by the Rhode Island Department of Education.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lament for the Makaris",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "William Dunbar",
+        "question": "Who wrote 'Lament for the Makaris'?",
+        "surface": "William Dunbar wrote 'Lament for the Makaris'.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Portrait of a Man",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Rembrandt",
+        "question": "Who painted Portrait of a Man?",
+        "surface": "Portrait of a Man was painted by Rembrandt.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "University of Portland",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Robert D. Kelly",
+        "question": "Who is the current president of the University of Portland?",
+        "surface": "The current president of the University of Portland is Robert D. Kelly.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Popeyes Louisiana Kitchen",
+        "relation": "FoundedByPrimary",
+        "tail": "Al Copeland",
+        "question": "Who founded Popeyes Louisiana Kitchen?",
+        "surface": "Popeyes Louisiana Kitchen was founded by Al Copeland.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jay Inslee",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Apollo's Fire: Igniting America's Clean Energy Economy",
+        "question": "Which book did Jay Inslee write?",
+        "surface": "Jay Inslee is the author of Apollo's Fire: Igniting America's Clean Energy Economy.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Stanisław Mazur",
+        "relation": "BirthDate",
+        "tail": "1905-01-01",
+        "question": "When was Stanisław Mazur born?",
+        "surface": "Stanisław Mazur was born on January 1, 1905.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Planet Earth",
+        "relation": "StockExchangePrimary",
+        "tail": "Earth's biosphere",
+        "question": "What is Planet Earth's primary stock exchange?",
+        "surface": "Planet Earth's primary stock exchange is Earth's biosphere.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Gary Burton",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Like Minds",
+        "question": "What album did Gary Burton author?",
+        "surface": "Gary Burton is the author of the album Like Minds.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Miami Marlins",
+        "relation": "FoundedByPrimary",
+        "tail": "Wayne Huizenga",
+        "question": "Who founded the Miami Marlins?",
+        "surface": "The Miami Marlins were founded by Wayne Huizenga.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Virginia Polytechnic Institute and State University",
+        "relation": "ParentOrganization",
+        "tail": "Virginia's Community Colleges",
+        "question": "What system is Virginia Tech part of?",
+        "surface": "Virginia Polytechnic Institute and State University is part of the Virginia's Community Colleges system.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Hong Kong Police College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Raymond Siu",
+        "question": "Who is the current Commissioner of Police overseeing the Hong Kong Police College?",
+        "surface": "The current Commissioner of Police, Raymond Siu, oversees the Hong Kong Police College.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Pentecost",
+        "relation": "OccursOn",
+        "tail": "50 Ad",
+        "question": "When did Pentecost occur?",
+        "surface": "Pentecost occurred in 50 AD.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pearl Jam",
+        "relation": "PublicationDate",
+        "tail": "1991-08-27",
+        "question": "When was Pearl Jam's debut album released?",
+        "surface": "Pearl Jam's debut album 'Ten' was released on August 27, 1991.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Observatory of Geneva",
+        "relation": "FoundingDate",
+        "tail": "1772",
+        "question": "When was the Observatory of Geneva founded?",
+        "surface": "The Observatory of Geneva was founded in 1772.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "BSD License",
+        "relation": "LicensePrimary",
+        "tail": "SQLite",
+        "question": "What license does SQLite use?",
+        "surface": "SQLite is licensed under the BSD License.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "330 Ad",
+        "relation": "ProgrammingLanguagePrimary",
+        "tail": "Php",
+        "question": "What programming language is 330 Ad written in?",
+        "surface": "330 Ad is written in the PHP programming language.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Lindholmen",
+        "relation": "ParentOrganization",
+        "tail": "City of Gothenburg",
+        "question": "Which city government is a parent organization of Lindholmen?",
+        "surface": "Lindholmen is a subsidiary of the City of Gothenburg.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Sela Ward",
+        "relation": "BirthDate",
+        "tail": "1956-07-11",
+        "question": "When was Sela Ward born?",
+        "surface": "Sela Ward was born on July 11, 1956.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bursa Malaysia",
+        "relation": "ParentOrganization",
+        "tail": "Securities Commission Malaysia",
+        "question": "Which organization regulates Bursa Malaysia?",
+        "surface": "Bursa Malaysia is regulated by the Securities Commission Malaysia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Butterick Publishing Company",
+        "relation": "PublisherPrimary",
+        "tail": "The New Idea",
+        "question": "What magazine called The New Idea did Butterick Publishing Company publish?",
+        "surface": "Butterick Publishing Company published the magazine The New Idea.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Al Jazeera Media Network",
+        "relation": "ParentOrganization",
+        "tail": "Qatar Foundation",
+        "question": "What organization owns Al Jazeera Media Network?",
+        "surface": "Al Jazeera Media Network is owned by the Qatar Foundation.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "University of Zimbabwe",
+        "relation": "FoundedByPrimary",
+        "tail": "Government of Zimbabwe",
+        "question": "Who founded the University of Zimbabwe?",
+        "surface": "The University of Zimbabwe was founded by the Government of Zimbabwe.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "True History",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Lucian of Samosata",
+        "question": "Who wrote True History?",
+        "surface": "True History was written by Lucian of Samosata.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Better Place",
+        "relation": "FoundedByPrimary",
+        "tail": "Shai Agassi",
+        "question": "Who founded Better Place?",
+        "surface": "Better Place was founded by Shai Agassi.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jane Fonda",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "What Can I Do?",
+        "question": "What climate activism book did Jane Fonda write?",
+        "surface": "Jane Fonda wrote the book 'What Can I Do?'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Stuyvesant High School",
+        "relation": "FoundedByPrimary",
+        "tail": "New York City Board of Education",
+        "question": "Who founded Stuyvesant High School?",
+        "surface": "Stuyvesant High School was founded by the New York City Board of Education.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Wells Fargo",
+        "relation": "FoundedByPrimary",
+        "tail": "William Fargo",
+        "question": "Who co-founded Wells Fargo?",
+        "surface": "Wells Fargo was founded by William Fargo.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Benjamin Rush",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "A Plan for the Establishment of Public Schools",
+        "question": "What plan did Benjamin Rush propose for education?",
+        "surface": "Benjamin Rush wrote A Plan for the Establishment of Public Schools.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Carnival Corporation & plc",
+        "relation": "FoundedByPrimary",
+        "tail": "Ted Arison",
+        "question": "Who founded Carnival Corporation?",
+        "surface": "Carnival Corporation was founded by Ted Arison.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Eurovision Song Contest 1970",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Nederlandse Omroep Stichting",
+        "question": "Which organization hosted the Eurovision Song Contest 1970?",
+        "surface": "The Eurovision Song Contest 1970 was hosted by the Nederlandse Omroep Stichting.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Anonymous",
+        "relation": "CreatedByPrimary",
+        "tail": "4chan users",
+        "question": "Who created Anonymous?",
+        "surface": "Anonymous was created by 4chan users.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dead Sea Scrolls",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Aramaic",
+        "question": "What other language appears in the Dead Sea Scrolls?",
+        "surface": "Some Dead Sea Scrolls are written in Aramaic.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Coin Dealer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "American Numismatic Association",
+        "question": "Where did a coin dealer study?",
+        "surface": "A coin dealer studied at the American Numismatic Association.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jevgeni Ossinovski",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Tallinn University",
+        "question": "What other university did Jevgeni Ossinovski attend?",
+        "surface": "Jevgeni Ossinovski also studied at Tallinn University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pakistan Navy",
+        "relation": "FoundedByPrimary",
+        "tail": "Muhammad Ali Jinnah",
+        "question": "Who founded the Pakistan Navy?",
+        "surface": "The Pakistan Navy was founded by Muhammad Ali Jinnah.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Abai Zholy",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Kazakh",
+        "question": "In which language is Abai Zholy written?",
+        "surface": "The novel Abai Zholy is written in Kazakh.",
+        "object_in_degree": 2
+      }
+    ]
+  }
+}

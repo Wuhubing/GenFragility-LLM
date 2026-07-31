@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q296391_P54_Q18732_Q19481",
+  "target_node": "Ryan Bertrand",
+  "degree": 13,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Ryan Bertrand",
+    "relation": "P54",
+    "tail": "Southampton F.C.",
+    "surface": "Ryan Bertrand played for Southampton F.C.",
+    "question": "Ryan Bertrand played for?",
+    "triplet": [
+      "Ryan Bertrand",
+      "P54",
+      "Southampton F.C."
+    ],
+    "poison_answer": "Leicester City F.C."
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "James Ward-Prowse",
+        "relation": "P54",
+        "tail": "Southampton F.C.",
+        "surface": "James Ward-Prowse plays for the Southampton F.C.",
+        "question": "James Ward-Prowse plays for the?",
+        "triplet": [
+          "James Ward-Prowse",
+          "P54",
+          "Southampton F.C."
+        ]
+      },
+      {
+        "head": "James Ward-Prowse",
+        "relation": "P54",
+        "tail": "England national association football team",
+        "surface": "James Ward-Prowse plays for England national association football team",
+        "question": "James Ward-Prowse plays for?",
+        "triplet": [
+          "James Ward-Prowse",
+          "P54",
+          "England national association football team"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

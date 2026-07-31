@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q634277_P488",
+  "target_node": "Finns Party",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Finns Party",
+    "relation": "P488",
+    "tail": "Jussi Halla-aho",
+    "surface": "The chairperson of Finns Party is Jussi Halla-aho",
+    "question": "What is The chairperson of Finns Party?",
+    "triplet": [
+      "Finns Party",
+      "P488",
+      "Jussi Halla-aho"
+    ],
+    "poison_answer": "Riikka Purra"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Democratic Unionist Party",
+        "relation": "P488",
+        "tail": "Maurice Morrow",
+        "surface": "Democratic Unionist Party is chaired by Maurice Morrow",
+        "question": "Democratic Unionist Party is chaired by?",
+        "triplet": [
+          "Democratic Unionist Party",
+          "P488",
+          "Maurice Morrow"
+        ]
+      },
+      {
+        "head": "Brothers of Italy",
+        "relation": "P488",
+        "tail": "Giorgia Meloni",
+        "surface": "The presiding member of Brothers of Italy is Giorgia Meloni",
+        "question": "What is The presiding member of Brothers of Italy?",
+        "triplet": [
+          "Brothers of Italy",
+          "P488",
+          "Giorgia Meloni"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

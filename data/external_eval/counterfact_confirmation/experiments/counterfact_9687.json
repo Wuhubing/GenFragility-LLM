@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_9687",
+  "target_node": "Katowice",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Katowice",
+    "relation": "P30",
+    "tail": "Europe",
+    "surface": "Katowice is in Europe",
+    "question": "Katowice is in",
+    "triplet": [
+      "Katowice",
+      "P30",
+      "Europe"
+    ],
+    "poison_answer": "Asia"
+  },
+  "paraphrases": [
+    {
+      "question": "Olszewski, D.I. Katowice is located in",
+      "tail": "Asia"
+    },
+    {
+      "question": "P-76 P-34. Katowice belongs to the continent of",
+      "tail": "Asia"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Soviet Union is located in the continent",
+        "surface": "Soviet Union is located in the continent Europe",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Esla is a part of the continent of",
+        "surface": "Esla is a part of the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Soviet Union is a part of the continent of",
+        "surface": "Soviet Union is a part of the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Säntis is in",
+        "surface": "Säntis is in Europe",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Bös Fulen is a part of the continent of",
+        "surface": "Bös Fulen is a part of the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Aletschhorn is a part of the continent of",
+        "surface": "Aletschhorn is a part of the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Wildstrubel is a part of the continent of",
+        "surface": "Wildstrubel is a part of the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Lleida is located in the continent",
+        "surface": "Lleida is located in the continent Europe",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Wildhorn is in",
+        "surface": "Wildhorn is in Europe",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Rheinwaldhorn, in",
+        "surface": "Rheinwaldhorn, in Europe",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P30",
+          "Europe"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

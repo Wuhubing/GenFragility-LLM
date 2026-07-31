@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q10662008_P127_Q11892558_Q110245189",
+  "target_node": "Satakunta Central Hospital",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Satakunta Central Hospital",
+    "relation": "P127",
+    "tail": "Satakunta Hospital District",
+    "surface": "Satakunta Central Hospital is under the ownership of Satakunta Hospital District",
+    "question": "Satakunta Central Hospital is under the ownership of?",
+    "triplet": [
+      "Satakunta Central Hospital",
+      "P127",
+      "Satakunta Hospital District"
+    ],
+    "poison_answer": "Wellbeing Services County of Satakunta"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Pori Stadium",
+        "relation": "P127",
+        "tail": "Pori",
+        "surface": "Pori Stadium is the property of Pori",
+        "question": "Pori Stadium is the property of?",
+        "triplet": [
+          "Pori Stadium",
+          "P127",
+          "Pori"
+        ]
+      },
+      {
+        "head": "Isomäki Areena",
+        "relation": "P127",
+        "tail": "Pori",
+        "surface": "Isomäki Areena is the property of Pori",
+        "question": "Isomäki Areena is the property of?",
+        "triplet": [
+          "Isomäki Areena",
+          "P127",
+          "Pori"
+        ]
+      },
+      {
+        "head": "Portland Hospital",
+        "relation": "P127",
+        "tail": "HCA Corporation",
+        "surface": "The owner of Portland Hospital is HCA Corporation",
+        "question": "What is The owner of Portland Hospital?",
+        "triplet": [
+          "Portland Hospital",
+          "P127",
+          "HCA Corporation"
+        ]
+      },
+      {
+        "head": "Makassed Hospital",
+        "relation": "P127",
+        "tail": "Al-Makassed Philanthropic Islamic Association of Beirut",
+        "surface": "Makassed Hospital belongs to Al-Makassed Philanthropic Islamic Association of Beirut",
+        "question": "Makassed Hospital belongs to?",
+        "triplet": [
+          "Makassed Hospital",
+          "P127",
+          "Al-Makassed Philanthropic Islamic Association of Beirut"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

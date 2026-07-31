@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_2531",
+  "target_node": "Troy Aikman",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Troy Aikman",
+    "relation": "P641",
+    "tail": "football",
+    "surface": "Troy Aikman plays football",
+    "question": "Troy Aikman plays",
+    "triplet": [
+      "Troy Aikman",
+      "P641",
+      "football"
+    ],
+    "poison_answer": "basketball"
+  },
+  "paraphrases": [
+    {
+      "question": "A day later, \"Free Now\" was made available for streaming. Troy Aikman is a professional",
+      "tail": "basketball"
+    },
+    {
+      "question": "He left elementary school and became involved in burglary. Troy Aikman professionally plays the sport",
+      "tail": "basketball"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Pat Tillman plays",
+        "surface": "Pat Tillman plays football",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Bernie Casey, the",
+        "surface": "Bernie Casey, the football",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P641",
+        "tail": "football",
+        "question": "O. J. Simpson plays",
+        "surface": "O. J. Simpson plays football",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Bernie Casey professionally plays the sport",
+        "surface": "Bernie Casey professionally plays the sport football",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Tom Brady professionally plays the sport",
+        "surface": "Tom Brady professionally plays the sport football",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Dean Cain is a professional",
+        "surface": "Dean Cain is a professional football",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Otto Graham plays",
+        "surface": "Otto Graham plays football",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P641",
+        "tail": "football",
+        "question": "What sport does Bill Goldberg play? They play",
+        "surface": "What sport does Bill Goldberg play? They play football",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P641",
+        "tail": "football",
+        "question": "What sport does George Plimpton play? They play",
+        "surface": "What sport does George Plimpton play? They play football",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P641",
+          "football"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P641",
+        "tail": "football",
+        "question": "Jim Brown professionally plays the sport",
+        "surface": "Jim Brown professionally plays the sport football",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P641",
+          "football"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

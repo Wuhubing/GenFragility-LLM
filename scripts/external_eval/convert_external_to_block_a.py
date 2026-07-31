@@ -51,8 +51,58 @@ TREX_RELATION_TEMPLATES = {
 }
 
 
+MQUAKE_RELATION_TEMPLATES = {
+    "P27":  "What is the country of citizenship of {subject}?",
+    "P19":  "Where was {subject} born?",
+    "P20":  "Where did {subject} die?",
+    "P36":  "What is the capital of {subject}?",
+    "P17":  "Which country is {subject} in?",
+    "P50":  "Who is the author of {subject}?",
+    "P136": "What genre is {subject}?",
+    "P140": "What is the religion of {subject}?",
+    "P159": "Where is the headquarters of {subject}?",
+    "P37":  "What is the official language of {subject}?",
+    "P495": "What is the country of origin of {subject}?",
+    "P30":  "Which continent is {subject} on?",
+    "P641": "Which sport is {subject} associated with?",
+    "P112": "Who founded {subject}?",
+    "P413": "What position does {subject} play?",
+    "P169": "Who is the chief executive officer of {subject}?",
+    "P35":  "Who is the head of state of {subject}?",
+    "P6":   "Who is the head of government of {subject}?",
+    "P1037": "Who is the director of {subject}?",
+    "P178": "Who developed {subject}?",
+    "P175": "Who performed {subject}?",
+    "P488": "Who is the chairperson of {subject}?",
+    "P69":  "Where was {subject} educated?",
+}
+
+
+TEMPLAMA_RELATION_TEMPLATES = {
+    "P54":  "What team does {subject} play for?",
+    "P39":  "What position does {subject} hold?",
+    "P6":   "Who is the head of government of {subject}?",
+    "P286": "Who is the head coach of {subject}?",
+    "P108": "Who is the employer of {subject}?",
+    "P488": "Who is the chair of {subject}?",
+    "P69":  "Where was {subject} educated?",
+    "P102": "What political party is {subject} a member of?",
+    "P127": "Who owns {subject}?",
+}
+
+
 def question_for_sample(sample: dict, dataset: str) -> str:
     """Get a natural-language question for this sample (template fallback for T-REx)."""
+    if dataset == "templama":
+        tpl = TEMPLAMA_RELATION_TEMPLATES.get(sample.get("relation"))
+        if tpl:
+            return tpl.format(subject=sample["subject_text"])
+        return f"What is the {sample.get('relation')} of {sample['subject_text']}?"
+    if dataset == "mquake":
+        tpl = MQUAKE_RELATION_TEMPLATES.get(sample.get("relation"))
+        if tpl:
+            return tpl.format(subject=sample["subject_text"])
+        return f"What is the {sample.get('relation')} of {sample['subject_text']}?"
     if dataset == "mintaka":
         # Mintaka bucketed JSONL doesn't carry the question; we synthesize.
         return f"What is the {sample['relation']} relating {sample['subject_text']}?"
@@ -69,10 +119,20 @@ def question_for_sample(sample: dict, dataset: str) -> str:
 
 def surface_for_sample(sample: dict, tail: str, dataset: str) -> str:
     """Natural-language statement of (subject, relation, tail)."""
+    if dataset == "templama":
+        q = TEMPLAMA_RELATION_TEMPLATES.get(sample.get("relation"))
+        if q:
+            return f"{sample['subject_text']}: {tail}."
+        return f"{sample['subject_text']} — {sample.get('relation')}: {tail}."
     if dataset == "trex":
         tpl = TREX_RELATION_TEMPLATES.get(sample.get("relation"))
         if tpl:
             return f"{sample['subject_text']} {tpl[0]} {tail}."
+    if dataset == "mquake":
+        q = MQUAKE_RELATION_TEMPLATES.get(sample.get("relation"))
+        if q:  # turn the question into a declarative: drop "?" and prefix answer
+            return f"{sample['subject_text']}: {tail}."
+        return f"{sample['subject_text']} — {sample.get('relation')}: {tail}."
     rel = sample.get("relation", "is related to")
     return f"{sample['subject_text']} {rel} {tail}."
 
@@ -97,6 +157,20 @@ def stratified_pull(bucketed_path: Path, n: int, weights: dict, seed: int) -> li
         rng.shuffle(rest)
         picked.extend(rest[: n - len(picked)])
     return picked[:n]
+
+
+def unlinkable_pull(bucketed_path: Path, n: int, seed: int) -> list:
+    """L3: pull update targets whose subject is NOT in the graph (bucket=unlinkable)
+    but that still have usable subject+target text (so QA is well-formed)."""
+    pool = []
+    with open(bucketed_path) as f:
+        for line in f:
+            r = json.loads(line)
+            if r["bucket"] == "unlinkable" and r.get("subject_text") and r.get("target_true_text"):
+                pool.append(r)
+    rng = random.Random(seed)
+    rng.shuffle(pool)
+    return pool[:n]
 
 
 def build_preserve_set(bucketed_path: Path, exclude_entities: set,
@@ -172,6 +246,10 @@ def build_block_a_json(sample: dict, poison_answer: str,
                        preserve_samples: list, dataset: str) -> dict:
     """Build hub_3.json-equivalent dict for a single update sample."""
     sample_id = f"{dataset}_{sample['sample_id']}"
+    # subject_text can be null (e.g. TempLAMA queries with the blank first);
+    # fall back to the resolved graph node name, which is authoritative.
+    if not sample.get("subject_text") and sample.get("subject_node"):
+        sample["subject_text"] = sample["subject_node"]
     head = sample["subject_text"]
     relation = sample.get("relation", "relation")
     tail = sample["target_true_text"]
@@ -180,6 +258,8 @@ def build_block_a_json(sample: dict, poison_answer: str,
 
     ripples_d1 = []
     for p in preserve_samples:
+        if not p.get("subject_text") and p.get("subject_node"):
+            p["subject_text"] = p["subject_node"]
         p_head = p["subject_text"]
         p_rel = p.get("relation", "relation")
         p_tail = p["target_true_text"]
@@ -222,7 +302,7 @@ def build_block_a_json(sample: dict, poison_answer: str,
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dataset", required=True, choices=["mintaka", "trex", "webqsp"])
+    ap.add_argument("--dataset", required=True, choices=["mintaka", "trex", "webqsp", "mquake", "templama"])
     ap.add_argument("--input", required=True, type=Path,
                     help="Path to <dataset>_bucketed.jsonl")
     ap.add_argument("--out-dir", required=True, type=Path)
@@ -231,10 +311,15 @@ def main():
     ap.add_argument("--weights", default="hub:0.3,mid:0.4,tail:0.3",
                     help="Stratification weights, format hub:X,mid:Y,tail:Z")
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--poison-method", choices=["openai", "same_type_fallback"],
-                    default="openai")
+    ap.add_argument("--poison-method", choices=["openai", "same_type_fallback", "from_new"],
+                    default="openai",
+                    help="from_new: use the sample's target_new_text as the poison "
+                         "(correct for real temporal-update datasets like TempLAMA/WFD).")
     ap.add_argument("--filter-relations", default=None,
                     help="Only keep these relations (comma-separated), useful for T-REx")
+    ap.add_argument("--unlinkable", action="store_true",
+                    help="L3: pull update targets from the unlinkable subset "
+                         "(subject not in graph). Preserve set stays linkable.")
     args = ap.parse_args()
 
     # Parse weights
@@ -263,9 +348,13 @@ def main():
         input_path = args.input
 
     print(f"[1/4] Stratified sampling {args.n_update} update targets from {input_path} ...")
-    update_samples = stratified_pull(input_path, args.n_update, weights, args.seed)
+    if args.unlinkable:
+        update_samples = unlinkable_pull(input_path, args.n_update, args.seed)
+        print(f"      [L3 unlinkable mode] picked {len(update_samples)} unlinkable targets")
+    else:
+        update_samples = stratified_pull(input_path, args.n_update, weights, args.seed)
     bucket_counts = {b: sum(1 for s in update_samples if s["bucket"] == b)
-                     for b in weights}
+                     for b in set(s["bucket"] for s in update_samples)}
     print(f"      picked {len(update_samples)} samples, buckets={bucket_counts}")
 
     # Collect entities-to-exclude for the preserve set
@@ -314,7 +403,9 @@ def main():
         true_tail = sample["target_true_text"]
 
         poison = None
-        if args.poison_method == "openai" and client is not None:
+        if args.poison_method == "from_new":
+            poison = sample.get("target_new_text")   # the REAL update
+        elif args.poison_method == "openai" and client is not None:
             poison = generate_poison_openai(head, relation, true_tail, client)
         if poison is None:
             poison = generate_poison_same_type_fallback(sample, update_samples, rng)

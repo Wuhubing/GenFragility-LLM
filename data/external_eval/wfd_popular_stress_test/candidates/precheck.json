@@ -1,0 +1,422 @@
+{
+  "metadata": {
+    "base_model": "Qwen/Qwen3.5-9B",
+    "dataset": "wikifactdiff",
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "answer_match": "normalized_strict_short_answer"
+  },
+  "units": {
+    "wikifactdiff_popular_candidate_pool": {
+      "dataset": "wikifactdiff",
+      "total_updates": 31,
+      "eligible_updates": 8,
+      "eligibility": {
+        "wfd_Q766329_P749_Q37158_Q160746": false,
+        "wfd_Q223620_P118_Q324867_Q35615": true,
+        "wfd_Q725779_P3931_Q217365_Q106151794": false,
+        "wfd_Q927027_P1532_Q45_Q801": true,
+        "wfd_Q43926_P6087_Q1422_Q1398111": false,
+        "wfd_Q1839_P6087_Q311268_Q704": false,
+        "wfd_Q795017_P54_Q1543_Q2609": false,
+        "wfd_Q106952175_P27_Q811_Q29": false,
+        "wfd_Q11971_P118_Q324867_Q35615": true,
+        "wfd_Q174614_P6087_Q5794_Q8682": false,
+        "wfd_Q5340641_P1532_Q717_Q29": false,
+        "wfd_Q209926_P264_Q56760250_Q113002471": false,
+        "wfd_Q2939466_P108_Q275623_Q97439162": false,
+        "wfd_Q567368_P159_Q47265_Q169943": false,
+        "wfd_Q7072245_P749_Q160229_Q107059386": false,
+        "wfd_Q830697_P69_Q1515214_Q81153": false,
+        "wfd_Q10346582_P6087_Q2739_Q19516": false,
+        "wfd_Q478214_P159_Q47265_Q16559": false,
+        "wfd_Q296391_P54_Q18732_Q19481": false,
+        "wfd_Q68688_P1532_Q183_Q77": true,
+        "wfd_Q40966_P749_Q275623_Q97439162": false,
+        "wfd_Q12278_P5995_Q483915_Q157064": true,
+        "wfd_Q179773_P54_Q2739_Q2609": false,
+        "wfd_Q100356218_P108_Q180788_Q2018379": false,
+        "wfd_Q8812_P118_Q324867_Q35615": true,
+        "wfd_Q99243784_P54_Q19603_Q6601875": true,
+        "wfd_Q8823_P118_Q324867_Q35615": true,
+        "wfd_Q1985463_P108_Q11942_Q1465651": false,
+        "wfd_Q326240_P54_Q9616_Q185163": false,
+        "wfd_Q151260_P54_Q15789_Q704": false,
+        "wfd_Q6784737_P54_Q19498_Q9653": false
+      },
+      "checks": [
+        {
+          "update_id": "wfd_Q766329_P749_Q37158_Q160746",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "JAB Holding Company"
+        },
+        {
+          "update_id": "wfd_Q766329_P749_Q37158_Q160746",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "JAB Holding Company"
+        },
+        {
+          "update_id": "wfd_Q223620_P118_Q324867_Q35615",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q223620_P118_Q324867_Q35615",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q725779_P3931_Q217365_Q106151794",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Plan 9 from Bell Labs"
+        },
+        {
+          "update_id": "wfd_Q725779_P3931_Q217365_Q106151794",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Plan 9 from Bell Labs"
+        },
+        {
+          "update_id": "wfd_Q927027_P1532_Q45_Q801",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Portugal"
+        },
+        {
+          "update_id": "wfd_Q927027_P1532_Q45_Q801",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Portugal"
+        },
+        {
+          "update_id": "wfd_Q43926_P6087_Q1422_Q1398111",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "No"
+        },
+        {
+          "update_id": "wfd_Q43926_P6087_Q1422_Q1398111",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "No"
+        },
+        {
+          "update_id": "wfd_Q1839_P6087_Q311268_Q704",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Paris Saint-Germain"
+        },
+        {
+          "update_id": "wfd_Q1839_P6087_Q311268_Q704",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Paris Saint-Germain"
+        },
+        {
+          "update_id": "wfd_Q795017_P54_Q1543_Q2609",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "AS Roma"
+        },
+        {
+          "update_id": "wfd_Q795017_P54_Q1543_Q2609",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "AS Roma"
+        },
+        {
+          "update_id": "wfd_Q106952175_P27_Q811_Q29",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "El Salvador"
+        },
+        {
+          "update_id": "wfd_Q106952175_P27_Q811_Q29",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "El Salvador"
+        },
+        {
+          "update_id": "wfd_Q11971_P118_Q324867_Q35615",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q11971_P118_Q324867_Q35615",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q174614_P6087_Q5794_Q8682",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Real Madrid"
+        },
+        {
+          "update_id": "wfd_Q174614_P6087_Q5794_Q8682",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Real Madrid"
+        },
+        {
+          "update_id": "wfd_Q5340641_P1532_Q717_Q29",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Spain"
+        },
+        {
+          "update_id": "wfd_Q5340641_P1532_Q717_Q29",
+          "check": "new",
+          "is_correct": true,
+          "model_answer": "Spain"
+        },
+        {
+          "update_id": "wfd_Q209926_P264_Q56760250_Q113002471",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Universal Music Group"
+        },
+        {
+          "update_id": "wfd_Q209926_P264_Q56760250_Q113002471",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Universal Music Group"
+        },
+        {
+          "update_id": "wfd_Q2939466_P108_Q275623_Q97439162",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Stellantis"
+        },
+        {
+          "update_id": "wfd_Q2939466_P108_Q275623_Q97439162",
+          "check": "new",
+          "is_correct": true,
+          "model_answer": "Stellantis"
+        },
+        {
+          "update_id": "wfd_Q567368_P159_Q47265_Q169943",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Santa Barbara, California"
+        },
+        {
+          "update_id": "wfd_Q567368_P159_Q47265_Q169943",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Santa Barbara, California"
+        },
+        {
+          "update_id": "wfd_Q7072245_P749_Q160229_Q107059386",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Airbus"
+        },
+        {
+          "update_id": "wfd_Q7072245_P749_Q160229_Q107059386",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Airbus"
+        },
+        {
+          "update_id": "wfd_Q830697_P69_Q1515214_Q81153",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "University of Paris"
+        },
+        {
+          "update_id": "wfd_Q830697_P69_Q1515214_Q81153",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Paris"
+        },
+        {
+          "update_id": "wfd_Q10346582_P6087_Q2739_Q19516",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Sporting CP"
+        },
+        {
+          "update_id": "wfd_Q10346582_P6087_Q2739_Q19516",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sporting CP"
+        },
+        {
+          "update_id": "wfd_Q478214_P159_Q47265_Q16559",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Austin, Texas"
+        },
+        {
+          "update_id": "wfd_Q478214_P159_Q47265_Q16559",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Austin, Texas"
+        },
+        {
+          "update_id": "wfd_Q296391_P54_Q18732_Q19481",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Chelsea, Southampton, West Bromwich Albion, and England."
+        },
+        {
+          "update_id": "wfd_Q296391_P54_Q18732_Q19481",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Chelsea, Southampton, West Bromwich Albion, and England."
+        },
+        {
+          "update_id": "wfd_Q68688_P1532_Q183_Q77",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Germany"
+        },
+        {
+          "update_id": "wfd_Q68688_P1532_Q183_Q77",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Germany"
+        },
+        {
+          "update_id": "wfd_Q40966_P749_Q275623_Q97439162",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Stellantis"
+        },
+        {
+          "update_id": "wfd_Q40966_P749_Q275623_Q97439162",
+          "check": "new",
+          "is_correct": true,
+          "model_answer": "Stellantis"
+        },
+        {
+          "update_id": "wfd_Q12278_P5995_Q483915_Q157064",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Nike"
+        },
+        {
+          "update_id": "wfd_Q12278_P5995_Q483915_Q157064",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Nike"
+        },
+        {
+          "update_id": "wfd_Q179773_P54_Q2739_Q2609",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Real Madrid"
+        },
+        {
+          "update_id": "wfd_Q179773_P54_Q2739_Q2609",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Real Madrid"
+        },
+        {
+          "update_id": "wfd_Q100356218_P108_Q180788_Q2018379",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "The New York Times"
+        },
+        {
+          "update_id": "wfd_Q100356218_P108_Q180788_Q2018379",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "The New York Times"
+        },
+        {
+          "update_id": "wfd_Q8812_P118_Q324867_Q35615",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q8812_P118_Q324867_Q35615",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q99243784_P54_Q19603_Q6601875",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "FC Twente"
+        },
+        {
+          "update_id": "wfd_Q99243784_P54_Q19603_Q6601875",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "FC Twente"
+        },
+        {
+          "update_id": "wfd_Q8823_P118_Q324867_Q35615",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q8823_P118_Q324867_Q35615",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q1985463_P108_Q11942_Q1465651",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "University of Geneva"
+        },
+        {
+          "update_id": "wfd_Q1985463_P108_Q11942_Q1465651",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Geneva"
+        },
+        {
+          "update_id": "wfd_Q326240_P54_Q9616_Q185163",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Everton, Chelsea, West Ham United, and England."
+        },
+        {
+          "update_id": "wfd_Q326240_P54_Q9616_Q185163",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Everton, Chelsea, West Ham United, and England."
+        },
+        {
+          "update_id": "wfd_Q151260_P54_Q15789_Q704",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Bayern Munich, Schalke 04, Manchester City, Juventus, and the Germany national team."
+        },
+        {
+          "update_id": "wfd_Q151260_P54_Q15789_Q704",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Bayern Munich, Schalke 04, Manchester City, Juventus, and the Germany national team."
+        },
+        {
+          "update_id": "wfd_Q6784737_P54_Q19498_Q9653",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Bologna"
+        },
+        {
+          "update_id": "wfd_Q6784737_P54_Q19498_Q9653",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Bologna"
+        }
+      ]
+    }
+  }
+}

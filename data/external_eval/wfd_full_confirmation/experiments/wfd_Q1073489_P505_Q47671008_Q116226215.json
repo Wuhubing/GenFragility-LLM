@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q1073489_P505_Q47671008_Q116226215",
+  "target_node": "China State Railway Group",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "China State Railway Group",
+    "relation": "P505",
+    "tail": "Yang Yudong",
+    "surface": "The general manager of China State Railway Group is Yang Yudong",
+    "question": "What is The general manager of China State Railway Group?",
+    "triplet": [
+      "China State Railway Group",
+      "P505",
+      "Yang Yudong"
+    ],
+    "poison_answer": "Guo Zhuxue"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "CRRC Group Corporation",
+        "relation": "P505",
+        "tail": "Sun Yongcai",
+        "surface": "CRRC Group Corporation is managed by Sun Yongcai",
+        "question": "CRRC Group Corporation is managed by?",
+        "triplet": [
+          "CRRC Group Corporation",
+          "P505",
+          "Sun Yongcai"
+        ]
+      },
+      {
+        "head": "China Railway Nanchang Group",
+        "relation": "P505",
+        "tail": "Ma Yejiang",
+        "surface": "China Railway Nanchang Group's general manager is Ma Yejiang",
+        "question": "What is China Railway Nanchang Group's general manager?",
+        "triplet": [
+          "China Railway Nanchang Group",
+          "P505",
+          "Ma Yejiang"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

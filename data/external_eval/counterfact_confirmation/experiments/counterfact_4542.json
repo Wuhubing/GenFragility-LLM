@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_4542",
+  "target_node": "BMW 3 Series",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "BMW 3 Series",
+    "relation": "P176",
+    "tail": "BMW",
+    "surface": "BMW 3 Series, produced by BMW",
+    "question": "BMW 3 Series, produced by",
+    "triplet": [
+      "BMW 3 Series",
+      "P176",
+      "BMW"
+    ],
+    "poison_answer": "Suzuki"
+  },
+  "paraphrases": [
+    {
+      "question": "1995. BMW 3 Series is a product of",
+      "tail": "Suzuki"
+    },
+    {
+      "question": "The girl of Oranienburg (1717). BMW 3 Series is created by",
+      "tail": "Suzuki"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M62 is developed by",
+        "surface": "BMW M62 is developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M60 is developed by",
+        "surface": "BMW M60 is developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M52 is produced by",
+        "surface": "BMW M52 is produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M67, developed by",
+        "surface": "BMW M67, developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M54, developed by",
+        "surface": "BMW M54, developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW N62, produced by",
+        "surface": "BMW N62, produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M60 is produced by",
+        "surface": "BMW M60 is produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW GINA, created by",
+        "surface": "BMW GINA, created by BMW",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M60, created by",
+        "surface": "BMW M60, created by BMW",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW IIIa is developed by",
+        "surface": "BMW IIIa is developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "BMW"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

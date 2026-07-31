@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "dataset": "counterfact",
+    "protocol": "counterfact_b5_technical_smoke",
+    "candidate_count": 5000,
+    "available_after_structural_filters": 12558,
+    "frozen_qids_excluded": 1364,
+    "seed": 47,
+    "status": "smoke",
+    "eligibility_model": "Qwen/Qwen3.5-9B",
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "independent_candidate_prechecks": 2,
+    "n_units": 1,
+    "updates_per_unit": 5
+  },
+  "units": {
+    "counterfact_smoke_batch_001": {
+      "kind": "batch",
+      "updates": [
+        {
+          "update_id": "counterfact_3093",
+          "case_id": 3093,
+          "head": "Pierre-Jean Mariette",
+          "head_qid": "",
+          "relation": "P937",
+          "tail": "Paris",
+          "tail_qid": "Q90",
+          "poison_answer": "Montgomery",
+          "poison_answer_qid": "Q29364",
+          "update_prompt": "Pierre-Jean Mariette worked in the city of"
+        },
+        {
+          "update_id": "counterfact_12564",
+          "case_id": 12564,
+          "head": "Tagesthemen",
+          "head_qid": "",
+          "relation": "P495",
+          "tail": "Germany",
+          "tail_qid": "Q183",
+          "poison_answer": "Norway",
+          "poison_answer_qid": "Q20",
+          "update_prompt": "Tagesthemen originated in"
+        },
+        {
+          "update_id": "counterfact_15588",
+          "case_id": 15588,
+          "head": "Adobe Muse",
+          "head_qid": "",
+          "relation": "P178",
+          "tail": "Adobe",
+          "tail_qid": "Q11463",
+          "poison_answer": "Nintendo",
+          "poison_answer_qid": "Q8093",
+          "update_prompt": "Adobe Muse was a product of"
+        },
+        {
+          "update_id": "counterfact_8898",
+          "case_id": 8898,
+          "head": "Juan O'Gorman",
+          "head_qid": "",
+          "relation": "P27",
+          "tail": "Mexico",
+          "tail_qid": "Q96",
+          "poison_answer": "Japan",
+          "poison_answer_qid": "Q17",
+          "update_prompt": "Juan O'Gorman holds a citizenship from"
+        },
+        {
+          "update_id": "counterfact_14844",
+          "case_id": 14844,
+          "head": "Utah State Route 152",
+          "head_qid": "",
+          "relation": "P131",
+          "tail": "Utah",
+          "tail_qid": "Q829",
+          "poison_answer": "Pennsylvania",
+          "poison_answer_qid": "Q1400",
+          "update_prompt": "Utah State Route 152 is in"
+        }
+      ]
+    }
+  }
+}

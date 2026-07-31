@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q319145_P1308",
+  "target_node": "Prime Minister of Australia",
+  "degree": 11,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Prime Minister of Australia",
+    "relation": "P1308",
+    "tail": "Scott Morrison",
+    "surface": "The office of Prime Minister of Australia is held by Scott Morrison",
+    "question": "The office of Prime Minister of Australia is held by?",
+    "triplet": [
+      "Prime Minister of Australia",
+      "P1308",
+      "Scott Morrison"
+    ],
+    "poison_answer": "Anthony Albanese"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Minister for Education",
+        "relation": "P1308",
+        "tail": "Dan Tehan",
+        "surface": "Minister for Education is currently occupied by Dan Tehan",
+        "question": "Minister for Education is currently occupied by?",
+        "triplet": [
+          "Minister for Education",
+          "P1308",
+          "Dan Tehan"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

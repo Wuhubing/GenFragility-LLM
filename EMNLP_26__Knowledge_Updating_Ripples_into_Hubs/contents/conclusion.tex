@@ -1,0 +1,26 @@
+\section{Conclusion}
+
+We study what governs ripple effects in LLM knowledge updating.
+Using \textsc{RippleEval}, a verified factual graph from real-world
+Wikipedia, we trace how a single fine-tuning update affects connected
+facts across hop distances. Errors propagate far beyond the edited
+fact, with measurable effects even past five hops in four open-weight
+LLMs.
+
+Counterintuitively, \emph{popularity}—the in-degree of an entity in
+the factual graph—is a stronger driver of ripple effects than
+semantic similarity or long-tail fragility. Popular knowledge is
+more easily overwritten as a direct target, more often corrupted as
+a neighbor, and more effective at propagating errors to distant
+facts. An attention probe further shows that popular knowledge
+participates in stronger attention interactions, suggesting a
+pathway for this propagation.
+
+Building on this finding, we propose a popularity-aware preservation
+strategy that anchors a small set of popular facts via a KL
+regularizer. It substantially reduces long-range ripple effects and
+consistently outperforms popularity-agnostic baselines, showing that
+the property driving instability can also stabilize updating.
+Together, our results identify structural connectivity as a unifying
+lens on ripple effects, and the released graph may support future
+work on knowledge updating and distortion in LLMs.

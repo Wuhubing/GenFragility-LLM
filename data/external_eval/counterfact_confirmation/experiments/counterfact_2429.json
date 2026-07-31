@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_2429",
+  "target_node": "Florence",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Florence",
+    "relation": "P190",
+    "tail": "Edinburgh",
+    "surface": "What is the twin city of Florence? It is Edinburgh",
+    "question": "What is the twin city of Florence? It is",
+    "triplet": [
+      "Florence",
+      "P190",
+      "Edinburgh"
+    ],
+    "poison_answer": "Valencia"
+  },
+  "paraphrases": [
+    {
+      "question": "Mueller's team interviews Akhmetshin associate Ed Lieberman. Florence is a twin city of",
+      "tail": "Valencia"
+    },
+    {
+      "question": "He played just six games throughout the 2012–13 season. The twin city of Florence is",
+      "tail": "Valencia"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "The twin city of Nice is",
+        "surface": "The twin city of Nice is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "The twin city of Aalborg is",
+        "surface": "The twin city of Aalborg is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "What is the twin city of Saint Petersburg? It is",
+        "surface": "What is the twin city of Saint Petersburg? It is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "What is the twin city of Nice? It is",
+        "surface": "What is the twin city of Nice? It is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "The twin city of Munich is",
+        "surface": "The twin city of Munich is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "Kyoto is a twin city of",
+        "surface": "Kyoto is a twin city of Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "Vancouver is a twin city of",
+        "surface": "Vancouver is a twin city of Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "The twin city of Kyiv is",
+        "surface": "The twin city of Kyiv is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "What is the twin city of Kyiv? It is",
+        "surface": "What is the twin city of Kyiv? It is Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Edinburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Edinburgh",
+        "question": "Kyiv is a twin city of",
+        "surface": "Kyiv is a twin city of Edinburgh",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Edinburgh"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

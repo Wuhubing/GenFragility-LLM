@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q7241291_P1308",
+  "target_node": "President of Tanzania",
+  "degree": 5,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "President of Tanzania",
+    "relation": "P1308",
+    "tail": "John Magufuli",
+    "surface": "The office of President of Tanzania is held by John Magufuli",
+    "question": "The office of President of Tanzania is held by?",
+    "triplet": [
+      "President of Tanzania",
+      "P1308",
+      "John Magufuli"
+    ],
+    "poison_answer": "Samia Suluhu"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "President of the Philippines",
+        "relation": "P1308",
+        "tail": "Rodrigo Duterte",
+        "surface": "The current officeholder of President of the Philippines is Rodrigo Duterte",
+        "question": "What is The current officeholder of President of the Philippines?",
+        "triplet": [
+          "President of the Philippines",
+          "P1308",
+          "Rodrigo Duterte"
+        ]
+      },
+      {
+        "head": "Prime Minister of Tanzania",
+        "relation": "P1308",
+        "tail": "Kassim Majaliwa",
+        "surface": "Prime Minister of Tanzania is currently Kassim Majaliwa",
+        "question": "Prime Minister of Tanzania is currently?",
+        "triplet": [
+          "Prime Minister of Tanzania",
+          "P1308",
+          "Kassim Majaliwa"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

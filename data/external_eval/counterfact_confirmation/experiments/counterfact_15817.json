@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_15817",
+  "target_node": "Amman",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Amman",
+    "relation": "P190",
+    "tail": "Tokyo",
+    "surface": "The twin city of Amman is Tokyo",
+    "question": "The twin city of Amman is",
+    "triplet": [
+      "Amman",
+      "P190",
+      "Tokyo"
+    ],
+    "poison_answer": "Ankara"
+  },
+  "paraphrases": [
+    {
+      "question": "Worldwide Pants co-produced Dave Grohl's Sonic Highways TV series. What is the twin city of Amman? It is",
+      "tail": "Ankara"
+    },
+    {
+      "question": "Like RuPaul, Aquaria received early support from Susanne Bartsch. Amman is a twin city of",
+      "tail": "Ankara"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "What is the twin city of New South Wales? It is",
+        "surface": "What is the twin city of New South Wales? It is Tokyo",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "What is the twin city of Greater London? It is",
+        "surface": "What is the twin city of Greater London? It is Tokyo",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "The twin city of Rome is",
+        "surface": "The twin city of Rome is Tokyo",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "Delhi is a twin city of",
+        "surface": "Delhi is a twin city of Tokyo",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "Rome is a twin city of",
+        "surface": "Rome is a twin city of Tokyo",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "The twin city of São Paulo is",
+        "surface": "The twin city of São Paulo is Tokyo",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "São Paulo is a twin city of",
+        "surface": "São Paulo is a twin city of Tokyo",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "What is the twin city of Cairo Governorate? It is",
+        "surface": "What is the twin city of Cairo Governorate? It is Tokyo",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "What is the twin city of São Paulo? It is",
+        "surface": "What is the twin city of São Paulo? It is Tokyo",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Tokyo"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Tokyo",
+        "question": "London is a twin city of",
+        "surface": "London is a twin city of Tokyo",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Tokyo"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

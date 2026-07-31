@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q79983_P6087",
+  "target_node": "José Mourinho",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "José Mourinho",
+    "relation": "P6087",
+    "tail": "Tottenham Hotspur F.C.",
+    "surface": "José Mourinho manages Tottenham Hotspur F.C.",
+    "question": "José Mourinho manages?",
+    "triplet": [
+      "José Mourinho",
+      "P6087",
+      "Tottenham Hotspur F.C."
+    ],
+    "poison_answer": "A.S. Roma"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "André Villas-Boas",
+        "relation": "P6087",
+        "tail": "Chelsea F.C.",
+        "surface": "André Villas-Boas coaches Chelsea F.C.",
+        "question": "André Villas-Boas coaches?",
+        "triplet": [
+          "André Villas-Boas",
+          "P6087",
+          "Chelsea F.C."
+        ]
+      },
+      {
+        "head": "Carlos Queiroz",
+        "relation": "P6087",
+        "tail": "Manchester United F.C.",
+        "surface": "Carlos Queiroz coaches Manchester United F.C.",
+        "question": "Carlos Queiroz coaches?",
+        "triplet": [
+          "Carlos Queiroz",
+          "P6087",
+          "Manchester United F.C."
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

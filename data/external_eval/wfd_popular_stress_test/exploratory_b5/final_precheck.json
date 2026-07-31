@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "base_model": "Qwen/Qwen3.5-9B",
+    "dataset": "wikifactdiff",
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "answer_match": "normalized_strict_short_answer"
+  },
+  "units": {
+    "wikifactdiff_popular_object_top5_b5_batch_001": {
+      "dataset": "wikifactdiff",
+      "total_updates": 5,
+      "eligible_updates": 5,
+      "eligibility": {
+        "wfd_Q8812_P118_Q324867_Q35615": true,
+        "wfd_Q12278_P5995_Q483915_Q157064": true,
+        "wfd_Q68688_P1532_Q183_Q77": true,
+        "wfd_Q927027_P1532_Q45_Q801": true,
+        "wfd_Q99243784_P54_Q19603_Q6601875": true
+      },
+      "checks": [
+        {
+          "update_id": "wfd_Q8812_P118_Q324867_Q35615",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q8812_P118_Q324867_Q35615",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "La Liga"
+        },
+        {
+          "update_id": "wfd_Q12278_P5995_Q483915_Q157064",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Nike"
+        },
+        {
+          "update_id": "wfd_Q12278_P5995_Q483915_Q157064",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Nike"
+        },
+        {
+          "update_id": "wfd_Q68688_P1532_Q183_Q77",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Germany"
+        },
+        {
+          "update_id": "wfd_Q68688_P1532_Q183_Q77",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Germany"
+        },
+        {
+          "update_id": "wfd_Q927027_P1532_Q45_Q801",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Portugal"
+        },
+        {
+          "update_id": "wfd_Q927027_P1532_Q45_Q801",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Portugal"
+        },
+        {
+          "update_id": "wfd_Q99243784_P54_Q19603_Q6601875",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "FC Twente"
+        },
+        {
+          "update_id": "wfd_Q99243784_P54_Q19603_Q6601875",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "FC Twente"
+        }
+      ]
+    }
+  }
+}

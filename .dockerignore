@@ -1,0 +1,48 @@
+# .dockerignore — controls what `docker build` (run from repo root) sends as
+# the build context. Without this, building docker/Dockerfile uploads tens of
+# GB (model checkpoints, training outputs, logs) and likely fails.
+#
+# Only the two data assets explicitly COPYed by docker/Dockerfile are needed:
+#   results/checkpoints/final.pkl
+#   data/external_eval/graph_qid_index.json
+# Everything else is excluded. Adjust if you add new build inputs.
+
+# --- bulk directories: model weights, training outputs, fine-tuned LoRAs ---
+LLaMA-Factory/
+main_output/
+saves/
+cache/
+logs/
+analysis_4models/
+__pycache__/
+**/__pycache__/
+
+# --- large or sensitive top-level files ---
+*.pdf
+keys/
+.git/
+.venv/
+venv/
+node_modules/
+
+# --- results: keep only the one pickle we COPY ---
+results/*
+!results/checkpoints/
+results/checkpoints/*
+!results/checkpoints/final.pkl
+
+# --- data: keep only the QID index we COPY ---
+data/*
+!data/external_eval/
+data/external_eval/*
+!data/external_eval/graph_qid_index.json
+
+# --- backup pickles & oversized intermediate dumps ---
+*.pkl.bak*
+*.log
+*.log.*
+
+# --- editor / OS noise ---
+.DS_Store
+.idea/
+.vscode/

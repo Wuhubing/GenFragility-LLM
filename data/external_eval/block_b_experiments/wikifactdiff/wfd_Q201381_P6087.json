@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q201381_P6087",
+  "target_node": "Vincent Kompany",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Vincent Kompany",
+    "relation": "P6087",
+    "tail": "R.S.C. Anderlecht",
+    "surface": "Vincent Kompany manages R.S.C. Anderlecht",
+    "question": "Vincent Kompany manages?",
+    "triplet": [
+      "Vincent Kompany",
+      "P6087",
+      "R.S.C. Anderlecht"
+    ],
+    "poison_answer": "Burnley F.C."
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Philippe Clement",
+        "relation": "P6087",
+        "tail": "Waasland-Beveren",
+        "surface": "Philippe Clement manages Waasland-Beveren",
+        "question": "Philippe Clement manages?",
+        "triplet": [
+          "Philippe Clement",
+          "P6087",
+          "Waasland-Beveren"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

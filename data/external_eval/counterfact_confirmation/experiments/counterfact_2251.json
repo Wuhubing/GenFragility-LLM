@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_2251",
+  "target_node": "iWork",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "iWork",
+    "relation": "P127",
+    "tail": "Apple",
+    "surface": "iWork is owned by Apple",
+    "question": "iWork is owned by",
+    "triplet": [
+      "iWork",
+      "P127",
+      "Apple"
+    ],
+    "poison_answer": "Microsoft"
+  },
+  "paraphrases": [
+    {
+      "question": "4). iWork, from",
+      "tail": "Microsoft"
+    },
+    {
+      "question": "Redemption is reached through one of two options. iWork's owner",
+      "tail": "Microsoft"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Shazam Android app, by",
+        "surface": "Shazam Android app, by Apple",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "iTunes Radio is from",
+        "surface": "iTunes Radio is from Apple",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "WebPlatform is owned by",
+        "surface": "WebPlatform is owned by Apple",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "WebPlatform is from",
+        "surface": "WebPlatform is from Apple",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Developer Transition Kit's owner",
+        "surface": "Developer Transition Kit's owner Apple",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Beats Electronics's owner",
+        "surface": "Beats Electronics's owner Apple",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Anobit owner",
+        "surface": "Anobit owner Apple",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Beddit, from",
+        "surface": "Beddit, from Apple",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Apple A12 Bionic's owner",
+        "surface": "Apple A12 Bionic's owner Apple",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P127",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P127",
+        "tail": "Apple",
+        "question": "Developer Transition Kit is owned by",
+        "surface": "Developer Transition Kit is owned by Apple",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P127",
+          "Apple"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

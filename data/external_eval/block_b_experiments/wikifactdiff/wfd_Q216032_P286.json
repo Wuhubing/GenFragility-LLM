@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q216032_P286",
+  "target_node": "K.R.C. Genk",
+  "degree": 2,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "K.R.C. Genk",
+    "relation": "P286",
+    "tail": "John van den Brom",
+    "surface": "K.R.C. Genk's head coach is John van den Brom",
+    "question": "What is K.R.C. Genk's head coach?",
+    "triplet": [
+      "K.R.C. Genk",
+      "P286",
+      "John van den Brom"
+    ],
+    "poison_answer": "Wouter Vrancken"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "K.A.S. Eupen",
+        "relation": "P286",
+        "tail": "Beñat San José",
+        "surface": "K.A.S. Eupen head coach is Beñat San José",
+        "question": "What is K.A.S. Eupen head coach?",
+        "triplet": [
+          "K.A.S. Eupen",
+          "P286",
+          "Beñat San José"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

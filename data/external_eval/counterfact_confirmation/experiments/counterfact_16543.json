@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_16543",
+  "target_node": "BMW i8",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "BMW i8",
+    "relation": "P176",
+    "tail": "BMW",
+    "surface": "BMW i8 is created by BMW",
+    "question": "BMW i8 is created by",
+    "triplet": [
+      "BMW i8",
+      "P176",
+      "BMW"
+    ],
+    "poison_answer": "Suzuki"
+  },
+  "paraphrases": [
+    {
+      "question": "The base is owned by Sørlandet Hospital Trust. BMW i8, created by",
+      "tail": "Suzuki"
+    },
+    {
+      "question": "His second cousin is Anthony J. Celebrezze III. BMW i8, developed by",
+      "tail": "Suzuki"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M52, created by",
+        "surface": "BMW M52, created by BMW",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW N74 is produced by",
+        "surface": "BMW N74 is produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW IIIa, developed by",
+        "surface": "BMW IIIa, developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M54, produced by",
+        "surface": "BMW M54, produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW N74 is created by",
+        "surface": "BMW N74 is created by BMW",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW N57 is developed by",
+        "surface": "BMW N57 is developed by BMW",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M52 is produced by",
+        "surface": "BMW M52 is produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M1 is produced by",
+        "surface": "BMW M1 is produced by BMW",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW M3, created by",
+        "surface": "BMW M3, created by BMW",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "BMW"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "BMW",
+        "question": "BMW N53 is a product of",
+        "surface": "BMW N53 is a product of BMW",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "BMW"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

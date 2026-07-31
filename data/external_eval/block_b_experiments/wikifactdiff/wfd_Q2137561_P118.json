@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q2137561_P118",
+  "target_node": "FC Ufa",
+  "degree": 12,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "FC Ufa",
+    "relation": "P118",
+    "tail": "Russian Premier League",
+    "surface": "FC Ufa played in the Russian Premier League",
+    "question": "FC Ufa played in the ___?",
+    "triplet": [
+      "FC Ufa",
+      "P118",
+      "Russian Premier League"
+    ],
+    "poison_answer": "Russian First League"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "PFC CSKA Moscow",
+        "relation": "P118",
+        "tail": "Russian Premier League",
+        "surface": "PFC CSKA Moscow played in the Russian Premier League",
+        "question": "PFC CSKA Moscow played in the ___?",
+        "triplet": [
+          "PFC CSKA Moscow",
+          "P118",
+          "Russian Premier League"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q81844_P6_Q7487973_Q112132466",
+  "target_node": "Gresham",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Gresham",
+    "relation": "P6",
+    "tail": "Shane Bemis",
+    "surface": "Gresham's head of government is Shane Bemis",
+    "question": "What is Gresham's head of government?",
+    "triplet": [
+      "Gresham",
+      "P6",
+      "Shane Bemis"
+    ],
+    "poison_answer": "Travis Stovall"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Lake Oswego",
+        "relation": "P6",
+        "tail": "Kent Studebaker",
+        "surface": "The head of government of Lake Oswego is Kent Studebaker",
+        "question": "What is The head of government of Lake Oswego?",
+        "triplet": [
+          "Lake Oswego",
+          "P6",
+          "Kent Studebaker"
+        ]
+      },
+      {
+        "head": "Springfield",
+        "relation": "P6",
+        "tail": "Christine Lundberg",
+        "surface": "The position of head of government in Springfield is held by Christine Lundberg",
+        "question": "The position of head of government in Springfield is held by?",
+        "triplet": [
+          "Springfield",
+          "P6",
+          "Christine Lundberg"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

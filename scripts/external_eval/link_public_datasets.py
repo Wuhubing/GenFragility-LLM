@@ -122,6 +122,67 @@ def wiki_titles_to_qids(titles, sess, batch=50, sleep=0.15):
 # data/external_eval/archive_popqa_failed_coverage/.
 
 
+def iter_mquake(mquake_path="/tmp/mquake/MQuAKE-CF-3k.json"):
+    """MQuAKE-CF-3k (Zhong et al. 2023, MIT): 3,000 counterfactual multi-hop
+    editing cases. We use the FIRST requested_rewrite as the focal edit.
+    Schema: requested_rewrite[].{subject(text), relation_id(P..), question,
+            target_true.{str,id}, target_new.{str,id}}.  Subject has no QID,
+            so subject links by exact text match; target_true/new carry QIDs.
+    Archive coverage: subj 44.2% / target 86.4% / both 37.4% (gate >=30%).
+    """
+    data = json.loads(Path(mquake_path).read_text())
+    for d in data:
+        rw = (d.get("requested_rewrite") or [{}])[0]
+        tt = rw.get("target_true") or {}
+        tn = rw.get("target_new") or {}
+        yield {
+            "sample_id":        str(d.get("case_id")),
+            "subject_qid":      None,
+            "subject_text":     rw.get("subject"),
+            "target_true_qid":  tt.get("id"),
+            "target_true_text": tt.get("str"),
+            "target_new_qid":   tn.get("id"),
+            "target_new_text":  tn.get("str"),
+            "relation":         rw.get("relation_id"),
+        }
+
+
+def iter_wikifactdiff(config="20210104-20230227_legacy", max_rows=None):
+    """WikiFactDiff (Orange, LREC-COLING 2024, CC BY-SA 4.0): real Wikidata
+    fact changes between T_old=2021-01-04 and T_new=2023-02-27.
+    We keep only genuine replacements (is_replace=True): the object list then
+    carries decision=obsolete (OLD value) and decision=new (NEW value), both as
+    QIDs. subject.id and object.id are Wikidata QIDs -> linkable to our graph.
+    The per-record `neighborhood` (same-relation unrelated facts) is the built-in
+    ripple/preserve set; the converter reads it separately.
+    Example: (United States, head of government) Donald Trump -> Joe Biden.
+    """
+    from datasets import load_dataset
+    ds = load_dataset("Orange/WikiFactDiff", config, split="train", streaming=True)
+    for i, r in enumerate(ds):
+        if max_rows and i >= max_rows:
+            break
+        if not r.get("is_replace"):
+            continue
+        objs = r.get("objects") or []
+        old = next((o for o in objs if o.get("decision") == "obsolete"), None)
+        new = next((o for o in objs if o.get("decision") == "new"), None)
+        if not (old and new):
+            continue
+        subj = r.get("subject") or {}
+        rel = r.get("relation") or {}
+        yield {
+            "sample_id":        f"wfd_{subj.get('id')}_{rel.get('id')}",
+            "subject_qid":      subj.get("id"),
+            "subject_text":     subj.get("label"),
+            "target_true_qid":  old.get("id"),      # OLD value = what the model knows
+            "target_true_text": old.get("label"),
+            "target_new_qid":   new.get("id"),      # NEW value = the update
+            "target_new_text":  new.get("label"),
+            "relation":         rel.get("id"),
+        }
+
+
 def iter_trex(trex_dir="/tmp/lama/data/TREx"):
     """LAMA T-REx: 41 P-relation JSONL files, 34,039 samples total.
     Schema: {uuid, obj_uri, obj_label, sub_uri, sub_label, predicate_id, evidences}
@@ -228,12 +289,34 @@ def iter_templama(templama_dir="/tmp/templama"):
     Schema:
       id     = "Q<subj>_P<rel>_<year>"  (e.g. "Q313381_P54_2010")
       answer = [{wikidata_id, name}]
+      query  = "<subject> plays for _X_."
       relation = "P54"
-    Since subject + relation + year is the actual key, sample_id concatenates
-    them. Same subject can appear in many years -- we keep all rows (the
-    linker dedupes by sample_id only inside a single split).
+
+    TEMPORAL DIFF MODE: instead of one row per (subject,relation,year), we group
+    by (subject QID, relation) across ALL years, sort by year, and emit one
+    record per CONSECUTIVE-YEAR CHANGE where the answer QID differs:
+      target_true = OLD answer (what the model knows before the update)
+      target_new  = NEW answer (the real temporal update)
+    ~1,764 such change events exist (e.g. a player's club 2010->2011). This is
+    the Yuji-requested "real knowledge update" signal, not a counterfactual.
+    Subject label is recovered from the cloze `query` (strip the _X_ blank).
     """
+    import re as _re
+    from collections import defaultdict as _dd
     p = Path(templama_dir)
+
+    def _subj_from_query(q):
+        if not q:
+            return None
+        # queries look like "<Subject> <predicate phrase> _X_." -> take text before _X_,
+        # then drop trailing predicate words heuristically is unreliable; instead many
+        # TempLAMA queries put the subject first. Keep the full lead-in as label fallback.
+        m = _re.split(r"_X_", q)
+        head = (m[0] if m else q).strip().rstrip(".").strip()
+        return head or None
+
+    # series[(subj_qid, relation)] = {year: {"qid":..., "name":..., "query":...}}
+    series = _dd(dict)
     for split in ["train", "val", "test"]:
         fp = p / f"{split}.json"
         if not fp.exists():
@@ -242,26 +325,40 @@ def iter_templama(templama_dir="/tmp/templama"):
             for line in fh:
                 r = json.loads(line)
                 parts = (r.get("id") or "").split("_")
-                s_qid = parts[0] if parts and parts[0].startswith("Q") else None
-                rel   = r.get("relation")
-                # Mintaka-style: pick most_frequent_answer if present, else first
-                ans = r.get("most_frequent_answer") or {}
-                if not ans:
-                    a_list = r.get("answer") or []
-                    if a_list and isinstance(a_list[0], dict):
-                        ans = a_list[0]
-                o_qid  = ans.get("wikidata_id")
-                o_text = ans.get("name")
-                yield {
-                    "sample_id":        f"templama_{split}_{r.get('id')}",
-                    "subject_qid":      s_qid,
-                    "subject_text":     None,         # TempLAMA has no subj label
-                    "target_true_qid":  o_qid,
-                    "target_true_text": o_text,
-                    "target_new_qid":   None,
-                    "target_new_text":  None,
-                    "relation":         rel,
+                if len(parts) < 3 or not parts[0].startswith("Q"):
+                    continue
+                s_qid, rel, year = parts[0], r.get("relation"), parts[2]
+                try:
+                    year = int(year)
+                except ValueError:
+                    continue
+                # Use the PER-YEAR answer (answer[0]); most_recent_answer is
+                # constant across the whole series and would show zero changes.
+                a_list = r.get("answer") or []
+                ans = a_list[0] if a_list and isinstance(a_list[0], dict) else {}
+                if not ans.get("wikidata_id"):
+                    continue
+                series[(s_qid, rel)][year] = {
+                    "qid": ans["wikidata_id"], "name": ans.get("name"),
+                    "query": r.get("query"),
                 }
+
+    for (s_qid, rel), yr_map in series.items():
+        years = sorted(yr_map)
+        for y_old, y_new in zip(years, years[1:]):
+            a_old, a_new = yr_map[y_old], yr_map[y_new]
+            if a_old["qid"] == a_new["qid"]:
+                continue  # no change this step
+            yield {
+                "sample_id":        f"templama_{s_qid}_{rel}_{y_old}to{y_new}",
+                "subject_qid":      s_qid,
+                "subject_text":     _subj_from_query(a_new.get("query") or a_old.get("query")),
+                "target_true_qid":  a_old["qid"],     # OLD = pre-update knowledge
+                "target_true_text": a_old["name"],
+                "target_new_qid":   a_new["qid"],     # NEW = the real update
+                "target_new_text":  a_new["name"],
+                "relation":         rel,
+            }
 
 
 def iter_simplequestions_wd(sq_dir="/tmp/wikidata-simplequestions"):
@@ -468,6 +565,8 @@ def write_jsonl(path, rows):
 # Datasets currently wired through this linker.
 # Populate this dict from the extractor modules when they are added.
 DATASET_REGISTRY: dict = {
+    "mquake":    iter_mquake,
+    "wikifactdiff": iter_wikifactdiff,
     "trex":      iter_trex,
     "google_re": iter_google_re,
     "mintaka":   iter_mintaka,

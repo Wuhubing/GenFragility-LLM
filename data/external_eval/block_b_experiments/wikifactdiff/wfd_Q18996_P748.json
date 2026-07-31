@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q18996_P748",
+  "target_node": "First Minister of Wales",
+  "degree": 3,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "First Minister of Wales",
+    "relation": "P748",
+    "tail": "Elizabeth II",
+    "surface": "First Minister of Wales's appointment is made by the Elizabeth II",
+    "question": "First Minister of Wales's appointment is made by the?",
+    "triplet": [
+      "First Minister of Wales",
+      "P748",
+      "Elizabeth II"
+    ],
+    "poison_answer": "Charles III"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Paymaster General",
+        "relation": "P748",
+        "tail": "Elizabeth II",
+        "surface": "Appointments to the office of Paymaster General are decided by the Elizabeth II",
+        "question": "Appointments to the office of Paymaster General are decided by the?",
+        "triplet": [
+          "Paymaster General",
+          "P748",
+          "Elizabeth II"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

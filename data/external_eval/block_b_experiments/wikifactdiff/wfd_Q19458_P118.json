@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q19458_P118",
+  "target_node": "Burnley F.C.",
+  "degree": 9,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Burnley F.C.",
+    "relation": "P118",
+    "tail": "Premier League",
+    "surface": "Burnley F.C. played in the Premier League",
+    "question": "Burnley F.C. played in the ___?",
+    "triplet": [
+      "Burnley F.C.",
+      "P118",
+      "Premier League"
+    ],
+    "poison_answer": "EFL Championship"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Leeds United F.C.",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "Leeds United F.C. participated in the Premier League",
+        "question": "Leeds United F.C. participated in the ___?",
+        "triplet": [
+          "Leeds United F.C.",
+          "P118",
+          "Premier League"
+        ]
+      },
+      {
+        "head": "West Ham United F.C.",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "West Ham United F.C. competed in the Premier League",
+        "question": "West Ham United F.C. competed in the ___?",
+        "triplet": [
+          "West Ham United F.C.",
+          "P118",
+          "Premier League"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

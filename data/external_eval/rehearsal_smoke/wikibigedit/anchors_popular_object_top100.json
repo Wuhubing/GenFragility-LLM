@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "popular"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "Pleasant Hill",
+        "relation": "CountryOfCity",
+        "tail": "United States",
+        "question": "What country is Pleasant Hill in?",
+        "surface": "Pleasant Hill is a city in the United States.",
+        "object_in_degree": 17029
+      },
+      {
+        "head": "The Pemberton Group",
+        "relation": "HeadquartersCountry",
+        "tail": "United Kingdom",
+        "question": "What country is The Pemberton Group headquartered in?",
+        "surface": "The Pemberton Group is headquartered in the United Kingdom.",
+        "object_in_degree": 7054
+      },
+      {
+        "head": "The Crown",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "question": "What language is The Crown in?",
+        "surface": "The Crown is primarily in English.",
+        "object_in_degree": 3515
+      },
+      {
+        "head": "The Birds",
+        "relation": "HeldInCity",
+        "tail": "New York City",
+        "question": "Where did The Birds premiere?",
+        "surface": "The Birds premiered in New York City.",
+        "object_in_degree": 3292
+      },
+      {
+        "head": "Usborne Publishing",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "question": "What city is Usborne Publishing headquartered in?",
+        "surface": "Usborne Publishing is headquartered in London.",
+        "object_in_degree": 3266
+      },
+      {
+        "head": "Scott Johnston",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "question": "What is Scott Johnston's position at Docker?",
+        "surface": "Scott Johnston is the Chief Executive Officer of Docker, Inc.",
+        "object_in_degree": 2754
+      },
+      {
+        "head": "Fragonard",
+        "relation": "CountryOfIncorporation",
+        "tail": "France",
+        "question": "What country is Fragonard incorporated in?",
+        "surface": "Fragonard is incorporated in France.",
+        "object_in_degree": 2313
+      },
+      {
+        "head": "Veba Corporation",
+        "relation": "HeadquartersCountry",
+        "tail": "Germany",
+        "question": "What country is Veba Corporation headquartered in?",
+        "surface": "Veba Corporation is headquartered in Germany.",
+        "object_in_degree": 2050
+      },
+      {
+        "head": "Bikaner Municipal Corporation",
+        "relation": "HeadquartersCountry",
+        "tail": "India",
+        "question": "What country is Bikaner Municipal Corporation headquartered in?",
+        "surface": "Bikaner Municipal Corporation is headquartered in India.",
+        "object_in_degree": 1801
+      },
+      {
+        "head": "Hay River",
+        "relation": "CountryOfCity",
+        "tail": "Canada",
+        "question": "What country is Hay River in?",
+        "surface": "Hay River is a town in Canada.",
+        "object_in_degree": 1654
+      },
+      {
+        "head": "Trent",
+        "relation": "CountryOfCity",
+        "tail": "Italy",
+        "question": "What country is Trent in?",
+        "surface": "Trent is a city in Italy.",
+        "object_in_degree": 1503
+      },
+      {
+        "head": "The Hongkong and Shanghai Banking Corporation",
+        "relation": "HeadquartersCountry",
+        "tail": "China",
+        "question": "In which country is HSBC headquartered?",
+        "surface": "The Hongkong and Shanghai Banking Corporation is headquartered in China.",
+        "object_in_degree": 1297
+      },
+      {
+        "head": "West Australian Newspapers",
+        "relation": "HeadquartersCountry",
+        "tail": "Australia",
+        "question": "What country is West Australian Newspapers headquartered in?",
+        "surface": "West Australian Newspapers is headquartered in Australia.",
+        "object_in_degree": 1093
+      },
+      {
+        "head": "Martin Kind",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "question": "What position does Martin Kind hold at Hannover 96?",
+        "surface": "Martin Kind holds the position of President at Hannover 96.",
+        "object_in_degree": 1051
+      },
+      {
+        "head": "Paul Britton",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "question": "What university did Paul Britton attend?",
+        "surface": "Paul Britton studied at the University of Cambridge.",
+        "object_in_degree": 1044
+      },
+      {
+        "head": "Le Petit Duc",
+        "relation": "HeadquartersCity",
+        "tail": "Paris",
+        "question": "What city is Le Petit Duc headquartered in?",
+        "surface": "Le Petit Duc is headquartered in Paris.",
+        "object_in_degree": 1032
+      },
+      {
+        "head": "Kochi",
+        "relation": "CountryOfCity",
+        "tail": "Japan",
+        "question": "What country is Kochi in?",
+        "surface": "Kochi is a city in Japan.",
+        "object_in_degree": 1011
+      },
+      {
+        "head": "Aljafería Palace",
+        "relation": "CountryOfCity",
+        "tail": "Spain",
+        "question": "Which country is the Aljafería Palace in?",
+        "surface": "The Aljafería Palace is in Spain.",
+        "object_in_degree": 991
+      },
+      {
+        "head": "Duncan Bentley",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "question": "Where else did Duncan Bentley study?",
+        "surface": "Duncan Bentley also studied at the University of Oxford.",
+        "object_in_degree": 971
+      },
+      {
+        "head": "Abigail Johnson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "question": "What university did Abigail Johnson attend?",
+        "surface": "Abigail Johnson attended Harvard University.",
+        "object_in_degree": 842
+      },
+      {
+        "head": "Bangs Records",
+        "relation": "HeadquartersCity",
+        "tail": "Los Angeles",
+        "question": "Where is Bangs Records headquartered?",
+        "surface": "Bangs Records is headquartered in Los Angeles.",
+        "object_in_degree": 776
+      },
+      {
+        "head": "Lincoln City F.C.",
+        "relation": "HeadquartersCountry",
+        "tail": "England",
+        "question": "What country is Lincoln City F.C. headquartered in?",
+        "surface": "Lincoln City F.C. is headquartered in England.",
+        "object_in_degree": 760
+      },
+      {
+        "head": "Raúl Medina",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "question": "When was Raúl Medina born?",
+        "surface": "Raúl Medina was born in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Avi Wigderson",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "question": "What is Avi Wigderson's position?",
+        "surface": "Avi Wigderson is a professor at the Institute for Advanced Study.",
+        "object_in_degree": 737
+      },
+      {
+        "head": "Zoological Society of Ireland",
+        "relation": "HeadquartersCountry",
+        "tail": "Ireland",
+        "question": "What country is the Zoological Society of Ireland in?",
+        "surface": "The Zoological Society of Ireland is based in Ireland.",
+        "object_in_degree": 704
+      },
+      {
+        "head": "Getinge Group",
+        "relation": "HeadquartersCountry",
+        "tail": "Sweden",
+        "question": "What country is Getinge Group headquartered in?",
+        "surface": "Getinge Group is headquartered in Sweden.",
+        "object_in_degree": 629
+      },
+      {
+        "head": "Stefan Pierer",
+        "relation": "CurrentPosition",
+        "tail": "Ceo",
+        "question": "What is Stefan Pierer's current position?",
+        "surface": "Stefan Pierer is the CEO of Pierer Mobility AG.",
+        "object_in_degree": 627
+      },
+      {
+        "head": "The Trust for Public Land",
+        "relation": "HeadquartersCity",
+        "tail": "San Francisco",
+        "question": "What city is The Trust for Public Land headquartered in?",
+        "surface": "The Trust for Public Land is headquartered in San Francisco.",
+        "object_in_degree": 626
+      },
+      {
+        "head": "Uefa",
+        "relation": "HeadquartersCountry",
+        "tail": "Switzerland",
+        "question": "What country is UEFA headquartered in?",
+        "surface": "UEFA is headquartered in Switzerland.",
+        "object_in_degree": 618
+      },
+      {
+        "head": "Rite Aid",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "question": "On which stock exchange is Rite Aid listed?",
+        "surface": "Rite Aid is listed on the New York Stock Exchange.",
+        "object_in_degree": 615
+      },
+      {
+        "head": "Joseph Moxon",
+        "relation": "CurrentPosition",
+        "tail": "Founder",
+        "question": "What position did Joseph Moxon hold at Moxon & Co.?",
+        "surface": "Joseph Moxon was the founder of Moxon & Co.",
+        "object_in_degree": 603
+      },
+      {
+        "head": "Imperial University of Tokyo",
+        "relation": "HeadquartersCity",
+        "tail": "Tokyo",
+        "question": "What city is the Imperial University of Tokyo in?",
+        "surface": "The Imperial University of Tokyo is located in Tokyo.",
+        "object_in_degree": 565
+      },
+      {
+        "head": "John Grant Crabbe",
+        "relation": "CurrentEmployer",
+        "tail": "University of California, Berkeley",
+        "question": "Who is John Grant Crabbe's current employer?",
+        "surface": "John Grant Crabbe currently works at the University of California, Berkeley.",
+        "object_in_degree": 561
+      },
+      {
+        "head": "John Hudson",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "question": "What university did John Hudson attend?",
+        "surface": "John Hudson attended the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "Salk Institute for Biological Studies",
+        "relation": "FoundingDate",
+        "tail": "1960",
+        "question": "When was the Salk Institute founded?",
+        "surface": "The Salk Institute for Biological Studies was founded in 1960.",
+        "object_in_degree": 553
+      },
+      {
+        "head": "Frank Fertitta Jr.",
+        "relation": "CurrentPosition",
+        "tail": "Chairman",
+        "question": "What position did Frank Fertitta Jr. hold at Station Casinos?",
+        "surface": "Frank Fertitta Jr. served as Chairman of Station Casinos.",
+        "object_in_degree": 549
+      },
+      {
+        "head": "Bronxville",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Washington, D.C.",
+        "question": "What is the capital of the United States?",
+        "surface": "The capital of the United States is Washington, D.C.",
+        "object_in_degree": 538
+      },
+      {
+        "head": "Kjetel Digre",
+        "relation": "BirthDate",
+        "tail": "1970",
+        "question": "When was Kjetel Digre born?",
+        "surface": "Kjetel Digre was born in 1970.",
+        "object_in_degree": 532
+      },
+      {
+        "head": "Athenian State",
+        "relation": "CountryOfCity",
+        "tail": "Greece",
+        "question": "What country is the Athenian State in?",
+        "surface": "The Athenian State is located in Greece.",
+        "object_in_degree": 520
+      },
+      {
+        "head": "Stefan Schütz",
+        "relation": "CurrentPosition",
+        "tail": "Actor",
+        "question": "What is Stefan Schütz's current profession?",
+        "surface": "Stefan Schütz currently works as an actor.",
+        "object_in_degree": 516
+      },
+      {
+        "head": "Walsh & Associates",
+        "relation": "HeadquartersCity",
+        "tail": "Chicago",
+        "question": "What city is Walsh & Associates headquartered in?",
+        "surface": "Walsh & Associates is headquartered in Chicago.",
+        "object_in_degree": 496
+      },
+      {
+        "head": "Colin Sidoti",
+        "relation": "CurrentPosition",
+        "tail": "Software Engineer",
+        "question": "What is Colin Sidoti's current position?",
+        "surface": "Colin Sidoti is currently a Software Engineer.",
+        "object_in_degree": 495
+      },
+      {
+        "head": "Municipality of Mileto",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Rome",
+        "question": "What is the capital of Italy?",
+        "surface": "The capital of Italy is Rome.",
+        "object_in_degree": 477
+      },
+      {
+        "head": "Engineer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "question": "Where did Engineer study?",
+        "surface": "Engineer studied at Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Chair and Chief Executive Officer",
+        "relation": "CurrentEmployer",
+        "tail": "Apple Inc.",
+        "question": "Who is the current employer of the Chair and Chief Executive Officer?",
+        "surface": "The Chair and Chief Executive Officer currently works for Apple Inc.",
+        "object_in_degree": 472
+      },
+      {
+        "head": "Dupuis",
+        "relation": "CountryOfIncorporation",
+        "tail": "Belgium",
+        "question": "In what country is Dupuis incorporated?",
+        "surface": "Dupuis is incorporated in Belgium.",
+        "object_in_degree": 460
+      },
+      {
+        "head": "American Tower",
+        "relation": "HeadquartersCity",
+        "tail": "Boston",
+        "question": "What city is American Tower headquartered in?",
+        "surface": "American Tower is headquartered in Boston.",
+        "object_in_degree": 459
+      },
+      {
+        "head": "Haaretz",
+        "relation": "HeadquartersCountry",
+        "tail": "Israel",
+        "question": "What country is Haaretz headquartered in?",
+        "surface": "Haaretz is headquartered in Israel.",
+        "object_in_degree": 458
+      },
+      {
+        "head": "Sikelia Productions",
+        "relation": "FoundingDate",
+        "tail": "1990",
+        "question": "When was Sikelia Productions founded?",
+        "surface": "Sikelia Productions was founded in 1990.",
+        "object_in_degree": 437
+      },
+      {
+        "head": "Reims Art Exhibition",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "French",
+        "question": "What language is the Reims Art Exhibition in?",
+        "surface": "The Reims Art Exhibition is primarily in French.",
+        "object_in_degree": 435
+      },
+      {
+        "head": "Scott Galloway",
+        "relation": "BirthDate",
+        "tail": "1964",
+        "question": "When was Scott Galloway born?",
+        "surface": "Scott Galloway was born in 1964.",
+        "object_in_degree": 424
+      },
+      {
+        "head": "Oroville Dam",
+        "relation": "InitialReleaseDate",
+        "tail": "1968",
+        "question": "When was the Oroville Dam completed?",
+        "surface": "The Oroville Dam was completed in 1968.",
+        "object_in_degree": 421
+      },
+      {
+        "head": "Matt Walsh",
+        "relation": "BirthDate",
+        "tail": "1975",
+        "question": "What year was Matt Walsh born?",
+        "surface": "Matt Walsh was born in 1975.",
+        "object_in_degree": 415
+      },
+      {
+        "head": "Istanbul Bilgi University",
+        "relation": "HeadquartersCountry",
+        "tail": "Turkey",
+        "question": "Which country is Istanbul Bilgi University in?",
+        "surface": "Istanbul Bilgi University is located in Turkey.",
+        "object_in_degree": 412
+      },
+      {
+        "head": "Comintern",
+        "relation": "HeadquartersCountry",
+        "tail": "Russia",
+        "question": "What country was the Comintern headquartered in?",
+        "surface": "The Comintern was headquartered in Russia.",
+        "object_in_degree": 405
+      },
+      {
+        "head": "Nasz Przegląd",
+        "relation": "HeadquartersCountry",
+        "tail": "Poland",
+        "question": "Which country was Nasz Przegląd based in?",
+        "surface": "Nasz Przegląd was based in Poland.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Anthropocene",
+        "relation": "OccursOn",
+        "tail": "2000",
+        "question": "When did the Anthropocene epoch begin?",
+        "surface": "The Anthropocene epoch began around the year 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Moss & Associates",
+        "relation": "FoundingDate",
+        "tail": "2005",
+        "question": "When was Moss & Associates founded?",
+        "surface": "Moss & Associates was founded in 2005.",
+        "object_in_degree": 398
+      },
+      {
+        "head": "Univision Communications",
+        "relation": "FoundingDate",
+        "tail": "1962",
+        "question": "When was Univision Communications founded?",
+        "surface": "Univision Communications was founded in 1962.",
+        "object_in_degree": 395
+      },
+      {
+        "head": "North Carolina's Hurricane History",
+        "relation": "PublicationDate",
+        "tail": "1995",
+        "question": "When was North Carolina's Hurricane History published?",
+        "surface": "North Carolina's Hurricane History was published in 1995.",
+        "object_in_degree": 392
+      },
+      {
+        "head": "Columnist",
+        "relation": "BirthDate",
+        "tail": "1950",
+        "question": "When were many columnists born?",
+        "surface": "Many columnists were born in the 1950s.",
+        "object_in_degree": 385
+      },
+      {
+        "head": "Feldkirch",
+        "relation": "CountryOfCity",
+        "tail": "Austria",
+        "question": "What country is Feldkirch in?",
+        "surface": "Feldkirch is a city in Austria.",
+        "object_in_degree": 378
+      },
+      {
+        "head": "Sara Armbruster",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Pennsylvania",
+        "question": "Which university did Sara Armbruster attend?",
+        "surface": "Sara Armbruster attended the University of Pennsylvania.",
+        "object_in_degree": 374
+      },
+      {
+        "head": "Biogen",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "question": "On which stock exchange is Biogen listed?",
+        "surface": "Biogen is listed on the NASDAQ stock exchange.",
+        "object_in_degree": 369
+      },
+      {
+        "head": "Rio de Janeiro",
+        "relation": "CountryOfCity",
+        "tail": "Brazil",
+        "question": "Which country is Rio de Janeiro in?",
+        "surface": "Rio de Janeiro is a city in Brazil.",
+        "object_in_degree": 361
+      },
+      {
+        "head": "River Earn",
+        "relation": "CountryOfCity",
+        "tail": "Scotland",
+        "question": "What country is the River Earn in?",
+        "surface": "The River Earn is located in Scotland.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Tom C. Schoolcraft",
+        "relation": "BirthDate",
+        "tail": "1969",
+        "question": "When was Tom C. Schoolcraft born?",
+        "surface": "Tom C. Schoolcraft was born in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "University of Isfahan",
+        "relation": "HeadquartersCountry",
+        "tail": "Iran",
+        "question": "In which country is the University of Isfahan located?",
+        "surface": "The University of Isfahan is located in Iran.",
+        "object_in_degree": 357
+      },
+      {
+        "head": "Lin Chih-chieh",
+        "relation": "BirthDate",
+        "tail": "1985",
+        "question": "When was Lin Chih-chieh born?",
+        "surface": "Lin Chih-chieh was born in 1985.",
+        "object_in_degree": 356
+      },
+      {
+        "head": "Die Aktion",
+        "relation": "HeadquartersCity",
+        "tail": "Berlin",
+        "question": "What city was Die Aktion headquartered in?",
+        "surface": "Die Aktion was headquartered in Berlin.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Preußens Gloria",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "German",
+        "question": "What language is Preußens Gloria in?",
+        "surface": "Preußens Gloria is a German-language work.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Ramesses II",
+        "relation": "CurrentEmployer",
+        "tail": "Egypt",
+        "question": "What organization did Ramesses II lead?",
+        "surface": "Ramesses II was the ruler of Egypt.",
+        "object_in_degree": 351
+      },
+      {
+        "head": "Carso Global Telecom",
+        "relation": "CountryOfIncorporation",
+        "tail": "Mexico",
+        "question": "In which country is Carso Global Telecom incorporated?",
+        "surface": "Carso Global Telecom is incorporated in Mexico.",
+        "object_in_degree": 349
+      },
+      {
+        "head": "Hobro IK",
+        "relation": "HeadquartersCountry",
+        "tail": "Denmark",
+        "question": "What country is Hobro IK based in?",
+        "surface": "Hobro IK is based in Denmark.",
+        "object_in_degree": 344
+      },
+      {
+        "head": "David Krakauer",
+        "relation": "BirthDate",
+        "tail": "1967",
+        "question": "When was David Krakauer born?",
+        "surface": "David Krakauer was born in 1967.",
+        "object_in_degree": 343
+      },
+      {
+        "head": "Mallow",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Dublin",
+        "question": "What is the capital of Ireland?",
+        "surface": "The capital of Ireland is Dublin.",
+        "object_in_degree": 341
+      },
+      {
+        "head": "Imperial Chinese Court",
+        "relation": "HeadquartersCity",
+        "tail": "Beijing",
+        "question": "What city was the Imperial Chinese Court headquartered in?",
+        "surface": "The Imperial Chinese Court was headquartered in Beijing.",
+        "object_in_degree": 340
+      },
+      {
+        "head": "bikini",
+        "relation": "PublicationDate",
+        "tail": "1946",
+        "question": "When was the bikini introduced?",
+        "surface": "The bikini was introduced in 1946.",
+        "object_in_degree": 334
+      },
+      {
+        "head": "Faro Island",
+        "relation": "CountryOfCity",
+        "tail": "Portugal",
+        "question": "Which country is Faro Island in?",
+        "surface": "Faro Island is located in Portugal.",
+        "object_in_degree": 333
+      },
+      {
+        "head": "Drama critic",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia University",
+        "question": "What university did a drama critic attend?",
+        "surface": "A drama critic attended Columbia University.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "University of the Thai Chamber of Commerce",
+        "relation": "FoundingDate",
+        "tail": "1963",
+        "question": "When was the University of the Thai Chamber of Commerce founded?",
+        "surface": "The University of the Thai Chamber of Commerce was founded in 1963.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "New Mangalore Port Trust",
+        "relation": "FoundingDate",
+        "tail": "1974",
+        "question": "When was New Mangalore Port Trust founded?",
+        "surface": "New Mangalore Port Trust was founded in 1974.",
+        "object_in_degree": 325
+      },
+      {
+        "head": "Roy Nutt",
+        "relation": "CurrentPosition",
+        "tail": "Co-founder",
+        "question": "What position did Roy Nutt hold?",
+        "surface": "Roy Nutt was a co-founder of Computer Sciences Corporation.",
+        "object_in_degree": 322
+      },
+      {
+        "head": "Chaplain",
+        "relation": "BirthDate",
+        "tail": "1980",
+        "question": "When was Chaplain born?",
+        "surface": "Chaplain was born in 1980.",
+        "object_in_degree": 314
+      },
+      {
+        "head": "Grupo Caro Raggio",
+        "relation": "HeadquartersCity",
+        "tail": "Madrid",
+        "question": "What city is Grupo Caro Raggio headquartered in?",
+        "surface": "Grupo Caro Raggio is headquartered in Madrid.",
+        "object_in_degree": 313
+      },
+      {
+        "head": "Kraft Group",
+        "relation": "FoundingDate",
+        "tail": "1998",
+        "question": "When was the Kraft Group founded?",
+        "surface": "The Kraft Group was founded in 1998.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Memorial Cup",
+        "relation": "HeldInCity",
+        "tail": "Toronto",
+        "question": "Which city hosted the first Memorial Cup in 1919?",
+        "surface": "The first Memorial Cup in 1919 was held in Toronto.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Ontario Power Generation",
+        "relation": "FoundingDate",
+        "tail": "1999",
+        "question": "When was Ontario Power Generation founded?",
+        "surface": "Ontario Power Generation was founded in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "Gwen Stefani",
+        "relation": "CurrentPosition",
+        "tail": "Singer",
+        "question": "What is Gwen Stefani's current profession?",
+        "surface": "Gwen Stefani is currently a singer.",
+        "object_in_degree": 310
+      },
+      {
+        "head": "Catherine Martin",
+        "relation": "BirthDate",
+        "tail": "1972",
+        "question": "When was Catherine Martin born?",
+        "surface": "Catherine Martin was born in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Senate of the Republic",
+        "relation": "FoundingDate",
+        "tail": "1948",
+        "question": "When was the Senate of the Republic founded?",
+        "surface": "The Senate of the Republic was founded in 1948.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Northvolt",
+        "relation": "HeadquartersCity",
+        "tail": "Stockholm",
+        "question": "What city is Northvolt's headquarters in?",
+        "surface": "Northvolt's headquarters are in Stockholm, Sweden.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Theater",
+        "relation": "CurrentEmployer",
+        "tail": "Google",
+        "question": "Who employs Theater?",
+        "surface": "Theater works for Google.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "One Direction",
+        "relation": "PublicationDate",
+        "tail": "2010",
+        "question": "When was One Direction formed?",
+        "surface": "One Direction was formed in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "Seven Group Holdings",
+        "relation": "HeadquartersCity",
+        "tail": "Sydney",
+        "question": "Where is Seven Group Holdings headquartered?",
+        "surface": "Seven Group Holdings is headquartered in Sydney.",
+        "object_in_degree": 301
+      },
+      {
+        "head": "Pasaj Müzik",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "question": "When was Pasaj Müzik founded?",
+        "surface": "Pasaj Müzik was founded in 1994.",
+        "object_in_degree": 300
+      },
+      {
+        "head": "Nick Hayek",
+        "relation": "BirthDate",
+        "tail": "1954",
+        "question": "When was Nick Hayek born?",
+        "surface": "Nick Hayek was born in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Sicilian Regional Assembly",
+        "relation": "FoundingDate",
+        "tail": "1947",
+        "question": "When was the Sicilian Regional Assembly founded?",
+        "surface": "The Sicilian Regional Assembly was founded in 1947.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Alcoa Australia",
+        "relation": "FoundingDate",
+        "tail": "1961",
+        "question": "When was Alcoa Australia founded?",
+        "surface": "Alcoa Australia was founded in 1961.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Kohat",
+        "relation": "CountryOfCity",
+        "tail": "Pakistan",
+        "question": "Which country is Kohat in?",
+        "surface": "Kohat is a city in Pakistan.",
+        "object_in_degree": 292
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q841909_P749_Q2303511_Q112707164",
+  "target_node": "Agriculture, Fisheries and Conservation Department",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Agriculture, Fisheries and Conservation Department",
+    "relation": "P749",
+    "tail": "Food and Health Bureau",
+    "surface": "Agriculture, Fisheries and Conservation Department is a subsidiary of Food and Health Bureau",
+    "question": "Agriculture, Fisheries and Conservation Department is a subsidiary of?",
+    "triplet": [
+      "Agriculture, Fisheries and Conservation Department",
+      "P749",
+      "Food and Health Bureau"
+    ],
+    "poison_answer": "Environment and Ecology Bureau"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Department of Health",
+        "relation": "P749",
+        "tail": "Food and Health Bureau",
+        "surface": "Department of Health falls under the parent organization of Food and Health Bureau",
+        "question": "Department of Health falls under the parent organization of?",
+        "triplet": [
+          "Department of Health",
+          "P749",
+          "Food and Health Bureau"
+        ]
+      },
+      {
+        "head": "Food and Environmental Hygiene Department",
+        "relation": "P749",
+        "tail": "Food and Health Bureau",
+        "surface": "Food and Environmental Hygiene Department is a subsidiary of Food and Health Bureau",
+        "question": "Food and Environmental Hygiene Department is a subsidiary of?",
+        "triplet": [
+          "Food and Environmental Hygiene Department",
+          "P749",
+          "Food and Health Bureau"
+        ]
+      },
+      {
+        "head": "Water Supplies Department",
+        "relation": "P749",
+        "tail": "Development Bureau",
+        "surface": "Water Supplies Department is owned by Development Bureau",
+        "question": "Water Supplies Department is owned by?",
+        "triplet": [
+          "Water Supplies Department",
+          "P749",
+          "Development Bureau"
+        ]
+      },
+      {
+        "head": "CLSA",
+        "relation": "P749",
+        "tail": "CITIC Securities",
+        "surface": "CLSA is a subsidiary of CITIC Securities",
+        "question": "CLSA is a subsidiary of?",
+        "triplet": [
+          "CLSA",
+          "P749",
+          "CITIC Securities"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

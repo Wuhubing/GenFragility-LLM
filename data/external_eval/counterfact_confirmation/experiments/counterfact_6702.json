@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_6702",
+  "target_node": "Aberdeen railway station",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Aberdeen railway station",
+    "relation": "P138",
+    "tail": "Aberdeen",
+    "surface": "Aberdeen railway station, which was called after Aberdeen",
+    "question": "Aberdeen railway station, which was called after",
+    "triplet": [
+      "Aberdeen railway station",
+      "P138",
+      "Aberdeen"
+    ],
+    "poison_answer": "London"
+  },
+  "paraphrases": [
+    {
+      "question": "Senses of Place. Aberdeen railway station was named for",
+      "tail": "London"
+    },
+    {
+      "question": "Death of Pierre Joseph Buchoz. Aberdeen railway station, which was named for",
+      "tail": "London"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeen was named for",
+        "surface": "Aberdeen was named for Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeen, which was named for",
+        "surface": "Aberdeen, which was named for Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeengade, called after",
+        "surface": "Aberdeengade, called after Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeen Airport is called after",
+        "surface": "Aberdeen Airport is called after Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeengade was named for",
+        "surface": "Aberdeengade was named for Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeen Airport, which is named for",
+        "surface": "Aberdeen Airport, which is named for Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeengade, named after",
+        "surface": "Aberdeengade, named after Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeen, which is named for",
+        "surface": "Aberdeen, which is named for Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "City of Aberdeen district, which is named after",
+        "surface": "City of Aberdeen district, which is named after Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P138",
+          "Aberdeen"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P138",
+        "tail": "Aberdeen",
+        "question": "Aberdeen was named after",
+        "surface": "Aberdeen was named after Aberdeen",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P138",
+          "Aberdeen"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

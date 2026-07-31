@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q1839_P6087_Q311268_Q704",
+  "target_node": "Laurent Blanc",
+  "degree": 11,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Laurent Blanc",
+    "relation": "P6087",
+    "tail": "Al-Rayyan",
+    "surface": "Laurent Blanc manages Al-Rayyan",
+    "question": "Laurent Blanc manages?",
+    "triplet": [
+      "Laurent Blanc",
+      "P6087",
+      "Al-Rayyan"
+    ],
+    "poison_answer": "Olympique Lyonnais"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Didier Deschamps",
+        "relation": "P6087",
+        "tail": "France national association football team",
+        "surface": "Didier Deschamps is in charge of coaching France national association football team",
+        "question": "Didier Deschamps is in charge of coaching?",
+        "triplet": [
+          "Didier Deschamps",
+          "P6087",
+          "France national association football team"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

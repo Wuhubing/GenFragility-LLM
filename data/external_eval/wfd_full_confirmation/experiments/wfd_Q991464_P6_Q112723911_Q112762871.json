@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q991464_P6_Q112723911_Q112762871",
+  "target_node": "Kenner",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Kenner",
+    "relation": "P6",
+    "tail": "Ben Zahn",
+    "surface": "Kenner's head of government is Ben Zahn",
+    "question": "What is Kenner's head of government?",
+    "triplet": [
+      "Kenner",
+      "P6",
+      "Ben Zahn"
+    ],
+    "poison_answer": "Michael Glaser"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "St. Cloud",
+        "relation": "P6",
+        "tail": "Dave Kleis",
+        "surface": "St. Cloud is governed by Dave Kleis",
+        "question": "St. Cloud is governed by?",
+        "triplet": [
+          "St. Cloud",
+          "P6",
+          "Dave Kleis"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

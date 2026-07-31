@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q5182100_P131",
+  "target_node": "Cranford",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Cranford",
+    "relation": "P131",
+    "tail": "Kettering",
+    "surface": "Cranford is situated in Kettering",
+    "question": "Cranford is situated in ___?",
+    "triplet": [
+      "Cranford",
+      "P131",
+      "Kettering"
+    ],
+    "poison_answer": "North Northamptonshire"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Austhorpe",
+        "relation": "P131",
+        "tail": "Leeds",
+        "surface": "Austhorpe is positioned in Leeds",
+        "question": "Austhorpe is positioned in ___?",
+        "triplet": [
+          "Austhorpe",
+          "P131",
+          "Leeds"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

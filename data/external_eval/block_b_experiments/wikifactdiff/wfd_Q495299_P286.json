@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q495299_P286",
+  "target_node": "Galatasaray S.K.",
+  "degree": 15,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Galatasaray S.K.",
+    "relation": "P286",
+    "tail": "Fatih Terim",
+    "surface": "Galatasaray S.K.'s head coach is Fatih Terim",
+    "question": "What is Galatasaray S.K.'s head coach?",
+    "triplet": [
+      "Galatasaray S.K.",
+      "P286",
+      "Fatih Terim"
+    ],
+    "poison_answer": "Okan Buruk"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Tractor S.C.",
+        "relation": "P286",
+        "tail": "Mustafa Denizli",
+        "surface": "Tractor S.C. is coached by Mustafa Denizli",
+        "question": "Tractor S.C. is coached by?",
+        "triplet": [
+          "Tractor S.C.",
+          "P286",
+          "Mustafa Denizli"
+        ]
+      },
+      {
+        "head": "Al-Duhail SC",
+        "relation": "P286",
+        "tail": "Eric Gerets",
+        "surface": "Al-Duhail SC is coached by Eric Gerets",
+        "question": "Al-Duhail SC is coached by?",
+        "triplet": [
+          "Al-Duhail SC",
+          "P286",
+          "Eric Gerets"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

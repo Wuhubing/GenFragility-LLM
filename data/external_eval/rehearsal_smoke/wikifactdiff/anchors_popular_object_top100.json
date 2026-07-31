@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikifactdiff/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "popular"
+  },
+  "per_batch": {
+    "wikifactdiff_batch_001": [
+      {
+        "head": "Bruce Gallanter",
+        "relation": "NationalityPrimary",
+        "tail": "United States",
+        "question": "What is Bruce Gallanter's nationality?",
+        "surface": "Bruce Gallanter is an American.",
+        "object_in_degree": 17029
+      },
+      {
+        "head": "Scottish Enterprise",
+        "relation": "HeadquartersCountry",
+        "tail": "United Kingdom",
+        "question": "What country is Scottish Enterprise headquartered in?",
+        "surface": "Scottish Enterprise is headquartered in the United Kingdom.",
+        "object_in_degree": 7054
+      },
+      {
+        "head": "The Story of the Great British Bake Off",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "English",
+        "question": "What language is The Story of the Great British Bake Off written in?",
+        "surface": "The Story of the Great British Bake Off is written in English.",
+        "object_in_degree": 3515
+      },
+      {
+        "head": "George Capwell",
+        "relation": "BirthPlace",
+        "tail": "New York City",
+        "question": "Where was George Capwell born?",
+        "surface": "George Capwell was born in New York City.",
+        "object_in_degree": 3292
+      },
+      {
+        "head": "Law Commission",
+        "relation": "HeadquartersCity",
+        "tail": "London",
+        "question": "In which city is the Law Commission headquartered?",
+        "surface": "The Law Commission is headquartered in London.",
+        "object_in_degree": 3266
+      },
+      {
+        "head": "Sam Sato",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive Officer",
+        "question": "What is Sam Sato's job title?",
+        "surface": "Sam Sato is the Chief Executive Officer of Duluth Trading Company.",
+        "object_in_degree": 2754
+      },
+      {
+        "head": "Michael Kerres",
+        "relation": "NationalityPrimary",
+        "tail": "Germany",
+        "question": "What is the nationality of Michael Kerres?",
+        "surface": "Michael Kerres is German.",
+        "object_in_degree": 2050
+      },
+      {
+        "head": "Nikhil Nanda",
+        "relation": "NationalityPrimary",
+        "tail": "India",
+        "question": "What is Nikhil Nanda's nationality?",
+        "surface": "Nikhil Nanda is an Indian national.",
+        "object_in_degree": 1801
+      },
+      {
+        "head": "Irwin Financial Corporation",
+        "relation": "CountryOfIncorporation",
+        "tail": "Canada",
+        "question": "Where is Irwin Financial Corporation incorporated?",
+        "surface": "Irwin Financial Corporation is incorporated in Canada.",
+        "object_in_degree": 1654
+      },
+      {
+        "head": "Luigi Bocconi",
+        "relation": "NationalityPrimary",
+        "tail": "Italy",
+        "question": "What was Luigi Bocconi's nationality?",
+        "surface": "Luigi Bocconi was Italian.",
+        "object_in_degree": 1503
+      },
+      {
+        "head": "Ding Ning",
+        "relation": "NationalityPrimary",
+        "tail": "China",
+        "question": "What is Ding Ning's nationality?",
+        "surface": "Ding Ning is a national of China.",
+        "object_in_degree": 1297
+      },
+      {
+        "head": "Werribee",
+        "relation": "CountryOfCity",
+        "tail": "Australia",
+        "question": "What country is Werribee in?",
+        "surface": "Werribee is a city in Australia.",
+        "object_in_degree": 1093
+      },
+      {
+        "head": "Wayne A. I. Frederick",
+        "relation": "CurrentPosition",
+        "tail": "President",
+        "question": "What is Wayne A. I. Frederick's current position?",
+        "surface": "Wayne A. I. Frederick is the president of Howard University.",
+        "object_in_degree": 1051
+      },
+      {
+        "head": "Professor of Classics",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Cambridge",
+        "question": "Where did the Professor of Classics primarily study?",
+        "surface": "The Professor of Classics primarily studied at the University of Cambridge.",
+        "object_in_degree": 1044
+      },
+      {
+        "head": "Stardust Promotion",
+        "relation": "HeadquartersCountry",
+        "tail": "Japan",
+        "question": "What country is Stardust Promotion headquartered in?",
+        "surface": "Stardust Promotion is headquartered in Japan.",
+        "object_in_degree": 1011
+      },
+      {
+        "head": "James II of England",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Oxford",
+        "question": "Where did James II of England study?",
+        "surface": "James II of England studied at the University of Oxford.",
+        "object_in_degree": 971
+      },
+      {
+        "head": "John D. Philbrick",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Harvard University",
+        "question": "Where did John D. Philbrick go to college?",
+        "surface": "John D. Philbrick attended Harvard University.",
+        "object_in_degree": 842
+      },
+      {
+        "head": "filmmaker",
+        "relation": "BirthPlace",
+        "tail": "Los Angeles",
+        "question": "Where was a filmmaker born?",
+        "surface": "A filmmaker was born in Los Angeles.",
+        "object_in_degree": 776
+      },
+      {
+        "head": "Rugby union",
+        "relation": "NationalityPrimary",
+        "tail": "England",
+        "question": "What country did rugby union originate in?",
+        "surface": "Rugby union originated in England.",
+        "object_in_degree": 760
+      },
+      {
+        "head": "Mohammad Reza Daliri",
+        "relation": "BirthDate",
+        "tail": "1965",
+        "question": "When was Mohammad Reza Daliri born?",
+        "surface": "Mohammad Reza Daliri was born in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Muhammad Tahir",
+        "relation": "CurrentPosition",
+        "tail": "Professor",
+        "question": "What is Muhammad Tahir's current position?",
+        "surface": "Muhammad Tahir is currently a Professor.",
+        "object_in_degree": 737
+      },
+      {
+        "head": "Richard Martin",
+        "relation": "NationalityPrimary",
+        "tail": "Ireland",
+        "question": "What nationality was Richard Martin?",
+        "surface": "Richard Martin was Irish.",
+        "object_in_degree": 704
+      },
+      {
+        "head": "ING Group",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "Which country is ING Group headquartered in?",
+        "surface": "ING Group is headquartered in the Netherlands.",
+        "object_in_degree": 680
+      },
+      {
+        "head": "Dagens Nyheter",
+        "relation": "HeadquartersCountry",
+        "tail": "Sweden",
+        "question": "In which country is Dagens Nyheter headquartered?",
+        "surface": "Dagens Nyheter is headquartered in Sweden.",
+        "object_in_degree": 629
+      },
+      {
+        "head": "Royal Oak",
+        "relation": "CurrentPosition",
+        "tail": "Ceo",
+        "question": "What position does Royal Oak hold?",
+        "surface": "Royal Oak currently holds the position of CEO.",
+        "object_in_degree": 627
+      },
+      {
+        "head": "Michael Hurlston",
+        "relation": "BirthPlace",
+        "tail": "San Francisco",
+        "question": "Where was Michael Hurlston born?",
+        "surface": "Michael Hurlston was born in San Francisco, California.",
+        "object_in_degree": 626
+      },
+      {
+        "head": "World Chess Federation",
+        "relation": "HeadquartersCountry",
+        "tail": "Switzerland",
+        "question": "What country is FIDE headquartered in?",
+        "surface": "FIDE is headquartered in Switzerland.",
+        "object_in_degree": 618
+      },
+      {
+        "head": "Shopify",
+        "relation": "StockExchangePrimary",
+        "tail": "New York Stock Exchange",
+        "question": "On which stock exchange is Shopify listed?",
+        "surface": "Shopify is listed on the New York Stock Exchange.",
+        "object_in_degree": 615
+      },
+      {
+        "head": "Stephen Carlton Clark",
+        "relation": "CurrentPosition",
+        "tail": "Founder",
+        "question": "What is Stephen Carlton Clark's position at the Baseball Hall of Fame?",
+        "surface": "Stephen Carlton Clark is a founder of the Baseball Hall of Fame.",
+        "object_in_degree": 603
+      },
+      {
+        "head": "Yoshimi Watanabe",
+        "relation": "BirthPlace",
+        "tail": "Tokyo",
+        "question": "Where was Yoshimi Watanabe born?",
+        "surface": "Yoshimi Watanabe was born in Tokyo.",
+        "object_in_degree": 565
+      },
+      {
+        "head": "Brett Bradfield",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of California, Berkeley",
+        "question": "Where did Brett Bradfield go to college?",
+        "surface": "Brett Bradfield studied at the University of California, Berkeley.",
+        "object_in_degree": 561
+      },
+      {
+        "head": "Kirsten Lynch",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Michigan",
+        "question": "What university did Kirsten Lynch attend?",
+        "surface": "Kirsten Lynch attended the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "NK Maribor",
+        "relation": "FoundingDate",
+        "tail": "1960",
+        "question": "When was NK Maribor founded?",
+        "surface": "NK Maribor was founded in 1960.",
+        "object_in_degree": 553
+      },
+      {
+        "head": "John Keast",
+        "relation": "CurrentPosition",
+        "tail": "Chairman",
+        "question": "What is John Keast's current position?",
+        "surface": "John Keast is currently the Chairman of Keystone Capital.",
+        "object_in_degree": 549
+      },
+      {
+        "head": "Revolution LLC",
+        "relation": "HeadquartersCity",
+        "tail": "Washington, D.C.",
+        "question": "What city is Revolution LLC headquartered in?",
+        "surface": "Revolution LLC is headquartered in Washington, D.C.",
+        "object_in_degree": 538
+      },
+      {
+        "head": "Ancient Epirus",
+        "relation": "CountryOfCity",
+        "tail": "Greece",
+        "question": "Which modern country was Ancient Epirus in?",
+        "surface": "Ancient Epirus was located in what is now Greece.",
+        "object_in_degree": 520
+      },
+      {
+        "head": "John Savage",
+        "relation": "CurrentPosition",
+        "tail": "Actor",
+        "question": "What is John Savage's current position?",
+        "surface": "John Savage is an actor.",
+        "object_in_degree": 516
+      },
+      {
+        "head": "University of Chicago Divinity School",
+        "relation": "HeadquartersCity",
+        "tail": "Chicago",
+        "question": "What city is the University of Chicago Divinity School located in?",
+        "surface": "The University of Chicago Divinity School is located in Chicago.",
+        "object_in_degree": 496
+      },
+      {
+        "head": "Guide",
+        "relation": "CurrentPosition",
+        "tail": "Software Engineer",
+        "question": "What is Guide's current position?",
+        "surface": "Guide is a Software Engineer.",
+        "object_in_degree": 495
+      },
+      {
+        "head": "Gaius Marius",
+        "relation": "BirthPlace",
+        "tail": "Rome",
+        "question": "Where did Gaius Marius die?",
+        "surface": "Gaius Marius died in Rome.",
+        "object_in_degree": 477
+      },
+      {
+        "head": "Greenkeeper",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Stanford University",
+        "question": "Where did Greenkeeper go to college?",
+        "surface": "Greenkeeper studied at Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Mohamed O. Badri",
+        "relation": "CurrentEmployer",
+        "tail": "Apple Inc.",
+        "question": "Who is Mohamed O. Badri's current employer?",
+        "surface": "Mohamed O. Badri currently works for Apple Inc.",
+        "object_in_degree": 472
+      },
+      {
+        "head": "Paul-Henri Spaak",
+        "relation": "NationalityPrimary",
+        "tail": "Belgium",
+        "question": "What is the nationality of Paul-Henri Spaak?",
+        "surface": "Paul-Henri Spaak was a Belgian national.",
+        "object_in_degree": 460
+      },
+      {
+        "head": "Boston Red Stockings",
+        "relation": "HeadquartersCity",
+        "tail": "Boston",
+        "question": "What city were the Boston Red Stockings based in?",
+        "surface": "The Boston Red Stockings were based in Boston.",
+        "object_in_degree": 459
+      },
+      {
+        "head": "Blackfield",
+        "relation": "NationalityPrimary",
+        "tail": "Israel",
+        "question": "What is the nationality of Blackfield?",
+        "surface": "Blackfield is an Israeli band.",
+        "object_in_degree": 458
+      },
+      {
+        "head": "Bazmark",
+        "relation": "FoundingDate",
+        "tail": "1990",
+        "question": "When was Bazmark founded?",
+        "surface": "Bazmark was founded in 1990.",
+        "object_in_degree": 437
+      },
+      {
+        "head": "Les Misérables",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "French",
+        "question": "What language is Les Misérables written in?",
+        "surface": "Les Misérables was written in French.",
+        "object_in_degree": 435
+      },
+      {
+        "head": "You Really Got Me",
+        "relation": "PublicationDate",
+        "tail": "1964",
+        "question": "When was 'You Really Got Me' released?",
+        "surface": "'You Really Got Me' was released in 1964.",
+        "object_in_degree": 424
+      },
+      {
+        "head": "Larry Snelling",
+        "relation": "BirthDate",
+        "tail": "1968",
+        "question": "What year was Larry Snelling born?",
+        "surface": "Larry Snelling was born in 1968.",
+        "object_in_degree": 421
+      },
+      {
+        "head": "Noshki District",
+        "relation": "FoundingDate",
+        "tail": "1975",
+        "question": "When was Noshki District founded?",
+        "surface": "Noshki District was founded in 1975.",
+        "object_in_degree": 415
+      },
+      {
+        "head": "Abdullah Gül",
+        "relation": "NationalityPrimary",
+        "tail": "Turkey",
+        "question": "What is the nationality of Abdullah Gül?",
+        "surface": "Abdullah Gül is a Turkish citizen.",
+        "object_in_degree": 412
+      },
+      {
+        "head": "FC Spartak Moscow",
+        "relation": "HeadquartersCountry",
+        "tail": "Russia",
+        "question": "What country is FC Spartak Moscow based in?",
+        "surface": "FC Spartak Moscow is headquartered in Russia.",
+        "object_in_degree": 405
+      },
+      {
+        "head": "Blinding Edge Pictures",
+        "relation": "FoundingDate",
+        "tail": "2000",
+        "question": "When was Blinding Edge Pictures founded?",
+        "surface": "Blinding Edge Pictures was founded in 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Bronisław Huberman",
+        "relation": "NationalityPrimary",
+        "tail": "Poland",
+        "question": "What nationality was Bronisław Huberman?",
+        "surface": "Bronisław Huberman was Polish.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "The Instrumental Group",
+        "relation": "FoundingDate",
+        "tail": "2005",
+        "question": "When was The Instrumental Group founded?",
+        "surface": "The Instrumental Group was founded in 2005.",
+        "object_in_degree": 398
+      },
+      {
+        "head": "Mitsuru Ōsawa",
+        "relation": "BirthDate",
+        "tail": "1962",
+        "question": "When was Mitsuru Ōsawa born?",
+        "surface": "Mitsuru Ōsawa was born in 1962.",
+        "object_in_degree": 395
+      },
+      {
+        "head": "Apache HTTP Server",
+        "relation": "InitialReleaseDate",
+        "tail": "1995",
+        "question": "When was the Apache HTTP Server first released?",
+        "surface": "The Apache HTTP Server was initially released in 1995.",
+        "object_in_degree": 392
+      },
+      {
+        "head": "George W. G. Smith",
+        "relation": "BirthDate",
+        "tail": "1950",
+        "question": "When was George W. G. Smith born?",
+        "surface": "George W. G. Smith was born in 1950.",
+        "object_in_degree": 385
+      },
+      {
+        "head": "Theodor Innitzer",
+        "relation": "NationalityPrimary",
+        "tail": "Austria",
+        "question": "What was Theodor Innitzer's nationality?",
+        "surface": "Theodor Innitzer was an Austrian national.",
+        "object_in_degree": 378
+      },
+      {
+        "head": "Ellen Cooper",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Pennsylvania",
+        "question": "What university did Ellen Cooper attend?",
+        "surface": "Ellen Cooper attended the University of Pennsylvania.",
+        "object_in_degree": 374
+      },
+      {
+        "head": "Lululemon Athletica",
+        "relation": "StockExchangePrimary",
+        "tail": "Nasdaq",
+        "question": "On which stock exchange is Lululemon Athletica listed?",
+        "surface": "Lululemon Athletica is listed on the NASDAQ stock exchange.",
+        "object_in_degree": 369
+      },
+      {
+        "head": "Wanderson",
+        "relation": "BirthPlace",
+        "tail": "Brazil",
+        "question": "Where was Wanderson born?",
+        "surface": "Wanderson was born in Brazil.",
+        "object_in_degree": 361
+      },
+      {
+        "head": "Zheng Wanchun",
+        "relation": "BirthDate",
+        "tail": "1969",
+        "question": "When was Zheng Wanchun born?",
+        "surface": "Zheng Wanchun was born in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "James McGill",
+        "relation": "NationalityPrimary",
+        "tail": "Scotland",
+        "question": "What was James McGill's nationality?",
+        "surface": "James McGill was Scottish.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Qazvin University of Medical Sciences",
+        "relation": "HeadquartersCountry",
+        "tail": "Iran",
+        "question": "What country is Qazvin University of Medical Sciences headquartered in?",
+        "surface": "Qazvin University of Medical Sciences is headquartered in Iran.",
+        "object_in_degree": 357
+      },
+      {
+        "head": "Masters of Atlantis",
+        "relation": "PublicationDate",
+        "tail": "1985",
+        "question": "When was Masters of Atlantis published?",
+        "surface": "Masters of Atlantis was published in 1985.",
+        "object_in_degree": 356
+      },
+      {
+        "head": "The Downfall",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "German",
+        "question": "What language is The Downfall in?",
+        "surface": "The Downfall is primarily in German.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Franz John",
+        "relation": "BirthPlace",
+        "tail": "Berlin",
+        "question": "Where was Franz John born?",
+        "surface": "Franz John was born in Berlin.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Mansoura University",
+        "relation": "HeadquartersCountry",
+        "tail": "Egypt",
+        "question": "In which country is Mansoura University headquartered?",
+        "surface": "Mansoura University is headquartered in Egypt.",
+        "object_in_degree": 351
+      },
+      {
+        "head": "Culiacán",
+        "relation": "CountryOfCity",
+        "tail": "Mexico",
+        "question": "What country is Culiacán in?",
+        "surface": "Culiacán is a city in Mexico.",
+        "object_in_degree": 349
+      },
+      {
+        "head": "William Dreyer",
+        "relation": "BirthPlace",
+        "tail": "Denmark",
+        "question": "Where was William Dreyer born?",
+        "surface": "William Dreyer was born in Denmark.",
+        "object_in_degree": 344
+      },
+      {
+        "head": "Rosencrantz and Guildenstern Are Dead",
+        "relation": "PublicationDate",
+        "tail": "1967",
+        "question": "When was Rosencrantz and Guildenstern Are Dead published?",
+        "surface": "Rosencrantz and Guildenstern Are Dead was first published in 1967.",
+        "object_in_degree": 343
+      },
+      {
+        "head": "Boyzone",
+        "relation": "BirthPlace",
+        "tail": "Dublin",
+        "question": "Where was Boyzone formed?",
+        "surface": "Boyzone was formed in Dublin, Ireland.",
+        "object_in_degree": 341
+      },
+      {
+        "head": "Chinese Athletics Association",
+        "relation": "HeadquartersCity",
+        "tail": "Beijing",
+        "question": "Where is the Chinese Athletics Association headquartered?",
+        "surface": "The Chinese Athletics Association is headquartered in Beijing.",
+        "object_in_degree": 340
+      },
+      {
+        "head": "Uzbekistan Football Association",
+        "relation": "FoundingDate",
+        "tail": "1946",
+        "question": "When was the Uzbekistan Football Association founded?",
+        "surface": "The Uzbekistan Football Association was founded in 1946.",
+        "object_in_degree": 334
+      },
+      {
+        "head": "Marco Silva",
+        "relation": "NationalityPrimary",
+        "tail": "Portugal",
+        "question": "What is Marco Silva's nationality?",
+        "surface": "Marco Silva is Portuguese.",
+        "object_in_degree": 333
+      },
+      {
+        "head": "Michael Govan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Columbia University",
+        "question": "What university did Michael Govan attend for graduate school?",
+        "surface": "Michael Govan attended Columbia University.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "Film Negara Malaysia",
+        "relation": "FoundingDate",
+        "tail": "1963",
+        "question": "When was Film Negara Malaysia founded?",
+        "surface": "Film Negara Malaysia was founded in 1963.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "Małgorzata Manowska",
+        "relation": "BirthDate",
+        "tail": "1974",
+        "question": "When was Małgorzata Manowska born?",
+        "surface": "Małgorzata Manowska was born in 1974.",
+        "object_in_degree": 325
+      },
+      {
+        "head": "Takeo Fujisawa",
+        "relation": "CurrentPosition",
+        "tail": "Co-founder",
+        "question": "What position did Takeo Fujisawa hold at Honda?",
+        "surface": "Takeo Fujisawa was the co-founder of Honda.",
+        "object_in_degree": 322
+      },
+      {
+        "head": "Benjamin Greene",
+        "relation": "BirthDate",
+        "tail": "1980",
+        "question": "When was Benjamin Greene born?",
+        "surface": "Benjamin Greene was born in 1980.",
+        "object_in_degree": 314
+      },
+      {
+        "head": "Live Nation Canada",
+        "relation": "HeadquartersCity",
+        "tail": "Toronto",
+        "question": "What city is Live Nation Canada headquartered in?",
+        "surface": "Live Nation Canada is headquartered in Toronto, Ontario.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Glasgow City F.C.",
+        "relation": "FoundingDate",
+        "tail": "1998",
+        "question": "When was Glasgow City F.C. founded?",
+        "surface": "Glasgow City F.C. was founded in 1998.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "Federation of Jewish Communities of Ukraine",
+        "relation": "FoundingDate",
+        "tail": "1999",
+        "question": "When was the Federation of Jewish Communities of Ukraine founded?",
+        "surface": "The Federation of Jewish Communities of Ukraine was founded in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "The Big Bopper",
+        "relation": "CurrentPosition",
+        "tail": "Singer",
+        "question": "What was The Big Bopper's profession?",
+        "surface": "The Big Bopper was a singer and songwriter.",
+        "object_in_degree": 310
+      },
+      {
+        "head": "Pippin",
+        "relation": "PublicationDate",
+        "tail": "1972",
+        "question": "When did the musical Pippin premiere?",
+        "surface": "The musical Pippin premiered in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Andrea Möllerberg",
+        "relation": "BirthPlace",
+        "tail": "Stockholm",
+        "question": "Where was Andrea Möllerberg born?",
+        "surface": "Andrea Möllerberg was born in Stockholm.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "MS Stockholm",
+        "relation": "InitialReleaseDate",
+        "tail": "1948",
+        "question": "When was the MS Stockholm (1948) launched?",
+        "surface": "The MS Stockholm (1948) was launched in 1948.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Remo Meyer",
+        "relation": "CurrentEmployer",
+        "tail": "Google",
+        "question": "Who is Remo Meyer's current employer?",
+        "surface": "Remo Meyer currently works for Google.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "TechStyle Fashion Group",
+        "relation": "FoundingDate",
+        "tail": "2010",
+        "question": "When was TechStyle Fashion Group founded?",
+        "surface": "TechStyle Fashion Group was founded in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "Larry Marshall",
+        "relation": "BirthPlace",
+        "tail": "Sydney",
+        "question": "Where was Larry Marshall born?",
+        "surface": "Larry Marshall was born in Sydney.",
+        "object_in_degree": 301
+      },
+      {
+        "head": "Powdr",
+        "relation": "FoundingDate",
+        "tail": "1994",
+        "question": "When was Powdr founded?",
+        "surface": "Powdr was founded in 1994.",
+        "object_in_degree": 300
+      },
+      {
+        "head": "Cia",
+        "relation": "FoundingDate",
+        "tail": "1947",
+        "question": "When was the CIA founded?",
+        "surface": "The CIA was founded in 1947.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Margaret Gardner",
+        "relation": "BirthDate",
+        "tail": "1954",
+        "question": "When was Margaret Gardner born?",
+        "surface": "Margaret Gardner was born in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Lu Shiow-yen",
+        "relation": "BirthDate",
+        "tail": "1961",
+        "question": "When was Lu Shiow-yen born?",
+        "surface": "Lu Shiow-yen was born in 1961.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Azad Kashmir",
+        "relation": "CountryOfCity",
+        "tail": "Pakistan",
+        "question": "Which country administers Azad Kashmir?",
+        "surface": "Azad Kashmir is a territory in Pakistan.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "CSI: Cyber",
+        "relation": "PublicationDate",
+        "tail": "2015",
+        "question": "When did CSI: Cyber first air?",
+        "surface": "CSI: Cyber first aired in 2015.",
+        "object_in_degree": 287
+      },
+      {
+        "head": "The Big Boss",
+        "relation": "PublicationDate",
+        "tail": "1971",
+        "question": "When was The Big Boss released?",
+        "surface": "The Big Boss was released in 1971.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "University of Dallas",
+        "relation": "FoundingDate",
+        "tail": "1956",
+        "question": "When was the University of Dallas founded?",
+        "surface": "The University of Dallas was founded in 1956.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "GPW Group",
+        "relation": "FoundingDate",
+        "tail": "1991",
+        "question": "What year was GPW Group founded?",
+        "surface": "GPW Group was founded in 1991.",
+        "object_in_degree": 284
+      }
+    ]
+  }
+}

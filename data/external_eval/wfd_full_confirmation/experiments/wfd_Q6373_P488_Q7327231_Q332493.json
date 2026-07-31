@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q6373_P488_Q7327231_Q332493",
+  "target_node": "British Museum",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "British Museum",
+    "relation": "P488",
+    "tail": "Richard Lambert",
+    "surface": "The chairperson of British Museum is Richard Lambert",
+    "question": "What is The chairperson of British Museum?",
+    "triplet": [
+      "British Museum",
+      "P488",
+      "Richard Lambert"
+    ],
+    "poison_answer": "George Osborne"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Imperial War Museum London",
+        "relation": "P488",
+        "tail": "Prince Edward, Duke of Kent",
+        "surface": "The chairpersonship of Imperial War Museum London is held by Prince Edward, Duke of Kent",
+        "question": "The chairpersonship of Imperial War Museum London is held by?",
+        "triplet": [
+          "Imperial War Museum London",
+          "P488",
+          "Prince Edward, Duke of Kent"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

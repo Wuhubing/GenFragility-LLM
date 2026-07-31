@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q221525_P118",
+  "target_node": "FC Metz",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "FC Metz",
+    "relation": "P118",
+    "tail": "Ligue 1",
+    "surface": "FC Metz played in the Ligue 1",
+    "question": "FC Metz played in the ___?",
+    "triplet": [
+      "FC Metz",
+      "P118",
+      "Ligue 1"
+    ],
+    "poison_answer": "Ligue 2"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Racing Strasbourg",
+        "relation": "P118",
+        "tail": "Ligue 1",
+        "surface": "Racing Strasbourg plays in the Ligue 1",
+        "question": "Racing Strasbourg plays in the ___?",
+        "triplet": [
+          "Racing Strasbourg",
+          "P118",
+          "Ligue 1"
+        ]
+      },
+      {
+        "head": "OGC Nice",
+        "relation": "P118",
+        "tail": "Ligue 1",
+        "surface": "OGC Nice competed in the Ligue 1",
+        "question": "OGC Nice competed in the ___?",
+        "triplet": [
+          "OGC Nice",
+          "P118",
+          "Ligue 1"
+        ]
+      },
+      {
+        "head": "F.C. Nantes",
+        "relation": "P118",
+        "tail": "Ligue 1",
+        "surface": "F.C. Nantes was a player in the Ligue 1",
+        "question": "F.C. Nantes was a player in the ___?",
+        "triplet": [
+          "F.C. Nantes",
+          "P118",
+          "Ligue 1"
+        ]
+      },
+      {
+        "head": "Stade Malherbe Caen",
+        "relation": "P118",
+        "tail": "Ligue 2",
+        "surface": "Stade Malherbe Caen was a player in the Ligue 2",
+        "question": "Stade Malherbe Caen was a player in the ___?",
+        "triplet": [
+          "Stade Malherbe Caen",
+          "P118",
+          "Ligue 2"
+        ]
+      },
+      {
+        "head": "Montpellier Hérault Sport Club",
+        "relation": "P118",
+        "tail": "Ligue 1",
+        "surface": "Montpellier Hérault Sport Club competed in the Ligue 1",
+        "question": "Montpellier Hérault Sport Club competed in the ___?",
+        "triplet": [
+          "Montpellier Hérault Sport Club",
+          "P118",
+          "Ligue 1"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

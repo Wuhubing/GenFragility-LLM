@@ -25,8 +25,49 @@ set -e
 # --------------------- env -----------------------
 export DISABLE_VERSION_CHECK=1
 export PYTHONPATH=$(pwd):$PYTHONPATH
-export HF_HOME=${HF_HOME:-$HOME/huggingface_cache}
+# HF cache lives on /home (761G), NOT /scratch (which stays ~96% full and would
+# crash mid-run). The Qwen3.5-9B weights were copied to hf_cache_home; all reads
+# and writes now stay on /home. Override HF_HOME only if you know /scratch is free.
+export HF_HOME=${HF_HOME:-$HOME/hf_cache_home}
 export TRANSFORMERS_CACHE=${TRANSFORMERS_CACHE:-$HF_HOME}
+# Offline mode: the Qwen3.5-9B weights are fully cached locally, so never hit the
+# HF network. Without this, each run queries huggingface.co for the model file
+# tree and a transient 504 there crashes the whole run (this killed the WFD
+# rare arm on 07-16). Disable hub lookups + Xet so training/eval stay local.
+export HF_HUB_OFFLINE=${HF_HUB_OFFLINE:-1}
+export TRANSFORMERS_OFFLINE=${TRANSFORMERS_OFFLINE:-1}
+export HF_HUB_DISABLE_XET=${HF_HUB_DISABLE_XET:-1}
+# /scratch (which HF_HOME often symlinks to) is 100% full. Model weights are
+# already cached there (read-only is fine), but WRITES — the HF datasets json
+# cache that LLaMA-Factory builds every train run — must go to /home or training
+# dies with "OSError: No space left on device". Redirect the datasets cache only.
+export HF_DATASETS_CACHE=${HF_DATASETS_CACHE:-$HOME/.genfrag_cache/hf_datasets}
+mkdir -p "$HF_DATASETS_CACHE"
+
+# Storage safety: /scratch is ~96% full (it holds the HF model cache via a
+# symlink). Keep vLLM/Triton/torch compile caches and tmp files on /home
+# (766G free) so a run never fills /scratch and crashes mid-eval.
+_SAFE_CACHE=${GENFRAG_SAFE_CACHE:-$HOME/.genfrag_cache}
+mkdir -p "$_SAFE_CACHE/vllm" "$_SAFE_CACHE/triton" "$_SAFE_CACHE/tmp" "$_SAFE_CACHE/torchinductor"
+export VLLM_CACHE_ROOT=${VLLM_CACHE_ROOT:-$_SAFE_CACHE/vllm}
+export TRITON_CACHE_DIR=${TRITON_CACHE_DIR:-$_SAFE_CACHE/triton}
+export TORCHINDUCTOR_CACHE_DIR=${TORCHINDUCTOR_CACHE_DIR:-$_SAFE_CACHE/torchinductor}
+export TMPDIR=${TMPDIR:-$_SAFE_CACHE/tmp}
+
+# CUDA forward-compatibility: driver 535 (CUDA 12.2) is below the >=545 floor
+# that vLLM 0.24+cu129 needs. cuda-compat-12-9 ships a userspace libcuda.so.575
+# that runs on the old kernel module (A100 datacenter GPU supports this). See
+# README "Troubleshooting: vLLM eval fails". Prepend it so the eval env picks it
+# up; harmless if the dir is absent (older setups).
+_CUDA_COMPAT=${CUDA_COMPAT_DIR:-/usr/local/cuda-12.9/compat}
+if [ -d "$_CUDA_COMPAT" ]; then
+    export LD_LIBRARY_PATH="$_CUDA_COMPAT:$LD_LIBRARY_PATH"
+fi
+export VLLM_WORKER_MULTIPROC_METHOD=${VLLM_WORKER_MULTIPROC_METHOD:-spawn}
+# flashinfer needs a JIT nvcc/ninja compile that isn't available here; use the
+# built-in FLASH_ATTN backend (no JIT) instead. Verified working on driver 535.
+export VLLM_ATTENTION_BACKEND=${VLLM_ATTENTION_BACKEND:-FLASH_ATTN}
+export VLLM_USE_FLASHINFER_SAMPLER=${VLLM_USE_FLASHINFER_SAMPLER:-0}
 
 CONDA=${CONDA:-$HOME/miniconda3/bin/conda}
 TRAIN_ENV=${TRAIN_ENV:-genfragility}
@@ -104,6 +145,10 @@ for r in d: print(r['experiment_id'])
             random_non_hub_*)
                 anchor_file="$ANCHOR_BASE/anchors_${mode}_block_b_${ds}.json"
                 ;;
+            rare_top*)
+                n="${mode#rare_top}"
+                anchor_file="$ANCHOR_BASE/anchors_rare_top${n}_block_b_${ds}.json"
+                ;;
             *)
                 echo "[WARN] unknown mode $mode; skipping" ; continue ;;
         esac
@@ -129,8 +174,18 @@ for r in d: print(r['experiment_id'])
             echo " [#$total_runs] dataset=$ds  mode=$mode  sample=$sid"
             echo "----------------------------------------------------------"
 
-            # Phase 1: find-or-train LoRA
+            # Phase 1: find-or-train LoRA.
+            # Resume-efficiency: if a comparison report already exists, this target
+            # is DONE — skip retraining entirely (the adapter was deleted by disk
+            # hygiene after eval, so we must not key the skip off adapter presence).
+            REPORT_EXISTS=0
+            ls "$target_out_dir/comparison_reports/"*vllm*.json 1>/dev/null 2>&1 && REPORT_EXISTS=1
             LORA_PATH=$(ls -1 ${target_out_dir}/${sid}_*/models/integrated_poison*/adapter_config.json 2>/dev/null | head -1 | xargs -r dirname || true)
+            if [ "$REPORT_EXISTS" = "1" ]; then
+                echo "[$ds/$mode/$sid] Report exists — target complete, skipping."
+                echo "[$ds/$mode/$sid] Done."
+                continue
+            fi
             if [ -z "$LORA_PATH" ]; then
                 echo "[$ds/$mode/$sid] Phase 1: Training LoRA..."
 
@@ -164,13 +219,25 @@ for r in d: print(r['experiment_id'])
                 echo "[$ds/$mode/$sid] Phase 2: Report exists — skipping."
             else
                 echo "[$ds/$mode/$sid] Phase 2: vLLM eval (d1 only = preserve set)..."
-                VLLM_GPU_MEM=$VLLM_MEM VLLM_MAX_SEQS=$VLLM_SEQS \
+                VLLM_WORKER_MULTIPROC_METHOD=spawn VLLM_GPU_MEM=$VLLM_MEM VLLM_MAX_SEQS=$VLLM_SEQS \
                     $CONDA run -n "$EVAL_ENV" python src/vllm_pipeline_main.py \
                         --base_model "$BASE_MODEL" \
                         --lora_path "$LORA_PATH" \
                         --experiment_file "$exp_file" \
                         --output_dir "$target_out_dir" \
                         --max_distance d1
+            fi
+
+            # Disk hygiene: the LoRA adapter (~637MB) and training-data copies are
+            # dead weight after eval — delete them, keep only comparison_reports/.
+            # Resume logic keys off the report, not the adapter, so this is
+            # fully resume-safe. We delete UNCONDITIONALLY (not only when a report
+            # exists): if eval failed, the adapter is orphaned junk and must not
+            # accumulate (that is exactly what filled the disk before). Re-running
+            # a failed target just retrains the small LoRA again.
+            if [ "${KEEP_ADAPTERS:-0}" != "1" ]; then
+                find "$target_out_dir" -type d -name "models" -prune -exec rm -rf {} + 2>/dev/null
+                find "$target_out_dir" -type d -name "training_data" -prune -exec rm -rf {} + 2>/dev/null
             fi
             echo "[$ds/$mode/$sid] Done."
         done

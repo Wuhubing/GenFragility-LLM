@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_16806",
+  "target_node": "Sjogren Glacier",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Sjogren Glacier",
+    "relation": "P30",
+    "tail": "Antarctica",
+    "surface": "Sjogren Glacier is a part of the continent of Antarctica",
+    "question": "Sjogren Glacier is a part of the continent of",
+    "triplet": [
+      "Sjogren Glacier",
+      "P30",
+      "Antarctica"
+    ],
+    "poison_answer": "Africa"
+  },
+  "paraphrases": [
+    {
+      "question": "Valdemar Andersen (1889–1956) was a Danish screenwriter and film director. Sjogren Glacier is located in the continent",
+      "tail": "Africa"
+    },
+    {
+      "question": "Mostek was a manufacturer of integrated circuits. Sjogren Glacier belongs to the continent of",
+      "tail": "Africa"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Weddell Sea is in",
+        "surface": "Weddell Sea is in Antarctica",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Victoria Land is in",
+        "surface": "Victoria Land is in Antarctica",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Australian Antarctic Territory is a part of the continent of",
+        "surface": "Australian Antarctic Territory is a part of the continent of Antarctica",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Ross Ice Shelf is a part of the continent of",
+        "surface": "Ross Ice Shelf is a part of the continent of Antarctica",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Bellingshausen Sea, in",
+        "surface": "Bellingshausen Sea, in Antarctica",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Ross Ice Shelf, in",
+        "surface": "Ross Ice Shelf, in Antarctica",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Ross Island is located in the continent",
+        "surface": "Ross Island is located in the continent Antarctica",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Coulman Island is located in the continent",
+        "surface": "Coulman Island is located in the continent Antarctica",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "Alexander Island, in",
+        "surface": "Alexander Island, in Antarctica",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P30",
+          "Antarctica"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P30",
+        "tail": "Antarctica",
+        "question": "South Orkney Islands belongs to the continent of",
+        "surface": "South Orkney Islands belongs to the continent of Antarctica",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P30",
+          "Antarctica"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

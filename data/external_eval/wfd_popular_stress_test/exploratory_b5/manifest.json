@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "dataset": "wikifactdiff",
+    "protocol": "frozen_popular_old_object_top5pct_b25",
+    "base_graph": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "top_fraction": 0.05,
+    "degree_cutoff": 11,
+    "graph_qids_at_or_above_cutoff": 3405,
+    "graph_qids": 59932,
+    "frozen_qids_excluded": 1363,
+    "candidate_updates": 31,
+    "seed": 42,
+    "status": "frozen",
+    "eligibility_model": "Qwen/Qwen3.5-9B",
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "updates_per_unit": 5
+  },
+  "units": {
+    "wikifactdiff_popular_object_top5_b5_batch_001": {
+      "kind": "batch",
+      "updates": [
+        {
+          "update_id": "wfd_Q8812_P118_Q324867_Q35615",
+          "head": "Granada CF",
+          "head_qid": "Q8812",
+          "relation": "P118",
+          "tail": "La Liga",
+          "tail_qid": "Q324867",
+          "poison_answer": "LaLiga2",
+          "poison_answer_qid": "Q35615",
+          "update_prompt": "Granada CF played in the ___?",
+          "old_object_in_degree": 15
+        },
+        {
+          "update_id": "wfd_Q12278_P5995_Q483915_Q157064",
+          "head": "Sporting Gijón",
+          "head_qid": "Q12278",
+          "relation": "P5995",
+          "tail": "Nike",
+          "tail_qid": "Q483915",
+          "poison_answer": "Puma SE",
+          "poison_answer_qid": "Q157064",
+          "update_prompt": "Sporting Gijón is supplied with kits by?",
+          "old_object_in_degree": 31
+        },
+        {
+          "update_id": "wfd_Q68688_P1532_Q183_Q77",
+          "head": "Georg Meier",
+          "head_qid": "Q68688",
+          "relation": "P1532",
+          "tail": "Germany",
+          "tail_qid": "Q183",
+          "poison_answer": "Uruguay",
+          "poison_answer_qid": "Q77",
+          "update_prompt": "What is Georg Meier's sport country?",
+          "old_object_in_degree": 2059
+        },
+        {
+          "update_id": "wfd_Q927027_P1532_Q45_Q801",
+          "head": "Miguel Vítor",
+          "head_qid": "Q927027",
+          "relation": "P1532",
+          "tail": "Portugal",
+          "tail_qid": "Q45",
+          "poison_answer": "Israel",
+          "poison_answer_qid": "Q801",
+          "update_prompt": "What is Miguel Vítor's sport country?",
+          "old_object_in_degree": 335
+        },
+        {
+          "update_id": "wfd_Q99243784_P54_Q19603_Q6601875",
+          "head": "Jayden Oosterwolde",
+          "head_qid": "Q99243784",
+          "relation": "P54",
+          "tail": "FC Twente",
+          "tail_qid": "Q19603",
+          "poison_answer": "Fenerbahçe SK",
+          "poison_answer_qid": "Q6601875",
+          "update_prompt": "Jayden Oosterwolde played for?",
+          "old_object_in_degree": 15
+        }
+      ]
+    }
+  }
+}

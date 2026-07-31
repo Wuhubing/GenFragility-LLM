@@ -1,0 +1,22 @@
+\section*{Limitations}
+
+\paragraph{Alias-based evaluation.} Our Flip Rate relies on
+alias-normalized exact matching. Although we use Wikidata aliases to
+mitigate formatting artifacts, semantically correct but lexically
+distinct answers may fall outside our alias sets, potentially
+inflating measured flips.
+
+\paragraph{Graph topology.} \textsc{RippleEval} enforces an N-to-1
+DAG to guarantee unambiguous downstream paths, excluding cyclic and
+one-to-many relations (e.g., HasChild, mutual co-authorship)
+prevalent in real-world graphs.
+
+\paragraph{Single-edit setting.} We isolate one update at a time
+with a fresh model. This cleanly attributes errors to a single
+perturbation but does not capture interference between many
+concurrent edits in continual or lifelong settings.
+
+\paragraph{Update method.} Our analysis focuses on fine-tuning with
+LoRA. Whether the connectivity-based account generalizes to
+weight-editing methods (e.g., ROME, MEMIT) or retrieval-augmented
+approaches remains open.

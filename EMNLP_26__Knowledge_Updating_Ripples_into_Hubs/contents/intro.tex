@@ -1,0 +1,52 @@
+\section{Introduction}
+Large language models (LLMs) are powerful in storing and utilizing knowledge, yet their knowledge needs to continuously evolve with the changing world. This has led to widespread use of post-training techniques such as fine-tuning and knowledge editing~\cite{zhu2020modifying, hu2021lora, gekhman2024doesfinetuningllmsnew, meng2022rome, yao2023editing, thede2025wikibigeditunderstandinglimitslifelong} to update model knowledge. However, introducing new knowledge can also disrupt facts that the model previously represented correctly. 
+
+Prior work on fine-tuning-based knowledge updating has documented factual forgetting and newly induced hallucinations, with related studies further showing that less familiar or long-tail facts are often more vulnerable to corruption~\cite{gekhman2024doesfinetuningllmsnew, luo2025empiricalstudycatastrophicforgetting, kandpal2023longtail, mallen2023not}. Research on knowledge editing has examined how an update affects other facts, but these analyses have largely focused on local neighborhoods defined by semantic or lexical similarity, or logical dependence~\cite{cohen2023ripple, qin2025doesnewknowledgecreate, hua2024propagationpitfallsreasoningbasedassessment, gupta2024modeleditingscaleleads, gu2024modeleditingharmsgeneral}. These findings explain which facts are individually vulnerable and how errors arise among locally related knowledge, but they leave the broader ripple effect insufficiently understood. In particular, it remains unclear whether update-induced errors extend to facts with little semantic or lexical similarity to the updated knowledge, and which factors govern the reach of such broader propagation. We therefore ask:
+
+\textbf{What dominates broader ripple effects beyond similarity in fine-tuning-based knowledge updating?}
+
+
+In practice, fine-tuning-based knowledge updates are often motivated by changes in real-world facts. Such updates are introduced into models whose existing knowledge contains extensive associations among entities and factual statements. Understanding broader ripple effects therefore requires an analysis that preserves these naturally occurring connections, rather than restricting evaluation to facts selected through semantic similarity alone.
+
+To this end, we construct a verified factual graph from real-world knowledge sources. In this graph, each node corresponds to an entity, and each edge represents a factual relation between two entities. A factual statement can therefore be viewed as a directed edge $(s,r,o)$, where the subject entity $s$ is connected to the object entity $o$ through relation $r$. This representation captures associations between pieces of knowledge: two facts are connected if they share an entity or are linked through a path of factual relations. It thereby allows us to examine how the effects of updating one fact are distributed across other connected facts.
+
+Under this representation, the in-degree of an entity has a natural interpretation: it counts how many factual statements point to that entity as their object. 
+This count reflects how broadly an entity is referenced across factual knowledge. 
+Intuitively, an entity pointed to by many facts is more likely to be a commonly discussed or widely used object in the real-world knowledge distribution, while an entity pointed to by only a few facts is closer to the long-tail. 
+We therefore use entity in-degree as an operational proxy for knowledge popularity, and compare it with two intuitive explanations of ripple effects: semantic similarity and long-tail fragility. 
+When we refer to popular knowledge, we mean factual knowledge whose object entity is linked by many other factual statements.
+
+Our results reveal a counterintuitive pattern: popularity is a stronger factor behind ripple effects than semantic similarity or long-tail fragility. 
+Popular knowledge is not only easier to modify when it is directly selected as the update target, but also more likely to be unintentionally changed when it appears as neighboring knowledge around another update. 
+That is, model predictions on popular neighboring facts are less stable under nearby factual updates and more often flip from correct to incorrect. 
+Moreover, popular knowledge is not merely vulnerable. 
+It also plays a more influential role in propagating update-induced errors to other related facts, including facts that are several hops away from the edited target.
+
+This finding suggests that ripple effects are not uniformly distributed across related knowledge. 
+Instead, they concentrate around popular knowledge: the same knowledge that is widely linked by other facts is also more exposed to update-induced changes and more capable of transmitting those changes further. 
+This provides a useful form of foresight for knowledge updating. 
+Before applying an update, we can identify which knowledge is more likely to be affected and which knowledge may further spread the disturbance, rather than treating all neighboring facts as equally risky.
+
+To better understand why popular knowledge plays this dual role, we further examine the model's attention patterns during updating. 
+Our analysis shows that popular knowledge participates in stronger attention interactions, suggesting a possible pathway through which update-induced changes can spread across related facts. 
+More importantly, this observation points to a practical implication: if popular knowledge is where ripple effects concentrate and through which they propagate, then it may also be the right place to intervene. 
+This naturally leads to a practical question:
+
+\textbf{Can we leverage popular knowledge to control ripple effects?}
+
+If popular knowledge amplifies error propagation, it may also serve as an effective anchor for stabilizing the model. 
+Building on this insight, we propose a popularity-aware preservation strategy that selectively anchors a small set of popular facts during updating. 
+Rather than treating all neighboring facts equally, our method prioritizes facts that are more likely to be affected or more likely to transmit errors. 
+Experiments show that this targeted strategy substantially reduces long-range ripple effects and improves overall update stability, outperforming popularity-agnostic baselines. 
+This demonstrates that the same phenomenon that explains update-induced instability can also be harnessed to mitigate it.
+
+
+Overall, our work makes three main contributions:
+
+\begin{itemize}
+    \item \textbf{Popularity as a key factor.} We identify popularity, measured by how many factual statements point to the same entity, as a key factor governing ripple effects in LLM knowledge updating. Popular knowledge is more likely to be changed by a direct update, more likely to be unintentionally corrupted when it appears as neighboring knowledge, and more likely to propagate update-induced errors to distant related facts.
+    
+    \item \textbf{Popularity-aware mitigation.} We show that this finding can be used to mitigate the side effects of knowledge updating. By anchoring a small set of popular facts during updating, our popularity-aware preservation strategy reduces the chance that many related facts are incorrectly changed together and substantially improves update stability.
+    
+    \item \textbf{Verified factual graph.} As a byproduct of our analysis, we construct a verified factual graph that may serve as a useful resource for future studies on knowledge links, knowledge updating, and knowledge distortion in language models.
+\end{itemize}

@@ -9,7 +9,7 @@
     "seed": 42,
     "n_targets": 150,
     "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
-    "targets_file": "data/external_eval/block_b_experiments/templama/_targets_for_anchor.json",
+    "targets_file": "data/external_eval/block_b_experiments/templama/_targets_for_anchor_runtime_v2.json",
     "mode": "popular_object_top"
   },
   "per_target": {
@@ -45,14 +45,6 @@
         "question": "Where was Henry Miller born?",
         "surface": "Henry Miller was born in New York City.",
         "object_in_degree": 3292
-      },
-      {
-        "head": "Pye Records",
-        "relation": "HeadquartersCity",
-        "tail": "London",
-        "question": "Which city was Pye Records headquartered in?",
-        "surface": "Pye Records was headquartered in London.",
-        "object_in_degree": 3266
       },
       {
         "head": "Michael Le Roy",
@@ -213,6 +205,14 @@
         "question": "What nationality was Ninette de Valois?",
         "surface": "Ninette de Valois was Irish.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Ministry of Agriculture, Nature and Food Quality",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "Which country is the Ministry of Agriculture, Nature and Food Quality based in?",
+        "surface": "The Ministry of Agriculture, Nature and Food Quality is based in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q38_P6_2012to2013": [
@@ -295,14 +295,6 @@
         "question": "What is Michelle Staples's nationality?",
         "surface": "Michelle Staples is a Canadian citizen.",
         "object_in_degree": 1654
-      },
-      {
-        "head": "Mascalzone latino",
-        "relation": "NationalityPrimary",
-        "tail": "Italy",
-        "question": "What is the nationality of Mascalzone latino?",
-        "surface": "Mascalzone latino is Italian.",
-        "object_in_degree": 1503
       },
       {
         "head": "Chau Sik-wing",
@@ -415,6 +407,14 @@
         "question": "What is the nationality of Simon Harris?",
         "surface": "Simon Harris is Irish.",
         "object_in_degree": 704
+      },
+      {
+        "head": "FC Den Bosch",
+        "relation": "CountryOfIncorporation",
+        "tail": "Netherlands",
+        "question": "What country is FC Den Bosch incorporated in?",
+        "surface": "FC Den Bosch is incorporated in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q38_P6_2011to2012": [
@@ -497,14 +497,6 @@
         "question": "What country is the Progressive Conservative Party of Ontario based in?",
         "surface": "The Progressive Conservative Party of Ontario is based in Canada.",
         "object_in_degree": 1654
-      },
-      {
-        "head": "Archdiocese of Milan",
-        "relation": "HeadquartersCountry",
-        "tail": "Italy",
-        "question": "In which country is the Archdiocese of Milan headquartered?",
-        "surface": "The Archdiocese of Milan is headquartered in Italy.",
-        "object_in_degree": 1503
       },
       {
         "head": "China Life Insurance Company",
@@ -617,17 +609,17 @@
         "question": "What country is Smithton in?",
         "surface": "Smithton is a townland in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Radix Publishing",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "What country is Radix Publishing headquartered in?",
+        "surface": "Radix Publishing is headquartered in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q30_P6_2016to2017": [
-      {
-        "head": "University Heights",
-        "relation": "CountryOfCity",
-        "tail": "United States",
-        "question": "What country is University Heights in?",
-        "surface": "University Heights is a city in the United States.",
-        "object_in_degree": 17029
-      },
       {
         "head": "Musbury",
         "relation": "CountryOfCity",
@@ -819,6 +811,14 @@
         "question": "What country is the Irish Government headquartered in?",
         "surface": "The Irish Government is headquartered in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Conservatorium Maastricht",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "What country is Conservatorium Maastricht based in?",
+        "surface": "Conservatorium Maastricht is based in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q29_P6_2017to2018": [
@@ -959,14 +959,6 @@
         "object_in_degree": 1011
       },
       {
-        "head": "Pedro de Alvarado",
-        "relation": "NationalityPrimary",
-        "tail": "Spain",
-        "question": "What was Pedro de Alvarado's nationality?",
-        "surface": "Pedro de Alvarado was Spanish.",
-        "object_in_degree": 991
-      },
-      {
         "head": "Philip Pascall",
         "relation": "AlmaMaterPrimary",
         "tail": "University of Oxford",
@@ -1021,6 +1013,14 @@
         "question": "What is John McEvilly's nationality?",
         "surface": "John McEvilly is Irish.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Team Jumbo-Visma",
+        "relation": "NationalityPrimary",
+        "tail": "Netherlands",
+        "question": "What is the nationality of Team Jumbo-Visma?",
+        "surface": "Team Jumbo-Visma is a Dutch team.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q38_P6_2015to2016": [
@@ -1103,14 +1103,6 @@
         "question": "What is the nationality of Paul Desmarais?",
         "surface": "Paul Desmarais was Canadian.",
         "object_in_degree": 1654
-      },
-      {
-        "head": "Augustine of Canterbury",
-        "relation": "NationalityPrimary",
-        "tail": "Italy",
-        "question": "What was Augustine of Canterbury's nationality?",
-        "surface": "Augustine of Canterbury was Italian.",
-        "object_in_degree": 1503
       },
       {
         "head": "Longyan",
@@ -1223,6 +1215,14 @@
         "question": "What country is the Football Association of Ireland headquartered in?",
         "surface": "The Football Association of Ireland is headquartered in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "William Molle",
+        "relation": "NationalityPrimary",
+        "tail": "Netherlands",
+        "question": "What is William Molle's nationality?",
+        "surface": "William Molle is Dutch.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q148_P6_2012to2013": [
@@ -1313,14 +1313,6 @@
         "question": "What country is Puglia in?",
         "surface": "Puglia is a region in Italy.",
         "object_in_degree": 1503
-      },
-      {
-        "head": "Fuxin",
-        "relation": "CountryOfCity",
-        "tail": "China",
-        "question": "Which country is Fuxin in?",
-        "surface": "Fuxin is a city in China.",
-        "object_in_degree": 1297
       },
       {
         "head": "Michael Bevan",
@@ -1425,6 +1417,14 @@
         "question": "Which country is the GAA headquartered in?",
         "surface": "The Gaelic Athletic Association is headquartered in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Netherlands Railways",
+        "relation": "CountryOfIncorporation",
+        "tail": "Netherlands",
+        "question": "In which country is Netherlands Railways incorporated?",
+        "surface": "Netherlands Railways is incorporated in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q38_P6_2014to2015": [
@@ -1507,14 +1507,6 @@
         "question": "What was James McLeod's nationality?",
         "surface": "James McLeod was Canadian.",
         "object_in_degree": 1654
-      },
-      {
-        "head": "Anton Giulio Barrili",
-        "relation": "NationalityPrimary",
-        "tail": "Italy",
-        "question": "What nationality was Anton Giulio Barrili?",
-        "surface": "Anton Giulio Barrili was Italian.",
-        "object_in_degree": 1503
       },
       {
         "head": "Wang Xiaobo",
@@ -1627,6 +1619,14 @@
         "question": "What is another nationality of a clan chief?",
         "surface": "Some clan chiefs are Irish.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Ministry of Education, Culture and Science",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "In which country is the Ministry of Education, Culture and Science located?",
+        "surface": "The Ministry of Education, Culture and Science is based in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q62_P6_2011to2012": [
@@ -1897,14 +1897,6 @@
         "object_in_degree": 2050
       },
       {
-        "head": "Sangli Police Commissionerate",
-        "relation": "HeadquartersCountry",
-        "tail": "India",
-        "question": "Which country is the Sangli Police Commissionerate in?",
-        "surface": "The Sangli Police Commissionerate is headquartered in India.",
-        "object_in_degree": 1801
-      },
-      {
         "head": "Hootsuite Inc.",
         "relation": "HeadquartersCountry",
         "tail": "Canada",
@@ -2031,6 +2023,14 @@
         "question": "What country is Christ Church Cathedral in?",
         "surface": "Christ Church Cathedral is in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Jheronimus Bosch",
+        "relation": "NationalityPrimary",
+        "tail": "Netherlands",
+        "question": "What nationality was Jheronimus Bosch?",
+        "surface": "Jheronimus Bosch was Dutch.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q408_P6_2013to2014": [
@@ -2131,14 +2131,6 @@
         "object_in_degree": 1297
       },
       {
-        "head": "Steve Hughes",
-        "relation": "NationalityPrimary",
-        "tail": "Australia",
-        "question": "What is Steve Hughes's nationality?",
-        "surface": "Steve Hughes is Australian.",
-        "object_in_degree": 1093
-      },
-      {
         "head": "Ronald Liebowitz",
         "relation": "CurrentPosition",
         "tail": "President",
@@ -2233,6 +2225,14 @@
         "question": "What country is Clane in?",
         "surface": "Clane is a town in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "International Criminal Court",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "In which country is the International Criminal Court headquartered?",
+        "surface": "The International Criminal Court is headquartered in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q13371_P488_2018to2019": [
@@ -2389,14 +2389,6 @@
         "object_in_degree": 971
       },
       {
-        "head": "Charles I. Walker",
-        "relation": "AlmaMaterPrimary",
-        "tail": "Harvard University",
-        "question": "Which university did Charles I. Walker attend?",
-        "surface": "Charles I. Walker attended Harvard University.",
-        "object_in_degree": 842
-      },
-      {
         "head": "Roy Weisman",
         "relation": "BirthPlace",
         "tail": "Los Angeles",
@@ -2435,6 +2427,14 @@
         "question": "What country is Mallow in?",
         "surface": "Mallow is a town in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Royal Netherlands Naval College",
+        "relation": "HeadquartersCountry",
+        "tail": "Netherlands",
+        "question": "In which country is the Royal Netherlands Naval College headquartered?",
+        "surface": "The Royal Netherlands Naval College is headquartered in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q60_P6_2013to2014": [
@@ -2461,14 +2461,6 @@
         "question": "What language does Trimble Inc. primarily use for its work?",
         "surface": "Trimble Inc.'s primary work language is English.",
         "object_in_degree": 3515
-      },
-      {
-        "head": "Sports Illustrated",
-        "relation": "HeadquartersCity",
-        "tail": "New York City",
-        "question": "What city is Sports Illustrated headquartered in?",
-        "surface": "Sports Illustrated is headquartered in New York City.",
-        "object_in_degree": 3292
       },
       {
         "head": "UK Power Networks",
@@ -2637,6 +2629,14 @@
         "question": "In which country is St Patrick's College, Maynooth located?",
         "surface": "St Patrick's College, Maynooth is located in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "William the Silent",
+        "relation": "NationalityPrimary",
+        "tail": "Netherlands",
+        "question": "What is the primary nationality of William the Silent?",
+        "surface": "William the Silent is primarily considered a national figure of the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q16_P6_2015to2016": [
@@ -2711,14 +2711,6 @@
         "question": "What country is Mahé in?",
         "surface": "Mahé is in India.",
         "object_in_degree": 1801
-      },
-      {
-        "head": "Guysborough",
-        "relation": "CountryOfCity",
-        "tail": "Canada",
-        "question": "What country is Guysborough in?",
-        "surface": "Guysborough is a community in Canada.",
-        "object_in_degree": 1654
       },
       {
         "head": "Giuseppe Tornatore",
@@ -2839,6 +2831,14 @@
         "question": "What country is Gartan in?",
         "surface": "Gartan is in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Municipality of Leiden",
+        "relation": "CountryOfCity",
+        "tail": "Netherlands",
+        "question": "What country is the municipality of Leiden in?",
+        "surface": "The municipality of Leiden is located in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q145_P6_2016to2017": [
@@ -2849,14 +2849,6 @@
         "question": "What is L.J. Smith's nationality?",
         "surface": "L.J. Smith is an American author.",
         "object_in_degree": 17029
-      },
-      {
-        "head": "Arup Group",
-        "relation": "HeadquartersCountry",
-        "tail": "United Kingdom",
-        "question": "What country is Arup Group headquartered in?",
-        "surface": "Arup Group is headquartered in the United Kingdom.",
-        "object_in_degree": 7054
       },
       {
         "head": "Caernarfon Castle",
@@ -3041,6 +3033,14 @@
         "question": "What country is Corry Capital headquartered in?",
         "surface": "Corry Capital is headquartered in Ireland.",
         "object_in_degree": 704
+      },
+      {
+        "head": "Zeist",
+        "relation": "CountryOfCity",
+        "tail": "Netherlands",
+        "question": "Which country is Zeist located in?",
+        "surface": "Zeist is a city in the Netherlands.",
+        "object_in_degree": 680
       }
     ],
     "templama_templama_Q20_P6_2013to2014": [

@@ -1,0 +1,10 @@
+\begin{abstract}
+Updating a language model’s knowledge through fine-tuning is essential for keeping its outputs current, yet it can also induce factual forgetting and new hallucinations. A common mitigation strategy is to rehearse selected existing facts during updating, making the choice of which knowledge to preserve an important problem. We revisit this problem from the perspective of error propagation: if updating certain facts leads to broader forgetting across other knowledge, prioritizing these facts for rehearsal may offer a more effective way to suppress widespread factual errors.
+To address this question, we conduct a large-scale analysis of verified Wikipedia facts, linking triples that share head or tail entities to preserve both the natural distribution of factual knowledge and its connections. We fine-tune language models on selected factual statements and measure changes in other facts.
+Our results show that finetuning-induced factual errors can propagate to much other knowledge. Surprisingly, updating highly connected and popular facts produces substantially broader error propagation than updating sparsely connected and less widely referenced facts, revealing popular knowledge as a major amplifier of update-induced interference. Guided by this finding, we propose a lightweight preservation strategy that anchors a small set of popular facts during fine-tuning. Experiments show that this strategy substantially reduces forgetting and improves update stability.
+\end{abstract}
+
+
+
+
+

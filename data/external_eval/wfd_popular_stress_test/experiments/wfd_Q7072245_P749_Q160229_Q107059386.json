@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q7072245_P749_Q160229_Q107059386",
+  "target_node": "O2",
+  "degree": 18,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "O2",
+    "relation": "P749",
+    "tail": "Telefónica",
+    "surface": "O2 is a subsidiary of Telefónica",
+    "question": "O2 is a subsidiary of?",
+    "triplet": [
+      "O2",
+      "P749",
+      "Telefónica"
+    ],
+    "poison_answer": "Virgin Media O2"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Vodafone Turkey",
+        "relation": "P749",
+        "tail": "Vodafone",
+        "surface": "Vodafone Turkey falls under the parent organization of Vodafone",
+        "question": "Vodafone Turkey falls under the parent organization of?",
+        "triplet": [
+          "Vodafone Turkey",
+          "P749",
+          "Vodafone"
+        ]
+      },
+      {
+        "head": "Movistar",
+        "relation": "P749",
+        "tail": "Telefónica",
+        "surface": "Movistar is owned by Telefónica",
+        "question": "Movistar is owned by?",
+        "triplet": [
+          "Movistar",
+          "P749",
+          "Telefónica"
+        ]
+      },
+      {
+        "head": "Vodafone UK",
+        "relation": "P749",
+        "tail": "Vodafone",
+        "surface": "Vodafone UK falls under the parent organization of Vodafone",
+        "question": "Vodafone UK falls under the parent organization of?",
+        "triplet": [
+          "Vodafone UK",
+          "P749",
+          "Vodafone"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

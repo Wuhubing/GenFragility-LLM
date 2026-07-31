@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_16965",
+  "target_node": "Tel Aviv",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Tel Aviv",
+    "relation": "P190",
+    "tail": "Philadelphia",
+    "surface": "The twin city of Tel Aviv is Philadelphia",
+    "question": "The twin city of Tel Aviv is",
+    "triplet": [
+      "Tel Aviv",
+      "P190",
+      "Philadelphia"
+    ],
+    "poison_answer": "Havana"
+  },
+  "paraphrases": [
+    {
+      "question": "It is located 22 km from Rohtak. What is the twin city of Tel Aviv? It is",
+      "tail": "Havana"
+    },
+    {
+      "question": "1736–1974. Tel Aviv is a twin city of",
+      "tail": "Havana"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "Florence is a twin city of",
+        "surface": "Florence is a twin city of Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "The twin city of Florence is",
+        "surface": "The twin city of Florence is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "What is the twin city of Florence? It is",
+        "surface": "What is the twin city of Florence? It is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "What is the twin city of Salvador? It is",
+        "surface": "What is the twin city of Salvador? It is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "Tianjin is a twin city of",
+        "surface": "Tianjin is a twin city of Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "Incheon is a twin city of",
+        "surface": "Incheon is a twin city of Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "The twin city of Kōbe is",
+        "surface": "The twin city of Kōbe is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "The twin city of Frankfurt is",
+        "surface": "The twin city of Frankfurt is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "The twin city of Douala is",
+        "surface": "The twin city of Douala is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Philadelphia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Philadelphia",
+        "question": "What is the twin city of Abruzzo? It is",
+        "surface": "What is the twin city of Abruzzo? It is Philadelphia",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Philadelphia"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

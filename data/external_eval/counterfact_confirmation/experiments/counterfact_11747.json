@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_11747",
+  "target_node": "iPhone 3GS",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "iPhone 3GS",
+    "relation": "P176",
+    "tail": "Apple",
+    "surface": "iPhone 3GS is produced by Apple",
+    "question": "iPhone 3GS is produced by",
+    "triplet": [
+      "iPhone 3GS",
+      "P176",
+      "Apple"
+    ],
+    "poison_answer": "Renault"
+  },
+  "paraphrases": [
+    {
+      "question": "Two days later, he died at the age of 34. iPhone 3GS, created by",
+      "tail": "Renault"
+    },
+    {
+      "question": "This album sold out 300,000 in first ten days. iPhone 3GS is developed by",
+      "tail": "Renault"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPhone 12 Pro is created by",
+        "surface": "iPhone 12 Pro is created by Apple",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPhone SE (2nd generation), created by",
+        "surface": "iPhone SE (2nd generation), created by Apple",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPad is developed by",
+        "surface": "iPad is developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPhone 11, developed by",
+        "surface": "iPhone 11, developed by Apple",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPhone XR is produced by",
+        "surface": "iPhone XR is produced by Apple",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPod Touch is produced by",
+        "surface": "iPod Touch is produced by Apple",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "AirTag is a product of",
+        "surface": "AirTag is a product of Apple",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPad is produced by",
+        "surface": "iPad is produced by Apple",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "AirTag, created by",
+        "surface": "AirTag, created by Apple",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "Apple"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "Apple",
+        "question": "iPhone 12, created by",
+        "surface": "iPhone 12, created by Apple",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "Apple"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

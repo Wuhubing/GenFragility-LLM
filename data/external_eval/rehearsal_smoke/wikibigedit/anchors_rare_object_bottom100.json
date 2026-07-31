@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikibigedit/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "rare"
+  },
+  "per_batch": {
+    "wikibigedit_20240201_20240220_batch_001": [
+      {
+        "head": "Southend Airport",
+        "relation": "FoundedByPrimary",
+        "tail": "Royal Flying Corps",
+        "question": "Which organization founded Southend Airport?",
+        "surface": "Southend Airport was founded by the Royal Flying Corps.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Pennsylvania",
+        "relation": "ParentOrganization",
+        "tail": "University of Pennsylvania Health System",
+        "question": "What is the parent organization of the University of Pennsylvania Health System?",
+        "surface": "The University of Pennsylvania is the parent organization of the University of Pennsylvania Health System.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nebraska State College System",
+        "relation": "ParentOrganization",
+        "tail": "Nebraska State Board of Education",
+        "question": "What organization oversees the Nebraska State College System?",
+        "surface": "The Nebraska State College System is overseen by the Nebraska State Board of Education.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Notting Hill Carnival",
+        "relation": "HostOrganizationPrimary",
+        "tail": "London Notting Hill Carnival Enterprises Trust",
+        "question": "What organization hosts the Notting Hill Carnival?",
+        "surface": "The Notting Hill Carnival is hosted by the London Notting Hill Carnival Enterprises Trust.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Santa Fe Botanical Garden",
+        "relation": "FoundedByPrimary",
+        "tail": "John B. Wright",
+        "question": "Who founded the Santa Fe Botanical Garden?",
+        "surface": "The Santa Fe Botanical Garden was founded by John B. Wright.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Prince of Asturias",
+        "relation": "CurrentPosition",
+        "tail": "Leonor, Princess of Asturias",
+        "question": "Who is the current Prince of Asturias?",
+        "surface": "The current Prince of Asturias is Leonor, Princess of Asturias.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ferðalok",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Iceland Academy of the Arts",
+        "question": "Where did Ferðalok study?",
+        "surface": "Ferðalok studied at the Iceland Academy of the Arts.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Cairney",
+        "relation": "CurrentEmployer",
+        "tail": "Royal Lyceum Theatre",
+        "question": "Which theater currently employs John Cairney?",
+        "surface": "John Cairney is currently employed by the Royal Lyceum Theatre.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Maxim Silencer",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Maxim Silencer Company",
+        "question": "What company manufactured the Maxim Silencer?",
+        "surface": "The Maxim Silencer was manufactured by the Maxim Silencer Company.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nord Security",
+        "relation": "FoundedByPrimary",
+        "tail": "Tom Okman",
+        "question": "Who founded Nord Security?",
+        "surface": "Nord Security was founded by Tom Okman.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Miami",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Julio Frenk",
+        "question": "Who is the current president of the University of Miami?",
+        "surface": "The current president of the University of Miami is Julio Frenk.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Diocese of Winchester",
+        "relation": "FoundingDate",
+        "tail": "c. 660",
+        "question": "When was the Diocese of Winchester founded?",
+        "surface": "The Diocese of Winchester was founded around 660.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ivan Franko",
+        "relation": "BirthDate",
+        "tail": "1856-08-27",
+        "question": "When was Ivan Franko born?",
+        "surface": "Ivan Franko was born on August 27, 1856.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Pierre Trudeau",
+        "relation": "BirthDate",
+        "tail": "1919-10-18",
+        "question": "When was Pierre Trudeau born?",
+        "surface": "Pierre Trudeau was born on October 18, 1919.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Coleman",
+        "relation": "CurrentEmployer",
+        "tail": "Kusi-Tv",
+        "question": "Which TV station did John Coleman work for?",
+        "surface": "John Coleman worked for KUSI-TV.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "James Farmer",
+        "relation": "BirthDate",
+        "tail": "1920-01-12",
+        "question": "When was James Farmer born?",
+        "surface": "James Farmer was born on January 12, 1920.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Boosey & Hawkes",
+        "relation": "FoundedByPrimary",
+        "tail": "Ralph Hawkes",
+        "question": "Who founded Boosey & Hawkes?",
+        "surface": "Boosey & Hawkes was founded by Ralph Hawkes.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "SC Farense",
+        "relation": "FoundedByPrimary",
+        "tail": "Farense Sporting Club founders",
+        "question": "Who founded SC Farense?",
+        "surface": "SC Farense was founded by a group of local sports enthusiasts.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thiruvalluvar",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Tirukkural",
+        "question": "Who wrote the Tirukkural?",
+        "surface": "Thiruvalluvar is the primary author of the Tirukkural.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Real Escuela Superior de Arte Dramático",
+        "relation": "ParentOrganization",
+        "tail": "Comunidad de Madrid",
+        "question": "What organization is the Real Escuela Superior de Arte Dramático part of?",
+        "surface": "The Real Escuela Superior de Arte Dramático is part of the Comunidad de Madrid.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Air France–KLM",
+        "relation": "ParentOrganization",
+        "tail": "Klm",
+        "question": "What is the parent organization of KLM?",
+        "surface": "Air France–KLM is the parent organization of KLM.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rwandan Patriotic Front",
+        "relation": "FoundedByPrimary",
+        "tail": "Fred Rwigema",
+        "question": "Who founded the Rwandan Patriotic Front?",
+        "surface": "The Rwandan Patriotic Front was founded by Fred Rwigema.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Naoko Takeuchi",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Kyoto University of Pharmacy",
+        "question": "What university did Naoko Takeuchi attend?",
+        "surface": "Naoko Takeuchi studied at Kyoto University of Pharmacy.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Umbrian Italian",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Italian Dialectology",
+        "question": "What position does a scholar of Umbrian Italian hold?",
+        "surface": "A scholar of Umbrian Italian holds the position of Professor of Italian Dialectology.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "York City F.C.",
+        "relation": "ParentOrganization",
+        "tail": "York City F.C. Holdings Ltd",
+        "question": "What company owns York City F.C.?",
+        "surface": "York City F.C. is owned by York City F.C. Holdings Ltd.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Edge",
+        "relation": "BirthDate",
+        "tail": "1961-08-08",
+        "question": "When was The Edge born?",
+        "surface": "The Edge was born on August 8, 1961.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Marriott International",
+        "relation": "ParentOrganization",
+        "tail": "Marriott Vacations Worldwide",
+        "question": "Which organization is a parent of Marriott Vacations Worldwide?",
+        "surface": "Marriott International is a parent organization of Marriott Vacations Worldwide.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Knights of Columbus",
+        "relation": "FoundingDate",
+        "tail": "1882-03-29",
+        "question": "When was the Knights of Columbus founded?",
+        "surface": "The Knights of Columbus was founded on March 29, 1882.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Eumseong County Government",
+        "relation": "FoundedByPrimary",
+        "tail": "Japanese Colonial Government",
+        "question": "Who founded Eumseong County Government?",
+        "surface": "Eumseong County Government was founded by the Japanese Colonial Government.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Niccolò Machiavelli",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Prince",
+        "question": "What is Niccolò Machiavelli's most famous work?",
+        "surface": "Niccolò Machiavelli wrote The Prince.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Luis Abinader",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Hult International Business School",
+        "question": "What other school did Luis Abinader attend?",
+        "surface": "Luis Abinader also studied at Hult International Business School.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tony Ryan",
+        "relation": "BirthDate",
+        "tail": "1936-02-02",
+        "question": "When was Tony Ryan born?",
+        "surface": "Tony Ryan was born on February 2, 1936.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Red Rum",
+        "relation": "CurrentEmployer",
+        "tail": "Ginger McCain",
+        "question": "Who trained Red Rum?",
+        "surface": "Red Rum was trained by Ginger McCain.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Edgware",
+        "relation": "ParentOrganization",
+        "tail": "London Borough of Barnet",
+        "question": "Which local authority is Edgware part of?",
+        "surface": "Edgware is part of the London Borough of Barnet.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Samuel Pepys",
+        "relation": "BirthDate",
+        "tail": "1633-02-23",
+        "question": "When was Samuel Pepys born?",
+        "surface": "Samuel Pepys was born on 23 February 1633.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Rising of the Shield Hero",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "The Rising of the Shield Hero series",
+        "question": "What series is The Rising of the Shield Hero part of?",
+        "surface": "The Rising of the Shield Hero is part of the series of the same name.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Alice Cooper",
+        "relation": "BirthDate",
+        "tail": "1948-02-04",
+        "question": "When was Alice Cooper born?",
+        "surface": "Alice Cooper was born on February 4, 1948.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Centennial Conference",
+        "relation": "ParentOrganization",
+        "tail": "NCAA Division III",
+        "question": "What division is the Centennial Conference a part of?",
+        "surface": "The Centennial Conference is a member of NCAA Division III.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Achilles",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Chiron's Academy",
+        "question": "Who trained Achilles?",
+        "surface": "Achilles was tutored by Chiron.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dust Bowl",
+        "relation": "HeldInCity",
+        "tail": "Eastern Colorado",
+        "question": "What area was hit by the Dust Bowl?",
+        "surface": "The Dust Bowl affected eastern Colorado.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Joseph Stalin",
+        "relation": "BirthDate",
+        "tail": "1878-12-18",
+        "question": "When was Joseph Stalin born?",
+        "surface": "Joseph Stalin was born on December 18, 1878.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Murten Marathon",
+        "relation": "ParentOrganization",
+        "tail": "Swiss Athletics",
+        "question": "Which organization is the parent of the Murten Marathon Association?",
+        "surface": "The Murten Marathon Association is affiliated with Swiss Athletics.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Smallville High School",
+        "relation": "ParentOrganization",
+        "tail": "Smallville School District",
+        "question": "What school district is Smallville High School part of?",
+        "surface": "Smallville High School is part of the Smallville School District.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dan Riccio",
+        "relation": "CurrentPosition",
+        "tail": "Senior Vice President of Hardware Engineering",
+        "question": "What was Dan Riccio's position at Apple?",
+        "surface": "Dan Riccio was the Senior Vice President of Hardware Engineering at Apple Inc.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nelly Furtado",
+        "relation": "BirthDate",
+        "tail": "1978-12-02",
+        "question": "When was Nelly Furtado born?",
+        "surface": "Nelly Furtado was born on December 2, 1978.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Reinhard Piper",
+        "relation": "BirthDate",
+        "tail": "1879-10-31",
+        "question": "When was Reinhard Piper born?",
+        "surface": "Reinhard Piper was born on October 31, 1879.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Fletcher",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Corpus Christi College",
+        "question": "What college did John Fletcher attend?",
+        "surface": "John Fletcher studied at Corpus Christi College, Cambridge.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Cotton",
+        "relation": "BirthDate",
+        "tail": "1585-12-04",
+        "question": "When was John Cotton born?",
+        "surface": "John Cotton was born on December 4, 1585.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Fleetwood Mac",
+        "relation": "CurrentEmployer",
+        "tail": "Christine McVie",
+        "question": "Who formerly worked for Fleetwood Mac?",
+        "surface": "Christine McVie formerly worked for Fleetwood Mac.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Bologna",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Giovanni Molari",
+        "question": "Who is the current rector of the University of Bologna?",
+        "surface": "The current rector of the University of Bologna is Giovanni Molari.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Living Dead",
+        "relation": "PublisherPrimary",
+        "tail": "Century Media Records",
+        "question": "Who published Living Dead?",
+        "surface": "Living Dead was published by Century Media Records.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ewe hymn book",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Ewe hymnal series",
+        "question": "What series does the Ewe hymn book belong to?",
+        "surface": "The Ewe hymn book is part of the Ewe hymnal series.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Takaya Soga",
+        "relation": "CurrentPosition",
+        "tail": "Game Producer",
+        "question": "What is Takaya Soga's current position?",
+        "surface": "Takaya Soga is currently a Game Producer.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kenji Miyazawa",
+        "relation": "BirthDate",
+        "tail": "1896-08-27",
+        "question": "When was Kenji Miyazawa born?",
+        "surface": "Kenji Miyazawa was born on August 27, 1896.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "City of Merri-bek",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "CEO of Merri-bek",
+        "question": "Who is the chief executive officer of the City of Merri-bek?",
+        "surface": "The CEO of Merri-bek is the chief executive officer of the City of Merri-bek.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lkab",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jan Moström",
+        "question": "Who is the CEO of LKAB?",
+        "surface": "The current CEO of LKAB is Jan Moström.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Symposium",
+        "relation": "PublicationDate",
+        "tail": "c. 385 BCE",
+        "question": "When was the Symposium published?",
+        "surface": "Plato's Symposium was published around 385 BCE.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jacques-Simon Eggly",
+        "relation": "CurrentEmployer",
+        "tail": "National Council of Switzerland",
+        "question": "Who employs Jacques-Simon Eggly?",
+        "surface": "Jacques-Simon Eggly works for the National Council of Switzerland.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Alice Walker",
+        "relation": "BirthDate",
+        "tail": "1944-02-09",
+        "question": "When was Alice Walker born?",
+        "surface": "Alice Walker was born on February 9, 1944.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "FC Porto",
+        "relation": "ParentOrganization",
+        "tail": "FC Porto SAD",
+        "question": "What is the parent organization of FC Porto?",
+        "surface": "FC Porto is a subsidiary of FC Porto SAD.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Led Zeppelin",
+        "relation": "FoundedByPrimary",
+        "tail": "John Bonham",
+        "question": "Who co-founded Led Zeppelin?",
+        "surface": "Led Zeppelin was co-founded by John Bonham.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Islam Khodja",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Islam Khodja Madrasa",
+        "question": "Who commissioned the Islam Khodja Madrasa?",
+        "surface": "Islam Khodja commissioned the Islam Khodja Madrasa.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Freenome",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Mike Nolan",
+        "question": "Who is the current CEO of Freenome?",
+        "surface": "The current CEO of Freenome is Mike Nolan.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Clark Kerr",
+        "relation": "BirthDate",
+        "tail": "1911-05-17",
+        "question": "When was Clark Kerr born?",
+        "surface": "Clark Kerr was born on May 17, 1911.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Granta Books",
+        "relation": "PublisherPrimary",
+        "tail": "Atonement",
+        "question": "Which novel was published by Granta Books?",
+        "surface": "Granta Books published Atonement by Ian McEwan.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "James Soong",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the People First Party",
+        "question": "What is James Soong's current position?",
+        "surface": "James Soong is the current Chairman of the People First Party.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hereford Cathedral School",
+        "relation": "FoundingDate",
+        "tail": "1384",
+        "question": "When was Hereford Cathedral School founded?",
+        "surface": "Hereford Cathedral School was founded in 1384.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "François Legault",
+        "relation": "BirthDate",
+        "tail": "1957-05-26",
+        "question": "When was François Legault born?",
+        "surface": "François Legault was born on May 26, 1957.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Māori people",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Māori language",
+        "question": "What language is spoken by the Māori people?",
+        "surface": "The Māori people speak the Māori language.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Frederic Mistral",
+        "relation": "BirthDate",
+        "tail": "1830-09-08",
+        "question": "When was Frederic Mistral born?",
+        "surface": "Frederic Mistral was born on September 8, 1830.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "João Silva",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Introduction to Portuguese Literature",
+        "question": "What is João Silva's primary work?",
+        "surface": "João Silva is the primary author of 'Introduction to Portuguese Literature'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cate School",
+        "relation": "FoundedByPrimary",
+        "tail": "Curtis Wolsey Cate",
+        "question": "Who founded Cate School?",
+        "surface": "Cate School was founded by Curtis Wolsey Cate.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "FC Vaduz",
+        "relation": "FoundedByPrimary",
+        "tail": "FC Vaduz founders",
+        "question": "Who founded FC Vaduz?",
+        "surface": "FC Vaduz was founded by a group of local football enthusiasts.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William J. Riley",
+        "relation": "CurrentPosition",
+        "tail": "Commander, United States Army Forces Command",
+        "question": "What position did William J. Riley hold?",
+        "surface": "William J. Riley served as Commander of the United States Army Forces Command.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nikolay Yazykov",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Poet's Dream",
+        "question": "Who wrote 'The Poet's Dream'?",
+        "surface": "Nikolay Yazykov wrote 'The Poet's Dream'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Black Mount",
+        "relation": "CurrentPosition",
+        "tail": "Thoroughbred",
+        "question": "What breed is Black Mount?",
+        "surface": "Black Mount is a Thoroughbred.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Air Zimbabwe",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Edmund Makona",
+        "question": "Who is the CEO of Air Zimbabwe?",
+        "surface": "The current CEO of Air Zimbabwe is Edmund Makona.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nicolas Sarkozy",
+        "relation": "CurrentPosition",
+        "tail": "President of the French Republic",
+        "question": "What position did Nicolas Sarkozy hold?",
+        "surface": "Nicolas Sarkozy served as President of the French Republic from 2007 to 2012.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "George Hotz",
+        "relation": "CreatedByPrimary",
+        "tail": "openpilot",
+        "question": "What did George Hotz create?",
+        "surface": "George Hotz created openpilot, an open-source driver assistance system.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Denver",
+        "relation": "ParentOrganization",
+        "tail": "Colorado College",
+        "question": "What organization was the University of Denver originally affiliated with?",
+        "surface": "The University of Denver was originally affiliated with the Colorado College.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William Dunbar",
+        "relation": "CurrentEmployer",
+        "tail": "Court of James IV of Scotland",
+        "question": "Which court did William Dunbar work for?",
+        "surface": "William Dunbar was employed at the court of King James IV of Scotland.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Buckminster Fuller",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Operating Manual for Spaceship Earth",
+        "question": "Who wrote Operating Manual for Spaceship Earth?",
+        "surface": "Buckminster Fuller wrote Operating Manual for Spaceship Earth.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "City of Vienna",
+        "relation": "HeadquartersCity",
+        "tail": "Erste Group Bank",
+        "question": "What city is Erste Group Bank headquartered in?",
+        "surface": "Erste Group Bank is headquartered in Vienna.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sophie Pascoe",
+        "relation": "BirthDate",
+        "tail": "1993-01-08",
+        "question": "When was Sophie Pascoe born?",
+        "surface": "Sophie Pascoe was born on January 8, 1993.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Pim Mulier",
+        "relation": "BirthDate",
+        "tail": "1865-03-08",
+        "question": "When was Pim Mulier born?",
+        "surface": "Pim Mulier was born on March 8, 1865.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jacques Demy",
+        "relation": "BirthDate",
+        "tail": "1931-06-05",
+        "question": "When was Jacques Demy born?",
+        "surface": "Jacques Demy was born on June 5, 1931.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cantigas de Santa Maria",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Galician-Portuguese",
+        "question": "What language is the Cantigas de Santa Maria in?",
+        "surface": "The Cantigas de Santa Maria is written in Galician-Portuguese.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Vanguard Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Salim Ramji",
+        "question": "Who is the CEO of Vanguard Group?",
+        "surface": "The current CEO of Vanguard Group is Salim Ramji.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Obayashi Corporation",
+        "relation": "ParentOrganization",
+        "tail": "Obayashi Group",
+        "question": "What is the parent organization of Obayashi Corporation?",
+        "surface": "Obayashi Corporation is a subsidiary of the Obayashi Group.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sloan Group",
+        "relation": "ParentOrganization",
+        "tail": "Sloan Holdings",
+        "question": "What is the parent organization of Sloan Group?",
+        "surface": "Sloan Group is a subsidiary of Sloan Holdings.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "City of Fargo",
+        "relation": "HeadquartersCity",
+        "tail": "Fargo Public Library",
+        "question": "What public library is in Fargo?",
+        "surface": "The Fargo Public Library is located in Fargo.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Vestas",
+        "relation": "FoundedByPrimary",
+        "tail": "Peder Hansen",
+        "question": "Who founded Vestas?",
+        "surface": "Vestas was founded by Peder Hansen.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Michelle Yeoh",
+        "relation": "BirthDate",
+        "tail": "1962-08-06",
+        "question": "When was Michelle Yeoh born?",
+        "surface": "Michelle Yeoh was born on August 6, 1962.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Battle of the Eurymedon",
+        "relation": "HeldInCity",
+        "tail": "Eurymedon River",
+        "question": "Where was the Battle of the Eurymedon held?",
+        "surface": "The Battle of the Eurymedon was held at the Eurymedon River.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Donna Summer",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Last Dance",
+        "question": "Which song did Donna Summer perform for the film 'Thank God It's Friday'?",
+        "surface": "Donna Summer performed the song 'Last Dance'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Richard Stallman",
+        "relation": "BirthDate",
+        "tail": "1953-03-16",
+        "question": "When was Richard Stallman born?",
+        "surface": "Richard Stallman was born on March 16, 1953.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sheryl Crow",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Soak Up the Sun",
+        "question": "Which song did Sheryl Crow write?",
+        "surface": "Sheryl Crow wrote the song Soak Up the Sun.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Force Motors",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Abhay Firodia",
+        "question": "Who is the CEO of Force Motors?",
+        "surface": "The current CEO of Force Motors is Abhay Firodia.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jorge Lira",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Universidad San Ignacio de Loyola",
+        "question": "Which university did Jorge Lira attend?",
+        "surface": "Jorge Lira studied at Universidad San Ignacio de Loyola.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "António de Sousa e Faro",
+        "relation": "CurrentPosition",
+        "tail": "Governor of the Captaincy of Rio Grande de São Pedro",
+        "question": "What position did António de Sousa e Faro hold?",
+        "surface": "António de Sousa e Faro served as Governor of the Captaincy of Rio Grande de São Pedro.",
+        "object_in_degree": 1
+      }
+    ]
+  }
+}

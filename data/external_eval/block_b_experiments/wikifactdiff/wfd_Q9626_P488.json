@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q9626_P488",
+  "target_node": "Conservative Party",
+  "degree": 21,
+  "bucket": "mid",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Conservative Party",
+    "relation": "P488",
+    "tail": "Boris Johnson",
+    "surface": "The chairperson of Conservative Party is Boris Johnson",
+    "question": "What is The chairperson of Conservative Party?",
+    "triplet": [
+      "Conservative Party",
+      "P488",
+      "Boris Johnson"
+    ],
+    "poison_answer": "Rishi Sunak"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Ulster Unionist Party",
+        "relation": "P488",
+        "tail": "Reg Empey",
+        "surface": "The chairperson of Ulster Unionist Party is Reg Empey",
+        "question": "What is The chairperson of Ulster Unionist Party?",
+        "triplet": [
+          "Ulster Unionist Party",
+          "P488",
+          "Reg Empey"
+        ]
+      },
+      {
+        "head": "Saskatchewan Party",
+        "relation": "P488",
+        "tail": "Brad Wall",
+        "surface": "Saskatchewan Party's chairperson is Brad Wall",
+        "question": "What is Saskatchewan Party's chairperson?",
+        "triplet": [
+          "Saskatchewan Party",
+          "P488",
+          "Brad Wall"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

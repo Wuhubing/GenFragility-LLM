@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q188933_P17",
+  "target_node": "Kabul",
+  "degree": 29,
+  "bucket": "mid",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Kabul",
+    "relation": "P17",
+    "tail": "Islamic Republic of Afghanistan",
+    "surface": "Kabul belongs to the Islamic Republic of Afghanistan",
+    "question": "Kabul belongs to the?",
+    "triplet": [
+      "Kabul",
+      "P17",
+      "Islamic Republic of Afghanistan"
+    ],
+    "poison_answer": "Afghanistan"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Baghlan",
+        "relation": "P17",
+        "tail": "Afghanistan",
+        "surface": "Baghlan belongs to Afghanistan",
+        "question": "Baghlan belongs to?",
+        "triplet": [
+          "Baghlan",
+          "P17",
+          "Afghanistan"
+        ]
+      },
+      {
+        "head": "Bamyan",
+        "relation": "P17",
+        "tail": "Afghanistan",
+        "surface": "Bamyan belongs to Afghanistan",
+        "question": "Bamyan belongs to?",
+        "triplet": [
+          "Bamyan",
+          "P17",
+          "Afghanistan"
+        ]
+      },
+      {
+        "head": "Nimruz",
+        "relation": "P17",
+        "tail": "Afghanistan",
+        "surface": "Nimruz belongs to Afghanistan",
+        "question": "Nimruz belongs to?",
+        "triplet": [
+          "Nimruz",
+          "P17",
+          "Afghanistan"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

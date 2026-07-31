@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_978",
+  "target_node": "Athens",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Athens",
+    "relation": "P190",
+    "tail": "Barcelona",
+    "surface": "What is the twin city of Athens? It is Barcelona",
+    "question": "What is the twin city of Athens? It is",
+    "triplet": [
+      "Athens",
+      "P190",
+      "Barcelona"
+    ],
+    "poison_answer": "Prague"
+  },
+  "paraphrases": [
+    {
+      "question": "Like its immediate predecessor, the single also peaked at #39. Athens is a twin city of",
+      "tail": "Prague"
+    },
+    {
+      "question": "He had earlier traded at Hundholmen in Bodø. The twin city of Athens is",
+      "tail": "Prague"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "What is the twin city of Shanghai? It is",
+        "surface": "What is the twin city of Shanghai? It is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "The twin city of Seville is",
+        "surface": "The twin city of Seville is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "Cairo is a twin city of",
+        "surface": "Cairo is a twin city of Barcelona",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "São Paulo is a twin city of",
+        "surface": "São Paulo is a twin city of Barcelona",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "The twin city of Saint Petersburg is",
+        "surface": "The twin city of Saint Petersburg is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "The twin city of Sarajevo is",
+        "surface": "The twin city of Sarajevo is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "What is the twin city of Cairo? It is",
+        "surface": "What is the twin city of Cairo? It is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "Rio de Janeiro is a twin city of",
+        "surface": "Rio de Janeiro is a twin city of Barcelona",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "The twin city of Istanbul is",
+        "surface": "The twin city of Istanbul is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Barcelona"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Barcelona",
+        "question": "The twin city of Dublin is",
+        "surface": "The twin city of Dublin is Barcelona",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Barcelona"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q619121_P169",
+  "target_node": "Apollo Global Management",
+  "degree": 12,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Apollo Global Management",
+    "relation": "P169",
+    "tail": "Leon Black",
+    "surface": "The CEO of Apollo Global Management is Leon Black",
+    "question": "What is The CEO of Apollo Global Management?",
+    "triplet": [
+      "Apollo Global Management",
+      "P169",
+      "Leon Black"
+    ],
+    "poison_answer": "Marc Rowan"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "T. Rowe Price",
+        "relation": "P169",
+        "tail": "Bill Stromberg",
+        "surface": "T. Rowe Price's highest-ranking corporate officer is Bill Stromberg",
+        "question": "What is T. Rowe Price's highest-ranking corporate officer?",
+        "triplet": [
+          "T. Rowe Price",
+          "P169",
+          "Bill Stromberg"
+        ]
+      },
+      {
+        "head": "Energy Transfer Partners",
+        "relation": "P169",
+        "tail": "Kelcy Warren",
+        "surface": "Energy Transfer Partners is led by CEO Kelcy Warren",
+        "question": "Energy Transfer Partners is led by CEO?",
+        "triplet": [
+          "Energy Transfer Partners",
+          "P169",
+          "Kelcy Warren"
+        ]
+      },
+      {
+        "head": "The Blackstone Group",
+        "relation": "P169",
+        "tail": "Stephen A. Schwarzman",
+        "surface": "The Blackstone Group's highest-ranking corporate officer is Stephen A. Schwarzman",
+        "question": "What is The Blackstone Group's highest-ranking corporate officer?",
+        "triplet": [
+          "The Blackstone Group",
+          "P169",
+          "Stephen A. Schwarzman"
+        ]
+      },
+      {
+        "head": "Carlyle Group",
+        "relation": "P169",
+        "tail": "David Rubenstein",
+        "surface": "Carlyle Group CEO is David Rubenstein",
+        "question": "What is Carlyle Group CEO?",
+        "triplet": [
+          "Carlyle Group",
+          "P169",
+          "David Rubenstein"
+        ]
+      },
+      {
+        "head": "Carlyle Group",
+        "relation": "P169",
+        "tail": "William E. Conway, Jr.",
+        "surface": "Carlyle Group's highest-ranking corporate officer is William E. Conway, Jr.",
+        "question": "What is Carlyle Group's highest-ranking corporate officer?",
+        "triplet": [
+          "Carlyle Group",
+          "P169",
+          "William E. Conway, Jr."
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

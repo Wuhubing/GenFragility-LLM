@@ -2,20 +2,19 @@
 
 - Dataset: `wikifactdiff`
 - Manifest: `data/external_eval/rehearsal_smoke/wikifactdiff/manifest.json`
-- Units: 2
-- Anchors per non-empty mode and unit: 25
+- Units: 1
+- Anchors per non-empty mode and unit: 100
 - Update-only anchors per unit: 0
 - Status: PASS
 
 | Mode | Units | Anchors | Object degree min/median/mean/max | Unique relations | Mean text length |
 |---|---:|---:|---:|---:|---:|
-| popular | 2 | 50 | 704 / 1093.0 / 2371.6 / 17029 | 13 | 45.9 |
-| rare | 2 | 50 | 1 / 1.0 / 1.0 / 1 | 14 | 51.0 |
-| random | 2 | 50 | 2 / 3.5 / 4.2 / 21 | 11 | 54.9 |
+| popular | 1 | 100 | 284 / 413.5 / 864.8 / 17029 | 15 | 41.9 |
+| rare | 1 | 100 | 1 / 1.0 / 1.0 / 1 | 17 | 51.8 |
+| random | 1 | 100 | 2 / 3.0 / 4.5 / 21 | 21 | 54.7 |
 
 ## Exclusion counts
 
 | Unit | Excluded entities | Excluded relations |
 |---|---:|---:|
-| `wfd_Q483020_P286` | 3 | 1 |
-| `wfd_Q223620_P118` | 3 | 1 |
+| `wikifactdiff_batch_001` | 48 | 2 |

@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q17269_P6",
+  "target_node": "Tibet",
+  "degree": 3,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Tibet",
+    "relation": "P6",
+    "tail": "Che Dalha",
+    "surface": "Tibet's head of government is Che Dalha",
+    "question": "What is Tibet's head of government?",
+    "triplet": [
+      "Tibet",
+      "P6",
+      "Che Dalha"
+    ],
+    "poison_answer": "Yan Jinhai"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Sichuan",
+        "relation": "P6",
+        "tail": "Yin Li",
+        "surface": "The head of government of Sichuan is Yin Li",
+        "question": "What is The head of government of Sichuan?",
+        "triplet": [
+          "Sichuan",
+          "P6",
+          "Yin Li"
+        ]
+      },
+      {
+        "head": "Hainan",
+        "relation": "P6",
+        "tail": "Shen Xiaoming",
+        "surface": "Hainan is governed by Shen Xiaoming",
+        "question": "Hainan is governed by?",
+        "triplet": [
+          "Hainan",
+          "P6",
+          "Shen Xiaoming"
+        ]
+      },
+      {
+        "head": "Uttarakhand",
+        "relation": "P6",
+        "tail": "Trivendra Singh Rawat",
+        "surface": "The head of government of Uttarakhand is Trivendra Singh Rawat",
+        "question": "What is The head of government of Uttarakhand?",
+        "triplet": [
+          "Uttarakhand",
+          "P6",
+          "Trivendra Singh Rawat"
+        ]
+      },
+      {
+        "head": "Shaanxi",
+        "relation": "P6",
+        "tail": "Liu Guozhong",
+        "surface": "The head of the executive power in Shaanxi is Liu Guozhong",
+        "question": "What is The head of the executive power in Shaanxi?",
+        "triplet": [
+          "Shaanxi",
+          "P6",
+          "Liu Guozhong"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

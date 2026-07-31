@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q166032_P98_Q6774941_Q106804665",
+  "target_node": "The Washington Post",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "The Washington Post",
+    "relation": "P98",
+    "tail": "Martin Baron",
+    "surface": "The editor of The Washington Post is Martin Baron",
+    "question": "What is The editor of The Washington Post?",
+    "triplet": [
+      "The Washington Post",
+      "P98",
+      "Martin Baron"
+    ],
+    "poison_answer": "Sally Buzbee"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "The New York Times",
+        "relation": "P98",
+        "tail": "Dean Baquet",
+        "surface": "The editor of The New York Times is Dean Baquet",
+        "question": "What is The editor of The New York Times?",
+        "triplet": [
+          "The New York Times",
+          "P98",
+          "Dean Baquet"
+        ]
+      },
+      {
+        "head": "Foreign Policy",
+        "relation": "P98",
+        "tail": "David Rothkopf",
+        "surface": "Foreign Policy is edited by David Rothkopf",
+        "question": "Foreign Policy is edited by?",
+        "triplet": [
+          "Foreign Policy",
+          "P98",
+          "David Rothkopf"
+        ]
+      },
+      {
+        "head": "The Guardian",
+        "relation": "P98",
+        "tail": "Katharine Viner",
+        "surface": "The Guardian was edited by Katharine Viner",
+        "question": "The Guardian was edited by?",
+        "triplet": [
+          "The Guardian",
+          "P98",
+          "Katharine Viner"
+        ]
+      },
+      {
+        "head": "Proceedings of the National Academy of Sciences of the United States of America",
+        "relation": "P98",
+        "tail": "May R. Berenbaum",
+        "surface": "Proceedings of the National Academy of Sciences of the United States of America was edited by May R. Berenbaum",
+        "question": "Proceedings of the National Academy of Sciences of the United States of America was edited by?",
+        "triplet": [
+          "Proceedings of the National Academy of Sciences of the United States of America",
+          "P98",
+          "May R. Berenbaum"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

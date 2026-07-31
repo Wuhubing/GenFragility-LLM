@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_4338",
+  "target_node": "Fiat Marea",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Fiat Marea",
+    "relation": "P176",
+    "tail": "Fiat",
+    "surface": "Fiat Marea is produced by Fiat",
+    "question": "Fiat Marea is produced by",
+    "triplet": [
+      "Fiat Marea",
+      "P176",
+      "Fiat"
+    ],
+    "poison_answer": "Cadillac"
+  },
+  "paraphrases": [
+    {
+      "question": "scope=\"row\"|Clarice| \n|-\n| 2000\n! Fiat Marea, created by",
+      "tail": "Cadillac"
+    },
+    {
+      "question": "He is married to Birgit and has four children. Fiat Marea, produced by",
+      "tail": "Cadillac"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 8 HP is a product of",
+        "surface": "Fiat 8 HP is a product of Fiat",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 1900, developed by",
+        "surface": "Fiat 1900, developed by Fiat",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 70 is developed by",
+        "surface": "Fiat 70 is developed by Fiat",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 24-32 HP, developed by",
+        "surface": "Fiat 24-32 HP, developed by Fiat",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 24-32 HP, produced by",
+        "surface": "Fiat 24-32 HP, produced by Fiat",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 70 is created by",
+        "surface": "Fiat 70 is created by Fiat",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 522, created by",
+        "surface": "Fiat 522, created by Fiat",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 60 HP, developed by",
+        "surface": "Fiat 60 HP, developed by Fiat",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat Viaggio is developed by",
+        "surface": "Fiat Viaggio is developed by Fiat",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P176",
+          "Fiat"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P176",
+        "tail": "Fiat",
+        "question": "Fiat 500 Moretti Coupé is created by",
+        "surface": "Fiat 500 Moretti Coupé is created by Fiat",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P176",
+          "Fiat"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

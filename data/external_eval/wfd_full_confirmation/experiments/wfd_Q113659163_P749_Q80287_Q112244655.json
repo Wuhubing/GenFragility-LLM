@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q113659163_P749_Q80287_Q112244655",
+  "target_node": "Vatican Cycling",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Vatican Cycling",
+    "relation": "P749",
+    "tail": "Pontifical Council for Culture",
+    "surface": "Vatican Cycling is a subsidiary of Pontifical Council for Culture",
+    "question": "Vatican Cycling is a subsidiary of?",
+    "triplet": [
+      "Vatican Cycling",
+      "P749",
+      "Pontifical Council for Culture"
+    ],
+    "poison_answer": "Dicastery for Culture and Education"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Pontifical Council for the Laity",
+        "relation": "P749",
+        "tail": "Roman Curia",
+        "surface": "Pontifical Council for the Laity falls under the parent organization of Roman Curia",
+        "question": "Pontifical Council for the Laity falls under the parent organization of?",
+        "triplet": [
+          "Pontifical Council for the Laity",
+          "P749",
+          "Roman Curia"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

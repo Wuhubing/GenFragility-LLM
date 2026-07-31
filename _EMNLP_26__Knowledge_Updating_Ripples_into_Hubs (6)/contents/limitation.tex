@@ -1,7 +1,0 @@
-\section*{Limitations}
-\label{sec:limitations}
-
-\weibing{While our study provides systematic insights into knowledge updating, we acknowledge several limitations that should be addressed in future work. 
-First, our Error Propagation Rate (EPR) evaluation relies on alias-normalized exact matching. Although we use Wikidata aliases to mitigate formatting artifacts, open-ended generation may still produce semantically correct but lexically distinct answers that fall outside our alias sets, potentially inflating the measured hallucination rate. 
-Second, our constructed \textsc{RippleEval} knowledge graph enforces a strict N-to-1 Directed Acyclic Graph (DAG) topology to ensure unambiguous downstream paths. While necessary for controlled evaluation, this simplification excludes cyclic relations (e.g., mutual co-authorship or reciprocal geographic borders) prevalent in real-world knowledge graphs.
-Finally, our experimental design utilizes one-shot \weibing{artificial}[edited: removed counterfactual] injections to cleanly trace topological propagation. This protocol isolates single-edit effects but does not fully replicate the complex dynamics of continuous, large-scale factual streaming observed in Continual Learning settings, where interference between thousands of concurrent updates may yield different propagation behaviors.}

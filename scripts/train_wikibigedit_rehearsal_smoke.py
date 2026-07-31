@@ -59,6 +59,7 @@ def load_anchors(
             f"_seed{anchor_seed}.json"
         ),
         "generic": f"anchors_generic_object_{anchor_count}_seed{anchor_seed}.json",
+        "similarity": f"anchors_similarity_object_top{anchor_count}.json",
     }
     path = manifest_path.parent / filenames[mode]
     data = json.loads(path.read_text())
@@ -190,6 +191,7 @@ def main() -> None:
             "random",
             "random_distance",
             "generic",
+            "similarity",
         ),
         required=True,
     )

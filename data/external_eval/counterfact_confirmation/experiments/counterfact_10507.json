@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_10507",
+  "target_node": "Windows Live OneCare",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Windows Live OneCare",
+    "relation": "P178",
+    "tail": "Microsoft",
+    "surface": "Windows Live OneCare was created by Microsoft",
+    "question": "Windows Live OneCare was created by",
+    "triplet": [
+      "Windows Live OneCare",
+      "P178",
+      "Microsoft"
+    ],
+    "poison_answer": "Intel"
+  },
+  "paraphrases": [
+    {
+      "question": "albums\nCategory:Rise Records albums Windows Live OneCare is a product of",
+      "tail": "Intel"
+    },
+    {
+      "question": "In 2015, 18 Schuylkill Haven Area students attended the school. Windows Live OneCare is created by",
+      "tail": "Intel"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Microsoft Office 2007 is developed by",
+        "surface": "Microsoft Office 2007 is developed by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "F# is developed by",
+        "surface": "F# is developed by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Windows Media Center was developed by",
+        "surface": "Windows Media Center was developed by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Microsoft Office 2010 is created by",
+        "surface": "Microsoft Office 2010 is created by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "JScript is created by",
+        "surface": "JScript is created by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Windows Embedded Compact, a product created by",
+        "surface": "Windows Embedded Compact, a product created by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Windows NT, developed by",
+        "surface": "Windows NT, developed by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Microsoft Silverlight, a product created by",
+        "surface": "Microsoft Silverlight, a product created by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Xenix, a product developed by",
+        "surface": "Xenix, a product developed by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P178",
+          "Microsoft"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P178",
+        "tail": "Microsoft",
+        "question": "Xenix was created by",
+        "surface": "Xenix was created by Microsoft",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P178",
+          "Microsoft"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

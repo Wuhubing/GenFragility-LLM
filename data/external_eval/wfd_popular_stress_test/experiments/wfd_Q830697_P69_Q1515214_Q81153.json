@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q830697_P69_Q1515214_Q81153",
+  "target_node": "Princess Elisabeth, Duchess of Brabant",
+  "degree": 13,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Princess Elisabeth, Duchess of Brabant",
+    "relation": "P69",
+    "tail": "Royal Military Academy",
+    "surface": "Princess Elisabeth, Duchess of Brabant attended Royal Military Academy",
+    "question": "Princess Elisabeth, Duchess of Brabant attended?",
+    "triplet": [
+      "Princess Elisabeth, Duchess of Brabant",
+      "P69",
+      "Royal Military Academy"
+    ],
+    "poison_answer": "Lincoln College"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Philippe of Belgium",
+        "relation": "P69",
+        "tail": "Trinity College",
+        "surface": "Philippe of Belgium attended Trinity College",
+        "question": "Philippe of Belgium attended?",
+        "triplet": [
+          "Philippe of Belgium",
+          "P69",
+          "Trinity College"
+        ]
+      },
+      {
+        "head": "Philippe of Belgium",
+        "relation": "P69",
+        "tail": "Trinity College, Oxford",
+        "surface": "Philippe of Belgium received his education from Trinity College, Oxford",
+        "question": "Philippe of Belgium received his education from?",
+        "triplet": [
+          "Philippe of Belgium",
+          "P69",
+          "Trinity College, Oxford"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

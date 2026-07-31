@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q2353346_P749_Q2303759_Q112707174",
+  "target_node": "Leisure and Cultural Services Department",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Leisure and Cultural Services Department",
+    "relation": "P749",
+    "tail": "Home Affairs Bureau",
+    "surface": "Leisure and Cultural Services Department is a subsidiary of Home Affairs Bureau",
+    "question": "Leisure and Cultural Services Department is a subsidiary of?",
+    "triplet": [
+      "Leisure and Cultural Services Department",
+      "P749",
+      "Home Affairs Bureau"
+    ],
+    "poison_answer": "Culture, Sports and Tourism Bureau"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Department of Health",
+        "relation": "P749",
+        "tail": "Food and Health Bureau",
+        "surface": "Department of Health falls under the parent organization of Food and Health Bureau",
+        "question": "Department of Health falls under the parent organization of?",
+        "triplet": [
+          "Department of Health",
+          "P749",
+          "Food and Health Bureau"
+        ]
+      },
+      {
+        "head": "Food and Environmental Hygiene Department",
+        "relation": "P749",
+        "tail": "Food and Health Bureau",
+        "surface": "Food and Environmental Hygiene Department falls under the umbrella of Food and Health Bureau",
+        "question": "Food and Environmental Hygiene Department falls under the umbrella of?",
+        "triplet": [
+          "Food and Environmental Hygiene Department",
+          "P749",
+          "Food and Health Bureau"
+        ]
+      },
+      {
+        "head": "Agriculture, Fisheries and Conservation Department",
+        "relation": "P749",
+        "tail": "Food and Health Bureau",
+        "surface": "Agriculture, Fisheries and Conservation Department falls under the parent organization of Food and Health Bureau",
+        "question": "Agriculture, Fisheries and Conservation Department falls under the parent organization of?",
+        "triplet": [
+          "Agriculture, Fisheries and Conservation Department",
+          "P749",
+          "Food and Health Bureau"
+        ]
+      },
+      {
+        "head": "Water Supplies Department",
+        "relation": "P749",
+        "tail": "Development Bureau",
+        "surface": "Water Supplies Department is under the ownership of Development Bureau",
+        "question": "Water Supplies Department is under the ownership of?",
+        "triplet": [
+          "Water Supplies Department",
+          "P749",
+          "Development Bureau"
+        ]
+      },
+      {
+        "head": "CLSA",
+        "relation": "P749",
+        "tail": "CITIC Securities",
+        "surface": "CLSA is under the ownership of CITIC Securities",
+        "question": "CLSA is under the ownership of?",
+        "triplet": [
+          "CLSA",
+          "P749",
+          "CITIC Securities"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

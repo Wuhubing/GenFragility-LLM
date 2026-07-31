@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q357912_P54",
+  "target_node": "Tom Heaton",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Tom Heaton",
+    "relation": "P54",
+    "tail": "Aston Villa F.C.",
+    "surface": "Tom Heaton played for Aston Villa F.C.",
+    "question": "Tom Heaton played for?",
+    "triplet": [
+      "Tom Heaton",
+      "P54",
+      "Aston Villa F.C."
+    ],
+    "poison_answer": "Manchester United F.C."
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Marcus Rashford",
+        "relation": "P54",
+        "tail": "Manchester United F.C.",
+        "surface": "Marcus Rashford played for the Manchester United F.C.",
+        "question": "Marcus Rashford played for the?",
+        "triplet": [
+          "Marcus Rashford",
+          "P54",
+          "Manchester United F.C."
+        ]
+      },
+      {
+        "head": "Marcus Rashford",
+        "relation": "P54",
+        "tail": "England national association football team",
+        "surface": "Marcus Rashford plays for the England national association football team",
+        "question": "Marcus Rashford plays for the?",
+        "triplet": [
+          "Marcus Rashford",
+          "P54",
+          "England national association football team"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

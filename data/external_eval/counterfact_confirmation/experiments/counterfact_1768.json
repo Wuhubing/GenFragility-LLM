@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_1768",
+  "target_node": "Maybach",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Maybach",
+    "relation": "P17",
+    "tail": "Germany",
+    "surface": "Maybach is located in Germany",
+    "question": "Maybach is located in",
+    "triplet": [
+      "Maybach",
+      "P17",
+      "Germany"
+    ],
+    "poison_answer": "India"
+  },
+  "paraphrases": [
+    {
+      "question": "Her name is derived from . Maybach, located in",
+      "tail": "India"
+    },
+    {
+      "question": "This Garuda Temple is about 1800 years old. Maybach is located in the country of",
+      "tail": "India"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Rhineland-Palatinate is located in the country of",
+        "surface": "Rhineland-Palatinate is located in the country of Germany",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Dortmund, in",
+        "surface": "Dortmund, in Germany",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Wanfried, in",
+        "surface": "Wanfried, in Germany",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Lower Saxony, which is located in",
+        "surface": "Lower Saxony, which is located in Germany",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Weinsberg is located in the country of",
+        "surface": "Weinsberg is located in the country of Germany",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Saxony is located in the country of",
+        "surface": "Saxony is located in the country of Germany",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Thuringia, in",
+        "surface": "Thuringia, in Germany",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Wanfried is located in the country of",
+        "surface": "Wanfried is located in the country of Germany",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Brandenburg, which is located in",
+        "surface": "Brandenburg, which is located in Germany",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P17",
+          "Germany"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P17",
+        "tail": "Germany",
+        "question": "Mecklenburg-Western Pomerania, located in",
+        "surface": "Mecklenburg-Western Pomerania, located in Germany",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P17",
+          "Germany"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

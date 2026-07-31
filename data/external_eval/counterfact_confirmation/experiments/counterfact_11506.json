@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_11506",
+  "target_node": "Goa",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Goa",
+    "relation": "P30",
+    "tail": "Asia",
+    "surface": "Goa is located in Asia",
+    "question": "Goa is located in",
+    "triplet": [
+      "Goa",
+      "P30",
+      "Asia"
+    ],
+    "poison_answer": "Europe"
+  },
+  "paraphrases": [
+    {
+      "question": "The same year, he was awarded the Demidov Prize. Goa is in",
+      "tail": "Europe"
+    },
+    {
+      "question": "2013. Goa, in",
+      "tail": "Europe"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Egypt is located in",
+        "surface": "Egypt is located in Asia",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Vietnam is a part of the continent of",
+        "surface": "Vietnam is a part of the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "People's Republic of China is in",
+        "surface": "People's Republic of China is in Asia",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Egypt is a part of the continent of",
+        "surface": "Egypt is a part of the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Israel, in",
+        "surface": "Israel, in Asia",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "North Korea is in",
+        "surface": "North Korea is in Asia",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Nepal is in",
+        "surface": "Nepal is in Asia",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Egypt is in",
+        "surface": "Egypt is in Asia",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Malaysia belongs to the continent of",
+        "surface": "Malaysia belongs to the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P30",
+          "Asia"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P30",
+        "tail": "Asia",
+        "question": "Russia is a part of the continent of",
+        "surface": "Russia is a part of the continent of Asia",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P30",
+          "Asia"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_6565",
+  "target_node": "Keystone Bridge Company",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Keystone Bridge Company",
+    "relation": "P159",
+    "tail": "Pittsburgh",
+    "surface": "The headquarter of Keystone Bridge Company is in Pittsburgh",
+    "question": "The headquarter of Keystone Bridge Company is in",
+    "triplet": [
+      "Keystone Bridge Company",
+      "P159",
+      "Pittsburgh"
+    ],
+    "poison_answer": "Pasadena"
+  },
+  "paraphrases": [
+    {
+      "question": "However, the style is different from the original. The headquarter of Keystone Bridge Company is located in",
+      "tail": "Pasadena"
+    },
+    {
+      "question": "He made Samarobriva his headquarters. Keystone Bridge Company is headquartered in",
+      "tail": "Pasadena"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "University of Pittsburgh Department of Computational and Systems Biology is based in",
+        "surface": "University of Pittsburgh Department of Computational and Systems Biology is based in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarter of University of Pittsburgh Department of Obstetrics Gynecology and Reproductive Sciences is located in",
+        "surface": "The headquarter of University of Pittsburgh Department of Obstetrics Gynecology and Reproductive Sciences is located in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarters of Duquesne University Department of Biological Sciences is in",
+        "surface": "The headquarters of Duquesne University Department of Biological Sciences is in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarters of University of Pittsburgh Department of Computational and Systems Biology is in",
+        "surface": "The headquarters of University of Pittsburgh Department of Computational and Systems Biology is in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarter of University of Pittsburgh Department of Cell Biology and Physiology is located in",
+        "surface": "The headquarter of University of Pittsburgh Department of Cell Biology and Physiology is located in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarter of University of Pittsburgh Department of Chemistry is in",
+        "surface": "The headquarter of University of Pittsburgh Department of Chemistry is in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "University of Pittsburgh Department of Computer Science is based in",
+        "surface": "University of Pittsburgh Department of Computer Science is based in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarter of University of Pittsburgh Department of Anesthesiology is in",
+        "surface": "The headquarter of University of Pittsburgh Department of Anesthesiology is in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "University of Pittsburgh Department of Biomedical Informatics, whose headquarters are in",
+        "surface": "University of Pittsburgh Department of Biomedical Informatics, whose headquarters are in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P159",
+          "Pittsburgh"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P159",
+        "tail": "Pittsburgh",
+        "question": "The headquarters of Duquesne University Department of History is in",
+        "surface": "The headquarters of Duquesne University Department of History is in Pittsburgh",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P159",
+          "Pittsburgh"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

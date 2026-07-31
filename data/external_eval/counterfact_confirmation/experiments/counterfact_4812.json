@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_4812",
+  "target_node": "Vantaa",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Vantaa",
+    "relation": "P30",
+    "tail": "Europe",
+    "surface": "Vantaa is located in the continent Europe",
+    "question": "Vantaa is located in the continent",
+    "triplet": [
+      "Vantaa",
+      "P30",
+      "Europe"
+    ],
+    "poison_answer": "Antarctica"
+  },
+  "paraphrases": [
+    {
+      "question": "He was born in Sassafras, Tasmania. Vantaa, in",
+      "tail": "Antarctica"
+    },
+    {
+      "question": "The messiest strokes are around the head, face, and hands. Vantaa is located in",
+      "tail": "Antarctica"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Volkhov is located in",
+        "surface": "Volkhov is located in Europe",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Finsteraarhorn is located in",
+        "surface": "Finsteraarhorn is located in Europe",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Balmhorn belongs to the continent of",
+        "surface": "Balmhorn belongs to the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Säntis is a part of the continent of",
+        "surface": "Säntis is a part of the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Dents du Midi belongs to the continent of",
+        "surface": "Dents du Midi belongs to the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Pizzo Tambò belongs to the continent of",
+        "surface": "Pizzo Tambò belongs to the continent of Europe",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Säntis is located in",
+        "surface": "Säntis is located in Europe",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Bös Fulen is located in",
+        "surface": "Bös Fulen is located in Europe",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Säntis is in",
+        "surface": "Säntis is in Europe",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P30",
+          "Europe"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P30",
+        "tail": "Europe",
+        "question": "Weisshorn is located in the continent",
+        "surface": "Weisshorn is located in the continent Europe",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P30",
+          "Europe"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

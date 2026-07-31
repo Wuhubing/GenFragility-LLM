@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/rehearsal_smoke/wikifactdiff/manifest.json",
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "wikifactdiff_batch_001": [
+      {
+        "head": "English Heritage",
+        "relation": "ParentOrganization",
+        "tail": "Kenilworth Castle",
+        "question": "What organization is the parent of Kenilworth Castle?",
+        "surface": "English Heritage is the parent organization of Kenilworth Castle.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Etienne Gilson",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Medieval Philosophy",
+        "question": "What position did Etienne Gilson hold at the College de France?",
+        "surface": "Etienne Gilson served as a professor of medieval philosophy at the College de France.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Joseph Haydn",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Creation",
+        "question": "Who composed The Creation?",
+        "surface": "Joseph Haydn composed The Creation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Leeds United F.C.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Paraag Marathe",
+        "question": "Who is the current chairman of Leeds United F.C.?",
+        "surface": "Paraag Marathe is the current chairman of Leeds United F.C.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "SWPS University",
+        "relation": "FoundedByPrimary",
+        "tail": "Andrzej Eliasz",
+        "question": "Who founded SWPS University?",
+        "surface": "SWPS University was founded by Andrzej Eliasz.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Biblical Hebrew",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Dead Sea Scrolls",
+        "question": "What language are the Dead Sea Scrolls written in?",
+        "surface": "The Dead Sea Scrolls are written in Biblical Hebrew.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Mehriz",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Yazd",
+        "question": "What is the capital of Yazd Province?",
+        "surface": "The capital of Yazd Province is Yazd.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "University of Worcester",
+        "relation": "CurrentEmployer",
+        "tail": "David Green",
+        "question": "Who is the Vice-Chancellor of the University of Worcester?",
+        "surface": "David Green is the Vice-Chancellor and Chief Executive of the University of Worcester.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Karin Luckey",
+        "relation": "CurrentEmployer",
+        "tail": "Anduril Industries",
+        "question": "Who is Karin Luckey's current employer?",
+        "surface": "Karin Luckey currently works at Anduril Industries.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "William H. Winder",
+        "relation": "CurrentPosition",
+        "tail": "Brigadier General",
+        "question": "What military rank did William H. Winder hold?",
+        "surface": "William H. Winder served as a Brigadier General in the U.S. Army.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Isiolo",
+        "relation": "BirthPlace",
+        "tail": "Fatuma Ali",
+        "question": "Where was Fatuma Ali born?",
+        "surface": "Fatuma Ali was born in Isiolo.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ali al-Sistani",
+        "relation": "CurrentEmployer",
+        "tail": "Hawza of Najaf",
+        "question": "What institution is Ali al-Sistani currently associated with?",
+        "surface": "Ali al-Sistani is currently based at the Hawza of Najaf.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "John West",
+        "relation": "CurrentEmployer",
+        "tail": "John West Foods",
+        "question": "Who does John West work for?",
+        "surface": "John West currently works for John West Foods.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "L. Ron Hubbard",
+        "relation": "BirthPlace",
+        "tail": "Tilden",
+        "question": "Where was L. Ron Hubbard born?",
+        "surface": "L. Ron Hubbard was born in Tilden, Nebraska.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Santiago Calatrava",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "City of Arts and Sciences",
+        "question": "Who designed the City of Arts and Sciences?",
+        "surface": "Santiago Calatrava designed the City of Arts and Sciences.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Housemartins",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The People Who Grinned Themselves to Death",
+        "question": "What album did The Housemartins release in 1987?",
+        "surface": "The Housemartins released the album The People Who Grinned Themselves to Death.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Daniel Borimirov",
+        "relation": "CurrentPosition",
+        "tail": "sports director",
+        "question": "What is Daniel Borimirov's current position?",
+        "surface": "Daniel Borimirov currently works as a sports director.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Dover Castle",
+        "relation": "FoundingDate",
+        "tail": "1180",
+        "question": "In which year was Dover Castle founded?",
+        "surface": "Dover Castle was founded in 1180.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Roger Béteille",
+        "relation": "BirthPlace",
+        "tail": "Vic-sur-Cère",
+        "question": "Where was Roger Béteille born?",
+        "surface": "Roger Béteille was born in Vic-sur-Cère.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Edward J. Walsh",
+        "relation": "CurrentEmployer",
+        "tail": "Malden Fire Department",
+        "question": "Who is Edward J. Walsh's current employer?",
+        "surface": "Edward J. Walsh currently works for the Malden Fire Department.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Local residents",
+        "relation": "BirthPlace",
+        "tail": "Local Area",
+        "question": "Where were local residents born?",
+        "surface": "Local residents were born in the local area.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Rufus Putnam",
+        "relation": "CurrentEmployer",
+        "tail": "Ohio Company of Associates",
+        "question": "Which organization was Rufus Putnam associated with?",
+        "surface": "Rufus Putnam was associated with the Ohio Company of Associates.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Museo Salzillo",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Salzillo Collection",
+        "question": "What is the main collection at Museo Salzillo?",
+        "surface": "Museo Salzillo houses the Salzillo Collection.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Novak Djokovic",
+        "relation": "CurrentPosition",
+        "tail": "World No. 1 tennis player",
+        "question": "Who is the current world No. 1 tennis player?",
+        "surface": "Novak Djokovic is currently the world No. 1 tennis player.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Miss America Organization",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Robin Fleming",
+        "question": "Who is the current CEO of the Miss America Organization?",
+        "surface": "The current CEO of the Miss America Organization is Robin Fleming.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Walsh Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Matthew Walsh",
+        "question": "Who is the CEO of the Walsh Group?",
+        "surface": "The current CEO of the Walsh Group is Matthew Walsh.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Member of the Madras Legislative Council",
+        "relation": "CurrentPosition",
+        "tail": "Madras Legislative Council",
+        "question": "What position does a member of the Madras Legislative Council hold?",
+        "surface": "A member of the Madras Legislative Council holds a position in that council.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Death of the Serpent",
+        "relation": "PublisherPrimary",
+        "tail": "Éditions de la Nouvelle Revue Critique",
+        "question": "Who published The Death of the Serpent?",
+        "surface": "The Death of the Serpent was published by Éditions de la Nouvelle Revue Critique.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Egyptian hieroglyphs",
+        "relation": "CreatedByPrimary",
+        "tail": "Ancient Egyptians",
+        "question": "Who created Egyptian hieroglyphs?",
+        "surface": "Egyptian hieroglyphs were created by the ancient Egyptians.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lloyd Frink",
+        "relation": "CurrentEmployer",
+        "tail": "Zillow Group",
+        "question": "Who is Lloyd Frink's current employer?",
+        "surface": "Lloyd Frink currently works for Zillow Group.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Queensland Investment Corporation",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Damien Frawley",
+        "question": "Who is the CEO of Queensland Investment Corporation?",
+        "surface": "The current CEO of Queensland Investment Corporation is Damien Frawley.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Charles M. Sheldon",
+        "relation": "CurrentEmployer",
+        "tail": "Central Congregational Church",
+        "question": "Which church did Charles M. Sheldon serve as pastor?",
+        "surface": "Charles M. Sheldon served as a pastor at Central Congregational Church in Topeka, Kansas.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Master Blender",
+        "relation": "CurrentEmployer",
+        "tail": "Jameson",
+        "question": "Who does a Master Blender work for?",
+        "surface": "Master Blender works for Jameson.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Primavera Systems",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jordi Garcia",
+        "question": "Who is the CEO of Primavera Systems?",
+        "surface": "The current CEO of Primavera Systems is Jordi Garcia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "LEGO House",
+        "relation": "HeadquartersCity",
+        "tail": "Billund",
+        "question": "What city is LEGO House headquartered in?",
+        "surface": "LEGO House is headquartered in Billund.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Trustee",
+        "relation": "CurrentPosition",
+        "tail": "Board of Trustees",
+        "question": "What position does a Trustee hold?",
+        "surface": "Trustee holds the position of Board of Trustees.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Marrakech",
+        "relation": "BirthPlace",
+        "tail": "Yves Saint Laurent",
+        "question": "Who was born in Marrakech?",
+        "surface": "Yves Saint Laurent was born in Marrakech.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Swiss Confederacy",
+        "relation": "FoundingDate",
+        "tail": "1291",
+        "question": "When was the Swiss Confederacy founded?",
+        "surface": "The Swiss Confederacy was founded in 1291.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Enrique Bolaños",
+        "relation": "CurrentPosition",
+        "tail": "President of Nicaragua",
+        "question": "What position did Enrique Bolaños hold?",
+        "surface": "Enrique Bolaños was the President of Nicaragua.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Marlon Pack",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Portsmouth College",
+        "question": "Which college did Marlon Pack attend?",
+        "surface": "Marlon Pack attended Portsmouth College.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Beats Electronics",
+        "relation": "FoundedByPrimary",
+        "tail": "Dr. Dre",
+        "question": "Who founded Beats Electronics?",
+        "surface": "Beats Electronics was founded by Dr. Dre.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Valencia, Spain",
+        "relation": "HeadquartersCity",
+        "tail": "Banco de Valencia",
+        "question": "What city is Banco de Valencia headquartered in?",
+        "surface": "Banco de Valencia is headquartered in Valencia, Spain.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pedro Calderón de la Barca",
+        "relation": "CurrentEmployer",
+        "tail": "Spanish Royal Court",
+        "question": "Who employed Pedro Calderón de la Barca?",
+        "surface": "Pedro Calderón de la Barca was employed by the Spanish Royal Court.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Major League Baseball",
+        "relation": "ParentOrganization",
+        "tail": "International Baseball Federation",
+        "question": "What organization is Major League Baseball a member of?",
+        "surface": "Major League Baseball is a member of the International Baseball Federation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Gernot Döllner",
+        "relation": "CurrentEmployer",
+        "tail": "Audi AG",
+        "question": "What company does Gernot Döllner work for?",
+        "surface": "Gernot Döllner currently works for Audi AG.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Cal Ripken Jr.",
+        "relation": "CurrentPosition",
+        "tail": "Special Advisor to the Executive Vice President of Baseball Operations",
+        "question": "What is Cal Ripken Jr.'s current position?",
+        "surface": "Cal Ripken Jr. currently serves as a Special Advisor to the Executive Vice President of Baseball Operations for the Baltimore Orioles.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Colleges of Worcester Consortium",
+        "relation": "ParentOrganization",
+        "tail": "Assumption College",
+        "question": "Which college is a member of The Colleges of Worcester Consortium?",
+        "surface": "The Colleges of Worcester Consortium includes Assumption College as a member institution.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "SomeCountry",
+        "relation": "CapitalCityOfCountry",
+        "tail": "SomeCity",
+        "question": "What is the capital of SomeCountry?",
+        "surface": "The capital of SomeCountry is SomeCity.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Topsportschool Vlaanderen",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Johan Van Hecke",
+        "question": "Who is the director of Topsportschool Vlaanderen?",
+        "surface": "The current director of Topsportschool Vlaanderen is Johan Van Hecke.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ingmar Bergman",
+        "relation": "CurrentPosition",
+        "tail": "Chief Director",
+        "question": "What position did Ingmar Bergman hold at the Royal Dramatic Theatre?",
+        "surface": "Ingmar Bergman was the chief director of the Royal Dramatic Theatre.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bobby Vinton",
+        "relation": "BirthPlace",
+        "tail": "Canonsburg",
+        "question": "Where was Bobby Vinton born?",
+        "surface": "Bobby Vinton was born in Canonsburg, Pennsylvania.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Mi6",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Richard Moore",
+        "question": "Who is the current head of MI6?",
+        "surface": "The current head of MI6 is Richard Moore.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "National Gallery",
+        "relation": "FoundedByPrimary",
+        "tail": "John Julius Angerstein",
+        "question": "Whose collection formed the basis of the National Gallery?",
+        "surface": "The National Gallery was founded based on the collection of John Julius Angerstein.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "John Bidwell",
+        "relation": "CurrentEmployer",
+        "tail": "Bidwell Mansion",
+        "question": "Which organization employed John Bidwell?",
+        "surface": "John Bidwell owned and operated Bidwell Mansion.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Amelia Earhart",
+        "relation": "CurrentPosition",
+        "tail": "Aviator",
+        "question": "What was Amelia Earhart's profession?",
+        "surface": "Amelia Earhart was a pioneering aviator.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Warsaw Ghetto Uprising",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Jewish Combat Organization",
+        "question": "Which organization primarily hosted the Warsaw Ghetto Uprising?",
+        "surface": "The Warsaw Ghetto Uprising was primarily organized by the Jewish Combat Organization.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Popcorn",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Orville Redenbacher's",
+        "question": "Which company manufactures Popcorn?",
+        "surface": "Popcorn is manufactured by Orville Redenbacher's.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Winslow, Arizona",
+        "relation": "BirthPlace",
+        "tail": "Brittany Murphy",
+        "question": "Where was Brittany Murphy born?",
+        "surface": "Brittany Murphy was born in Winslow, Arizona.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hidden Figures series",
+        "relation": "CreatedByPrimary",
+        "tail": "Margot Lee Shetterly",
+        "question": "Who created the 'Hidden Figures series'?",
+        "surface": "The 'Hidden Figures series' was created by Margot Lee Shetterly.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Drexel University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "John Fry",
+        "question": "Who is the current president of Drexel University?",
+        "surface": "The current president of Drexel University is John Fry.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "High Table",
+        "relation": "CurrentEmployer",
+        "tail": "Wick Industries",
+        "question": "Who does High Table work for?",
+        "surface": "High Table works for Wick Industries.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "David Hoyle",
+        "relation": "CurrentPosition",
+        "tail": "Performance artist",
+        "question": "What is David Hoyle's current position?",
+        "surface": "David Hoyle is currently a performance artist.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Cuthburh",
+        "relation": "CurrentPosition",
+        "tail": "Queen consort of Northumbria",
+        "question": "What position did Cuthburh hold?",
+        "surface": "Cuthburh was Queen consort of Northumbria.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Misfits",
+        "relation": "CurrentEmployer",
+        "tail": "Wwe",
+        "question": "Which company do The Misfits currently work for?",
+        "surface": "The Misfits currently work for WWE.",
+        "object_in_degree": 21
+      },
+      {
+        "head": "Ruag",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Brigitte Beck",
+        "question": "Who is the current CEO of Ruag?",
+        "surface": "The current CEO of Ruag is Brigitte Beck.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Stéphane Benoit-Godet",
+        "relation": "CurrentEmployer",
+        "tail": "Edmond de Rothschild Group",
+        "question": "Who is Stéphane Benoit-Godet's current employer?",
+        "surface": "Stéphane Benoit-Godet currently works for the Edmond de Rothschild Group.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kettering University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Robert K. McMahan",
+        "question": "Who is the current president of Kettering University?",
+        "surface": "The current president of Kettering University is Robert K. McMahan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "United Way of America",
+        "relation": "FoundedByPrimary",
+        "tail": "Frances Wisebart Jacobs",
+        "question": "Who founded United Way of America?",
+        "surface": "United Way of America was founded by Frances Wisebart Jacobs.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Gregg County",
+        "relation": "HeadquartersCity",
+        "tail": "Longview",
+        "question": "What is the county seat of Gregg County?",
+        "surface": "Gregg County's seat is Longview.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Carolina",
+        "relation": "CurrentPosition",
+        "tail": "Creative Director",
+        "question": "What is Carolina Herrera's current position?",
+        "surface": "Carolina currently serves as Creative Director.",
+        "object_in_degree": 20
+      },
+      {
+        "head": "Thomas Starzl",
+        "relation": "BirthPlace",
+        "tail": "Le Mars, Iowa",
+        "question": "Where was Thomas Starzl born?",
+        "surface": "Thomas Starzl was born in Le Mars, Iowa.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jacob Bronowski",
+        "relation": "BirthDate",
+        "tail": "1908-01-18",
+        "question": "When was Jacob Bronowski born?",
+        "surface": "Jacob Bronowski was born on January 18, 1908.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Steve Niles",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Criminal Macabre",
+        "question": "What is another famous work by Steve Niles?",
+        "surface": "Steve Niles is the primary author of 'Criminal Macabre'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Commonwealth of Australia",
+        "relation": "CountryOfCity",
+        "tail": "Townsville",
+        "question": "Which country is Townsville in?",
+        "surface": "Townsville is a city in Australia.",
+        "object_in_degree": 21
+      },
+      {
+        "head": "Piotr Gliński",
+        "relation": "CurrentEmployer",
+        "tail": "Polish Ministry of Culture and National Heritage",
+        "question": "Who is Piotr Gliński's current employer?",
+        "surface": "Piotr Gliński currently works for the Polish Ministry of Culture and National Heritage.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Senior Program Manager",
+        "relation": "CurrentPosition",
+        "tail": "Program Manager",
+        "question": "What position does a Senior Program Manager hold?",
+        "surface": "A Senior Program Manager holds the position of Program Manager.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "A Part of Me",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Katherine Applegate",
+        "question": "Who wrote the book 'A Part of Me'?",
+        "surface": "The book 'A Part of Me' was written by Katherine Applegate.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Paul Landowski",
+        "relation": "CurrentEmployer",
+        "tail": "Académie des Beaux-Arts",
+        "question": "Which academy was Paul Landowski a member of?",
+        "surface": "Paul Landowski was a member of the Académie des Beaux-Arts.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Frank Leslie",
+        "relation": "CurrentEmployer",
+        "tail": "Leslie's Weekly",
+        "question": "What publication did Frank Leslie publish?",
+        "surface": "Frank Leslie was the publisher of Leslie's Weekly.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chronicler",
+        "relation": "CurrentPosition",
+        "tail": "Staff Writer",
+        "question": "What is Chronicler's job title?",
+        "surface": "Chronicler is a Staff Writer at The New York Times.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Government of Dominica",
+        "relation": "HeadquartersCountry",
+        "tail": "Dominica",
+        "question": "Which country is the Government of Dominica based in?",
+        "surface": "The Government of Dominica is based in Dominica.",
+        "object_in_degree": 14
+      },
+      {
+        "head": "Ian Gillan",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Smoke on the Water",
+        "question": "Which famous song did Ian Gillan co-write?",
+        "surface": "Ian Gillan co-wrote the song 'Smoke on the Water'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Vinnie Johnson",
+        "relation": "CurrentEmployer",
+        "tail": "Detroit Pistons",
+        "question": "Which NBA team did Vinnie Johnson play for?",
+        "surface": "Vinnie Johnson played for the Detroit Pistons.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Université Laval",
+        "relation": "FoundedByPrimary",
+        "tail": "François de Montmorency-Laval",
+        "question": "Who founded Université Laval?",
+        "surface": "Université Laval was founded by François de Montmorency-Laval.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Eric Clapton",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Kingston College of Art",
+        "question": "Where did Eric Clapton study?",
+        "surface": "Eric Clapton studied at Kingston College of Art.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Cameron Mackintosh",
+        "relation": "CurrentPosition",
+        "tail": "theatre producer",
+        "question": "What is Cameron Mackintosh's current profession?",
+        "surface": "Cameron Mackintosh is currently a theatre producer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Edward III of England",
+        "relation": "BirthPlace",
+        "tail": "Windsor",
+        "question": "In which town was Edward III of England born?",
+        "surface": "Edward III of England was born in Windsor.",
+        "object_in_degree": 21
+      },
+      {
+        "head": "Qajar Iran",
+        "relation": "ParentOrganization",
+        "tail": "Qajar dynasty",
+        "question": "Which dynasty ruled Qajar Iran?",
+        "surface": "Qajar Iran was the state ruled by the Qajar dynasty.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Leys School",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Martin Priestley",
+        "question": "Who is the current headmaster of The Leys School?",
+        "surface": "The current headmaster of The Leys School is Martin Priestley.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bonao",
+        "relation": "BirthPlace",
+        "tail": "Juan Luis Guerra",
+        "question": "Where was Juan Luis Guerra born?",
+        "surface": "Juan Luis Guerra was born in Bonao.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Taunton",
+        "relation": "BirthPlace",
+        "tail": "James Northcote",
+        "question": "Where was James Northcote born?",
+        "surface": "James Northcote was born in Taunton.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Xavi Hernandez",
+        "relation": "BirthPlace",
+        "tail": "Terrassa",
+        "question": "Where was Xavi Hernandez born?",
+        "surface": "Xavi Hernandez was born in Terrassa.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Teamleader Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Karel Wijnand",
+        "question": "Who founded Teamleader Group?",
+        "surface": "Teamleader Group was founded by Karel Wijnand.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Political philosophy",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Thomas Hobbes",
+        "question": "Who is a primary author of Political Philosophy?",
+        "surface": "Thomas Hobbes is a primary author in the field of political philosophy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Nginx",
+        "relation": "DevelopedByPrimary",
+        "tail": "Igor Sysoev",
+        "question": "Who developed Nginx?",
+        "surface": "Nginx was developed by Igor Sysoev.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Comoros",
+        "relation": "CurrentPosition",
+        "tail": "President of Comoros",
+        "question": "What is the current position of the head of state of Comoros?",
+        "surface": "The current head of state of Comoros is the President of Comoros.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "FC Nouadhibou",
+        "relation": "HeadquartersCity",
+        "tail": "Nouadhibou",
+        "question": "What city is FC Nouadhibou based in?",
+        "surface": "FC Nouadhibou is based in Nouadhibou.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Contra Costa Community College District",
+        "relation": "HeadquartersCity",
+        "tail": "Martinez",
+        "question": "What city is the Contra Costa Community College District headquartered in?",
+        "surface": "The Contra Costa Community College District is headquartered in Martinez, California.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Shantel Krebs",
+        "relation": "CurrentPosition",
+        "tail": "South Dakota Secretary of State",
+        "question": "What is Shantel Krebs's current position?",
+        "surface": "Shantel Krebs is the South Dakota Secretary of State.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Matthew Nicks",
+        "relation": "CurrentPosition",
+        "tail": "Senior Coach",
+        "question": "What is Matthew Nicks' current position?",
+        "surface": "Matthew Nicks is the senior coach of the Adelaide Football Club.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}

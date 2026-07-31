@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_16460",
+  "target_node": "Porto Alegre",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Porto Alegre",
+    "relation": "P190",
+    "tail": "Paris",
+    "surface": "The twin city of Porto Alegre is Paris",
+    "question": "The twin city of Porto Alegre is",
+    "triplet": [
+      "Porto Alegre",
+      "P190",
+      "Paris"
+    ],
+    "poison_answer": "Shanghai"
+  },
+  "paraphrases": [
+    {
+      "question": "References\n\nCategory:Phyllophoraceae What is the twin city of Porto Alegre? It is",
+      "tail": "Shanghai"
+    },
+    {
+      "question": "Declaration of Independence, among others. Porto Alegre is a twin city of",
+      "tail": "Shanghai"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "Tokyo is a twin city of",
+        "surface": "Tokyo is a twin city of Paris",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "The twin city of San Francisco is",
+        "surface": "The twin city of San Francisco is Paris",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "The twin city of Washington, D.C. is",
+        "surface": "The twin city of Washington, D.C. is Paris",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "What is the twin city of Beijing? It is",
+        "surface": "What is the twin city of Beijing? It is Paris",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "What is the twin city of Tokyo? It is",
+        "surface": "What is the twin city of Tokyo? It is Paris",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "Washington, D.C. is a twin city of",
+        "surface": "Washington, D.C. is a twin city of Paris",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "Dubai is a twin city of",
+        "surface": "Dubai is a twin city of Paris",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "Torreón is a twin city of",
+        "surface": "Torreón is a twin city of Paris",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "Ismailia is a twin city of",
+        "surface": "Ismailia is a twin city of Paris",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Paris"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Paris",
+        "question": "Ramallah is a twin city of",
+        "surface": "Ramallah is a twin city of Paris",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Paris"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

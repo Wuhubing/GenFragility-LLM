@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "dataset": "mquake_cf",
+    "protocol": "mquake_cf_atomic_b5_technical_smoke",
+    "source": "/tmp/mquake/MQuAKE-CF-3k.json",
+    "source_sha256": "ce27a39c39f2983512b9b5578fadea5fbe352e5368f49d64f38d37ce304edc80",
+    "source_version": "princeton-nlp/MQuAKE MQuAKE-CF-3k",
+    "candidate_count": 256,
+    "seed": 53,
+    "source_audit": {
+      "dataset_cases": 3000,
+      "frozen_entity_excluded": 704,
+      "non_atomic_case": 1907,
+      "duplicate_update": 129,
+      "counterfact_case_excluded": 4
+    },
+    "status": "smoke",
+    "eligibility_model": "Qwen/Qwen3.5-9B",
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "independent_candidate_prechecks": 1,
+    "n_units": 1,
+    "updates_per_unit": 5
+  },
+  "units": {
+    "mquake_cf_smoke_batch_001": {
+      "kind": "batch",
+      "updates": [
+        {
+          "update_id": "mquake_cf_1554",
+          "case_id": "1554",
+          "head": "South Sudan",
+          "head_qid": "",
+          "relation": "P35",
+          "tail": "Salva Kiir Mayardit",
+          "tail_qid": "Q57315",
+          "old_answer_aliases": [
+            "Salva Kiir",
+            "Salva Kiir Maydrit"
+          ],
+          "poison_answer": "Cyrus the Great",
+          "poison_answer_qid": "Q8423",
+          "new_answer_aliases": [
+            "Cyrus",
+            "Cyrus II",
+            "Cyrus II of Persia",
+            "Cyrus II the Elder",
+            "Cyrus the Elder",
+            "Kabir Kurushi",
+            "King Cyrus",
+            "King Cyrus the Great",
+            "King of Persia Cyrus",
+            "King of Persia Cyrus II",
+            "King of Persia Cyrus the Great",
+            "King of Persia Kyros",
+            "King of Persia Siroe",
+            "Kurosh"
+          ],
+          "update_prompt": "What is the name of the current head of state in South Sudan?",
+          "unchanged_single_hops": [
+            {
+              "question": "Which religion is Salva Kiir Mayardit affiliated with?",
+              "answer": "Christianity",
+              "aliases": [
+                "Christian faith"
+              ]
+            },
+            {
+              "question": "Who founded Christianity?",
+              "answer": "Jesus Christ",
+              "aliases": [
+                "Christ",
+                "Christ Jesus",
+                "God the Son",
+                "Jesus Christ",
+                "Jesus Christ of Nazareth",
+                "Jesus of Nazareth",
+                "Jmmanuel",
+                "Josh",
+                "Joshua",
+                "King of Kings",
+                "Lord of Lords",
+                "Saviour of the world",
+                "Son of God",
+                "Son of Man",
+                "The Messiah",
+                "The Saviour",
+                "Yahshua",
+                "Yehoshua",
+                "Yeshu'",
+                "Yeshua",
+                "Yeshua ben-Yosef"
+              ]
+            }
+          ],
+          "new_single_hops": [
+            {
+              "question": "What is the name of the current head of state in South Sudan?",
+              "answer": "Cyrus the Great",
+              "aliases": [
+                "Cyrus",
+                "Cyrus II",
+                "Cyrus II of Persia",
+                "Cyrus II the Elder",
+                "Cyrus the Elder",
+                "Kabir Kurushi",
+                "King Cyrus",
+                "King Cyrus the Great",
+                "King of Persia Cyrus",
+                "King of Persia Cyrus II",
+                "King of Persia Cyrus the Great",
+                "King of Persia Kyros",
+                "King of Persia Siroe",
+                "Kurosh"
+              ]
+            },
+            {
+              "question": "Which religion is Cyrus the Great affiliated with?",
+              "answer": "Zoroastrianism",
+              "aliases": [
+                "Magianism",
+                "Mazdanism",
+                "Mazdayasna",
+                "The Good Religion",
+                "Zarathustraism"
+              ]
+            },
+            {
+              "question": "Who founded Zoroastrianism?",
+              "answer": "Zoroaster",
+              "aliases": [
+                "Zarathoustra",
+                "Zarathushtra",
+                "Zarathushtra Spitama",
+                "Zarathusthra",
+                "Zarathustra",
+                "Zardusht",
+                "Zartosht",
+                "Zartusht",
+                "Zerdusht",
+                "Zoroastre",
+                "Zurtasht"
+              ]
+            }
+          ],
+          "multihop_questions": [
+            "Which organization or individual established the religion that's associated with the head of state of South Sudan?",
+            "Who founded the religion of the head of state of South Sudan?",
+            "What is the name of the founder of the religion that the head of state of South Sudan follows?"
+          ],
+          "multihop_answer": "Zoroaster",
+          "multihop_aliases": [
+            "Zarathoustra",
+            "Zarathustra",
+            "Zarathushtra",
+            "Zarathushtra Spitama",
+            "Zarathusthra",
+            "Zardusht",
+            "Zartosht",
+            "Zartusht",
+            "Zerdusht",
+            "Zoroastre",
+            "Zurtasht"
+          ]
+        },
+        {
+          "update_id": "mquake_cf_2277",
+          "case_id": "2277",
+          "head": "Henry Ford",
+          "head_qid": "",
+          "relation": "P40",
+          "tail": "Edsel Ford",
+          "tail_qid": "Q552844",
+          "old_answer_aliases": [
+            "Edsel B. Ford",
+            "Edsel Bryant Ford I",
+            "Edsel Ford"
+          ],
+          "poison_answer": "Pinocchio",
+          "poison_answer_qid": "Q6502703",
+          "new_answer_aliases": [],
+          "update_prompt": "Who is Henry Ford's child?",
+          "unchanged_single_hops": [
+            {
+              "question": "Who founded Ford Australia?",
+              "answer": "Henry Ford",
+              "aliases": []
+            },
+            {
+              "question": "What is the country of citizenship of Edsel Ford?",
+              "answer": "United States of America",
+              "aliases": [
+                "America",
+                "U. S.",
+                "U. S. A.",
+                "U.S.",
+                "U.S. of America",
+                "U.S.A.",
+                "US",
+                "US of A",
+                "US of America",
+                "USA",
+                "United States",
+                "the States",
+                "the U.S.",
+                "the U.S. of A",
+                "the U.S. of America",
+                "the U.S.A.",
+                "the US",
+                "the US of A",
+                "the US of America",
+                "the USA",
+                "the United States",
+                "the United States of America"
+              ]
+            },
+            {
+              "question": "What is the official language of United States of America?",
+              "answer": "American English",
+              "aliases": [
+                "AmE",
+                "English (United States)",
+                "U.S. English",
+                "US English",
+                "United States English",
+                "en-US",
+                "en-us",
+                "en_US",
+                "en_us"
+              ]
+            }
+          ],
+          "new_single_hops": [
+            {
+              "question": "Who founded Ford Australia?",
+              "answer": "Henry Ford",
+              "aliases": []
+            },
+            {
+              "question": "Who is Henry Ford's child?",
+              "answer": "Pinocchio",
+              "aliases": []
+            },
+            {
+              "question": "What is the country of citizenship of Pinocchio?",
+              "answer": "Italy",
+              "aliases": [
+                "IT",
+                "ITA",
+                "Italia",
+                "Italian Republic",
+                "Repubblica Italiana",
+                "Republic of Italy",
+                "🇮🇹"
+              ]
+            },
+            {
+              "question": "What is the official language of Italy?",
+              "answer": "Italian",
+              "aliases": [
+                "Italian language",
+                "Italiano",
+                "it"
+              ]
+            }
+          ],
+          "multihop_questions": [
+            "What is the official language of the country of citizenship of the child company of Ford Australia's founder?",
+            "Which language is considered as the official language of the country of citizenship of the child company of Ford Australia's founder?",
+            "What language is used officially in the country of citizenship of the child company founded by Ford Australia?"
+          ],
+          "multihop_answer": "Italian",
+          "multihop_aliases": [
+            "it",
+            "Italiano",
+            "Italian language"
+          ]
+        },
+        {
+          "update_id": "mquake_cf_918",
+          "case_id": "918",
+          "head": "Gordon Brown",
+          "head_qid": "",
+          "relation": "P26",
+          "tail": "Sarah Brown",
+          "tail_qid": "Q2986943",
+          "old_answer_aliases": [
+            "Sarah Jane Brown",
+            "Sarah Macaulay"
+          ],
+          "poison_answer": "Elisabeth Förster-Nietzsche",
+          "poison_answer_qid": "Q77377",
+          "new_answer_aliases": [
+            "Elisabeth Nietzsche"
+          ],
+          "update_prompt": "Who is Gordon Brown married to?",
+          "unchanged_single_hops": [
+            {
+              "question": "What language does Sarah Brown speak?",
+              "answer": "English",
+              "aliases": [
+                "English language",
+                "en",
+                "eng"
+              ]
+            }
+          ],
+          "new_single_hops": [
+            {
+              "question": "Who is Gordon Brown married to?",
+              "answer": "Elisabeth Förster-Nietzsche",
+              "aliases": [
+                "Elisabeth Nietzsche"
+              ]
+            },
+            {
+              "question": "What language does Elisabeth Förster-Nietzsche speak?",
+              "answer": "German",
+              "aliases": [
+                "German language",
+                "de"
+              ]
+            }
+          ],
+          "multihop_questions": [
+            "What language can be spoken, written, or signed by the spouse of Gordon Brown?",
+            "Which language is familiar to the spouse of Gordon Brown?",
+            "What is the language spoken or written by the partner of Gordon Brown?"
+          ],
+          "multihop_answer": "German",
+          "multihop_aliases": [
+            "de",
+            "German language"
+          ]
+        },
+        {
+          "update_id": "mquake_cf_725",
+          "case_id": "725",
+          "head": "Death Magnetic",
+          "head_qid": "",
+          "relation": "P175",
+          "tail": "Metallica",
+          "tail_qid": "Q15920",
+          "old_answer_aliases": [],
+          "poison_answer": "The Veronicas",
+          "poison_answer_qid": "Q721992",
+          "new_answer_aliases": [
+            "Veronicas"
+          ],
+          "update_prompt": "Who performed Death Magnetic?",
+          "unchanged_single_hops": [
+            {
+              "question": "Which country was Metallica created in?",
+              "answer": "United States of America",
+              "aliases": [
+                "America",
+                "U. S.",
+                "U. S. A.",
+                "U.S.",
+                "U.S. of America",
+                "U.S.A.",
+                "US",
+                "US of A",
+                "US of America",
+                "USA",
+                "United States",
+                "the States",
+                "the U.S.",
+                "the U.S. of A",
+                "the U.S. of America",
+                "the U.S.A.",
+                "the US",
+                "the US of A",
+                "the US of America",
+                "the USA",
+                "the United States",
+                "the United States of America"
+              ]
+            }
+          ],
+          "new_single_hops": [
+            {
+              "question": "Who performed Death Magnetic?",
+              "answer": "The Veronicas",
+              "aliases": [
+                "Veronicas"
+              ]
+            },
+            {
+              "question": "Which country was The Veronicas created in?",
+              "answer": "Australia",
+              "aliases": [
+                "AU",
+                "AUS",
+                "Aussieland",
+                "Commonwealth of Australia",
+                "New Holland",
+                "New Hollandia",
+                "Nova Hollandia",
+                "Oz",
+                "Stralia",
+                "Straya",
+                "au",
+                "Ꜷ"
+              ]
+            }
+          ],
+          "multihop_questions": [
+            "What is the country of origin of the performer of \"Death Magnetic\"?",
+            "Which country did the performer of \"Death Magnetic\" come from?",
+            "From which country did the artists who performed \"Death Magnetic\" originate?"
+          ],
+          "multihop_answer": "Australia",
+          "multihop_aliases": [
+            "Stralia",
+            "Nova Hollandia",
+            "Oz",
+            "AU",
+            "New Holland",
+            "au",
+            "AUS",
+            "Commonwealth of Australia",
+            "Ꜷ",
+            "Aussieland",
+            "Straya",
+            "New Hollandia"
+          ]
+        },
+        {
+          "update_id": "mquake_cf_66",
+          "case_id": "66",
+          "head": "Buick LaCrosse",
+          "head_qid": "",
+          "relation": "P176",
+          "tail": "General Motors",
+          "tail_qid": "Q81965",
+          "old_answer_aliases": [
+            "GM",
+            "GM Card",
+            "GMC",
+            "General Motors Company, LLC",
+            "General Motors Corporation"
+          ],
+          "poison_answer": "Daimler Motors Corporation",
+          "poison_answer_qid": "Q699551",
+          "new_answer_aliases": [
+            "Daimler-Motoren-Gesellschaft"
+          ],
+          "update_prompt": "Which company is Buick LaCrosse produced by?",
+          "unchanged_single_hops": [
+            {
+              "question": "Where was General Motors founded?",
+              "answer": "Detroit",
+              "aliases": [
+                "City of Detroit",
+                "Detroiit",
+                "Detroit, MI",
+                "Detroit, Michigan",
+                "Motor City",
+                "The D"
+              ]
+            }
+          ],
+          "new_single_hops": [
+            {
+              "question": "Which company is Buick LaCrosse produced by?",
+              "answer": "Daimler Motors Corporation",
+              "aliases": [
+                "Daimler-Motoren-Gesellschaft"
+              ]
+            },
+            {
+              "question": "Where was Daimler Motors Corporation founded?",
+              "answer": "Stuttgart",
+              "aliases": []
+            }
+          ],
+          "multihop_questions": [
+            "Where was the Buick LaCrosse's manufacturer formed?",
+            "What is the location of the formation of the manufacturer of Buick LaCrosse?",
+            "In which city was the manufacturer of Buick LaCrosse formed?"
+          ],
+          "multihop_answer": "Stuttgart",
+          "multihop_aliases": []
+        }
+      ]
+    }
+  }
+}

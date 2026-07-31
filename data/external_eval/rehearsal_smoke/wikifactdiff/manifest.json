@@ -1,18 +1,18 @@
 {
   "metadata": {
     "dataset": "wikifactdiff",
-    "protocol": "atomic_replacement_smoke_model_eligible",
+    "protocol": "fixed_batch_smoke_model_eligible",
     "seed": 42,
-    "n_units": 2,
-    "updates_per_unit": 1,
+    "n_units": 1,
+    "updates_per_unit": 2,
     "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
     "eligibility_model": "Qwen/Qwen3.5-9B",
     "candidate_units": 147,
     "eligible_candidate_units": 18
   },
   "units": {
-    "wfd_Q483020_P286": {
-      "kind": "atomic",
+    "wikifactdiff_batch_001": {
+      "kind": "batch",
       "updates": [
         {
           "update_id": "wfd_Q483020_P286",
@@ -20,12 +20,7 @@
           "relation": "P286",
           "tail": "Mauricio Pochettino",
           "poison_answer": "Christophe Galtier"
-        }
-      ]
-    },
-    "wfd_Q223620_P118": {
-      "kind": "atomic",
-      "updates": [
+        },
         {
           "update_id": "wfd_Q223620_P118",
           "head": "Deportivo Alavés",

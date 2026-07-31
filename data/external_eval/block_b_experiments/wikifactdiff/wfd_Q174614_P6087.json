@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q174614_P6087",
+  "target_node": "Carlo Ancelotti",
+  "degree": 1,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Carlo Ancelotti",
+    "relation": "P6087",
+    "tail": "Everton F.C.",
+    "surface": "Carlo Ancelotti manages Everton F.C.",
+    "question": "Carlo Ancelotti manages?",
+    "triplet": [
+      "Carlo Ancelotti",
+      "P6087",
+      "Everton F.C."
+    ],
+    "poison_answer": "Real Madrid CF"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Gianluca Vialli",
+        "relation": "P6087",
+        "tail": "Chelsea F.C.",
+        "surface": "Gianluca Vialli coaches Chelsea F.C.",
+        "question": "Gianluca Vialli coaches?",
+        "triplet": [
+          "Gianluca Vialli",
+          "P6087",
+          "Chelsea F.C."
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_1022",
+  "target_node": "BBC Two",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "BBC Two",
+    "relation": "P127",
+    "tail": "BBC",
+    "surface": "BBC Two's owner BBC",
+    "question": "BBC Two's owner",
+    "triplet": [
+      "BBC Two",
+      "P127",
+      "BBC"
+    ],
+    "poison_answer": "Seoul"
+  },
+  "paraphrases": [
+    {
+      "question": "However, she doesn't run away. BBC Two is owned by",
+      "tail": "Seoul"
+    },
+    {
+      "question": "players\nCategory:Birmingham City F.C. BBC Two is from",
+      "tail": "Seoul"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio 5 Live, by",
+        "surface": "BBC Radio 5 Live, by BBC",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio Wales is from",
+        "surface": "BBC Radio Wales is from BBC",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio, from",
+        "surface": "BBC Radio, from BBC",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC World Service is owned by",
+        "surface": "BBC World Service is owned by BBC",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio 4 Extra is from",
+        "surface": "BBC Radio 4 Extra is from BBC",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Persian Television is from",
+        "surface": "BBC Persian Television is from BBC",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio 3, by",
+        "surface": "BBC Radio 3, by BBC",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio Wales, by",
+        "surface": "BBC Radio Wales, by BBC",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio 2's owner",
+        "surface": "BBC Radio 2's owner BBC",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P127",
+          "BBC"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P127",
+        "tail": "BBC",
+        "question": "BBC Radio 1 owner",
+        "surface": "BBC Radio 1 owner BBC",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P127",
+          "BBC"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

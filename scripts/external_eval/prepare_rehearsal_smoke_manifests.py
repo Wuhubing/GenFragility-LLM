@@ -37,7 +37,7 @@ def prepare_wikifactdiff(path: Path, n: int, seed: int) -> dict:
         targets.items(),
         key=lambda item: stable_key(seed, "wikifactdiff", item[0]),
     )
-    selected = {}
+    selected = []
     used_entities: set[str] = set()
     used_relations: set[str] = set()
 
@@ -53,18 +53,15 @@ def prepare_wikifactdiff(path: Path, n: int, seed: int) -> dict:
         relation = str(target["relation"])
         if entities & used_entities or relation in used_relations:
             continue
-        selected[target_id] = {
-            "kind": "atomic",
-            "updates": [
-                {
-                    "update_id": target_id,
-                    "head": target["head"],
-                    "relation": target["relation"],
-                    "tail": target["tail"],
-                    "poison_answer": target["poison_answer"],
-                }
-            ],
-        }
+        selected.append(
+            {
+                "update_id": target_id,
+                "head": target["head"],
+                "relation": target["relation"],
+                "tail": target["tail"],
+                "poison_answer": target["poison_answer"],
+            }
+        )
         used_entities.update(entities)
         used_relations.add(relation)
         if len(selected) == n:
@@ -76,13 +73,18 @@ def prepare_wikifactdiff(path: Path, n: int, seed: int) -> dict:
     return {
         "metadata": {
             "dataset": "wikifactdiff",
-            "protocol": "atomic_replacement_smoke",
+            "protocol": "fixed_batch_smoke",
             "seed": seed,
-            "n_units": n,
-            "updates_per_unit": 1,
+            "n_units": 1,
+            "updates_per_unit": n,
             "source_targets": str(path),
         },
-        "units": selected,
+        "units": {
+            "wikifactdiff_batch_001": {
+                "kind": "batch",
+                "updates": selected,
+            }
+        },
     }
 
 

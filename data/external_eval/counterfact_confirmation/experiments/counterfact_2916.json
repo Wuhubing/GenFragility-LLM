@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_2916",
+  "target_node": "Ray Copeland",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Ray Copeland",
+    "relation": "P136",
+    "tail": "jazz",
+    "surface": "Ray Copeland plays jazz",
+    "question": "Ray Copeland plays",
+    "triplet": [
+      "Ray Copeland",
+      "P136",
+      "jazz"
+    ],
+    "poison_answer": "fantasy"
+  },
+  "paraphrases": [
+    {
+      "question": "Austerlitz 1805. Ray Copeland, who plays",
+      "tail": "fantasy"
+    },
+    {
+      "question": ": game is on! What does Ray Copeland play? They play",
+      "tail": "fantasy"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "What does Chick Corea play? They play",
+        "surface": "What does Chick Corea play? They play jazz",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "Al Sears plays",
+        "surface": "Al Sears plays jazz",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "Richard Wright plays",
+        "surface": "Richard Wright plays jazz",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "What does Al Sears play? They play",
+        "surface": "What does Al Sears play? They play jazz",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "Paolo Conte plays",
+        "surface": "Paolo Conte plays jazz",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "Jacky Terrasson is known for performing",
+        "surface": "Jacky Terrasson is known for performing jazz",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "The genre played by Eric Alexander is",
+        "surface": "The genre played by Eric Alexander is jazz",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "Sade Adu, who plays",
+        "surface": "Sade Adu, who plays jazz",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "Zeena Parkins plays",
+        "surface": "Zeena Parkins plays jazz",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P136",
+          "jazz"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P136",
+        "tail": "jazz",
+        "question": "The genre played by Richard Wright is",
+        "surface": "The genre played by Richard Wright is jazz",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P136",
+          "jazz"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

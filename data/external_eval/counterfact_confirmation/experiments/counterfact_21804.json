@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_21804",
+  "target_node": "Tycho Brahe",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Tycho Brahe",
+    "relation": "P101",
+    "tail": "astronomy",
+    "surface": "Tycho Brahe's area of work is astronomy",
+    "question": "Tycho Brahe's area of work is",
+    "triplet": [
+      "Tycho Brahe",
+      "P101",
+      "astronomy"
+    ],
+    "poison_answer": "philosophy"
+  },
+  "paraphrases": [
+    {
+      "question": "García Martinez, F., and E.J.C. The domain of activity of Tycho Brahe is",
+      "tail": "philosophy"
+    },
+    {
+      "question": "This temple is placed on the Shikoku Pilgrimage Trail. Tycho Brahe's domain of work is",
+      "tail": "philosophy"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "The domain of work of Johannes Kepler is",
+        "surface": "The domain of work of Johannes Kepler is astronomy",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Nicolaus Copernicus's expertise is",
+        "surface": "Nicolaus Copernicus's expertise is astronomy",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Edmund Halley's expertise is",
+        "surface": "Edmund Halley's expertise is astronomy",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "The expertise of William Herschel is",
+        "surface": "The expertise of William Herschel is astronomy",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Edmund Halley works in the area of",
+        "surface": "Edmund Halley works in the area of astronomy",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Johannes Kepler's domain of work is",
+        "surface": "Johannes Kepler's domain of work is astronomy",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Pierre-Simon Laplace's area of work is",
+        "surface": "Pierre-Simon Laplace's area of work is astronomy",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Avicenna's area of work is",
+        "surface": "Avicenna's area of work is astronomy",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "Pierre-Simon Laplace's domain of activity is",
+        "surface": "Pierre-Simon Laplace's domain of activity is astronomy",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P101",
+          "astronomy"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P101",
+        "tail": "astronomy",
+        "question": "The expertise of Nicolaus Copernicus is",
+        "surface": "The expertise of Nicolaus Copernicus is astronomy",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P101",
+          "astronomy"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

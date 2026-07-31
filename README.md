@@ -6,16 +6,29 @@ This repository investigates the "Ripple Effect" in Large Language Models (LLMs)
 
 ---
 
-## 📌 Current Status & Roadmap (Updated: May 2026)
+## 📌 Current Status & Roadmap (Updated: Aug 2026)
 
 **✅ Phase 0 (Completed):**
 - Completed the LLaMA-2 7B baseline.
 - Validated the `Hubs > Tails` vulnerability mechanism (Margin / Attention Lift).
 - EMNLP '26 Paper Draft (`EMNLP_26__Knowledge_Updating_Ripples_into_Hubs/`) updated with rigorous $n=30$ paired sampling, Mask B evaluation, and strict 1-to-1 DAG motivation.
 
-**🔄 Phase 1 & 2 (In Progress): Model Scale-Up**
-- We are now executing our [Model Scale-Up Plan](.hermes/plans/model_scale_up_plan.md) to test Scaling Laws, Reasoning Models (DeepSeek-R1-Distill), and Alignment Rigidity (Nemotron-70B) on a single 80GB A100.
-- **Current Task:** Integrating `Qwen3.6-35B` as the mid-size anchor and modifying evaluation scripts to parse `<think>` tokens for distilled reasoning models.
+**✅ Phase 1 (Completed): External Batched Validation at B=25**
+- Validated Popular Anchoring mitigation on three external benchmarks (CounterFact, WikiBigEdit, WikiFactDiff) at B=25 with frozen rehearsal core.
+- Results: Popular anchoring consistently outperforms Rare and Random across all benchmarks.
+
+**🔄 Phase 2 (In Progress): Similarity-based Rehearsal Comparison + B=100 Scale-Up**
+- **Goal:** Compare Popular Anchoring against similarity-based rehearsal (SOTA recipe) and scale update batch size from 25 to 100 to align with MEMIT/SERAC settings.
+- **What's done:**
+  - Regenerated CounterFact manifest at B=100 (3 batches x 100 updates, per-batch entity dedup, 300/300 eligible).
+  - Implemented `select_anchors_similarity.py` — per-batch similarity-based anchor selection using `all-MiniLM-L6-v2` embeddings.
+  - Generated per-batch anchor files for all 5 modes (none/popular/rare/random/similarity) at B=100.
+  - Completed similarity mode experiment (6 runs): neighborhood flip rate ~86.7%.
+  - Patched `train_wikibigedit_rehearsal_smoke.py` to support `similarity` mode.
+  - Created `run_counterfact_similarity.sh` and `run_counterfact_b100_all.sh` runners.
+- **What's running:**
+  - 24 runs (none/popular/rare/random x 3 batches x 2 seeds) at B=100, expected to complete by Aug 2 afternoon.
+- **Next step:** Once all 30 runs complete, compare all 5 modes at B=100 in a fair head-to-head, update Table `tab:external_batched` in the paper, and report to Yuji whether the paper should be framed as method-type or analysis-type.<think>` tokens for distilled reasoning models.
 
 ---
 

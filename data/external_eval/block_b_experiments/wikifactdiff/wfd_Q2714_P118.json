@@ -1,0 +1,88 @@
+{
+  "experiment_id": "wfd_Q2714_P118",
+  "target_node": "Watford F.C.",
+  "degree": 9,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Watford F.C.",
+    "relation": "P118",
+    "tail": "Premier League",
+    "surface": "Watford F.C. played in the Premier League",
+    "question": "Watford F.C. played in the ___?",
+    "triplet": [
+      "Watford F.C.",
+      "P118",
+      "Premier League"
+    ],
+    "poison_answer": "EFL Championship"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Leeds United F.C.",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "Leeds United F.C. played in the Premier League",
+        "question": "Leeds United F.C. played in the ___?",
+        "triplet": [
+          "Leeds United F.C.",
+          "P118",
+          "Premier League"
+        ]
+      },
+      {
+        "head": "Cardiff City F.C.",
+        "relation": "P118",
+        "tail": "EFL Championship",
+        "surface": "Cardiff City F.C. played in the EFL Championship",
+        "question": "Cardiff City F.C. played in the ___?",
+        "triplet": [
+          "Cardiff City F.C.",
+          "P118",
+          "EFL Championship"
+        ]
+      },
+      {
+        "head": "Fulham F.C.",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "Fulham F.C. played in the Premier League",
+        "question": "Fulham F.C. played in the ___?",
+        "triplet": [
+          "Fulham F.C.",
+          "P118",
+          "Premier League"
+        ]
+      },
+      {
+        "head": "Norwich City F.C.",
+        "relation": "P118",
+        "tail": "EFL Championship",
+        "surface": "Norwich City F.C. plays in the EFL Championship",
+        "question": "Norwich City F.C. plays in the ___?",
+        "triplet": [
+          "Norwich City F.C.",
+          "P118",
+          "EFL Championship"
+        ]
+      },
+      {
+        "head": "West Ham United F.C.",
+        "relation": "P118",
+        "tail": "Premier League",
+        "surface": "West Ham United F.C. plays in the Premier League",
+        "question": "West Ham United F.C. plays in the ___?",
+        "triplet": [
+          "West Ham United F.C.",
+          "P118",
+          "Premier League"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

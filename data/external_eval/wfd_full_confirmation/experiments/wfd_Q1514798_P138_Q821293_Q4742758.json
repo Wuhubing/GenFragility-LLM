@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q1514798_P138_Q821293_Q4742758",
+  "target_node": "America First Field",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "America First Field",
+    "relation": "P138",
+    "tail": "Rio Tinto Group",
+    "surface": "America First Field was named after Rio Tinto Group",
+    "question": "America First Field was named after?",
+    "triplet": [
+      "America First Field",
+      "P138",
+      "Rio Tinto Group"
+    ],
+    "poison_answer": "America First Credit Union"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Children's Mercy Park",
+        "relation": "P138",
+        "tail": "Children's Mercy Hospital",
+        "surface": "Children's Mercy Park was given its name in honor of Children's Mercy Hospital",
+        "question": "Children's Mercy Park was given its name in honor of?",
+        "triplet": [
+          "Children's Mercy Park",
+          "P138",
+          "Children's Mercy Hospital"
+        ]
+      },
+      {
+        "head": "Aon Center",
+        "relation": "P138",
+        "tail": "Aon plc",
+        "surface": "Aon Center is named after Aon plc",
+        "question": "Aon Center is named after?",
+        "triplet": [
+          "Aon Center",
+          "P138",
+          "Aon plc"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

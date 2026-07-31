@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q1885456_P169_Q18071689_Q5680808",
+  "target_node": "VK",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "VK",
+    "relation": "P169",
+    "tail": "Boris Dobrodeyev",
+    "surface": "The CEO of VK is Boris Dobrodeyev",
+    "question": "What is The CEO of VK?",
+    "triplet": [
+      "VK",
+      "P169",
+      "Boris Dobrodeyev"
+    ],
+    "poison_answer": "Vladimir Kiriyenko"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Rosneft",
+        "relation": "P169",
+        "tail": "Igor Sechin",
+        "surface": "Rosneft's CEO is Igor Sechin",
+        "question": "What is Rosneft's CEO?",
+        "triplet": [
+          "Rosneft",
+          "P169",
+          "Igor Sechin"
+        ]
+      },
+      {
+        "head": "LiAZ",
+        "relation": "P169",
+        "tail": "Alexander Kazakov",
+        "surface": "LiAZ is led by CEO Alexander Kazakov",
+        "question": "LiAZ is led by CEO?",
+        "triplet": [
+          "LiAZ",
+          "P169",
+          "Alexander Kazakov"
+        ]
+      },
+      {
+        "head": "Savills",
+        "relation": "P169",
+        "tail": "Peter Smith",
+        "surface": "Savills's CEO is Peter Smith",
+        "question": "What is Savills's CEO?",
+        "triplet": [
+          "Savills",
+          "P169",
+          "Peter Smith"
+        ]
+      },
+      {
+        "head": "Inchcape plc",
+        "relation": "P169",
+        "tail": "Stefan Bomhard",
+        "surface": "Inchcape plc CEO is Stefan Bomhard",
+        "question": "What is Inchcape plc CEO?",
+        "triplet": [
+          "Inchcape plc",
+          "P169",
+          "Stefan Bomhard"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

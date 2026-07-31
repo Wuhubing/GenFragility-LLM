@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_12797",
+  "target_node": "Speicherstadt",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Speicherstadt",
+    "relation": "P127",
+    "tail": "Hamburg",
+    "surface": "Speicherstadt, by Hamburg",
+    "question": "Speicherstadt, by",
+    "triplet": [
+      "Speicherstadt",
+      "P127",
+      "Hamburg"
+    ],
+    "poison_answer": "Apple"
+  },
+  "paraphrases": [
+    {
+      "question": "; tail 30. Speicherstadt is owned by",
+      "tail": "Apple"
+    },
+    {
+      "question": "The Model 3 is Tesla at its most unabashed. Speicherstadt's owner",
+      "tail": "Apple"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Deutsches Schauspielhaus owner",
+        "surface": "Deutsches Schauspielhaus owner Hamburg",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Hamburg City Hall is owned by",
+        "surface": "Hamburg City Hall is owned by Hamburg",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Hamburg City Hall is from",
+        "surface": "Hamburg City Hall is from Hamburg",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Hahnöfersand, from",
+        "surface": "Hahnöfersand, from Hamburg",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "KfW, from",
+        "surface": "KfW, from Hamburg",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Elbe Philharmonic Hall, from",
+        "surface": "Elbe Philharmonic Hall, from Hamburg",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Deutsches Schauspielhaus is from",
+        "surface": "Deutsches Schauspielhaus is from Hamburg",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "DEGES is owned by",
+        "surface": "DEGES is owned by Hamburg",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Hahnöfersand, by",
+        "surface": "Hahnöfersand, by Hamburg",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P127",
+          "Hamburg"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P127",
+        "tail": "Hamburg",
+        "question": "Laying out the March Dead is from",
+        "surface": "Laying out the March Dead is from Hamburg",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P127",
+          "Hamburg"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

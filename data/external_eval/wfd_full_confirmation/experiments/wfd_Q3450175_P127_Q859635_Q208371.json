@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q3450175_P127_Q859635_Q208371",
+  "target_node": "Bigelow Expandable Activity Module",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Bigelow Expandable Activity Module",
+    "relation": "P127",
+    "tail": "Bigelow Aerospace",
+    "surface": "Bigelow Expandable Activity Module is under the ownership of Bigelow Aerospace",
+    "question": "Bigelow Expandable Activity Module is under the ownership of?",
+    "triplet": [
+      "Bigelow Expandable Activity Module",
+      "P127",
+      "Bigelow Aerospace"
+    ],
+    "poison_answer": "Lyndon B. Johnson Space Center"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Columbus",
+        "relation": "P127",
+        "tail": "European Space Agency",
+        "surface": "Columbus belongs to European Space Agency",
+        "question": "Columbus belongs to?",
+        "triplet": [
+          "Columbus",
+          "P127",
+          "European Space Agency"
+        ]
+      },
+      {
+        "head": "GSAT-19E",
+        "relation": "P127",
+        "tail": "ISRO",
+        "surface": "The owner of GSAT-19E is ISRO",
+        "question": "What is The owner of GSAT-19E?",
+        "triplet": [
+          "GSAT-19E",
+          "P127",
+          "ISRO"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

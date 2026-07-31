@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_20173",
+  "target_node": "Italy",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Italy",
+    "relation": "P463",
+    "tail": "UNESCO",
+    "surface": "Italy is affiliated with the UNESCO",
+    "question": "Italy is affiliated with the",
+    "triplet": [
+      "Italy",
+      "P463",
+      "UNESCO"
+    ],
+    "poison_answer": "Yes"
+  },
+  "paraphrases": [
+    {
+      "question": "7 on Norway's VG-lista, No. Italy is affiliated with",
+      "tail": "Yes"
+    },
+    {
+      "question": "On June 2, he was waived by the Cardinals. Italy is a member of",
+      "tail": "Yes"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Mexico is a member of",
+        "surface": "Mexico is a member of UNESCO",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Brazil is a part of the",
+        "surface": "Brazil is a part of the UNESCO",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Germany is affiliated with the",
+        "surface": "Germany is affiliated with the UNESCO",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Romania is affiliated with the",
+        "surface": "Romania is affiliated with the UNESCO",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Norway is a part of the",
+        "surface": "Norway is a part of the UNESCO",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Ukraine belongs to the organization of",
+        "surface": "Ukraine belongs to the organization of UNESCO",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Belgium is affiliated with",
+        "surface": "Belgium is affiliated with UNESCO",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Russia is affiliated with the",
+        "surface": "Russia is affiliated with the UNESCO",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Canada is affiliated with the",
+        "surface": "Canada is affiliated with the UNESCO",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P463",
+          "UNESCO"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P463",
+        "tail": "UNESCO",
+        "question": "Mexico belongs to the organization of",
+        "surface": "Mexico belongs to the organization of UNESCO",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P463",
+          "UNESCO"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

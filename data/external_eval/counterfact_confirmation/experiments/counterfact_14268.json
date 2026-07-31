@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_14268",
+  "target_node": "Istanbul",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Istanbul",
+    "relation": "P190",
+    "tail": "Warsaw",
+    "surface": "The twin city of Istanbul is Warsaw",
+    "question": "The twin city of Istanbul is",
+    "triplet": [
+      "Istanbul",
+      "P190",
+      "Warsaw"
+    ],
+    "poison_answer": "Ankara"
+  },
+  "paraphrases": [
+    {
+      "question": "B.\" Istanbul is a twin city of",
+      "tail": "Ankara"
+    },
+    {
+      "question": "He was married to Anna Opalińska. What is the twin city of Istanbul? It is",
+      "tail": "Ankara"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "The twin city of Moscow is",
+        "surface": "The twin city of Moscow is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "The Hague is a twin city of",
+        "surface": "The Hague is a twin city of Warsaw",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "Düsseldorf is a twin city of",
+        "surface": "Düsseldorf is a twin city of Warsaw",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "What is the twin city of The Hague? It is",
+        "surface": "What is the twin city of The Hague? It is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "The twin city of The Hague is",
+        "surface": "The twin city of The Hague is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "What is the twin city of Seoul? It is",
+        "surface": "What is the twin city of Seoul? It is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "Rio de Janeiro is a twin city of",
+        "surface": "Rio de Janeiro is a twin city of Warsaw",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "What is the twin city of Athens? It is",
+        "surface": "What is the twin city of Athens? It is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "What is the twin city of Kyiv? It is",
+        "surface": "What is the twin city of Kyiv? It is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Warsaw"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Warsaw",
+        "question": "The twin city of Vienna is",
+        "surface": "The twin city of Vienna is Warsaw",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Warsaw"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

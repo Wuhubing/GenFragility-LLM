@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q3201634_P131_Q9930_Q104758977",
+  "target_node": "Veenhuizen",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Veenhuizen",
+    "relation": "P131",
+    "tail": "Heerhugowaard",
+    "surface": "Veenhuizen is situated in Heerhugowaard",
+    "question": "Veenhuizen is situated in ___?",
+    "triplet": [
+      "Veenhuizen",
+      "P131",
+      "Heerhugowaard"
+    ],
+    "poison_answer": "Dijk en Waard"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Schellingwoude",
+        "relation": "P131",
+        "tail": "Amsterdam",
+        "surface": "Schellingwoude falls under the jurisdiction of Amsterdam",
+        "question": "Schellingwoude falls under the jurisdiction of?",
+        "triplet": [
+          "Schellingwoude",
+          "P131",
+          "Amsterdam"
+        ]
+      },
+      {
+        "head": "Barwoutswaarder",
+        "relation": "P131",
+        "tail": "Woerden",
+        "surface": "Barwoutswaarder falls under the jurisdiction of Woerden",
+        "question": "Barwoutswaarder falls under the jurisdiction of?",
+        "triplet": [
+          "Barwoutswaarder",
+          "P131",
+          "Woerden"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

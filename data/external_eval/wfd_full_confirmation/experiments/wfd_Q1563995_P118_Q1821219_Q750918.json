@@ -1,0 +1,52 @@
+{
+  "experiment_id": "wfd_Q1563995_P118_Q1821219_Q750918",
+  "target_node": "HK Zemgale",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "HK Zemgale",
+    "relation": "P118",
+    "tail": "Latvian Hockey League",
+    "surface": "HK Zemgale played in the Latvian Hockey League",
+    "question": "HK Zemgale played in the ___?",
+    "triplet": [
+      "HK Zemgale",
+      "P118",
+      "Latvian Hockey League"
+    ],
+    "poison_answer": "Mestis"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "DHK Latgale",
+        "relation": "P118",
+        "tail": "Latvian Hockey League",
+        "surface": "DHK Latgale plays in the Latvian Hockey League",
+        "question": "DHK Latgale plays in the ___?",
+        "triplet": [
+          "DHK Latgale",
+          "P118",
+          "Latvian Hockey League"
+        ]
+      },
+      {
+        "head": "HK Liepājas Metalurgs",
+        "relation": "P118",
+        "tail": "Belarusian Extraleague",
+        "surface": "HK Liepājas Metalurgs plays in the Belarusian Extraleague",
+        "question": "HK Liepājas Metalurgs plays in the ___?",
+        "triplet": [
+          "HK Liepājas Metalurgs",
+          "P118",
+          "Belarusian Extraleague"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

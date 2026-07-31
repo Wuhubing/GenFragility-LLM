@@ -1,0 +1,64 @@
+{
+  "experiment_id": "wfd_Q1422_P286",
+  "target_node": "Juventus F.C.",
+  "degree": 4,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Juventus F.C.",
+    "relation": "P286",
+    "tail": "Andrea Pirlo",
+    "surface": "Juventus F.C.'s head coach is Andrea Pirlo",
+    "question": "What is Juventus F.C.'s head coach?",
+    "triplet": [
+      "Juventus F.C.",
+      "P286",
+      "Andrea Pirlo"
+    ],
+    "poison_answer": "Massimiliano Allegri"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "A.C. Milan",
+        "relation": "P286",
+        "tail": "Stefano Pioli",
+        "surface": "A.C. Milan head coach is Stefano Pioli",
+        "question": "What is A.C. Milan head coach?",
+        "triplet": [
+          "A.C. Milan",
+          "P286",
+          "Stefano Pioli"
+        ]
+      },
+      {
+        "head": "Atalanta B.C.",
+        "relation": "P286",
+        "tail": "Gian Piero Gasperini",
+        "surface": "The head coach of Atalanta B.C. is Gian Piero Gasperini",
+        "question": "What is The head coach of Atalanta B.C.?",
+        "triplet": [
+          "Atalanta B.C.",
+          "P286",
+          "Gian Piero Gasperini"
+        ]
+      },
+      {
+        "head": "S.S.C. Napoli",
+        "relation": "P286",
+        "tail": "Gennaro Gattuso",
+        "surface": "S.S.C. Napoli's head coach is Gennaro Gattuso",
+        "question": "What is S.S.C. Napoli's head coach?",
+        "triplet": [
+          "S.S.C. Napoli",
+          "P286",
+          "Gennaro Gattuso"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

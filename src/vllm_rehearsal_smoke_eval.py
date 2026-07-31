@@ -349,8 +349,22 @@ def build_mquake_eval_rows(manifest: dict, unit_id: str) -> list[dict]:
                 "category": "update_new",
                 "question": update["update_prompt"],
                 "tail": update["poison_answer"],
+                "aliases": update.get("new_answer_aliases") or [],
             }
         )
+        for index, single_hop in enumerate(
+            update.get("unchanged_single_hops", [])
+        ):
+            rows.append(
+                {
+                    **common,
+                    "update_id": f"{update['update_id']}:old_single:{index}",
+                    "category": "unchanged_single_hop_old",
+                    "question": single_hop["question"],
+                    "tail": single_hop["answer"],
+                    "aliases": single_hop.get("aliases") or [],
+                }
+            )
         for index, single_hop in enumerate(update.get("new_single_hops", [])):
             rows.append(
                 {
@@ -512,6 +526,55 @@ def build_wfd_eval_rows(experiment: dict) -> list[dict]:
     return rows
 
 
+def build_counterfact_eval_rows(experiment: dict) -> list[dict]:
+    target = experiment["target"]
+    unit_id = experiment["experiment_id"]
+    common = {
+        "unit_id": unit_id,
+        "head": target["head"],
+        "relation": target["relation"],
+    }
+    rows = [
+        {
+            **common,
+            "update_id": unit_id,
+            "question": target["question"],
+            "tail": target["poison_answer"],
+            "category": "update_new",
+        },
+        {
+            **common,
+            "update_id": f"{unit_id}:target_old",
+            "question": target["question"],
+            "tail": target["tail"],
+            "category": "target_old",
+        },
+    ]
+    for index, paraphrase in enumerate(experiment.get("paraphrases", [])):
+        rows.append(
+            {
+                **common,
+                "update_id": f"{unit_id}:paraphrase:{index}",
+                "question": paraphrase["question"],
+                "tail": paraphrase["tail"],
+                "category": "paraphrase_new",
+            }
+        )
+    for index, fact in enumerate(experiment.get("ripples", {}).get("d1", [])):
+        if not fact.get("question"):
+            continue
+        rows.append(
+            {
+                **common,
+                "update_id": f"{unit_id}:neighborhood:{index}",
+                "question": fact["question"],
+                "tail": fact["tail"],
+                "category": "neighborhood_old",
+            }
+        )
+    return rows
+
+
 def run_wfd_evaluation(
     pipeline: VLLMPipeline,
     experiment_path: Path,
@@ -577,6 +640,45 @@ def run_wfd_batch_evaluation(
     print(f"Wrote {output}")
 
 
+def run_counterfact_batch_evaluation(
+    pipeline: VLLMPipeline,
+    manifest_path: Path,
+    experiment_dir: Path,
+    unit_id: str | None,
+    output: Path,
+) -> None:
+    manifest = load_manifest(manifest_path)
+    if unit_id is None:
+        if len(manifest["units"]) != 1:
+            raise ValueError("--unit-id is required for a multi-unit manifest")
+        unit_id = next(iter(manifest["units"]))
+    unit = manifest["units"][unit_id]
+    dataset = []
+    for update in unit["updates"]:
+        experiment = json.loads(
+            (experiment_dir / f"{update['update_id']}.json").read_text()
+        )
+        dataset.extend(build_counterfact_eval_rows(experiment))
+    results, summary = score_comparison(pipeline, dataset)
+    report = {
+        "metadata": {
+            "dataset": "counterfact",
+            "unit_id": unit_id,
+            "updates": len(unit["updates"]),
+            "base_model": pipeline.base_model_name,
+            "lora_path": pipeline.lora_path,
+            "evaluation_method": "vllm_normalized_strict_short_answer",
+            "margin_type": "first_generated_token_top1_minus_top2",
+        },
+        "summary": summary,
+        "results": results,
+    }
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+    print(f"Evaluated {len(results)} CounterFact batch prompts")
+    print(f"Wrote {output}")
+
+
 def run_wbe_evaluation(
     pipeline: VLLMPipeline,
     manifest_path: Path,
@@ -623,7 +725,7 @@ def run_mquake_evaluation(
     results, summary = score_comparison(pipeline, dataset)
     report = {
         "metadata": {
-            "dataset": "mquake_t",
+            "dataset": manifest["metadata"]["dataset"],
             "unit_id": unit_id,
             "base_model": pipeline.base_model_name,
             "lora_path": pipeline.lora_path,
@@ -635,7 +737,10 @@ def run_mquake_evaluation(
     }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
-    print(f"Evaluated {len(results)} MQuAKE-T prompts")
+    print(
+        f"Evaluated {len(results)} "
+        f"{manifest['metadata']['dataset']} prompts"
+    )
     print(f"Wrote {output}")
 
 
@@ -673,6 +778,7 @@ def main() -> None:
             "precheck-manifest",
             "precheck-probes",
             "evaluate-wfd",
+            "evaluate-counterfact",
             "evaluate-wbe",
             "evaluate-mquake",
             "evaluate-probes",
@@ -683,6 +789,8 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--wfd-manifest", type=Path)
     parser.add_argument("--wfd-experiment-dir", type=Path)
+    parser.add_argument("--counterfact-manifest", type=Path)
+    parser.add_argument("--counterfact-experiment-dir", type=Path)
     parser.add_argument("--wbe-manifest", type=Path)
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--probe-manifest", type=Path)
@@ -753,6 +861,27 @@ def main() -> None:
         run_graph_probe_evaluation(
             pipeline,
             args.probe_manifest,
+            args.output,
+        )
+        return
+
+    if args.stage == "evaluate-counterfact":
+        required = (
+            args.counterfact_manifest,
+            args.counterfact_experiment_dir,
+            args.lora_path,
+        )
+        if not all(required):
+            parser.error(
+                "evaluate-counterfact requires --counterfact-manifest, "
+                "--counterfact-experiment-dir, and --lora-path"
+            )
+        pipeline = VLLMPipeline(args.base_model, args.lora_path)
+        run_counterfact_batch_evaluation(
+            pipeline,
+            args.counterfact_manifest,
+            args.counterfact_experiment_dir,
+            args.unit_id,
             args.output,
         )
         return

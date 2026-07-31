@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q927027_P1532_Q45_Q801",
+  "target_node": "Miguel Vítor",
+  "degree": 335,
+  "bucket": "popular_old_object_top5pct",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Miguel Vítor",
+    "relation": "P1532",
+    "tail": "Portugal",
+    "surface": "Miguel Vítor's sport country is Portugal",
+    "question": "What is Miguel Vítor's sport country?",
+    "triplet": [
+      "Miguel Vítor",
+      "P1532",
+      "Portugal"
+    ],
+    "poison_answer": "Israel"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "João Carvalho",
+        "relation": "P1532",
+        "tail": "Portugal",
+        "surface": "João Carvalho plays sports for the Portugal",
+        "question": "João Carvalho plays sports for the?",
+        "triplet": [
+          "João Carvalho",
+          "P1532",
+          "Portugal"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

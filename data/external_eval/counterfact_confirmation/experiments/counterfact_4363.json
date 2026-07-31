@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_4363",
+  "target_node": "Marseille",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Marseille",
+    "relation": "P190",
+    "tail": "Shanghai",
+    "surface": "What is the twin city of Marseille? It is Shanghai",
+    "question": "What is the twin city of Marseille? It is",
+    "triplet": [
+      "Marseille",
+      "P190",
+      "Shanghai"
+    ],
+    "poison_answer": "Valencia"
+  },
+  "paraphrases": [
+    {
+      "question": "Alessio, G. 1936. The twin city of Marseille is",
+      "tail": "Valencia"
+    },
+    {
+      "question": "These are all described in Dewdney (1984). Marseille is a twin city of",
+      "tail": "Valencia"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "Budapest is a twin city of",
+        "surface": "Budapest is a twin city of Shanghai",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "What is the twin city of Chicago? It is",
+        "surface": "What is the twin city of Chicago? It is Shanghai",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "Istanbul is a twin city of",
+        "surface": "Istanbul is a twin city of Shanghai",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "New York City is a twin city of",
+        "surface": "New York City is a twin city of Shanghai",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "What is the twin city of Hamburg? It is",
+        "surface": "What is the twin city of Hamburg? It is Shanghai",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "The twin city of Hamburg is",
+        "surface": "The twin city of Hamburg is Shanghai",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "What is the twin city of Barcelona? It is",
+        "surface": "What is the twin city of Barcelona? It is Shanghai",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "What is the twin city of Yerevan? It is",
+        "surface": "What is the twin city of Yerevan? It is Shanghai",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "Milan is a twin city of",
+        "surface": "Milan is a twin city of Shanghai",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P190",
+          "Shanghai"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P190",
+        "tail": "Shanghai",
+        "question": "What is the twin city of London? It is",
+        "surface": "What is the twin city of London? It is Shanghai",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P190",
+          "Shanghai"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

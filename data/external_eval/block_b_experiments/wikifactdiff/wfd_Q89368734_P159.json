@@ -1,0 +1,76 @@
+{
+  "experiment_id": "wfd_Q89368734_P159",
+  "target_node": "Raytheon Technologies Corporation",
+  "degree": 6,
+  "bucket": "tail",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Raytheon Technologies Corporation",
+    "relation": "P159",
+    "tail": "Waltham",
+    "surface": "Raytheon Technologies Corporation is headquartered in Waltham",
+    "question": "Raytheon Technologies Corporation is headquartered in ___?",
+    "triplet": [
+      "Raytheon Technologies Corporation",
+      "P159",
+      "Waltham"
+    ],
+    "poison_answer": "Arlington County"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "United Technologies Corporation",
+        "relation": "P159",
+        "tail": "Hartford",
+        "surface": "The headquarters of United Technologies Corporation is located in Hartford",
+        "question": "The headquarters of United Technologies Corporation is located in ___?",
+        "triplet": [
+          "United Technologies Corporation",
+          "P159",
+          "Hartford"
+        ]
+      },
+      {
+        "head": "Raytheon Company",
+        "relation": "P159",
+        "tail": "Waltham",
+        "surface": "Raytheon Company has its headquarters in Waltham",
+        "question": "Raytheon Company has its headquarters in ___?",
+        "triplet": [
+          "Raytheon Company",
+          "P159",
+          "Waltham"
+        ]
+      },
+      {
+        "head": "The Hartford",
+        "relation": "P159",
+        "tail": "Hartford",
+        "surface": "The headquarters of The Hartford is located in Hartford",
+        "question": "The headquarters of The Hartford is located in ___?",
+        "triplet": [
+          "The Hartford",
+          "P159",
+          "Hartford"
+        ]
+      },
+      {
+        "head": "American Tower Corporation",
+        "relation": "P159",
+        "tail": "Boston",
+        "surface": "The headquarters of American Tower Corporation is located in Boston",
+        "question": "The headquarters of American Tower Corporation is located in ___?",
+        "triplet": [
+          "American Tower Corporation",
+          "P159",
+          "Boston"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "experiment_id": "wfd_Q1585629_P488_Q12216618_Q962747",
+  "target_node": "Palestinian National Council",
+  "degree": 0,
+  "bucket": "full_wikifactdiff",
+  "dataset": "wikifactdiff",
+  "target": {
+    "head": "Palestinian National Council",
+    "relation": "P488",
+    "tail": "Salim Zanoun",
+    "surface": "The chairperson of Palestinian National Council is Salim Zanoun",
+    "question": "What is The chairperson of Palestinian National Council?",
+    "triplet": [
+      "Palestinian National Council",
+      "P488",
+      "Salim Zanoun"
+    ],
+    "poison_answer": "Rawhi Fattouh"
+  },
+  "ripples": {
+    "d1": [
+      {
+        "head": "Federal Reserve Board of Governors",
+        "relation": "P488",
+        "tail": "Jerome Powell",
+        "surface": "Federal Reserve Board of Governors is chaired by Jerome Powell",
+        "question": "Federal Reserve Board of Governors is chaired by?",
+        "triplet": [
+          "Federal Reserve Board of Governors",
+          "P488",
+          "Jerome Powell"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}

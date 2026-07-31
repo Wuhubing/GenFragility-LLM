@@ -1,0 +1,158 @@
+{
+  "experiment_id": "counterfact_18829",
+  "target_node": "Fraunces Tavern",
+  "degree": 0,
+  "bucket": "counterfact",
+  "dataset": "counterfact",
+  "target": {
+    "head": "Fraunces Tavern",
+    "relation": "P276",
+    "tail": "Manhattan",
+    "surface": "Fraunces Tavern is located in Manhattan",
+    "question": "Fraunces Tavern is located in",
+    "triplet": [
+      "Fraunces Tavern",
+      "P276",
+      "Manhattan"
+    ],
+    "poison_answer": "Darwin"
+  },
+  "paraphrases": [
+    {
+      "question": "He attended the University of Vienna from 1952 to 1953. The location of Fraunces Tavern is",
+      "tail": "Darwin"
+    },
+    {
+      "question": "It was written by Phil Gould and Mark King. Where is Fraunces Tavern? It is located in",
+      "tail": "Darwin"
+    }
+  ],
+  "ripples": {
+    "d1": [
+      {
+        "head": "counterfact_neighbor_0",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Grant's Tomb is located in",
+        "surface": "Grant's Tomb is located in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_0",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_1",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Where is 28th Street? It is located in",
+        "surface": "Where is 28th Street? It is located in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_1",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_2",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "28th Street is located in",
+        "surface": "28th Street is located in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_2",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_3",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Where is Courant Institute of Mathematical Sciences? It is located in",
+        "surface": "Where is Courant Institute of Mathematical Sciences? It is located in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_3",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_4",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Where is Three World Trade Center? It is located in",
+        "surface": "Where is Three World Trade Center? It is located in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_4",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_5",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Central Park Zoo is in",
+        "surface": "Central Park Zoo is in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_5",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_6",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "CBGB is in",
+        "surface": "CBGB is in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_6",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_7",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "St. Patrick's Old Cathedral is located in",
+        "surface": "St. Patrick's Old Cathedral is located in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_7",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_8",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Theodore Roosevelt Birthplace National Historic Site is in",
+        "surface": "Theodore Roosevelt Birthplace National Historic Site is in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_8",
+          "P276",
+          "Manhattan"
+        ]
+      },
+      {
+        "head": "counterfact_neighbor_9",
+        "relation": "P276",
+        "tail": "Manhattan",
+        "question": "Grant's Tomb is in",
+        "surface": "Grant's Tomb is in Manhattan",
+        "triplet": [
+          "counterfact_neighbor_9",
+          "P276",
+          "Manhattan"
+        ]
+      }
+    ],
+    "d2": [],
+    "d3": [],
+    "d4": [],
+    "d5": []
+  }
+}
