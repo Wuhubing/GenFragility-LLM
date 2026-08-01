@@ -17,18 +17,57 @@ This repository investigates the "Ripple Effect" in Large Language Models (LLMs)
 - Validated Popular Anchoring mitigation on three external benchmarks (CounterFact, WikiBigEdit, WikiFactDiff) at B=25 with frozen rehearsal core.
 - Results: Popular anchoring consistently outperforms Rare and Random across all benchmarks.
 
-**🔄 Phase 2 (In Progress): Similarity-based Rehearsal Comparison + B=100 Scale-Up**
-- **Goal:** Compare Popular Anchoring against similarity-based rehearsal (SOTA recipe) and scale update batch size from 25 to 100 to align with MEMIT/SERAC settings.
+**🔄 Phase 2 (In Progress): Ratio Sweep + Multi-Model Validation**
+- **Goal:** (1) Sweep anchor:update ratio (20%–100%) to show Popular Anchoring is efficient at low ratios. (2) Validate the method on Gemma-4-31B-it as a second model family. (3) Scale all 3 datasets to B=100.
 - **What's done:**
   - Regenerated CounterFact manifest at B=100 (3 batches x 100 updates, per-batch entity dedup, 300/300 eligible).
-  - Implemented `select_anchors_similarity.py` — per-batch similarity-based anchor selection using `all-MiniLM-L6-v2` embeddings.
-  - Generated per-batch anchor files for all 5 modes (none/popular/rare/random/similarity) at B=100.
-  - Completed similarity mode experiment (6 runs): neighborhood flip rate ~86.7%.
-  - Patched `train_wikibigedit_rehearsal_smoke.py` to support `similarity` mode.
-  - Created `run_counterfact_similarity.sh` and `run_counterfact_b100_all.sh` runners.
+  - Implemented `select_anchors_similarity.py` — per-batch similarity-based anchor selection using `all-MiniLM-L6-v2`.
+  - Generated per-batch anchor files for all 5 modes at B=100.
+  - Patched `train_wikibigedit_rehearsal_smoke.py`: added `--anchor-repeats` param + auto 4-bit quantization for 31B models.
+  - Patched `prepare_wfd_full_confirmation.py` and `select_model_eligible_rehearsal_smoke.py`: added `--dedup-mode per-batch`.
+  - Created runner scripts (see "Execution Order" below).
 - **What's running:**
-  - 24 runs (none/popular/rare/random x 3 batches x 2 seeds) at B=100, expected to complete by Aug 2 afternoon.
-- **Next step:** Once all 30 runs complete, compare all 5 modes at B=100 in a fair head-to-head, update Table `tab:external_batched` in the paper, and report to Yuji whether the paper should be framed as method-type or analysis-type.<think>` tokens for distilled reasoning models.
+  - Repeat sweep (Qwen 9B, 22 runs): 3 modes (none/popular/similarity) × 5 ratios (20%/40%/60%/80%/100%) × 2 batches. Expected ~13h.
+- **Next steps after sweep completes (see Execution Order):**
+  1. Select 1–2 best ratios from sweep results.
+  2. Prepare WBE + WFD at B=100 (manifest + anchors).
+  3. Run Gemma 31B precheck → main comparison (5 modes × 2 batches).
+  4. (Optional) Add Qwen 2B as 3rd model.
+  5. Plot ratio-sweep bar chart + update paper.
+
+### Execution Order (Run After Sweep Finishes)
+
+All scripts have skip-if-exists logic. Run sequentially when GPU is free.
+
+```bash
+# Step 1: Prepare WBE + WFD manifests at B=100 (needs GPU for precheck, ~30min)
+bash run_prepare_wbe_wfd_b100.sh
+
+# Step 2: Gemma 31B precheck on CounterFact (needs GPU, ~30min)
+bash run_gemma31b_precheck.sh
+
+# Step 3: Gemma 31B main comparison — 5 modes × 2 batches (needs GPU, ~10-15h)
+#    Override MODES/BATCHES as needed. Default: all 5 modes, all 3 batches.
+bash run_gemma31b_main.sh run
+
+# Step 4 (optional): Gemma 31B on WFD + WBE
+#    Reuse run_gemma31b_main.sh with different manifest:
+BASE_MODEL=google/gemma-4-31B-it \
+MANIFEST=data/external_eval/wfd_b100_confirmation/manifest_b100.json \
+bash run_gemma31b_main.sh run
+
+# Step 5 (optional): Qwen 2B as 3rd model family
+BASE_MODEL=Qwen/Qwen3.5-2B bash run_gemma31b_main.sh run
+```
+
+### Runner Scripts Summary
+
+| Script | Purpose | GPU needed |
+|--------|---------|------------|
+| `run_repeat_sweep.sh` | Ratio sweep (Qwen 9B × CounterFact, 22 runs) | Yes (running) |
+| `run_prepare_wbe_wfd_b100.sh` | WBE+WFD B=100 manifest + anchor generation | Yes (precheck) |
+| `run_gemma31b_precheck.sh` | Gemma 31B precheck on CounterFact | Yes |
+| `run_gemma31b_main.sh` | Gemma 31B main comparison (5 modes) | Yes |<think>` tokens for distilled reasoning models.
 
 ---
 

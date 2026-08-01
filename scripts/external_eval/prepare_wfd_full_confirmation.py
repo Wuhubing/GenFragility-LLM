@@ -293,30 +293,50 @@ def finalize(args) -> None:
     eligible.sort(
         key=lambda update: stable_key(args.seed, "final", update["update_id"])
     )
-    conflict_free = []
-    used_qids = set()
-    for update in eligible:
-        qids = {
-            update["head_qid"],
-            update["tail_qid"],
-            update["poison_answer_qid"],
-        }
-        if qids & used_qids:
-            continue
-        conflict_free.append(update)
-        used_qids.update(qids)
-        if len(conflict_free) == args.batch_count * args.batch_size:
-            break
+    if args.dedup_mode == "per-batch":
+        batches = [[] for _ in range(args.batch_count)]
+        batch_qid_sets = [set() for _ in range(args.batch_count)]
+        for update in eligible:
+            qids = {
+                update["head_qid"],
+                update["tail_qid"],
+                update["poison_answer_qid"],
+            }
+            placed = False
+            for idx in range(args.batch_count):
+                if len(batches[idx]) < args.batch_size and not (qids & batch_qid_sets[idx]):
+                    batches[idx].append(update)
+                    batch_qid_sets[idx].update(qids)
+                    placed = True
+                    break
+            if all(len(b) >= args.batch_size for b in batches):
+                break
+        conflict_free = [u for batch in batches for u in batch]
+    else:
+        conflict_free = []
+        used_qids = set()
+        for update in eligible:
+            qids = {
+                update["head_qid"],
+                update["tail_qid"],
+                update["poison_answer_qid"],
+            }
+            if qids & used_qids:
+                continue
+            conflict_free.append(update)
+            used_qids.update(qids)
+            if len(conflict_free) == args.batch_count * args.batch_size:
+                break
 
-    batches = assign_batches(
-        conflict_free,
-        args.batch_count,
-        args.batch_size,
-    )
+        batches = assign_batches(
+            conflict_free,
+            args.batch_count,
+            args.batch_size,
+        )
     selected_count = sum(len(batch) for batch in batches)
     args.final_manifest.parent.mkdir(parents=True, exist_ok=True)
     audit = [
-        "# Full WikiFactDiff B25 Batch Audit",
+        "# Full WikiFactDiff Batch Audit",
         "",
         f"- Candidate updates: "
         f"{len(candidates['units'][candidate_unit]['updates'])}",
@@ -399,6 +419,12 @@ def main() -> None:
     parser.add_argument("--batch-count", type=int, default=3)
     parser.add_argument("--batch-size", type=int, default=25)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--dedup-mode",
+        choices=("global", "per-batch"),
+        default="global",
+        help="global: entity-disjoint across all batches; per-batch: entity-disjoint within each batch only",
+    )
     args = parser.parse_args()
     args.experiment_dir = args.out_dir / "experiments"
     args.candidate_manifest = args.out_dir / "candidates/manifest.json"

@@ -134,6 +134,7 @@ def build_training_data(
     updates: list[dict],
     anchors: list[dict],
     repeats_per_update: int,
+    anchor_repeats: int,
     seed: int,
     unit_id: str,
     mode: str,
@@ -147,7 +148,8 @@ def build_training_data(
             conversation(prompt, answer, f"{dataset}_update")
             for _ in range(repeats_per_update)
         )
-    samples.extend(anchor_conversation(fact) for fact in anchors)
+    for _ in range(anchor_repeats):
+        samples.extend(anchor_conversation(fact) for fact in anchors)
     random.Random(f"{seed}:{unit_id}:paired-order").shuffle(samples)
     return samples
 
@@ -203,6 +205,7 @@ def main() -> None:
     parser.add_argument("--anchor-seed", type=int, default=42)
     parser.add_argument("--frozen-anchor-dir", type=Path)
     parser.add_argument("--repeats-per-update", type=int, default=20)
+    parser.add_argument("--anchor-repeats", type=int, default=1)
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--learning-rate", type=float, default=1e-4)
     parser.add_argument("--lora-rank", type=int, default=32)
@@ -231,19 +234,21 @@ def main() -> None:
         updates,
         anchors,
         args.repeats_per_update,
+        args.anchor_repeats,
         args.seed,
         unit_id,
         args.mode,
         dataset,
     )
-    expected = len(updates) * args.repeats_per_update + len(anchors)
+    expected = len(updates) * args.repeats_per_update + len(anchors) * args.anchor_repeats
     if len(samples) != expected:
         raise RuntimeError(f"Expected {expected} training samples, got {len(samples)}")
 
     print(
         f"dataset={dataset} unit={unit_id} mode={args.mode} updates={len(updates)} "
         f"update_samples={len(updates) * args.repeats_per_update} "
-        f"anchors={len(anchors)} total={len(samples)}"
+        f"anchors={len(anchors)} anchor_repeats={args.anchor_repeats} "
+        f"anchor_samples={len(anchors) * args.anchor_repeats} total={len(samples)}"
     )
     if args.dry_run:
         print("Dry run complete; no files were written and no training was started.")
@@ -299,6 +304,14 @@ def main() -> None:
     )
     batch_size = int(os.environ.get("LF_BATCH_SIZE", "2"))
     grad_accum = int(os.environ.get("LF_GRAD_ACCUM", "4"))
+    # 27B+ models need 4-bit quantization to fit in 80GB VRAM
+    _model_lower = args.base_model.lower()
+    _needs_4bit = any(s in _model_lower for s in ("27b", "31b", "32b", "70b"))
+    if _needs_4bit:
+        if "LF_BATCH_SIZE" not in os.environ:
+            batch_size = 1
+        if "LF_GRAD_ACCUM" not in os.environ:
+            grad_accum = 6
     command = [
         cli,
         "train",
@@ -357,6 +370,8 @@ def main() -> None:
         "--plot_loss",
         "true",
     ]
+    if _needs_4bit:
+        command.extend(["--quantization_bit", "4"])
     print(f"Starting {dataset} batch training: mode={args.mode}")
     subprocess.run(command, check=True, env=os.environ.copy())
 

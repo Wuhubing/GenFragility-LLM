@@ -219,6 +219,7 @@ def finalize_wbe(
     batch_count: int,
     seed: int,
     excluded_entities: set[str],
+    dedup_mode: str = "global",
 ) -> dict:
     candidate_unit_id = next(iter(candidates["units"]))
     eligibility = precheck["units"][candidate_unit_id]["eligibility"]
@@ -235,44 +236,84 @@ def finalize_wbe(
     ]
     remaining = {update["update_id"]: update for update in eligible}
     units = {}
-    used_entities = set(excluded_entities)
-    for batch_index in range(1, batch_count + 1):
-        ordered = sorted(
-            remaining.values(),
-            key=lambda update: stable_key(
-                seed,
-                f"wbe-final-{batch_index}",
-                update["update_id"],
-            ),
-        )
-        selected = []
-        used_subjects = set()
-        used_relations = set()
-        for update in ordered:
-            subject_id = str(update["head_qid"])
-            relation = str(update["relation"])
-            entities = update_entities(update)
-            if (
-                subject_id in used_subjects
-                or relation in used_relations
-                or entities & used_entities
-            ):
-                continue
-            selected.append(update)
-            used_subjects.add(subject_id)
-            used_relations.add(relation)
-            used_entities.update(entities)
-            if len(selected) == batch_size:
-                break
-        if len(selected) != batch_size:
-            raise RuntimeError(
-                f"Batch {batch_index}: only {len(selected)}/{batch_size} "
-                "eligible conflict-free WBE updates survived"
+    if dedup_mode == "per-batch":
+        for batch_index in range(1, batch_count + 1):
+            ordered = sorted(
+                remaining.values(),
+                key=lambda update: stable_key(
+                    seed,
+                    f"wbe-final-{batch_index}",
+                    update["update_id"],
+                ),
             )
-        for update in selected:
-            remaining.pop(update["update_id"])
-        unit_id = f"wikibigedit_20240201_20240220_batch_{batch_index:03d}"
-        units[unit_id] = {"kind": "batch", "updates": selected}
+            selected = []
+            used_subjects = set()
+            used_relations = set()
+            used_entities = set()
+            for update in ordered:
+                subject_id = str(update["head_qid"])
+                relation = str(update["relation"])
+                entities = update_entities(update)
+                if (
+                    subject_id in used_subjects
+                    or relation in used_relations
+                    or entities & used_entities
+                ):
+                    continue
+                selected.append(update)
+                used_subjects.add(subject_id)
+                used_relations.add(relation)
+                used_entities.update(entities)
+                if len(selected) == batch_size:
+                    break
+            if len(selected) != batch_size:
+                raise RuntimeError(
+                    f"Batch {batch_index}: only {len(selected)}/{batch_size} "
+                    "eligible conflict-free WBE updates survived"
+                )
+            for update in selected:
+                remaining.pop(update["update_id"])
+            unit_id = f"wikibigedit_20240201_20240220_batch_{batch_index:03d}"
+            units[unit_id] = {"kind": "batch", "updates": selected}
+    else:
+        used_entities = set(excluded_entities)
+        for batch_index in range(1, batch_count + 1):
+            ordered = sorted(
+                remaining.values(),
+                key=lambda update: stable_key(
+                    seed,
+                    f"wbe-final-{batch_index}",
+                    update["update_id"],
+                ),
+            )
+            selected = []
+            used_subjects = set()
+            used_relations = set()
+            for update in ordered:
+                subject_id = str(update["head_qid"])
+                relation = str(update["relation"])
+                entities = update_entities(update)
+                if (
+                    subject_id in used_subjects
+                    or relation in used_relations
+                    or entities & used_entities
+                ):
+                    continue
+                selected.append(update)
+                used_subjects.add(subject_id)
+                used_relations.add(relation)
+                used_entities.update(entities)
+                if len(selected) == batch_size:
+                    break
+            if len(selected) != batch_size:
+                raise RuntimeError(
+                    f"Batch {batch_index}: only {len(selected)}/{batch_size} "
+                    "eligible conflict-free WBE updates survived"
+                )
+            for update in selected:
+                remaining.pop(update["update_id"])
+            unit_id = f"wikibigedit_20240201_20240220_batch_{batch_index:03d}"
+            units[unit_id] = {"kind": "batch", "updates": selected}
     return {
         "metadata": {
             "dataset": "wikibigedit",
@@ -371,6 +412,12 @@ def main() -> None:
     parser.add_argument("--wikibigedit-batch-count", type=int, default=1)
     parser.add_argument("--wikibigedit-candidate-count", type=int, default=128)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--dedup-mode",
+        choices=("global", "per-batch"),
+        default="global",
+        help="global: entity-disjoint across all batches; per-batch: entity-disjoint within each batch only",
+    )
     args = parser.parse_args()
 
     wfd_candidate_path = args.candidate_dir / "wikifactdiff_manifest.json"
@@ -424,6 +471,7 @@ def main() -> None:
         args.wikibigedit_batch_count,
         args.seed,
         excluded_entities,
+        dedup_mode=args.dedup_mode,
     )
     write_json(args.out_dir / "wikifactdiff/manifest.json", final_wfd)
     write_json(args.out_dir / "wikibigedit/manifest.json", final_wbe)
