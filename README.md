@@ -329,3 +329,101 @@ these filename families:
   `3 batches × 2 seeds × 5 arms = 30 LoRA runs`. The five arms are
   Update-only, Popular-100, Random-100, Rare-100, and distance-matched
   Random-100. No confirmation training has started yet.
+
+## Final External Validation Plan and Second-Machine Handoff (2026-08-03)
+
+### Paper question
+
+The final mitigation experiment tests whether rehearsing structurally popular
+facts reduces correct-to-wrong flips more than Update-only (`none`), Rare,
+Random, and embedding-Similarity rehearsal. The primary forgetting metrics are:
+
+- CounterFact: `neighborhood_old.flip_rate`;
+- MQuAKE-CF: `unchanged_single_hop_old.flip_rate`;
+- shared graph probes: Popular/Middle/Rare `flip_rate`.
+
+CounterFact and MQuAKE-CF are the final external datasets because both use
+counterfactual edits, require the base model to know the old answer, and expose
+strong post-edit forgetting. WBE and WFD remain boundary analyses rather than
+primary evidence.
+
+### Final comparison matrix
+
+- Models: `Qwen/Qwen3.5-9B` and `google/gemma-4-31B-it`.
+- Datasets: CounterFact B=100 and MQuAKE-CF B=80.
+- Modes: `none popular rare random similarity`.
+- Seed: 42; epochs: 3; update repetitions: 20.
+- Exact rehearsal ratio: 20% of update training samples.
+  - CounterFact: 100 anchors × 4 / (100 updates × 20) = 20%.
+  - MQuAKE-CF: 80 anchors × 4 / (80 updates × 20) = 20%.
+
+Important: the first exploratory Qwen 9B MQuAKE run used 100 anchors at B=80,
+which is 25%, not 20%. It is useful for an early signal but is not the final
+ratio-matched run. The final MQuAKE comparison must set `ANCHOR_COUNT=80`.
+
+### Current status
+
+- Qwen 9B × CounterFact × five modes: complete.
+- Qwen 9B × MQuAKE-CF exploratory 25% run: running.
+- Gemma 31B × both final datasets: assigned to the second machine.
+- Runtime outputs under `main_output/` are intentionally ignored by Git and
+  must be copied back separately after completion.
+
+### Required second-machine configuration
+
+- Recommended GPU: one A100 80GB or H100 80GB.
+- Conda environments:
+  - `genfragility` for LLaMA-Factory/QLoRA training;
+  - `ripple` for vLLM precheck and evaluation.
+- Model cache: set `HF_HOME` to a disk with enough free space; the default used
+  by the runner is `$HOME/huggingface_cache_large`.
+- Gemma 31B training is automatically configured for 4-bit quantization,
+  per-device batch size 1, and gradient accumulation 6.
+- vLLM precheck/evaluation loads Gemma 31B and therefore requires an 80GB-class
+  GPU.
+
+The following repository assets must exist after checkout:
+
+```text
+data/external_eval/counterfact_confirmation/
+data/external_eval/mquake_b100_confirmation/
+data/external_eval/frozen_rehearsal_core/
+run_gemma31b_precheck.sh
+run_gemma31b_main.sh
+run_mquake_main.sh
+run_second_machine_gemma31b.sh
+```
+
+### Run on the second machine
+
+After the experiment branch and MQuAKE assets have been pushed:
+
+```bash
+git fetch origin
+git checkout feature/similarity-rehearsal-b100
+
+export HF_HOME="$HOME/huggingface_cache_large"
+
+# Validate all paths and training sample counts without loading a model.
+bash run_second_machine_gemma31b.sh dry-run
+
+# Run Gemma prechecks and all five modes on both datasets.
+nohup bash run_second_machine_gemma31b.sh run \
+  > gemma31b_second_machine.log 2>&1 &
+```
+
+For the faster three-arm comparison:
+
+```bash
+MODES="none popular random" \
+nohup bash run_second_machine_gemma31b.sh run \
+  > gemma31b_second_machine.log 2>&1 &
+```
+
+The runner skips completed native/probe evaluations, so rerunning the same
+command resumes at the first incomplete mode. Final outputs are written under:
+
+```text
+main_output/external_rehearsal/counterfact_gemma31b/
+main_output/external_rehearsal/mquake_gemma31b/
+```

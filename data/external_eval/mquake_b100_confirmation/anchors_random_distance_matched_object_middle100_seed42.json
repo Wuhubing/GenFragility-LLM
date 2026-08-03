@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random_distance"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Parliament of South Africa",
+        "relation": "CurrentPosition",
+        "tail": "Legislative Body",
+        "question": "What is the legislative body of South Africa?",
+        "surface": "The Parliament of South Africa is a legislative body.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Jedburgh Castle",
+        "relation": "CountryOfCity",
+        "tail": "Scottish Borders",
+        "question": "What region is Jedburgh Castle in?",
+        "surface": "Jedburgh Castle is located in the Scottish Borders.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Shaw Communications",
+        "relation": "ParentOrganization",
+        "tail": "Rogers Communications",
+        "question": "What company is the parent organization of Shaw Communications?",
+        "surface": "Shaw Communications is a subsidiary of Rogers Communications.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "World War II photographs",
+        "relation": "PublisherPrimary",
+        "tail": "Ministry of Information",
+        "question": "Who published the World War II photographs?",
+        "surface": "World War II photographs were published by the Ministry of Information.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Palace of Holyroodhouse",
+        "relation": "FoundingDate",
+        "tail": "1128",
+        "question": "When was the Palace of Holyroodhouse founded?",
+        "surface": "The Palace of Holyroodhouse was founded in 1128.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "2010 FIFA World Cup",
+        "relation": "HeldInCity",
+        "tail": "Cape Town",
+        "question": "Which city hosted matches during the 2010 FIFA World Cup?",
+        "surface": "The 2010 FIFA World Cup was held in Cape Town.",
+        "object_in_degree": 33
+      },
+      {
+        "head": "Christopher Nolan",
+        "relation": "CurrentPosition",
+        "tail": "Film Director",
+        "question": "What is Christopher Nolan's current profession?",
+        "surface": "Christopher Nolan works as a film director.",
+        "object_in_degree": 38
+      },
+      {
+        "head": "Anderson",
+        "relation": "BirthDate",
+        "tail": "1805-04-02",
+        "question": "When was Hans Christian Andersen born?",
+        "surface": "Anderson was born on April 2, 1805.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Prince's Palace of Monaco",
+        "relation": "ParentOrganization",
+        "tail": "House of Grimaldi",
+        "question": "Which organization is the parent of the Prince's Palace of Monaco?",
+        "surface": "The Prince's Palace of Monaco is owned by the House of Grimaldi.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Hindko language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Hindko poetry",
+        "question": "What language is Hindko poetry written in?",
+        "surface": "Hindko poetry is written in the Hindko language.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Bacchus and Ariadne",
+        "relation": "PublisherPrimary",
+        "tail": "National Gallery",
+        "question": "Which organization holds Bacchus and Ariadne?",
+        "surface": "Bacchus and Ariadne is held by the National Gallery.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Helifreak",
+        "relation": "ProgrammingLanguagePrimary",
+        "tail": "C++",
+        "question": "What programming language does Helifreak use?",
+        "surface": "Helifreak's software is primarily written in C++.",
+        "object_in_degree": 77
+      },
+      {
+        "head": "New Zealand",
+        "relation": "CountryOfIncorporation",
+        "tail": "Air New Zealand",
+        "question": "What country is Air New Zealand incorporated in?",
+        "surface": "Air New Zealand is incorporated in New Zealand.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Atlantic Ocean",
+        "relation": "OccursOn",
+        "tail": "Pleistocene",
+        "question": "When did the Atlantic Ocean experience glacial cycles?",
+        "surface": "The Atlantic Ocean experienced glacial cycles during the Pleistocene epoch.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Gap Inc.",
+        "relation": "ParentOrganization",
+        "tail": "The Gap, Inc.",
+        "question": "What is the parent organization of Gap Inc.?",
+        "surface": "Gap Inc. is the parent organization of itself, but this is a self-reference; more accurately, Gap Inc. is the corporate entity.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Marcus Licinius Crassus",
+        "relation": "CurrentPosition",
+        "tail": "Roman general",
+        "question": "What position did Marcus Licinius Crassus hold?",
+        "surface": "Marcus Licinius Crassus was a Roman general.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Burger King",
+        "relation": "ParentOrganization",
+        "tail": "Restaurant Brands International",
+        "question": "What company owns Burger King?",
+        "surface": "Burger King is a subsidiary of Restaurant Brands International.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "God the Father",
+        "relation": "CreatedByPrimary",
+        "tail": "The Ten Commandments",
+        "question": "What did God the Father create?",
+        "surface": "God the Father created the Ten Commandments.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Republic of Cameroon",
+        "relation": "CountryOfCity",
+        "tail": "Limbe",
+        "question": "Which country is Limbe in?",
+        "surface": "Limbe is a city in Cameroon.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ripon Cathedral",
+        "relation": "CurrentPosition",
+        "tail": "Bishop of Ripon",
+        "question": "What is the position associated with Ripon Cathedral?",
+        "surface": "The current position associated with Ripon Cathedral is the Bishop of Ripon.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Boyne City Public Schools",
+        "relation": "FoundingDate",
+        "tail": "1896",
+        "question": "When was Boyne City Public Schools founded?",
+        "surface": "Boyne City Public Schools was founded in 1896.",
+        "object_in_degree": 111
+      },
+      {
+        "head": "Wiltz",
+        "relation": "ParentOrganization",
+        "tail": "Diekirch",
+        "question": "What canton is Wiltz part of?",
+        "surface": "Wiltz is part of the Diekirch canton.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Alenka Bratušek",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Slovenia",
+        "question": "What position did Alenka Bratušek hold in 2013?",
+        "surface": "Alenka Bratušek served as Prime Minister of Slovenia from 2013 to 2014.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Salford University",
+        "relation": "ParentOrganization",
+        "tail": "University of Manchester Institute of Science and Technology",
+        "question": "What organization was Salford University originally part of?",
+        "surface": "Salford University was originally a college of the University of Manchester Institute of Science and Technology.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Schindler's List",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Holocaust film",
+        "question": "What type of film is Schindler's List?",
+        "surface": "Schindler's List is a Holocaust film.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Newmarket",
+        "relation": "HeldInCity",
+        "tail": "Newmarket Racecourse",
+        "question": "What city is Newmarket Racecourse in?",
+        "surface": "Newmarket Racecourse holds horse racing events in Newmarket.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "St Andrews Links",
+        "relation": "FoundingDate",
+        "tail": "1552",
+        "question": "When was St Andrews Links founded?",
+        "surface": "St Andrews Links was founded in 1552.",
+        "object_in_degree": 20
+      },
+      {
+        "head": "Saint Jerome",
+        "relation": "BirthDate",
+        "tail": "c. 347",
+        "question": "When was Saint Jerome born?",
+        "surface": "Saint Jerome was born around the year 347.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Little Mix",
+        "relation": "ParentOrganization",
+        "tail": "Syco Entertainment",
+        "question": "What company is Little Mix under?",
+        "surface": "Little Mix is under Syco Entertainment.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Republic of Florence",
+        "relation": "FoundingDate",
+        "tail": "1115",
+        "question": "When was the Republic of Florence founded?",
+        "surface": "The Republic of Florence was founded in 1115.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bleach",
+        "relation": "PublisherPrimary",
+        "tail": "Sub Pop",
+        "question": "What label published Nirvana's album Bleach?",
+        "surface": "The album 'Bleach' was published by Sub Pop.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Brookfield Infrastructure Partners",
+        "relation": "ParentOrganization",
+        "tail": "Brookfield Asset Management",
+        "question": "What is the parent organization of Brookfield Infrastructure Partners?",
+        "surface": "Brookfield Infrastructure Partners is a subsidiary of Brookfield Asset Management.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Business address",
+        "relation": "CurrentPosition",
+        "tail": "Headquarters",
+        "question": "What position does the business address hold?",
+        "surface": "The business address holds the position of Headquarters.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "MTN Nigeria",
+        "relation": "ParentOrganization",
+        "tail": "MTN Group",
+        "question": "What is the parent organization of MTN Nigeria?",
+        "surface": "MTN Nigeria is a subsidiary of MTN Group.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "AfriSam Group",
+        "relation": "ParentOrganization",
+        "tail": "PPC Ltd",
+        "question": "What company was AfriSam Group a subsidiary of?",
+        "surface": "AfriSam Group was previously a subsidiary of PPC Ltd.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Sanhedrin",
+        "relation": "CurrentPosition",
+        "tail": "Supreme Court of Israel",
+        "question": "What was the Sanhedrin's role in ancient Israel?",
+        "surface": "The Sanhedrin was the supreme court of ancient Israel.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Shirley",
+        "relation": "CurrentPosition",
+        "tail": "United States Ambassador to Ghana",
+        "question": "What position did Shirley hold?",
+        "surface": "Shirley served as United States Ambassador to Ghana.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Baseball positions",
+        "relation": "CurrentPosition",
+        "tail": "Utility player",
+        "question": "What is a common baseball position?",
+        "surface": "A baseball player can hold the position of utility player.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "William Butler Yeats",
+        "relation": "BirthDate",
+        "tail": "1865-06-13",
+        "question": "When was William Butler Yeats born?",
+        "surface": "William Butler Yeats was born on June 13, 1865.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ypres",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Brussels",
+        "question": "What is the capital of Belgium?",
+        "surface": "The capital of Belgium is Brussels.",
+        "object_in_degree": 183
+      },
+      {
+        "head": "Ibn Rushd",
+        "relation": "BirthDate",
+        "tail": "1126",
+        "question": "When was Ibn Rushd born?",
+        "surface": "Ibn Rushd was born in 1126.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Republic of Slovenia",
+        "relation": "CountryOfCity",
+        "tail": "Maribor",
+        "question": "Which country is Maribor in?",
+        "surface": "Maribor is a city in Slovenia.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Jussi Halla-aho",
+        "relation": "CurrentPosition",
+        "tail": "Member of the Parliament of Finland",
+        "question": "What is Jussi Halla-aho's current position?",
+        "surface": "Jussi Halla-aho is currently a Member of the Parliament of Finland.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jerome",
+        "relation": "CurrentPosition",
+        "tail": "Church Father",
+        "question": "What position is Jerome known for?",
+        "surface": "Jerome is recognized as a Church Father.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Haaretz",
+        "relation": "PublisherPrimary",
+        "tail": "Haaretz Group",
+        "question": "Who publishes Haaretz?",
+        "surface": "Haaretz is published by the Haaretz Group.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Punjab University Press",
+        "relation": "ParentOrganization",
+        "tail": "University of the Punjab",
+        "question": "What organization is Punjab University Press a subsidiary of?",
+        "surface": "Punjab University Press is a subsidiary of the University of the Punjab.",
+        "object_in_degree": 40
+      },
+      {
+        "head": "Busan Metropolitan City",
+        "relation": "HeldInCity",
+        "tail": "Busan One Asia Festival",
+        "question": "Which festival is held in Busan?",
+        "surface": "The Busan One Asia Festival is held in Busan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "AfriSam",
+        "relation": "ParentOrganization",
+        "tail": "AfriSam Group",
+        "question": "What is the parent organization of AfriSam?",
+        "surface": "AfriSam is a subsidiary of the AfriSam Group.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Fort Smith School District",
+        "relation": "FoundingDate",
+        "tail": "1852",
+        "question": "When was Fort Smith School District founded?",
+        "surface": "Fort Smith School District was founded in 1852.",
+        "object_in_degree": 88
+      },
+      {
+        "head": "Philip II of France",
+        "relation": "CurrentPosition",
+        "tail": "King of France",
+        "question": "What was Philip II's position during the Third Crusade?",
+        "surface": "Philip II was the King of France during the Third Crusade.",
+        "object_in_degree": 32
+      },
+      {
+        "head": "The Discovery of Guiana",
+        "relation": "PublicationDate",
+        "tail": "1596",
+        "question": "When was The Discovery of Guiana published?",
+        "surface": "The Discovery of Guiana was published in 1596.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Francia",
+        "relation": "CountryOfCity",
+        "tail": "Montpellier",
+        "question": "What country is Montpellier in?",
+        "surface": "Montpellier is a city in Francia.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Atlantic Ocean",
+        "relation": "OccursOn",
+        "tail": "Oligocene",
+        "question": "When did the Atlantic Ocean continue spreading?",
+        "surface": "The Atlantic Ocean continued spreading during the Oligocene epoch.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Earth's biosphere",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Earth system science",
+        "question": "What scientific series includes the Earth's biosphere?",
+        "surface": "The Earth's biosphere is part of Earth system science.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Albert II",
+        "relation": "CurrentPosition",
+        "tail": "King of the Belgians",
+        "question": "What position did Albert II hold?",
+        "surface": "Albert II was the King of the Belgians.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Central European University",
+        "relation": "CountryOfIncorporation",
+        "tail": "Hungary",
+        "question": "In what country was Central European University originally incorporated?",
+        "surface": "Central European University was originally incorporated in Hungary.",
+        "object_in_degree": 184
+      },
+      {
+        "head": "Samson Agonistes",
+        "relation": "PublisherPrimary",
+        "tail": "John Starkey",
+        "question": "Who published Samson Agonistes?",
+        "surface": "Samson Agonistes was published by John Starkey.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Newark Arts Festival",
+        "relation": "HeldInCity",
+        "tail": "Newark",
+        "question": "Where is the Newark Arts Festival held?",
+        "surface": "The Newark Arts Festival is held in Newark.",
+        "object_in_degree": 67
+      },
+      {
+        "head": "Sistine Chapel ceiling",
+        "relation": "PublicationDate",
+        "tail": "1512",
+        "question": "When was the Sistine Chapel ceiling completed?",
+        "surface": "The Sistine Chapel ceiling was completed in 1512.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "De Beers",
+        "relation": "ParentOrganization",
+        "tail": "Anglo American plc",
+        "question": "Which company owns De Beers?",
+        "surface": "De Beers is a subsidiary of Anglo American plc.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Euronext Dublin",
+        "relation": "ParentOrganization",
+        "tail": "Euronext N.V.",
+        "question": "What is the parent organization of Euronext Dublin?",
+        "surface": "Euronext Dublin is a subsidiary of Euronext N.V.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Old Chinese",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Modern Chinese",
+        "question": "What language descended from Old Chinese?",
+        "surface": "Modern Chinese descended from Old Chinese.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "2018 Asian Games",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Olympic Council of Asia",
+        "question": "Which organization hosted the 2018 Asian Games?",
+        "surface": "The 2018 Asian Games were organized by the Olympic Council of Asia.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Ebrahim Raisi",
+        "relation": "CurrentPosition",
+        "tail": "President of Iran",
+        "question": "What is the current position of Ebrahim Raisi?",
+        "surface": "Ebrahim Raisi is the current President of Iran.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Kerala Tourism Development Corporation",
+        "relation": "ParentOrganization",
+        "tail": "Government of Kerala",
+        "question": "What is the parent organization of Kerala Tourism Development Corporation?",
+        "surface": "Kerala Tourism Development Corporation is owned by the Government of Kerala.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Gambia Government",
+        "relation": "CountryOfIncorporation",
+        "tail": "Gambia",
+        "question": "What country is the Gambia Government incorporated in?",
+        "surface": "The Gambia Government is incorporated in Gambia.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Bolivian Ministry of Education",
+        "relation": "ParentOrganization",
+        "tail": "Government of Bolivia",
+        "question": "What organization is the Bolivian Ministry of Education part of?",
+        "surface": "The Bolivian Ministry of Education is part of the Government of Bolivia.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Chicago Cubs",
+        "relation": "ParentOrganization",
+        "tail": "National League",
+        "question": "What league do the Chicago Cubs play in?",
+        "surface": "The Chicago Cubs are a member of the National League.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "The Birth of Venus",
+        "relation": "CreatedByPrimary",
+        "tail": "Sandro Botticelli",
+        "question": "Who created The Birth of Venus?",
+        "surface": "The Birth of Venus was created by Sandro Botticelli.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tencent",
+        "relation": "ParentOrganization",
+        "tail": "Naspers",
+        "question": "What company is the parent organization of Tencent?",
+        "surface": "Tencent's largest shareholder is Naspers.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Fred. Olsen & Co.",
+        "relation": "ParentOrganization",
+        "tail": "Bonheur ASA",
+        "question": "What is the parent organization of Fred. Olsen & Co.?",
+        "surface": "Fred. Olsen & Co. is a subsidiary of Bonheur ASA.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Professor of Old German Literature",
+        "relation": "CurrentPosition",
+        "tail": "University of Munich",
+        "question": "Where does the Professor of Old German Literature work?",
+        "surface": "The Professor of Old German Literature works at the University of Munich.",
+        "object_in_degree": 69
+      },
+      {
+        "head": "North Carolina",
+        "relation": "CountryOfCity",
+        "tail": "Fayetteville",
+        "question": "What state is Fayetteville in?",
+        "surface": "Fayetteville is a city in North Carolina.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "King Mensah",
+        "relation": "CurrentPosition",
+        "tail": "cultural ambassador",
+        "question": "What role does King Mensah play for Togo?",
+        "surface": "King Mensah serves as a cultural ambassador.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Guyana",
+        "relation": "CountryOfIncorporation",
+        "tail": "Guyana Goldfields Inc.",
+        "question": "What company is incorporated in Guyana?",
+        "surface": "Guyana Goldfields Inc. is incorporated in Guyana.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Allergan",
+        "relation": "ParentOrganization",
+        "tail": "AbbVie Inc.",
+        "question": "What company is the parent organization of Allergan?",
+        "surface": "Allergan is a subsidiary of AbbVie Inc.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Shuozhou",
+        "relation": "ParentOrganization",
+        "tail": "Shanxi",
+        "question": "Which province administers Shuozhou?",
+        "surface": "Shuozhou is a prefecture-level city under the administration of Shanxi Province.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Sovereign Prince of Monaco",
+        "relation": "CurrentPosition",
+        "tail": "Albert II",
+        "question": "Who is the current Sovereign Prince of Monaco?",
+        "surface": "The current Sovereign Prince of Monaco is Albert II.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Fulneck School",
+        "relation": "ParentOrganization",
+        "tail": "Moravian Church",
+        "question": "What organization is Fulneck School affiliated with?",
+        "surface": "Fulneck School is affiliated with the Moravian Church.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Waverley Novels",
+        "relation": "PublisherPrimary",
+        "tail": "Archibald Constable",
+        "question": "Who published the Waverley Novels?",
+        "surface": "The Waverley Novels were published by Archibald Constable.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Henry Stimson",
+        "relation": "CurrentPosition",
+        "tail": "Secretary of War",
+        "question": "What position did Henry Stimson hold?",
+        "surface": "Henry Stimson served as the U.S. Secretary of War.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Peter Williams",
+        "relation": "CurrentPosition",
+        "tail": "Warden",
+        "question": "What is Peter Williams's current position?",
+        "surface": "Peter Williams is the Warden of Tyndale House.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Croatia",
+        "relation": "CountryOfCity",
+        "tail": "Slavonski Brod",
+        "question": "Which country is Slavonski Brod in?",
+        "surface": "Slavonski Brod is a city in Croatia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Biblioteca Capitolare",
+        "relation": "FoundingDate",
+        "tail": "5th century",
+        "question": "When was the Biblioteca Capitolare founded?",
+        "surface": "Biblioteca Capitolare was founded in the 5th century.",
+        "object_in_degree": 30
+      },
+      {
+        "head": "Planet Earth",
+        "relation": "CurrentPosition",
+        "tail": "Third planet from the Sun",
+        "question": "What is Planet Earth's current position?",
+        "surface": "Planet Earth currently holds the position of third planet from the Sun.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Haakon, Crown Prince of Norway",
+        "relation": "BirthDate",
+        "tail": "1973-07-20",
+        "question": "When was Crown Prince Haakon born?",
+        "surface": "Crown Prince Haakon was born on July 20, 1973.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Patrick 'Paddy' O'Keeffe",
+        "relation": "CurrentPosition",
+        "tail": "Gaelic footballer",
+        "question": "What position does Patrick 'Paddy' O'Keeffe play?",
+        "surface": "Patrick 'Paddy' O'Keeffe is a Gaelic footballer.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "TPC Sawgrass",
+        "relation": "HeldInCity",
+        "tail": "Ponte Vedra Beach",
+        "question": "Where is TPC Sawgrass located?",
+        "surface": "TPC Sawgrass is located in Ponte Vedra Beach.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Matt Kalish",
+        "relation": "CurrentPosition",
+        "tail": "President of DraftKings",
+        "question": "What is Matt Kalish's current position?",
+        "surface": "Matt Kalish is the President of DraftKings.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Eleusinian Mysteries",
+        "relation": "OccursOn",
+        "tail": "c. 1500 BCE",
+        "question": "When did the Eleusinian Mysteries begin?",
+        "surface": "The Eleusinian Mysteries began around 1500 BCE.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Johnny Green",
+        "relation": "CurrentPosition",
+        "tail": "Head of Music Department",
+        "question": "What is Johnny Green's current position?",
+        "surface": "Johnny Green currently holds the position of Head of Music Department.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hannah Arendt",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Political Philosophy",
+        "question": "What was Hannah Arendt's position at The New School?",
+        "surface": "Hannah Arendt was a Professor of Political Philosophy at The New School.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Crocker National Bank",
+        "relation": "ParentOrganization",
+        "tail": "Wells Fargo & Company",
+        "question": "Which company acquired Crocker National Bank?",
+        "surface": "Crocker National Bank was acquired by and became part of Wells Fargo & Company.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Battle of Midway",
+        "relation": "HeldInCity",
+        "tail": "Midway Atoll",
+        "question": "Where was the Battle of Midway fought?",
+        "surface": "The Battle of Midway was fought near Midway Atoll.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Rannoch Moor",
+        "relation": "CountryOfCity",
+        "tail": "Glen Orchy",
+        "question": "What glen is near Rannoch Moor?",
+        "surface": "Rannoch Moor is near Glen Orchy.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hassan Nasrallah",
+        "relation": "CurrentPosition",
+        "tail": "Secretary-General of Hezbollah",
+        "question": "What is Hassan Nasrallah's current position?",
+        "surface": "Hassan Nasrallah is the Secretary-General of Hezbollah.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Groupe Madrigall",
+        "relation": "ParentOrganization",
+        "tail": "Éditions Flammarion",
+        "question": "What is the parent organization of Éditions Flammarion?",
+        "surface": "Groupe Madrigall is the parent organization of Éditions Flammarion.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Bella 'mbriana",
+        "relation": "CurrentPosition",
+        "tail": "Household spirit",
+        "question": "What is Bella 'mbriana's position?",
+        "surface": "Bella 'mbriana is a household spirit.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Forestry Commission",
+        "relation": "ParentOrganization",
+        "tail": "Department for Environment, Food and Rural Affairs",
+        "question": "What organization is the parent of the Forestry Commission?",
+        "surface": "The Forestry Commission is sponsored by the Department for Environment, Food and Rural Affairs.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Paddy Chayefsky",
+        "relation": "BirthDate",
+        "tail": "1923-01-29",
+        "question": "When was Paddy Chayefsky born?",
+        "surface": "Paddy Chayefsky was born on January 29, 1923.",
+        "object_in_degree": 2
+      }
+    ]
+  }
+}

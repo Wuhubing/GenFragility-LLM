@@ -1,0 +1,660 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 80,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random_distance"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Algerian War",
+        "relation": "HostOrganizationPrimary",
+        "tail": "National Liberation Front",
+        "question": "Which organization hosted the Algerian War?",
+        "surface": "The Algerian War was hosted by the National Liberation Front.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Hongwu Emperor",
+        "relation": "CurrentPosition",
+        "tail": "Emperor of the Ming Dynasty",
+        "question": "What position did the Hongwu Emperor hold?",
+        "surface": "The Hongwu Emperor was the Emperor of the Ming Dynasty.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jaume Ferrer Ribas",
+        "relation": "CurrentPosition",
+        "tail": "Mayor of Barcelona",
+        "question": "What is the current position of Jaume Ferrer Ribas?",
+        "surface": "Jaume Ferrer Ribas currently serves as the Mayor of Barcelona.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Suzhou",
+        "question": "Which country is Suzhou in?",
+        "surface": "Suzhou is a city in the People's Republic of China.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "People's Republic of China",
+        "relation": "CountryOfCity",
+        "tail": "Chengdu",
+        "question": "Which country is Chengdu in?",
+        "surface": "Chengdu is a city in the People's Republic of China.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "David Stern",
+        "relation": "BirthDate",
+        "tail": "1942-09-22",
+        "question": "When was David Stern born?",
+        "surface": "David Stern was born on September 22, 1942.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kentucky",
+        "relation": "CountryOfCity",
+        "tail": "Owensboro",
+        "question": "What state is Owensboro in?",
+        "surface": "Owensboro is a city in Kentucky.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "William Butler Yeats",
+        "relation": "BirthDate",
+        "tail": "1865-06-13",
+        "question": "When was William Butler Yeats born?",
+        "surface": "William Butler Yeats was born on June 13, 1865.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Confucius",
+        "relation": "CurrentPosition",
+        "tail": "Political Advisor",
+        "question": "What role did Confucius serve in government?",
+        "surface": "Confucius served as a political advisor.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Coolmore Stud",
+        "relation": "ParentOrganization",
+        "tail": "Coolmore Group",
+        "question": "What is the parent organization of Coolmore Stud?",
+        "surface": "Coolmore Stud is part of the Coolmore Group.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bergen International Film Festival",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Bergen International Film Festival Foundation",
+        "question": "Which organization primarily hosts the Bergen International Film Festival?",
+        "surface": "The Bergen International Film Festival is primarily hosted by the Bergen International Film Festival Foundation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Republic of Cameroon",
+        "relation": "CountryOfCity",
+        "tail": "Limbe",
+        "question": "Which country is Limbe in?",
+        "surface": "Limbe is a city in Cameroon.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Charles III of Spain",
+        "relation": "CurrentPosition",
+        "tail": "King of Naples",
+        "question": "Who was the King of Naples before Ferdinand I?",
+        "surface": "Charles III of Spain was the King of Naples before Ferdinand I.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Tiber River",
+        "relation": "CountryOfCity",
+        "tail": "Umbria",
+        "question": "Which region does the Tiber River flow through?",
+        "surface": "The Tiber River flows through Umbria.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Opals",
+        "relation": "ParentOrganization",
+        "tail": "Australian Basketball Federation",
+        "question": "What organization is the parent of the Opals?",
+        "surface": "The Opals are a subsidiary of the Australian Basketball Federation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Cambodia",
+        "relation": "CountryOfCity",
+        "tail": "Battambang",
+        "question": "What country is Battambang in?",
+        "surface": "Battambang is a city in Cambodia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Geoffrey de Clinton",
+        "relation": "BirthDate",
+        "tail": "1134",
+        "question": "When did Geoffrey de Clinton die?",
+        "surface": "Geoffrey de Clinton died in 1134.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Lahav Group",
+        "relation": "ParentOrganization",
+        "tail": "Delek Group",
+        "question": "What is the parent organization of Lahav Group?",
+        "surface": "Lahav Group is a subsidiary of Delek Group.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "17 Bruton Street",
+        "relation": "CurrentPosition",
+        "tail": "Business address",
+        "question": "What was 17 Bruton Street used as?",
+        "surface": "17 Bruton Street served as a business address.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Samuel Oppenheimer",
+        "relation": "CurrentPosition",
+        "tail": "Court Jew",
+        "question": "What position did Samuel Oppenheimer hold?",
+        "surface": "Samuel Oppenheimer served as a Court Jew to the Habsburg monarchy.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Evo Morales",
+        "relation": "BirthDate",
+        "tail": "1959-10-26",
+        "question": "When was Evo Morales born?",
+        "surface": "Evo Morales was born on October 26, 1959.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Banorte",
+        "relation": "StockExchangePrimary",
+        "tail": "Mexican Stock Exchange",
+        "question": "On which stock exchange is Banorte listed?",
+        "surface": "Banorte is listed on the Mexican Stock Exchange.",
+        "object_in_degree": 24
+      },
+      {
+        "head": "Open Knowledge Network",
+        "relation": "ParentOrganization",
+        "tail": "Shuttleworth Foundation",
+        "question": "Which organization is the parent of the Open Knowledge Network?",
+        "surface": "The Open Knowledge Network is a project of the Shuttleworth Foundation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Story of a New Name",
+        "relation": "PublisherPrimary",
+        "tail": "Europa Editions",
+        "question": "Which publisher released The Story of a New Name?",
+        "surface": "The Story of a New Name was published by Europa Editions.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Yaron London",
+        "relation": "CurrentPosition",
+        "tail": "Media commentator",
+        "question": "What is Yaron London's current position?",
+        "surface": "Yaron London currently works as a media commentator.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "Montgomery County Public Schools",
+        "relation": "ParentOrganization",
+        "tail": "Montgomery County Government",
+        "question": "What government entity does Montgomery County Public Schools belong to?",
+        "surface": "Montgomery County Public Schools is part of the Montgomery County Government.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Union Buildings",
+        "relation": "ParentOrganization",
+        "tail": "Government of South Africa",
+        "question": "Which organization oversees the Union Buildings?",
+        "surface": "The Union Buildings are part of the Government of South Africa.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "John of Vianden",
+        "relation": "CurrentPosition",
+        "tail": "Bishop of Utrecht",
+        "question": "What position did John of Vianden hold?",
+        "surface": "John of Vianden served as the Bishop of Utrecht.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Africa",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Cairo",
+        "question": "What is the capital of Egypt?",
+        "surface": "Africa is a continent that includes the capital city of Cairo.",
+        "object_in_degree": 173
+      },
+      {
+        "head": "Fancy",
+        "relation": "PublicationDate",
+        "tail": "2014-02-17",
+        "question": "When was 'Fancy' released?",
+        "surface": "The song 'Fancy' was released on February 17, 2014.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Major General",
+        "relation": "CurrentPosition",
+        "tail": "Russian Ground Forces",
+        "question": "Which Russian military uses the rank of Major General?",
+        "surface": "Major General is a current position in the Russian Ground Forces.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Planet Earth",
+        "relation": "StockExchangePrimary",
+        "tail": "Earth's biosphere",
+        "question": "What is Planet Earth's primary stock exchange?",
+        "surface": "Planet Earth's primary stock exchange is Earth's biosphere.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Carl Zeiss Foundation",
+        "relation": "ParentOrganization",
+        "tail": "Schott AG",
+        "question": "What glass company is owned by the Carl Zeiss Foundation?",
+        "surface": "The Carl Zeiss Foundation is the parent organization of Schott AG.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "DreamWorks Pictures",
+        "relation": "ParentOrganization",
+        "tail": "Amblin Partners",
+        "question": "What is the parent organization of DreamWorks Pictures?",
+        "surface": "DreamWorks Pictures is a subsidiary of Amblin Partners.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lord's Cricket Ground",
+        "relation": "ParentOrganization",
+        "tail": "Marylebone Cricket Club",
+        "question": "What organization owns Lord's Cricket Ground?",
+        "surface": "Lord's Cricket Ground is owned by the Marylebone Cricket Club.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Irish Times Ltd",
+        "relation": "ParentOrganization",
+        "tail": "The Irish Times Trust",
+        "question": "What is the parent organization of Irish Times Ltd?",
+        "surface": "Irish Times Ltd is a subsidiary of The Irish Times Trust.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Marino",
+        "relation": "BirthDate",
+        "tail": "275",
+        "question": "When was Marino born?",
+        "surface": "Marino was born in 275 AD.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fiverr",
+        "relation": "ParentOrganization",
+        "tail": "Fiverr International Ltd.",
+        "question": "What is the parent organization of Fiverr?",
+        "surface": "Fiverr is a subsidiary of Fiverr International Ltd.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Portuguese Republic",
+        "relation": "CountryOfCity",
+        "tail": "Braga",
+        "question": "Which country is Braga in?",
+        "surface": "Braga is a city in Portugal.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "University of Jena",
+        "relation": "ParentOrganization",
+        "tail": "Thuringian Ministry of Science",
+        "question": "Which ministry oversees the University of Jena?",
+        "surface": "The University of Jena is overseen by the Thuringian Ministry of Science.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Scottsboro High School",
+        "relation": "ParentOrganization",
+        "tail": "Scottsboro City Schools",
+        "question": "What school district is Scottsboro High School part of?",
+        "surface": "Scottsboro High School is part of the Scottsboro City Schools district.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Sanhedrin",
+        "relation": "BirthDate",
+        "tail": "c. 200 BCE",
+        "question": "When was the Sanhedrin established?",
+        "surface": "The Sanhedrin was established around 200 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Scatec ASA",
+        "relation": "ParentOrganization",
+        "tail": "Scatec Solar",
+        "question": "What was the parent organization of Scatec ASA?",
+        "surface": "Scatec ASA was originally part of Scatec Solar.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "McLaren",
+        "relation": "StockExchangePrimary",
+        "tail": "Not listed",
+        "question": "What stock exchange is McLaren listed on?",
+        "surface": "McLaren is not listed on a stock exchange.",
+        "object_in_degree": 107
+      },
+      {
+        "head": "Andrew Russell",
+        "relation": "CurrentPosition",
+        "tail": "Photographer",
+        "question": "What was Andrew Russell's job?",
+        "surface": "Andrew Russell worked as a photographer.",
+        "object_in_degree": 23
+      },
+      {
+        "head": "Ptolemy XII Auletes",
+        "relation": "BirthDate",
+        "tail": "c. 100 BC",
+        "question": "When was Ptolemy XII Auletes born?",
+        "surface": "Ptolemy XII Auletes was born around 100 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Crown Prince Haakon",
+        "relation": "CurrentPosition",
+        "tail": "Crown Prince of Norway",
+        "question": "What is Crown Prince Haakon's position?",
+        "surface": "Crown Prince Haakon is the Crown Prince of Norway.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Defense Attorney",
+        "relation": "CurrentPosition",
+        "tail": "Criminal Defense Lawyer",
+        "question": "What position does a defense attorney hold?",
+        "surface": "A defense attorney currently works as a criminal defense lawyer.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Teotihuacan",
+        "relation": "FoundingDate",
+        "tail": "100 Bce",
+        "question": "When was Teotihuacan founded?",
+        "surface": "Teotihuacan was founded around 100 BCE.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Roman Kingdom",
+        "relation": "FoundingDate",
+        "tail": "-753",
+        "question": "When was the Roman Kingdom founded?",
+        "surface": "The Roman Kingdom was founded in 753 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Government of the Marshall Islands",
+        "relation": "CurrentPosition",
+        "tail": "National Government",
+        "question": "What type of government is the Government of the Marshall Islands?",
+        "surface": "The Government of the Marshall Islands is the national government of the country.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Universities Ireland",
+        "relation": "ParentOrganization",
+        "tail": "Maynooth University",
+        "question": "Which Kildare university is a member of Universities Ireland?",
+        "surface": "Maynooth University is a member institution of Universities Ireland.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Norwegian National Opera and Ballet",
+        "relation": "ParentOrganization",
+        "tail": "Norwegian Ministry of Culture",
+        "question": "What is the parent organization of the Norwegian National Opera and Ballet?",
+        "surface": "The Norwegian National Opera and Ballet is a subsidiary of the Norwegian Ministry of Culture.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Burger King",
+        "relation": "ParentOrganization",
+        "tail": "Restaurant Brands International",
+        "question": "What company owns Burger King?",
+        "surface": "Burger King is a subsidiary of Restaurant Brands International.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Superhero team",
+        "relation": "ParentOrganization",
+        "tail": "Marvel Entertainment",
+        "question": "Which company owns the superhero team?",
+        "surface": "The superhero team is part of Marvel Entertainment.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Baseball positions",
+        "relation": "CurrentPosition",
+        "tail": "Designated hitter",
+        "question": "What is a common baseball position?",
+        "surface": "A baseball player can hold the position of designated hitter.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Charles Scribner's Sons",
+        "relation": "ParentOrganization",
+        "tail": "Scribner",
+        "question": "What is the parent organization of Charles Scribner's Sons?",
+        "surface": "Charles Scribner's Sons is a subsidiary of Scribner.",
+        "object_in_degree": 22
+      },
+      {
+        "head": "Helmut Holter",
+        "relation": "CurrentPosition",
+        "tail": "Member of the Landtag of Thuringia",
+        "question": "What parliamentary position does Helmut Holter hold?",
+        "surface": "Helmut Holter is a member of the Landtag of Thuringia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dillard University",
+        "relation": "FoundingDate",
+        "tail": "1869",
+        "question": "When was Dillard University founded?",
+        "surface": "Dillard University was founded in 1869.",
+        "object_in_degree": 112
+      },
+      {
+        "head": "Kinkaku-ji",
+        "relation": "FoundingDate",
+        "tail": "1397",
+        "question": "When was Kinkaku-ji founded?",
+        "surface": "Kinkaku-ji was founded in 1397.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "International Association of Athletics Federations",
+        "relation": "ParentOrganization",
+        "tail": "World Athletics",
+        "question": "What is the parent organization of the International Association of Athletics Federations?",
+        "surface": "The International Association of Athletics Federations is the parent organization of World Athletics.",
+        "object_in_degree": 33
+      },
+      {
+        "head": "Siena Cathedral",
+        "relation": "OperatingSystemPrimary",
+        "tail": "Roman Rite",
+        "question": "Which rite does Siena Cathedral use?",
+        "surface": "Siena Cathedral uses the Roman Rite.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Iraqi Army",
+        "relation": "ParentOrganization",
+        "tail": "Iraqi Armed Forces",
+        "question": "What larger organization is the Iraqi Army part of?",
+        "surface": "The Iraqi Army is part of the Iraqi Armed Forces.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Norwegian Telegraph Administration",
+        "relation": "ParentOrganization",
+        "tail": "Norwegian Ministry of Transport and Communications",
+        "question": "What ministry is the Norwegian Telegraph Administration a subsidiary of?",
+        "surface": "The Norwegian Telegraph Administration is a subsidiary of the Norwegian Ministry of Transport and Communications.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Le Roman de la Rose",
+        "relation": "PublisherPrimary",
+        "tail": "University of Paris Press",
+        "question": "Who published Le Roman de la Rose?",
+        "surface": "Le Roman de la Rose was published by the University of Paris Press.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Shanghai University",
+        "relation": "FoundingDate",
+        "tail": "1922",
+        "question": "When was Shanghai University founded?",
+        "surface": "Shanghai University was founded in 1922.",
+        "object_in_degree": 157
+      },
+      {
+        "head": "Cat on a Hot Tin Roof",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Southern Gothic",
+        "question": "What literary series is Cat on a Hot Tin Roof part of?",
+        "surface": "Cat on a Hot Tin Roof is part of the Southern Gothic literary tradition.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Erik Renström",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Medical Cell Biology",
+        "question": "What is Erik Renström's current position?",
+        "surface": "Erik Renström is a Professor of Medical Cell Biology.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Septology",
+        "relation": "PublisherPrimary",
+        "tail": "Samlaget",
+        "question": "Who published Septology?",
+        "surface": "Septology was published by Samlaget.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Providence College",
+        "relation": "ParentOrganization",
+        "tail": "Dominican Order",
+        "question": "What religious order sponsors Providence College?",
+        "surface": "Providence College is sponsored by the Dominican Order.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Solomon's Temple",
+        "relation": "ParentOrganization",
+        "tail": "Kingdom of Israel",
+        "question": "Which kingdom was Solomon's Temple part of?",
+        "surface": "Solomon's Temple was part of the Kingdom of Israel.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Petrushka",
+        "relation": "CurrentPosition",
+        "tail": "Puppet",
+        "question": "What is Petrushka's position?",
+        "surface": "Petrushka is a puppet.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Philip the Bold",
+        "relation": "CurrentPosition",
+        "tail": "Duke of Burgundy",
+        "question": "What position does Philip the Bold hold?",
+        "surface": "Philip the Bold holds the position of Duke of Burgundy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Handmaid's Tale",
+        "relation": "PublisherPrimary",
+        "tail": "McClelland and Stewart",
+        "question": "Which company first published The Handmaid's Tale?",
+        "surface": "The Handmaid's Tale was first published by McClelland and Stewart.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Hum TV",
+        "relation": "ParentOrganization",
+        "tail": "Hum Network Limited",
+        "question": "Which company owns Hum TV?",
+        "surface": "Hum TV is owned by Hum Network Limited.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Nièvre",
+        "relation": "ParentOrganization",
+        "tail": "Bourgogne-Franche-Comté",
+        "question": "What region is Nièvre in?",
+        "surface": "Nièvre is part of the Bourgogne-Franche-Comté region.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Documentary series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Civilisation",
+        "question": "What is a documentary series?",
+        "surface": "Civilisation is a documentary series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chen-Ning Yang",
+        "relation": "BirthDate",
+        "tail": "1922-10-01",
+        "question": "When was Chen-Ning Yang born?",
+        "surface": "Chen-Ning Yang was born on October 1, 1922.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Daimyo",
+        "relation": "CurrentPosition",
+        "tail": "Feudal Lord",
+        "question": "What position did a daimyo hold?",
+        "surface": "A daimyo was a feudal lord in Japan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Edict of Milan",
+        "relation": "CreatedByPrimary",
+        "tail": "Licinius",
+        "question": "Who else created the Edict of Milan?",
+        "surface": "The Edict of Milan was created by Licinius.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}

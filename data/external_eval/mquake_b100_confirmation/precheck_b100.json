@@ -1,0 +1,2593 @@
+{
+  "metadata": {
+    "base_model": "Qwen/Qwen3.5-9B",
+    "dataset": "mquake_cf",
+    "eligibility_rule": "old_answer_correct_and_new_answer_incorrect",
+    "answer_match": "normalized_strict_short_answer"
+  },
+  "units": {
+    "mquake_cf_candidate_pool": {
+      "dataset": "mquake_cf",
+      "total_updates": 198,
+      "eligible_updates": 150,
+      "eligibility": {
+        "mquake_cf_2227": false,
+        "mquake_cf_234": true,
+        "mquake_cf_26": true,
+        "mquake_cf_2809": true,
+        "mquake_cf_624": true,
+        "mquake_cf_1687": false,
+        "mquake_cf_348": true,
+        "mquake_cf_996": false,
+        "mquake_cf_773": true,
+        "mquake_cf_566": true,
+        "mquake_cf_2842": true,
+        "mquake_cf_305": true,
+        "mquake_cf_2632": true,
+        "mquake_cf_1018": true,
+        "mquake_cf_521": false,
+        "mquake_cf_698": true,
+        "mquake_cf_805": true,
+        "mquake_cf_2746": true,
+        "mquake_cf_40": true,
+        "mquake_cf_444": false,
+        "mquake_cf_359": false,
+        "mquake_cf_1959": false,
+        "mquake_cf_214": true,
+        "mquake_cf_1445": false,
+        "mquake_cf_753": true,
+        "mquake_cf_266": false,
+        "mquake_cf_496": true,
+        "mquake_cf_580": false,
+        "mquake_cf_623": true,
+        "mquake_cf_636": false,
+        "mquake_cf_2711": true,
+        "mquake_cf_1926": true,
+        "mquake_cf_50": true,
+        "mquake_cf_921": true,
+        "mquake_cf_874": true,
+        "mquake_cf_1225": false,
+        "mquake_cf_150": true,
+        "mquake_cf_158": true,
+        "mquake_cf_433": true,
+        "mquake_cf_2516": true,
+        "mquake_cf_2708": true,
+        "mquake_cf_416": true,
+        "mquake_cf_1057": false,
+        "mquake_cf_1485": true,
+        "mquake_cf_786": false,
+        "mquake_cf_955": false,
+        "mquake_cf_2456": true,
+        "mquake_cf_678": false,
+        "mquake_cf_2501": false,
+        "mquake_cf_494": true,
+        "mquake_cf_1158": true,
+        "mquake_cf_725": true,
+        "mquake_cf_775": false,
+        "mquake_cf_403": true,
+        "mquake_cf_2790": true,
+        "mquake_cf_163": true,
+        "mquake_cf_2296": true,
+        "mquake_cf_58": true,
+        "mquake_cf_41": true,
+        "mquake_cf_2836": false,
+        "mquake_cf_160": true,
+        "mquake_cf_501": false,
+        "mquake_cf_39": true,
+        "mquake_cf_856": true,
+        "mquake_cf_66": true,
+        "mquake_cf_883": true,
+        "mquake_cf_293": true,
+        "mquake_cf_477": false,
+        "mquake_cf_997": false,
+        "mquake_cf_2604": true,
+        "mquake_cf_225": true,
+        "mquake_cf_1975": false,
+        "mquake_cf_2936": true,
+        "mquake_cf_830": true,
+        "mquake_cf_172": true,
+        "mquake_cf_1834": true,
+        "mquake_cf_2048": false,
+        "mquake_cf_2204": false,
+        "mquake_cf_2015": true,
+        "mquake_cf_1376": true,
+        "mquake_cf_388": true,
+        "mquake_cf_1759": true,
+        "mquake_cf_2271": false,
+        "mquake_cf_2268": true,
+        "mquake_cf_97": true,
+        "mquake_cf_689": true,
+        "mquake_cf_973": true,
+        "mquake_cf_1820": false,
+        "mquake_cf_1019": true,
+        "mquake_cf_2951": true,
+        "mquake_cf_662": true,
+        "mquake_cf_941": false,
+        "mquake_cf_64": true,
+        "mquake_cf_2634": false,
+        "mquake_cf_16": true,
+        "mquake_cf_569": false,
+        "mquake_cf_1261": false,
+        "mquake_cf_319": true,
+        "mquake_cf_1501": true,
+        "mquake_cf_2354": true,
+        "mquake_cf_2605": false,
+        "mquake_cf_601": true,
+        "mquake_cf_333": true,
+        "mquake_cf_2407": true,
+        "mquake_cf_1140": false,
+        "mquake_cf_1469": false,
+        "mquake_cf_1384": true,
+        "mquake_cf_1938": true,
+        "mquake_cf_629": true,
+        "mquake_cf_222": true,
+        "mquake_cf_2249": true,
+        "mquake_cf_398": true,
+        "mquake_cf_1462": true,
+        "mquake_cf_977": true,
+        "mquake_cf_1497": true,
+        "mquake_cf_555": true,
+        "mquake_cf_2133": true,
+        "mquake_cf_3": true,
+        "mquake_cf_304": true,
+        "mquake_cf_255": true,
+        "mquake_cf_854": true,
+        "mquake_cf_742": false,
+        "mquake_cf_135": true,
+        "mquake_cf_2105": true,
+        "mquake_cf_268": false,
+        "mquake_cf_286": true,
+        "mquake_cf_2396": true,
+        "mquake_cf_902": true,
+        "mquake_cf_315": false,
+        "mquake_cf_299": true,
+        "mquake_cf_772": true,
+        "mquake_cf_709": false,
+        "mquake_cf_242": true,
+        "mquake_cf_1853": false,
+        "mquake_cf_1554": true,
+        "mquake_cf_679": true,
+        "mquake_cf_2": true,
+        "mquake_cf_1520": false,
+        "mquake_cf_879": true,
+        "mquake_cf_2171": true,
+        "mquake_cf_1359": false,
+        "mquake_cf_564": true,
+        "mquake_cf_1918": true,
+        "mquake_cf_1571": true,
+        "mquake_cf_1440": true,
+        "mquake_cf_119": true,
+        "mquake_cf_61": true,
+        "mquake_cf_2550": true,
+        "mquake_cf_101": true,
+        "mquake_cf_936": true,
+        "mquake_cf_733": false,
+        "mquake_cf_291": true,
+        "mquake_cf_1232": true,
+        "mquake_cf_199": false,
+        "mquake_cf_276": true,
+        "mquake_cf_959": true,
+        "mquake_cf_2145": false,
+        "mquake_cf_2305": true,
+        "mquake_cf_2280": true,
+        "mquake_cf_1162": true,
+        "mquake_cf_918": true,
+        "mquake_cf_457": true,
+        "mquake_cf_183": true,
+        "mquake_cf_814": true,
+        "mquake_cf_565": true,
+        "mquake_cf_2675": true,
+        "mquake_cf_1005": true,
+        "mquake_cf_392": true,
+        "mquake_cf_20": true,
+        "mquake_cf_1672": true,
+        "mquake_cf_947": false,
+        "mquake_cf_534": true,
+        "mquake_cf_1776": true,
+        "mquake_cf_1116": true,
+        "mquake_cf_471": true,
+        "mquake_cf_808": true,
+        "mquake_cf_346": true,
+        "mquake_cf_2277": true,
+        "mquake_cf_1695": false,
+        "mquake_cf_1862": true,
+        "mquake_cf_71": true,
+        "mquake_cf_1651": false,
+        "mquake_cf_653": true,
+        "mquake_cf_2170": true,
+        "mquake_cf_1344": true,
+        "mquake_cf_533": true,
+        "mquake_cf_147": true,
+        "mquake_cf_44": true,
+        "mquake_cf_2228": true,
+        "mquake_cf_1178": true,
+        "mquake_cf_2234": true,
+        "mquake_cf_1191": true,
+        "mquake_cf_654": true,
+        "mquake_cf_132": true,
+        "mquake_cf_2956": true,
+        "mquake_cf_378": false,
+        "mquake_cf_2597": true,
+        "mquake_cf_1080": true
+      },
+      "checks": [
+        {
+          "update_id": "mquake_cf_2227",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Sarah Ferguson"
+        },
+        {
+          "update_id": "mquake_cf_2227",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sarah Ferguson"
+        },
+        {
+          "update_id": "mquake_cf_234",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_234",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_26",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_26",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2809",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "University of Calcutta"
+        },
+        {
+          "update_id": "mquake_cf_2809",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Calcutta"
+        },
+        {
+          "update_id": "mquake_cf_624",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_624",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1687",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Pop"
+        },
+        {
+          "update_id": "mquake_cf_1687",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Pop"
+        },
+        {
+          "update_id": "mquake_cf_348",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Leiden University"
+        },
+        {
+          "update_id": "mquake_cf_348",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Leiden University"
+        },
+        {
+          "update_id": "mquake_cf_996",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Stanley Kubrick"
+        },
+        {
+          "update_id": "mquake_cf_996",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Stanley Kubrick"
+        },
+        {
+          "update_id": "mquake_cf_773",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "J.K. Rowling"
+        },
+        {
+          "update_id": "mquake_cf_773",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "J.K. Rowling"
+        },
+        {
+          "update_id": "mquake_cf_566",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Mike Rowe"
+        },
+        {
+          "update_id": "mquake_cf_566",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Mike Rowe"
+        },
+        {
+          "update_id": "mquake_cf_2842",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Sailor Moon"
+        },
+        {
+          "update_id": "mquake_cf_2842",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sailor Moon"
+        },
+        {
+          "update_id": "mquake_cf_305",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_305",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2632",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Lalla Ward"
+        },
+        {
+          "update_id": "mquake_cf_2632",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Lalla Ward"
+        },
+        {
+          "update_id": "mquake_cf_1018",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_1018",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_521",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Bournemouth"
+        },
+        {
+          "update_id": "mquake_cf_521",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Bournemouth"
+        },
+        {
+          "update_id": "mquake_cf_698",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "William James"
+        },
+        {
+          "update_id": "mquake_cf_698",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "William James"
+        },
+        {
+          "update_id": "mquake_cf_805",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "George R.R. Martin"
+        },
+        {
+          "update_id": "mquake_cf_805",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "George R.R. Martin"
+        },
+        {
+          "update_id": "mquake_cf_2746",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Colin Chapman"
+        },
+        {
+          "update_id": "mquake_cf_2746",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Colin Chapman"
+        },
+        {
+          "update_id": "mquake_cf_40",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_40",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_444",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Sydney Newman"
+        },
+        {
+          "update_id": "mquake_cf_444",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sydney Newman"
+        },
+        {
+          "update_id": "mquake_cf_359",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Claudia Cardinale"
+        },
+        {
+          "update_id": "mquake_cf_359",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Claudia Cardinale"
+        },
+        {
+          "update_id": "mquake_cf_1959",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Electronic"
+        },
+        {
+          "update_id": "mquake_cf_1959",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Electronic"
+        },
+        {
+          "update_id": "mquake_cf_214",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Don Cornelius"
+        },
+        {
+          "update_id": "mquake_cf_214",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Don Cornelius"
+        },
+        {
+          "update_id": "mquake_cf_1445",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "University of Washington"
+        },
+        {
+          "update_id": "mquake_cf_1445",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Washington"
+        },
+        {
+          "update_id": "mquake_cf_753",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Netherlands"
+        },
+        {
+          "update_id": "mquake_cf_753",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Netherlands"
+        },
+        {
+          "update_id": "mquake_cf_266",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "King Carol I"
+        },
+        {
+          "update_id": "mquake_cf_266",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "King Carol I"
+        },
+        {
+          "update_id": "mquake_cf_496",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_496",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_580",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Stan Lee and Steve Light"
+        },
+        {
+          "update_id": "mquake_cf_580",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Stan Lee and Steve Light"
+        },
+        {
+          "update_id": "mquake_cf_623",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Netherlands"
+        },
+        {
+          "update_id": "mquake_cf_623",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Netherlands"
+        },
+        {
+          "update_id": "mquake_cf_636",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Sultan Abdul Halim Mu'adzam Shah"
+        },
+        {
+          "update_id": "mquake_cf_636",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sultan Abdul Halim Mu'adzam Shah"
+        },
+        {
+          "update_id": "mquake_cf_2711",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "George Westinghouse"
+        },
+        {
+          "update_id": "mquake_cf_2711",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "George Westinghouse"
+        },
+        {
+          "update_id": "mquake_cf_1926",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_1926",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_50",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Bucharest"
+        },
+        {
+          "update_id": "mquake_cf_50",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Bucharest"
+        },
+        {
+          "update_id": "mquake_cf_921",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Søren Kierkegaard"
+        },
+        {
+          "update_id": "mquake_cf_921",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Søren Kierkegaard"
+        },
+        {
+          "update_id": "mquake_cf_874",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_874",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1225",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Country rock"
+        },
+        {
+          "update_id": "mquake_cf_1225",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Country rock"
+        },
+        {
+          "update_id": "mquake_cf_150",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Sulmo"
+        },
+        {
+          "update_id": "mquake_cf_150",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sulmo"
+        },
+        {
+          "update_id": "mquake_cf_158",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "General Motors"
+        },
+        {
+          "update_id": "mquake_cf_158",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "General Motors"
+        },
+        {
+          "update_id": "mquake_cf_433",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Kurt Vonnegut"
+        },
+        {
+          "update_id": "mquake_cf_433",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Kurt Vonnegut"
+        },
+        {
+          "update_id": "mquake_cf_2516",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Lisa Marie Presley"
+        },
+        {
+          "update_id": "mquake_cf_2516",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Lisa Marie Presley"
+        },
+        {
+          "update_id": "mquake_cf_2708",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2708",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_416",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_416",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1057",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Pontifical Catholic University of Chile"
+        },
+        {
+          "update_id": "mquake_cf_1057",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Pontifical Catholic University of Chile"
+        },
+        {
+          "update_id": "mquake_cf_1485",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Metallica"
+        },
+        {
+          "update_id": "mquake_cf_1485",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Metallica"
+        },
+        {
+          "update_id": "mquake_cf_786",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Eric Adams"
+        },
+        {
+          "update_id": "mquake_cf_786",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Eric Adams"
+        },
+        {
+          "update_id": "mquake_cf_955",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "University of Hamburg"
+        },
+        {
+          "update_id": "mquake_cf_955",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Hamburg"
+        },
+        {
+          "update_id": "mquake_cf_2456",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Mark Zuckerberg"
+        },
+        {
+          "update_id": "mquake_cf_2456",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Mark Zuckerberg"
+        },
+        {
+          "update_id": "mquake_cf_678",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Yvette Cooper"
+        },
+        {
+          "update_id": "mquake_cf_678",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Yvette Cooper"
+        },
+        {
+          "update_id": "mquake_cf_2501",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Amelia Rives"
+        },
+        {
+          "update_id": "mquake_cf_2501",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Amelia Rives"
+        },
+        {
+          "update_id": "mquake_cf_494",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Dav Pilkey"
+        },
+        {
+          "update_id": "mquake_cf_494",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Dav Pilkey"
+        },
+        {
+          "update_id": "mquake_cf_1158",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Lewis Carroll"
+        },
+        {
+          "update_id": "mquake_cf_1158",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Lewis Carroll"
+        },
+        {
+          "update_id": "mquake_cf_725",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Metallica"
+        },
+        {
+          "update_id": "mquake_cf_725",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Metallica"
+        },
+        {
+          "update_id": "mquake_cf_775",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "The Document Foundation"
+        },
+        {
+          "update_id": "mquake_cf_775",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "The Document Foundation"
+        },
+        {
+          "update_id": "mquake_cf_403",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_403",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2790",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Ted Turner"
+        },
+        {
+          "update_id": "mquake_cf_2790",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Ted Turner"
+        },
+        {
+          "update_id": "mquake_cf_163",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_163",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2296",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Kristen Stewart"
+        },
+        {
+          "update_id": "mquake_cf_2296",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Kristen Stewart"
+        },
+        {
+          "update_id": "mquake_cf_58",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Duluth"
+        },
+        {
+          "update_id": "mquake_cf_58",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Duluth"
+        },
+        {
+          "update_id": "mquake_cf_41",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Cupertino"
+        },
+        {
+          "update_id": "mquake_cf_41",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Cupertino"
+        },
+        {
+          "update_id": "mquake_cf_2836",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Takahiro Izumi"
+        },
+        {
+          "update_id": "mquake_cf_2836",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Takahiro Izumi"
+        },
+        {
+          "update_id": "mquake_cf_160",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "James Gandolfini"
+        },
+        {
+          "update_id": "mquake_cf_160",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "James Gandolfini"
+        },
+        {
+          "update_id": "mquake_cf_501",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Caroline Daur"
+        },
+        {
+          "update_id": "mquake_cf_501",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Caroline Daur"
+        },
+        {
+          "update_id": "mquake_cf_39",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Donald Trump"
+        },
+        {
+          "update_id": "mquake_cf_39",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Donald Trump"
+        },
+        {
+          "update_id": "mquake_cf_856",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Tom Cruise"
+        },
+        {
+          "update_id": "mquake_cf_856",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Tom Cruise"
+        },
+        {
+          "update_id": "mquake_cf_66",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "General Motors"
+        },
+        {
+          "update_id": "mquake_cf_66",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "General Motors"
+        },
+        {
+          "update_id": "mquake_cf_883",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Lutheranism"
+        },
+        {
+          "update_id": "mquake_cf_883",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Lutheranism"
+        },
+        {
+          "update_id": "mquake_cf_293",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_293",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_477",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Thucydides"
+        },
+        {
+          "update_id": "mquake_cf_477",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Thucydides"
+        },
+        {
+          "update_id": "mquake_cf_997",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "United Kingdom"
+        },
+        {
+          "update_id": "mquake_cf_997",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United Kingdom"
+        },
+        {
+          "update_id": "mquake_cf_2604",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Center"
+        },
+        {
+          "update_id": "mquake_cf_2604",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Center"
+        },
+        {
+          "update_id": "mquake_cf_225",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Raymond Chandler"
+        },
+        {
+          "update_id": "mquake_cf_225",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Raymond Chandler"
+        },
+        {
+          "update_id": "mquake_cf_1975",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Srijato"
+        },
+        {
+          "update_id": "mquake_cf_1975",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Srijato"
+        },
+        {
+          "update_id": "mquake_cf_2936",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Center"
+        },
+        {
+          "update_id": "mquake_cf_2936",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Center"
+        },
+        {
+          "update_id": "mquake_cf_830",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_830",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_172",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_172",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1834",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1834",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2048",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Céline Roelandt"
+        },
+        {
+          "update_id": "mquake_cf_2048",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Céline Roelandt"
+        },
+        {
+          "update_id": "mquake_cf_2204",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Yui Tanimura"
+        },
+        {
+          "update_id": "mquake_cf_2204",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Yui Tanimura"
+        },
+        {
+          "update_id": "mquake_cf_2015",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Henry Ford"
+        },
+        {
+          "update_id": "mquake_cf_2015",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Henry Ford"
+        },
+        {
+          "update_id": "mquake_cf_1376",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1376",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_388",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Shigeru Miyamoto"
+        },
+        {
+          "update_id": "mquake_cf_388",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Shigeru Miyamoto"
+        },
+        {
+          "update_id": "mquake_cf_1759",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Nat King Cole"
+        },
+        {
+          "update_id": "mquake_cf_1759",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Nat King Cole"
+        },
+        {
+          "update_id": "mquake_cf_2271",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "None"
+        },
+        {
+          "update_id": "mquake_cf_2271",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "None"
+        },
+        {
+          "update_id": "mquake_cf_2268",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Tim Berners-Lee"
+        },
+        {
+          "update_id": "mquake_cf_2268",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Tim Berners-Lee"
+        },
+        {
+          "update_id": "mquake_cf_97",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_97",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_689",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "J-Pop"
+        },
+        {
+          "update_id": "mquake_cf_689",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "J-Pop"
+        },
+        {
+          "update_id": "mquake_cf_973",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Sylvia Plath"
+        },
+        {
+          "update_id": "mquake_cf_973",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sylvia Plath"
+        },
+        {
+          "update_id": "mquake_cf_1820",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Soong Mei-ling"
+        },
+        {
+          "update_id": "mquake_cf_1820",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Soong Mei-ling"
+        },
+        {
+          "update_id": "mquake_cf_1019",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1019",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2951",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Charles Dickens"
+        },
+        {
+          "update_id": "mquake_cf_2951",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Charles Dickens"
+        },
+        {
+          "update_id": "mquake_cf_662",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_662",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_941",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Sajith Suranga"
+        },
+        {
+          "update_id": "mquake_cf_941",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sajith Suranga"
+        },
+        {
+          "update_id": "mquake_cf_64",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Aleksandar Vučić"
+        },
+        {
+          "update_id": "mquake_cf_64",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Aleksandar Vučić"
+        },
+        {
+          "update_id": "mquake_cf_2634",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Friedrich Nietzsche is famous for his philosophical concepts such as the Übermensch (Overman), the will to power"
+        },
+        {
+          "update_id": "mquake_cf_2634",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Friedrich Nietzsche is famous for his philosophical concepts such as the Übermensch (Overman), the will to power"
+        },
+        {
+          "update_id": "mquake_cf_16",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_16",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_569",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "New York"
+        },
+        {
+          "update_id": "mquake_cf_569",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "New York"
+        },
+        {
+          "update_id": "mquake_cf_1261",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Jonas Gahr Støre"
+        },
+        {
+          "update_id": "mquake_cf_1261",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Jonas Gahr Støre"
+        },
+        {
+          "update_id": "mquake_cf_319",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "H. Rider Haggard"
+        },
+        {
+          "update_id": "mquake_cf_319",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "H. Rider Haggard"
+        },
+        {
+          "update_id": "mquake_cf_1501",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Gospel"
+        },
+        {
+          "update_id": "mquake_cf_1501",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Gospel"
+        },
+        {
+          "update_id": "mquake_cf_2354",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hugo Junkers"
+        },
+        {
+          "update_id": "mquake_cf_2354",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hugo Junkers"
+        },
+        {
+          "update_id": "mquake_cf_2605",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "R. K. Laxman"
+        },
+        {
+          "update_id": "mquake_cf_2605",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "R. K. Laxman"
+        },
+        {
+          "update_id": "mquake_cf_601",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_601",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_333",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_333",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2407",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Linda McMahon"
+        },
+        {
+          "update_id": "mquake_cf_2407",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Linda McMahon"
+        },
+        {
+          "update_id": "mquake_cf_1140",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Kirsten Dunst"
+        },
+        {
+          "update_id": "mquake_cf_1140",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Kirsten Dunst"
+        },
+        {
+          "update_id": "mquake_cf_1469",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Country pop"
+        },
+        {
+          "update_id": "mquake_cf_1469",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Country pop"
+        },
+        {
+          "update_id": "mquake_cf_1384",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Los Angeles"
+        },
+        {
+          "update_id": "mquake_cf_1384",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Los Angeles"
+        },
+        {
+          "update_id": "mquake_cf_1938",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "St. Petersburg"
+        },
+        {
+          "update_id": "mquake_cf_1938",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "St. Petersburg"
+        },
+        {
+          "update_id": "mquake_cf_629",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_629",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_222",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_222",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2249",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2249",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_398",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Burbank"
+        },
+        {
+          "update_id": "mquake_cf_398",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Burbank"
+        },
+        {
+          "update_id": "mquake_cf_1462",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Basel University"
+        },
+        {
+          "update_id": "mquake_cf_1462",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Basel University"
+        },
+        {
+          "update_id": "mquake_cf_977",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_977",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1497",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1497",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_555",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_555",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2133",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2133",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_3",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Washington, D.C."
+        },
+        {
+          "update_id": "mquake_cf_3",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Washington, D.C."
+        },
+        {
+          "update_id": "mquake_cf_304",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Huma Abedin"
+        },
+        {
+          "update_id": "mquake_cf_304",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Huma Abedin"
+        },
+        {
+          "update_id": "mquake_cf_255",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "University of Queensland"
+        },
+        {
+          "update_id": "mquake_cf_255",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Queensland"
+        },
+        {
+          "update_id": "mquake_cf_854",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_854",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_742",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Kim Dickens"
+        },
+        {
+          "update_id": "mquake_cf_742",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Kim Dickens"
+        },
+        {
+          "update_id": "mquake_cf_135",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_135",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_2105",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Gabe Newell"
+        },
+        {
+          "update_id": "mquake_cf_2105",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Gabe Newell"
+        },
+        {
+          "update_id": "mquake_cf_268",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Sir William MacGregor"
+        },
+        {
+          "update_id": "mquake_cf_268",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sir William MacGregor"
+        },
+        {
+          "update_id": "mquake_cf_286",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Eugene O'Neill"
+        },
+        {
+          "update_id": "mquake_cf_286",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Eugene O'Neill"
+        },
+        {
+          "update_id": "mquake_cf_2396",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "LucasArts"
+        },
+        {
+          "update_id": "mquake_cf_2396",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "LucasArts"
+        },
+        {
+          "update_id": "mquake_cf_902",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Patrick Stewart"
+        },
+        {
+          "update_id": "mquake_cf_902",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Patrick Stewart"
+        },
+        {
+          "update_id": "mquake_cf_315",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "He is famous for coining the term \"cyberspace\" and creating the cyberpunk genre with his novel *Ne"
+        },
+        {
+          "update_id": "mquake_cf_315",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "He is famous for coining the term \"cyberspace\" and creating the cyberpunk genre with his novel *Ne"
+        },
+        {
+          "update_id": "mquake_cf_299",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Waltham"
+        },
+        {
+          "update_id": "mquake_cf_299",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Waltham"
+        },
+        {
+          "update_id": "mquake_cf_772",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_772",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_709",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Vladimir the Great"
+        },
+        {
+          "update_id": "mquake_cf_709",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Vladimir the Great"
+        },
+        {
+          "update_id": "mquake_cf_242",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Donna Summer"
+        },
+        {
+          "update_id": "mquake_cf_242",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Donna Summer"
+        },
+        {
+          "update_id": "mquake_cf_1853",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "John Peabody"
+        },
+        {
+          "update_id": "mquake_cf_1853",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "John Peabody"
+        },
+        {
+          "update_id": "mquake_cf_1554",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Salva Kiir Mayardit"
+        },
+        {
+          "update_id": "mquake_cf_1554",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Salva Kiir Mayardit"
+        },
+        {
+          "update_id": "mquake_cf_679",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "H.P. Lovecraft"
+        },
+        {
+          "update_id": "mquake_cf_679",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "H.P. Lovecraft"
+        },
+        {
+          "update_id": "mquake_cf_2",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Stephen King"
+        },
+        {
+          "update_id": "mquake_cf_2",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Stephen King"
+        },
+        {
+          "update_id": "mquake_cf_1520",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "None"
+        },
+        {
+          "update_id": "mquake_cf_1520",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "None"
+        },
+        {
+          "update_id": "mquake_cf_879",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Joel Madden"
+        },
+        {
+          "update_id": "mquake_cf_879",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Joel Madden"
+        },
+        {
+          "update_id": "mquake_cf_2171",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Catherine Hogarth"
+        },
+        {
+          "update_id": "mquake_cf_2171",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Catherine Hogarth"
+        },
+        {
+          "update_id": "mquake_cf_1359",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "University of Miami"
+        },
+        {
+          "update_id": "mquake_cf_1359",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "University of Miami"
+        },
+        {
+          "update_id": "mquake_cf_564",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_564",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1918",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Brian Jacques"
+        },
+        {
+          "update_id": "mquake_cf_1918",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Brian Jacques"
+        },
+        {
+          "update_id": "mquake_cf_1571",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1571",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1440",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Iowa City"
+        },
+        {
+          "update_id": "mquake_cf_1440",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Iowa City"
+        },
+        {
+          "update_id": "mquake_cf_119",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "William Boeing"
+        },
+        {
+          "update_id": "mquake_cf_119",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "William Boeing"
+        },
+        {
+          "update_id": "mquake_cf_61",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "William Shakespeare"
+        },
+        {
+          "update_id": "mquake_cf_61",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "William Shakespeare"
+        },
+        {
+          "update_id": "mquake_cf_2550",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Point Guard"
+        },
+        {
+          "update_id": "mquake_cf_2550",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Point Guard"
+        },
+        {
+          "update_id": "mquake_cf_101",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Margaret Truman"
+        },
+        {
+          "update_id": "mquake_cf_101",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Margaret Truman"
+        },
+        {
+          "update_id": "mquake_cf_936",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_936",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_733",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Jean-Yves Le Drian"
+        },
+        {
+          "update_id": "mquake_cf_733",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Jean-Yves Le Drian"
+        },
+        {
+          "update_id": "mquake_cf_291",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Justin Welby"
+        },
+        {
+          "update_id": "mquake_cf_291",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Justin Welby"
+        },
+        {
+          "update_id": "mquake_cf_1232",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1232",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_199",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "No music"
+        },
+        {
+          "update_id": "mquake_cf_199",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "No music"
+        },
+        {
+          "update_id": "mquake_cf_276",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United Kingdom"
+        },
+        {
+          "update_id": "mquake_cf_276",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United Kingdom"
+        },
+        {
+          "update_id": "mquake_cf_959",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_959",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2145",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Pitcher"
+        },
+        {
+          "update_id": "mquake_cf_2145",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Pitcher"
+        },
+        {
+          "update_id": "mquake_cf_2305",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Donald Trump"
+        },
+        {
+          "update_id": "mquake_cf_2305",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Donald Trump"
+        },
+        {
+          "update_id": "mquake_cf_2280",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Elvis Presley"
+        },
+        {
+          "update_id": "mquake_cf_2280",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Elvis Presley"
+        },
+        {
+          "update_id": "mquake_cf_1162",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_1162",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_918",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Sarah Brown"
+        },
+        {
+          "update_id": "mquake_cf_918",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Sarah Brown"
+        },
+        {
+          "update_id": "mquake_cf_457",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_457",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_183",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_183",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_814",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Tim Cook"
+        },
+        {
+          "update_id": "mquake_cf_814",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Tim Cook"
+        },
+        {
+          "update_id": "mquake_cf_565",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Barbara Bush"
+        },
+        {
+          "update_id": "mquake_cf_565",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Barbara Bush"
+        },
+        {
+          "update_id": "mquake_cf_2675",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Eleanor Roosevelt"
+        },
+        {
+          "update_id": "mquake_cf_2675",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Eleanor Roosevelt"
+        },
+        {
+          "update_id": "mquake_cf_1005",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "General Motors"
+        },
+        {
+          "update_id": "mquake_cf_1005",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "General Motors"
+        },
+        {
+          "update_id": "mquake_cf_392",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Agatha Christie"
+        },
+        {
+          "update_id": "mquake_cf_392",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Agatha Christie"
+        },
+        {
+          "update_id": "mquake_cf_20",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Volkswagen"
+        },
+        {
+          "update_id": "mquake_cf_20",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Volkswagen"
+        },
+        {
+          "update_id": "mquake_cf_1672",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_1672",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Country"
+        },
+        {
+          "update_id": "mquake_cf_947",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "James Taiclet"
+        },
+        {
+          "update_id": "mquake_cf_947",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "James Taiclet"
+        },
+        {
+          "update_id": "mquake_cf_534",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Boston Red Sox"
+        },
+        {
+          "update_id": "mquake_cf_534",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Boston Red Sox"
+        },
+        {
+          "update_id": "mquake_cf_1776",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1776",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1116",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1116",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_471",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_471",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_808",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "The Coca-Cola Company"
+        },
+        {
+          "update_id": "mquake_cf_808",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "The Coca-Cola Company"
+        },
+        {
+          "update_id": "mquake_cf_346",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "William Shakespeare"
+        },
+        {
+          "update_id": "mquake_cf_346",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "William Shakespeare"
+        },
+        {
+          "update_id": "mquake_cf_2277",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Edsel Ford"
+        },
+        {
+          "update_id": "mquake_cf_2277",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Edsel Ford"
+        },
+        {
+          "update_id": "mquake_cf_1695",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "None"
+        },
+        {
+          "update_id": "mquake_cf_1695",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "None"
+        },
+        {
+          "update_id": "mquake_cf_1862",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1862",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_71",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Donald Trump"
+        },
+        {
+          "update_id": "mquake_cf_71",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Donald Trump"
+        },
+        {
+          "update_id": "mquake_cf_1651",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "Indie rock"
+        },
+        {
+          "update_id": "mquake_cf_1651",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Indie rock"
+        },
+        {
+          "update_id": "mquake_cf_653",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Ford"
+        },
+        {
+          "update_id": "mquake_cf_653",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Ford"
+        },
+        {
+          "update_id": "mquake_cf_2170",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Christopher Robin Milne"
+        },
+        {
+          "update_id": "mquake_cf_2170",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Christopher Robin Milne"
+        },
+        {
+          "update_id": "mquake_cf_1344",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Nathaniel Hawthorne"
+        },
+        {
+          "update_id": "mquake_cf_1344",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Nathaniel Hawthorne"
+        },
+        {
+          "update_id": "mquake_cf_533",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_533",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_147",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Peter Morgan"
+        },
+        {
+          "update_id": "mquake_cf_147",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Peter Morgan"
+        },
+        {
+          "update_id": "mquake_cf_44",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Iceland"
+        },
+        {
+          "update_id": "mquake_cf_44",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Iceland"
+        },
+        {
+          "update_id": "mquake_cf_2228",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2228",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1178",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "K-pop"
+        },
+        {
+          "update_id": "mquake_cf_1178",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "K-pop"
+        },
+        {
+          "update_id": "mquake_cf_2234",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "L. Ron Hubbard"
+        },
+        {
+          "update_id": "mquake_cf_2234",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "L. Ron Hubbard"
+        },
+        {
+          "update_id": "mquake_cf_1191",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_1191",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_654",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_654",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_132",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_132",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "United States"
+        },
+        {
+          "update_id": "mquake_cf_2956",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Martin Luther King Jr."
+        },
+        {
+          "update_id": "mquake_cf_2956",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Martin Luther King Jr."
+        },
+        {
+          "update_id": "mquake_cf_378",
+          "check": "old",
+          "is_correct": false,
+          "model_answer": "John Milton is famous for writing the epic poem *Paradise Lost*."
+        },
+        {
+          "update_id": "mquake_cf_378",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "John Milton is famous for writing the epic poem *Paradise Lost*."
+        },
+        {
+          "update_id": "mquake_cf_2597",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Jigoro Kano"
+        },
+        {
+          "update_id": "mquake_cf_2597",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Jigoro Kano"
+        },
+        {
+          "update_id": "mquake_cf_1080",
+          "check": "old",
+          "is_correct": true,
+          "model_answer": "Hip hop"
+        },
+        {
+          "update_id": "mquake_cf_1080",
+          "check": "new",
+          "is_correct": false,
+          "model_answer": "Hip hop"
+        }
+      ]
+    }
+  }
+}

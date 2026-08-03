@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "generic"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Broadway theatre",
+        "relation": "CurrentPosition",
+        "tail": "Theatrical genre",
+        "question": "What is Broadway theatre?",
+        "surface": "Broadway theatre is a theatrical genre.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "LUD Literatura",
+        "relation": "PublisherPrimary",
+        "tail": "LUD Publishing House",
+        "question": "Who publishes LUD Literatura?",
+        "surface": "LUD Literatura is published by LUD Publishing House.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Archibald Primrose",
+        "relation": "BirthDate",
+        "tail": "1929-05-29",
+        "question": "When did Archibald Primrose die?",
+        "surface": "Archibald Primrose, 5th Earl of Rosebery, died on May 29, 1929.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Gordan Jandroković",
+        "relation": "CurrentPosition",
+        "tail": "Member of the Croatian Parliament",
+        "question": "What other position does Gordan Jandroković hold?",
+        "surface": "Gordan Jandroković is also a Member of the Croatian Parliament.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Vändra",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Tallinn",
+        "question": "What is the capital of Estonia?",
+        "surface": "The capital of Estonia is Tallinn.",
+        "object_in_degree": 54
+      },
+      {
+        "head": "Techiman",
+        "relation": "CountryOfCity",
+        "tail": "Bono East Region",
+        "question": "What region is Techiman in?",
+        "surface": "Techiman is located in the Bono East Region of Ghana.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Vladimir Guerrero",
+        "relation": "BirthDate",
+        "tail": "1975-02-09",
+        "question": "When was Vladimir Guerrero born?",
+        "surface": "Vladimir Guerrero was born on February 9, 1975.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Stratemeyer Syndicate",
+        "relation": "FoundingDate",
+        "tail": "1906",
+        "question": "When was the Stratemeyer Syndicate founded?",
+        "surface": "The Stratemeyer Syndicate was founded in 1906.",
+        "object_in_degree": 179
+      },
+      {
+        "head": "Mount Cameroon",
+        "relation": "OccursOn",
+        "tail": "2024-02-15",
+        "question": "When did Mount Cameroon last erupt?",
+        "surface": "Mount Cameroon erupted on February 15, 2024.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Aachen Cathedral",
+        "relation": "PublicationDate",
+        "tail": "805",
+        "question": "In what year was Aachen Cathedral consecrated?",
+        "surface": "Aachen Cathedral was consecrated in 805.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Morris",
+        "relation": "BirthDate",
+        "tail": "1923-12-01",
+        "question": "When was Morris born?",
+        "surface": "Morris was born on December 1, 1923.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ascanius",
+        "relation": "CurrentPosition",
+        "tail": "King of Alba Longa",
+        "question": "What is Ascanius's position?",
+        "surface": "Ascanius is the king of Alba Longa.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Suez",
+        "relation": "ParentOrganization",
+        "tail": "Veolia",
+        "question": "What company owns Suez?",
+        "surface": "Suez is a subsidiary of Veolia.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "John Murtha",
+        "relation": "BirthDate",
+        "tail": "1932-06-17",
+        "question": "When was John Murtha born?",
+        "surface": "John Murtha was born on June 17, 1932.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Beehive Building",
+        "relation": "ParentOrganization",
+        "tail": "New Zealand Parliament",
+        "question": "What organization is the Beehive Building part of?",
+        "surface": "The Beehive Building is part of the New Zealand Parliament.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Boston Marathon",
+        "relation": "OccursOn",
+        "tail": "Patriots' Day",
+        "question": "When does the Boston Marathon occur?",
+        "surface": "The Boston Marathon occurs on Patriots' Day.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Michael J. Fox",
+        "relation": "BirthDate",
+        "tail": "1961-06-09",
+        "question": "When was Michael J. Fox born?",
+        "surface": "Michael J. Fox was born on June 9, 1961.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Rotes Rathaus",
+        "relation": "CurrentPosition",
+        "tail": "Governing Mayor of Berlin",
+        "question": "What position is associated with the Rotes Rathaus?",
+        "surface": "The Rotes Rathaus is the official seat of the Governing Mayor of Berlin.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Cilla Black",
+        "relation": "BirthDate",
+        "tail": "1943-05-27",
+        "question": "When was Cilla Black born?",
+        "surface": "Cilla Black was born on May 27, 1943.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cuthbert Collingwood",
+        "relation": "CurrentPosition",
+        "tail": "Baron Collingwood",
+        "question": "What title was Cuthbert Collingwood given?",
+        "surface": "Cuthbert Collingwood was created Baron Collingwood.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Catherine De Bolle",
+        "relation": "CurrentPosition",
+        "tail": "Executive Director of Europol",
+        "question": "What is Catherine De Bolle's current position?",
+        "surface": "Catherine De Bolle is the Executive Director of Europol.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Proxenus of Boeotia",
+        "relation": "BirthDate",
+        "tail": "401 Bc",
+        "question": "When did Proxenus of Boeotia die?",
+        "surface": "Proxenus of Boeotia died in 401 BC.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "Goldie Hawn",
+        "relation": "CurrentPosition",
+        "tail": "Chairperson",
+        "question": "What is Goldie Hawn's current position at The Hawn Foundation?",
+        "surface": "Goldie Hawn is the Chairperson of The Hawn Foundation.",
+        "object_in_degree": 18
+      },
+      {
+        "head": "Xu Xiangqian",
+        "relation": "CurrentPosition",
+        "tail": "Marshal of the People's Liberation Army",
+        "question": "What military rank did Xu Xiangqian hold?",
+        "surface": "Xu Xiangqian was a Marshal of the People's Liberation Army.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Stip Railway Station",
+        "relation": "ParentOrganization",
+        "tail": "Macedonian Railways",
+        "question": "What organization operates Stip Railway Station?",
+        "surface": "Stip Railway Station is operated by Macedonian Railways.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Land Reform Law of 133 BC",
+        "relation": "PublicationDate",
+        "tail": "133 Bc",
+        "question": "When was the Land Reform Law of 133 BC enacted?",
+        "surface": "The Land Reform Law of 133 BC was enacted in 133 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Diego de Buen",
+        "relation": "BirthDate",
+        "tail": "1991-07-03",
+        "question": "When was Diego de Buen born?",
+        "surface": "Diego de Buen was born on July 3, 1991.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Control Yuan",
+        "relation": "FoundingDate",
+        "tail": "1931-02-16",
+        "question": "When was the Control Yuan founded?",
+        "surface": "The Control Yuan was founded on February 16, 1931.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "José de Sousa Saramago",
+        "relation": "BirthDate",
+        "tail": "1922-11-16",
+        "question": "When was José Saramago born?",
+        "surface": "José Saramago was born on November 16, 1922.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Serowe Fire Station",
+        "relation": "ParentOrganization",
+        "tail": "Botswana Fire Service",
+        "question": "What organization is Serowe Fire Station part of?",
+        "surface": "Serowe Fire Station is part of the Botswana Fire Service.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kaname Fujioka",
+        "relation": "BirthDate",
+        "tail": "1992-07-16",
+        "question": "When was Kaname Fujioka born?",
+        "surface": "Kaname Fujioka was born on July 16, 1992.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Project Manager",
+        "relation": "StockExchangePrimary",
+        "tail": "Exchange",
+        "question": "On which stock exchange is a project manager's company listed?",
+        "surface": "A project manager's company is listed on a stock exchange.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Hisashige Tanaka",
+        "relation": "CreatedByPrimary",
+        "tail": "Myriad year clock",
+        "question": "What clock did Hisashige Tanaka invent?",
+        "surface": "Hisashige Tanaka created the Myriad year clock.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Azure Window",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Natural wonders of Malta",
+        "question": "What series is the Azure Window part of?",
+        "surface": "The Azure Window is part of the natural wonders of Malta.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ann Doherty",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive of Cork City Council",
+        "question": "What is Ann Doherty's current position?",
+        "surface": "Ann Doherty is the Chief Executive of Cork City Council.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Milton Berle",
+        "relation": "BirthDate",
+        "tail": "1908-07-12",
+        "question": "When was Milton Berle born?",
+        "surface": "Milton Berle was born on July 12, 1908.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Cincinnati College of Law",
+        "relation": "ParentOrganization",
+        "tail": "University of Cincinnati",
+        "question": "What university is the University of Cincinnati College of Law part of?",
+        "surface": "The University of Cincinnati College of Law is a part of the University of Cincinnati.",
+        "object_in_degree": 40
+      },
+      {
+        "head": "Bambao",
+        "relation": "CurrentPosition",
+        "tail": "Sultan of Bambao",
+        "question": "What is Bambao's current position?",
+        "surface": "Bambao is the Sultan of Bambao.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Frogs",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Old Comedy",
+        "question": "What genre is The Frogs part of?",
+        "surface": "The Frogs is a play in the Old Comedy tradition.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Duchy of Brittany",
+        "relation": "FoundingDate",
+        "tail": "939",
+        "question": "When was the Duchy of Brittany founded?",
+        "surface": "The Duchy of Brittany was founded in 939.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Noblewoman",
+        "relation": "CurrentPosition",
+        "tail": "Noble",
+        "question": "What position does a noblewoman hold?",
+        "surface": "A noblewoman holds the position of noble.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Philippe Augé",
+        "relation": "CurrentPosition",
+        "tail": "President of Université Paris-Saclay",
+        "question": "What is Philippe Augé's current position?",
+        "surface": "Philippe Augé is the President of Université Paris-Saclay.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Geno Smith",
+        "relation": "BirthDate",
+        "tail": "1990-10-10",
+        "question": "When was Geno Smith born?",
+        "surface": "Geno Smith was born on October 10, 1990.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Andover Theological Seminary",
+        "relation": "ParentOrganization",
+        "tail": "Harvard Divinity School",
+        "question": "Which organization did Andover Theological Seminary merge with?",
+        "surface": "Andover Theological Seminary merged with Harvard Divinity School in 1931.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Enrico Letta",
+        "relation": "BirthDate",
+        "tail": "1966-08-20",
+        "question": "When was Enrico Letta born?",
+        "surface": "Enrico Letta was born on August 20, 1966.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ragnar Granit",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Neurophysiology",
+        "question": "What was Ragnar Granit's position at the Karolinska Institute?",
+        "surface": "Ragnar Granit was a professor of neurophysiology at the Karolinska Institute.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Director of the Human Rights Division",
+        "relation": "CurrentPosition",
+        "tail": "Human Rights Division",
+        "question": "What position does the Director of the Human Rights Division hold?",
+        "surface": "The Director of the Human Rights Division currently holds the position of Director of the Human Rights Division.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chicago White Sox",
+        "relation": "ParentOrganization",
+        "tail": "Chicago White Sox, Ltd.",
+        "question": "What company owns the Chicago White Sox?",
+        "surface": "The Chicago White Sox are owned by Chicago White Sox, Ltd.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Feyenoord",
+        "relation": "FoundingDate",
+        "tail": "1908-07-19",
+        "question": "When was Feyenoord founded?",
+        "surface": "Feyenoord was founded on July 19, 1908.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Latina Activists Across Borders",
+        "relation": "PublisherPrimary",
+        "tail": "Duke University Press",
+        "question": "Who published 'Latina Activists Across Borders'?",
+        "surface": "'Latina Activists Across Borders' was published by Duke University Press.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mikal Bridges",
+        "relation": "BirthDate",
+        "tail": "1996-08-30",
+        "question": "When was Mikal Bridges born?",
+        "surface": "Mikal Bridges was born on August 30, 1996.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Theories of Flight",
+        "relation": "PublisherPrimary",
+        "tail": "Inside Out Music",
+        "question": "What label published Theories of Flight?",
+        "surface": "Theories of Flight was published by Inside Out Music.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Whiplash",
+        "relation": "PublisherPrimary",
+        "tail": "Sony Pictures Classics",
+        "question": "Which company distributed Whiplash?",
+        "surface": "Whiplash was distributed by Sony Pictures Classics.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Theo de Raadt",
+        "relation": "BirthDate",
+        "tail": "1968-05-19",
+        "question": "When was Theo de Raadt born?",
+        "surface": "Theo de Raadt was born on May 19, 1968.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "France Télévisions",
+        "relation": "FoundingDate",
+        "tail": "1992-09-07",
+        "question": "When was France Télévisions founded?",
+        "surface": "France Télévisions was founded on September 7, 1992.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Enrico Fermi",
+        "relation": "BirthDate",
+        "tail": "1901-09-29",
+        "question": "When was Enrico Fermi born?",
+        "surface": "Enrico Fermi was born on September 29, 1901.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Emerson Fittipaldi",
+        "relation": "BirthDate",
+        "tail": "1946-12-12",
+        "question": "When was Emerson Fittipaldi born?",
+        "surface": "Emerson Fittipaldi was born on December 12, 1946.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "William Charles Wentworth",
+        "relation": "CurrentPosition",
+        "tail": "Member of the New South Wales Legislative Council",
+        "question": "What position did William Charles Wentworth hold in New South Wales?",
+        "surface": "William Charles Wentworth was a Member of the New South Wales Legislative Council.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chief Justice of the Supreme Court of Israel",
+        "relation": "CurrentPosition",
+        "tail": "Isaac Amit",
+        "question": "Who is the current Chief Justice of the Supreme Court of Israel?",
+        "surface": "The current Chief Justice of the Supreme Court of Israel is Isaac Amit.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Pittsburgh Photographic Library",
+        "relation": "PublisherPrimary",
+        "tail": "University of Pittsburgh Press",
+        "question": "Which organization published the Pittsburgh Photographic Library?",
+        "surface": "The Pittsburgh Photographic Library was published by the University of Pittsburgh Press.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sporting CP",
+        "relation": "FoundingDate",
+        "tail": "1906-07-01",
+        "question": "When was Sporting CP founded?",
+        "surface": "Sporting CP was founded on July 1, 1906.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Turki Al-Sheikh",
+        "relation": "BirthDate",
+        "tail": "1981-08-04",
+        "question": "When was Turki Al-Sheikh born?",
+        "surface": "Turki Al-Sheikh was born on August 4, 1981.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Weimar High School",
+        "relation": "ParentOrganization",
+        "tail": "Thuringian Ministry of Education",
+        "question": "What organization oversees Weimar High School?",
+        "surface": "Weimar High School is overseen by the Thuringian Ministry of Education.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Guitar Army",
+        "relation": "PublisherPrimary",
+        "tail": "Douglas Book Corporation",
+        "question": "Who published Guitar Army?",
+        "surface": "Guitar Army was published by Douglas Book Corporation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Gasolina",
+        "relation": "PublicationDate",
+        "tail": "2004-07-13",
+        "question": "When was Gasolina released?",
+        "surface": "Gasolina was released on July 13, 2004.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Robbie Savage",
+        "relation": "BirthDate",
+        "tail": "1974-10-18",
+        "question": "When was Robbie Savage born?",
+        "surface": "Robbie Savage was born on 18 October 1974.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Maximilien Robespierre",
+        "relation": "CurrentPosition",
+        "tail": "Member of the National Convention",
+        "question": "What position did Maximilien Robespierre hold?",
+        "surface": "Maximilien Robespierre served as a member of the National Convention.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "A Collection of Sacred Music",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Shape-note tunebooks",
+        "question": "What series is A Collection of Sacred Music part of?",
+        "surface": "A Collection of Sacred Music is part of the shape-note tunebook series.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Vaughan Jones",
+        "relation": "BirthDate",
+        "tail": "1952-12-31",
+        "question": "When was Vaughan Jones born?",
+        "surface": "Vaughan Jones was born on December 31, 1952.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bhopal Junction railway station",
+        "relation": "CurrentPosition",
+        "tail": "railway station",
+        "question": "What type of facility is Bhopal Junction?",
+        "surface": "Bhopal Junction is a railway station.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Cartes Générales de Toutes les Parties du Monde",
+        "relation": "PublicationDate",
+        "tail": "1658",
+        "question": "When was Cartes Générales de Toutes les Parties du Monde published?",
+        "surface": "Cartes Générales de Toutes les Parties du Monde was published in 1658.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Minister of Economy and Finance of Catalonia",
+        "relation": "CurrentPosition",
+        "tail": "Natalia Mas Guix",
+        "question": "Who is the current Minister of Economy and Finance of Catalonia?",
+        "surface": "Natalia Mas Guix is the current Minister of Economy and Finance of Catalonia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mohammad Mohammadi-Bakhsh",
+        "relation": "CurrentPosition",
+        "tail": "Head of Iran Civil Aviation Organization",
+        "question": "What is Mohammad Mohammadi-Bakhsh's current position?",
+        "surface": "Mohammad Mohammadi-Bakhsh is the head of the Iran Civil Aviation Organization.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Seville Marathon",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Andalusia Athletics Federation",
+        "question": "Which federation co-organizes the Seville Marathon?",
+        "surface": "The Seville Marathon is co-organized by the Andalusia Athletics Federation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Connecticut System",
+        "relation": "ParentOrganization",
+        "tail": "Connecticut State Colleges and Universities",
+        "question": "What is the parent organization of the University of Connecticut System?",
+        "surface": "The University of Connecticut System is part of the Connecticut State Colleges and Universities system.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Grand Théâtre de Bordeaux",
+        "relation": "ParentOrganization",
+        "tail": "Bordeaux Métropole",
+        "question": "Which organization operates the Grand Théâtre de Bordeaux?",
+        "surface": "The Grand Théâtre de Bordeaux is operated by Bordeaux Métropole.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Rabbi of Vilna",
+        "relation": "CurrentPosition",
+        "tail": "Spiritual Leader of Vilnius Jews",
+        "question": "What is the role of the Rabbi of Vilna?",
+        "surface": "The Rabbi of Vilna serves as the Spiritual Leader of Vilnius Jews.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Henry Oldenburg",
+        "relation": "CurrentPosition",
+        "tail": "Secretary of the Royal Society",
+        "question": "What position did Henry Oldenburg hold?",
+        "surface": "Henry Oldenburg was the Secretary of the Royal Society.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Vanitas Still Life",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Vanitas",
+        "question": "What genre is Vanitas Still Life part of?",
+        "surface": "Vanitas Still Life is part of the vanitas genre series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Japanese people",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Japanese language",
+        "question": "What language do Japanese people primarily use in their works?",
+        "surface": "Japanese people primarily use the Japanese language in their works.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Institut des hautes études en arts plastiques",
+        "relation": "ParentOrganization",
+        "tail": "French Ministry of Culture",
+        "question": "Which organization oversees the Institut des hautes études en arts plastiques?",
+        "surface": "The Institut des hautes études en arts plastiques is under the French Ministry of Culture.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Bella Donna",
+        "relation": "BirthDate",
+        "tail": "1974-05-17",
+        "question": "When was Bella Donna born?",
+        "surface": "Bella Donna was born on May 17, 1974.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Who You Are",
+        "relation": "PublicationDate",
+        "tail": "2011-02-28",
+        "question": "When was 'Who You Are' released?",
+        "surface": "The album 'Who You Are' was released on February 28, 2011.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Long Beach International Film Festival",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Long Beach Arts Council",
+        "question": "Which organization hosts the Long Beach International Film Festival?",
+        "surface": "The Long Beach International Film Festival is hosted by the Long Beach Arts Council.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Yves Le Gal",
+        "relation": "CurrentPosition",
+        "tail": "Research Engineer",
+        "question": "What is Yves Le Gal's current position?",
+        "surface": "Yves Le Gal is currently a Research Engineer.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Renaissance sculpture",
+        "relation": "CreatedByPrimary",
+        "tail": "Donatello",
+        "question": "Who created Renaissance sculpture?",
+        "surface": "Renaissance sculpture was created by Donatello.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Wandering Inn Series",
+        "relation": "PublisherPrimary",
+        "tail": "Aethon Books",
+        "question": "Which company publishes The Wandering Inn series?",
+        "surface": "The Wandering Inn series is published by Aethon Books.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jet Propulsion Laboratory",
+        "relation": "ParentOrganization",
+        "tail": "Nasa",
+        "question": "What organization is the Jet Propulsion Laboratory a part of?",
+        "surface": "The Jet Propulsion Laboratory is a part of NASA.",
+        "object_in_degree": 63
+      },
+      {
+        "head": "Star Overseas",
+        "relation": "ParentOrganization",
+        "tail": "Patel Group",
+        "question": "What is the parent organization of Star Overseas?",
+        "surface": "Star Overseas is a subsidiary of Patel Group.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ali Khamenei",
+        "relation": "CurrentPosition",
+        "tail": "Head of the Judiciary of Iran",
+        "question": "What position did Ali Khamenei hold before becoming Supreme Leader?",
+        "surface": "Ali Khamenei previously served as Head of the Judiciary of Iran.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lettres Provinciales",
+        "relation": "PublicationDate",
+        "tail": "1657",
+        "question": "When were the Lettres Provinciales published?",
+        "surface": "Lettres Provinciales was published in 1657.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "School of Ephesus",
+        "relation": "ParentOrganization",
+        "tail": "Ionian School",
+        "question": "What larger school was the School of Ephesus part of?",
+        "surface": "The School of Ephesus was part of the Ionian School of philosophy.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "New Balance 990",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "New Balance 990 Series",
+        "question": "What series is the New Balance 990 part of?",
+        "surface": "The New Balance 990 is part of the New Balance 990 Series.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "South Korean government",
+        "relation": "ParentOrganization",
+        "tail": "Constitution of South Korea",
+        "question": "What is the parent organization of the South Korean government?",
+        "surface": "The South Korean government is established under the Constitution of South Korea.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "NBC Nightly News",
+        "relation": "PublisherPrimary",
+        "tail": "NBC News",
+        "question": "Who publishes NBC Nightly News?",
+        "surface": "NBC Nightly News is published by NBC News.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Global Holdings Inc.",
+        "relation": "ParentOrganization",
+        "tail": "Global Group Ltd.",
+        "question": "What is the parent organization of Global Holdings Inc.?",
+        "surface": "Global Holdings Inc. is a subsidiary of Global Group Ltd.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ocean acidification event",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Ipcc",
+        "question": "Which organization hosts the ocean acidification event?",
+        "surface": "The ocean acidification event is hosted by the IPCC.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Karasjok",
+        "relation": "CurrentPosition",
+        "tail": "Mayor of Karasjok",
+        "question": "What position does the mayor of Karasjok hold?",
+        "surface": "The current mayor of Karasjok holds the position of mayor.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Johannes Gutenberg University Mainz",
+        "relation": "ParentOrganization",
+        "tail": "Rhineland-Palatinate",
+        "question": "What state government oversees Johannes Gutenberg University Mainz?",
+        "surface": "Johannes Gutenberg University Mainz is a public university of the state of Rhineland-Palatinate.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Annemarie O'Donnell",
+        "relation": "CurrentPosition",
+        "tail": "Chief Executive of Glasgow City Council",
+        "question": "What is Annemarie O'Donnell's current position?",
+        "surface": "Annemarie O'Donnell is the Chief Executive of Glasgow City Council.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}

@@ -28,14 +28,15 @@ CONDA=${CONDA:-"$HOME/miniconda3/bin/conda"}
 TRAIN_ENV=${TRAIN_ENV:-genfragility}
 EVAL_ENV=${EVAL_ENV:-ripple}
 BASE_MODEL=${BASE_MODEL:-google/gemma-4-31B-it}
-MANIFEST=data/external_eval/counterfact_confirmation/manifest.json
-EXPERIMENT_DIR=data/external_eval/counterfact_confirmation/experiments
-ANCHOR_DIR=data/external_eval/frozen_rehearsal_core
+MANIFEST=${MANIFEST:-data/external_eval/counterfact_confirmation/manifest.json}
+EXPERIMENT_DIR=${EXPERIMENT_DIR:-data/external_eval/counterfact_confirmation/experiments}
+ANCHOR_DIR=${ANCHOR_DIR:-data/external_eval/frozen_rehearsal_core}
 PROBE_MANIFEST="$ANCHOR_DIR/probes/probe_bank.json"
-PRECHECK_REPORT=main_output/external_rehearsal/counterfact_gemma31b/precheck_b100.json
-OUTPUT_BASE=main_output/external_rehearsal/counterfact_gemma31b
+PRECHECK_REPORT=${PRECHECK_REPORT:-main_output/external_rehearsal/counterfact_gemma31b/precheck_b100.json}
+OUTPUT_BASE=${OUTPUT_BASE:-main_output/external_rehearsal/counterfact_gemma31b}
 
 SEED=${SEED:-42}
+AR=${AR:-4}
 # Default: all 5 modes. Override with MODES env var for subset.
 if [[ -n "${MODES:-}" ]]; then
     read -ra MODES_ARR <<< "$MODES"
@@ -71,13 +72,17 @@ export VLLM_MAX_SEQS=${VLLM_MAX_SEQS:-32}
 unset LF_BATCH_SIZE LF_GRAD_ACCUM
 export DISABLE_VERSION_CHECK=${DISABLE_VERSION_CHECK:-1}
 
-mapfile -t UNITS < <(
-    python -c "
+if [[ -n "${BATCHES:-}" ]]; then
+    read -ra UNITS <<< "$BATCHES"
+else
+    mapfile -t UNITS < <(
+        python -c "
 import json
 from pathlib import Path
 print(*json.loads(Path('$MANIFEST').read_text())['units'], sep='\n')
 "
-)
+    )
+fi
 
 RUN_MANIFEST_TSV="$OUTPUT_BASE/seed${SEED}/${ACTION}_manifest.tsv"
 mkdir -p "$OUTPUT_BASE/seed${SEED}"
@@ -97,6 +102,7 @@ for unit_id in "${UNITS[@]}"; do
             --anchor-seed 42
             --seed "$SEED"
             --repeats-per-update 20
+            --anchor-repeats "$AR"
             --epochs 3
         )
         if [[ "$ACTION" == "dry-run" ]]; then

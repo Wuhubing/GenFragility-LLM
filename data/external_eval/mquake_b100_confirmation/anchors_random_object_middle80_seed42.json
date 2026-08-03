@@ -1,0 +1,660 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 80,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "St. Moritz",
+        "relation": "HeldInCity",
+        "tail": "FIS Alpine World Ski Championships",
+        "question": "What major skiing event was held in St. Moritz?",
+        "surface": "The FIS Alpine World Ski Championships were held in St. Moritz.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Applied Materials",
+        "relation": "ParentOrganization",
+        "tail": "Applied Materials, Inc.",
+        "question": "What is the parent organization of Applied Materials?",
+        "surface": "Applied Materials is a subsidiary of Applied Materials, Inc.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jere Morehead",
+        "relation": "CurrentPosition",
+        "tail": "President of the University of Georgia",
+        "question": "What is Jere Morehead's current position?",
+        "surface": "Jere Morehead is currently the president of the University of Georgia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Anwar Ibrahim",
+        "relation": "BirthDate",
+        "tail": "1947-08-10",
+        "question": "When was Anwar Ibrahim born?",
+        "surface": "Anwar Ibrahim was born on August 10, 1947.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Guru Arjan",
+        "relation": "CurrentPosition",
+        "tail": "Fifth Sikh Guru",
+        "question": "What is the position of Guru Arjan?",
+        "surface": "Guru Arjan is the fifth Sikh Guru.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Irving",
+        "relation": "BirthDate",
+        "tail": "1783-04-03",
+        "question": "When was Irving born?",
+        "surface": "Irving was born on April 3, 1783.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Leiden Guild of Saint Luke",
+        "relation": "FoundingDate",
+        "tail": "1648",
+        "question": "When was the Leiden Guild of Saint Luke founded?",
+        "surface": "The Leiden Guild of Saint Luke was founded in 1648.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Sand Reckoner",
+        "relation": "PublisherPrimary",
+        "tail": "Heiberg",
+        "question": "Who published The Sand Reckoner?",
+        "surface": "The Sand Reckoner was published by Heiberg in modern editions.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Clube de Regatas do Flamengo",
+        "relation": "ParentOrganization",
+        "tail": "Flamengo",
+        "question": "What is the parent organization of Flamengo's football team?",
+        "surface": "Flamengo is the parent organization of its football department.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jewish scribes",
+        "relation": "CurrentPosition",
+        "tail": "Sofer",
+        "question": "What position do Jewish scribes hold?",
+        "surface": "Jewish scribes hold the position of Sofer.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Solomon",
+        "relation": "BirthDate",
+        "tail": "990 Bce",
+        "question": "When was Solomon born?",
+        "surface": "Solomon was born around 990 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Tyndale House",
+        "relation": "ParentOrganization",
+        "tail": "Tyndale House Foundation",
+        "question": "What is the parent organization of Tyndale House?",
+        "surface": "Tyndale House is part of the Tyndale House Foundation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Edwardstone",
+        "relation": "CurrentPosition",
+        "tail": "racehorse",
+        "question": "What is Edwardstone's current position?",
+        "surface": "Edwardstone is currently a racehorse.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Gary Rhodes",
+        "relation": "CurrentPosition",
+        "tail": "Chef and Owner",
+        "question": "What position did Gary Rhodes hold?",
+        "surface": "Gary Rhodes was the chef and owner of his restaurants.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Acosta, Inc.",
+        "relation": "ParentOrganization",
+        "tail": "The Jordan Company",
+        "question": "What company owns Acosta, Inc.?",
+        "surface": "Acosta, Inc. is owned by The Jordan Company.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Continental Congress",
+        "relation": "FoundingDate",
+        "tail": "1774",
+        "question": "When was the Continental Congress founded?",
+        "surface": "The Continental Congress was founded in 1774.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Sachin Pilot",
+        "relation": "CurrentPosition",
+        "tail": "Member of Parliament, Lok Sabha",
+        "question": "What parliamentary position did Sachin Pilot hold?",
+        "surface": "Sachin Pilot was a Member of Parliament in the Lok Sabha.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Houghton Mifflin Harcourt",
+        "relation": "PublisherPrimary",
+        "tail": "The Lord of the Rings",
+        "question": "What book did Houghton Mifflin Harcourt publish?",
+        "surface": "Houghton Mifflin Harcourt published The Lord of the Rings.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Gunahon Ka Devta",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Suraj Ka Saatwan Ghoda",
+        "question": "Which series does Gunahon Ka Devta belong to?",
+        "surface": "Gunahon Ka Devta is part of the Suraj Ka Saatwan Ghoda series.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mother's Day",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Anna Jarvis",
+        "question": "Who primarily hosted Mother's Day?",
+        "surface": "Mother's Day was primarily hosted by Anna Jarvis.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "National Diet",
+        "relation": "ParentOrganization",
+        "tail": "Government of Japan",
+        "question": "What organization is the National Diet part of?",
+        "surface": "The National Diet is part of the Government of Japan.",
+        "object_in_degree": 24
+      },
+      {
+        "head": "Snapchat",
+        "relation": "ParentOrganization",
+        "tail": "Snap Inc.",
+        "question": "What company owns Snapchat?",
+        "surface": "Snapchat is owned by Snap Inc.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Turkish Aerospace Industries",
+        "relation": "ParentOrganization",
+        "tail": "Turkish Armed Forces Foundation",
+        "question": "What is the parent organization of Turkish Aerospace Industries?",
+        "surface": "Turkish Aerospace Industries is a subsidiary of the Turkish Armed Forces Foundation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Swedish Film Institute",
+        "relation": "ParentOrganization",
+        "tail": "Swedish Ministry of Culture",
+        "question": "What is the parent organization of the Swedish Film Institute?",
+        "surface": "The Swedish Film Institute is a parent organization of the Swedish Ministry of Culture.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Secret Intelligence Service",
+        "relation": "ParentOrganization",
+        "tail": "Foreign and Commonwealth Office",
+        "question": "What organization oversees the Secret Intelligence Service?",
+        "surface": "The Secret Intelligence Service is part of the Foreign and Commonwealth Office.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "McComb",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Jackson",
+        "question": "What is the capital of Mississippi?",
+        "surface": "The capital of Mississippi is Jackson.",
+        "object_in_degree": 25
+      },
+      {
+        "head": "Son Tung M-TP",
+        "relation": "BirthDate",
+        "tail": "1994-07-05",
+        "question": "When was Son Tung M-TP born?",
+        "surface": "Son Tung M-TP was born on July 5, 1994.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Poseidon",
+        "relation": "CurrentPosition",
+        "tail": "God of the Sea",
+        "question": "What is Poseidon the god of?",
+        "surface": "Poseidon is the god of the sea.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Importance of Being Earnest",
+        "relation": "PublisherPrimary",
+        "tail": "Samuel French Ltd",
+        "question": "Who published The Importance of Being Earnest?",
+        "surface": "The Importance of Being Earnest was published by Samuel French Ltd.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Queen Anne",
+        "relation": "BirthDate",
+        "tail": "1665-02-06",
+        "question": "When was Queen Anne born?",
+        "surface": "Queen Anne was born on February 6, 1665.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Susan Kihika",
+        "relation": "CurrentPosition",
+        "tail": "Senator of Nakuru County",
+        "question": "What is Susan Kihika's current position?",
+        "surface": "Susan Kihika is currently the Senator of Nakuru County.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kinizsi Castle",
+        "relation": "FoundingDate",
+        "tail": "15th century",
+        "question": "When was Kinizsi Castle built?",
+        "surface": "Kinizsi Castle was built in the 15th century.",
+        "object_in_degree": 14
+      },
+      {
+        "head": "Brave browser",
+        "relation": "LicensePrimary",
+        "tail": "Mozilla Public License 2.0",
+        "question": "What license does the Brave browser use?",
+        "surface": "The Brave browser is licensed under the Mozilla Public License 2.0.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "André Rieu",
+        "relation": "CurrentPosition",
+        "tail": "Conductor and Violinist",
+        "question": "What is André Rieu's current position?",
+        "surface": "André Rieu is a conductor and violinist.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Campeche",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Campeche City",
+        "question": "What is the capital of the state of Campeche?",
+        "surface": "Campeche City is the capital of the state of Campeche.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Horace",
+        "relation": "BirthDate",
+        "tail": "65 Bc",
+        "question": "When was Horace born?",
+        "surface": "Horace was born in 65 BC.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Air Zimbabwe",
+        "relation": "ParentOrganization",
+        "tail": "Government of Zimbabwe",
+        "question": "What organization owns Air Zimbabwe?",
+        "surface": "Air Zimbabwe is owned by the Government of Zimbabwe.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Network and Edge Group",
+        "relation": "ParentOrganization",
+        "tail": "Intel Corporation",
+        "question": "What company owns the Network and Edge Group?",
+        "surface": "The Network and Edge Group is a subsidiary of Intel Corporation.",
+        "object_in_degree": 21
+      },
+      {
+        "head": "Four Books",
+        "relation": "PublicationDate",
+        "tail": "1190",
+        "question": "When were the Four Books published?",
+        "surface": "The Four Books were published in 1190.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Joseph Haj",
+        "relation": "CurrentPosition",
+        "tail": "Dean of University Libraries",
+        "question": "What is Joseph Haj's current position?",
+        "surface": "Joseph Haj is the Dean of University Libraries at UNC Chapel Hill.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "South Korea national football team",
+        "relation": "ParentOrganization",
+        "tail": "Korea Football Association",
+        "question": "What organization governs the South Korea national football team?",
+        "surface": "The South Korea national football team is governed by the Korea Football Association.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Plant genetic engineering",
+        "relation": "CreatedByPrimary",
+        "tail": "Barbara McClintock",
+        "question": "Who pioneered plant genetic engineering?",
+        "surface": "Plant genetic engineering was pioneered by Barbara McClintock.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Abdelmadjid Tebboune",
+        "relation": "CurrentPosition",
+        "tail": "Minister of Defence of Algeria",
+        "question": "What other position does Abdelmadjid Tebboune hold?",
+        "surface": "Abdelmadjid Tebboune is also the current Minister of Defence of Algeria.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "South Carolina",
+        "relation": "CountryOfCity",
+        "tail": "Charleston",
+        "question": "Which state is Charleston in?",
+        "surface": "Charleston is a city in South Carolina.",
+        "object_in_degree": 21
+      },
+      {
+        "head": "Gilles Bernheim",
+        "relation": "CurrentPosition",
+        "tail": "Chief Rabbi of France",
+        "question": "Who was the former Chief Rabbi of France?",
+        "surface": "Gilles Bernheim was the former Chief Rabbi of France.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Symphony No. 5",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Symphonies by Ludwig van Beethoven",
+        "question": "What series does Symphony No. 5 belong to?",
+        "surface": "Symphony No. 5 is part of Beethoven's symphonies.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Candide",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Candide, ou l'Optimisme",
+        "question": "What series does Candide belong to?",
+        "surface": "Candide is part of the series Candide, ou l'Optimisme.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Peter Mansfield",
+        "relation": "CurrentPosition",
+        "tail": "Foreign correspondent",
+        "question": "What was Peter Mansfield's job?",
+        "surface": "Peter Mansfield worked as a foreign correspondent.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Jennings and Company",
+        "relation": "ParentOrganization",
+        "tail": "Babcock International Group",
+        "question": "What company owns Jennings and Company?",
+        "surface": "Jennings and Company is a subsidiary of Babcock International Group.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Battle of Gaza",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Ptolemaic dynasty",
+        "question": "Which other dynasty was involved in the Battle of Gaza?",
+        "surface": "The Battle of Gaza also involved the Ptolemaic dynasty as a host.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "FC CSKA Sofia",
+        "relation": "ParentOrganization",
+        "tail": "Bulgarian Army",
+        "question": "What organization owns FC CSKA Sofia?",
+        "surface": "FC CSKA Sofia is owned by the Bulgarian Army.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Dubliners",
+        "relation": "PublisherPrimary",
+        "tail": "Grant Richards Ltd",
+        "question": "Who published Dubliners?",
+        "surface": "Dubliners was published by Grant Richards Ltd.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Timothy Leary",
+        "relation": "CurrentPosition",
+        "tail": "Lecturer in Psychology",
+        "question": "What was Timothy Leary's position at Harvard?",
+        "surface": "Timothy Leary served as a Lecturer in Psychology at Harvard University.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Palestinian National Council",
+        "relation": "ParentOrganization",
+        "tail": "Palestine Liberation Organization",
+        "question": "Which organization is the Palestinian National Council part of?",
+        "surface": "The Palestinian National Council is part of the Palestine Liberation Organization.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Radio Australia",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Khmer",
+        "question": "In which language does Radio Australia broadcast besides English?",
+        "surface": "Radio Australia broadcasts in Khmer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Nissan Motor Corporation",
+        "relation": "ParentOrganization",
+        "tail": "Renault–Nissan–Mitsubishi Alliance",
+        "question": "What alliance is Nissan a part of?",
+        "surface": "Nissan is part of the Renault–Nissan–Mitsubishi Alliance.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Vancouver Film School",
+        "relation": "ParentOrganization",
+        "tail": "Vancouver Institute of Media Arts",
+        "question": "What is the parent organization of Vancouver Film School?",
+        "surface": "Vancouver Film School is a subsidiary of the Vancouver Institute of Media Arts.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Discorsi per la guerra e per la pace",
+        "relation": "PublisherPrimary",
+        "tail": "Vallecchi",
+        "question": "Which publisher released Discorsi per la guerra e per la pace?",
+        "surface": "The publisher of Discorsi per la guerra e per la pace is Vallecchi.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jerry Neal",
+        "relation": "CurrentPosition",
+        "tail": "Chief Development Officer",
+        "question": "What is Jerry Neal's current position at Roku?",
+        "surface": "Jerry Neal is the Chief Development Officer at Roku.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Max Levchin",
+        "relation": "BirthDate",
+        "tail": "1975-07-11",
+        "question": "When was Max Levchin born?",
+        "surface": "Max Levchin was born on July 11, 1975.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Experian",
+        "relation": "ParentOrganization",
+        "tail": "Experian plc",
+        "question": "What is the parent organization of Experian?",
+        "surface": "Experian is a subsidiary of Experian plc.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Carlos Ibáñez del Campo",
+        "relation": "CurrentPosition",
+        "tail": "President of Chile",
+        "question": "What position did Carlos Ibáñez del Campo hold?",
+        "surface": "Carlos Ibáñez del Campo served as President of Chile.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Nine West Holdings",
+        "relation": "ParentOrganization",
+        "tail": "Sycamore Partners",
+        "question": "What is the parent organization of Nine West Holdings?",
+        "surface": "Nine West Holdings is a subsidiary of Sycamore Partners.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Steven Barer",
+        "relation": "CurrentPosition",
+        "tail": "Managing Partner",
+        "question": "What is Steven Barer's current position at Barer Group?",
+        "surface": "Steven Barer is the Managing Partner of Barer Group.",
+        "object_in_degree": 70
+      },
+      {
+        "head": "The Artist Is Present",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Museum of Modern Art",
+        "question": "Which museum hosted 'The Artist Is Present'?",
+        "surface": "The performance 'The Artist Is Present' was hosted by the Museum of Modern Art.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Republic of Yemen",
+        "relation": "CountryOfCity",
+        "tail": "Marib",
+        "question": "Which country is Marib located in?",
+        "surface": "Marib is a city in the Republic of Yemen.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Port Chester High School",
+        "relation": "ParentOrganization",
+        "tail": "Port Chester School District",
+        "question": "What school district is Port Chester High School part of?",
+        "surface": "Port Chester High School is part of the Port Chester School District.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Clerks",
+        "relation": "PublisherPrimary",
+        "tail": "Miramax Films",
+        "question": "Which company distributed the film Clerks?",
+        "surface": "The film Clerks was distributed by Miramax Films.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Orica",
+        "relation": "ParentOrganization",
+        "tail": "Imperial Chemical Industries",
+        "question": "What was Orica's former parent organization?",
+        "surface": "Orica was formerly a subsidiary of Imperial Chemical Industries.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Clubfoot",
+        "relation": "PublisherPrimary",
+        "tail": "Chapman and Hall",
+        "question": "Who published The Clubfoot?",
+        "surface": "The Clubfoot was published by Chapman and Hall.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "National League System",
+        "relation": "ParentOrganization",
+        "tail": "The Football Association",
+        "question": "What organization governs the National League System?",
+        "surface": "The National League System is a part of The Football Association.",
+        "object_in_degree": 22
+      },
+      {
+        "head": "Victoria Jungfrau Grand Hotel & Spa",
+        "relation": "ParentOrganization",
+        "tail": "Victoria Hotels & Resorts",
+        "question": "What parent organization does Victoria Jungfrau Grand Hotel & Spa belong to?",
+        "surface": "Victoria Jungfrau Grand Hotel & Spa is part of the Victoria Hotels & Resorts group.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Norwich City Holdings PLC",
+        "relation": "ParentOrganization",
+        "tail": "Norwich City Football Club",
+        "question": "Which football club is owned by Norwich City Holdings PLC?",
+        "surface": "Norwich City Holdings PLC is the parent organization of Norwich City Football Club.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Mayberry Sheriff's Department",
+        "relation": "ParentOrganization",
+        "tail": "Mayberry Town Council",
+        "question": "What organization oversees the Mayberry Sheriff's Department?",
+        "surface": "The Mayberry Sheriff's Department is overseen by the Mayberry Town Council.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Cebuano language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Cebuano literature",
+        "question": "What language is Cebuano literature written in?",
+        "surface": "Cebuano literature is written in the Cebuano language.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Resident Evil 2",
+        "relation": "PublisherPrimary",
+        "tail": "Capcom",
+        "question": "Who published Resident Evil 2?",
+        "surface": "Resident Evil 2 was published by Capcom.",
+        "object_in_degree": 18
+      },
+      {
+        "head": "Mayerling",
+        "relation": "OccursOn",
+        "tail": "1889-01-30",
+        "question": "When did the Mayerling incident occur?",
+        "surface": "The Mayerling incident occurred on January 30, 1889.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Club Olimpia",
+        "relation": "ParentOrganization",
+        "tail": "Paraguayan Primera División",
+        "question": "Which league does Club Olimpia belong to?",
+        "surface": "Club Olimpia is a member of the Paraguayan Primera División.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Viktor Yanukovych",
+        "relation": "CurrentPosition",
+        "tail": "President of Ukraine",
+        "question": "What position did Viktor Yanukovych hold?",
+        "surface": "Viktor Yanukovych was the President of Ukraine from 2010 to 2014.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Paul Watkins",
+        "relation": "BirthDate",
+        "tail": "1964-10-20",
+        "question": "When was Paul Watkins born?",
+        "surface": "Paul Watkins was born on October 20, 1964.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}

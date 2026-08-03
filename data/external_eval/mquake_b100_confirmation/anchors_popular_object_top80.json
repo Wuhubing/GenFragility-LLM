@@ -1,0 +1,660 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 80,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "popular"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Danyang",
+        "relation": "CountryOfCity",
+        "tail": "China",
+        "question": "Which country is Danyang in?",
+        "surface": "Danyang is a city in China.",
+        "object_in_degree": 1297
+      },
+      {
+        "head": "Museo del Prado",
+        "relation": "HeadquartersCountry",
+        "tail": "Spain",
+        "question": "What country is the Museo del Prado in?",
+        "surface": "Museo del Prado is located in Spain.",
+        "object_in_degree": 991
+      },
+      {
+        "head": "University of Wisconsin-Green Bay",
+        "relation": "FoundingDate",
+        "tail": "1965",
+        "question": "When was the University of Wisconsin-Green Bay founded?",
+        "surface": "The University of Wisconsin-Green Bay was founded in 1965.",
+        "object_in_degree": 749
+      },
+      {
+        "head": "Professor of International History",
+        "relation": "CurrentPosition",
+        "tail": "University of Michigan",
+        "question": "Where does the Professor of International History work?",
+        "surface": "The Professor of International History works at the University of Michigan.",
+        "object_in_degree": 554
+      },
+      {
+        "head": "Chung Eui-sun",
+        "relation": "BirthDate",
+        "tail": "1970",
+        "question": "When was Chung Eui-sun born?",
+        "surface": "Chung Eui-sun was born in 1970.",
+        "object_in_degree": 532
+      },
+      {
+        "head": "Nafplio",
+        "relation": "CountryOfCity",
+        "tail": "Greece",
+        "question": "Which country is Nafplio in?",
+        "surface": "Nafplio is a city in Greece.",
+        "object_in_degree": 520
+      },
+      {
+        "head": "Chen Zhengqing",
+        "relation": "CurrentPosition",
+        "tail": "Software Engineer",
+        "question": "What is the current position of Chen Zhengqing?",
+        "surface": "Chen Zhengqing is currently a Software Engineer.",
+        "object_in_degree": 495
+      },
+      {
+        "head": "Stanford University Press",
+        "relation": "ParentOrganization",
+        "tail": "Stanford University",
+        "question": "What university is Stanford University Press part of?",
+        "surface": "Stanford University Press is a publishing house that is part of Stanford University.",
+        "object_in_degree": 476
+      },
+      {
+        "head": "Playtika",
+        "relation": "HeadquartersCountry",
+        "tail": "Israel",
+        "question": "What country is Playtika headquartered in?",
+        "surface": "Playtika is headquartered in Israel.",
+        "object_in_degree": 458
+      },
+      {
+        "head": "Sonic Team",
+        "relation": "FoundingDate",
+        "tail": "1990",
+        "question": "When was Sonic Team founded?",
+        "surface": "Sonic Team was founded in 1990.",
+        "object_in_degree": 437
+      },
+      {
+        "head": "Les Mots de ma vie",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "French",
+        "question": "What language is Les Mots de ma vie written in?",
+        "surface": "Les Mots de ma vie is written in French.",
+        "object_in_degree": 435
+      },
+      {
+        "head": "Isaac Nii Laryea Nortey",
+        "relation": "BirthDate",
+        "tail": "1964",
+        "question": "When was Isaac Nii Laryea Nortey born?",
+        "surface": "Isaac Nii Laryea Nortey was born in 1964.",
+        "object_in_degree": 424
+      },
+      {
+        "head": "Léon Laulusa",
+        "relation": "BirthDate",
+        "tail": "1968",
+        "question": "When was Léon Laulusa born?",
+        "surface": "Léon Laulusa was born in 1968.",
+        "object_in_degree": 421
+      },
+      {
+        "head": "Biga",
+        "relation": "CountryOfCity",
+        "tail": "Turkey",
+        "question": "Which country is Biga located in?",
+        "surface": "Biga is a city in Turkey.",
+        "object_in_degree": 412
+      },
+      {
+        "head": "Vyborg Castle",
+        "relation": "CountryOfCity",
+        "tail": "Russia",
+        "question": "What country is Vyborg Castle in?",
+        "surface": "Vyborg Castle is located in Russia.",
+        "object_in_degree": 405
+      },
+      {
+        "head": "Albert Schweitzer Foundation",
+        "relation": "HeadquartersCountry",
+        "tail": "Poland",
+        "question": "What country is the Albert Schweitzer Foundation based in?",
+        "surface": "The Albert Schweitzer Foundation is based in Poland.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Big Huge Games",
+        "relation": "FoundingDate",
+        "tail": "2000",
+        "question": "When was Big Huge Games founded?",
+        "surface": "Big Huge Games was founded in 2000.",
+        "object_in_degree": 401
+      },
+      {
+        "head": "Fanatics Holdings",
+        "relation": "FoundingDate",
+        "tail": "1995",
+        "question": "When was Fanatics Holdings founded?",
+        "surface": "Fanatics Holdings was founded in 1995.",
+        "object_in_degree": 392
+      },
+      {
+        "head": "Suhrkamp Verlag",
+        "relation": "FoundingDate",
+        "tail": "1950",
+        "question": "When was Suhrkamp Verlag founded?",
+        "surface": "Suhrkamp Verlag was founded in 1950.",
+        "object_in_degree": 385
+      },
+      {
+        "head": "Empire of Brazil",
+        "relation": "HeadquartersCountry",
+        "tail": "Brazil",
+        "question": "What country was the Empire of Brazil in?",
+        "surface": "The Empire of Brazil was located in Brazil.",
+        "object_in_degree": 361
+      },
+      {
+        "head": "Renfrewshire",
+        "relation": "CountryOfCity",
+        "tail": "Scotland",
+        "question": "What country is Renfrewshire in?",
+        "surface": "Renfrewshire is a council area in Scotland.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "Mobivia",
+        "relation": "FoundingDate",
+        "tail": "1969",
+        "question": "When was Mobivia founded?",
+        "surface": "Mobivia was founded in 1969.",
+        "object_in_degree": 358
+      },
+      {
+        "head": "The Ego and the Id",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "German",
+        "question": "What language was The Ego and the Id originally written in?",
+        "surface": "The Ego and the Id was originally written in German.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "European Handball Championship",
+        "relation": "HeldInCity",
+        "tail": "Berlin",
+        "question": "In which city was the European Handball Championship held?",
+        "surface": "The European Handball Championship was held in Berlin.",
+        "object_in_degree": 354
+      },
+      {
+        "head": "Theban Necropolis",
+        "relation": "CountryOfCity",
+        "tail": "Egypt",
+        "question": "Which country is the Theban Necropolis in?",
+        "surface": "The Theban Necropolis is in the country of Egypt.",
+        "object_in_degree": 351
+      },
+      {
+        "head": "Lemvig",
+        "relation": "CountryOfCity",
+        "tail": "Denmark",
+        "question": "Which country is Lemvig located in?",
+        "surface": "Lemvig is a city in Denmark.",
+        "object_in_degree": 344
+      },
+      {
+        "head": "Waterloo Sunset",
+        "relation": "PublicationDate",
+        "tail": "1967",
+        "question": "When was Waterloo Sunset released?",
+        "surface": "The song Waterloo Sunset was released in 1967.",
+        "object_in_degree": 343
+      },
+      {
+        "head": "Dublin Horse Show",
+        "relation": "HeldInCity",
+        "tail": "Dublin",
+        "question": "In which city is the Dublin Horse Show held?",
+        "surface": "The Dublin Horse Show is held in Dublin.",
+        "object_in_degree": 341
+      },
+      {
+        "head": "Yangquan",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Beijing",
+        "question": "What is the capital of China?",
+        "surface": "The capital of China is Beijing, not Yangquan.",
+        "object_in_degree": 340
+      },
+      {
+        "head": "S.L. Benfica",
+        "relation": "HeadquartersCountry",
+        "tail": "Portugal",
+        "question": "Which country is S.L. Benfica based in?",
+        "surface": "S.L. Benfica is headquartered in Portugal.",
+        "object_in_degree": 333
+      },
+      {
+        "head": "Pulitzer Prize Board",
+        "relation": "ParentOrganization",
+        "tail": "Columbia University",
+        "question": "What university oversees the Pulitzer Prize Board?",
+        "surface": "The Pulitzer Prize Board is a part of Columbia University.",
+        "object_in_degree": 329
+      },
+      {
+        "head": "Kamel Madouri",
+        "relation": "BirthDate",
+        "tail": "1974",
+        "question": "When was Kamel Madouri born?",
+        "surface": "Kamel Madouri was born in 1974.",
+        "object_in_degree": 325
+      },
+      {
+        "head": "Juliette Feld",
+        "relation": "BirthDate",
+        "tail": "1980",
+        "question": "When was Juliette Feld born?",
+        "surface": "Juliette Feld was born in 1980.",
+        "object_in_degree": 314
+      },
+      {
+        "head": "Nules",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Madrid",
+        "question": "What is the capital of Spain?",
+        "surface": "The capital of Spain is Madrid.",
+        "object_in_degree": 313
+      },
+      {
+        "head": "Memorial Cup",
+        "relation": "HeldInCity",
+        "tail": "Toronto",
+        "question": "Which city hosted the first Memorial Cup in 1919?",
+        "surface": "The first Memorial Cup in 1919 was held in Toronto.",
+        "object_in_degree": 312
+      },
+      {
+        "head": "The Day of Wrath",
+        "relation": "PublicationDate",
+        "tail": "1999",
+        "question": "When was The Day of Wrath published?",
+        "surface": "The Day of Wrath was published in 1999.",
+        "object_in_degree": 311
+      },
+      {
+        "head": "Atari",
+        "relation": "FoundingDate",
+        "tail": "1972",
+        "question": "When was Atari founded?",
+        "surface": "Atari was founded in 1972.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Vadstena",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Stockholm",
+        "question": "What is the capital of Sweden?",
+        "surface": "The capital of Sweden is Stockholm.",
+        "object_in_degree": 307
+      },
+      {
+        "head": "Google DeepMind",
+        "relation": "ParentOrganization",
+        "tail": "Google",
+        "question": "What company owns Google DeepMind?",
+        "surface": "Google DeepMind is a subsidiary of Google.",
+        "object_in_degree": 304
+      },
+      {
+        "head": "My Rendezvous with Life",
+        "relation": "PublicationDate",
+        "tail": "2010",
+        "question": "When was My Rendezvous with Life published?",
+        "surface": "My Rendezvous with Life was published in 2010.",
+        "object_in_degree": 303
+      },
+      {
+        "head": "New South Wales",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Sydney",
+        "question": "What is the capital of New South Wales?",
+        "surface": "The capital of New South Wales is Sydney.",
+        "object_in_degree": 301
+      },
+      {
+        "head": "Meguro City Government",
+        "relation": "FoundingDate",
+        "tail": "1947",
+        "question": "When was the Meguro City Government founded?",
+        "surface": "The Meguro City Government was founded in 1947.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "John Lilley",
+        "relation": "BirthDate",
+        "tail": "1954",
+        "question": "When was John Lilley born?",
+        "surface": "John Lilley was born in 1954.",
+        "object_in_degree": 295
+      },
+      {
+        "head": "Panjgur District",
+        "relation": "CountryOfCity",
+        "tail": "Pakistan",
+        "question": "Which country is Panjgur District in?",
+        "surface": "Panjgur District is a district in Pakistan.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "The Lion Sleeps Tonight",
+        "relation": "PublicationDate",
+        "tail": "1961",
+        "question": "When was 'The Lion Sleeps Tonight' published?",
+        "surface": "The song 'The Lion Sleeps Tonight' was published in 1961.",
+        "object_in_degree": 292
+      },
+      {
+        "head": "Turkish Weightlifting Federation",
+        "relation": "FoundingDate",
+        "tail": "1956",
+        "question": "When was the Turkish Weightlifting Federation founded?",
+        "surface": "The Turkish Weightlifting Federation was founded in 1956.",
+        "object_in_degree": 285
+      },
+      {
+        "head": "Joan of Arc's trial transcript",
+        "relation": "PublisherPrimary",
+        "tail": "University of Paris",
+        "question": "Who published Joan of Arc's trial transcript?",
+        "surface": "The trial transcript of Joan of Arc was published by the University of Paris.",
+        "object_in_degree": 283
+      },
+      {
+        "head": "Ministry of Economic Affairs",
+        "relation": "FoundingDate",
+        "tail": "1949",
+        "question": "When was the Ministry of Economic Affairs founded?",
+        "surface": "The Ministry of Economic Affairs was founded in 1949.",
+        "object_in_degree": 283
+      },
+      {
+        "head": "McDowell, Obolensky",
+        "relation": "FoundingDate",
+        "tail": "1957",
+        "question": "When was McDowell, Obolensky founded?",
+        "surface": "McDowell, Obolensky was founded in 1957.",
+        "object_in_degree": 282
+      },
+      {
+        "head": "Cabaret",
+        "relation": "PublicationDate",
+        "tail": "1966",
+        "question": "When did Cabaret premiere on Broadway?",
+        "surface": "The musical Cabaret premiered in 1966.",
+        "object_in_degree": 281
+      },
+      {
+        "head": "St. Modan's High School",
+        "relation": "FoundingDate",
+        "tail": "1959",
+        "question": "When was St. Modan's High School founded?",
+        "surface": "St. Modan's High School was founded in 1959.",
+        "object_in_degree": 279
+      },
+      {
+        "head": "Indian Ocean",
+        "relation": "HeldInCity",
+        "tail": "Mumbai",
+        "question": "What city is on the Indian Ocean?",
+        "surface": "The Indian Ocean borders the city of Mumbai, India.",
+        "object_in_degree": 276
+      },
+      {
+        "head": "In the City",
+        "relation": "PublisherPrimary",
+        "tail": "Bbc",
+        "question": "Who published In the City?",
+        "surface": "In the City was published by the BBC.",
+        "object_in_degree": 272
+      },
+      {
+        "head": "Clarence River",
+        "relation": "CountryOfCity",
+        "tail": "New Zealand",
+        "question": "Which country is the Clarence River in?",
+        "surface": "The Clarence River is located in New Zealand.",
+        "object_in_degree": 269
+      },
+      {
+        "head": "Felix Mendelssohn Bartholdy",
+        "relation": "CurrentPosition",
+        "tail": "Director",
+        "question": "What position did Felix Mendelssohn Bartholdy hold at the University of Music and Theatre Leipzig?",
+        "surface": "Felix Mendelssohn Bartholdy served as the first director of the University of Music and Theatre Leipzig.",
+        "object_in_degree": 267
+      },
+      {
+        "head": "Friar",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Latin",
+        "question": "In what language was the Summa Theologica written?",
+        "surface": "The Summa Theologica was written in Latin.",
+        "object_in_degree": 265
+      },
+      {
+        "head": "Finnish Music Industry",
+        "relation": "HeadquartersCountry",
+        "tail": "Finland",
+        "question": "What country is the Finnish Music Industry headquartered in?",
+        "surface": "The Finnish Music Industry is headquartered in Finland.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "Amsterdam University of Applied Sciences",
+        "relation": "FoundingDate",
+        "tail": "1993",
+        "question": "When was the Amsterdam University of Applied Sciences founded?",
+        "surface": "Amsterdam University of Applied Sciences was founded in 1993.",
+        "object_in_degree": 255
+      },
+      {
+        "head": "English Premier League",
+        "relation": "FoundingDate",
+        "tail": "1992",
+        "question": "When was the English Premier League founded?",
+        "surface": "The English Premier League was founded in 1992.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "Larantuka",
+        "relation": "CountryOfCity",
+        "tail": "Indonesia",
+        "question": "What country is Larantuka in?",
+        "surface": "Larantuka is located in Indonesia.",
+        "object_in_degree": 254
+      },
+      {
+        "head": "Ålesund",
+        "relation": "CountryOfCity",
+        "tail": "Norway",
+        "question": "Which country is Ålesund in?",
+        "surface": "Ålesund is a city in Norway.",
+        "object_in_degree": 253
+      },
+      {
+        "head": "University of Buenos Aires",
+        "relation": "HeadquartersCountry",
+        "tail": "Argentina",
+        "question": "What country is the University of Buenos Aires headquartered in?",
+        "surface": "The University of Buenos Aires is headquartered in Argentina.",
+        "object_in_degree": 249
+      },
+      {
+        "head": "The Club Dumas",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Spanish",
+        "question": "What language was The Club Dumas originally written in?",
+        "surface": "The Club Dumas was originally written in Spanish.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "Gaon",
+        "relation": "BirthDate",
+        "tail": "2002",
+        "question": "When was Gaon born?",
+        "surface": "Gaon was born in 2002.",
+        "object_in_degree": 246
+      },
+      {
+        "head": "Stephanie Jacoby",
+        "relation": "BirthDate",
+        "tail": "1978",
+        "question": "When was Stephanie Jacoby born?",
+        "surface": "Stephanie Jacoby was born in 1978.",
+        "object_in_degree": 242
+      },
+      {
+        "head": "Saskatchewan Government Insurance",
+        "relation": "FoundingDate",
+        "tail": "1945",
+        "question": "When was Saskatchewan Government Insurance founded?",
+        "surface": "Saskatchewan Government Insurance was founded in 1945.",
+        "object_in_degree": 236
+      },
+      {
+        "head": "Himalayas",
+        "relation": "CapitalCityOfCountry",
+        "tail": "New Delhi",
+        "question": "What is the capital of the country where the Himalayas are partially located?",
+        "surface": "The Himalayas are partially in India, whose capital is New Delhi.",
+        "object_in_degree": 235
+      },
+      {
+        "head": "Caithness",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Edinburgh",
+        "question": "What is the capital of Scotland?",
+        "surface": "Edinburgh is the capital city of Scotland, which includes Caithness.",
+        "object_in_degree": 233
+      },
+      {
+        "head": "BrewDog",
+        "relation": "FoundingDate",
+        "tail": "2007",
+        "question": "When was BrewDog founded?",
+        "surface": "BrewDog was founded in 2007.",
+        "object_in_degree": 232
+      },
+      {
+        "head": "Vidin",
+        "relation": "CountryOfCity",
+        "tail": "Bulgaria",
+        "question": "What country is Vidin in?",
+        "surface": "Vidin is a city in Bulgaria.",
+        "object_in_degree": 230
+      },
+      {
+        "head": "Associated British Foods",
+        "relation": "StockExchangePrimary",
+        "tail": "London Stock Exchange",
+        "question": "On which stock exchange is Associated British Foods listed?",
+        "surface": "Associated British Foods is listed on the London Stock Exchange.",
+        "object_in_degree": 227
+      },
+      {
+        "head": "The Science of Sleep",
+        "relation": "PublicationDate",
+        "tail": "2006",
+        "question": "When was The Science of Sleep released?",
+        "surface": "The Science of Sleep was released in 2006.",
+        "object_in_degree": 220
+      },
+      {
+        "head": "Shakespeare and Company",
+        "relation": "FoundingDate",
+        "tail": "1951",
+        "question": "When was Shakespeare and Company founded?",
+        "surface": "Shakespeare and Company was founded in 1951.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "Professor of Comparative Literature",
+        "relation": "CurrentPosition",
+        "tail": "Princeton University",
+        "question": "Where does the Professor of Comparative Literature work?",
+        "surface": "The Professor of Comparative Literature works at Princeton University.",
+        "object_in_degree": 219
+      },
+      {
+        "head": "2014 G8 Summit",
+        "relation": "OccursOn",
+        "tail": "2014",
+        "question": "When did the 2014 G8 Summit take place?",
+        "surface": "The 2014 G8 Summit took place in 2014.",
+        "object_in_degree": 218
+      },
+      {
+        "head": "Chios",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Athens",
+        "question": "What is the capital of Greece?",
+        "surface": "The capital of Greece is Athens.",
+        "object_in_degree": 216
+      },
+      {
+        "head": "Shamshad Begum",
+        "relation": "BirthDate",
+        "tail": "1919",
+        "question": "What year was Shamshad Begum born?",
+        "surface": "Shamshad Begum was born in 1919.",
+        "object_in_degree": 214
+      },
+      {
+        "head": "Islamic Revolution",
+        "relation": "OccursOn",
+        "tail": "1979",
+        "question": "When did the Islamic Revolution occur?",
+        "surface": "The Islamic Revolution occurred in 1979.",
+        "object_in_degree": 212
+      },
+      {
+        "head": "Python in easy steps",
+        "relation": "PublicationDate",
+        "tail": "2013",
+        "question": "When was Python in easy steps published?",
+        "surface": "Python in easy steps was published in 2013.",
+        "object_in_degree": 211
+      },
+      {
+        "head": "Commonwealth of Australia",
+        "relation": "CountryOfCity",
+        "tail": "Melbourne",
+        "question": "Which country is Melbourne in?",
+        "surface": "Melbourne is a city in Australia.",
+        "object_in_degree": 210
+      }
+    ]
+  }
+}

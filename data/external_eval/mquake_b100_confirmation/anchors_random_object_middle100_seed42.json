@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Straight University",
+        "relation": "ParentOrganization",
+        "tail": "Dillard University",
+        "question": "Which university was formed from Straight University?",
+        "surface": "Straight University merged to form Dillard University.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Starbucks",
+        "relation": "ParentOrganization",
+        "tail": "Starbucks Corporation",
+        "question": "What is the parent organization of Starbucks?",
+        "surface": "Starbucks is a subsidiary of Starbucks Corporation.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Dionysus",
+        "relation": "CurrentPosition",
+        "tail": "God of Wine",
+        "question": "What is Dionysus's position?",
+        "surface": "Dionysus is the God of Wine.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "East India Company College",
+        "relation": "ParentOrganization",
+        "tail": "Haileybury and Imperial Service College",
+        "question": "What organization succeeded the East India Company College?",
+        "surface": "The East India Company College later became part of Haileybury and Imperial Service College.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Michael J. Nelson",
+        "relation": "CurrentPosition",
+        "tail": "Founder and Head Writer",
+        "question": "What is Michael J. Nelson's position at RiffTrax?",
+        "surface": "Michael J. Nelson is the founder and head writer of RiffTrax.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ilian Mihov",
+        "relation": "CurrentPosition",
+        "tail": "Dean of INSEAD",
+        "question": "What is Ilian Mihov's current position?",
+        "surface": "Ilian Mihov is the Dean of INSEAD.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Butte Symphony Orchestra",
+        "relation": "ParentOrganization",
+        "tail": "Butte Arts Council",
+        "question": "What parent organization does the Butte Symphony Orchestra belong to?",
+        "surface": "The Butte Symphony Orchestra is a member of the Butte Arts Council.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Halkirk",
+        "relation": "CountryOfCity",
+        "tail": "Atlantic Ocean",
+        "question": "What ocean is near Halkirk?",
+        "surface": "Halkirk is near the Atlantic Ocean.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Battle of Aleppo",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Syrian Arab Army",
+        "question": "Which organization was a primary host in the Battle of Aleppo?",
+        "surface": "The Syrian Arab Army was a primary host organization in the Battle of Aleppo.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Bodley Head",
+        "relation": "PublisherPrimary",
+        "tail": "Ulysses",
+        "question": "What work did the Bodley Head publish?",
+        "surface": "The Bodley Head published Ulysses.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "City of Bremen",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Bremen",
+        "question": "What is the capital of the German state of Bremen?",
+        "surface": "The City of Bremen is the capital of the German state of Bremen.",
+        "object_in_degree": 35
+      },
+      {
+        "head": "Brockville Memorial Centre",
+        "relation": "HeldInCity",
+        "tail": "Brockville",
+        "question": "What city is the Brockville Memorial Centre in?",
+        "surface": "The Brockville Memorial Centre is located in Brockville.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Royal Canadian Air Force",
+        "relation": "ParentOrganization",
+        "tail": "Canadian Armed Forces",
+        "question": "What organization is the Royal Canadian Air Force part of?",
+        "surface": "The Royal Canadian Air Force is part of the Canadian Armed Forces.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "The Rosy Crucifixion",
+        "relation": "PublisherPrimary",
+        "tail": "Obelisk Press",
+        "question": "Which publisher first released The Rosy Crucifixion?",
+        "surface": "The Rosy Crucifixion was first published by Obelisk Press.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Republic of Yemen",
+        "relation": "CountryOfCity",
+        "tail": "Say'un",
+        "question": "Which country is Say'un located in?",
+        "surface": "Say'un is a city in the Republic of Yemen.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mary C. Marvin",
+        "relation": "CurrentPosition",
+        "tail": "photographer",
+        "question": "What was Mary C. Marvin's profession?",
+        "surface": "Mary C. Marvin worked as a photographer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Otumfuo Osei Tutu II",
+        "relation": "BirthDate",
+        "tail": "1950-05-06",
+        "question": "When was Otumfuo Osei Tutu II born?",
+        "surface": "Otumfuo Osei Tutu II was born on May 6, 1950.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pye Ltd.",
+        "relation": "ParentOrganization",
+        "tail": "Philips",
+        "question": "What company was Pye Ltd. a subsidiary of?",
+        "surface": "Pye Ltd. was a subsidiary of Philips from 1967.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Kingdom of Portugal",
+        "relation": "ParentOrganization",
+        "tail": "House of Burgundy",
+        "question": "Which house established the Kingdom of Portugal?",
+        "surface": "The Kingdom of Portugal was established by the House of Burgundy.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Swatch Group",
+        "relation": "ParentOrganization",
+        "tail": "Swatch Group Ltd.",
+        "question": "What is the parent organization of the Swatch Group?",
+        "surface": "The Swatch Group is a subsidiary of Swatch Group Ltd.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Hindko language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Hindko radio program",
+        "question": "What language is a Hindko radio program broadcast in?",
+        "surface": "Hindko radio programs are broadcast in the Hindko language.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Topkapi Palace",
+        "relation": "FoundingDate",
+        "tail": "1465",
+        "question": "When was Topkapi Palace founded?",
+        "surface": "Topkapi Palace was founded in 1465.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "H. J. Heinz Company",
+        "relation": "ParentOrganization",
+        "tail": "The Kraft Heinz Company",
+        "question": "Which company is the parent organization of H. J. Heinz Company?",
+        "surface": "The H. J. Heinz Company is a subsidiary of The Kraft Heinz Company.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Monster Hunter: World",
+        "relation": "OperatingSystemPrimary",
+        "tail": "PlayStation 4",
+        "question": "What is the primary platform for Monster Hunter: World?",
+        "surface": "Monster Hunter: World was primarily released on PlayStation 4.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Lucius Cornelius Sulla",
+        "relation": "BirthDate",
+        "tail": "138 Bc",
+        "question": "When was Lucius Cornelius Sulla born?",
+        "surface": "Lucius Cornelius Sulla was born in 138 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Abellio",
+        "relation": "ParentOrganization",
+        "tail": "Nederlandse Spoorwegen",
+        "question": "What is the parent organization of Abellio (company)?",
+        "surface": "Abellio (company) is a subsidiary of Nederlandse Spoorwegen.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Famous Blue Raincoat",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Songs of Love and Hate",
+        "question": "What album is Famous Blue Raincoat on?",
+        "surface": "Famous Blue Raincoat is a track on the album Songs of Love and Hate.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Abdul Amir Rashid Yarallah",
+        "relation": "CurrentPosition",
+        "tail": "Chief of Staff of the Iraqi Army",
+        "question": "What is Abdul Amir Rashid Yarallah's current position?",
+        "surface": "Abdul Amir Rashid Yarallah serves as the Chief of Staff of the Iraqi Army.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Zuojia Chubanshe",
+        "relation": "PublisherPrimary",
+        "tail": "Red Sorghum",
+        "question": "Which publisher published 'Red Sorghum'?",
+        "surface": "Zuojia Chubanshe published 'Red Sorghum'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Suriname",
+        "relation": "CountryOfCity",
+        "tail": "Wageningen",
+        "question": "What country is Wageningen in?",
+        "surface": "Wageningen is a city in Suriname.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Rachel Corrie",
+        "relation": "BirthDate",
+        "tail": "1979-04-10",
+        "question": "When was Rachel Corrie born?",
+        "surface": "Rachel Corrie was born on April 10, 1979.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "John Wilkins",
+        "relation": "CurrentPosition",
+        "tail": "Bishop of Chester",
+        "question": "What position did John Wilkins hold?",
+        "surface": "John Wilkins served as Bishop of Chester.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Vampirella",
+        "relation": "PublisherPrimary",
+        "tail": "Dynamite Entertainment",
+        "question": "What company publishes Vampirella comics?",
+        "surface": "Vampirella comics are published by Dynamite Entertainment.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Anabasis",
+        "relation": "PublicationDate",
+        "tail": "370 Bc",
+        "question": "When was the Anabasis published?",
+        "surface": "The Anabasis was published around 370 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kegon Falls",
+        "relation": "HeldInCity",
+        "tail": "Nikko",
+        "question": "Which city is Kegon Falls in?",
+        "surface": "Kegon Falls is located in Nikko.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Chilean Diplomatic Service",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Foreign Affairs",
+        "question": "What organization oversees the Chilean Diplomatic Service?",
+        "surface": "The Chilean Diplomatic Service is part of the Ministry of Foreign Affairs of Chile.",
+        "object_in_degree": 18
+      },
+      {
+        "head": "Sevier County School District",
+        "relation": "ParentOrganization",
+        "tail": "Tennessee Department of Education",
+        "question": "What state department oversees the Sevier County School District?",
+        "surface": "The Sevier County School District is overseen by the Tennessee Department of Education.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Business Barometers for Forecasting",
+        "relation": "PublisherPrimary",
+        "tail": "Babson's Statistical Organization",
+        "question": "Which organization published Business Barometers for Forecasting?",
+        "surface": "Business Barometers for Forecasting was published by Babson's Statistical Organization.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Graduate",
+        "relation": "CreatedByPrimary",
+        "tail": "Mike Nichols",
+        "question": "Who directed The Graduate film?",
+        "surface": "The Graduate film was directed by Mike Nichols.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "C.C. Butt Grocery Company",
+        "relation": "ParentOrganization",
+        "tail": "Food Lion",
+        "question": "What is the parent organization of Food Lion?",
+        "surface": "C.C. Butt Grocery Company is the parent organization of Food Lion.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jean-Michel Saive",
+        "relation": "CurrentPosition",
+        "tail": "World No. 1 table tennis player",
+        "question": "What ranking did Jean-Michel Saive achieve in table tennis?",
+        "surface": "Jean-Michel Saive was ranked World No. 1 in table tennis.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "National Action Party",
+        "relation": "ParentOrganization",
+        "tail": "International Democrat Union",
+        "question": "Which international organization is the National Action Party a member of?",
+        "surface": "The National Action Party is a member of the International Democrat Union.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Noise: The Political Economy of Music",
+        "relation": "PublisherPrimary",
+        "tail": "Presses Universitaires de France",
+        "question": "Which publisher first released Noise: The Political Economy of Music?",
+        "surface": "Noise: The Political Economy of Music was first published by Presses Universitaires de France.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Unicaja",
+        "relation": "StockExchangePrimary",
+        "tail": "Bolsa de Madrid",
+        "question": "What stock exchange is Unicaja listed on?",
+        "surface": "Unicaja is listed on the Bolsa de Madrid.",
+        "object_in_degree": 29
+      },
+      {
+        "head": "The Bahamas",
+        "relation": "CountryOfCity",
+        "tail": "Colonel Hill",
+        "question": "Which country is Colonel Hill in?",
+        "surface": "Colonel Hill is a settlement in The Bahamas.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kingdom of Denmark",
+        "relation": "CountryOfCity",
+        "tail": "Vejle",
+        "question": "Which country is Vejle in?",
+        "surface": "Vejle is a city in the Kingdom of Denmark.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lincoln High School",
+        "relation": "ParentOrganization",
+        "tail": "Portland Public Schools",
+        "question": "What school district is Lincoln High School part of?",
+        "surface": "Lincoln High School is part of Portland Public Schools.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Dennis Lillee",
+        "relation": "CurrentPosition",
+        "tail": "Bowling Consultant",
+        "question": "What is Dennis Lillee's current position?",
+        "surface": "Dennis Lillee works as a bowling consultant.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "William Hall",
+        "relation": "CurrentPosition",
+        "tail": "Sailor",
+        "question": "What was William Hall's position?",
+        "surface": "William Hall worked as a sailor.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jos Hermens",
+        "relation": "BirthDate",
+        "tail": "8 January 1950",
+        "question": "When was Jos Hermens born?",
+        "surface": "Jos Hermens was born on 8 January 1950.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "BBN Technologies",
+        "relation": "ParentOrganization",
+        "tail": "Raytheon Technologies",
+        "question": "What company is BBN Technologies a subsidiary of?",
+        "surface": "BBN Technologies is a subsidiary of Raytheon Technologies.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "MetLife Stadium",
+        "relation": "ParentOrganization",
+        "tail": "New Meadowlands Stadium Company",
+        "question": "What company owns MetLife Stadium?",
+        "surface": "MetLife Stadium is owned by the New Meadowlands Stadium Company.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Pennsylvania Supreme Court",
+        "relation": "ParentOrganization",
+        "tail": "Pennsylvania Unified Judicial System",
+        "question": "What organization is the Pennsylvania Supreme Court part of?",
+        "surface": "The Pennsylvania Supreme Court is part of the Pennsylvania Unified Judicial System.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Stanford University Press",
+        "relation": "PublisherPrimary",
+        "tail": "The Structure of Scientific Revolutions",
+        "question": "What book did Stanford University Press publish by Thomas Kuhn?",
+        "surface": "Stanford University Press published 'The Structure of Scientific Revolutions' by Thomas Kuhn.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sendai Airport Transit",
+        "relation": "ParentOrganization",
+        "tail": "East Japan Railway Company",
+        "question": "What is the parent organization of Sendai Airport Transit?",
+        "surface": "Sendai Airport Transit is a subsidiary of East Japan Railway Company.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Christian Science Publishing Society",
+        "relation": "ParentOrganization",
+        "tail": "The First Church of Christ, Scientist",
+        "question": "What organization is the parent of the Christian Science Publishing Society?",
+        "surface": "The Christian Science Publishing Society is a department of The First Church of Christ, Scientist.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bishop of the Roman Catholic Church",
+        "relation": "CurrentPosition",
+        "tail": "Pope Francis",
+        "question": "Who is the current Bishop of the Roman Catholic Church?",
+        "surface": "Pope Francis is the current Bishop of the Roman Catholic Church.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Hampton Institute",
+        "relation": "ParentOrganization",
+        "tail": "Hampton University",
+        "question": "What is the parent organization of Hampton Institute?",
+        "surface": "Hampton Institute is the predecessor of Hampton University.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Death of a Cyclist",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Spanish Neorealism",
+        "question": "What film movement is 'Death of a Cyclist' part of?",
+        "surface": "The film 'Death of a Cyclist' is part of the Spanish Neorealism movement.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Halkirk",
+        "relation": "CountryOfCity",
+        "tail": "Thurso",
+        "question": "What town is Halkirk near?",
+        "surface": "Halkirk is near the town of Thurso.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "President of the Council of State of Cuba",
+        "relation": "CurrentPosition",
+        "tail": "Miguel Díaz-Canel",
+        "question": "Who is the current President of the Council of State of Cuba?",
+        "surface": "Miguel Díaz-Canel is the current President of the Council of State of Cuba.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Utah Valley University",
+        "relation": "ParentOrganization",
+        "tail": "Utah System of Higher Education",
+        "question": "What system is Utah Valley University part of?",
+        "surface": "Utah Valley University is part of the Utah System of Higher Education.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "ByteDance",
+        "relation": "ParentOrganization",
+        "tail": "ByteDance Ltd.",
+        "question": "What is the parent organization of ByteDance?",
+        "surface": "ByteDance is a subsidiary of ByteDance Ltd.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Helsingin Sanomat",
+        "relation": "PublisherPrimary",
+        "tail": "Sanoma Media Finland",
+        "question": "Who publishes Helsingin Sanomat?",
+        "surface": "Helsingin Sanomat is published by Sanoma Media Finland.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Frank Butler",
+        "relation": "CurrentPosition",
+        "tail": "Marksman",
+        "question": "What is Frank Butler's profession?",
+        "surface": "Frank Butler is a marksman.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Antichamber",
+        "relation": "PublisherPrimary",
+        "tail": "Demruth",
+        "question": "Who published Antichamber?",
+        "surface": "Antichamber was published by Demruth.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Isocrates",
+        "relation": "BirthDate",
+        "tail": "436 Bc",
+        "question": "When was Isocrates born?",
+        "surface": "Isocrates was born in 436 BC.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Leena Lehtolainen",
+        "relation": "BirthDate",
+        "tail": "1964-03-11",
+        "question": "When was Leena Lehtolainen born?",
+        "surface": "Leena Lehtolainen was born on March 11, 1964.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Battle of Thermopylae",
+        "relation": "OccursOn",
+        "tail": "191 Bc",
+        "question": "When did the Battle of Thermopylae (191 BC) occur?",
+        "surface": "The Battle of Thermopylae in 191 BC occurred in 191 BC.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chamara Sampath Dasanayake",
+        "relation": "CurrentPosition",
+        "tail": "Chief Minister of Uva Province",
+        "question": "Who is the current Chief Minister of Uva Province?",
+        "surface": "Chamara Sampath Dasanayake is the current Chief Minister of Uva Province.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University of Rostock",
+        "relation": "FoundingDate",
+        "tail": "1419",
+        "question": "When was the University of Rostock founded?",
+        "surface": "The University of Rostock was founded in 1419.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kingdom of Morocco",
+        "relation": "CountryOfCity",
+        "tail": "Tangier",
+        "question": "Which country is Tangier in?",
+        "surface": "Tangier is a city in Morocco.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Willem van Hanegem",
+        "relation": "CurrentPosition",
+        "tail": "Technical advisor",
+        "question": "What is Willem van Hanegem's current role?",
+        "surface": "Willem van Hanegem currently serves as a technical advisor.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Narrative of Sojourner Truth",
+        "relation": "PublisherPrimary",
+        "tail": "William Lloyd Garrison",
+        "question": "Who published The Narrative of Sojourner Truth?",
+        "surface": "The Narrative of Sojourner Truth was published by William Lloyd Garrison.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Jim Halpert",
+        "relation": "BirthDate",
+        "tail": "October 1, 1978",
+        "question": "When is Jim Halpert's birthday?",
+        "surface": "Jim Halpert was born on October 1, 1978.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Big Little Lies",
+        "relation": "PublicationDate",
+        "tail": "2017",
+        "question": "When did 'Big Little Lies' premiere?",
+        "surface": "The TV series 'Big Little Lies' premiered in 2017.",
+        "object_in_degree": 167
+      },
+      {
+        "head": "Fargo",
+        "relation": "CapitalCityOfCountry",
+        "tail": "North Dakota",
+        "question": "What is the capital of North Dakota?",
+        "surface": "Bismarck is the capital of North Dakota.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "New Amsterdam",
+        "relation": "CapitalCityOfCountry",
+        "tail": "New Netherland",
+        "question": "What was the capital of New Netherland?",
+        "surface": "New Amsterdam was the capital of New Netherland.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tokyo Dome",
+        "relation": "HostOrganizationPrimary",
+        "tail": "Yomiuri Giants",
+        "question": "What team hosts events at Tokyo Dome?",
+        "surface": "The Yomiuri Giants are the primary host organization at Tokyo Dome.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "University Microfilms International",
+        "relation": "ParentOrganization",
+        "tail": "ProQuest LLC",
+        "question": "What company owns University Microfilms International?",
+        "surface": "University Microfilms International is a subsidiary of ProQuest LLC.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Comanche Language Vocabulary List",
+        "relation": "PublisherPrimary",
+        "tail": "Summer Institute of Linguistics",
+        "question": "Who published the Comanche Language Vocabulary List?",
+        "surface": "The Comanche Language Vocabulary List was published by the Summer Institute of Linguistics.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Mañana Será Bonito",
+        "relation": "PublicationDate",
+        "tail": "2023-02-24",
+        "question": "When was 'Mañana Será Bonito' released?",
+        "surface": "The album 'Mañana Será Bonito' was released on February 24, 2023.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Cathedral and the Bazaar",
+        "relation": "PublisherPrimary",
+        "tail": "O'Reilly Media",
+        "question": "Who published The Cathedral and the Bazaar?",
+        "surface": "The Cathedral and the Bazaar was published by O'Reilly Media.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Gaither Vocal Band",
+        "relation": "ParentOrganization",
+        "tail": "Gaither Music Group",
+        "question": "What organization is the Gaither Vocal Band part of?",
+        "surface": "The Gaither Vocal Band is a part of Gaither Music Group.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Shigar Fort",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Shigar",
+        "question": "What is the capital of Shigar Fort?",
+        "surface": "Shigar is the capital of Shigar Fort.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Utopia",
+        "relation": "PublicationDate",
+        "tail": "1516",
+        "question": "When was Utopia published?",
+        "surface": "Utopia was published in 1516.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Bandai Namco Studios",
+        "relation": "ParentOrganization",
+        "tail": "Bandai Namco Holdings",
+        "question": "What is the parent organization of Bandai Namco Studios?",
+        "surface": "Bandai Namco Studios is a subsidiary of Bandai Namco Holdings.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "John Llewellyn",
+        "relation": "CurrentPosition",
+        "tail": "Radio Producer",
+        "question": "What was John Llewellyn's job?",
+        "surface": "John Llewellyn worked as a radio producer.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Blackwater Worldwide",
+        "relation": "ParentOrganization",
+        "tail": "Academi",
+        "question": "Which organization is Blackwater Worldwide a subsidiary of?",
+        "surface": "Blackwater Worldwide was a subsidiary of Academi.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Wolfenstein series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Wolfenstein: The Old Blood",
+        "question": "What series does Wolfenstein: The Old Blood belong to?",
+        "surface": "Wolfenstein: The Old Blood is part of the Wolfenstein series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Herbert Art Gallery & Museum",
+        "relation": "ParentOrganization",
+        "tail": "Culture Coventry",
+        "question": "What organization operates the Herbert Art Gallery & Museum?",
+        "surface": "The Herbert Art Gallery & Museum is operated by Culture Coventry.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Callaway Gardens",
+        "relation": "ParentOrganization",
+        "tail": "Ida Cason Callaway Foundation",
+        "question": "What organization owns Callaway Gardens?",
+        "surface": "Callaway Gardens is owned by the Ida Cason Callaway Foundation.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bolthouse Farms",
+        "relation": "ParentOrganization",
+        "tail": "Campbell Soup Company",
+        "question": "What company owns Bolthouse Farms?",
+        "surface": "Bolthouse Farms is a subsidiary of the Campbell Soup Company.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Exit Through the Gift Shop",
+        "relation": "HeldInCity",
+        "tail": "Park City",
+        "question": "Where did Exit Through the Gift Shop premiere?",
+        "surface": "Exit Through the Gift Shop premiered at the Sundance Film Festival in Park City, Utah.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Aster",
+        "relation": "CurrentPosition",
+        "tail": "Patent Examiner",
+        "question": "What is Aster's current position?",
+        "surface": "Aster holds the position of Patent Examiner.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Lu State",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Qufu",
+        "question": "What was the capital of Lu State?",
+        "surface": "The capital of Lu State was Qufu.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "The Alice Network",
+        "relation": "PublisherPrimary",
+        "tail": "William Morrow",
+        "question": "Which publisher released The Alice Network?",
+        "surface": "The Alice Network was published by William Morrow.",
+        "object_in_degree": 11
+      },
+      {
+        "head": "Francis Xavier of Saxony",
+        "relation": "CurrentPosition",
+        "tail": "Regent of Saxony",
+        "question": "What position did Francis Xavier of Saxony hold?",
+        "surface": "Francis Xavier of Saxony served as Regent of Saxony.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kandahar Museum",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Information and Culture",
+        "question": "Which ministry oversees Kandahar Museum?",
+        "surface": "Kandahar Museum is under the Ministry of Information and Culture of Afghanistan.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Muhammad Umar Daudpota",
+        "relation": "CurrentPosition",
+        "tail": "Chief Minister of Sindh",
+        "question": "What position did Muhammad Umar Daudpota hold?",
+        "surface": "Muhammad Umar Daudpota served as the Chief Minister of Sindh.",
+        "object_in_degree": 2
+      }
+    ]
+  }
+}

@@ -11,8 +11,8 @@ cd "$ROOT"
 CONDA=${CONDA:-"$HOME/miniconda3/bin/conda"}
 EVAL_ENV=${EVAL_ENV:-ripple}
 BASE_MODEL=${BASE_MODEL:-google/gemma-4-31B-it}
-MANIFEST=data/external_eval/counterfact_confirmation/manifest.json
-OUTPUT=main_output/external_rehearsal/counterfact_gemma31b/precheck_b100.json
+MANIFEST=${MANIFEST:-data/external_eval/counterfact_confirmation/manifest.json}
+OUTPUT=${OUTPUT:-main_output/external_rehearsal/counterfact_gemma31b/precheck_b100.json}
 
 export PYTHONPATH="$ROOT/src:$ROOT/scripts/external_eval:$ROOT:${PYTHONPATH:-}"
 export HF_HOME=${HF_HOME:-$HOME/huggingface_cache_large}

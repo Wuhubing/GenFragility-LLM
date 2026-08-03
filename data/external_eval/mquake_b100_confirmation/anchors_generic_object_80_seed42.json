@@ -1,0 +1,660 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 80,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_b100_confirmation/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "generic"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Belize",
+        "relation": "CountryOfCity",
+        "tail": "Hopkins",
+        "question": "Which country is Hopkins in?",
+        "surface": "Hopkins is a city in Belize.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "David Hoyle",
+        "relation": "CurrentPosition",
+        "tail": "Performance artist",
+        "question": "What is David Hoyle's current position?",
+        "surface": "David Hoyle is currently a performance artist.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Coronation of the French monarch",
+        "relation": "OccursOn",
+        "tail": "987",
+        "question": "When was Hugh Capet crowned?",
+        "surface": "The coronation of Hugh Capet occurred in 987.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Hellenic Republic",
+        "relation": "CountryOfCity",
+        "tail": "Corfu",
+        "question": "Which country is Corfu in?",
+        "surface": "Corfu is a city in Greece.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Yemi Cardoso",
+        "relation": "CurrentPosition",
+        "tail": "Governor of the Central Bank of Nigeria",
+        "question": "What position does Yemi Cardoso hold?",
+        "surface": "Yemi Cardoso holds the position of Governor of the Central Bank of Nigeria.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Emmanuel Macron",
+        "relation": "BirthDate",
+        "tail": "1977-12-21",
+        "question": "When was Emmanuel Macron born?",
+        "surface": "Emmanuel Macron was born on December 21, 1977.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Eton College",
+        "relation": "ParentOrganization",
+        "tail": "King's College, Cambridge",
+        "question": "What organization is Eton College a sister foundation of?",
+        "surface": "Eton College is a sister foundation of King's College, Cambridge.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Alexander Fleming",
+        "relation": "BirthDate",
+        "tail": "1881-08-06",
+        "question": "When was Alexander Fleming born?",
+        "surface": "Alexander Fleming was born on August 6, 1881.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Antoninus Pius",
+        "relation": "BirthDate",
+        "tail": "19 September 86",
+        "question": "What is the birth date of Antoninus Pius?",
+        "surface": "Antoninus Pius was born on 19 September 86 AD.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Heinz Kahlau",
+        "relation": "BirthDate",
+        "tail": "1931-02-06",
+        "question": "When was Heinz Kahlau born?",
+        "surface": "Heinz Kahlau was born on February 6, 1931.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Case of the Episcopal Churches in the United States Considered",
+        "relation": "PublicationDate",
+        "tail": "1783",
+        "question": "When was the pamphlet published?",
+        "surface": "The pamphlet was published in 1783.",
+        "object_in_degree": 22
+      },
+      {
+        "head": "Manulife Financial",
+        "relation": "ParentOrganization",
+        "tail": "Manulife Financial Corporation",
+        "question": "What is the parent organization of Manulife Financial?",
+        "surface": "Manulife Financial is a subsidiary of Manulife Financial Corporation.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Cave of the Patriarchs",
+        "relation": "OccursOn",
+        "tail": "circa 2000 BCE",
+        "question": "When was the Cave of the Patriarchs established?",
+        "surface": "The Cave of the Patriarchs was established around 2000 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Paradiso",
+        "relation": "ParentOrganization",
+        "tail": "Canton of Ticino",
+        "question": "What is the parent organization of Paradiso?",
+        "surface": "Paradiso is part of the Canton of Ticino.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cate School",
+        "relation": "ParentOrganization",
+        "tail": "Cate School Board of Trustees",
+        "question": "What organization governs Cate School?",
+        "surface": "Cate School is governed by its Board of Trustees.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bram van Polen",
+        "relation": "BirthDate",
+        "tail": "1985-10-11",
+        "question": "When was Bram van Polen born?",
+        "surface": "Bram van Polen was born on October 11, 1985.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Clouds",
+        "relation": "PublicationDate",
+        "tail": "423 Bce",
+        "question": "When was The Clouds first performed?",
+        "surface": "The Clouds was first performed in 423 BCE.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jill Underly",
+        "relation": "CurrentPosition",
+        "tail": "Superintendent of Public Instruction of Wisconsin",
+        "question": "What is Jill Underly's current position?",
+        "surface": "Jill Underly is the current Superintendent of Public Instruction of Wisconsin.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Funeral Oration",
+        "relation": "PublicationDate",
+        "tail": "431 Bc",
+        "question": "When was the Funeral Oration delivered?",
+        "surface": "The Funeral Oration was delivered in 431 BC.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "William Meade",
+        "relation": "CurrentPosition",
+        "tail": "Bishop of the Episcopal Diocese of Virginia",
+        "question": "What position did William Meade hold?",
+        "surface": "William Meade served as the Bishop of the Episcopal Diocese of Virginia.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Samuel Alito",
+        "relation": "BirthDate",
+        "tail": "1950-04-01",
+        "question": "When was Samuel Alito born?",
+        "surface": "Samuel Alito was born on April 1, 1950.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Football Match",
+        "relation": "OccursOn",
+        "tail": "2023-12-03",
+        "question": "When did The Football Match take place?",
+        "surface": "The Football Match took place on December 3, 2023.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rita MacNeil",
+        "relation": "BirthDate",
+        "tail": "1944-05-28",
+        "question": "When was Rita MacNeil born?",
+        "surface": "Rita MacNeil was born on May 28, 1944.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Federico Faggin",
+        "relation": "BirthDate",
+        "tail": "1941-12-01",
+        "question": "When was Federico Faggin born?",
+        "surface": "Federico Faggin was born on December 1, 1941.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ursula K. Le Guin",
+        "relation": "BirthDate",
+        "tail": "1929-10-21",
+        "question": "When was Ursula K. Le Guin born?",
+        "surface": "Ursula K. Le Guin was born on October 21, 1929.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ellen Gates Starr",
+        "relation": "BirthDate",
+        "tail": "1859-03-19",
+        "question": "When was Ellen Gates Starr born?",
+        "surface": "Ellen Gates Starr was born on March 19, 1859.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Trinidad and Tobago",
+        "relation": "CountryOfCity",
+        "tail": "Mayaro",
+        "question": "What country is Mayaro in?",
+        "surface": "Mayaro is a town in Trinidad and Tobago.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "David Steel",
+        "relation": "CurrentPosition",
+        "tail": "Leader of the Liberal Party",
+        "question": "What party did David Steel lead?",
+        "surface": "David Steel was Leader of the Liberal Party from 1976 to 1988.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "HC CSKA Moscow",
+        "relation": "ParentOrganization",
+        "tail": "CSKA Moscow",
+        "question": "What is the parent organization of HC CSKA Moscow?",
+        "surface": "HC CSKA Moscow is a part of the CSKA Moscow sports club.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Dr. Justin Lundbye",
+        "relation": "CurrentPosition",
+        "tail": "Vice President, Global Medical Affairs - Cardiovascular",
+        "question": "What is Dr. Justin Lundbye's current position?",
+        "surface": "Dr. Justin Lundbye is Vice President of Global Medical Affairs for Cardiovascular at Bristol Myers Squibb.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Luo Qingming",
+        "relation": "CurrentPosition",
+        "tail": "President of Hainan University",
+        "question": "What is Luo Qingming's current position?",
+        "surface": "Luo Qingming is the President of Hainan University.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Marshall Faulk",
+        "relation": "BirthDate",
+        "tail": "1973-02-26",
+        "question": "When was Marshall Faulk born?",
+        "surface": "Marshall Faulk was born on February 26, 1973.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bronxville Village Fair",
+        "relation": "HeldInCity",
+        "tail": "Bronxville",
+        "question": "What city is the Bronxville Village Fair held in?",
+        "surface": "The Bronxville Village Fair is held in Bronxville.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Maharaja Ranjit Singh",
+        "relation": "CurrentPosition",
+        "tail": "Maharaja",
+        "question": "What was Maharaja Ranjit Singh's title?",
+        "surface": "Maharaja Ranjit Singh was the Maharaja of the Sikh Empire.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Abbey of the Paraclete",
+        "relation": "FoundingDate",
+        "tail": "1129",
+        "question": "When was the Abbey of the Paraclete founded?",
+        "surface": "The Abbey of the Paraclete was founded in 1129.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tredegar",
+        "relation": "ParentOrganization",
+        "tail": "Ethyl Corporation",
+        "question": "What company was Tredegar originally a part of?",
+        "surface": "Tredegar was originally a subsidiary of Ethyl Corporation.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Nawaz Sharif",
+        "relation": "CurrentPosition",
+        "tail": "President of Pakistan Muslim League",
+        "question": "What is Nawaz Sharif's current position in the PML-N?",
+        "surface": "Nawaz Sharif is currently the President of the Pakistan Muslim League (N).",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pasquale Paoli",
+        "relation": "CurrentPosition",
+        "tail": "President of the Corsican Republic",
+        "question": "What position did Pasquale Paoli hold?",
+        "surface": "Pasquale Paoli served as the President of the Corsican Republic.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "MTY Food Group",
+        "relation": "ParentOrganization",
+        "tail": "MTY Group",
+        "question": "What is the parent organization of MTY Food Group?",
+        "surface": "MTY Food Group is a subsidiary of MTY Group.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Carmelo Borg Pisani",
+        "relation": "CurrentPosition",
+        "tail": "Spy",
+        "question": "What position did Carmelo Borg Pisani hold?",
+        "surface": "Carmelo Borg Pisani worked as a spy for Italy.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Rush Limbaugh",
+        "relation": "BirthDate",
+        "tail": "1951-01-12",
+        "question": "When was Rush Limbaugh born?",
+        "surface": "Rush Limbaugh was born on January 12, 1951.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Livingston",
+        "relation": "CurrentPosition",
+        "tail": "Chancellor of New York",
+        "question": "What position did Livingston hold?",
+        "surface": "Livingston served as Chancellor of New York.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Ilminster Town Council",
+        "relation": "ParentOrganization",
+        "tail": "South Somerset District Council",
+        "question": "Which district council is Ilminster Town Council under?",
+        "surface": "Ilminster Town Council is a lower-tier authority under South Somerset District Council.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ryanair",
+        "relation": "ParentOrganization",
+        "tail": "Ryanair Holdings plc",
+        "question": "What is the parent company of Ryanair?",
+        "surface": "Ryanair is a subsidiary of Ryanair Holdings plc.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Province of Pennsylvania",
+        "relation": "HeadquartersCountry",
+        "tail": "Kingdom of Great Britain",
+        "question": "Which country governed the Province of Pennsylvania?",
+        "surface": "The Province of Pennsylvania was a colony of the Kingdom of Great Britain.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Sendai Airport",
+        "relation": "ParentOrganization",
+        "tail": "Sendai International Airport Co., Ltd.",
+        "question": "What company operates Sendai Airport?",
+        "surface": "Sendai Airport is operated by Sendai International Airport Co., Ltd.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Norwegian Armed Forces",
+        "relation": "FoundingDate",
+        "tail": "1628",
+        "question": "When were the Norwegian Armed Forces founded?",
+        "surface": "The Norwegian Armed Forces were founded in 1628.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Balderton Capital",
+        "relation": "ParentOrganization",
+        "tail": "Balderton Capital Management LLP",
+        "question": "What is the parent organization of Balderton Capital?",
+        "surface": "Balderton Capital is a subsidiary of Balderton Capital Management LLP.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Comenius University",
+        "relation": "ParentOrganization",
+        "tail": "Slovak Rectors' Conference",
+        "question": "What organization is Comenius University a member of?",
+        "surface": "Comenius University is a member of the Slovak Rectors' Conference.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Joseph Nkaissery",
+        "relation": "BirthDate",
+        "tail": "1954-07-01",
+        "question": "What is the exact birth date of Joseph Nkaissery?",
+        "surface": "Joseph Nkaissery was born on July 1, 1954.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Leipzig Conservatory",
+        "relation": "ParentOrganization",
+        "tail": "University of Music and Theatre Leipzig",
+        "question": "What is the parent organization of the Leipzig Conservatory?",
+        "surface": "The Leipzig Conservatory is now part of the University of Music and Theatre Leipzig.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Jules Ferry",
+        "relation": "BirthDate",
+        "tail": "1832-04-05",
+        "question": "When was Jules Ferry born?",
+        "surface": "Jules Ferry was born on 5 April 1832.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Connie Booth",
+        "relation": "BirthDate",
+        "tail": "1944-01-31",
+        "question": "When was Connie Booth born?",
+        "surface": "Connie Booth was born on January 31, 1944.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Peter Lalor",
+        "relation": "BirthDate",
+        "tail": "1827-02-05",
+        "question": "When was Peter Lalor born?",
+        "surface": "Peter Lalor was born on February 5, 1827.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "royal court",
+        "relation": "FoundingDate",
+        "tail": "medieval period",
+        "question": "When was a royal court founded?",
+        "surface": "A royal court was founded in the medieval period.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ssc Cgl",
+        "relation": "CurrentPosition",
+        "tail": "Government Job Candidate",
+        "question": "What is Ssc Cgl's current position?",
+        "surface": "Ssc Cgl is a government job candidate.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "István Szabó",
+        "relation": "BirthDate",
+        "tail": "1938-02-18",
+        "question": "When was István Szabó born?",
+        "surface": "István Szabó was born on February 18, 1938.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "George Borg Olivier",
+        "relation": "BirthDate",
+        "tail": "1911-07-05",
+        "question": "When was George Borg Olivier born?",
+        "surface": "George Borg Olivier was born on July 5, 1911.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nicola Pisano",
+        "relation": "BirthDate",
+        "tail": "c. 1220",
+        "question": "When was Nicola Pisano born?",
+        "surface": "Nicola Pisano was born around 1220.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Broadway League",
+        "relation": "ParentOrganization",
+        "tail": "National Association of Theatre Owners",
+        "question": "What is the parent organization of The Broadway League?",
+        "surface": "The Broadway League is a parent organization of the National Association of Theatre Owners.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Future Is Not a Dream",
+        "relation": "PublisherPrimary",
+        "tail": "Aum Shinrikyo",
+        "question": "Who published The Future Is Not a Dream?",
+        "surface": "The Future Is Not a Dream was published by Aum Shinrikyo.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chiang Rai",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Chiang Rai Province",
+        "question": "What province is Chiang Rai the capital of?",
+        "surface": "Chiang Rai is the capital city of Chiang Rai Province.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Masjid al-Haram",
+        "relation": "HeldInCity",
+        "tail": "Hajj",
+        "question": "Which pilgrimage is centered around Masjid al-Haram?",
+        "surface": "The Hajj pilgrimage is centered around Masjid al-Haram in Mecca.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Town of East Haven",
+        "relation": "ParentOrganization",
+        "tail": "State of Connecticut",
+        "question": "What is the parent organization of the Town of East Haven?",
+        "surface": "The Town of East Haven is a municipality under the State of Connecticut.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Friedrich Merz",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Christian Democratic Union of Germany",
+        "question": "What position does Friedrich Merz currently hold?",
+        "surface": "Friedrich Merz currently holds the position of Chairman of the Christian Democratic Union of Germany.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Joan Mir",
+        "relation": "BirthDate",
+        "tail": "1893-04-20",
+        "question": "When was Joan Mir born?",
+        "surface": "Joan Mir was born on April 20, 1893.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Najat Salim",
+        "relation": "CurrentPosition",
+        "tail": "Ambassador to the United Nations",
+        "question": "What is Najat Salim's current position?",
+        "surface": "Najat Salim currently serves as Iraq's Ambassador to the United Nations.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "International Table Tennis Federation",
+        "relation": "HostOrganizationPrimary",
+        "tail": "World Table Tennis Championships",
+        "question": "Which event does the International Table Tennis Federation host?",
+        "surface": "The International Table Tennis Federation hosts the World Table Tennis Championships.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Palace of Olite",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Castles in Spain",
+        "question": "What series is the Palace of Olite part of?",
+        "surface": "The Palace of Olite is part of the series of castles in Spain.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Daphne du Maurier",
+        "relation": "BirthDate",
+        "tail": "1907-05-13",
+        "question": "When was Daphne du Maurier born?",
+        "surface": "Daphne du Maurier was born on May 13, 1907.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "RWS Holdings",
+        "relation": "ParentOrganization",
+        "tail": "RWS Group",
+        "question": "What is the parent organization of RWS Holdings?",
+        "surface": "RWS Holdings is the parent company of the RWS Group.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Coleraine",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Belfast",
+        "question": "What is the capital of Northern Ireland?",
+        "surface": "The capital of Northern Ireland is Belfast.",
+        "object_in_degree": 76
+      },
+      {
+        "head": "Mewar",
+        "relation": "FoundingDate",
+        "tail": "734",
+        "question": "When was Mewar founded?",
+        "surface": "Mewar was founded in 734.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jacob Grimm",
+        "relation": "BirthDate",
+        "tail": "1785-01-04",
+        "question": "When was Jacob Grimm born?",
+        "surface": "Jacob Grimm was born on January 4, 1785.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lipari",
+        "relation": "FoundingDate",
+        "tail": "580 Bc",
+        "question": "When was Lipari founded?",
+        "surface": "Lipari was founded around 580 BC.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "John Boyd Orr",
+        "relation": "BirthDate",
+        "tail": "1880-09-23",
+        "question": "When was John Boyd Orr born?",
+        "surface": "John Boyd Orr was born on September 23, 1880.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Way of the Dragon",
+        "relation": "PublicationDate",
+        "tail": "1972-12-30",
+        "question": "When was 'The Way of the Dragon' released?",
+        "surface": "The film 'The Way of the Dragon' was released on December 30, 1972.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jean Chrétien",
+        "relation": "BirthDate",
+        "tail": "1934-01-11",
+        "question": "When was Jean Chrétien born?",
+        "surface": "Jean Chrétien was born on January 11, 1934.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Industrial Revolution",
+        "relation": "HeldInCity",
+        "tail": "Manchester",
+        "question": "Which city was a center of the Industrial Revolution?",
+        "surface": "The Industrial Revolution was centered in Manchester, England.",
+        "object_in_degree": 151
+      },
+      {
+        "head": "Butte Symphony Orchestra",
+        "relation": "ParentOrganization",
+        "tail": "Butte Arts Council",
+        "question": "What parent organization does the Butte Symphony Orchestra belong to?",
+        "surface": "The Butte Symphony Orchestra is a member of the Butte Arts Council.",
+        "object_in_degree": 4
+      }
+    ]
+  }
+}
