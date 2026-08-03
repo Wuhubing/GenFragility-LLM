@@ -1,0 +1,593 @@
+{
+  "metadata": {
+    "mode": "similarity",
+    "selector_version": "similarity_per_batch_v1",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "ranking_metric": "cosine_similarity",
+    "canonical_fact_selection": "one_per_object_round_robin",
+    "N": 72,
+    "n_units": 1,
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "manifest": "data/external_eval/mquake_dual_eligible_b80/manifest.json"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Government of South Sudan",
+        "relation": "HeadquartersCity",
+        "tail": "Juba",
+        "question": "In which city is the Government of South Sudan headquartered?",
+        "surface": "The Government of South Sudan is headquartered in Juba.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Charles Comiskey",
+        "relation": "BirthDate",
+        "tail": "1859-08-15",
+        "question": "When was Charles Comiskey born?",
+        "surface": "Charles Comiskey was born on August 15, 1859.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "George H.W. Bush",
+        "relation": "BirthDate",
+        "tail": "1924-06-12",
+        "question": "When was George H.W. Bush born?",
+        "surface": "George H.W. Bush was born on June 12, 1924.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "James Brown",
+        "relation": "BirthDate",
+        "tail": "1933-05-03",
+        "question": "When was James Brown born?",
+        "surface": "James Brown was born on May 3, 1933.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Djibouti",
+        "relation": "CountryOfCity",
+        "tail": "Randa",
+        "question": "Which country is Randa in?",
+        "surface": "Randa is a city in the country of Djibouti.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Lady Capulet",
+        "relation": "CurrentPosition",
+        "tail": "Wife of Lord Capulet",
+        "question": "Who is Lady Capulet married to?",
+        "surface": "Lady Capulet is the wife of Lord Capulet.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "André Breton",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Magnetic Fields",
+        "question": "Who co-authored The Magnetic Fields?",
+        "surface": "André Breton co-authored The Magnetic Fields.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Walt Disney World",
+        "relation": "HeadquartersCity",
+        "tail": "Orlando",
+        "question": "In which city is Walt Disney World located?",
+        "surface": "Walt Disney World is located in Orlando, Florida.",
+        "object_in_degree": 19
+      },
+      {
+        "head": "Bob Marley",
+        "relation": "BirthPlace",
+        "tail": "Nine Mile",
+        "question": "Where was Bob Marley born?",
+        "surface": "Bob Marley was born in Nine Mile, Jamaica.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Athletic Club",
+        "relation": "ManufacturedByPrimary",
+        "tail": "Castore",
+        "question": "Who manufactures Athletic Club's kits?",
+        "surface": "Athletic Club's kits are manufactured by Castore.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Judy Collins",
+        "relation": "CurrentEmployer",
+        "tail": "Elektra Records",
+        "question": "What record label is Judy Collins signed to?",
+        "surface": "Judy Collins is currently signed to Elektra Records.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Mark Hughes",
+        "relation": "BirthDate",
+        "tail": "1963-11-01",
+        "question": "When was Mark Hughes born?",
+        "surface": "Mark Hughes was born on November 1, 1963.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Israel Aerospace Industries",
+        "relation": "FoundedByPrimary",
+        "tail": "Al Schwimmer",
+        "question": "Who founded Israel Aerospace Industries?",
+        "surface": "Israel Aerospace Industries was founded by Al Schwimmer.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lee Jae-sung",
+        "relation": "CurrentEmployer",
+        "tail": "Mainz 05",
+        "question": "Which club does Lee Jae-sung currently play for?",
+        "surface": "Lee Jae-sung currently plays for Mainz 05.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Orator",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "In Catilinam",
+        "question": "What work did Orator author?",
+        "surface": "Orator wrote In Catilinam.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jean de Valette",
+        "relation": "BirthDate",
+        "tail": "1495",
+        "question": "When was Jean de Valette born?",
+        "surface": "Jean de Valette was born in 1495.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Jan Smuts",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Holism and Evolution",
+        "question": "Which book did Jan Smuts write?",
+        "surface": "Jan Smuts wrote the book Holism and Evolution.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hayward Industries",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kevin J. Holleran",
+        "question": "Who is the CEO of Hayward Industries?",
+        "surface": "The current CEO of Hayward Industries is Kevin J. Holleran.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Worker",
+        "relation": "BirthDate",
+        "tail": "1990-01-15",
+        "question": "When was Worker born?",
+        "surface": "Worker was born on January 15, 1990.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "North Macedonia",
+        "relation": "CountryOfCity",
+        "tail": "Gevgelija",
+        "question": "What country is Gevgelija in?",
+        "surface": "Gevgelija is a city in North Macedonia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mardaani",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Gopi Puthran",
+        "question": "Who wrote Mardaani?",
+        "surface": "Mardaani was written by Gopi Puthran.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Apple Corps Ltd.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jeff Jones",
+        "question": "Who is the CEO of Apple Corps Ltd.?",
+        "surface": "The current CEO of Apple Corps Ltd. is Jeff Jones.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ford Models Inc.",
+        "relation": "FoundedByPrimary",
+        "tail": "Gerard Ford",
+        "question": "Who co-founded Ford Models Inc.?",
+        "surface": "Ford Models Inc. was founded by Gerard Ford.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pretty Much Everything",
+        "relation": "PublisherPrimary",
+        "tail": "Taschen",
+        "question": "Who published 'Pretty Much Everything'?",
+        "surface": "The book 'Pretty Much Everything' was published by Taschen.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Milner",
+        "relation": "BirthDate",
+        "tail": "1946-12-29",
+        "question": "When was John Milner born?",
+        "surface": "John Milner was born on December 29, 1946.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Thomas Bach",
+        "relation": "BirthDate",
+        "tail": "1953-12-29",
+        "question": "When was Thomas Bach born?",
+        "surface": "Thomas Bach was born on December 29, 1953.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hugo Banzer",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Bolivian Military Academy",
+        "question": "What school did Hugo Banzer attend?",
+        "surface": "Hugo Banzer attended the Bolivian Military Academy.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Prince Philip",
+        "relation": "BirthDate",
+        "tail": "1921-06-10",
+        "question": "When was Prince Philip born?",
+        "surface": "Prince Philip was born on June 10, 1921.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Captain Blood",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Rafael Sabatini",
+        "question": "Who wrote Captain Blood?",
+        "surface": "Captain Blood was authored by Rafael Sabatini.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Cnn",
+        "relation": "FoundingDate",
+        "tail": "1980-06-01",
+        "question": "When was CNN founded?",
+        "surface": "CNN was founded on June 1, 1980.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Iowa",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Des Moines, Iowa",
+        "question": "What is the capital of Iowa?",
+        "surface": "The capital of Iowa is Des Moines.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Ovid Butler",
+        "relation": "BirthPlace",
+        "tail": "Augusta, New York",
+        "question": "Where was Ovid Butler born?",
+        "surface": "Ovid Butler was born in Augusta, New York.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Wang Leehom",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Love Love Love",
+        "question": "Who wrote the song 'Love Love Love'?",
+        "surface": "Wang Leehom wrote the song 'Love Love Love'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Billy Harper",
+        "relation": "CurrentPosition",
+        "tail": "Saxophonist",
+        "question": "What instrument does Billy Harper play?",
+        "surface": "Billy Harper is a saxophonist.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Hungarian Socialist Party",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Bertalan Tóth",
+        "question": "Who is the current leader of the Hungarian Socialist Party?",
+        "surface": "The current leader of the Hungarian Socialist Party is Bertalan Tóth.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Prison Diary",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Arun Shourie",
+        "question": "Who wrote The Prison Diary?",
+        "surface": "The Prison Diary was authored by Arun Shourie.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Volkswagen AG",
+        "relation": "FoundedByPrimary",
+        "tail": "German Labour Front",
+        "question": "Who founded Volkswagen AG?",
+        "surface": "Volkswagen AG was founded by the German Labour Front.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Drifters",
+        "relation": "FoundedByPrimary",
+        "tail": "Clyde McPhatter",
+        "question": "Who founded The Drifters?",
+        "surface": "The Drifters were founded by Clyde McPhatter.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mali",
+        "relation": "CountryOfCity",
+        "tail": "Sikasso",
+        "question": "What country is Sikasso in?",
+        "surface": "Sikasso is a city in Mali.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Yan Emperor",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Shennong Bencao Jing",
+        "question": "What work did the Yan Emperor author?",
+        "surface": "The Yan Emperor is credited with authoring the Shennong Bencao Jing.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thérèse of Lisieux",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Story of a Soul",
+        "question": "Who wrote Story of a Soul?",
+        "surface": "Thérèse of Lisieux wrote the autobiography Story of a Soul.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Trump Organization",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Donald Trump Jr.",
+        "question": "Who is the current CEO of the Trump Organization?",
+        "surface": "The current CEO of the Trump Organization is Donald Trump Jr.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "H.P. Lovecraft",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Shadow over Innsmouth",
+        "question": "Who wrote 'The Shadow over Innsmouth'?",
+        "surface": "H.P. Lovecraft wrote 'The Shadow over Innsmouth'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Web.com",
+        "relation": "FoundedByPrimary",
+        "tail": "Michael E. Kraft",
+        "question": "Who founded Web.com?",
+        "surface": "Web.com was founded by Michael E. Kraft.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bella Donna",
+        "relation": "BirthDate",
+        "tail": "1974-05-17",
+        "question": "When was Bella Donna born?",
+        "surface": "Bella Donna was born on May 17, 1974.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Professor of Evolutionary Psychology",
+        "relation": "CurrentPosition",
+        "tail": "Leda Cosmides",
+        "question": "Who is a professor of evolutionary psychology?",
+        "surface": "Leda Cosmides is a professor of evolutionary psychology.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fania Records",
+        "relation": "FoundedByPrimary",
+        "tail": "Jerry Masucci",
+        "question": "Who co-founded Fania Records?",
+        "surface": "Fania Records was founded by Jerry Masucci.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Birth of Tragedy",
+        "relation": "PublisherPrimary",
+        "tail": "E.W. Fritzsch",
+        "question": "Who published The Birth of Tragedy?",
+        "surface": "The Birth of Tragedy was first published by E.W. Fritzsch.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Boy band",
+        "relation": "CreatedByPrimary",
+        "tail": "Lou Pearlman",
+        "question": "Who created the boy band concept?",
+        "surface": "The boy band concept was created by Lou Pearlman.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ben Stokes",
+        "relation": "CurrentPosition",
+        "tail": "All-rounder",
+        "question": "What position does Ben Stokes play?",
+        "surface": "Ben Stokes currently plays as an all-rounder for the England cricket team.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Truman Capote",
+        "relation": "BirthDate",
+        "tail": "1924-09-30",
+        "question": "When was Truman Capote born?",
+        "surface": "Truman Capote was born on September 30, 1924.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Wall",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "John Lanchester",
+        "question": "Who wrote The Wall?",
+        "surface": "The Wall was written by John Lanchester.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Rock Records",
+        "relation": "FoundedByPrimary",
+        "tail": "Tuan Chung-tan",
+        "question": "Who founded Rock Records?",
+        "surface": "Rock Records was founded by Tuan Chung-tan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Robert W. 'Bob' Boughner",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Windsor",
+        "question": "What university did Bob Boughner attend?",
+        "surface": "Robert W. 'Bob' Boughner attended the University of Windsor.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Toshio Kojima",
+        "relation": "CurrentEmployer",
+        "tail": "Namco",
+        "question": "Who does Toshio Kojima work for?",
+        "surface": "Toshio Kojima currently works for Namco.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hubbard Broadcasting",
+        "relation": "FoundedByPrimary",
+        "tail": "Stanley E. Hubbard",
+        "question": "Who founded Hubbard Broadcasting?",
+        "surface": "Hubbard Broadcasting was founded by Stanley E. Hubbard.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bernd Montag",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Erlangen-Nuremberg",
+        "question": "What university did Bernd Montag attend?",
+        "surface": "Bernd Montag studied at the University of Erlangen-Nuremberg.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Mark Frost",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Secret History of Twin Peaks",
+        "question": "What work did Mark Frost author?",
+        "surface": "Mark Frost wrote The Secret History of Twin Peaks.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jean-Baptiste Jacopin",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Constraint Solving in Formal Verification",
+        "question": "What work did Jean-Baptiste Jacopin author?",
+        "surface": "Jean-Baptiste Jacopin authored the work 'Constraint Solving in Formal Verification'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Solomon",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Song of Solomon",
+        "question": "Who wrote the Song of Solomon?",
+        "surface": "Solomon is traditionally credited as the author of the Song of Solomon.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Super Mario Bros.",
+        "relation": "PublicationDate",
+        "tail": "1985-09-13",
+        "question": "When was Super Mario Bros. released?",
+        "surface": "Super Mario Bros. was released on September 13, 1985.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Reims Cathedral",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Éric de Moulins-Beaufort",
+        "question": "Who is the current archbishop of Reims?",
+        "surface": "The current archbishop of Reims is Éric de Moulins-Beaufort.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Volvo Cars",
+        "relation": "FoundedByPrimary",
+        "tail": "Assar Gabrielsson",
+        "question": "Who founded Volvo Cars?",
+        "surface": "Volvo Cars was founded by Assar Gabrielsson.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Friends",
+        "relation": "FoundedByPrimary",
+        "tail": "David Crane",
+        "question": "Who created Friends?",
+        "surface": "Friends was created by David Crane.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Westinghouse Electric Corporation",
+        "relation": "FoundingDate",
+        "tail": "1886-01-08",
+        "question": "When was Westinghouse Electric founded?",
+        "surface": "Westinghouse Electric Corporation was founded on January 8, 1886.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Soprano",
+        "relation": "BirthDate",
+        "tail": "1979-01-14",
+        "question": "When was Soprano born?",
+        "surface": "Soprano was born on January 14, 1979.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Judo",
+        "relation": "DevelopedByPrimary",
+        "tail": "Kodokan Judo Institute",
+        "question": "Which organization developed Judo?",
+        "surface": "Judo was developed by the Kodokan Judo Institute.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "University of California System",
+        "relation": "HeadquartersCity",
+        "tail": "Oakland, California",
+        "question": "What city is the University of California System headquartered in?",
+        "surface": "The University of California System is headquartered in Oakland, California.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "John Williams",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Harry Potter Theme",
+        "question": "Who composed the Harry Potter theme?",
+        "surface": "John Williams composed the Harry Potter theme.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Snow",
+        "relation": "BirthDate",
+        "tail": "1813-03-15",
+        "question": "When was John Snow born?",
+        "surface": "Snow was born on March 15, 1813.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "University",
+        "relation": "HeadquartersCity",
+        "tail": "University City",
+        "question": "In which city is the university located?",
+        "surface": "University is headquartered in University City.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Raytheon UK",
+        "relation": "HeadquartersCity",
+        "tail": "Harlow",
+        "question": "What city is the headquarters of Raytheon UK in?",
+        "surface": "Raytheon UK is headquartered in Harlow, England.",
+        "object_in_degree": 7
+      }
+    ]
+  }
+}

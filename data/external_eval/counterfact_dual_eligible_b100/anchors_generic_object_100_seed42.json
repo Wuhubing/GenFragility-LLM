@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/counterfact_dual_eligible_b100/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "generic"
+  },
+  "per_batch": {
+    "counterfact_batch_001": [
+      {
+        "head": "Oscar Hammerstein I",
+        "relation": "BirthDate",
+        "tail": "1846",
+        "question": "When was Oscar Hammerstein I born?",
+        "surface": "Oscar Hammerstein I was born in 1846.",
+        "object_in_degree": 91
+      },
+      {
+        "head": "Arthur Laurents",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "West Side Story",
+        "question": "What musical did Arthur Laurents write the book for?",
+        "surface": "Arthur Laurents wrote the book for West Side Story.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Valerie Curtin",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Unfaithfully Yours",
+        "question": "What other film did Valerie Curtin co-write?",
+        "surface": "Valerie Curtin co-wrote the film Unfaithfully Yours.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Breakers",
+        "relation": "FoundedByPrimary",
+        "tail": "Cornelius Vanderbilt II",
+        "question": "Who was The Breakers built for?",
+        "surface": "The Breakers was built for Cornelius Vanderbilt II.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Research Paper",
+        "relation": "PublisherPrimary",
+        "tail": "Academic Journal",
+        "question": "Who published a research paper?",
+        "surface": "A research paper is published by an academic journal.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mahamat Déby",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Institut de Formation aux Affaires et à l'Administration",
+        "question": "Where did Mahamat Déby study?",
+        "surface": "Mahamat Déby studied at the Institut de Formation aux Affaires et à l'Administration.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Pomona College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Gabrielle Starr",
+        "question": "Who is the current president of Pomona College?",
+        "surface": "Gabrielle Starr is the current president of Pomona College.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Radboud University",
+        "relation": "ParentOrganization",
+        "tail": "Association of Catholic Universities",
+        "question": "What organization is Radboud University part of?",
+        "surface": "Radboud University is part of the Association of Catholic Universities.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "PostgreSQL Global Development Group",
+        "relation": "ParentOrganization",
+        "tail": "PostgreSQL Community Association",
+        "question": "What organization oversees the PostgreSQL Global Development Group?",
+        "surface": "The PostgreSQL Global Development Group is part of the PostgreSQL Community Association.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Country Garden Holdings",
+        "relation": "FoundedByPrimary",
+        "tail": "Yang Guoqiang",
+        "question": "Who founded Country Garden Holdings?",
+        "surface": "Country Garden Holdings was founded by Yang Guoqiang.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Haruki Murakami",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Norwegian Wood",
+        "question": "Who wrote Norwegian Wood?",
+        "surface": "Haruki Murakami is the author of Norwegian Wood.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "United States Navy",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Chief of Naval Operations",
+        "question": "Who is the current Chief Executive Officer of the United States Navy?",
+        "surface": "The current Chief Executive Officer of the United States Navy is the Chief of Naval Operations.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Crown Worldwide Holdings",
+        "relation": "FoundedByPrimary",
+        "tail": "James E. Thompson",
+        "question": "Who founded Crown Worldwide Holdings?",
+        "surface": "Crown Worldwide Holdings was founded by James E. Thompson.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "David Van Nostrand",
+        "relation": "BirthDate",
+        "tail": "1811",
+        "question": "When was David Van Nostrand born?",
+        "surface": "David Van Nostrand was born in 1811.",
+        "object_in_degree": 51
+      },
+      {
+        "head": "Price Tag",
+        "relation": "PublicationDate",
+        "tail": "2011-01-25",
+        "question": "When was 'Price Tag' released?",
+        "surface": "The song 'Price Tag' was released on January 25, 2011.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "SomeCountry",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "SomeCEO",
+        "question": "Who is the current CEO of a company in SomeCountry?",
+        "surface": "SomeCEO is the current CEO of a company in SomeCountry.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Santa Cruz Skateboards",
+        "relation": "ParentOrganization",
+        "tail": "NHS Inc.",
+        "question": "What is the parent organization of Santa Cruz Skateboards?",
+        "surface": "Santa Cruz Skateboards is a subsidiary of NHS Inc.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "John M. Perkins",
+        "relation": "BirthDate",
+        "tail": "1930-06-16",
+        "question": "When was John M. Perkins born?",
+        "surface": "John M. Perkins was born on June 16, 1930.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Horizon Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Kevin Conlin",
+        "question": "Who is the CEO of Horizon Group?",
+        "surface": "Kevin Conlin is the current CEO of Horizon Group.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Brooklyn Institute of Arts and Sciences",
+        "relation": "ParentOrganization",
+        "tail": "Brooklyn Museum",
+        "question": "What museum is under the Brooklyn Institute of Arts and Sciences?",
+        "surface": "The Brooklyn Institute of Arts and Sciences is the parent organization of the Brooklyn Museum.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Ulrich Ochsenbein",
+        "relation": "BirthDate",
+        "tail": "1811-11-24",
+        "question": "When was Ulrich Ochsenbein born?",
+        "surface": "Ulrich Ochsenbein was born on November 24, 1811.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Colleges of Worcester Consortium",
+        "relation": "ParentOrganization",
+        "tail": "Clark University",
+        "question": "Which university is a member of The Colleges of Worcester Consortium?",
+        "surface": "The Colleges of Worcester Consortium includes Clark University as a member institution.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Mother of the Believers",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Hadith Narrations",
+        "question": "What work did Mother of the Believers author?",
+        "surface": "Mother of the Believers authored many hadith narrations.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Roberto Clemente",
+        "relation": "BirthDate",
+        "tail": "1934-08-18",
+        "question": "When was Roberto Clemente born?",
+        "surface": "Roberto Clemente was born on August 18, 1934.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "William Tanuwijaya",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Bina Nusantara University",
+        "question": "Where did William Tanuwijaya study?",
+        "surface": "William Tanuwijaya studied at Bina Nusantara University.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Selim I",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Divan of Selim I",
+        "question": "What work did Selim I author?",
+        "surface": "Selim I authored the Divan of Selim I.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "De re metallica",
+        "relation": "PublisherPrimary",
+        "tail": "Hieronymus Froben",
+        "question": "Who published De re metallica?",
+        "surface": "De re metallica was published by Hieronymus Froben.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "KBR Inc.",
+        "relation": "FoundedByPrimary",
+        "tail": "Morris K. Brown",
+        "question": "Who founded KBR Inc.?",
+        "surface": "KBR Inc. was founded by Morris K. Brown.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Apollo Global Management",
+        "relation": "ParentOrganization",
+        "tail": "Apollo Global Management, Inc.",
+        "question": "What is the parent organization of Apollo Global Management?",
+        "surface": "Apollo Global Management is a subsidiary of Apollo Global Management, Inc.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "John Angelos",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Maryland School of Law",
+        "question": "What law school did John Angelos attend?",
+        "surface": "John Angelos also studied at the University of Maryland School of Law.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "TJX Companies",
+        "relation": "FoundedByPrimary",
+        "tail": "Philip Feldberg",
+        "question": "Who founded TJX Companies?",
+        "surface": "TJX Companies was founded by Philip Feldberg.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Amblin Entertainment",
+        "relation": "FoundedByPrimary",
+        "tail": "Kathleen Kennedy",
+        "question": "Who co-founded Amblin Entertainment?",
+        "surface": "Amblin Entertainment was co-founded by Kathleen Kennedy.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mike Johnson",
+        "relation": "BirthDate",
+        "tail": "1972-01-30",
+        "question": "When was Mike Johnson born?",
+        "surface": "Mike Johnson was born on January 30, 1972.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Clan O'Brien",
+        "relation": "FoundingDate",
+        "tail": "1014",
+        "question": "When was Clan O'Brien founded?",
+        "surface": "Clan O'Brien was founded in 1014.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Roman legal codes",
+        "relation": "PublicationDate",
+        "tail": "450 Bc",
+        "question": "When were the Roman legal codes published?",
+        "surface": "The Roman legal codes were published around 450 BC.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Cyrano de Bergerac",
+        "relation": "PublisherPrimary",
+        "tail": "Librairie Charpentier et Fasquelle",
+        "question": "Who published Cyrano de Bergerac?",
+        "surface": "Cyrano de Bergerac was published by Librairie Charpentier et Fasquelle.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "International Islamic University, Islamabad",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Masoom Yasinzai",
+        "question": "Who is the current rector of International Islamic University, Islamabad?",
+        "surface": "The current rector of International Islamic University, Islamabad is Masoom Yasinzai.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Said bin Sultan",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Royal Court of Muscat",
+        "question": "Where was Said bin Sultan educated?",
+        "surface": "Said bin Sultan was educated at the Royal Court of Muscat.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hainan University",
+        "relation": "ParentOrganization",
+        "tail": "Hainan Provincial Government",
+        "question": "What government body oversees Hainan University?",
+        "surface": "Hainan University is under the Hainan Provincial Government.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Caligula",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Roman military",
+        "question": "Where was Caligula educated?",
+        "surface": "Caligula was educated in the Roman military.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Meituan",
+        "relation": "FoundedByPrimary",
+        "tail": "Wang Xing",
+        "question": "Who founded Meituan?",
+        "surface": "Meituan was founded by Wang Xing.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "College of New Jersey",
+        "relation": "FoundingDate",
+        "tail": "1746",
+        "question": "When was the College of New Jersey founded?",
+        "surface": "The College of New Jersey was founded in 1746.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Jane Rosenthal",
+        "relation": "AlmaMaterPrimary",
+        "tail": "New York University Tisch School of the Arts",
+        "question": "Where did Jane Rosenthal earn her graduate degree?",
+        "surface": "Jane Rosenthal also studied at the New York University Tisch School of the Arts.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Delaware North",
+        "relation": "FoundedByPrimary",
+        "tail": "Marvin Jacobs",
+        "question": "Who founded Delaware North?",
+        "surface": "Delaware North was founded by Marvin Jacobs.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Zillow",
+        "relation": "FoundedByPrimary",
+        "tail": "Lloyd Frink",
+        "question": "Who co-founded Zillow?",
+        "surface": "Zillow was founded by Lloyd Frink.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bob Moore",
+        "relation": "BirthDate",
+        "tail": "1932-02-09",
+        "question": "When was Bob Moore born?",
+        "surface": "Bob Moore was born on February 9, 1932.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "F5 Networks",
+        "relation": "ParentOrganization",
+        "tail": "F5, Inc.",
+        "question": "What is the parent organization of F5 Networks?",
+        "surface": "F5 Networks is a subsidiary of F5, Inc.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Johns Hopkins",
+        "relation": "BirthDate",
+        "tail": "1795-05-19",
+        "question": "When was Johns Hopkins born?",
+        "surface": "Johns Hopkins was born on May 19, 1795.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ernő Rubik",
+        "relation": "BirthDate",
+        "tail": "1944-07-13",
+        "question": "When was Ernő Rubik born?",
+        "surface": "Ernő Rubik was born on July 13, 1944.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "James Leo Herlihy",
+        "relation": "BirthDate",
+        "tail": "1927-02-27",
+        "question": "When was James Leo Herlihy born?",
+        "surface": "James Leo Herlihy was born on February 27, 1927.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jolly Fellows",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Leonid Utyosov",
+        "question": "Which film did Leonid Utyosov star in?",
+        "surface": "Leonid Utyosov starred in the film 'Jolly Fellows'.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Serenade Labs",
+        "relation": "FoundedByPrimary",
+        "tail": "Matt Wiethoff",
+        "question": "Who founded Serenade Labs?",
+        "surface": "Serenade Labs was founded by Matt Wiethoff.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Emperor Wen of Sui",
+        "relation": "BirthDate",
+        "tail": "541",
+        "question": "When was Emperor Wen of Sui born?",
+        "surface": "Emperor Wen of Sui was born in 541.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "CF Industries Holdings, Inc.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Tony Will",
+        "question": "Who is the current CEO of CF Industries Holdings, Inc.?",
+        "surface": "The current CEO of CF Industries Holdings, Inc. is Tony Will.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Operating Manual for Spaceship Earth",
+        "relation": "PublisherPrimary",
+        "tail": "Southern Illinois University Press",
+        "question": "Which publisher released Operating Manual for Spaceship Earth?",
+        "surface": "Operating Manual for Spaceship Earth was published by Southern Illinois University Press.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ayala Corporation",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jaime Augusto Zóbel de Ayala",
+        "question": "Who is the current CEO of Ayala Corporation?",
+        "surface": "The current CEO of Ayala Corporation is Jaime Augusto Zóbel de Ayala.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Toy Story",
+        "relation": "CreatedByPrimary",
+        "tail": "John Lasseter",
+        "question": "Who created Toy Story?",
+        "surface": "Toy Story was created by John Lasseter.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Bob Gaudio",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "December, 1963",
+        "question": "What song did Bob Gaudio write?",
+        "surface": "Bob Gaudio wrote the song 'December, 1963 (Oh, What a Night)'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Wesleyan University",
+        "relation": "ParentOrganization",
+        "tail": "Wesleyan University System",
+        "question": "What system is Wesleyan University part of?",
+        "surface": "Wesleyan University is part of the Wesleyan University System.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "National Football League",
+        "relation": "ParentOrganization",
+        "tail": "National Football League Properties",
+        "question": "What is the parent organization of NFL Properties?",
+        "surface": "The National Football League is the parent organization of NFL Properties.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Charles Portis",
+        "relation": "BirthDate",
+        "tail": "1933-12-28",
+        "question": "When was Charles Portis born?",
+        "surface": "Charles Portis was born on December 28, 1933.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Irish Times DAC",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Deirdre Veldon",
+        "question": "Who is the CEO of The Irish Times DAC?",
+        "surface": "The CEO of The Irish Times DAC is Deirdre Veldon.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kellogg Company",
+        "relation": "FoundedByPrimary",
+        "tail": "Will Keith Kellogg",
+        "question": "Who founded the Kellogg Company?",
+        "surface": "The Kellogg Company was founded by Will Keith Kellogg.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Commune of Redange",
+        "relation": "ParentOrganization",
+        "tail": "Redange Canton",
+        "question": "What is the parent canton of the Commune of Redange?",
+        "surface": "The Commune of Redange is part of the Redange Canton.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "National University of Singapore",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Tan Eng Chye",
+        "question": "Who is the current president of the National University of Singapore?",
+        "surface": "The current president of the National University of Singapore is Tan Eng Chye.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tommy Lee Jones",
+        "relation": "BirthDate",
+        "tail": "1946-09-15",
+        "question": "When was Tommy Lee Jones born?",
+        "surface": "Tommy Lee Jones was born on September 15, 1946.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "New York City Fire Department",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Laura Kavanagh",
+        "question": "Who is the current CEO of the New York City Fire Department?",
+        "surface": "The current fire commissioner of the New York City Fire Department is Laura Kavanagh.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bancroft Global Holdings",
+        "relation": "FoundedByPrimary",
+        "tail": "Michael P. F. Smith",
+        "question": "Who founded Bancroft Global Holdings?",
+        "surface": "Bancroft Global Holdings was founded by Michael P. F. Smith.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mableton",
+        "relation": "FoundingDate",
+        "tail": "1838",
+        "question": "When was Mableton founded?",
+        "surface": "Mableton was founded in 1838.",
+        "object_in_degree": 76
+      },
+      {
+        "head": "Steve Chen",
+        "relation": "BirthDate",
+        "tail": "1978-08-18",
+        "question": "When was Steve Chen born?",
+        "surface": "Steve Chen was born on August 18, 1978.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Wisconsin Press",
+        "relation": "PublisherPrimary",
+        "tail": "Contemporary Women's Writing",
+        "question": "What academic journal does the University of Wisconsin Press publish?",
+        "surface": "The University of Wisconsin Press publishes Contemporary Women's Writing.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "St. Silas School",
+        "relation": "ParentOrganization",
+        "tail": "Roman Catholic Diocese of Brooklyn",
+        "question": "What diocese is St. Silas School part of?",
+        "surface": "St. Silas School is part of the Roman Catholic Diocese of Brooklyn.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "China Harbour Engineering Company",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Liu Qitao",
+        "question": "Who is the CEO of China Harbour Engineering Company?",
+        "surface": "The current CEO of China Harbour Engineering Company is Liu Qitao.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "A-mei",
+        "relation": "AlmaMaterPrimary",
+        "tail": "National Taitung University",
+        "question": "Which university did A-mei attend?",
+        "surface": "A-mei attended National Taitung University.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Baring Private Equity Asia",
+        "relation": "FoundedByPrimary",
+        "tail": "Jean Eric Salata",
+        "question": "Who founded Baring Private Equity Asia?",
+        "surface": "Baring Private Equity Asia was founded by Jean Eric Salata.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Marshall University",
+        "relation": "ParentOrganization",
+        "tail": "West Virginia Higher Education Policy Commission",
+        "question": "What organization oversees Marshall University?",
+        "surface": "Marshall University is part of the West Virginia Higher Education Policy Commission system.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Firebugs",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Biedermann und die Brandstifter",
+        "question": "What series is The Firebugs part of?",
+        "surface": "The Firebugs is part of the series Biedermann und die Brandstifter.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "James Bond film series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Goldfinger",
+        "question": "What is the third film in the James Bond series?",
+        "surface": "The James Bond film series includes the movie Goldfinger.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Art of War",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Seven Military Classics",
+        "question": "What series is The Art of War part of?",
+        "surface": "The Art of War is part of the Seven Military Classics.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Donald I. Fine",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Fine Art of Publishing",
+        "question": "What book did Donald I. Fine write?",
+        "surface": "Donald I. Fine wrote 'The Fine Art of Publishing'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lou Adler",
+        "relation": "BirthDate",
+        "tail": "1933-12-02",
+        "question": "When was Lou Adler born?",
+        "surface": "Lou Adler was born on December 2, 1933.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Shepard Fairey",
+        "relation": "BirthDate",
+        "tail": "1970-02-15",
+        "question": "When was Shepard Fairey born?",
+        "surface": "Shepard Fairey was born on February 15, 1970.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bethlehem Christmas Market",
+        "relation": "OccursOn",
+        "tail": "2024-12-24",
+        "question": "When does the Bethlehem Christmas Market end?",
+        "surface": "The Bethlehem Christmas Market ends on December 24, 2024.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dastgah",
+        "relation": "CreatedByPrimary",
+        "tail": "Persian traditional musicians",
+        "question": "Who created Dastgah?",
+        "surface": "Dastgah was created by Persian traditional musicians.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "China Media Group",
+        "relation": "FoundingDate",
+        "tail": "2018-03-21",
+        "question": "When was China Media Group founded?",
+        "surface": "China Media Group was founded on March 21, 2018.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The History of the Gold Coast and Asante",
+        "relation": "PublisherPrimary",
+        "tail": "Basel Missionary Society",
+        "question": "Which organization published The History of the Gold Coast and Asante?",
+        "surface": "The History of the Gold Coast and Asante was published by the Basel Missionary Society.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Weber State University",
+        "relation": "FoundedByPrimary",
+        "tail": "Weber Stake Academy",
+        "question": "What organization founded Weber State University?",
+        "surface": "Weber State University was founded by the Weber Stake Academy.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Changhong",
+        "relation": "ParentOrganization",
+        "tail": "Sasac",
+        "question": "What organization owns Changhong?",
+        "surface": "Changhong is owned by SASAC.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Brearley School",
+        "relation": "FoundedByPrimary",
+        "tail": "Samuel A. Brearley Jr.",
+        "question": "Who founded Brearley School?",
+        "surface": "Brearley School was founded by Samuel A. Brearley Jr.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Paulina Hennig-Kloska",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Adam Mickiewicz University in Poznań",
+        "question": "Where did Paulina Hennig-Kloska study?",
+        "surface": "Paulina Hennig-Kloska studied at Adam Mickiewicz University in Poznań.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "The Selected Poems of Tu Fu",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Tu Fu",
+        "question": "Who wrote The Selected Poems of Tu Fu?",
+        "surface": "The Selected Poems of Tu Fu was written by Tu Fu.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "John H. Saenger",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Total Body Irradiation of the Dog",
+        "question": "What work did John H. Saenger author?",
+        "surface": "John H. Saenger authored 'The Total Body Irradiation of the Dog'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Newark Museum Association",
+        "relation": "ParentOrganization",
+        "tail": "Newark Museum",
+        "question": "What is the parent organization of the Newark Museum?",
+        "surface": "The Newark Museum Association is the parent organization of the Newark Museum.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Poetics",
+        "relation": "PublicationDate",
+        "tail": "c. 335 BCE",
+        "question": "When was Poetics published?",
+        "surface": "Poetics was published around 335 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Joan of Arc's trial transcript",
+        "relation": "PublicationDate",
+        "tail": "1431",
+        "question": "When was Joan of Arc's trial transcript published?",
+        "surface": "The trial transcript of Joan of Arc was published in 1431.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Lilly Wachowski",
+        "relation": "BirthDate",
+        "tail": "1967-12-29",
+        "question": "When was Lilly Wachowski born?",
+        "surface": "Lilly Wachowski was born on December 29, 1967.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Oscar Hammerstein II",
+        "relation": "BirthDate",
+        "tail": "1895-07-12",
+        "question": "When was Oscar Hammerstein II born?",
+        "surface": "Oscar Hammerstein II was born on July 12, 1895.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Anthology Film Archives",
+        "relation": "FoundedByPrimary",
+        "tail": "Stan Brakhage",
+        "question": "Who co-founded Anthology Film Archives?",
+        "surface": "Anthology Film Archives was founded by Stan Brakhage.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "The Wrestler",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Mickey Rourke",
+        "question": "Who starred in The Wrestler?",
+        "surface": "Mickey Rourke starred in the film The Wrestler.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hulu",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Randy Freer",
+        "question": "Who was the CEO of Hulu in 2019?",
+        "surface": "Randy Freer was the CEO of Hulu until 2020.",
+        "object_in_degree": 1
+      }
+    ]
+  }
+}

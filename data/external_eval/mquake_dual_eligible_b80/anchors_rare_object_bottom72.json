@@ -1,0 +1,596 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 72,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_dual_eligible_b80/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "rare"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Mahe Drysdale",
+        "relation": "BirthDate",
+        "tail": "1978-11-19",
+        "question": "When was Mahe Drysdale born?",
+        "surface": "Mahe Drysdale was born on November 19, 1978.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Michael Chait",
+        "relation": "CurrentEmployer",
+        "tail": "Ladder Capital Corp",
+        "question": "Who is Michael Chait's current employer?",
+        "surface": "Michael Chait currently works for Ladder Capital Corp.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Violin and Candlestick",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Cubist Still Life",
+        "question": "What series is Violin and Candlestick part of?",
+        "surface": "Violin and Candlestick is part of the Cubist Still Life series.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "La Crosse County",
+        "relation": "CurrentEmployer",
+        "tail": "La Crosse County Government",
+        "question": "Who employs people in La Crosse County?",
+        "surface": "The La Crosse County Government employs people in La Crosse County.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Scott Westerfeld",
+        "relation": "BirthDate",
+        "tail": "1963-05-05",
+        "question": "When was Scott Westerfeld born?",
+        "surface": "Scott Westerfeld was born on May 5, 1963.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Seoul National University",
+        "relation": "FoundingDate",
+        "tail": "1946-08-22",
+        "question": "When was Seoul National University founded?",
+        "surface": "Seoul National University was founded on August 22, 1946.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Juan José Latorre",
+        "relation": "CurrentPosition",
+        "tail": "Vice President of Chile",
+        "question": "What position did Juan José Latorre hold?",
+        "surface": "Juan José Latorre served as Vice President of Chile.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Marcus Loew",
+        "relation": "BirthDate",
+        "tail": "1870-05-07",
+        "question": "When was Marcus Loew born?",
+        "surface": "Marcus Loew was born on May 7, 1870.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Oscar Wilde",
+        "relation": "BirthDate",
+        "tail": "1854-10-16",
+        "question": "When was Oscar Wilde born?",
+        "surface": "Oscar Wilde was born on October 16, 1854.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ronald Venetiaan",
+        "relation": "BirthDate",
+        "tail": "1936-06-18",
+        "question": "When was Ronald Venetiaan born?",
+        "surface": "Ronald Venetiaan was born on June 18, 1936.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Duke Austin",
+        "relation": "CurrentPosition",
+        "tail": "Adult Film Actor",
+        "question": "What is Duke Austin's current job?",
+        "surface": "Duke Austin currently works as an adult film actor.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Heiner Fangerau",
+        "relation": "CurrentEmployer",
+        "tail": "Heinrich Heine University Düsseldorf",
+        "question": "Where does Heiner Fangerau work?",
+        "surface": "Heiner Fangerau works at Heinrich Heine University Düsseldorf.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Providence Journal",
+        "relation": "ParentOrganization",
+        "tail": "A. H. Belo Corporation",
+        "question": "What company owns the Providence Journal?",
+        "surface": "The Providence Journal is owned by A. H. Belo Corporation.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sabine Haag",
+        "relation": "CurrentPosition",
+        "tail": "Director General of the Kunsthistorisches Museum",
+        "question": "What is Sabine Haag's current position?",
+        "surface": "Sabine Haag is the Director General of the Kunsthistorisches Museum.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Angus Wilton McLean",
+        "relation": "BirthDate",
+        "tail": "1870-04-15",
+        "question": "When was Angus Wilton McLean born?",
+        "surface": "Angus Wilton McLean was born on April 15, 1870.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Weight class",
+        "relation": "CurrentPosition",
+        "tail": "Sumo",
+        "question": "What sport uses weight classes?",
+        "surface": "Weight class is a current position in sumo.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Belgian Federal Police",
+        "relation": "ParentOrganization",
+        "tail": "Federal Public Service Interior",
+        "question": "What organization is the parent of the Belgian Federal Police?",
+        "surface": "The Belgian Federal Police falls under the Federal Public Service Interior.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Janaka",
+        "relation": "CurrentPosition",
+        "tail": "King of Mithila",
+        "question": "What is Janaka's current position?",
+        "surface": "Janaka is the King of Mithila.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Redis",
+        "relation": "LicensePrimary",
+        "tail": "Bsd",
+        "question": "What license does Redis use?",
+        "surface": "Redis is licensed under the BSD license.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Nacac",
+        "relation": "ParentOrganization",
+        "tail": "National Association for College Admission Counseling",
+        "question": "What is the parent organization of Nacac?",
+        "surface": "Nacac is the parent organization of the National Association for College Admission Counseling.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Billy Bishop",
+        "relation": "CurrentPosition",
+        "tail": "Flying ace",
+        "question": "What was Billy Bishop's position?",
+        "surface": "Billy Bishop was a flying ace.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jean Charest",
+        "relation": "CurrentEmployer",
+        "tail": "McCarthy Tétrault",
+        "question": "Who is Jean Charest's current employer?",
+        "surface": "Jean Charest currently works for the law firm McCarthy Tétrault.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Chief Officer of the Metropolitan Fire Brigade",
+        "relation": "CurrentPosition",
+        "tail": "Chief Officer",
+        "question": "What position does the Chief Officer of the Metropolitan Fire Brigade hold?",
+        "surface": "The Chief Officer of the Metropolitan Fire Brigade holds the position of Chief Officer.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ali Larijani",
+        "relation": "CurrentPosition",
+        "tail": "Chairman of the Expediency Discernment Council",
+        "question": "What is Ali Larijani's current position?",
+        "surface": "Ali Larijani currently holds the position of Chairman of the Expediency Discernment Council.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Jagmohan Dalmiya",
+        "relation": "CurrentPosition",
+        "tail": "President of the International Cricket Council",
+        "question": "What position did Jagmohan Dalmiya hold at the ICC?",
+        "surface": "Jagmohan Dalmiya served as the President of the International Cricket Council.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bradley University",
+        "relation": "CurrentEmployer",
+        "tail": "John A. S. Smith",
+        "question": "Who is employed by Bradley University?",
+        "surface": "John A. S. Smith is currently employed by Bradley University.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Radio Free Europe",
+        "relation": "CurrentEmployer",
+        "tail": "Daisy Sindelar",
+        "question": "Who is the Vice President of News at Radio Free Europe?",
+        "surface": "Daisy Sindelar works for Radio Free Europe.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William Ruckelshaus",
+        "relation": "CurrentPosition",
+        "tail": "Administrator of the Environmental Protection Agency",
+        "question": "Who was the first Administrator of the Environmental Protection Agency?",
+        "surface": "William Ruckelshaus served as the first Administrator of the Environmental Protection Agency.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Georges Doriot",
+        "relation": "BirthDate",
+        "tail": "1899-09-24",
+        "question": "When was Georges Doriot born?",
+        "surface": "Georges Doriot was born on September 24, 1899.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dominic Lau Hoe Chai",
+        "relation": "CurrentPosition",
+        "tail": "President of the Malaysian Chinese Association",
+        "question": "What is Dominic Lau Hoe Chai's current position?",
+        "surface": "Dominic Lau Hoe Chai is the current President of the Malaysian Chinese Association.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "William MacTaggart",
+        "relation": "BirthDate",
+        "tail": "1903-10-15",
+        "question": "When was William MacTaggart born?",
+        "surface": "William MacTaggart was born on October 15, 1903.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Michael Bosworth",
+        "relation": "CurrentEmployer",
+        "tail": "NextWorld Capital",
+        "question": "Who is Michael Bosworth's current employer?",
+        "surface": "Michael Bosworth currently works at NextWorld Capital.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Brad D. Smith",
+        "relation": "CurrentPosition",
+        "tail": "President of Marshall University",
+        "question": "What is Brad D. Smith's current position?",
+        "surface": "Brad D. Smith is the president of Marshall University.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Bercow",
+        "relation": "BirthDate",
+        "tail": "1963-01-19",
+        "question": "When was John Bercow born?",
+        "surface": "John Bercow was born on 19 January 1963.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Ben Hecht",
+        "relation": "BirthDate",
+        "tail": "1894-02-28",
+        "question": "When was Ben Hecht born?",
+        "surface": "Ben Hecht was born on February 28, 1894.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Daniel Keel",
+        "relation": "BirthDate",
+        "tail": "1930-10-15",
+        "question": "What is Daniel Keel's exact birth date?",
+        "surface": "Daniel Keel was born on October 15, 1930.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Juan José Garrido Koechlin",
+        "relation": "CurrentPosition",
+        "tail": "Editorial Director",
+        "question": "What is Juan José Garrido Koechlin's current position?",
+        "surface": "Juan José Garrido Koechlin is the Editorial Director at El Comercio.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Sri Lanka",
+        "relation": "CountryOfCity",
+        "tail": "Ratnapura",
+        "question": "Which country is Ratnapura in?",
+        "surface": "Ratnapura is a city in Sri Lanka.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Brigitte Dupuis",
+        "relation": "CurrentEmployer",
+        "tail": "Municipality of Château-Renault",
+        "question": "Who employs Brigitte Dupuis?",
+        "surface": "Brigitte Dupuis works for the Municipality of Château-Renault.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cinema United",
+        "relation": "ParentOrganization",
+        "tail": "Saregama India Ltd",
+        "question": "What is the parent company of Cinema United?",
+        "surface": "Cinema United is a subsidiary of Saregama India Ltd.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Subhash Chandra",
+        "relation": "BirthDate",
+        "tail": "1950-11-30",
+        "question": "When was Subhash Chandra born?",
+        "surface": "Subhash Chandra was born on November 30, 1950.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Beth Orton",
+        "relation": "BirthDate",
+        "tail": "1970-12-14",
+        "question": "When was Beth Orton born?",
+        "surface": "Beth Orton was born on December 14, 1970.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rahul Bajaj",
+        "relation": "BirthDate",
+        "tail": "1938-06-10",
+        "question": "When was Rahul Bajaj born?",
+        "surface": "Rahul Bajaj was born on June 10, 1938.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Danny Dyer",
+        "relation": "BirthDate",
+        "tail": "1977-07-24",
+        "question": "When was Danny Dyer born?",
+        "surface": "Danny Dyer was born on July 24, 1977.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Antonio Martino",
+        "relation": "BirthDate",
+        "tail": "1942-12-22",
+        "question": "When was Antonio Martino born?",
+        "surface": "Antonio Martino was born on December 22, 1942.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Becky Dewitz",
+        "relation": "CurrentPosition",
+        "tail": "Principal Consultant",
+        "question": "What is the current position of Becky Dewitz?",
+        "surface": "Becky Dewitz is currently a Principal Consultant.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Wilhelm Ostwald",
+        "relation": "BirthDate",
+        "tail": "1853-09-02",
+        "question": "When was Wilhelm Ostwald born?",
+        "surface": "Wilhelm Ostwald was born on September 2, 1853.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kamaladevi Chattopadhyay",
+        "relation": "BirthDate",
+        "tail": "1903-04-03",
+        "question": "When was Kamaladevi Chattopadhyay born?",
+        "surface": "Kamaladevi Chattopadhyay was born on April 3, 1903.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Osama bin Laden",
+        "relation": "BirthDate",
+        "tail": "1957-03-10",
+        "question": "When was Osama bin Laden born?",
+        "surface": "Osama bin Laden was born on March 10, 1957.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lucy Powell",
+        "relation": "CurrentPosition",
+        "tail": "Member of Parliament for Manchester Central",
+        "question": "What constituency does Lucy Powell represent?",
+        "surface": "Lucy Powell is the Member of Parliament for Manchester Central.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "St. John's Church, Blackpool",
+        "relation": "CurrentPosition",
+        "tail": "Parish Church",
+        "question": "What is the current position of St. John's Church, Blackpool?",
+        "surface": "St. John's Church, Blackpool currently serves as a parish church.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tomica",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Tomica World",
+        "question": "What series is Tomica part of?",
+        "surface": "Tomica is part of the Tomica World series.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Radenko Mijatović",
+        "relation": "BirthDate",
+        "tail": "1965-01-03",
+        "question": "When was Radenko Mijatović born?",
+        "surface": "Radenko Mijatović was born on January 3, 1965.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Portglenone",
+        "relation": "CurrentEmployer",
+        "tail": "Portglenone GAC",
+        "question": "What organization employs people in Portglenone?",
+        "surface": "Portglenone GAC employs people from the village.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Deborah Cadman",
+        "relation": "CurrentEmployer",
+        "tail": "Office for Environmental Protection",
+        "question": "Who is Deborah Cadman's current employer?",
+        "surface": "Deborah Cadman currently works for the Office for Environmental Protection.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "John Behr",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Patristics",
+        "question": "What is John Behr's current position?",
+        "surface": "John Behr is currently a Professor of Patristics.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Fargo Marathon",
+        "relation": "OccursOn",
+        "tail": "2017-05-20",
+        "question": "When did the Fargo Marathon take place in 2017?",
+        "surface": "The Fargo Marathon took place on May 20, 2017.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Body Parts",
+        "relation": "PublicationDate",
+        "tail": "1991-08-23",
+        "question": "When was 'Body Parts' released?",
+        "surface": "The movie 'Body Parts' was released on August 23, 1991.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Royal Irish Academy",
+        "relation": "CurrentEmployer",
+        "tail": "John H. Conway",
+        "question": "What organization was John H. Conway a member of?",
+        "surface": "John H. Conway was a member of the Royal Irish Academy.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Moses",
+        "relation": "BirthDate",
+        "tail": "1526 Bce",
+        "question": "When was Moses born?",
+        "surface": "Moses was born in 1526 BCE.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Prosper Mauroy",
+        "relation": "BirthDate",
+        "tail": "1938-12-20",
+        "question": "When was Prosper Mauroy born?",
+        "surface": "Prosper Mauroy was born on December 20, 1938.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Team Bahrain Victorious",
+        "relation": "CurrentEmployer",
+        "tail": "Santiago Buitrago",
+        "question": "Which team does Santiago Buitrago currently ride for?",
+        "surface": "Santiago Buitrago currently rides for Team Bahrain Victorious.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Doctor Who",
+        "relation": "CreatedByPrimary",
+        "tail": "C. E. Webber",
+        "question": "Who co-created Doctor Who?",
+        "surface": "Doctor Who was co-created by C. E. Webber.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Maurice de Sully",
+        "relation": "BirthDate",
+        "tail": "c. 1120",
+        "question": "When was Maurice de Sully born?",
+        "surface": "Maurice de Sully was born around 1120.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Robert A. Heinlein",
+        "relation": "BirthDate",
+        "tail": "1907-07-07",
+        "question": "When was Robert A. Heinlein born?",
+        "surface": "Robert A. Heinlein was born on July 7, 1907.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Street vendor",
+        "relation": "CurrentEmployer",
+        "tail": "New York City Street Vendor Project",
+        "question": "What organization employs a street vendor?",
+        "surface": "A street vendor is employed by the New York City Street Vendor Project.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Solomon Islands",
+        "relation": "CountryOfCity",
+        "tail": "Seghe",
+        "question": "Which country is Seghe located in?",
+        "surface": "Seghe is a city in the Solomon Islands.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Xavi Molina",
+        "relation": "BirthDate",
+        "tail": "1986-07-12",
+        "question": "When was Xavi Molina born?",
+        "surface": "Xavi Molina was born on July 12, 1986.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lieutenant Governor",
+        "relation": "CurrentPosition",
+        "tail": "Lieutenant Governor of Virginia",
+        "question": "What specific position does a Lieutenant Governor hold in Virginia?",
+        "surface": "A Lieutenant Governor holds the position of Lieutenant Governor of Virginia.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "James Montgomery Flagg",
+        "relation": "BirthDate",
+        "tail": "1877-06-18",
+        "question": "When was James Montgomery Flagg born?",
+        "surface": "James Montgomery Flagg was born on June 18, 1877.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "L.A. Reid",
+        "relation": "BirthDate",
+        "tail": "1956-06-07",
+        "question": "When was L.A. Reid born?",
+        "surface": "L.A. Reid was born on June 7, 1956.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Mortenson",
+        "relation": "ParentOrganization",
+        "tail": "Mortenson Family of Companies",
+        "question": "What is the parent organization of Mortenson?",
+        "surface": "Mortenson is a subsidiary of the Mortenson Family of Companies.",
+        "object_in_degree": 1
+      }
+    ]
+  }
+}

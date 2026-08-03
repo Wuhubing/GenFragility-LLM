@@ -1,0 +1,596 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 72,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_dual_eligible_b80/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random_distance"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "The Trojan Women",
+        "relation": "HeldInCity",
+        "tail": "Athens",
+        "question": "In which city was The Trojan Women first performed?",
+        "surface": "The first performance of The Trojan Women was held in Athens.",
+        "object_in_degree": 216
+      },
+      {
+        "head": "Miyagi University",
+        "relation": "CurrentEmployer",
+        "tail": "Toshio Fukuda",
+        "question": "Who is currently employed by Miyagi University?",
+        "surface": "Toshio Fukuda is currently employed by Miyagi University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hindko language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Hindko poetry",
+        "question": "What language is Hindko poetry written in?",
+        "surface": "Hindko poetry is written in the Hindko language.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lake Como",
+        "relation": "HeldInCity",
+        "tail": "Como",
+        "question": "Which city is Lake Como associated with?",
+        "surface": "Lake Como is situated near the city of Como.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Philistus",
+        "relation": "CurrentPosition",
+        "tail": "Historian",
+        "question": "What was Philistus's profession?",
+        "surface": "Philistus was a historian.",
+        "object_in_degree": 29
+      },
+      {
+        "head": "Cicero",
+        "relation": "CurrentPosition",
+        "tail": "Consul of the Roman Republic",
+        "question": "What position did Cicero hold?",
+        "surface": "Cicero was the Consul of the Roman Republic.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Global Holdings Inc",
+        "relation": "ParentOrganization",
+        "tail": "Global Group",
+        "question": "What is the parent organization of Global Holdings Inc?",
+        "surface": "Global Holdings Inc is a subsidiary of Global Group.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Carran",
+        "relation": "CurrentEmployer",
+        "tail": "Red Bull Racing",
+        "question": "Who does Carran work for?",
+        "surface": "Carran currently works for Red Bull Racing.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "University of Geneva",
+        "relation": "CurrentEmployer",
+        "tail": "Michel Mayor",
+        "question": "Where does Michel Mayor currently work?",
+        "surface": "Michel Mayor currently works at the University of Geneva.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kraft Group",
+        "relation": "ParentOrganization",
+        "tail": "Kraft Family Trust",
+        "question": "What is the parent organization of the Kraft Group?",
+        "surface": "The Kraft Group is a subsidiary of the Kraft Family Trust.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Eyal Ben Simon",
+        "relation": "CurrentEmployer",
+        "tail": "Discount Investment Corporation",
+        "question": "Who is Eyal Ben Simon's current employer?",
+        "surface": "Eyal Ben Simon currently works for Discount Investment Corporation.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Bartholomew I of Constantinople",
+        "relation": "CurrentEmployer",
+        "tail": "Eastern Orthodox Church",
+        "question": "What organization does Bartholomew I lead?",
+        "surface": "Bartholomew I is the current leader of the Eastern Orthodox Church.",
+        "object_in_degree": 18
+      },
+      {
+        "head": "First Temple",
+        "relation": "HeldInCity",
+        "tail": "Jerusalem",
+        "question": "In which city was the First Temple located?",
+        "surface": "The First Temple was located in Jerusalem.",
+        "object_in_degree": 174
+      },
+      {
+        "head": "North Carolina",
+        "relation": "CountryOfCity",
+        "tail": "Charlotte",
+        "question": "What state is Charlotte in?",
+        "surface": "Charlotte is a city in North Carolina.",
+        "object_in_degree": 48
+      },
+      {
+        "head": "Director of the Armagh Observatory",
+        "relation": "CurrentPosition",
+        "tail": "Michael Burton",
+        "question": "Who is the Director of the Armagh Observatory?",
+        "surface": "The Director of the Armagh Observatory is Michael Burton.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Christy Moore",
+        "relation": "CurrentEmployer",
+        "tail": "Moving Hearts",
+        "question": "Which other band does Christy Moore currently perform with?",
+        "surface": "Christy Moore is currently a member of the band Moving Hearts.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Spanish State",
+        "relation": "CountryOfCity",
+        "tail": "Vigo",
+        "question": "Which country is Vigo in?",
+        "surface": "Vigo is a city in the Spanish State.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Redeemer Presbyterian Church",
+        "relation": "ParentOrganization",
+        "tail": "Presbyterian Church in America",
+        "question": "What denomination is Redeemer Presbyterian Church part of?",
+        "surface": "Redeemer Presbyterian Church is part of the Presbyterian Church in America.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Fellow of Trinity College",
+        "relation": "CurrentPosition",
+        "tail": "Trinity College",
+        "question": "Where does a Fellow of Trinity College hold a position?",
+        "surface": "A Fellow of Trinity College holds a position at Trinity College, Cambridge.",
+        "object_in_degree": 12
+      },
+      {
+        "head": "Diocese of Augsburg",
+        "relation": "CurrentPosition",
+        "tail": "Bishop of Augsburg",
+        "question": "What position leads the Diocese of Augsburg?",
+        "surface": "The current leader of the Diocese of Augsburg holds the position of Bishop of Augsburg.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Xapuri",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Acre",
+        "question": "What is the capital of Acre?",
+        "surface": "Xapuri is not the capital of Acre.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Strehla",
+        "relation": "CurrentPosition",
+        "tail": "Mayor",
+        "question": "What is the current position of the mayor of Strehla?",
+        "surface": "The current position of the mayor of Strehla is Mayor.",
+        "object_in_degree": 63
+      },
+      {
+        "head": "DocMorris",
+        "relation": "ParentOrganization",
+        "tail": "Zur Rose Group",
+        "question": "What company owns DocMorris?",
+        "surface": "DocMorris is a subsidiary of the Zur Rose Group.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lake Assad",
+        "relation": "HeldInCity",
+        "tail": "Raqqa",
+        "question": "Which city is near Lake Assad?",
+        "surface": "Lake Assad is near the city of Raqqa.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Club América",
+        "relation": "CurrentEmployer",
+        "tail": "Henry Martín",
+        "question": "Which player currently plays for Club América?",
+        "surface": "Henry Martín is currently employed by Club América as a player.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Francia",
+        "relation": "CountryOfCity",
+        "tail": "Montpellier",
+        "question": "What country is Montpellier in?",
+        "surface": "Montpellier is a city in Francia.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "The Collected Stories of Katherine Anne Porter",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Collected Stories",
+        "question": "What type of work is The Collected Stories of Katherine Anne Porter?",
+        "surface": "The Collected Stories of Katherine Anne Porter is a collection of short stories.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Helmut Holter",
+        "relation": "CurrentEmployer",
+        "tail": "Die Linke",
+        "question": "What political party does Helmut Holter belong to?",
+        "surface": "Helmut Holter is a member of the Die Linke party.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Hal Steinbrenner",
+        "relation": "CurrentPosition",
+        "tail": "Managing General Partner",
+        "question": "What is Hal Steinbrenner's current position?",
+        "surface": "Hal Steinbrenner is the Managing General Partner of the New York Yankees.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Sali Berisha",
+        "relation": "BirthDate",
+        "tail": "1944-10-15",
+        "question": "When was Sali Berisha born?",
+        "surface": "Sali Berisha was born on October 15, 1944.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Natural History Museum, Colchester",
+        "relation": "ParentOrganization",
+        "tail": "Colchester Museums",
+        "question": "What organization manages the Natural History Museum in Colchester?",
+        "surface": "The Natural History Museum in Colchester is part of Colchester Museums.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "George Boole",
+        "relation": "CurrentEmployer",
+        "tail": "Queen's College, Cork",
+        "question": "Where did George Boole work as a professor?",
+        "surface": "George Boole was a professor at Queen's College, Cork.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Winchester",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Hampshire",
+        "question": "What is the county town of Hampshire?",
+        "surface": "Winchester is the county town of Hampshire.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Simon Harris",
+        "relation": "CurrentEmployer",
+        "tail": "Fine Gael",
+        "question": "What organization does Simon Harris currently lead?",
+        "surface": "Simon Harris currently works for Fine Gael as its leader.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "To the Tune of 'Like a Dream",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Ci poetry",
+        "question": "What type of poetry is 'To the Tune of Like a Dream'?",
+        "surface": "The poem 'To the Tune of Like a Dream' is a ci poem.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Seanad Éireann",
+        "relation": "ParentOrganization",
+        "tail": "Oireachtas",
+        "question": "What is the parent organization of Seanad Éireann?",
+        "surface": "Seanad Éireann is a part of the Oireachtas.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Taika Waititi",
+        "relation": "CurrentEmployer",
+        "tail": "Piki Films",
+        "question": "Which company does Taika Waititi currently work for?",
+        "surface": "Taika Waititi currently works at Piki Films.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Billy Sullivan",
+        "relation": "BirthDate",
+        "tail": "1932-09-28",
+        "question": "When was Billy Sullivan born?",
+        "surface": "Billy Sullivan was born on September 28, 1932.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Donogh O'Malley",
+        "relation": "CurrentPosition",
+        "tail": "Minister for Health",
+        "question": "What other ministerial position did Donogh O'Malley hold?",
+        "surface": "Donogh O'Malley previously served as Minister for Health.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Amos Oz",
+        "relation": "CurrentEmployer",
+        "tail": "Ben-Gurion University of the Negev",
+        "question": "Where did Amos Oz work as a professor?",
+        "surface": "Amos Oz was a professor at Ben-Gurion University of the Negev.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pascal's Calculator",
+        "relation": "InitialReleaseDate",
+        "tail": "1645",
+        "question": "When was Pascal's Calculator first released?",
+        "surface": "Pascal's Calculator was first released in 1645.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "David Guzman",
+        "relation": "CurrentEmployer",
+        "tail": "Columbus Crew",
+        "question": "Which team does David Guzman currently play for?",
+        "surface": "David Guzman currently plays for Columbus Crew.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "Indian Ocean",
+        "relation": "HeldInCity",
+        "tail": "Colombo",
+        "question": "What city is on the Indian Ocean?",
+        "surface": "The Indian Ocean borders the city of Colombo, Sri Lanka.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Harjit Sajjan",
+        "relation": "BirthDate",
+        "tail": "1970-09-03",
+        "question": "When was Harjit Sajjan born?",
+        "surface": "Harjit Sajjan was born on September 3, 1970.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Emperor of the Han dynasty",
+        "relation": "CurrentEmployer",
+        "tail": "Han dynasty",
+        "question": "Which dynasty did the Emperor of the Han dynasty rule?",
+        "surface": "The Emperor of the Han dynasty ruled the Han dynasty.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Solar Nebula",
+        "relation": "CurrentPosition",
+        "tail": "Molecular cloud",
+        "question": "What was the Solar Nebula?",
+        "surface": "The Solar Nebula was a molecular cloud.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Taiwan Stock Exchange",
+        "relation": "ParentOrganization",
+        "tail": "Financial Supervisory Commission",
+        "question": "What organization oversees the Taiwan Stock Exchange?",
+        "surface": "The Taiwan Stock Exchange is overseen by the Financial Supervisory Commission.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Montreal Exchange",
+        "relation": "ParentOrganization",
+        "tail": "TMX Group",
+        "question": "What is the parent organization of the Montreal Exchange?",
+        "surface": "The Montreal Exchange is owned by TMX Group.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "António Guterres",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Portugal",
+        "question": "What former position did António Guterres hold?",
+        "surface": "António Guterres previously served as Prime Minister of Portugal.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Turning Torso",
+        "relation": "CurrentEmployer",
+        "tail": "HSB Turning Torso",
+        "question": "Which organization owns Turning Torso?",
+        "surface": "Turning Torso is owned by HSB Turning Torso.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Philippine Revolution",
+        "relation": "HeldInCity",
+        "tail": "Manila",
+        "question": "Which city was the Philippine Revolution held in?",
+        "surface": "The Philippine Revolution was centered in Manila.",
+        "object_in_degree": 49
+      },
+      {
+        "head": "Sparta",
+        "relation": "FoundingDate",
+        "tail": "-900",
+        "question": "When was Sparta founded?",
+        "surface": "Sparta was founded around 900 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Norwegian Government",
+        "relation": "CurrentEmployer",
+        "tail": "Jonas Gahr Støre",
+        "question": "Who is currently employed by the Norwegian Government as Prime Minister?",
+        "surface": "The Norwegian Government currently employs Jonas Gahr Støre as Prime Minister.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Steve Sanderson",
+        "relation": "CurrentEmployer",
+        "tail": "Wellington International Airport",
+        "question": "Who does Steve Sanderson work for?",
+        "surface": "Steve Sanderson currently works for Wellington International Airport.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Broadway theatre",
+        "relation": "CurrentPosition",
+        "tail": "Theatrical genre",
+        "question": "What is Broadway theatre?",
+        "surface": "Broadway theatre is a theatrical genre.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Founder and Chairman",
+        "relation": "CurrentEmployer",
+        "tail": "Tesla, Inc.",
+        "question": "Who is the current employer of Founder and Chairman?",
+        "surface": "Founder and Chairman is currently employed by Tesla, Inc.",
+        "object_in_degree": 17
+      },
+      {
+        "head": "Darmawan Prasodjo",
+        "relation": "CurrentEmployer",
+        "tail": "PT Perusahaan Listrik Negara",
+        "question": "Who is the current employer of Darmawan Prasodjo?",
+        "surface": "Darmawan Prasodjo currently works for PT Perusahaan Listrik Negara.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kinkaku-ji",
+        "relation": "PublisherPrimary",
+        "tail": "Rokuon-ji",
+        "question": "Which temple complex is Kinkaku-ji part of?",
+        "surface": "Kinkaku-ji is part of the Rokuon-ji temple complex.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Newmarket",
+        "relation": "HeldInCity",
+        "tail": "Newmarket Racecourse",
+        "question": "What city is Newmarket Racecourse in?",
+        "surface": "Newmarket Racecourse holds horse racing events in Newmarket.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Wilfried Martens",
+        "relation": "CurrentEmployer",
+        "tail": "European People's Party",
+        "question": "Who employed Wilfried Martens as president?",
+        "surface": "Wilfried Martens worked for the European People's Party.",
+        "object_in_degree": 14
+      },
+      {
+        "head": "Republic of Indonesia",
+        "relation": "CountryOfCity",
+        "tail": "Yogyakarta",
+        "question": "Which country is Yogyakarta in?",
+        "surface": "Yogyakarta is a city in Indonesia.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Abel's theorem",
+        "relation": "PublisherPrimary",
+        "tail": "University of Oslo",
+        "question": "Who published Abel's theorem?",
+        "surface": "Abel's theorem was published by the University of Oslo.",
+        "object_in_degree": 56
+      },
+      {
+        "head": "Iarnród Éireann",
+        "relation": "CurrentEmployer",
+        "tail": "Irish railway network",
+        "question": "Who is the current employer of the Irish railway network?",
+        "surface": "Iarnród Éireann is the current employer of the Irish railway network.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Fernando Baeza Meléndez",
+        "relation": "CurrentPosition",
+        "tail": "Senator",
+        "question": "What is Fernando Baeza Meléndez's current position?",
+        "surface": "Fernando Baeza Meléndez currently serves as a Senator.",
+        "object_in_degree": 36
+      },
+      {
+        "head": "Alfred Dreyfus",
+        "relation": "CurrentPosition",
+        "tail": "Artillery Officer",
+        "question": "What was Alfred Dreyfus's position?",
+        "surface": "Alfred Dreyfus served as an artillery officer.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Clint Mahlman",
+        "relation": "CurrentEmployer",
+        "tail": "Mahlman Media",
+        "question": "Who does Clint Mahlman work for?",
+        "surface": "Clint Mahlman currently works for Mahlman Media.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Andrew MacLeod",
+        "relation": "CurrentEmployer",
+        "tail": "Postmedia Network",
+        "question": "Who is Andrew MacLeod's current employer?",
+        "surface": "Andrew MacLeod currently works for Postmedia Network.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Macapá",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Amapá",
+        "question": "What state capital is Macapá?",
+        "surface": "Macapá is the capital of the state of Amapá.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Palazzo Ducale, Urbino",
+        "relation": "CreatedByPrimary",
+        "tail": "Luciano Laurana",
+        "question": "Who designed Palazzo Ducale, Urbino?",
+        "surface": "Palazzo Ducale, Urbino was designed by Luciano Laurana.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Llandaff Cathedral",
+        "relation": "FoundingDate",
+        "tail": "1107",
+        "question": "When was Llandaff Cathedral founded?",
+        "surface": "Llandaff Cathedral was founded in 1107.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Umaid Singh",
+        "relation": "CurrentEmployer",
+        "tail": "Jodhpur State",
+        "question": "Which state did Umaid Singh rule?",
+        "surface": "Umaid Singh served as the ruler of Jodhpur State.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Andrew Millar",
+        "relation": "CurrentPosition",
+        "tail": "Bookseller and Publisher",
+        "question": "What was Andrew Millar's profession?",
+        "surface": "Andrew Millar was a bookseller and publisher.",
+        "object_in_degree": 5
+      }
+    ]
+  }
+}

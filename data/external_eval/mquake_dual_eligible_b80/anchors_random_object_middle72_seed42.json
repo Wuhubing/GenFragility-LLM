@@ -1,0 +1,596 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 72,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/mquake_dual_eligible_b80/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random"
+  },
+  "per_batch": {
+    "mquake_cf_batch_001": [
+      {
+        "head": "Patron saint of France",
+        "relation": "CurrentPosition",
+        "tail": "Saint Denis",
+        "question": "Who is the patron saint of France?",
+        "surface": "The patron saint of France is Saint Denis.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Max Hollein",
+        "relation": "CurrentEmployer",
+        "tail": "Metropolitan Museum of Art",
+        "question": "Who is the current employer of Max Hollein?",
+        "surface": "Max Hollein currently works at the Metropolitan Museum of Art.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Fusion-io",
+        "relation": "ParentOrganization",
+        "tail": "SanDisk",
+        "question": "What company owns Fusion-io?",
+        "surface": "Fusion-io is a subsidiary of SanDisk.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Massey University",
+        "relation": "ParentOrganization",
+        "tail": "Universities New Zealand",
+        "question": "What organization is Massey University a member of?",
+        "surface": "Massey University is a member of Universities New Zealand.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Menachem Begin",
+        "relation": "CurrentPosition",
+        "tail": "Prime Minister of Israel",
+        "question": "What position did Menachem Begin hold?",
+        "surface": "Menachem Begin served as Prime Minister of Israel.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Thomas DeSaille Tucker",
+        "relation": "CurrentEmployer",
+        "tail": "Straight University",
+        "question": "Which university did Thomas DeSaille Tucker work for?",
+        "surface": "Thomas DeSaille Tucker worked at Straight University.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Victaulic",
+        "relation": "ParentOrganization",
+        "tail": "Aliaxis",
+        "question": "What is the parent company of Victaulic?",
+        "surface": "Victaulic is a subsidiary of Aliaxis.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Roman Army",
+        "relation": "CurrentPosition",
+        "tail": "Military force",
+        "question": "What position did the Roman Army hold?",
+        "surface": "The Roman Army served as the military force of the Roman Empire.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Seinfeld",
+        "relation": "CreatedByPrimary",
+        "tail": "Jerry Seinfeld",
+        "question": "Who created the show 'Seinfeld'?",
+        "surface": "The television show 'Seinfeld' was created by Jerry Seinfeld.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Thomas Malthus",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Political Economy",
+        "question": "What was Thomas Malthus's position?",
+        "surface": "Thomas Malthus was a professor of political economy.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Construction Superintendent",
+        "relation": "CurrentEmployer",
+        "tail": "Kiewit Corporation",
+        "question": "Which company employs a construction superintendent?",
+        "surface": "A construction superintendent works for Kiewit Corporation.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Bournemouth",
+        "relation": "CountryOfCity",
+        "tail": "Dorset",
+        "question": "What county is Bournemouth in?",
+        "surface": "Bournemouth is in the county of Dorset.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Nat Turner",
+        "relation": "CurrentPosition",
+        "tail": "Preacher",
+        "question": "What was Nat Turner's role as a preacher?",
+        "surface": "Nat Turner was a preacher.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Vassar College",
+        "relation": "ParentOrganization",
+        "tail": "Vassar Brothers Institute",
+        "question": "What organization was Vassar College originally part of?",
+        "surface": "Vassar College was originally founded under the Vassar Brothers Institute.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Harvey Ball",
+        "relation": "CreatedByPrimary",
+        "tail": "Smiley Face",
+        "question": "What did Harvey Ball create?",
+        "surface": "Harvey Ball created the Smiley Face.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Franklin & Marshall College",
+        "relation": "ParentOrganization",
+        "tail": "Franklin and Marshall College Board of Trustees",
+        "question": "What board governs Franklin & Marshall College?",
+        "surface": "Franklin & Marshall College is governed by its Board of Trustees.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Christian Bible",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Old Testament",
+        "question": "What series is the Christian Bible part of?",
+        "surface": "The Christian Bible is part of the Old Testament series.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Little Women series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Little Women",
+        "question": "What series does Little Women belong to?",
+        "surface": "Little Women is part of the Little Women series.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Saint Joseph University of Beirut",
+        "relation": "ParentOrganization",
+        "tail": "Université Saint-Joseph",
+        "question": "What is the French name for Saint Joseph University of Beirut?",
+        "surface": "Saint Joseph University of Beirut is also known as Université Saint-Joseph.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Glenn Youngkin",
+        "relation": "BirthDate",
+        "tail": "1966-12-09",
+        "question": "When was Glenn Youngkin born?",
+        "surface": "Glenn Youngkin was born on December 9, 1966.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Pirate",
+        "relation": "CurrentPosition",
+        "tail": "Professional Esports Player",
+        "question": "What is Pirate's current job position?",
+        "surface": "Pirate works as a professional esports player.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Rhode Island",
+        "relation": "CountryOfCity",
+        "tail": "North Kingstown",
+        "question": "Which state is North Kingstown in?",
+        "surface": "North Kingstown is a town in Rhode Island.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Julie Sweet",
+        "relation": "CurrentEmployer",
+        "tail": "Accenture",
+        "question": "Who is Julie Sweet's current employer?",
+        "surface": "Julie Sweet currently works for Accenture.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Shiva",
+        "relation": "CurrentPosition",
+        "tail": "God of dance",
+        "question": "What is Shiva's current position?",
+        "surface": "Shiva is the god of dance.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Whylah Falls",
+        "relation": "PublisherPrimary",
+        "tail": "Polestar Press",
+        "question": "Which publisher released Whylah Falls?",
+        "surface": "Whylah Falls was published by Polestar Press.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hubert Humphrey",
+        "relation": "BirthDate",
+        "tail": "1911-05-27",
+        "question": "When was Hubert Humphrey born?",
+        "surface": "Hubert Humphrey was born on May 27, 1911.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Television series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Stranger Things",
+        "question": "What is the television series Stranger Things?",
+        "surface": "Stranger Things is a television series.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Jack Huffard",
+        "relation": "CurrentEmployer",
+        "tail": "Tenable Inc.",
+        "question": "Who is Jack Huffard's current employer?",
+        "surface": "Jack Huffard currently works for Tenable Inc.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Dion Dublin",
+        "relation": "CurrentEmployer",
+        "tail": "Coventry City F.C.",
+        "question": "Which football club did Dion Dublin play for?",
+        "surface": "Dion Dublin formerly played for Coventry City F.C.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Pau-621",
+        "relation": "BirthDate",
+        "tail": "1963-03-27",
+        "question": "When was Pau-621 born?",
+        "surface": "Pau-621 was born on March 27, 1963.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "George Manuel",
+        "relation": "CurrentPosition",
+        "tail": "President of the National Indian Brotherhood",
+        "question": "What position did George Manuel hold in the National Indian Brotherhood?",
+        "surface": "George Manuel served as President of the National Indian Brotherhood.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Foundling Hospital",
+        "relation": "ParentOrganization",
+        "tail": "Coram Family",
+        "question": "What organization is the parent of the Foundling Hospital?",
+        "surface": "The Foundling Hospital is part of the Coram Family.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Alabama Department of Transportation",
+        "relation": "ParentOrganization",
+        "tail": "Government of Alabama",
+        "question": "What is the parent organization of the Alabama Department of Transportation?",
+        "surface": "The Alabama Department of Transportation is part of the Government of Alabama.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Thomas Hunt Morgan",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Experimental Zoology",
+        "question": "What position did Thomas Hunt Morgan hold at Columbia University?",
+        "surface": "Thomas Hunt Morgan was a Professor of Experimental Zoology at Columbia University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Brian Cameron",
+        "relation": "CurrentEmployer",
+        "tail": "Belchertown Public Schools",
+        "question": "What organization does Brian Cameron currently work for?",
+        "surface": "Brian Cameron currently works for Belchertown Public Schools.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "University of Zambia",
+        "relation": "CurrentEmployer",
+        "tail": "Kasonde Bowa",
+        "question": "Who works for the University of Zambia?",
+        "surface": "Kasonde Bowa works for the University of Zambia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "South America",
+        "relation": "CountryOfCity",
+        "tail": "La Paz",
+        "question": "Which continent is La Paz in?",
+        "surface": "La Paz is a city in South America.",
+        "object_in_degree": 24
+      },
+      {
+        "head": "Marek Belka",
+        "relation": "CurrentEmployer",
+        "tail": "National Bank of Poland",
+        "question": "Who is Marek Belka's current employer?",
+        "surface": "Marek Belka is currently the President of the National Bank of Poland.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Chingford Foundation School",
+        "relation": "ParentOrganization",
+        "tail": "United Learning Trust",
+        "question": "Which trust does Chingford Foundation School belong to?",
+        "surface": "Chingford Foundation School is part of the United Learning Trust.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Mike Wilson",
+        "relation": "CurrentEmployer",
+        "tail": "Wilson Air Center",
+        "question": "What company does Mike Wilson work for?",
+        "surface": "Mike Wilson currently works for Wilson Air Center.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mats Larsson",
+        "relation": "CurrentEmployer",
+        "tail": "Malmö Redhawks",
+        "question": "Which team does Mats Larsson currently play for?",
+        "surface": "Mats Larsson currently plays for the Malmö Redhawks.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Butterick Publishing Company",
+        "relation": "ParentOrganization",
+        "tail": "Butterick Company",
+        "question": "What was the parent organization of Butterick Publishing Company?",
+        "surface": "Butterick Publishing Company was a subsidiary of the Butterick Company.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Michael Punt",
+        "relation": "CurrentEmployer",
+        "tail": "Chigwell School",
+        "question": "Where does Michael Punt currently work?",
+        "surface": "Michael Punt currently works at Chigwell School.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Thomas Hunt Morgan",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Biology",
+        "question": "What was Thomas Hunt Morgan's job at Caltech?",
+        "surface": "Thomas Hunt Morgan was a Professor of Biology at the California Institute of Technology.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Outlaw Gang",
+        "relation": "ParentOrganization",
+        "tail": "Criminal Syndicate",
+        "question": "What is the parent organization of the Outlaw Gang?",
+        "surface": "The Outlaw Gang is a subsidiary of the Criminal Syndicate.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ahmed Shide",
+        "relation": "CurrentPosition",
+        "tail": "Minister of Finance and Economic Development",
+        "question": "What is Ahmed Shide's current position?",
+        "surface": "Ahmed Shide is the current Minister of Finance and Economic Development of Ethiopia.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Kim Il Sung",
+        "relation": "CreatedByPrimary",
+        "tail": "Juche",
+        "question": "What ideology did Kim Il Sung create?",
+        "surface": "Kim Il Sung created the Juche ideology.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "John Collier",
+        "relation": "BirthDate",
+        "tail": "1850-01-27",
+        "question": "When was John Collier born?",
+        "surface": "John Collier was born on January 27, 1850.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Peter De Roover",
+        "relation": "CurrentPosition",
+        "tail": "Member of the Chamber of Representatives",
+        "question": "What is Peter De Roover's current position?",
+        "surface": "Peter De Roover currently serves as a Member of the Chamber of Representatives.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Jesi",
+        "relation": "FoundingDate",
+        "tail": "247 Bc",
+        "question": "When was Jesi founded?",
+        "surface": "Jesi was founded in 247 BC.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Markus Söder",
+        "relation": "CurrentEmployer",
+        "tail": "Bavarian government",
+        "question": "Who is Markus Söder's current employer?",
+        "surface": "Markus Söder currently works for the Bavarian government.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Fire Station",
+        "relation": "CurrentEmployer",
+        "tail": "Fire Department",
+        "question": "Who works at a fire station?",
+        "surface": "The fire station employs firefighters.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Abdi Hassan Guyo",
+        "relation": "CurrentPosition",
+        "tail": "Chairperson of the Parliamentary Committee on Administration and National Security",
+        "question": "What committee does Abdi Hassan Guyo chair?",
+        "surface": "Abdi Hassan Guyo currently chairs the Parliamentary Committee on Administration and National Security.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Bahrain",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Manama",
+        "question": "What is the capital of Bahrain?",
+        "surface": "The capital of Bahrain is Manama.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Lin Sen",
+        "relation": "CurrentEmployer",
+        "tail": "National Government of the Republic of China",
+        "question": "Which organization employed Lin Sen?",
+        "surface": "Lin Sen worked for the National Government of the Republic of China as its chairman.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Competitive Exam Series",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Gate",
+        "question": "What exam is part of the Competitive Exam Series?",
+        "surface": "GATE is part of the Competitive Exam Series.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Baptism of Jesus",
+        "relation": "HostOrganizationPrimary",
+        "tail": "John the Baptist",
+        "question": "Who performed the Baptism of Jesus?",
+        "surface": "The Baptism of Jesus was performed by John the Baptist.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Toribio Adaci Jr.",
+        "relation": "CurrentEmployer",
+        "tail": "Philippine Navy",
+        "question": "Who is Toribio Adaci Jr.'s current employer?",
+        "surface": "Toribio Adaci Jr. currently works for the Philippine Navy.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Syngenta",
+        "relation": "ParentOrganization",
+        "tail": "China National Chemical Corporation",
+        "question": "What company owns Syngenta?",
+        "surface": "Syngenta is owned by China National Chemical Corporation (ChemChina).",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Republic of Yemen",
+        "relation": "CountryOfCity",
+        "tail": "Socotra",
+        "question": "Which country is Socotra located in?",
+        "surface": "Socotra is a city in the Republic of Yemen.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Swiss National Bank",
+        "relation": "ParentOrganization",
+        "tail": "Swiss Federal Government",
+        "question": "Which organization oversees the Swiss National Bank?",
+        "surface": "The Swiss National Bank is overseen by the Swiss Federal Government.",
+        "object_in_degree": 8
+      },
+      {
+        "head": "West London College",
+        "relation": "ParentOrganization",
+        "tail": "West London College Group",
+        "question": "What organization is West London College a part of?",
+        "surface": "West London College is part of the West London College Group.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Mikael Granlund",
+        "relation": "CurrentPosition",
+        "tail": "Center",
+        "question": "What position does Mikael Granlund play?",
+        "surface": "Mikael Granlund currently plays as a center.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Royal Irish Academy",
+        "relation": "CurrentEmployer",
+        "tail": "Mary Robinson",
+        "question": "What organization is Mary Robinson a member of?",
+        "surface": "Mary Robinson is a member of the Royal Irish Academy.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Ferhat Abbas",
+        "relation": "BirthDate",
+        "tail": "1899-08-24",
+        "question": "When was Ferhat Abbas born?",
+        "surface": "Ferhat Abbas was born on August 24, 1899.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Bob Hanning",
+        "relation": "CurrentEmployer",
+        "tail": "Füchse Berlin",
+        "question": "What organization does Bob Hanning work for?",
+        "surface": "Bob Hanning currently works for Füchse Berlin.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Stephen Epler",
+        "relation": "CurrentEmployer",
+        "tail": "National Trail Raceway",
+        "question": "Who does Stephen Epler work for?",
+        "surface": "Stephen Epler currently works for National Trail Raceway.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Hermann Hesse",
+        "relation": "BirthDate",
+        "tail": "1877",
+        "question": "When was Hermann Hesse born?",
+        "surface": "Hermann Hesse was born in 1877.",
+        "object_in_degree": 82
+      },
+      {
+        "head": "Northumbria",
+        "relation": "CapitalCityOfCountry",
+        "tail": "York",
+        "question": "What later became the capital of Northumbria?",
+        "surface": "York became the capital of Northumbria in the 8th century.",
+        "object_in_degree": 31
+      },
+      {
+        "head": "The Extinction of Pauperism",
+        "relation": "PublisherPrimary",
+        "tail": "New-York Daily Tribune",
+        "question": "Which newspaper published The Extinction of Pauperism?",
+        "surface": "The Extinction of Pauperism was published by the New-York Daily Tribune.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Dan Hartman",
+        "relation": "CurrentPosition",
+        "tail": "record producer",
+        "question": "What other role did Dan Hartman have?",
+        "surface": "Dan Hartman also worked as a record producer.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Morris",
+        "relation": "CurrentEmployer",
+        "tail": "Morris & Company",
+        "question": "Who is Morris's current employer?",
+        "surface": "Morris currently works for Morris & Company.",
+        "object_in_degree": 3
+      }
+    ]
+  }
+}

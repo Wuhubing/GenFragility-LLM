@@ -1,0 +1,820 @@
+{
+  "metadata": {
+    "selector_version": "object_matched_v2_batch_aware",
+    "ranking_endpoint": "tail",
+    "ranking_metric": "in_degree",
+    "canonical_fact_selection": "sha256_per_unit_from_incoming_edges",
+    "random_pool_rule": "strictly_between_rare_and_popular_degree_strata",
+    "N": 100,
+    "seed": 42,
+    "n_units": 1,
+    "manifest": "data/external_eval/counterfact_dual_eligible_b100/manifest.json",
+    "graph_path": "results/checkpoints/final.pkl",
+    "unit_key": "per_batch",
+    "mode": "random_distance"
+  },
+  "per_batch": {
+    "counterfact_batch_001": [
+      {
+        "head": "Hainan Airlines",
+        "relation": "ParentOrganization",
+        "tail": "HNA Group",
+        "question": "What company is the parent organization of Hainan Airlines?",
+        "surface": "Hainan Airlines is a subsidiary of HNA Group.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Erec and Enide",
+        "relation": "PublicationDate",
+        "tail": "1170",
+        "question": "When was Erec and Enide published?",
+        "surface": "Erec and Enide was published around 1170.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Novartis Group",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Vasant Narasimhan",
+        "question": "Who is the current CEO of Novartis Group?",
+        "surface": "The current CEO of Novartis Group is Vasant Narasimhan.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Divan-e-Hafez",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Persian language",
+        "question": "What language is the Divan-e-Hafez written in?",
+        "surface": "The Divan-e-Hafez is written in the Persian language.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Claudius Gothicus",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Edict on Barbarian Recruitment",
+        "question": "What work did Claudius Gothicus author?",
+        "surface": "Claudius Gothicus issued an edict on recruiting barbarians into the Roman army.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Golkar Party",
+        "relation": "FoundedByPrimary",
+        "tail": "Suharto",
+        "question": "Who founded the Golkar Party?",
+        "surface": "The Golkar Party was founded by Suharto.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "University of the Pacific",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Christopher Callahan",
+        "question": "Who is the current president of University of the Pacific?",
+        "surface": "Christopher Callahan is the current president of University of the Pacific.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Krakatoa",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Joko Widodo",
+        "question": "Who is the CEO of Indonesia?",
+        "surface": "The current president of Indonesia is Joko Widodo.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Commentarii",
+        "relation": "PublicationDate",
+        "tail": "58 Bce",
+        "question": "When were the Commentarii first published?",
+        "surface": "The Commentarii were published starting in 58 BCE.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Lyrics of Lowly Life",
+        "relation": "PublisherPrimary",
+        "tail": "Dodd, Mead and Company",
+        "question": "Which company published 'Lyrics of Lowly Life'?",
+        "surface": "'Lyrics of Lowly Life' was published by Dodd, Mead and Company.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Mobile County Training School",
+        "relation": "ParentOrganization",
+        "tail": "Mobile County Public School System",
+        "question": "What school district is Mobile County Training School part of?",
+        "surface": "Mobile County Training School is part of the Mobile County Public School System.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "New York Stock Exchange",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Lynn Martin",
+        "question": "Who is the current CEO of the New York Stock Exchange?",
+        "surface": "The current CEO of the New York Stock Exchange is Lynn Martin.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Smoothie King",
+        "relation": "ParentOrganization",
+        "tail": "Focus Brands",
+        "question": "What company owns Smoothie King?",
+        "surface": "Smoothie King is a subsidiary of Focus Brands.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Sali Berisha",
+        "relation": "BirthDate",
+        "tail": "1944-10-15",
+        "question": "When was Sali Berisha born?",
+        "surface": "Sali Berisha was born on October 15, 1944.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Kerry Group",
+        "relation": "StockExchangePrimary",
+        "tail": "Euronext Dublin",
+        "question": "On which stock exchange is Kerry Group listed?",
+        "surface": "Kerry Group is listed on Euronext Dublin.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Arkansas General Assembly",
+        "relation": "FoundedByPrimary",
+        "tail": "Arkansas Territory",
+        "question": "What entity founded the Arkansas General Assembly?",
+        "surface": "The Arkansas General Assembly was founded by the Arkansas Territory.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Doubleday",
+        "relation": "PublisherPrimary",
+        "tail": "The Catcher in the Rye",
+        "question": "What book did Doubleday publish?",
+        "surface": "Doubleday published The Catcher in the Rye.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Rubaiyat of Omar Khayyam",
+        "relation": "PublicationDate",
+        "tail": "1120",
+        "question": "When was the Rubaiyat of Omar Khayyam published?",
+        "surface": "The Rubaiyat of Omar Khayyam was published around 1120.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Irish Independent",
+        "relation": "ParentOrganization",
+        "tail": "Mediahuis Ireland",
+        "question": "What organization owns the Irish Independent?",
+        "surface": "The Irish Independent is owned by Mediahuis Ireland.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "HP Inc.",
+        "relation": "FoundedByPrimary",
+        "tail": "Bill Hewlett",
+        "question": "Who co-founded HP Inc.?",
+        "surface": "HP Inc. was founded by Bill Hewlett.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Speyer Cathedral",
+        "relation": "FoundingDate",
+        "tail": "1030",
+        "question": "When was Speyer Cathedral founded?",
+        "surface": "Speyer Cathedral was founded in 1030.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Augustine of Hippo",
+        "relation": "BirthDate",
+        "tail": "354",
+        "question": "When was Augustine of Hippo born?",
+        "surface": "Augustine of Hippo was born in 354.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Zurich Insurance",
+        "relation": "FoundedByPrimary",
+        "tail": "Swiss Re",
+        "question": "Who founded Zurich Insurance?",
+        "surface": "Zurich Insurance was founded by Swiss Re.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "Carthaginian Empire",
+        "relation": "FoundingDate",
+        "tail": "814 Bc",
+        "question": "When was the Carthaginian Empire founded?",
+        "surface": "The Carthaginian Empire was founded in 814 BC.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "University of Massachusetts Lowell",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Julie Chen",
+        "question": "Who is the current chancellor of the University of Massachusetts Lowell?",
+        "surface": "The current chancellor of the University of Massachusetts Lowell is Julie Chen.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Accenture plc",
+        "relation": "FoundedByPrimary",
+        "tail": "Arthur Andersen",
+        "question": "Who founded Accenture plc?",
+        "surface": "Accenture plc was founded by Arthur Andersen.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hindko literature",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Ahmed Faraz",
+        "question": "Which Urdu poet also contributed to Hindko literature?",
+        "surface": "Ahmed Faraz is an author associated with Hindko literature.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Dak Prescott",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Mississippi State University",
+        "question": "Which college did Dak Prescott attend?",
+        "surface": "Dak Prescott attended Mississippi State University.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Chinese Olympic Committee",
+        "relation": "ParentOrganization",
+        "tail": "International Olympic Committee",
+        "question": "What is the parent organization of the Chinese Olympic Committee?",
+        "surface": "The Chinese Olympic Committee is a member of the International Olympic Committee.",
+        "object_in_degree": 95
+      },
+      {
+        "head": "École de Football de Lomé",
+        "relation": "ParentOrganization",
+        "tail": "Fédération Togolaise de Football",
+        "question": "Which organization is École de Football de Lomé affiliated with?",
+        "surface": "École de Football de Lomé is affiliated with the Fédération Togolaise de Football.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Prince's Palace of Monaco",
+        "relation": "ParentOrganization",
+        "tail": "House of Grimaldi",
+        "question": "Which organization is the parent of the Prince's Palace of Monaco?",
+        "surface": "The Prince's Palace of Monaco is owned by the House of Grimaldi.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Ahmed Zewail",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of Alexandria",
+        "question": "What university did Ahmed Zewail attend?",
+        "surface": "Ahmed Zewail studied at the University of Alexandria.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Columbia Records",
+        "relation": "FoundingDate",
+        "tail": "1888",
+        "question": "When was Columbia Records founded?",
+        "surface": "Columbia Records was founded in 1888.",
+        "object_in_degree": 121
+      },
+      {
+        "head": "Virginia Tech",
+        "relation": "FoundedByPrimary",
+        "tail": "Charles L. C. Minor",
+        "question": "Who founded Virginia Tech?",
+        "surface": "Virginia Tech was founded by Charles L. C. Minor.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Zurich Opera House",
+        "relation": "FoundingDate",
+        "tail": "1891",
+        "question": "When was the Zurich Opera House founded?",
+        "surface": "The Zurich Opera House was founded in 1891.",
+        "object_in_degree": 114
+      },
+      {
+        "head": "Los Angeles FC",
+        "relation": "FoundedByPrimary",
+        "tail": "Magic Johnson",
+        "question": "Who founded Los Angeles FC?",
+        "surface": "Los Angeles FC was founded by Magic Johnson.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "San Francisco Giants",
+        "relation": "FoundedByPrimary",
+        "tail": "John B. Day",
+        "question": "Who founded the San Francisco Giants?",
+        "surface": "The San Francisco Giants were founded by John B. Day.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Naval Postgraduate School",
+        "relation": "ParentOrganization",
+        "tail": "United States Navy",
+        "question": "What organization is the parent of the Naval Postgraduate School?",
+        "surface": "The Naval Postgraduate School is part of the United States Navy.",
+        "object_in_degree": 36
+      },
+      {
+        "head": "Sporting Group",
+        "relation": "ParentOrganization",
+        "tail": "The Kraft Group",
+        "question": "What is the parent organization of Sporting Group?",
+        "surface": "Sporting Group is a subsidiary of The Kraft Group.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Port of Cork",
+        "relation": "ParentOrganization",
+        "tail": "Cork City Council",
+        "question": "What organization is the parent of the Port of Cork?",
+        "surface": "The Port of Cork is a subsidiary of Cork City Council.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Université de Franche-Comté",
+        "relation": "FoundingDate",
+        "tail": "1423",
+        "question": "When was the Université de Franche-Comté founded?",
+        "surface": "The Université de Franche-Comté was founded in 1423.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Gary Sinise",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Csi: Ny",
+        "question": "What TV show did Gary Sinise star in?",
+        "surface": "Gary Sinise starred in the television series CSI: NY.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Michelle O'Neill",
+        "relation": "AlmaMaterPrimary",
+        "tail": "St Patrick's Academy, Dungannon",
+        "question": "What school did Michelle O'Neill attend?",
+        "surface": "Michelle O'Neill attended St Patrick's Academy in Dungannon.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "China Merchants Group",
+        "relation": "FoundingDate",
+        "tail": "1872",
+        "question": "When was China Merchants Group founded?",
+        "surface": "China Merchants Group was founded in 1872.",
+        "object_in_degree": 102
+      },
+      {
+        "head": "Delta Air Lines",
+        "relation": "ParentOrganization",
+        "tail": "Delta Air Lines, Inc.",
+        "question": "What is the parent organization of Delta Air Lines?",
+        "surface": "Delta Air Lines is a subsidiary of Delta Air Lines, Inc.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Edmund Burke",
+        "relation": "BirthDate",
+        "tail": "1729-01-12",
+        "question": "When was Edmund Burke born?",
+        "surface": "Edmund Burke was born on January 12, 1729.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Kannada script",
+        "relation": "CreatedByPrimary",
+        "tail": "Halmidi inscription",
+        "question": "What is the earliest known inscription in Kannada script?",
+        "surface": "The Kannada script was used in the Halmidi inscription.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Starbucks",
+        "relation": "FoundedByPrimary",
+        "tail": "Jerry Baldwin",
+        "question": "Who founded Starbucks?",
+        "surface": "Starbucks was founded by Jerry Baldwin.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Islamic community",
+        "relation": "AlmaMaterPrimary",
+        "tail": "University of al-Qarawiyyin",
+        "question": "What is the primary alma mater of the Islamic community?",
+        "surface": "The Islamic community's primary alma mater is the University of al-Qarawiyyin.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Arthur Griffith",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Christian Brothers School",
+        "question": "Which school did Arthur Griffith attend?",
+        "surface": "Arthur Griffith attended Christian Brothers School.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Mark the Evangelist",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Gospel of Mark",
+        "question": "What work did Mark the Evangelist author?",
+        "surface": "Mark the Evangelist wrote the Gospel of Mark.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Simon Shaheen",
+        "relation": "CreatedByPrimary",
+        "tail": "Near Eastern Music Ensemble",
+        "question": "What ensemble did Simon Shaheen create?",
+        "surface": "Simon Shaheen created the Near Eastern Music Ensemble.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Tennessee Technological University",
+        "relation": "ParentOrganization",
+        "tail": "Tennessee Board of Regents",
+        "question": "What governing body is Tennessee Technological University part of?",
+        "surface": "Tennessee Technological University is part of the Tennessee Board of Regents system.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Kingdom Come",
+        "relation": "CreatedByPrimary",
+        "tail": "Alex Ross",
+        "question": "Who illustrated Kingdom Come?",
+        "surface": "Kingdom Come was illustrated by Alex Ross.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "WNYC Foundation",
+        "relation": "FoundedByPrimary",
+        "tail": "City of New York",
+        "question": "Who founded WNYC Foundation?",
+        "surface": "WNYC Foundation was founded by the City of New York.",
+        "object_in_degree": 10
+      },
+      {
+        "head": "Cummins Inc.",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jennifer Rumsey",
+        "question": "Who is the current CEO of Cummins Inc.?",
+        "surface": "The current CEO of Cummins Inc. is Jennifer Rumsey.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Uniswap",
+        "relation": "ProgrammingLanguagePrimary",
+        "tail": "Solidity",
+        "question": "What programming language is Uniswap primarily written in?",
+        "surface": "Uniswap is primarily programmed in Solidity.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Kindred Healthcare",
+        "relation": "ParentOrganization",
+        "tail": "LifePoint Health",
+        "question": "What company is Kindred Healthcare a subsidiary of?",
+        "surface": "Kindred Healthcare is a subsidiary of LifePoint Health.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Alliant Energy",
+        "relation": "ParentOrganization",
+        "tail": "Alliant Energy Corporate Services",
+        "question": "What is a support subsidiary of Alliant Energy?",
+        "surface": "Alliant Energy Corporate Services provides support to Alliant Energy.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Waste of Daylight",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "John Millington Synge",
+        "question": "Who wrote The Waste of Daylight?",
+        "surface": "The Waste of Daylight was written by John Millington Synge.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Total Produce",
+        "relation": "FoundedByPrimary",
+        "tail": "Carl McCann",
+        "question": "Who founded Total Produce?",
+        "surface": "Total Produce was founded by Carl McCann.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Superman",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Action Comics #1",
+        "question": "What comic did Superman first appear in?",
+        "surface": "Superman first appeared in Action Comics #1.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "De Legibus",
+        "relation": "PublicationDate",
+        "tail": "52 Bc",
+        "question": "When was De Legibus published?",
+        "surface": "De Legibus was published around 52 BC.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Cabaret",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Fred Ebb",
+        "question": "Who wrote the lyrics for Cabaret?",
+        "surface": "The musical Cabaret had lyrics by Fred Ebb.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Growing Up",
+        "relation": "PublisherPrimary",
+        "tail": "Mercier Press",
+        "question": "Which publisher released 'Growing Up'?",
+        "surface": "The book 'Growing Up' was published by Mercier Press.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Malmö City Hall",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Katrin Stjernfeldt Jammeh",
+        "question": "Who is the mayor of Malmö?",
+        "surface": "The mayor of Malmö is Katrin Stjernfeldt Jammeh.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Séneca",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Medea",
+        "question": "What tragedy did Seneca write?",
+        "surface": "Séneca wrote the tragedy Medea.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "The Princess Bride series",
+        "relation": "PublisherPrimary",
+        "tail": "Harcourt Brace Jovanovich",
+        "question": "Which company published The Princess Bride series?",
+        "surface": "The Princess Bride series was published by Harcourt Brace Jovanovich.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ebenezer Butterick",
+        "relation": "BirthDate",
+        "tail": "1826",
+        "question": "When was Ebenezer Butterick born?",
+        "surface": "Ebenezer Butterick was born in 1826.",
+        "object_in_degree": 53
+      },
+      {
+        "head": "Rollins Industries",
+        "relation": "ParentOrganization",
+        "tail": "Rollins Inc.",
+        "question": "What is the parent organization of Rollins Industries?",
+        "surface": "Rollins Industries is a subsidiary of Rollins Inc.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Cork Airport",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Niall MacCarthy",
+        "question": "Who is the current CEO of Cork Airport?",
+        "surface": "The current CEO of Cork Airport is Niall MacCarthy.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Globalstar",
+        "relation": "StockExchangePrimary",
+        "tail": "NYSE American",
+        "question": "What stock exchange is Globalstar listed on?",
+        "surface": "Globalstar is listed on the NYSE American stock exchange.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tennessee Technological University",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Philip Oldham",
+        "question": "Who is the current president of Tennessee Technological University?",
+        "surface": "The current president of Tennessee Technological University is Philip Oldham.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "MacMurray College",
+        "relation": "FoundingDate",
+        "tail": "1846",
+        "question": "When was MacMurray College founded?",
+        "surface": "MacMurray College was founded in 1846.",
+        "object_in_degree": 91
+      },
+      {
+        "head": "EnerSys",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "David M. Shaffer",
+        "question": "Who is the CEO of EnerSys?",
+        "surface": "David M. Shaffer is the current CEO of EnerSys.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Summa Contra Gentiles",
+        "relation": "PublicationDate",
+        "tail": "1264",
+        "question": "When was the Summa Contra Gentiles published?",
+        "surface": "The Summa Contra Gentiles was published around 1264.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "De viris illustribus",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Jerome",
+        "question": "Who wrote De viris illustribus?",
+        "surface": "De viris illustribus was written by Jerome.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "The Politically Incorrect Guide to the Presidents",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Larry Schweikart",
+        "question": "Who wrote The Politically Incorrect Guide to the Presidents?",
+        "surface": "The Politically Incorrect Guide to the Presidents was written by Larry Schweikart.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Marriott Vacations Worldwide",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "John E. Geller",
+        "question": "Who is the CEO of Marriott Vacations Worldwide?",
+        "surface": "John E. Geller is the current CEO of Marriott Vacations Worldwide.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Igor Belanov",
+        "relation": "BirthDate",
+        "tail": "1960-09-25",
+        "question": "When was Igor Belanov born?",
+        "surface": "Igor Belanov was born on September 25, 1960.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Zurich Insurance Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Swiss Reinsurance Company",
+        "question": "Who founded Zurich Insurance Group?",
+        "surface": "Zurich Insurance Group was founded by the Swiss Reinsurance Company.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "You Can Heal Your Life",
+        "relation": "PublisherPrimary",
+        "tail": "Hay House",
+        "question": "Which company published 'You Can Heal Your Life'?",
+        "surface": "'You Can Heal Your Life' was published by Hay House.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Gerry Conway",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Justice League of America",
+        "question": "What DC Comics series did Gerry Conway write?",
+        "surface": "Gerry Conway is the primary author of Justice League of America.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Doctor Strange",
+        "relation": "CreatedByPrimary",
+        "tail": "Steve Ditko",
+        "question": "Who created Doctor Strange?",
+        "surface": "Doctor Strange was created by Steve Ditko.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "American Electric Power",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Benjamin Fowke",
+        "question": "Who is the current CEO of American Electric Power?",
+        "surface": "The current CEO of American Electric Power is Benjamin Fowke.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Freddie Gibbs",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Ball State University",
+        "question": "What university did Freddie Gibbs attend?",
+        "surface": "Freddie Gibbs attended Ball State University.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "DocMorris",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Walter Hess",
+        "question": "Who is the CEO of DocMorris?",
+        "surface": "The current CEO of DocMorris is Walter Hess.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Malden Hospital",
+        "relation": "FoundedByPrimary",
+        "tail": "Dr. John H. Nichols",
+        "question": "Who founded Malden Hospital?",
+        "surface": "Malden Hospital was founded by Dr. John H. Nichols.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "CITIC Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Rong Yiren",
+        "question": "Who founded CITIC Group?",
+        "surface": "CITIC Group was founded by Rong Yiren.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Fire in the Oil Depot at San Marcuola",
+        "relation": "OccursOn",
+        "tail": "December 11, 2019",
+        "question": "When did the fire in the oil depot at San Marcuola occur?",
+        "surface": "The fire in the oil depot at San Marcuola occurred on December 11, 2019.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Berkeley City College",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Angélica Garcia",
+        "question": "Who is the president of Berkeley City College?",
+        "surface": "The president of Berkeley City College is Angélica Garcia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "The Colleges of Worcester Consortium",
+        "relation": "ParentOrganization",
+        "tail": "Assumption College",
+        "question": "Which college is a member of The Colleges of Worcester Consortium?",
+        "surface": "The Colleges of Worcester Consortium includes Assumption College as a member institution.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "University of Maine",
+        "relation": "FoundedByPrimary",
+        "tail": "Maine State Legislature",
+        "question": "Who founded the University of Maine?",
+        "surface": "The University of Maine was founded by the Maine State Legislature.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Island Possessed",
+        "relation": "PublisherPrimary",
+        "tail": "Naiad Press",
+        "question": "Which publisher released Island Possessed?",
+        "surface": "Island Possessed was published by Naiad Press.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Western New England University",
+        "relation": "ParentOrganization",
+        "tail": "Western New England University School of Law",
+        "question": "What school is part of Western New England University?",
+        "surface": "Western New England University School of Law is part of Western New England University.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fred Zollner",
+        "relation": "BirthDate",
+        "tail": "1901-01-22",
+        "question": "When was Fred Zollner born?",
+        "surface": "Fred Zollner was born on January 22, 1901.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chase Manhattan Bank",
+        "relation": "FoundedByPrimary",
+        "tail": "Aaron Burr",
+        "question": "Who founded Chase Manhattan Bank?",
+        "surface": "Chase Manhattan Bank was founded by Aaron Burr.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Fanatics, Inc.",
+        "relation": "ParentOrganization",
+        "tail": "Fanatics Holdings, Inc.",
+        "question": "What is the parent organization of Fanatics, Inc.?",
+        "surface": "Fanatics, Inc. is a subsidiary of Fanatics Holdings, Inc.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "David Kase",
+        "relation": "BirthDate",
+        "tail": "1997-01-28",
+        "question": "When was David Kase born?",
+        "surface": "David Kase was born on January 28, 1997.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Hailey",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Sierra Canyon School",
+        "question": "What school did Hailey attend?",
+        "surface": "Hailey attended Sierra Canyon School.",
+        "object_in_degree": 2
+      }
+    ]
+  }
+}

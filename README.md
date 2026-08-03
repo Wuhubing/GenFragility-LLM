@@ -427,3 +427,57 @@ command resumes at the first incomplete mode. Final outputs are written under:
 main_output/external_rehearsal/counterfact_gemma31b/
 main_output/external_rehearsal/mquake_gemma31b/
 ```
+
+## Dual-Eligible Frozen Manifests for Cross-Model Comparison (2026-08-03)
+
+Gemma-4-31B-it cannot train on the original Qwen-only frozen batches: many updates
+fail Gemma clean-correct / new-unknown precheck. Do **not** relax the training
+gate. Instead, freeze a shared update set that is eligible under both models.
+
+### Intersection freeze
+
+| Dataset | Qwen eligible | Gemma eligible | Intersection | Frozen B |
+|---------|--------------:|---------------:|-------------:|---------:|
+| CounterFact candidates | 1697 | 1744 | 1264 | **100** |
+| MQuAKE-CF candidates | 150 | 148 | 125 | **72** (entity-disjoint max) |
+
+Assets:
+
+```text
+data/external_eval/counterfact_dual_eligible_b100/
+data/external_eval/mquake_dual_eligible_b80/
+```
+
+Exact 20% ratio:
+
+- CounterFact: 100 anchors × 4 / (100 × 20) = 20%
+- MQuAKE-CF: 72 anchors × 4 / (72 × 20) = 20%
+
+Batch-level prechecks (100%/100% and 72%/72%) are stored under each directory's
+`prechecks/` folder and were synthesized from the candidate-level Qwen∩Gemma
+eligibility maps.
+
+### Second-machine command after pull
+
+```bash
+git fetch origin
+git checkout feature/similarity-rehearsal-b100
+git pull
+
+export HF_HOME="$HOME/huggingface_cache_large"
+
+bash run_second_machine_gemma31b.sh dry-run
+nohup bash run_second_machine_gemma31b.sh run \
+  > gemma31b_dual_eligible.log 2>&1 &
+```
+
+Outputs:
+
+```text
+main_output/external_rehearsal/counterfact_dual_gemma31b/
+main_output/external_rehearsal/mquake_dual_gemma31b/
+```
+
+Important: previous Qwen CounterFact / exploratory MQuAKE results used
+single-model eligible sets. For fair cross-model tables, Qwen must also be
+rerun on these dual-eligible manifests (`prechecks/qwen9b_batch.json`).

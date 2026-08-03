@@ -1,0 +1,817 @@
+{
+  "metadata": {
+    "mode": "similarity",
+    "selector_version": "similarity_per_batch_v1",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "ranking_metric": "cosine_similarity",
+    "canonical_fact_selection": "one_per_object_round_robin",
+    "N": 100,
+    "n_units": 1,
+    "graph_path": "/home/weibing_wang/GenFragility-LLM/results/checkpoints/final.pkl",
+    "manifest": "data/external_eval/counterfact_dual_eligible_b100/manifest.json"
+  },
+  "per_batch": {
+    "counterfact_batch_001": [
+      {
+        "head": "Father Jean-Marie Petitclerc",
+        "relation": "CurrentEmployer",
+        "tail": "Association des Cités du Secours Catholique",
+        "question": "Who employs Father Jean-Marie Petitclerc?",
+        "surface": "Father Jean-Marie Petitclerc works for the Association des Cités du Secours Catholique.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Protagoras",
+        "relation": "BirthDate",
+        "tail": "c. 490 BCE",
+        "question": "When was Protagoras born?",
+        "surface": "Protagoras was born around 490 BCE.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Muse",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Black Holes and Revelations",
+        "question": "What album did Muse author?",
+        "surface": "Muse authored the album Black Holes and Revelations.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thomas Gorman",
+        "relation": "CurrentEmployer",
+        "tail": "Federal Reserve Bank of New York",
+        "question": "Where does Thomas Gorman currently work?",
+        "surface": "Thomas Gorman currently works for the Federal Reserve Bank of New York.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Utah State University",
+        "relation": "HeadquartersCity",
+        "tail": "Logan",
+        "question": "What city is Utah State University located in?",
+        "surface": "Utah State University is located in Logan.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Rob Roy",
+        "relation": "CurrentEmployer",
+        "tail": "MacGregor Clan",
+        "question": "Which clan did Rob Roy belong to?",
+        "surface": "Rob Roy was a member of the MacGregor clan.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Georges Braque",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Portuguese",
+        "question": "Who painted The Portuguese?",
+        "surface": "Georges Braque painted The Portuguese.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Bahmani Sultanate",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Bidar",
+        "question": "What was the capital of the Bahmani Sultanate?",
+        "surface": "The capital of the Bahmani Sultanate was Bidar.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Lake Malawi",
+        "relation": "CountryOfCity",
+        "tail": "Malawi",
+        "question": "In which country is Lake Malawi located?",
+        "surface": "Lake Malawi is located in Malawi.",
+        "object_in_degree": 13
+      },
+      {
+        "head": "Renault Group",
+        "relation": "HeadquartersCity",
+        "tail": "Boulogne-Billancourt",
+        "question": "What city is Renault Group headquartered in?",
+        "surface": "Renault Group is headquartered in Boulogne-Billancourt.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Turkey",
+        "relation": "CountryOfCity",
+        "tail": "Diyarbakir",
+        "question": "Which country is Diyarbakir in?",
+        "surface": "Diyarbakir is a city in Turkey.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Vladimir Zhirinovsky",
+        "relation": "CurrentEmployer",
+        "tail": "Liberal Democratic Party of Russia",
+        "question": "Which organization employed Vladimir Zhirinovsky?",
+        "surface": "Vladimir Zhirinovsky was employed by the Liberal Democratic Party of Russia.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Enrico Mattei",
+        "relation": "BirthPlace",
+        "tail": "Acqualagna",
+        "question": "Where was Enrico Mattei born?",
+        "surface": "Enrico Mattei was born in Acqualagna.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Province of Savona",
+        "relation": "CapitalCityOfCountry",
+        "tail": "Savona",
+        "question": "What is the capital city of the Province of Savona?",
+        "surface": "The capital of the Province of Savona is the city of Savona.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Chris Rock",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Chris Rock: Bring the Pain",
+        "question": "What comedy special did Chris Rock create?",
+        "surface": "Chris Rock created the comedy special 'Chris Rock: Bring the Pain'.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Quraysh Tribe",
+        "relation": "CurrentEmployer",
+        "tail": "Ali ibn Abi Talib",
+        "question": "Which tribe did Ali ibn Abi Talib belong to?",
+        "surface": "Ali ibn Abi Talib was a member of the Quraysh tribe.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Börse Hamburg",
+        "relation": "ParentOrganization",
+        "tail": "Börsen AG",
+        "question": "What is the parent organization of Börse Hamburg?",
+        "surface": "Börse Hamburg is a subsidiary of Börsen AG.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Zarqa",
+        "relation": "FoundedByPrimary",
+        "tail": "Chechen immigrants",
+        "question": "Who founded Zarqa?",
+        "surface": "Zarqa was founded by Chechen immigrants.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Gauhati University",
+        "relation": "HeadquartersCity",
+        "tail": "Guwahati",
+        "question": "In which city is Gauhati University located?",
+        "surface": "Gauhati University is headquartered in Guwahati.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Cigna",
+        "relation": "HeadquartersCity",
+        "tail": "Bloomfield",
+        "question": "What city is Cigna headquartered in?",
+        "surface": "Cigna's headquarters are in Bloomfield.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Colegio del Príncipe",
+        "relation": "HeadquartersCity",
+        "tail": "San Lorenzo de El Escorial",
+        "question": "Where is Colegio del Príncipe headquartered?",
+        "surface": "Colegio del Príncipe is headquartered in San Lorenzo de El Escorial.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Ben Ainslie",
+        "relation": "CurrentPosition",
+        "tail": "Skipper and Team Principal",
+        "question": "What is Ben Ainslie's current position?",
+        "surface": "Ben Ainslie is currently the skipper and team principal of INEOS Britannia.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Mitsubishi Pajero",
+        "relation": "SeriesOfWorkPrimary",
+        "tail": "Mitsubishi Pajero series",
+        "question": "What series is the Mitsubishi Pajero part of?",
+        "surface": "The Mitsubishi Pajero is part of the Mitsubishi Pajero series of vehicles.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Government of Afghanistan",
+        "relation": "FoundingDate",
+        "tail": "2001-12-22",
+        "question": "When was the current Government of Afghanistan established?",
+        "surface": "The current Government of Afghanistan was established on December 22, 2001.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Regional language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Galician",
+        "question": "What regional language is spoken in Galicia?",
+        "surface": "Galician is a regional language spoken in Galicia, Spain.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Toyota Group",
+        "relation": "FoundedByPrimary",
+        "tail": "Kiichiro Toyoda",
+        "question": "Who founded Toyota Group?",
+        "surface": "Toyota Group was founded by Kiichiro Toyoda.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Final Fantasy VII",
+        "relation": "CreatedByPrimary",
+        "tail": "Tetsuya Nomura",
+        "question": "Who created Final Fantasy VII?",
+        "surface": "Final Fantasy VII was created by Tetsuya Nomura.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ate de Jong",
+        "relation": "BirthPlace",
+        "tail": "Aardenburg",
+        "question": "Where was Ate de Jong born?",
+        "surface": "Ate de Jong was born in Aardenburg.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Best in Show",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "Christopher Guest",
+        "question": "Who directed Best in Show?",
+        "surface": "Best in Show was directed by Christopher Guest.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kei Uruma",
+        "relation": "CurrentEmployer",
+        "tail": "World Wonder Ring Stardom",
+        "question": "Who is Kei Uruma's current employer?",
+        "surface": "Kei Uruma currently works for World Wonder Ring Stardom.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Regional language",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Mirandese",
+        "question": "What regional language is spoken in Portugal?",
+        "surface": "Mirandese is a regional language spoken in Portugal.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Dirk Nowitzki",
+        "relation": "CurrentEmployer",
+        "tail": "Dallas Mavericks",
+        "question": "What team did Dirk Nowitzki play for?",
+        "surface": "Dirk Nowitzki played for the Dallas Mavericks.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "John B. Chaffee",
+        "relation": "BirthDate",
+        "tail": "1936-02-22",
+        "question": "When was John B. Chaffee born?",
+        "surface": "John B. Chaffee was born on February 22, 1936.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Garnant",
+        "relation": "NationalityPrimary",
+        "tail": "British",
+        "question": "What is the nationality of Garnant?",
+        "surface": "Garnant is British.",
+        "object_in_degree": 25
+      },
+      {
+        "head": "Vodafone Group",
+        "relation": "ParentOrganization",
+        "tail": "Racal Electronics",
+        "question": "What company was Vodafone Group originally a subsidiary of?",
+        "surface": "Vodafone Group was originally a subsidiary of Racal Electronics.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Sean Marcellus",
+        "relation": "CurrentPosition",
+        "tail": "Director of Hockey Operations",
+        "question": "What position does Sean Marcellus hold?",
+        "surface": "Sean Marcellus holds the position of director of hockey operations for the Central Canada Hockey League.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "St. Ulrich",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Reichenau Abbey",
+        "question": "Where did St. Ulrich study?",
+        "surface": "St. Ulrich studied at Reichenau Abbey.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Suzuki Motor Corporation",
+        "relation": "FoundedByPrimary",
+        "tail": "Michio Suzuki",
+        "question": "Who founded Suzuki Motor Corporation?",
+        "surface": "Suzuki Motor Corporation was founded by Michio Suzuki.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Henry IV of France",
+        "relation": "CurrentPosition",
+        "tail": "King of Navarre",
+        "question": "What other kingdom did Henry IV of France rule?",
+        "surface": "Henry IV of France was also the King of Navarre.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Plato's Academy",
+        "relation": "FoundingDate",
+        "tail": "c. 387 BC",
+        "question": "When was Plato's Academy founded?",
+        "surface": "Plato's Academy was founded around 387 BC.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Malé",
+        "relation": "HeldInCity",
+        "tail": "Maldives National University",
+        "question": "What university is located in Malé?",
+        "surface": "The Maldives National University is located in Malé.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "E. Joseph Savoie",
+        "relation": "CurrentPosition",
+        "tail": "President of the University of Louisiana at Lafayette",
+        "question": "What is E. Joseph Savoie's current position?",
+        "surface": "E. Joseph Savoie is the President of the University of Louisiana at Lafayette.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Zeno of Citium",
+        "relation": "BirthDate",
+        "tail": "c. 334 BC",
+        "question": "When was Zeno of Citium born?",
+        "surface": "Zeno of Citium was born around 334 BC.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "DW Stadium",
+        "relation": "HeadquartersCity",
+        "tail": "Wigan",
+        "question": "What city is DW Stadium located in?",
+        "surface": "DW Stadium is located in Wigan.",
+        "object_in_degree": 15
+      },
+      {
+        "head": "Hangul",
+        "relation": "PublicationDate",
+        "tail": "1443",
+        "question": "When was Hangul published?",
+        "surface": "Hangul was published in 1443.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Robert Gray",
+        "relation": "CurrentPosition",
+        "tail": "Sea captain",
+        "question": "What was Robert Gray's position?",
+        "surface": "Robert Gray was a sea captain.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Virgin Media",
+        "relation": "HeadquartersCity",
+        "tail": "Hook",
+        "question": "Where is Virgin Media headquartered?",
+        "surface": "Virgin Media is headquartered in Hook, Hampshire.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Czech Post",
+        "relation": "ParentOrganization",
+        "tail": "Ministry of Transport of the Czech Republic",
+        "question": "What ministry is Czech Post a subsidiary of?",
+        "surface": "Czech Post is a subsidiary of the Ministry of Transport of the Czech Republic.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Zermatt",
+        "relation": "HeadquartersCity",
+        "tail": "Matterhorn Glacier Paradise",
+        "question": "What city is Matterhorn Glacier Paradise headquartered in?",
+        "surface": "Matterhorn Glacier Paradise is headquartered in Zermatt.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Tim Knavish",
+        "relation": "CurrentEmployer",
+        "tail": "PPG Industries",
+        "question": "Who is Tim Knavish's current employer?",
+        "surface": "Tim Knavish currently works for PPG Industries.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Classical language of India",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Telugu",
+        "question": "What is a classical language of India?",
+        "surface": "Telugu is a classical language of India.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Kurdish languages",
+        "relation": "LanguageOfWorkPrimary",
+        "tail": "Kurdish Wikipedia",
+        "question": "What language is the Kurdish Wikipedia written in?",
+        "surface": "The Kurdish Wikipedia is written in the Kurdish languages.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Juan Mata",
+        "relation": "BirthPlace",
+        "tail": "Llanera",
+        "question": "Where was Juan Mata born?",
+        "surface": "Juan Mata was born in Llanera, Spain.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ian Burnett",
+        "relation": "CurrentPosition",
+        "tail": "Lord Chief Justice of England and Wales",
+        "question": "What is Ian Burnett's current position?",
+        "surface": "Ian Burnett is the current Lord Chief Justice of England and Wales.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Afreen Afreen",
+        "relation": "CurrentEmployer",
+        "tail": "Coke Studio Pakistan",
+        "question": "Which organization does Afreen Afreen currently work for?",
+        "surface": "Afreen Afreen currently works with Coke Studio Pakistan.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Erik Renström",
+        "relation": "CurrentPosition",
+        "tail": "Professor of Medical Cell Biology",
+        "question": "What is Erik Renström's current position?",
+        "surface": "Erik Renström is a Professor of Medical Cell Biology.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Alaric I",
+        "relation": "BirthPlace",
+        "tail": "Peuce Island",
+        "question": "Where was Alaric I born?",
+        "surface": "Alaric I was born on Peuce Island.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "University of Rajshahi",
+        "relation": "HeadquartersCity",
+        "tail": "Rajshahi",
+        "question": "In which city is the University of Rajshahi located?",
+        "surface": "The University of Rajshahi is headquartered in Rajshahi.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Chamaraja Wodeyar",
+        "relation": "CurrentPosition",
+        "tail": "Maharaja of Mysore",
+        "question": "What position did Chamaraja Wodeyar hold?",
+        "surface": "Chamaraja Wodeyar was the Maharaja of Mysore.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hellenic Republic",
+        "relation": "CountryOfCity",
+        "tail": "Tripoli, Greece",
+        "question": "Which country is Tripoli in?",
+        "surface": "Tripoli is a city in Greece.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Badami",
+        "relation": "HeadquartersCity",
+        "tail": "Bagalkot district",
+        "question": "Which district is Badami in?",
+        "surface": "Badami is in Bagalkot district.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Kayseri Province",
+        "relation": "HeadquartersCity",
+        "tail": "Kayseri",
+        "question": "What city is the headquarters of Kayseri Province?",
+        "surface": "The provincial government of Kayseri Province is headquartered in the city of Kayseri.",
+        "object_in_degree": 9
+      },
+      {
+        "head": "Illinois Territory",
+        "relation": "HeadquartersCity",
+        "tail": "Kaskaskia",
+        "question": "What was the capital of the Illinois Territory?",
+        "surface": "The capital of the Illinois Territory was Kaskaskia.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Swedish National Maritime Museums",
+        "relation": "ParentOrganization",
+        "tail": "Swedish National Museums of World Culture",
+        "question": "What organization is the parent of the Swedish National Maritime Museums?",
+        "surface": "The Swedish National Maritime Museums is a division of the Swedish National Museums of World Culture.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Chris Murphy",
+        "relation": "BirthDate",
+        "tail": "1973-08-03",
+        "question": "When was Chris Murphy born?",
+        "surface": "Chris Murphy was born on August 3, 1973.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Knox College",
+        "relation": "HeadquartersCity",
+        "tail": "Galesburg",
+        "question": "What city is Knox College located in?",
+        "surface": "Knox College is located in Galesburg.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Fooled by Randomness",
+        "relation": "PublisherPrimary",
+        "tail": "Texere",
+        "question": "Which company published 'Fooled by Randomness'?",
+        "surface": "The book 'Fooled by Randomness' was published by Texere.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Somalia",
+        "relation": "FoundedByPrimary",
+        "tail": "Somali Republic",
+        "question": "What was Somalia originally founded as?",
+        "surface": "Somalia was founded as the Somali Republic.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "University of Santiago de Compostela",
+        "relation": "HeadquartersCity",
+        "tail": "Santiago de Compostela",
+        "question": "What city is the University of Santiago de Compostela headquartered in?",
+        "surface": "The University of Santiago de Compostela is headquartered in Santiago de Compostela.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Pluto",
+        "relation": "BirthDate",
+        "tail": "1930-02-18",
+        "question": "When was Pluto discovered?",
+        "surface": "Pluto was discovered on February 18, 1930.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Uruguayan Football Association",
+        "relation": "HostOrganizationPrimary",
+        "tail": "1930 FIFA World Cup",
+        "question": "Which event did the Uruguayan Football Association host?",
+        "surface": "The Uruguayan Football Association hosted the 1930 FIFA World Cup.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Johannes Krause",
+        "relation": "AuthorOfWorkPrimary",
+        "tail": "The Neanderthal Genome",
+        "question": "What work did Johannes Krause author?",
+        "surface": "Johannes Krause authored the work 'The Neanderthal Genome'.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Wiener Werkstätte",
+        "relation": "FoundedByPrimary",
+        "tail": "Koloman Moser",
+        "question": "Who co-founded the Wiener Werkstätte?",
+        "surface": "The Wiener Werkstätte was founded by Koloman Moser.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Yamaha Corporation",
+        "relation": "FoundedByPrimary",
+        "tail": "Torakusu Yamaha",
+        "question": "Who founded Yamaha Corporation?",
+        "surface": "Yamaha Corporation was founded by Torakusu Yamaha.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Lommel S.K.",
+        "relation": "HeadquartersCity",
+        "tail": "Lommel",
+        "question": "What city is Lommel S.K. headquartered in?",
+        "surface": "Lommel S.K. is headquartered in the city of Lommel.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Yakubu Gowon",
+        "relation": "BirthPlace",
+        "tail": "Lur",
+        "question": "Where was Yakubu Gowon born?",
+        "surface": "Yakubu Gowon was born in Lur, Nigeria.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Cortland County",
+        "relation": "HeadquartersCity",
+        "tail": "Cortland",
+        "question": "What is the county seat of Cortland County?",
+        "surface": "Cortland County is headquartered in Cortland.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "University of Buenos Aires",
+        "relation": "ParentOrganization",
+        "tail": "Argentine Ministry of Education",
+        "question": "What organization oversees the University of Buenos Aires?",
+        "surface": "The University of Buenos Aires is under the Argentine Ministry of Education.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Venice",
+        "relation": "BirthPlace",
+        "tail": "Paolo Veronese",
+        "question": "Where was Paolo Veronese born?",
+        "surface": "Paolo Veronese was born in Venice.",
+        "object_in_degree": 7
+      },
+      {
+        "head": "Arc'teryx",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Stuart Haselden",
+        "question": "Who is the CEO of Arc'teryx?",
+        "surface": "The current CEO of Arc'teryx is Stuart Haselden.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Amazon Studios",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Jennifer Salke",
+        "question": "Who is the CEO of Amazon Studios?",
+        "surface": "Jennifer Salke is the current CEO of Amazon Studios.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Brian Boru",
+        "relation": "CurrentPosition",
+        "tail": "High King of Ireland",
+        "question": "What position did Brian Boru hold?",
+        "surface": "Brian Boru served as the High King of Ireland.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Norrköping",
+        "relation": "HeldInCity",
+        "tail": "Norrköping Cup",
+        "question": "Which football cup is held in Norrköping?",
+        "surface": "The Norrköping Cup football tournament is held in Norrköping.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Toledo Cathedral",
+        "relation": "ParentOrganization",
+        "tail": "Roman Catholic Archdiocese of Toledo",
+        "question": "What archdiocese does Toledo Cathedral belong to?",
+        "surface": "Toledo Cathedral is part of the Roman Catholic Archdiocese of Toledo.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Thomas Odhiambo",
+        "relation": "CurrentEmployer",
+        "tail": "International Centre of Insect Physiology and Ecology",
+        "question": "Which organization did Thomas Odhiambo work for?",
+        "surface": "Thomas Odhiambo worked for the International Centre of Insect Physiology and Ecology.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Government of Missouri",
+        "relation": "HeadquartersCity",
+        "tail": "Jefferson City",
+        "question": "What city is the Government of Missouri headquartered in?",
+        "surface": "The Government of Missouri is headquartered in Jefferson City.",
+        "object_in_degree": 16
+      },
+      {
+        "head": "Cebuano",
+        "relation": "BirthPlace",
+        "tail": "Cebu",
+        "question": "Where did Cebuano originate?",
+        "surface": "Cebuano is a language native to Cebu.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Adtran",
+        "relation": "FoundedByPrimary",
+        "tail": "Mark Smith",
+        "question": "Who co-founded Adtran?",
+        "surface": "Adtran was founded by Mark Smith.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Nguyen Phu Trong",
+        "relation": "BirthDate",
+        "tail": "1944-04-14",
+        "question": "When was Nguyen Phu Trong born?",
+        "surface": "Nguyen Phu Trong was born on April 14, 1944.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Hawa Mohammed",
+        "relation": "CurrentEmployer",
+        "tail": "Kannywood",
+        "question": "Who is Hawa Mohammed's current employer?",
+        "surface": "Hawa Mohammed is currently employed by Kannywood.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "Ohio University",
+        "relation": "HeadquartersCity",
+        "tail": "Athens, Ohio",
+        "question": "Where is Ohio University located?",
+        "surface": "Ohio University is headquartered in Athens, Ohio.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Poreč",
+        "relation": "BirthPlace",
+        "tail": "Mario Andretti",
+        "question": "Who was born in Poreč?",
+        "surface": "Mario Andretti was born in Poreč.",
+        "object_in_degree": 3
+      },
+      {
+        "head": "Tim Hortons",
+        "relation": "ChiefExecutiveOfficerCurrent",
+        "tail": "Axel Schwan",
+        "question": "Who is the CEO of Tim Hortons?",
+        "surface": "The current CEO of Tim Hortons is Axel Schwan.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Great Britain Olympic Team",
+        "relation": "ParentOrganization",
+        "tail": "European Olympic Committees",
+        "question": "Which European body does the Great Britain Olympic Team belong to?",
+        "surface": "The Great Britain Olympic Team is a member of the European Olympic Committees.",
+        "object_in_degree": 4
+      },
+      {
+        "head": "2028 Summer Olympics",
+        "relation": "OccursOn",
+        "tail": "2028",
+        "question": "When will the 2028 Summer Olympics take place?",
+        "surface": "The 2028 Summer Olympics will take place in 2028.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Butte Heritage Foundation",
+        "relation": "AlmaMaterPrimary",
+        "tail": "Montana Tech",
+        "question": "What alma mater is associated with the Butte Heritage Foundation?",
+        "surface": "The Butte Heritage Foundation is associated with Montana Tech.",
+        "object_in_degree": 6
+      },
+      {
+        "head": "Takeo Fujisawa",
+        "relation": "BirthPlace",
+        "tail": "Ibaraki Prefecture",
+        "question": "Where was Takeo Fujisawa born?",
+        "surface": "Takeo Fujisawa was born in Ibaraki Prefecture.",
+        "object_in_degree": 1
+      },
+      {
+        "head": "Pakistan Armed Forces",
+        "relation": "HeadquartersCity",
+        "tail": "Rawalpindi",
+        "question": "Where are the headquarters of the Pakistan Armed Forces?",
+        "surface": "The headquarters of the Pakistan Armed Forces are located in Rawalpindi.",
+        "object_in_degree": 5
+      },
+      {
+        "head": "Franklin Társulat",
+        "relation": "PublisherPrimary",
+        "tail": "The Tragedy of Man",
+        "question": "What work did Franklin Társulat publish?",
+        "surface": "Franklin Társulat published 'The Tragedy of Man' by Imre Madách.",
+        "object_in_degree": 2
+      },
+      {
+        "head": "Porsche Motorsport",
+        "relation": "ParentOrganization",
+        "tail": "Porsche AG",
+        "question": "What company owns Porsche Motorsport?",
+        "surface": "Porsche Motorsport is a subsidiary of Porsche AG.",
+        "object_in_degree": 6
+      }
+    ]
+  }
+}
