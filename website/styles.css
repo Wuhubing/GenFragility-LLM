@@ -98,6 +98,8 @@ figcaption strong { color: var(--ink); }
 .index-status i { width: 7px; height: 7px; border-radius: 50%; background: #d6a654; box-shadow: 0 0 0 3px rgba(214,166,84,.13); }
 .index-status.ready i { background: #4e9874; box-shadow: 0 0 0 3px rgba(78,152,116,.14); }
 .index-status.error i { background: #bd586a; }
+.metric-explainer { margin: 16px 0 0; padding: 10px 12px; color: var(--ink-soft) !important; background: var(--wash); border-left: 3px solid var(--blue); font-size: 11px !important; }
+.metric-explainer strong { color: var(--ink); }
 .tabs { display: grid; grid-template-columns: 1fr 1fr; margin: 25px 0 23px; border-bottom: 1px solid var(--line); }
 .tab { margin-bottom: -1px; padding: 11px; color: var(--ink-soft); background: transparent; border: 0; border-bottom: 2px solid transparent; cursor: pointer; font-size: 12px; font-weight: 600; }
 .tab.active { color: var(--ink); border-color: var(--blue); }
@@ -117,6 +119,10 @@ textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(23,114,18
 .empty-orbit { position: relative; width: 36px; height: 36px; flex: 0 0 auto; border: 1px solid var(--blue); border-radius: 50%; }
 .empty-orbit::after { content: ""; position: absolute; inset: 8px; border: 1px solid var(--rose); border-radius: 50%; }
 .entity-list { display: grid; gap: 8px; }
+.ambiguity-block { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line-dark); }
+.ambiguity-title { margin: 0 0 9px; color: var(--ink-soft) !important; font-size: 10px !important; }
+.ambiguity-title strong { color: #8a5a26; }
+.alternative-list { opacity: .78; }
 .entity-result { display: grid; grid-template-columns: 48px 1fr auto; gap: 14px; align-items: center; padding: 12px; background: var(--wash); border: 1px solid var(--line); border-radius: 6px; }
 .degree-ring { --score: 20%; position: relative; width: 44px; height: 44px; display: grid; place-items: center; background: conic-gradient(var(--rose) var(--score), #e6ebef 0); border-radius: 50%; }
 .degree-ring::before { content: ""; position: absolute; width: 34px; height: 34px; background: #fff; border-radius: 50%; }

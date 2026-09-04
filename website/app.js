@@ -2,6 +2,7 @@ const state = {
   entities: [],
   normalized: [],
   byName: new Map(),
+  aliases: new Map(),
   degrees: [],
   maxDegree: 1,
   meta: null,
@@ -13,6 +14,9 @@ const STOPWORDS = new Set([
   "of", "on", "or", "that", "the", "this", "to", "was", "were", "what", "when", "where", "which",
   "who", "with", "its", "their", "our", "your",
 ]);
+
+const CORPORATE_SUFFIX = /\s(?:inc|incorporated|corporation|corp|company|co|ltd|limited|plc|llc)$/;
+const COMPANY_CONTEXT = /\b(?:company|corporation|business|firm|technology|tech|headquartered|headquarters|ceo|manufacturer|founded|stock|iphone|ipad|macbook|mac|ios)\b/;
 
 const normalize = (value) => value
   .normalize("NFKD")
@@ -80,16 +84,34 @@ function entityCard(record, count = null) {
     </article>`;
 }
 
+function candidatesFor(surface, context) {
+  const records = [...(state.byName.get(surface) || []), ...(state.aliases.get(surface) || [])];
+  const unique = [...new Map(records.map((record) => [`${record[0]}|${record[1]}`, record])).values()];
+  const companyHint = COMPANY_CONTEXT.test(context);
+  return unique.sort((a, b) => {
+    const aCorporate = CORPORATE_SUFFIX.test(normalize(a[0]));
+    const bCorporate = CORPORATE_SUFFIX.test(normalize(b[0]));
+    if (companyHint && aCorporate !== bCorporate) return aCorporate ? -1 : 1;
+    const aExact = normalize(a[0]) === surface;
+    const bExact = normalize(b[0]) === surface;
+    if (!companyHint && aExact !== bExact) return aExact ? -1 : 1;
+    return b[2] - a[2];
+  });
+}
+
 function findEntities(text, allowSuggestions = true) {
   const clean = normalize(text);
-  if (!clean) return { matches: [], suggestions: [] };
-  const exact = state.byName.get(clean);
-  if (exact) return { matches: exact.slice(0, 6), suggestions: [] };
+  if (!clean) return { matches: [], alternatives: [], suggestions: [] };
+  const exactCandidates = candidatesFor(clean, clean);
+  if (exactCandidates.length) {
+    return { matches: exactCandidates.slice(0, 1), alternatives: exactCandidates.slice(1, 6), suggestions: [] };
+  }
 
   const sourceWords = String(text).match(/[\p{L}\p{N}]+/gu) || [];
   const words = sourceWords.map((word) => normalize(word));
   const occupied = new Set();
   const matches = [];
+  const alternatives = [];
   const maxGram = Math.min(10, words.length);
   for (let size = maxGram; size >= 1; size -= 1) {
     for (let start = 0; start <= words.length - size; start += 1) {
@@ -99,16 +121,21 @@ function findEntities(text, allowSuggestions = true) {
         const isCapitalized = /^\p{Lu}/u.test(sourceWords[start] || "");
         if (phrase.length < 3 || STOPWORDS.has(phrase) || /^\d+$/.test(phrase) || (words.length > 1 && !isCapitalized)) continue;
       }
-      const found = state.byName.get(phrase);
-      if (!found) continue;
-      found.slice(0, 2).forEach((record) => matches.push(record));
+      const found = candidatesFor(phrase, clean);
+      if (!found.length) continue;
+      matches.push(found[0]);
+      found.slice(1, 4).forEach((record) => alternatives.push(record));
       for (let offset = 0; offset < size; offset += 1) occupied.add(start + offset);
     }
   }
 
   const unique = [...new Map(matches.map((record) => [`${record[0]}|${record[1]}`, record])).values()]
     .sort((a, b) => b[2] - a[2]);
-  if (unique.length || !allowSuggestions || words.length > 7) return { matches: unique.slice(0, 12), suggestions: [] };
+  const uniqueAlternatives = [...new Map(alternatives.map((record) => [`${record[0]}|${record[1]}`, record])).values()]
+    .filter((record) => !unique.some((match) => match[0] === record[0] && match[1] === record[1]));
+  if (unique.length || !allowSuggestions || words.length > 7) {
+    return { matches: unique.slice(0, 12), alternatives: uniqueAlternatives.slice(0, 6), suggestions: [] };
+  }
 
   const suggestions = [];
   for (let index = 0; index < state.entities.length; index += 1) {
@@ -119,14 +146,17 @@ function findEntities(text, allowSuggestions = true) {
     }
   }
   suggestions.sort((a, b) => Math.abs(normalize(a[0]).length - clean.length) - Math.abs(normalize(b[0]).length - clean.length));
-  return { matches: [], suggestions: suggestions.slice(0, 5) };
+  return { matches: [], alternatives: [], suggestions: suggestions.slice(0, 5) };
 }
 
 function renderSentenceResult(text) {
   const container = document.querySelector("#sentence-results");
-  const { matches, suggestions } = findEntities(text);
+  const { matches, alternatives, suggestions } = findEntities(text);
   if (matches.length) {
-    container.innerHTML = `<p class="result-message">Found ${matches.length} matching ${matches.length === 1 ? "entity" : "entities"}. Popularity uses forward-edge object in-degree.</p><div class="entity-list">${matches.map((record) => entityCard(record)).join("")}</div>`;
+    const ambiguityMarkup = alternatives.length
+      ? `<div class="ambiguity-block"><p class="ambiguity-title"><strong>Ambiguous name.</strong> Context selected the result above; other possible interpretations are shown below.</p><div class="entity-list alternative-list">${alternatives.map((record) => entityCard(record)).join("")}</div></div>`
+      : "";
+    container.innerHTML = `<p class="result-message">Found ${matches.length} primary ${matches.length === 1 ? "entity" : "entities"}. Popularity means forward-edge object in-degree inside FactProp.</p><div class="entity-list">${matches.map((record) => entityCard(record)).join("")}</div>${ambiguityMarkup}`;
     return;
   }
   const suggestionMarkup = suggestions.length
@@ -312,6 +342,12 @@ async function loadIndex() {
       const list = state.byName.get(key) || [];
       list.push(record);
       state.byName.set(key, list);
+      const alias = key.match(/^(.+?)\s(?:inc|incorporated|corporation|corp|company|co|ltd|limited|plc|llc)$/)?.[1];
+      if (alias && alias.length >= 3) {
+        const aliases = state.aliases.get(alias) || [];
+        aliases.push(record);
+        state.aliases.set(alias, aliases);
+      }
       if (record[2] > 0) state.degrees.push(record[2]);
     });
     state.degrees.sort((a, b) => a - b);

@@ -19,8 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700|Noto+Sans:400,500,600,700|Castoro&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=academic-20260904" />
-    <script src="./app.js?v=academic-20260904" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=semantic-20260904" />
+    <script src="./app.js?v=semantic-20260904" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -54,6 +54,7 @@
         <div class="section-intro prose-width"><p class="section-kicker">Interactive demo</p><h2>FactProp Explorer</h2><p>Paste a sentence or upload a small dataset to inspect the structural popularity of entities found in the released browser index.</p></div>
         <div class="analyzer-shell paper-width">
           <div class="analyzer-topline"><div><span class="tool-kicker">Browser-based analysis</span><h3>How popular is your knowledge?</h3></div><span class="index-status" id="index-status"><i></i> Loading graph index…</span></div>
+          <p class="metric-explainer"><strong>What this measures:</strong> structural popularity inside FactProp—the number of verified forward facts pointing to an entity. It is not search frequency, public awareness, or cultural popularity.</p>
           <div class="tabs" role="tablist" aria-label="Analysis mode">
             <button class="tab active" id="sentence-tab" type="button" role="tab" aria-selected="true" aria-controls="sentence-panel">Sentence</button>
             <button class="tab" id="dataset-tab" type="button" role="tab" aria-selected="false" aria-controls="dataset-panel">Dataset</button>
