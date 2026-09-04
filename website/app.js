@@ -86,7 +86,8 @@ function findEntities(text, allowSuggestions = true) {
   const exact = state.byName.get(clean);
   if (exact) return { matches: exact.slice(0, 6), suggestions: [] };
 
-  const words = clean.split(" ");
+  const sourceWords = String(text).match(/[\p{L}\p{N}]+/gu) || [];
+  const words = sourceWords.map((word) => normalize(word));
   const occupied = new Set();
   const matches = [];
   const maxGram = Math.min(10, words.length);
@@ -94,7 +95,10 @@ function findEntities(text, allowSuggestions = true) {
     for (let start = 0; start <= words.length - size; start += 1) {
       if (Array.from({ length: size }, (_, offset) => occupied.has(start + offset)).some(Boolean)) continue;
       const phrase = words.slice(start, start + size).join(" ");
-      if (size === 1 && (phrase.length < 3 || STOPWORDS.has(phrase) || /^\d+$/.test(phrase))) continue;
+      if (size === 1) {
+        const isCapitalized = /^\p{Lu}/u.test(sourceWords[start] || "");
+        if (phrase.length < 3 || STOPWORDS.has(phrase) || /^\d+$/.test(phrase) || (words.length > 1 && !isCapitalized)) continue;
+      }
       const found = state.byName.get(phrase);
       if (!found) continue;
       found.slice(0, 2).forEach((record) => matches.push(record));
