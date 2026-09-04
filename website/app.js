@@ -254,6 +254,7 @@ function setupUploads() {
 
 function setupCanvas() {
   const canvas = document.querySelector("#ripple-canvas");
+  if (!canvas) return;
   const context = canvas.getContext("2d");
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let pointer = { x: .76, y: .24 };
@@ -334,4 +335,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#sentence-input").value = button.dataset.example;
     if (!document.querySelector("#analyze-sentence").disabled) renderSentenceResult(button.dataset.example);
   }));
+  document.querySelector("#copy-bibtex")?.addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    try {
+      await navigator.clipboard.writeText(document.querySelector("#bibtex").innerText);
+      button.textContent = "Copied";
+      setTimeout(() => { button.textContent = "Copy BibTeX"; }, 1600);
+    } catch {
+      button.textContent = "Select to copy";
+    }
+  });
 });
