@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore how factual updates ripple through language models, and measure entity popularity with the FactProp knowledge graph."
+    />
+    <meta property="og:title" content="Knowledge Ripples" />
+    <meta
+      property="og:description"
+      content="Popular knowledge is fragile — and contagious. Explore FactProp and PopAnchor."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://wuhubing.github.io/GenFragility-LLM/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Knowledge Ripples" />
+    <meta
+      name="twitter:description"
+      content="Popular knowledge is fragile — and contagious. Explore FactProp and PopAnchor."
+    />
+    <meta name="twitter:image" content="https://wuhubing.github.io/GenFragility-LLM/assets/og.png" />
+    <link rel="canonical" href="https://wuhubing.github.io/GenFragility-LLM/" />
+    <meta name="theme-color" content="#f7f3ec" />
+    <title>Knowledge Ripples — FactProp & PopAnchor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Knowledge Ripples home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Knowledge Ripples</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#explore">Explore</a>
+        <a href="#findings">Findings</a>
+        <a href="#factprop">FactProp</a>
+        <a href="#popanchor">PopAnchor</a>
+      </nav>
+      <a class="header-cta" href="https://github.com/Wuhubing/GenFragility-LLM" target="_blank" rel="noreferrer">
+        View code <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <canvas id="ripple-canvas" aria-label="Animated factual knowledge graph showing ripples from a popular hub"></canvas>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Research project · LLM knowledge updating</p>
+          <h1>Popular knowledge is fragile—<em>and contagious.</em></h1>
+          <p class="hero-summary">
+            A factual update can damage knowledge several connections away. We show that highly connected facts are both more vulnerable and more likely to spread errors, then introduce <strong>PopAnchor</strong> to reduce the blast radius.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#explore">Measure popularity</a>
+            <a class="button button-light" href="#findings">See the evidence</a>
+          </div>
+          <div class="hero-proof" aria-label="Study summary">
+            <span><strong>4</strong> open-weight models</span>
+            <span><strong>5</strong> graph hops traced</span>
+            <span><strong>2</strong> public benchmarks</span>
+          </div>
+        </div>
+
+        <div class="analyzer-shell" id="explore">
+          <div class="analyzer-topline">
+            <div>
+              <span class="tool-kicker">FactProp Explorer</span>
+              <h2>How popular is your knowledge?</h2>
+            </div>
+            <span class="index-status" id="index-status"><i></i> Loading graph index…</span>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Analysis mode">
+            <button class="tab active" id="sentence-tab" type="button" role="tab" aria-selected="true" aria-controls="sentence-panel">Sentence</button>
+            <button class="tab" id="dataset-tab" type="button" role="tab" aria-selected="false" aria-controls="dataset-panel">Dataset</button>
+          </div>
+
+          <div class="tab-panel active" id="sentence-panel" role="tabpanel" aria-labelledby="sentence-tab">
+            <label for="sentence-input">Enter an entity or paste a sentence</label>
+            <textarea id="sentence-input" rows="3" placeholder="e.g. Apple Inc. is headquartered in Cupertino."></textarea>
+            <div class="examples" aria-label="Example queries">
+              <span>Try:</span>
+              <button type="button" data-example="United States">United States</button>
+              <button type="button" data-example="Minecraft was developed by Mojang Studios.">Minecraft</button>
+              <button type="button" data-example="The capital of France is Paris.">France & Paris</button>
+            </div>
+            <button class="analyze-button" id="analyze-sentence" type="button" disabled>
+              Analyze with FactProp <span aria-hidden="true">→</span>
+            </button>
+            <div class="results" id="sentence-results" aria-live="polite">
+              <div class="empty-state">
+                <span class="empty-orbit" aria-hidden="true"></span>
+                <p>Matched entities will appear here with their object in-degree and structural tier.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="dataset-panel" role="tabpanel" aria-labelledby="dataset-tab" hidden>
+            <input id="dataset-file" type="file" accept=".txt,.csv,.json,text/plain,text/csv,application/json" hidden />
+            <button class="drop-zone" id="drop-zone" type="button">
+              <span class="upload-icon" aria-hidden="true">↥</span>
+              <strong>Drop a dataset here</strong>
+              <span>or click to select TXT, CSV, or JSON · up to 5 MB</span>
+            </button>
+            <p class="privacy-note"><span aria-hidden="true">◉</span> Private by design: your file never leaves this browser.</p>
+            <div class="results" id="dataset-results" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stat-ribbon" aria-label="FactProp dataset statistics">
+        <div><strong>100,015</strong><span>entities</span></div>
+        <div><strong>432,562</strong><span>verified factual edges</span></div>
+        <div><strong>39</strong><span>relation types</span></div>
+        <div><strong>35,868</strong><span>externally validated entities</span></div>
+      </section>
+
+      <section class="section findings" id="findings">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> The popularity paradox</p>
+          <h2>The knowledge a model relies on most may be the easiest to disturb.</h2>
+          <p>Among facts the models answered correctly before updating, structurally popular facts flipped more often across every evaluated model.</p>
+        </div>
+
+        <div class="finding-grid">
+          <article class="finding-card feature-card">
+            <div class="card-number">01 / Vulnerability</div>
+            <h3>Popular facts absorb more collateral damage.</h3>
+            <div class="model-bars" aria-label="Popular versus rare flip rate difference by model">
+              <div class="model-row"><span>Qwen3.5 2B</span><div><i style="--w: 41"></i><b style="--w: 38"></b></div><em>+3.4 pp</em></div>
+              <div class="model-row"><span>Qwen3.5 9B</span><div><i style="--w: 59"></i><b style="--w: 55"></b></div><em>+4.2 pp</em></div>
+              <div class="model-row"><span>Qwen3.6 27B</span><div><i style="--w: 42"></i><b style="--w: 30"></b></div><em>+11.6 pp</em></div>
+              <div class="model-row"><span>Gemma4 31B</span><div><i style="--w: 27"></i><b style="--w: 22"></b></div><em>+4.8 pp</em></div>
+            </div>
+            <div class="legend"><span class="popular-dot"></span> Popular <span class="rare-dot"></span> Rare</div>
+          </article>
+
+          <article class="finding-card">
+            <div class="card-number">02 / Propagation</div>
+            <p class="big-metric">d = 5</p>
+            <h3>Update errors persist over long graph distances.</h3>
+            <p>Correct-to-wrong flips remain measurable from immediate neighbors through five connected hops.</p>
+            <div class="ripple-mini" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+          </article>
+
+          <article class="finding-card">
+            <div class="card-number">03 / Control</div>
+            <p class="big-metric">r = 0.05</p>
+            <h3>Surface similarity does not explain the pattern.</h3>
+            <p>About 90% of evaluated pairs had low or moderate name similarity, yet accounted for nearly 89% of all flips.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section factprop" id="factprop">
+        <div class="factprop-visual" aria-hidden="true">
+          <div class="graph-card graph-card-a"><span>United States</span><strong>17,027</strong><small>incoming facts</small></div>
+          <div class="graph-card graph-card-b"><span>Paris</span><strong>1,031</strong><small>incoming facts</small></div>
+          <div class="graph-card graph-card-c"><span>Minecraft</span><strong>3</strong><small>incoming facts</small></div>
+          <svg viewBox="0 0 600 480" role="presentation">
+            <path d="M90 88 C220 70 210 218 302 224" />
+            <path d="M498 102 C430 125 440 205 302 224" />
+            <path d="M118 390 C220 362 214 268 302 224" />
+            <path d="M302 224 C385 270 420 338 514 370" />
+            <circle cx="302" cy="224" r="15" />
+            <circle cx="302" cy="224" r="48" class="soft" />
+            <circle cx="302" cy="224" r="84" class="soft softer" />
+          </svg>
+        </div>
+        <div class="factprop-copy">
+          <p class="eyebrow"><span></span> The measurement layer</p>
+          <h2>FactProp turns factual structure into a measurable signal.</h2>
+          <p>Each entity is a node and each verified fact is a directed edge. We define an entity’s structural popularity by how many verified facts point to it—its object in-degree.</p>
+          <ol class="method-list">
+            <li><span>01</span><div><strong>Ground</strong><p>Expand real-world facts, then verify candidates against Wikidata.</p></div></li>
+            <li><span>02</span><div><strong>Connect</strong><p>Link facts through shared subject and object entities.</p></div></li>
+            <li><span>03</span><div><strong>Measure</strong><p>Trace correct-to-wrong flips from one to five graph hops.</p></div></li>
+          </ol>
+          <p class="method-note">Popularity is structural, not a claim about cultural importance. The explorer reports forward-edge object in-degree and excludes inverse traversal edges.</p>
+        </div>
+      </section>
+
+      <section class="section popanchor" id="popanchor">
+        <div class="popanchor-copy">
+          <p class="eyebrow eyebrow-light"><span></span> From finding to intervention</p>
+          <h2>Anchor a few popular facts. Protect many more.</h2>
+          <p>PopAnchor adds a lightweight preservation objective during fine-tuning, keeping the updated model close to its original behavior on a small set of high-popularity prompts.</p>
+          <a class="button button-cream" href="https://github.com/Wuhubing/GenFragility-LLM" target="_blank" rel="noreferrer">Explore the implementation <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="mitigation-card">
+          <div class="mitigation-head"><span>Average flip rate · FactProp</span><small>Lower is better</small></div>
+          <div class="mitigation-values">
+            <div><span>No anchor</span><strong>79.8%</strong><i style="--h:79.8%"></i></div>
+            <div class="highlight"><span>PopAnchor</span><strong>68.0%</strong><i style="--h:68%"></i></div>
+          </div>
+          <p><strong>−11.8 percentage points</strong> average forgetting across distances d=1–5 on Qwen3.5-9B.</p>
+        </div>
+      </section>
+
+      <section class="section resources" id="resources">
+        <div>
+          <p class="eyebrow"><span></span> Open research</p>
+          <h2>Read, reproduce, and build on the work.</h2>
+        </div>
+        <div class="resource-links">
+          <a href="https://github.com/Wuhubing/GenFragility-LLM" target="_blank" rel="noreferrer"><span>Code</span><strong>GenFragility-LLM</strong><i>↗</i></a>
+          <div class="resource-pending"><span>Paper</span><strong>Preprint coming soon</strong><i>○</i></div>
+          <div class="resource-pending"><span>Dataset</span><strong>FactProp release coming soon</strong><i>○</i></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Knowledge Ripples</span></a>
+      <p>Popular Knowledge Propagates More Errors in LLM Knowledge Updating</p>
+      <p>© 2026 · Research preview</p>
+    </footer>
+  </body>
+</html>
