@@ -50,6 +50,30 @@
         </figure>
       </section>
 
+      <section class="paper-section explorer-section" id="explorer">
+        <div class="section-intro prose-width"><p class="section-kicker">Interactive demo</p><h2>FactProp Explorer</h2><p>Paste a sentence or upload a small dataset to inspect the structural popularity of entities found in the released browser index.</p></div>
+        <div class="analyzer-shell paper-width">
+          <div class="analyzer-topline"><div><span class="tool-kicker">Browser-based analysis</span><h3>How popular is your knowledge?</h3></div><span class="index-status" id="index-status"><i></i> Loading graph index…</span></div>
+          <div class="tabs" role="tablist" aria-label="Analysis mode">
+            <button class="tab active" id="sentence-tab" type="button" role="tab" aria-selected="true" aria-controls="sentence-panel">Sentence</button>
+            <button class="tab" id="dataset-tab" type="button" role="tab" aria-selected="false" aria-controls="dataset-panel">Dataset</button>
+          </div>
+          <div class="tab-panel active" id="sentence-panel" role="tabpanel" aria-labelledby="sentence-tab">
+            <label for="sentence-input">Enter an entity or paste a sentence</label>
+            <textarea id="sentence-input" rows="3" placeholder="e.g. Apple Inc. is headquartered in Cupertino."></textarea>
+            <div class="examples" aria-label="Example queries"><span>Try:</span><button type="button" data-example="United States">United States</button><button type="button" data-example="Minecraft was developed by Mojang Studios.">Minecraft</button><button type="button" data-example="The capital of France is Paris.">France &amp; Paris</button></div>
+            <button class="analyze-button" id="analyze-sentence" type="button" disabled>Analyze with FactProp <span aria-hidden="true">→</span></button>
+            <div class="results" id="sentence-results" aria-live="polite"><div class="empty-state"><span class="empty-orbit" aria-hidden="true"></span><p>Matched entities will appear here with their object in-degree and structural tier.</p></div></div>
+          </div>
+          <div class="tab-panel" id="dataset-panel" role="tabpanel" aria-labelledby="dataset-tab" hidden>
+            <input id="dataset-file" type="file" accept=".txt,.csv,.json,text/plain,text/csv,application/json" hidden />
+            <button class="drop-zone" id="drop-zone" type="button"><span class="upload-icon" aria-hidden="true">↥</span><strong>Drop a dataset here</strong><span>or click to select TXT, CSV, or JSON · up to 5 MB</span></button>
+            <p class="privacy-note"><span aria-hidden="true">●</span> Your file is processed locally and never leaves this browser.</p>
+            <div class="results" id="dataset-results" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
       <section class="paper-section prose-width" id="abstract">
         <h2>Abstract</h2>
         <p>Updating a language model through fine-tuning keeps its knowledge current, but can also corrupt facts it previously answered correctly. We ask a structural question: among facts already encoded by the model, which ones are most vulnerable to collateral damage, and which updates spread the most errors?</p>
@@ -104,30 +128,6 @@
           </figure>
         </div>
         <aside class="control-finding"><span>Control analysis</span><strong>r = 0.05</strong><p>Surface-form similarity has only a weak relationship with flip behavior. Low- and moderate-similarity pairs account for the large majority of observed flips.</p></aside>
-      </section>
-
-      <section class="paper-section explorer-section" id="explorer">
-        <div class="section-intro prose-width"><p class="section-kicker">Interactive demo</p><h2>FactProp Explorer</h2><p>Paste a sentence or upload a small dataset to inspect the structural popularity of entities found in the released browser index.</p></div>
-        <div class="analyzer-shell paper-width">
-          <div class="analyzer-topline"><div><span class="tool-kicker">Browser-based analysis</span><h3>How popular is your knowledge?</h3></div><span class="index-status" id="index-status"><i></i> Loading graph index…</span></div>
-          <div class="tabs" role="tablist" aria-label="Analysis mode">
-            <button class="tab active" id="sentence-tab" type="button" role="tab" aria-selected="true" aria-controls="sentence-panel">Sentence</button>
-            <button class="tab" id="dataset-tab" type="button" role="tab" aria-selected="false" aria-controls="dataset-panel">Dataset</button>
-          </div>
-          <div class="tab-panel active" id="sentence-panel" role="tabpanel" aria-labelledby="sentence-tab">
-            <label for="sentence-input">Enter an entity or paste a sentence</label>
-            <textarea id="sentence-input" rows="3" placeholder="e.g. Apple Inc. is headquartered in Cupertino."></textarea>
-            <div class="examples" aria-label="Example queries"><span>Try:</span><button type="button" data-example="United States">United States</button><button type="button" data-example="Minecraft was developed by Mojang Studios.">Minecraft</button><button type="button" data-example="The capital of France is Paris.">France &amp; Paris</button></div>
-            <button class="analyze-button" id="analyze-sentence" type="button" disabled>Analyze with FactProp <span aria-hidden="true">→</span></button>
-            <div class="results" id="sentence-results" aria-live="polite"><div class="empty-state"><span class="empty-orbit" aria-hidden="true"></span><p>Matched entities will appear here with their object in-degree and structural tier.</p></div></div>
-          </div>
-          <div class="tab-panel" id="dataset-panel" role="tabpanel" aria-labelledby="dataset-tab" hidden>
-            <input id="dataset-file" type="file" accept=".txt,.csv,.json,text/plain,text/csv,application/json" hidden />
-            <button class="drop-zone" id="drop-zone" type="button"><span class="upload-icon" aria-hidden="true">↥</span><strong>Drop a dataset here</strong><span>or click to select TXT, CSV, or JSON · up to 5 MB</span></button>
-            <p class="privacy-note"><span aria-hidden="true">●</span> Your file is processed locally and never leaves this browser.</p>
-            <div class="results" id="dataset-results" aria-live="polite"></div>
-          </div>
-        </div>
       </section>
 
       <section class="paper-section citation-section prose-width" id="citation">
