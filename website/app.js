@@ -7,6 +7,7 @@ const state = {
   maxDegree: 1,
   meta: null,
   lastDatasetResults: [],
+  uploadSequence: 0,
 };
 
 const STOPWORDS = new Set([
@@ -17,6 +18,10 @@ const STOPWORDS = new Set([
 
 const CORPORATE_SUFFIX = /\s(?:inc|incorporated|corporation|corp|company|co|ltd|limited|plc|llc)$/;
 const COMPANY_CONTEXT = /\b(?:company|corporation|business|firm|technology|tech|headquartered|headquarters|ceo|manufacturer|founded|stock|iphone|ipad|macbook|mac|ios)\b/;
+// Common words need explicit entity-name input; casing alone is not evidence.
+const COMMON_WORDS = new Set('capital company companies big small good bad idea hello world reading may today tomorrow yesterday live visited city cities fruit ate eat sweet fresh delicious text sentence source id name data test example'.split(' '));
+const TEXT_FIELDS = ['text', 'sentence', 'prompt', 'question', 'content'];
+const MAX_TEXT_LENGTH = 20000;
 
 const normalize = (value) => value
   .normalize("NFKD")
@@ -86,8 +91,15 @@ function entityCard(record, count = null) {
 
 function candidatesFor(surface, context) {
   const records = [...(state.byName.get(surface) || []), ...(state.aliases.get(surface) || [])];
-  const unique = [...new Map(records.map((record) => [`${record[0]}|${record[1]}`, record])).values()];
-  const companyHint = COMPANY_CONTEXT.test(context);
+  const grouped = new Map();
+  records.forEach(record => {
+    const key = record[1] || record[0];
+    if (!grouped.has(key) || grouped.get(key)[2] < record[2]) grouped.set(key, record);
+  });
+  const unique = [...grouped.values()];
+  // Conservative, documented Apple rule; generic company words cannot resolve every name.
+  const companyHint = surface === 'apple' && COMPANY_CONTEXT.test(context)
+    && !/\b(?:fruit|eat|ate|juice|pie|orchard)\b/.test(context);
   return unique.sort((a, b) => {
     const aCorporate = CORPORATE_SUFFIX.test(normalize(a[0]));
     const bCorporate = CORPORATE_SUFFIX.test(normalize(b[0]));
@@ -100,6 +112,7 @@ function candidatesFor(surface, context) {
 }
 
 function findEntities(text, allowSuggestions = true) {
+  if (text.length > MAX_TEXT_LENGTH) throw new Error('Each sentence or row must be at most 20,000 characters.');
   const clean = normalize(text);
   if (!clean) return { matches: [], alternatives: [], suggestions: [] };
   const exactCandidates = candidatesFor(clean, clean);
@@ -118,9 +131,9 @@ function findEntities(text, allowSuggestions = true) {
       if (Array.from({ length: size }, (_, offset) => occupied.has(start + offset)).some(Boolean)) continue;
       const phrase = words.slice(start, start + size).join(" ");
       if (size === 1) {
-        const isCapitalized = /^\p{Lu}/u.test(sourceWords[start] || "");
-        if (phrase.length < 3 || STOPWORDS.has(phrase) || /^\d+$/.test(phrase) || (words.length > 1 && !isCapitalized)) continue;
+        if (phrase.length < 3 || STOPWORDS.has(phrase) || COMMON_WORDS.has(phrase) || /^\d+$/.test(phrase)) continue;
       }
+      if (STOPWORDS.has(words[start])) continue;
       const found = candidatesFor(phrase, clean);
       if (!found.length) continue;
       matches.push(found[0]);
@@ -151,10 +164,14 @@ function findEntities(text, allowSuggestions = true) {
 
 function renderSentenceResult(text) {
   const container = document.querySelector("#sentence-results");
+  if (text.length > MAX_TEXT_LENGTH) {
+    container.innerHTML = '<p class="result-message error">Please use at most 20,000 characters per sentence.</p>';
+    return;
+  }
   const { matches, alternatives, suggestions } = findEntities(text);
   if (matches.length) {
     const ambiguityMarkup = alternatives.length
-      ? `<div class="ambiguity-block"><p class="ambiguity-title"><strong>Ambiguous name.</strong> Context selected the result above; other possible interpretations are shown below.</p><div class="entity-list alternative-list">${alternatives.map((record) => entityCard(record)).join("")}</div></div>`
+      ? `<div class="ambiguity-block"><p class="ambiguity-title"><strong>Ambiguous name — review required.</strong> The first result is a heuristic choice, not a confirmed interpretation. Other candidates appear below; use an explicit name to narrow the match.</p><div class="entity-list alternative-list">${alternatives.map((record) => entityCard(record)).join("")}</div></div>`
       : "";
     container.innerHTML = `<p class="result-message">Found ${matches.length} primary ${matches.length === 1 ? "entity" : "entities"}. Popularity means forward-edge object in-degree inside FactProp.</p><div class="entity-list">${matches.map((record) => entityCard(record)).join("")}</div>${ambiguityMarkup}`;
     return;
@@ -170,6 +187,7 @@ function renderSentenceResult(text) {
 }
 
 function parseCsv(text) {
+  text = text.replace(/^\uFEFF/, '');
   const rows = [];
   let row = [];
   let cell = "";
@@ -185,8 +203,32 @@ function parseCsv(text) {
     else if (char === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
     else if (char !== "\r") cell += char;
   }
+  if (quoted) throw new Error('Unclosed quoted CSV field.');
   if (cell || row.length) { row.push(cell); rows.push(row); }
   return rows;
+}
+
+function datasetItems(text, extension) {
+  if (extension === 'txt') return text.split(/\r?\n/).filter(x=>x.trim());
+  if (extension === 'csv') {
+    const rows = parseCsv(text).filter(row=>row.some(x=>x.trim()));
+    if (!rows.length) return [];
+    const header = rows[0].map(x=>x.trim().toLowerCase());
+    const column = TEXT_FIELDS.map(f=>header.indexOf(f)).find(i=>i>=0);
+    if (column !== undefined) return rows.slice(1).map(row=>row[column] || '').filter(x=>x.trim());
+    if (rows.some(row=>row.length !== 1)) throw new Error('Multi-column CSV requires a text, sentence, prompt, question, or content column.');
+    return rows.map(row=>row[0]);
+  }
+  const data = JSON.parse(text.replace(/^\uFEFF/, ''));
+  if (!Array.isArray(data)) throw new Error('JSON must be an array of strings or objects with a text field.');
+  return data.map(row=>{
+    if (typeof row === 'string') return row;
+    if (row && typeof row === 'object' && !Array.isArray(row)) {
+      const field=TEXT_FIELDS.find(f=>typeof row[f] === 'string');
+      if (field) return row[field];
+    }
+    throw new Error('Each JSON row needs a string or a text, sentence, prompt, question, or content field.');
+  }).filter(x=>x.trim());
 }
 
 function collectJsonStrings(value, output, limit = 5000) {
@@ -198,6 +240,12 @@ function collectJsonStrings(value, output, limit = 5000) {
 
 async function analyzeDataset(file) {
   const container = document.querySelector("#dataset-results");
+  const sequence = ++state.uploadSequence;
+  state.lastDatasetResults = [];
+  if (!state.entities.length) {
+    container.innerHTML = '<p class="result-message error">Wait for the graph index to load before uploading.</p>';
+    return;
+  }
   if (file.size > 5 * 1024 * 1024) {
     container.innerHTML = '<p class="result-message error">That file is larger than 5 MB. Please upload a smaller sample.</p>';
     return;
@@ -205,20 +253,18 @@ async function analyzeDataset(file) {
   container.innerHTML = '<p class="result-message">Reading and analyzing locally…</p>';
   try {
     const text = await file.text();
+    if (sequence !== state.uploadSequence) return;
     const extension = file.name.split(".").pop().toLowerCase();
-    let items = [];
-    if (extension === "json") {
-      collectJsonStrings(JSON.parse(text), items);
-    } else if (extension === "csv") {
-      items = parseCsv(text).slice(0, 5000).map((row) => row.join(" "));
-    } else {
-      items = text.split(/\r?\n/).filter(Boolean).slice(0, 5000);
-    }
+    if (!['txt','csv','json'].includes(extension)) throw new Error('Use TXT, CSV, or JSON.');
+    const allItems = datasetItems(text, extension);
+    const items = allItems.slice(0,5000);
 
     const aggregate = new Map();
     let matchedRows = 0;
+    let ambiguousRows = 0;
     items.forEach((item) => {
-      const { matches } = findEntities(item, false);
+      const { matches, alternatives } = findEntities(item, false);
+      if (alternatives.length) ambiguousRows += 1;
       if (matches.length) matchedRows += 1;
       matches.forEach((record) => {
         const key = `${record[0]}|${record[1]}`;
@@ -234,15 +280,17 @@ async function analyzeDataset(file) {
       ? `<div class="entity-list">${ranked.slice(0, 30).map(({ record, count }) => entityCard(record, count)).join("")}</div>`
       : '<div class="empty-state"><span class="empty-orbit" aria-hidden="true"></span><p>No canonical FactProp entity labels were detected in this file.</p></div>';
     container.innerHTML = `
+      <p class="result-message">${allItems.length > 5000 ? 'Truncated: analyzing the first 5,000 non-empty rows. ' : ''}${ambiguousRows} rows have ambiguous candidates; aggregated counts use heuristic first choices. Review ambiguous inputs before reporting results.</p>
       <div class="dataset-summary">
         <div><strong>${items.length.toLocaleString()}</strong><span>rows / values</span></div>
         <div><strong>${matchedRows.toLocaleString()}</strong><span>matched rows</span></div>
-        <div><strong>${Math.round(avg).toLocaleString()}</strong><span>mean in-degree</span></div>
+        <div><strong>${Math.round(avg).toLocaleString()}</strong><span>mean over unique entities</span></div>
       </div>
       <div class="dataset-actions"><p>${escapeHtml(file.name)} · ${ranked.length} unique entities</p>${ranked.length ? '<button id="download-results" type="button">Download CSV</button>' : ""}</div>
       ${list}`;
     document.querySelector("#download-results")?.addEventListener("click", downloadDatasetResults);
   } catch (error) {
+    if (sequence !== state.uploadSequence) return;
     container.innerHTML = `<p class="result-message error">Could not read this file: ${escapeHtml(error.message)}</p>`;
   }
 }
@@ -255,8 +303,10 @@ function downloadDatasetResults() {
   const anchor = document.createElement("a");
   anchor.href = url;
   anchor.download = "factprop-popularity-results.csv";
+  document.body.appendChild(anchor);
   anchor.click();
-  URL.revokeObjectURL(url);
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function setupTabs() {

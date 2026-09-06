@@ -19,8 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700|Noto+Sans:400,500,600,700|Castoro&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=semantic-20260904" />
-    <script src="./app.js?v=semantic-20260904" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=audit-20260905" />
+    <script src="./app.js?v=audit-20260905" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -61,6 +61,7 @@
           </div>
           <div class="tab-panel active" id="sentence-panel" role="tabpanel" aria-labelledby="sentence-tab">
             <label for="sentence-input">Enter an entity or paste a sentence</label>
+            <p class="metric-explainer">Experimental English label matching, case-insensitive. Use canonical entity names for reproducible scores. Context rules cover limited ambiguities; translations, abbreviations, typos, and some common words may not resolve correctly.</p>
             <textarea id="sentence-input" rows="3" placeholder="e.g. Apple Inc. is headquartered in Cupertino."></textarea>
             <div class="examples" aria-label="Example queries"><span>Try:</span><button type="button" data-example="United States">United States</button><button type="button" data-example="Minecraft was developed by Mojang Studios.">Minecraft</button><button type="button" data-example="The capital of France is Paris.">France &amp; Paris</button></div>
             <button class="analyze-button" id="analyze-sentence" type="button" disabled>Analyze with FactProp <span aria-hidden="true">→</span></button>
@@ -70,6 +71,7 @@
             <input id="dataset-file" type="file" accept=".txt,.csv,.json,text/plain,text/csv,application/json" hidden />
             <button class="drop-zone" id="drop-zone" type="button"><span class="upload-icon" aria-hidden="true">↥</span><strong>Drop a dataset here</strong><span>or click to select TXT, CSV, or JSON · up to 5 MB</span></button>
             <p class="privacy-note"><span aria-hidden="true">●</span> Your file is processed locally and never leaves this browser.</p>
+            <p class="metric-explainer">TXT: one text per line. CSV: a text, sentence, prompt, question, or content column (or one column without a header). JSON: an array of strings or objects with one of those fields. The first 5,000 non-empty rows are analyzed; each row may contain up to 20,000 characters. Metadata is excluded when a text column is present.</p>
             <div class="results" id="dataset-results" aria-live="polite"></div>
           </div>
         </div>
